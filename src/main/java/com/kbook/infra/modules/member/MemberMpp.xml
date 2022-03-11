@@ -3,22 +3,29 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+    
 <mapper namespace="com.kbook.infra.modules.member.MemberMpp">
 
-	<resultMap type="com.kbook.infra.modules.member.MemberMpp" id="resultMapObj"></resultMap>
+<resultMap id="resultMapObj" type="com.kbook.infra.modules.member.Member"></resultMap>
 
 	<select id="selectList" resultMap="resultMapObj">
 		select
 			a.kbmmSeq
-			,a.kbmmName
 			,a.kbmmId
+			,a.kbmmName
 			,b.kbmpNumberFull
 			,c.kbmeEmailFull
+			,a.kbmmAdminNy
 		from
 			kbMember a
-		left join kbMemberPhone b on b.kbmmSeq = a.kbmmSeq	
-		left join kbMemberEmail c on c.kbmmSeq = a.kbmmSeq
+			left join kbMemberPhone b on b.kbmmSeq = a.kbmmSeq	
+			left join kbMemberEmail c on c.kbmmSeq = a.kbmmSeq
+		WHERE 1=1
+
 	</select>
-	
-</mapper>    
+
+
+</mapper>
+
+
+    

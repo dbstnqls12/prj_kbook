@@ -1,5 +1,9 @@
 package com.kbook.infra.modules.member;
 
-public class MemberService {
+import java.util.List;
+
+public interface MemberService {
+	
+	public List<Member> selectList() throws Exception;
 
 }
