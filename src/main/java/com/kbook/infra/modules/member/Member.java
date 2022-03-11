@@ -8,6 +8,8 @@ public class Member {
 	private String kbmpNumberFull;
 	private String kbmeEmailFull;
 	private String kbmmAdminNy;
+
+	
 	
 	public String getKbmmSeq() {
 		return kbmmSeq;
