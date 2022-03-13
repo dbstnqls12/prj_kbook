@@ -2,6 +2,7 @@ package com.kbook.infra.modules.code;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -77,11 +78,13 @@ public class CodeController {
 
 
 	@RequestMapping(value = "/code/codeForm")
-	public String codeForm(Model model) throws Exception {
+	public String codeForm(CodeVo vo, Model model) throws Exception {
 		
-//		List<Code> list = service.selectListCode();
-
-//		model.addAttribute("list", list);
+		List<Code> list = service.selectListCode(vo);
+		model.addAttribute("list", list);
+		
+		List<Code> listCodeGroup = service.selectList(vo);
+		model.addAttribute("listCodeGroup", listCodeGroup);
 
 		return "code/codeForm";
 	}

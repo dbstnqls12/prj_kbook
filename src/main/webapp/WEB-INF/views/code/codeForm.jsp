@@ -8,12 +8,17 @@
 
 <form method="post" action ="/code/codeInst">
 
-	<select name="ifcgSeq">
+<%-- 	<select name="ifcgSeq">
 		<c:forEach items="${list}" var="item" varStatus="status">	
 			<option value="<c:out value="${item.ifcgSeq}"/>"><c:out value="${item.ifcgSeq}"/> | <c:out value="${item.ifcgName}"/></option>
 		</c:forEach>
+	</select> --%>
+	<select name="ifcgSeq">
+	<option value="${item.ifcgSeq}">::코드그룹::</option>
+		<c:forEach items="${listCodeGroup}" var="item" varStatus="status">	
+	<option value="<c:out value="${item.ifcgSeq}"/>"><c:out value="${item.ifcgSeq}"/> | <c:out value="${item.ifcgName}"></c:out></option>
+		</c:forEach>	
 	</select>
-
 	<input type="text" name="ifcdName" placeholder="ifcdName">
 	<input type="text" name="ifcdOrder" placeholder="ifcdOrder">
 	<input type="submit" value="제출">
