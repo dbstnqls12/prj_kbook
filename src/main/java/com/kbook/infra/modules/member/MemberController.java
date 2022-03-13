@@ -21,4 +21,15 @@ public class MemberController {
 		
 		return "xdmin/member/memberList";
 	}
+	
+	@RequestMapping(value="/xdmin/member/memberView")
+	public String memberView(MemberVo vo, Model model) throws Exception{
+		
+		Member rt = service.selectOne(vo);
+		
+		model.addAttribute("item", rt);
+		
+		return "/xdmin/member/memberView";
+		
+	}
 }

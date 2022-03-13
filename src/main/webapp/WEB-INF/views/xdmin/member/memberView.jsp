@@ -13,12 +13,12 @@
 <!-- Bootstrap CSS -->
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
  -->
-<link href="../../../bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css"  rel="stylesheet" >
+<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css"  rel="stylesheet" >
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 
-<link href="../../../css/sidebars.css" rel="stylesheet" type="text/css">
-<link href="../../../css/footers.css" rel="stylesheet" type="text/css">
+<link href="/resources/xdmin/css/sidebars.css" rel="stylesheet" type="text/css">
+<link href="/resources/xdmin/css/footers.css" rel="stylesheet" type="text/css">
 <title>Kyobo_memberView</title>
 <style type="text/css">
 
@@ -37,7 +37,7 @@
 <div class="container-fluid"> <!--d-none d-sm-block : sm사이즈에서는 보이지 않음 --><!-- d-block d-sm-none : sm에서만 보임 -->
 	<div class="row ">	
 		<div class="col-5 col-md-2 col-lg-2 my-auto">
-			<img src="../../../images/xdmin_img/kyobo2_removebg.png"  class="img-fluid rounded mx-auto d-block">
+			<img src="/resources/xdmin/image/kyobo2_removebg.png"  class="img-fluid rounded mx-auto d-block">
 		</div>
 		<div class="col-7 col-md-5 col-lg-6 my-auto text-end">
 			<a class="d-block d-md-none" data-bs-toggle="offcanvas" href="#offcanvasRight" aria-controls="offcanvasRight">
@@ -46,7 +46,7 @@
 		</div>		
 		<div class="col-md-5 col-lg-4 my-auto d-none d-md-block mt-4">	
 			<div class="row">
-				<div class="col my-auto"><img src="../../../images/xdmin_img/2.jpg" class="image rounded-circle img-thumbnail float-end" style="width: 50px; height: 50px;"  id="profile1"></div>
+				<div class="col my-auto"><img src="/resources/xdmin/image/2.jpg" class="image rounded-circle img-thumbnail float-end" style="width: 50px; height: 50px;"  id="profile1"></div>
 				<div class="col my-auto">
 					<p class="profile2 mb-0">Youn Subin (CEO)</p>
 					<p class="profile3 mb-0"><small>Administrator</small></p>
@@ -212,7 +212,7 @@
 			<form action="" method="post" id="memberForm" name="memberView" enctype="multipart/form-data" class="row g-3">
 				<div class="col-md-6">
 					<label class="form-label">이름</label>
-					<input type="text" class="form-control form-control-sm" id="inputName" placeholder="윤수빈" disabled>
+					<input type="text" class="form-control form-control-sm" id="inputName" placeholder="<c:out value="${item.kbmmName}"/>">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">이름(영문)</label>
@@ -220,11 +220,11 @@
 				</div>
 				<div class="col-md-6">
 					<label for="inputId" class="form-label">아이디</label>
-					<input type="text" class="form-control form-control-sm" id="inputId" placeholder="asdasd123"> 
+					<input type="text" class="form-control form-control-sm" id="inputId" placeholder="<c:out value="${item.kbmmId}"/>"> 
 				</div>
 				<div class="col-md-6">
 					<label for="inputPwd" class="form-label">비밀번호</label>
-					<input type="password" class="form-control form-control-sm" id="inputPwd" placeholder="asdasd123!">
+					<input type="password" class="form-control form-control-sm" id="inputPwd" placeholder="">
 				</div>
 
 				<div class="col-md-6">
@@ -427,7 +427,7 @@
 <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top">
 	<p class="col-md-5 mb-0 text-muted">
 		<a href="#" class="col-md-4 d-flex mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-			<img src="../../../images/xdmin_img/kyobo2_removebg.png"  class="img-fluid" style="width: 100px; height: 40px;">
+			<img src="/resources/xdmin/image/kyobo2_removebg.png"  class="img-fluid" style="width: 100px; height: 40px;">
 		</a>
 		<small>㈜ 교보문고   서울시 종로구 종로 1<br>   
 			대표이사 : 안병현<br>
@@ -443,7 +443,7 @@
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"> --></script>
-<script src="../../../bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>  
+<script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>  
 
 <!-- Option 2: Separate Popper and Bootstrap JS -->
 <!--

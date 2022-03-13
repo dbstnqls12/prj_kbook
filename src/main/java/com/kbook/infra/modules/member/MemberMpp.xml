@@ -21,9 +21,17 @@
 			left join kbMemberPhone b on b.kbmmSeq = a.kbmmSeq	
 			left join kbMemberEmail c on c.kbmmSeq = a.kbmmSeq
 		WHERE 1=1
-
 	</select>
-
+	<select id="selectOne" resultMap="resultMapObj">
+		select
+			kbmmSeq
+			,kbmmId
+			,kbmmName
+		from
+			kbMember a
+		WHERE 1=1
+			AND kbmmSeq=#{kbmmSeq}
+	</select>
 
 </mapper>
 

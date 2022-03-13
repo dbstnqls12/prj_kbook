@@ -6,4 +6,5 @@ public interface MemberService {
 	
 	public List<Member> selectList() throws Exception;
 
+	public Member selectOne(MemberVo vo) throws Exception;
 }

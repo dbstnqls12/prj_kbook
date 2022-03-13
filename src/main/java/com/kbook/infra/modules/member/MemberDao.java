@@ -17,4 +17,6 @@ public class MemberDao {
 	
 	private static String namespace = "com.kbook.infra.modules.member.MemberMpp";
 	public List<Member> selectList(){ return sqlSession.selectList(namespace + ".selectList",""); }
+
+	public Member selectOne(MemberVo vo) {return sqlSession.selectOne(namespace +".selectOne", vo);}
 }

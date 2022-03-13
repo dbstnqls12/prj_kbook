@@ -259,7 +259,7 @@
 							<tr>
 								<td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
 								<td><c:out value="${item.kbmmSeq}"/></td>
-								<td><a href="/member/memberView?kbmmSeq=${item.kbmmSeq}"><c:out value="${item.kbmmName}"/></a></td>
+								<td><a href="/xdmin/member/memberView?kbmmSeq=${item.kbmmSeq}"><c:out value="${item.kbmmName}"/></a></td>
 								<td><c:out value="${item.kbmmId}"/></td>
 								<td><c:out value="${item.kbmpNumberFull}"/></td>
 								<td><c:out value="${item.kbmeEmailFull}"/></td>
