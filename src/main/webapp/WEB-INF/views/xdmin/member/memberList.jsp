@@ -5,7 +5,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-
 <!doctype html>
 <html lang="ko">
 <head>
@@ -200,13 +199,14 @@
 		<div class="col-md-10">
 			<!-- 검색 s -->
 			<div class="mb-2"><h4>검색</h4></div>
+			<form id="" name="" method="get" action="memberList">
 			<div class="border p-3 ">
 				<div class="row">
 					<div class="col-6 col-md-3 mt-2 mb-2">	 	
-						<select class="form-select form-select-sm">
-							<option selected>삭제여부</option>
-							<option value="1">N</option>
-							<option value="2">Y</option>
+						<select class="form-select form-select-sm" name="shKbmmDelNy">
+							<option value="">::삭제여부::</option>
+							<option value="1">Y</option>
+							<option value="0">N</option>
 						</select>				
 					</div>
 					<div class="col-6 col-md-3 mt-2 mb-2">	
@@ -220,18 +220,21 @@
 					<div class="col-6 col-md-3 mt-2 mb-2"><input type="text" class="form-control form-control-sm " id="input_edate" placeholder="종료일"></div>
 					<div class="col-6 col-md-3 mt-2 mb-2">	
 						<select class="form-select form-select-sm">
-							<option selected>검색구분</option>
-							<option value="1">관리</option>
-							<option value="2">회원</option>
+							<option selected>회원구분</option>
+							<option value="1">프렌즈</option>
+							<option value="2">실버</option>
+							<option value="2">골드</option>
+							<option value="2">플래티넘</option>
 						</select>
 					</div>
-					<div class="col-6 col-md-3 mt-2 "><input type="text" class="form-control form-control-sm " id="input_search" placeholder="검색어"></div>
+					<div class="col-6 col-md-3 mt-2 "><input type="text" class="form-control form-control-sm " id="input_search" placeholder="회원명"></div>
 					<div class="col-6 col-md-3 mt-2">
-						<button type="button" class="btn btn-warning btn-sm" id="search_icon"><i class="fas fa-search"></i></button>
+						<button type="submit" class="btn btn-warning btn-sm" id="search_icon"><i class="fas fa-search"></i></button>
 						<button type="button" class="btn btn-danger btn-sm" id="search_icon"><i class="fa-solid fa-arrow-rotate-left"></i></button>
 					</div>
 				</div>
 			</div>	
+			</form>
 			<!-- 검색 e -->
 			<!-- table s -->
 			<div class="table-responsive">

@@ -14,9 +14,9 @@ public class MemberController {
 	MemberServiceImpl service;
 	
 	@RequestMapping(value="/xdmin/member/memberList")
-	public String memberList(Model model) throws Exception{
+	public String memberList(MemberVo vo, Model model) throws Exception{
 		
-		List<Member> list = service.selectList();
+		List<Member> list = service.selectList(vo);
 		model.addAttribute("list",list);
 		
 		return "xdmin/member/memberList";
