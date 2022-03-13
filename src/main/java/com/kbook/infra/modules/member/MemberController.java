@@ -19,7 +19,7 @@ public class MemberController {
 		List<Member> list = service.selectList(vo);
 		model.addAttribute("list",list);
 		
-		return "xdmin/member/memberList";
+		return "/xdmin/member/memberList";
 	}
 	
 	@RequestMapping(value="/xdmin/member/memberView")

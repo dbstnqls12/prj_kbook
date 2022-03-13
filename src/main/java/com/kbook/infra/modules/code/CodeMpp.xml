@@ -5,9 +5,9 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kbook.infra.modules.code.CodeMpp">
 
-<resultMap id="resultMapObj" type="com.kbook.infra.modules.code.CodeMpp"></resultMap>
+<resultMap id="resultMapObj" type="com.kbook.infra.modules.code.Code"></resultMap>
+  
     <!-- infrCodeGroup -->
-
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
 			a.ifcgSeq
@@ -22,7 +22,6 @@
 			</choose>
 			<if test="shIfcgName != null and !shIfcgName.equals('')"> AND ifcgName LIKE concat('%', #{shIfcgName}, '%')</if> 
 	</select>
-	
 	<insert id="insert">
 		INSERT INTO infrCodeGroup(
 			ifcgName
@@ -32,7 +31,6 @@
 			,0		
 		)		
 	</insert>
-	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			a.ifcgSeq
@@ -44,7 +42,6 @@
 			AND ifcgSeq=#{ifcgSeq}
 
 	</select>
-
 	<update id="update">
 		UPDATE infrCodeGroup SET 	
 			ifcgName = #{ifcgName}
@@ -56,7 +53,7 @@
 
 	<!-- infrCode -->
 	
-	<select id="selectListCode" resultMap="resultMapObj">
+<!-- 	<select id="selectListCode" resultMap="resultMapObj">
 		SELECT
 			ifcdSeq
 			,ifcdName
@@ -69,8 +66,9 @@
 			AND ifcdDelNy = 0
 			<if test="shIfcgSeq != null and !shIfcgSeq.equals('')"> AND ifcgSeq = #{shIfcgSeq}</if> 
 	</select>
-	
-	<insert id="insertCode">
+	 -->
+	 
+<!-- 	<insert id="insertCode">
 		INSERT INTO infrCode(
 			ifcdName
 			,ifcdDelNy
@@ -82,9 +80,9 @@
 			,#{ifcdOrder}
 			,#{ifcgSeq}
 		)		
-	</insert>
+	</insert> -->
 	
-	<select id="selectOneCode" resultMap="resultMapObj">
+<!-- 	<select id="selectOneCode" resultMap="resultMapObj">
 		SELECT
 			ifcdSeq
 			,ifcdName
@@ -95,14 +93,14 @@
 			infrCode
 		WHERE 1=1
 			AND ifcdSeq=#{ifcdSeq}
-	</select>
+	</select> -->
 	
-	<update id="updateCode">
+<!-- 	<update id="updateCode">
 		UPDATE infrCode SET 	
 			ifcdName = #{ifcdName}
 			,ifcdOrder = #{ifcdOrder}
 			,ifcgSeq = #{ifcgSeq}
 		WHERE 1=1
 			AND ifcdSeq=#{ifcdSeq}
-	</update>
+	</update> -->
 </mapper>    
