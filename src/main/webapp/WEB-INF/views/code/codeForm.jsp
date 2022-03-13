@@ -6,7 +6,7 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 
-<form method="post" action ="/infra/code/codeInst">
+<form method="post" action ="/code/codeInst">
 
 	<select name="ifcgSeq">
 		<c:forEach items="${list}" var="item" varStatus="status">	

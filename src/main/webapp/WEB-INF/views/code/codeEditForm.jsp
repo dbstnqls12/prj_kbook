@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-<form method="post" action ="/infra/code/codeUpdt">
+<form method="post" action ="/code/codeUpdt">
 	
 	<label>ifcdName</label>
 	<input type="text" name="ifcdName" value= <c:out value="${rt.ifcdName}"/>>

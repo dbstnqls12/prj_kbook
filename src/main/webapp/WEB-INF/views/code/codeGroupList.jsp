@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-<form id="" name="" method="get" action="/infra/code/codeGroupList">
+<form id="" name="" method="get" action="/code/codeGroupList">
 
 <select name="shIfcgDelNy">
 	<option value="">::삭제여부::</option>
@@ -25,7 +25,7 @@
 	<c:otherwise>
 		<c:forEach items="${list}" var="item" varStatus="status">	
 		
-		<c:out value="${item.ifcgSeq}"/> | <a href="/infra/code/codeGroupView?ifcgSeq=${item.ifcgSeq}"><c:out value="${item.ifcgName}"/></a> | <c:out value="${item.ifcgDelNy}"/> <br>
+		<c:out value="${item.ifcgSeq}"/> | <a href="/code/codeGroupView?ifcgSeq=${item.ifcgSeq}"><c:out value="${item.ifcgName}"/></a> | <c:out value="${item.ifcgDelNy}"/> <br>
 		
 		
 		

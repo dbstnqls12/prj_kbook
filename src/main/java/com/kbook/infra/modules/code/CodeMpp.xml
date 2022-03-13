@@ -53,7 +53,7 @@
 
 	<!-- infrCode -->
 	
-<!-- 	<select id="selectListCode" resultMap="resultMapObj">
+	<select id="selectListCode" resultMap="resultMapObj">
 		SELECT
 			ifcdSeq
 			,ifcdName
@@ -66,9 +66,7 @@
 			AND ifcdDelNy = 0
 			<if test="shIfcgSeq != null and !shIfcgSeq.equals('')"> AND ifcgSeq = #{shIfcgSeq}</if> 
 	</select>
-	 -->
-	 
-<!-- 	<insert id="insertCode">
+	<insert id="insertCode">
 		INSERT INTO infrCode(
 			ifcdName
 			,ifcdDelNy
@@ -80,9 +78,8 @@
 			,#{ifcdOrder}
 			,#{ifcgSeq}
 		)		
-	</insert> -->
-	
-<!-- 	<select id="selectOneCode" resultMap="resultMapObj">
+	</insert>
+	<select id="selectOneCode" resultMap="resultMapObj">
 		SELECT
 			ifcdSeq
 			,ifcdName
@@ -93,14 +90,13 @@
 			infrCode
 		WHERE 1=1
 			AND ifcdSeq=#{ifcdSeq}
-	</select> -->
-	
-<!-- 	<update id="updateCode">
+	</select>
+	<update id="updateCode">
 		UPDATE infrCode SET 	
 			ifcdName = #{ifcdName}
 			,ifcdOrder = #{ifcdOrder}
 			,ifcgSeq = #{ifcgSeq}
 		WHERE 1=1
 			AND ifcdSeq=#{ifcdSeq}
-	</update> -->
+	</update>
 </mapper>    

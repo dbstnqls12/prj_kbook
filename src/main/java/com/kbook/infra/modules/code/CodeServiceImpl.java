@@ -35,24 +35,24 @@ public class CodeServiceImpl implements CodeService{
 	
 //	infrcode---------------------------------------------------
 	
-//	@Override
-//	public List<Code> selectListCode(CodeVo vo) throws Exception {
-//		return dao.selectListCode(vo);
-//	}
-//
-//	@Override
-//	public int insertCode(Code dto) throws Exception {
-//		return dao.insertCode(dto);
-//	}
-//
-//	@Override
-//	public Code selectOneCode(CodeVo vo) throws Exception {
-//		return dao.selectOneCode(vo);
-//	}
-//
-//	@Override
-//	public int updateCode(Code dto) throws Exception {
-//		return dao.updateCode(dto);
-//	}
+	@Override
+	public List<Code> selectListCode(CodeVo vo) throws Exception {
+		return dao.selectListCode(vo);
+	}
+
+	@Override
+	public int insertCode(Code dto) throws Exception {
+		return dao.insertCode(dto);
+	}
+
+	@Override
+	public Code selectOneCode(CodeVo vo) throws Exception {
+		return dao.selectOneCode(vo);
+	}
+
+	@Override
+	public int updateCode(Code dto) throws Exception {
+		return dao.updateCode(dto);
+	}
 
 }

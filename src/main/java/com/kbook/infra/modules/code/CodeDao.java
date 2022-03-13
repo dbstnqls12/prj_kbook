@@ -26,13 +26,13 @@ public class CodeDao {
 	public int update(Code dto) { return sqlSession.update(namespace+".update", dto); }
 	
 //	infrCode------------------------------------------------------------------------------------------
-//	
-//	public List<Code> selectListCode(CodeVo vo){ List<Code> list = sqlSession.selectList(namespace + ".selectListCode",vo);	return list; }
-//	
-//	public int insertCode(Code dto) { return sqlSession.insert(namespace+".insertCode", dto); }				
-//	
-//	public Code selectOneCode(CodeVo vo) { return sqlSession.selectOne(namespace + ".selectOneCode", vo);}	
-//
-//	public int updateCode(Code dto) { return sqlSession.update(namespace+".updateCode", dto); }			
+	
+	public List<Code> selectListCode(CodeVo vo){ List<Code> list = sqlSession.selectList(namespace + ".selectListCode",vo);	return list; }
+	
+	public int insertCode(Code dto) { return sqlSession.insert(namespace+".insertCode", dto); }				
+	
+	public Code selectOneCode(CodeVo vo) { return sqlSession.selectOne(namespace + ".selectOneCode", vo);}	
+
+	public int updateCode(Code dto) { return sqlSession.update(namespace+".updateCode", dto); }			
 
 }

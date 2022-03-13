@@ -6,7 +6,7 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 codelist
-<form id="" name="" method="get" action="/infra/code/codeList">
+<form id="" name="" method="get" action="/code/codeList">
 <select name="shIfcgSeq">
 	<option value="">::코드그룹::</option>
 		<c:forEach items="${listCodeGroup}" var="item" varStatus="status">	
@@ -25,7 +25,7 @@ codelist
 	<c:otherwise>
 		<c:forEach items="${list}" var="item" varStatus="status">	
 		
-	 	<c:out value="${item.ifcdSeq}"/> | <c:out value="${item.ifcgSeq}"/> | <c:out value="${item.ifcdOrder}"/> | <a href="/infra/code/codeView?ifcdSeq=${item.ifcdSeq}"><c:out value="${item.ifcdName}"/></a> | <c:out value="${item.ifcdDelNy}"/>  <br>
+	 	<c:out value="${item.ifcdSeq}"/> | <c:out value="${item.ifcgSeq}"/> | <c:out value="${item.ifcdOrder}"/> | <a href="/code/codeView?ifcdSeq=${item.ifcdSeq}"><c:out value="${item.ifcdName}"/></a> | <c:out value="${item.ifcdDelNy}"/>  <br>
 		 
 		
 		

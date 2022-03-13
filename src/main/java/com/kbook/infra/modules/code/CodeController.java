@@ -61,61 +61,61 @@ public class CodeController {
 		service.update(dto);
 		return "redirect:/code/codeGroupView?ifcgSeq="+dto.getIfcgSeq();
 	}
-	
-////	code---------------------------------------------------------------
-//	@RequestMapping(value = "/code/codeList")
-//	public String codeList(CodeVo vo, Model model) throws Exception {
-//		
-//		List<Code> list = service.selectListCode(vo);
+//	code---------------------------------------------------------------
+
+	@RequestMapping(value = "/code/codeList")
+	public String codeList(CodeVo vo, Model model) throws Exception {
+		
+		List<Code> list = service.selectListCode(vo);
+		model.addAttribute("list", list);
+
+		List<Code> listCodeGroup = service.selectList(vo);
+		model.addAttribute("listCodeGroup", listCodeGroup);
+		
+		return "code/codeList";
+	}
+
+
+	@RequestMapping(value = "/code/codeForm")
+	public String codeForm(Model model) throws Exception {
+		
+//		List<Code> list = service.selectListCode();
+
 //		model.addAttribute("list", list);
-//
-//		List<Code> listCodeGroup = service.selectList(vo);
-//		model.addAttribute("listCodeGroup", listCodeGroup);
-//		
-//		return "code/codeList";
-//	}
-//
-//
-//	@RequestMapping(value = "/code/codeForm")
-//	public String codeForm(Model model) throws Exception {
-//		
-////		List<Code> list = service.selectListCode();
-//		
-////		model.addAttribute("list", list);
-//		
-//		return "code/codeForm";
-//	}
-//
-//	@RequestMapping(value = "/code/codeInst")
-//	public String codeInst(Code dto) throws Exception {
-//
-//		service.insertCode(dto);
-//		return "redirect:/code/codeList";
-//	}
-//
-//	@RequestMapping(value = "/code/codeView")
-//	public String codeView(CodeVo vo, Model model) throws Exception {
-//		
-//		Code rt = service.selectOneCode(vo);
-//		
-//		model.addAttribute("item", rt);
-//		
-//		return "code/codeView";
-//	}
-//	
-//	@RequestMapping(value = "/code/codeEditForm")
-//	public String codeEditForm(CodeVo vo, Model model) throws Exception {
-//		
-//		Code rt = service.selectOneCode(vo);
-//		
-//		model.addAttribute("rt", rt);
-//		
-//		return "code/codeEditForm";
-//	}
-//	@RequestMapping(value = "/code/codeUpdt")
-//	public String codeUpdt(Code dto) throws Exception {
-//		
-//		service.updateCode(dto);
-//		return "redirect:/code/codeView?ifcdSeq="+dto.getIfcdSeq();
-//	}
+
+		return "code/codeForm";
+	}
+
+	@RequestMapping(value = "/code/codeInst")
+	public String codeInst(Code dto) throws Exception {
+
+		service.insertCode(dto);
+		return "redirect:/code/codeList";
+	}
+
+ 	@RequestMapping(value = "/code/codeView")
+	public String codeView(CodeVo vo, Model model) throws Exception {
+		
+		Code rt = service.selectOneCode(vo);
+		
+		model.addAttribute("item", rt);
+	
+		return "code/codeView";
+	}
+	
+	@RequestMapping(value = "/code/codeEditForm")
+	public String codeEditForm(CodeVo vo, Model model) throws Exception {
+		
+		Code rt = service.selectOneCode(vo);
+		
+		model.addAttribute("rt", rt);
+		
+		return "code/codeEditForm";
+	}
+	@RequestMapping(value = "/code/codeUpdt")
+	public String codeUpdt(Code dto) throws Exception {
+		
+		service.updateCode(dto);
+		return "redirect:/code/codeView?ifcdSeq="+dto.getIfcdSeq();
+	}
 }
