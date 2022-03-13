@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kbook.infra.modules.code.CodeMpp">
+
+<resultMap id="resultMapObj" type="com.kbook.infra.modules.code.CodeMpp"></resultMap>
+    <!-- infrCodeGroup -->
+
+	<select id="selectList" resultMap="resultMapObj">
+		SELECT
+			a.ifcgSeq
+			,a.ifcgName
+			,a.ifcgDelNy
+		FROM 
+			infrCodeGroup a
+		WHERE 1=1
+			<choose>
+				<when test="shIfcgDelNy == 1">AND ifcgDelNy=1</when>
+				<when test="shIfcgDelNy == 0">AND ifcgDelNy=0</when>
+			</choose>
+			<if test="shIfcgName != null and !shIfcgName.equals('')"> AND ifcgName LIKE concat('%', #{shIfcgName}, '%')</if> 
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO infrCodeGroup(
+			ifcgName
+			,ifcgDelNy
+		) VALUES (
+			#{ifcgName}
+			,0		
+		)		
+	</insert>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			a.ifcgSeq
+			,a.ifcgName
+			,a.ifcgDelNy
+		FROM 
+			infrCodeGroup a
+		WHERE 1=1
+			AND ifcgSeq=#{ifcgSeq}
+
+	</select>
+
+	<update id="update">
+		UPDATE infrCodeGroup SET 	
+			ifcgName = #{ifcgName}
+		WHERE 1=1
+			AND ifcgSeq=#{ifcgSeq}
+
+	</update>
+
+
+	<!-- infrCode -->
+	
+	<select id="selectListCode" resultMap="resultMapObj">
+		SELECT
+			ifcdSeq
+			,ifcdName
+			,ifcdDelNy
+			,ifcgSeq
+			,ifcdOrder
+		FROM 
+			infrCode 
+		WHERE 1=1
+			AND ifcdDelNy = 0
+			<if test="shIfcgSeq != null and !shIfcgSeq.equals('')"> AND ifcgSeq = #{shIfcgSeq}</if> 
+	</select>
+	
+	<insert id="insertCode">
+		INSERT INTO infrCode(
+			ifcdName
+			,ifcdDelNy
+			,ifcdOrder
+			,ifcgSeq
+		) VALUES (
+			#{ifcdName}
+			,0		
+			,#{ifcdOrder}
+			,#{ifcgSeq}
+		)		
+	</insert>
+	
+	<select id="selectOneCode" resultMap="resultMapObj">
+		SELECT
+			ifcdSeq
+			,ifcdName
+			,ifcdDelNy
+			,ifcgSeq
+			,ifcdOrder
+		FROM 
+			infrCode
+		WHERE 1=1
+			AND ifcdSeq=#{ifcdSeq}
+	</select>
+	
+	<update id="updateCode">
+		UPDATE infrCode SET 	
+			ifcdName = #{ifcdName}
+			,ifcdOrder = #{ifcdOrder}
+			,ifcgSeq = #{ifcgSeq}
+		WHERE 1=1
+			AND ifcdSeq=#{ifcdSeq}
+	</update>
+</mapper>    
