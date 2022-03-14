@@ -7,6 +7,7 @@ public class MemberVo {
 
 //	memberList Search
 	private String shKbmmDelNy;
+	private String shKbmmSeq;
 	
 	public String getKbmmSeq() {
 		return kbmmSeq;
@@ -22,6 +23,14 @@ public class MemberVo {
 
 	public void setShKbmmDelNy(String shKbmmDelNy) {
 		this.shKbmmDelNy = shKbmmDelNy;
+	}
+
+	public String getShKbmmSeq() {
+		return shKbmmSeq;
+	}
+
+	public void setShKbmmSeq(String shKbmmSeq) {
+		this.shKbmmSeq = shKbmmSeq;
 	}
 
 
