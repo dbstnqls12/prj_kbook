@@ -31,11 +31,9 @@
 <!-- 본문 s-->
 <div class="container-fluid">
 	<div class="row">
-		<!-- 3단길이의 첫번째 열 -->
-		<%@ include file="/WEB-INF/views/xdmin/include/sidebar.jsp" %><!-- navbar -->
+		<%@ include file="/WEB-INF/views/xdmin/include/sidebar.jsp" %><!-- sidebar -->
 		
-		
-		<!-- 9단길이의 첫번째 열 -->
+		<!-- 본문 -->
 		<div class="col-md-10">
 			<!-- 검색 s -->
 			<div class="mb-2"><h4>검색</h4></div>

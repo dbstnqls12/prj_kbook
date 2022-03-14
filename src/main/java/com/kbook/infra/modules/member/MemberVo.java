@@ -23,7 +23,9 @@ public class MemberVo {
 	public void setShKbmmDelNy(String shKbmmDelNy) {
 		this.shKbmmDelNy = shKbmmDelNy;
 	}
-	
+
+
+
 	
 
 }
