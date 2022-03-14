@@ -25,6 +25,10 @@
 				<when test="shKbmmDelNy == 1">AND kbmmDelNy=1</when>
 				<when test="shKbmmDelNy == 0">AND kbmmDelNy=0</when>
 			</choose>
+			<choose>
+				<when test="shOption == 1">AND kbmmName LIKE concat('%', #{shValue}, '%')</when>
+				<when test="shOption == 2">AND kbmmId LIKE concat('%', #{shValue}, '%')</when>
+			</choose>
 	</select>
 	<select id="selectOne" resultMap="resultMapObj">
 		select
