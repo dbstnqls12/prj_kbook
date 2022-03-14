@@ -57,8 +57,8 @@
 					<div class="col-6 col-md-3 mt-2 mb-2"><input type="text" class="form-control form-control-sm " id="input_sdate" placeholder="시작일"></div>
 					<div class="col-6 col-md-3 mt-2 mb-2"><input type="text" class="form-control form-control-sm " id="input_edate" placeholder="종료일"></div>
 					<div class="col-6 col-md-3 mt-2 mb-2">	
-						<select class="form-select form-select-sm">
-							<option selected>::검색구분::</option>
+						<select class="form-select form-select-sm" name="shOption">
+							<option value="">::검색구분::</option>
 							<option value=""></option>
 							<option value=""></option>
 							<option value=""></option>
