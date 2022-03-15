@@ -113,23 +113,27 @@
 			<!-- page s -->
 			<nav aria-label="Page navigation">
 				<ul class="pagination justify-content-center">
-					<li class="page-item">
-						<a class="page-link" href="#" aria-label="Previous">
-							<span aria-hidden="true">&laquo;</span>
-						</a>
-					</li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#">4</a></li>
-					<li class="page-item"><a class="page-link" href="#">5</a></li>
-					<li class="page-item">
-						<a class="page-link" href="#" aria-label="Next">
-							<span aria-hidden="true">&raquo;</span>
-						</a>
-					</li>
+				<!-- 	<li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li> -->
+					<c:if test="${vo.startPage gt vo.pageNumToShow}">
+              			  <li class="page-item"><a class="page-link" href="/xdmin/member/memberList?thisPage=${vo.startPage - 1}">Previous</a></li>
+					</c:if>
+					 <c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+						<c:choose>
+							<c:when test="${i.index eq vo.thisPage}">
+					                <li class="page-item active"><a class="page-link" href="/xdmin/member/memberList?thisPage=${i.index}">${i.index}</a></li>
+							</c:when>
+							<c:otherwise>             
+					                <li class="page-item"><a class="page-link" href="/xdmin/member/memberList?thisPage=${i.index}">${i.index}</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>  
+					<c:if test="${vo.endPage ne vo.totalPages}">                
+               			 <li class="page-item"><a class="page-link" href="/xdmin/member/memberList?thisPage=${vo.endPage + 1}">Next</a></li>
+					</c:if>  
+					<!-- <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li> -->
 				</ul>
 			</nav>
+			<!-- page e -->
 			<div class="clearfix mb-3">	
 				<div class="float-start"><button type="button" class="btn btn-danger btn-sm float-start"><i class="fas fa-trash"></i></button></div>
 				<div class="float-end">

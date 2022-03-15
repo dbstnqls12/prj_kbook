@@ -7,16 +7,8 @@
 <mapper namespace="com.kbook.infra.modules.member.MemberMpp">
 
 <resultMap id="resultMapObj" type="com.kbook.infra.modules.member.Member"></resultMap>
-
-	<select id="selectList" resultMap="resultMapObj">
-		select
-			a.kbmmSeq
-			,a.kbmmId
-			,a.kbmmName
-			,b.kbmpNumberFull
-			,c.kbmeEmailFull
-			,a.kbmmAdminNy
-		from
+	<sql id="selectCommon">
+		FROM
 			kbMember a
 			left join kbMemberPhone b on b.kbmmSeq = a.kbmmSeq	
 			left join kbMemberEmail c on c.kbmmSeq = a.kbmmSeq
@@ -29,6 +21,24 @@
 				<when test="shOption == 1">AND kbmmName LIKE concat('%', #{shValue}, '%')</when>
 				<when test="shOption == 2">AND kbmmId LIKE concat('%', #{shValue}, '%')</when>
 			</choose>
+	</sql>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT
+			count(*)
+		<include refid="selectCommon"/>	
+	</select>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		select
+			a.kbmmSeq
+			,a.kbmmId
+			,a.kbmmName
+			,b.kbmpNumberFull
+			,c.kbmeEmailFull
+			,a.kbmmAdminNy
+		<include refid="selectCommon"/>	
+		limit #{startRnumForMysql}, #{rowNumToShow}
 	</select>
 	<select id="selectOne" resultMap="resultMapObj">
 		select
