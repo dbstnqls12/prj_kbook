@@ -66,7 +66,7 @@
 				</div>
 				<div class="col-md-6">
 					<label for="inputId" class="form-label">저자명</label>
-					<input type="text" class="form-control form-control-sm" id="inputAuthorCd"name="tditAuthorCd" placeholder="저자명을 검색하세요"> 
+					<input type="text" class="form-control form-control-sm" id="inputAuthorCd"name="tdatAuthorCd" placeholder="저자명을 검색하세요"> 
 					<span class="badge bg-light text-dark">저자 찾기</span>
 				</div>
 				<div class="col-md-6">
@@ -84,19 +84,19 @@
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">ISBN</label>
-					<input type="text" class="form-control form-control-sm" id="inputFax">
+					<input type="text" class="form-control form-control-sm" id="inputIsbn" name="tditIsbn">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">쪽수</label>
-					<input type="text" class="form-control form-control-sm" id="inputFax">
+					<input type="text" class="form-control form-control-sm" id="inputPage" name="tditPage">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">크기</label>
-					<input type="text" class="form-control form-control-sm" id="inputFax">
+					<input type="text" class="form-control form-control-sm" id="inputSize" name="tditSize">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">판매상태</label>
-					<select class="form-select form-select-sm" id="inputGender">
+					<select class="form-select form-select-sm" id="inputState" name="tditStateCd">
 						<option value="">::판매상태::</option>
 						<option value="1">판매중</option>
 						<option value="2">예약판매중</option>
@@ -107,32 +107,32 @@
 				</div>	
 				<div class="col-md-6">
 					<label class="form-label">키워드</label>
-					<input type="text" class="form-control form-control-sm" id="inputTel">
+					<input type="text" class="form-control form-control-sm" id="inputKeyword" name="tdkwKeyWord">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">시리즈</label>
-					<input type="text" class="form-control form-control-sm" id="inputFax" placeholder="시리즈를 검색하세요">
+					<input type="text" class="form-control form-control-sm" id="inputSeries" placeholder="시리즈를 검색하세요" name="tdsiBookCd">
 					<span class="badge bg-light text-dark">시리즈 검색</span>
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">책설명(image)</label>
-					<input type="text" class="form-control form-control-sm" id="inputFax">
+					<input type="text" class="form-control form-control-sm" id="inputBookDescImage">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">책설명(text)</label>
-					<input type="text" class="form-control form-control-sm" id="inputFax">
+					<input type="text" class="form-control form-control-sm" id="inputBookDesc" name="tditBookDesc">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">목차</label>
-					<input type="text" class="form-control form-control-sm" id="inputFax">
+					<input type="text" class="form-control form-control-sm" id="inputTableOfContents" name="tditTableOfContents">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">책속으로</label>
-					<input type="text" class="form-control form-control-sm" id="inputFax">
+					<input type="text" class="form-control form-control-sm" id="inputBookDesc2" name="tditBookDesc2">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">이벤트</label>
-					<input type="text" class="form-control form-control-sm" id="inputFax">
+					<input type="text" class="form-control form-control-sm" id="inputEvent" name="tdpeTypeCd">
 				</div>
 
 				<div class="col-6 d-none d-sm-block"></div>
