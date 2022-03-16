@@ -42,13 +42,18 @@
 	</select>
 	<select id="selectOne" resultMap="resultMapObj">
 		select
-			kbmmSeq
-			,kbmmId
-			,kbmmName
-		from
+			a.kbmmSeq
+			,a.kbmmId
+			,a.kbmmName
+			,a.kbmmPassword
+			,b.kbmpNumberFull
+			,c.kbmeEmailFull
+		FROM	
 			kbMember a
+			left join kbMemberPhone b on b.kbmmSeq = a.kbmmSeq	
+			left join kbMemberEmail c on c.kbmmSeq = a.kbmmSeq
 		WHERE 1=1
-			AND kbmmSeq=#{kbmmSeq}
+			AND a.kbmmSeq=#{kbmmSeq}
 	</select>
 
 </mapper>

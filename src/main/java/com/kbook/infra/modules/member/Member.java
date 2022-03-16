@@ -2,6 +2,7 @@ package com.kbook.infra.modules.member;
 
 public class Member {
 
+//	memberList
 	private String kbmmSeq;
 	private String kbmmName;
 	private String kbmmId;
@@ -9,8 +10,11 @@ public class Member {
 	private String kbmeEmailFull;
 	private String kbmmAdminNy;
 
-	
-	
+//	memberView
+	private String kbmmPassword;
+
+
+
 	public String getKbmmSeq() {
 		return kbmmSeq;
 	}
@@ -47,6 +51,18 @@ public class Member {
 	public void setKbmmAdminNy(String kbmmAdminNy) {
 		this.kbmmAdminNy = kbmmAdminNy;
 	}
+	
+	
+//	memberView
+	public String getKbmmPassword() {
+		return kbmmPassword;
+	}
+	public void setKbmmPassword(String kbmmPassword) {
+		this.kbmmPassword = kbmmPassword;
+	}
+
+	
+
 	
 	
 } 
