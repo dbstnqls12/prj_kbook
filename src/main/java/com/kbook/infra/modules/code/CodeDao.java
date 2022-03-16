@@ -17,22 +17,18 @@ public class CodeDao {
 	
 	private static String namespace = "com.kbook.infra.modules.code.CodeMpp";
 
+	//	infrCodeGroup
+	public int selectOneCount(CodeVo vo) { return sqlSession.selectOne(namespace+".selectOneCount", vo); }
 	public List<Code> selectList(CodeVo vo){ List<Code> list = sqlSession.selectList(namespace + ".selectList", vo); return list; }
-
 	public int insert(Code dto) { return sqlSession.insert(namespace+".insert", dto); }
-
 	public Code selectOne(CodeVo vo) { return sqlSession.selectOne(namespace + ".selectOne", vo);}
-	
 	public int update(Code dto) { return sqlSession.update(namespace+".update", dto); }
 	
 //	infrCode------------------------------------------------------------------------------------------
-	
+	public int selectOneCodeCount(CodeVo vo) { return sqlSession.selectOne(namespace + ".selectOneCodeCount", vo);}
 	public List<Code> selectListCode(CodeVo vo){ List<Code> list = sqlSession.selectList(namespace + ".selectListCode",vo);	return list; }
-	
 	public int insertCode(Code dto) { return sqlSession.insert(namespace+".insertCode", dto); }				
-	
 	public Code selectOneCode(CodeVo vo) { return sqlSession.selectOne(namespace + ".selectOneCode", vo);}	
-
 	public int updateCode(Code dto) { return sqlSession.update(namespace+".updateCode", dto); }			
 
 }

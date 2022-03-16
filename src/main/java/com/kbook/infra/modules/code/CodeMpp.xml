@@ -8,12 +8,8 @@
 <resultMap id="resultMapObj" type="com.kbook.infra.modules.code.Code"></resultMap>
   
     <!-- infrCodeGroup -->
-	<select id="selectList" resultMap="resultMapObj">
-		SELECT
-			a.ifcgSeq
-			,a.ifcgName
-			,a.ifcgDelNy
-		FROM 
+    <sql id="selectCommon">
+    	FROM 
 			infrCodeGroup a
 		WHERE 1=1
 			<choose>
@@ -21,7 +17,23 @@
 				<when test="shIfcgDelNy == 0">AND ifcgDelNy=0</when>
 			</choose>
 			<if test="shIfcgName != null and !shIfcgName.equals('')"> AND ifcgName LIKE concat('%', #{shIfcgName}, '%')</if> 
+    </sql>
+    
+	<select id="selectOneCount" resultType="Integer">
+		SELECT
+			count(*)
+		<include refid="selectCommon"/>
 	</select>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		SELECT
+			a.ifcgSeq
+			,a.ifcgName
+			,a.ifcgDelNy
+		<include refid="selectCommon"/>
+		limit #{startRnumForMysql}, #{rowNumToShow}
+	</select>
+	
 	<insert id="insert">
 		INSERT INTO infrCodeGroup(
 			ifcgName
@@ -52,7 +64,18 @@
 
 
 	<!-- infrCode -->
-	
+	<sql id="selectCommonCode">
+		FROM 
+			infrCode 
+		WHERE 1=1
+			AND ifcdDelNy = 0
+			<if test="shIfcgSeq != null and !shIfcgSeq.equals('')"> AND ifcgSeq = #{shIfcgSeq}</if> 
+	</sql>
+	<select id="selectOneCodeCount" resultType="Integer">
+		SELECT
+			count(*)
+		<include refid="selectCommonCode"/>
+	</select>
 	<select id="selectListCode" resultMap="resultMapObj">
 		SELECT
 			ifcdSeq
@@ -60,11 +83,8 @@
 			,ifcdDelNy
 			,ifcgSeq
 			,ifcdOrder
-		FROM 
-			infrCode 
-		WHERE 1=1
-			AND ifcdDelNy = 0
-			<if test="shIfcgSeq != null and !shIfcgSeq.equals('')"> AND ifcgSeq = #{shIfcgSeq}</if> 
+		<include refid="selectCommonCode"/>
+		limit #{startRnumForMysql}, #{rowNumToShow}
 	</select>
 	<insert id="insertCode">
 		INSERT INTO infrCode(
