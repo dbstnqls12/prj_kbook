@@ -91,7 +91,7 @@
 <!-- 본문 s -->		
 <hr class="w-100" style="color: #DDDDDD">
 	<div class="container my-wrap">
-		<form action="" method="get" id="memberForm" name="memberForm" enctype="multipart/form-data" class="row">
+		<form action="/xdmin/member/memberInst" method="get" id="memberForm" name="memberForm" enctype="multipart/form-data" class="row">
 			
 			<div class="mt-4 mb-4">
 				<h3 class="text-center"><strong style="color: #41B327; font-weight: normal;">정보입력</strong></h3>
