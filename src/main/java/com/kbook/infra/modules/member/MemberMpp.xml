@@ -55,7 +55,45 @@
 		WHERE 1=1
 			AND a.kbmmSeq=#{kbmmSeq}
 	</select>
-
+	<insert id="insert">
+		INSERT INTO kbmmMember(
+			kbmmName
+			<!-- ,kbmmDob  -->
+			<!-- ,kbmpNumberFull -->
+			<!-- ,kbmeEmailFull -->
+			,kbmmGenderCd
+			,kbmmId
+			,kbmmPassword
+			,kbmmUseConsentNy_c
+			,kbmmPersonalinfoConsentNy_c
+			,kbmmPersonalinfoConsentNy_s
+			,kbmmOfferinfo1ConsentNy_s
+			,kbmmOfferinfo2ConsentNy_s
+			,kbmmSmsConsentNy
+			,kbmmEmailConsentNy
+			,kbmmSavedCd
+			,kbmmAdminNy
+			,kbmmDelNy
+		) VALUES (
+			#{kbmmName}
+<!-- 		,#{kbmmDob} -->
+<!-- 		,#{kbmpNumberFull} -->
+<!-- 		,#{kbmeEmailFull} -->
+			,#{kbmmGenderCd}
+			,#{kbmmId}
+			,#{kbmmPassword}
+			,#{kbmmUseConsentNy_c}
+			,#{kbmmPersonalinfoConsentNy_c}
+			,#{kbmmPersonalinfoConsentNy_s}
+			,#{kbmmOfferinfo1ConsentNy_s}
+			,#{kbmmOfferinfo2ConsentNy_s}
+			,#{kbmmSmsConsentNy}
+			,#{kbmmEmailConsentNy}
+			,#{kbmmSavedCd}
+			,0
+			,0
+		)		
+	</insert>
 	
 
 </mapper>

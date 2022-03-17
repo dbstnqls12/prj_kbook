@@ -2,6 +2,7 @@ package com.kbook.infra.modules.member;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,4 +41,19 @@ public class MemberController {
 		return "/xdmin/member/memberView";
 		
 	}
+	
+	@RequestMapping(value = "/xdmin/member/memberForm")
+	public String memberForm(Model model) throws Exception {
+
+		return "/xdmin/member/memberForm";
+	}
+	
+	@RequestMapping(value = "xdmin/member/memberInst")
+	public String memberInst(Member dto) throws Exception {
+		
+		service.insert(dto);
+				
+		return "";
+	}
+	
 }
