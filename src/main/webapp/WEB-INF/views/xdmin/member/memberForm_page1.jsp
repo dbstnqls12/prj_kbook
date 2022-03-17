@@ -17,8 +17,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 
-<link href="../../../css/sidebars.css" rel="stylesheet" type="text/css">
-<link href="../../../css/footers.css" rel="stylesheet" type="text/css">
 <title>Kyobo_memberForm_1</title>
 <style type="text/css">
 	body{
@@ -84,7 +82,7 @@
 <div class="container my-wrap"><!-- d-none d-sm-block : sm사이즈에서는 보이지 않음 d-block d-sm-none : sm에서만 보임 -->
 	<div class="row mt-5 mb-4 ">
 		<div class="col-7 mt-3 mx-auto"> 
-			<img src="../../../images/xdmin_img/kb_logo11-removebg.png" style="width: 210px; height: 60px;" >
+			<img src="/resources/user/image/kb_logo11-removebg.png" style="width: 210px; height: 60px;" >
 		</div>	
 	</div>
 </div>	
@@ -129,7 +127,7 @@
 			</div>
 			<div class="col-8 mb-1">
 				<label for="inputId" class="form-label"><b>휴대폰번호</b></label>
-				<input type="text" class="form-control" id="inputId" name="" placeholder="숫자만 입력(예.01012341231)"> 
+				<input type="text" class="form-control" id="inputId" name="kbmpPhoneFull" placeholder="숫자만 입력(예.01012341231)"> 
 			</div>
 			<div class="col-4 mb-1">
 				<label for="inputId" class="form-label">&nbsp;</label>
@@ -241,11 +239,11 @@
 			</div>
 			<div class="col-12 mb-4">
 				<label for="inputId" class="form-label"><b>이메일</b></label>
-				<input type="text" class="form-control" id="inputId" name="" placeholder="이메일주소 입력"> 
+				<input type="text" class="form-control" id="inputId" name="kbmeEmailFull" placeholder="이메일주소 입력"> 
 			</div>
 	
 			<div class="d-grid gap-2 col-xs-8 mx-auto">
-				<button class="btn btn-naver" type="button" onclick="location.href=''">가입완료</button>
+				<button class="btn btn-naver" type="submit">가입완료</button>
 			</div>
 			
 		</form>	

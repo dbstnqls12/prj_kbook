@@ -2,7 +2,6 @@ package com.kbook.infra.modules.member;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,10 +41,10 @@ public class MemberController {
 		
 	}
 	
-	@RequestMapping(value = "/xdmin/member/memberForm")
+	@RequestMapping(value = "/xdmin/member/memberForm_page1")
 	public String memberForm(Model model) throws Exception {
 
-		return "/xdmin/member/memberForm";
+		return "/xdmin/member/memberForm_page1";
 	}
 	
 	@RequestMapping(value = "xdmin/member/memberInst")
