@@ -154,9 +154,9 @@
 <script type="text/javascript">
 	$("#btnSubmit").on("click",function(){
 		
-		if(!checkNull($("#shKbmmDelNy"), $("#shKbmmDelNy").val(), " 삭제여부를 선택해주세요!")) return false;			
-		if(!checkNull($("#shOption"), $("#shOption").val(), " 검색구분을 선택해주세요!")) return false;			
-		if(!checkNull($("#shValue"), $("#shValue").val(), " 검색어를 입력해주세요!")) return false;			
+		if(!checkNull($("#shKbmmDelNy"), $("#shKbmmDelNy").val(), "삭제여부를 선택해주세요!")) return false;			
+		if(!checkNull($("#shOption"), $("#shOption").val(), "검색구분을 선택해주세요!")) return false;			
+		if(!checkNull($("#shValue"), $("#shValue").val(), "검색어를 입력해주세요!")) return false;			
 
 	});
 	

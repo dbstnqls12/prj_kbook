@@ -14,7 +14,7 @@ checkNull = function(obj, value, message){
 //javascript
 function checkNull (obj, value, message){
 	if(value == "" || value == null){
-		alert(message);
+		alert("validation.js"+message);
 		obj.focus();
 		return false;
 	}
