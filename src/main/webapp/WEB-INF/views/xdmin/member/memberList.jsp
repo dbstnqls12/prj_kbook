@@ -63,7 +63,7 @@
 							<option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>아이디</option>
 						</select>
 					</div>
-					<div class="col-6 col-md-3 mt-2 "><input type="text" class="form-control form-control-sm " id="shValue" name="shValue" placeholder="검색명" value="<c:out value="${vo.shValue}"/>"></div>
+					<div class="col-6 col-md-3 mt-2 "><input type="text" class="form-control form-control-sm " id="shValue" name="shValue" placeholder="검색어" value="<c:out value="${vo.shValue}"/>"></div>
 					<div class="col-6 col-md-3 mt-2">
 						<button type="submit" class="btn btn-warning btn-sm" id="btnSubmit"><i class="fas fa-search"></i></button>
 						<button type="button" class="btn btn-danger btn-sm" id="btnSubmit2"><i class="fa-solid fa-arrow-rotate-left"></i></button>
