@@ -41,7 +41,7 @@
 			<div class="border p-3 ">
 				<div class="row">
 					<div class="col-6 col-md-3 mt-2 mb-2">	 	
-						<select class="form-select form-select-sm" name="shKbmmDelNy">
+						<select class="form-select form-select-sm" name="shKbmmDelNy" id="shKbmmDelNy">
 							<option value="">::삭제여부::</option>
 							<option value="1" <c:if test="${vo.shKbmmDelNy eq 1 }">selected</c:if> >Y</option>
 							<option value="0" <c:if test="${vo.shKbmmDelNy eq 0 }">selected</c:if> >N</option>
@@ -57,21 +57,22 @@
 					<div class="col-6 col-md-3 mt-2 mb-2"><input type="text" class="form-control form-control-sm " id="input_sdate" placeholder="시작일"></div>
 					<div class="col-6 col-md-3 mt-2 mb-2"><input type="text" class="form-control form-control-sm " id="input_edate" placeholder="종료일"></div>
 					<div class="col-6 col-md-3 mt-2 mb-2">	
-						<select class="form-select form-select-sm" name="shOption">
+						<select class="form-select form-select-sm" name="shOption" id="shOption">
 							<option value="">::검색구분::</option>
 							<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>회원명</option>
 							<option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>아이디</option>
 						</select>
 					</div>
-					<div class="col-6 col-md-3 mt-2 "><input type="text" class="form-control form-control-sm " id="input_search" name="shValue" placeholder="검색명" value="<c:out value="${vo.shValue}"/>"></div>
+					<div class="col-6 col-md-3 mt-2 "><input type="text" class="form-control form-control-sm " id="shValue" name="shValue" placeholder="검색명" value="<c:out value="${vo.shValue}"/>"></div>
 					<div class="col-6 col-md-3 mt-2">
-						<button type="submit" class="btn btn-warning btn-sm" id="search_icon"><i class="fas fa-search"></i></button>
-						<button type="button" class="btn btn-danger btn-sm" id="search_icon"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+						<button type="submit" class="btn btn-warning btn-sm" id="btnSubmit"><i class="fas fa-search"></i></button>
+						<button type="button" class="btn btn-danger btn-sm" id="btnSubmit2"><i class="fa-solid fa-arrow-rotate-left"></i></button>
 					</div>
 				</div>
 			</div>	
 			</form>
 			<!-- 검색 e -->
+	
 			<!-- table s -->
 			<div class="table-responsive">
 				<table class="table table-striped table-hover caption-top mt-2">
@@ -90,7 +91,7 @@
 					<c:choose>
 						<c:when test="${fn:length(list) eq 0}">
 							<tr>
-								<td class="text-center" colspan="9">There is no data!</td>
+								<td class="text-center" colspan="9">데이터가 없습니다!</td>
 							</tr>	
 						</c:when>
 						<c:otherwise>
@@ -147,6 +148,20 @@
 
 <%@ include file="/WEB-INF/views/xdmin/include/footer.jsp" %><!-- footer -->
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/resources/common/js/validation.js"></script>
+
+<script type="text/javascript">
+	$("#btnSubmit").on("click",function(){
+		
+		if(!checkNull($("#shKbmmDelNy"), $("#shKbmmDelNy").val(), " 삭제여부를 선택해주세요!")) return false;			
+		if(!checkNull($("#shOption"), $("#shOption").val(), " 검색구분을 선택해주세요!")) return false;			
+		if(!checkNull($("#shValue"), $("#shValue").val(), " 검색어를 입력해주세요!")) return false;			
+
+	});
+	
+
+</script>
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
