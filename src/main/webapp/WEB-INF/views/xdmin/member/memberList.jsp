@@ -43,8 +43,8 @@
 					<div class="col-6 col-md-3 mt-2 mb-2">	 	
 						<select class="form-select form-select-sm" name="shKbmmDelNy">
 							<option value="">::삭제여부::</option>
-							<option value="1">Y</option>
-							<option value="0">N</option>
+							<option value="1" <c:if test="${vo.shKbmmDelNy eq 1 }">selected</c:if> >Y</option>
+							<option value="0" <c:if test="${vo.shKbmmDelNy eq 0 }">selected</c:if> >N</option>
 						</select>				
 					</div>
 					<div class="col-6 col-md-3 mt-2 mb-2">	
@@ -59,11 +59,11 @@
 					<div class="col-6 col-md-3 mt-2 mb-2">	
 						<select class="form-select form-select-sm" name="shOption">
 							<option value="">::검색구분::</option>
-							<option value="1">회원명</option>
-							<option value="2">아이디</option>
+							<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>회원명</option>
+							<option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>아이디</option>
 						</select>
 					</div>
-					<div class="col-6 col-md-3 mt-2 "><input type="text" class="form-control form-control-sm " id="input_search" name="shValue" placeholder="검색명"></div>
+					<div class="col-6 col-md-3 mt-2 "><input type="text" class="form-control form-control-sm " id="input_search" name="shValue" placeholder="검색명" value="<c:out value="${vo.shValue}"/>"></div>
 					<div class="col-6 col-md-3 mt-2">
 						<button type="submit" class="btn btn-warning btn-sm" id="search_icon"><i class="fas fa-search"></i></button>
 						<button type="button" class="btn btn-danger btn-sm" id="search_icon"><i class="fa-solid fa-arrow-rotate-left"></i></button>

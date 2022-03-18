@@ -15,6 +15,10 @@ public class CodeVo {
 //	infrCode Search
 	private String shIfcgSeq;
 	
+//	common
+	private String shOption;
+	private String shValue;
+	
 //	paging
 	private int thisPage = 1;									// 현재 페이지
 	private int rowNumToShow = 10;								// 화면에 보여줄 데이터 줄 갯수
@@ -204,6 +208,22 @@ public class CodeVo {
 
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
+	}
+
+	public String getShOption() {
+		return shOption;
+	}
+
+	public void setShOption(String shOption) {
+		this.shOption = shOption;
+	}
+
+	public String getShValue() {
+		return shValue;
+	}
+
+	public void setShValue(String shValue) {
+		this.shValue = shValue;
 	}
 	
 

@@ -9,10 +9,10 @@
 
 codelist
 <form id="" name="" method="get" action="/code/codeList">
-<select name="shIfcgSeq">
+<select name="shIfcgSeq" id="shIfcgSeq">
 	<option value="">::코드그룹::</option>
 		<c:forEach items="${listCodeGroup}" var="item" varStatus="status">	
-			<option value="<c:out value="${item.ifcgSeq}"/>"> <c:out value="${item.ifcgSeq}"/> | <c:out value="${item.ifcgName}"/></option>
+			<option value="<c:out value="${item.ifcgSeq}"/>" <c:if test="${vo.shIfcgSeq eq item.ifcgSeq }">selected</c:if>> <c:out value="${item.ifcgSeq}"/> | <c:out value="${item.ifcgName}"/></option>
 		</c:forEach>	
 </select>
 <input type="submit" name="search">

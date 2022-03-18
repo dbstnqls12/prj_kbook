@@ -9,14 +9,22 @@
 
 <form id="" name="" method="get" action="/code/codeGroupList">
 
-<select name="shIfcgDelNy">
+<select name="shIfcgDelNy" id="shIfcgDelNy">
 	<option value="">::삭제여부::</option>
-	<option value="1">Y</option>
-	<option value="0">N</option>
+	<option value="1" <c:if test="${vo.shIfcgDelNy eq 1 }">selected</c:if> >Y</option>
+	<option value="0" <c:if test="${vo.shIfcgDelNy eq 0 }">selected</c:if> >N</option>
 </select>
-
-코드 이름 : <input type="text" name="shIfcgName">
-<input type="submit" name="search">
+||
+코드그룹 이름 : <input type="text" name="shIfcgName" id="shIfcgName" value="<c:out value="${vo.shIfcgName}"/>">
+||
+<select name="shOption" id="shOption">
+	<option value="">::검색구분::</option>
+	<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>한글</option>
+	<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>영문</option>
+</select>
+<input type="text" name="shValue" id="shValue" value="<c:out value="${vo.shValue}"/>">
+<input type="submit" id="btnSubmit" name="search">
+<input type="submit" id="btnSubmit2" name="search">
 </form>
 <c:choose>
 	<c:when test="${fn:length(list) eq 0}">
@@ -27,7 +35,7 @@
 	<c:otherwise>
 		<c:forEach items="${list}" var="item" varStatus="status">	
 		
-		<c:out value="${item.ifcgSeq}"/> | <a href="/code/codeGroupView?ifcgSeq=${item.ifcgSeq}"><c:out value="${item.ifcgName}"/></a> | <c:out value="${item.ifcgDelNy}"/> <br>
+		<c:out value="${item.ifcgSeq}"/> | <a href="/code/codeGroupView?ifcgSeq=${item.ifcgSeq}"><c:out value="${item.ifcgName}"/></a> | <c:out value="${item.ifcgNameEng}"/> | <c:out value="${item.ifcgDelNy}"/> <br>
 		
 		
 		
@@ -58,3 +66,20 @@
 	
 	</ul>
 </nav>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/resources/common/js/validation.js"></script>
+<script type="text/javascript">
+	$("#btnSubmit").on("click",function(){
+		
+		if(!checkNull($("#shIfcgName"), $("#shIfcgName").val(), " 코드그룹 이름을 입력해주세요!")) return false;
+		if(!checkNull($("#shValue"), $("#shValue").val(), " 검색어를 입력해주세요!")) return false;			
+
+	});
+	
+	$("#btnSubmit2").on("click",function(){
+		
+		alert("2번째 버튼입니다!")
+
+	});
+</script>
