@@ -20,6 +20,7 @@ public class CodeDao {
 	//	infrCodeGroup
 	public int selectOneCount(CodeVo vo) { return sqlSession.selectOne(namespace+".selectOneCount", vo); }
 	public List<Code> selectList(CodeVo vo){ List<Code> list = sqlSession.selectList(namespace + ".selectList", vo); return list; }
+	public List<Code> selectListCodeGroup(CodeVo vo){ List<Code> list = sqlSession.selectList(namespace + ".selectListCodeGroup", vo); return list; }
 	public int insert(Code dto) { return sqlSession.insert(namespace+".insert", dto); }
 	public Code selectOne(CodeVo vo) { return sqlSession.selectOne(namespace + ".selectOne", vo);}
 	public int update(Code dto) { return sqlSession.update(namespace+".update", dto); }

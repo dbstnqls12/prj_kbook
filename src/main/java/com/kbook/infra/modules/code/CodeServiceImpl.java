@@ -62,6 +62,10 @@ public class CodeServiceImpl implements CodeService{
 	public int updateCode(Code dto) throws Exception {
 		return dao.updateCode(dto);
 	}
+	@Override
+	public List<Code> selectListCodeGroup(CodeVo vo) throws Exception {
+		return dao.selectListCodeGroup(vo);
+	}
 
 
 

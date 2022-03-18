@@ -38,6 +38,14 @@
 		<include refid="selectCommon"/>
 		limit #{startRnumForMysql}, #{rowNumToShow}
 	</select>
+
+	<select id="selectListCodeGroup" resultMap="resultMapObj">
+		SELECT
+			a.ifcgSeq
+			,a.ifcgName
+			,a.ifcgDelNy
+		<include refid="selectCommon"/>
+	</select>
 	
 	<insert id="insert">
 		INSERT INTO infrCodeGroup(
