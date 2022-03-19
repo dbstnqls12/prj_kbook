@@ -55,15 +55,16 @@
 		WHERE 1=1
 			AND a.kbmmSeq=#{kbmmSeq}
 	</select>
+	
+<!-- 	memberForm    -->
+	
 	<insert id="insert">
-		INSERT INTO kbmmMember(
+		INSERT INTO kbMember(
 			kbmmName
-			<!-- ,kbmmDob  -->
-			<!-- ,kbmpNumberFull -->
-			<!-- ,kbmeEmailFull -->
 			,kbmmGenderCd
 			,kbmmId
 			,kbmmPassword
+			,kbmmDob
 			,kbmmUseConsentNy_c
 			,kbmmPersonalinfoConsentNy_c
 			,kbmmPersonalinfoConsentNy_s
@@ -76,12 +77,10 @@
 			,kbmmDelNy
 		) VALUES (
 			#{kbmmName}
-<!-- 		,#{kbmmDob} -->
-<!-- 		,#{kbmpNumberFull} -->
-<!-- 		,#{kbmeEmailFull} -->
 			,#{kbmmGenderCd}
 			,#{kbmmId}
 			,#{kbmmPassword}
+			,#{kbmmDob}
 			,#{kbmmUseConsentNy_c}
 			,#{kbmmPersonalinfoConsentNy_c}
 			,#{kbmmPersonalinfoConsentNy_s}
@@ -92,8 +91,47 @@
 			,#{kbmmSavedCd}
 			,0
 			,0
+		)	
+		<selectKey resultType="String" keyProperty="kbmmSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>	
+	</insert>
+	<insert id="insertPhone">
+		INSERT INTO kbMemberPhone(
+			kbmpDefaultNy
+			,kbmpTypeCd
+			,kbmpDeviceCd
+			,kbmpTelecomCd
+			,kbmpNumberFull
+			,kbmpDelNy
+			,kbmmSeq
+		) VALUES (
+			1
+			,1
+			,2
+			,#{kbmpTelecomCd}
+			,#{kbmpNumberFull}
+			,0
+			,#{kbmmSeq}
 		)		
 	</insert>
+
+	<insert id="insertEmail">
+		INSERT INTO kbMemberEmail(
+			kbmeDefaultNy
+			,kbmeTypeCd
+			,kbmeEmailFull
+			,kbmeDelNy
+			,kbmmSeq
+		) VALUES (
+			1
+			,1
+			,#{kbmeEmailFull}
+			,0
+			,#{kbmmSeq}
+		)		
+	</insert>
+	
 	
 
 </mapper>

@@ -47,14 +47,14 @@
 		<div class="col-md-10">
 		<div class="mb-3"><h4>회원정보</h4></div>
 			<div class="container ">
-			<form action="" method="post" id="memberForm" name="memberView" enctype="multipart/form-data" class="row g-3">
+			<form action="" method="get" id="memberView" name="memberView" enctype="multipart/form-data" class="row g-3">
 				<div class="col-md-6">
 					<label class="form-label">이름</label>
-					<input type="text" class="form-control form-control-sm" id="inputName" placeholder="<c:out value="${item.kbmmName}"/>">
+					<input type="text" class="form-control form-control-sm" id="kbmmName" placeholder="<c:out value="${item.kbmmName}"/>">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">이름(영문)</label>
-					<input type="text" class="form-control form-control-sm" id="inputnameEng" placeholder="">
+					<input type="text" class="form-control form-control-sm" id="kbmmNameEng" placeholder="">
 				</div>
 				<div class="col-md-6">
 					<label for="inputId" class="form-label">아이디</label>

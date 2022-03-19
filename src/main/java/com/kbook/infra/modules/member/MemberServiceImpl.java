@@ -28,8 +28,14 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int insert(Member dto) throws Exception {
-		return dao.insert(dto);
+		
+		dao.insert(dto);
+		dao.insertPhone(dto);
+		dao.insertEmail(dto);
+		
+		return 1;
 	}
+
 
 
 

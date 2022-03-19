@@ -1,0 +1,58 @@
+	body{
+		background-color: #F5F6F8;
+	}
+	h3{
+		color: #41B327;
+	}
+	.my-wrap{
+		width: 380px;
+		
+	}
+
+	.btn-certification{
+		border: 1px solid #BCBCBC;
+		background-color: white;
+		height: 50px; 
+		font-size: 14px;
+	}
+	.btn-naver{
+		font-size: 20px;
+		border: 1px solid #56a900;
+		height: 60px;
+		color: #56A900;
+		background-color: white;
+		margin-top: 2px;
+	}
+
+	.btn-naver:hover,
+	.btn-naver:active,
+	.btn-naver:visited,
+	.btn-naver:focus{
+		
+		background-color :#56A900;
+		color: #ffffff;
+		
+	}
+	
+	a:Link,
+	a:hover,
+	a:active,
+	a:visited,
+	a:focus{
+		color: gray;
+		text-decoration: underline;
+	}
+	.form-control,
+	.form-select,
+	.btn-certification{
+		font-size: 13px;
+		height: 50px;
+	}
+ 	footer{
+		margin-top: 100px;
+	} 
+	input::placeholder {
+		  color: #A2969C;
+		  font-size: 13px;
+
+	}
