@@ -32,32 +32,41 @@
 					<h3 class="text-center">정보입력</h3>
 				</div>
 				<div class="col-12 mx-auto mb-4">
-					<label for="inputId" class="form-label"><b>이름</b></label>
-					<input type="text" class="form-control" id="kbmmName" name="kbmmName" placeholder="10자리 내 입력"> 
+					<label class="form-label"><b>이름</b></label>
+					<input type="text" class="form-control" id="kbmmName" name="kbmmName" placeholder="한글로 입력"> 
 				</div>
 				<div class="col-8 mb-4">
-					<label for="inputId" class="form-label"><b>생년월일/성별</b></label>
+					<label class="form-label"><b>생년월일/성별</b></label>
 					<input type="text" class="form-control" id="kbmmDob" name="kbmmDob" placeholder="8자리 입력(예.19850101)"> 
 				</div>
 				<div class="col-4 mb-4">
-					<label for="kbmmGenderCd" class="form-label">&nbsp;</label>
+					<label class="form-label">&nbsp;</label>
 					<select class="form-select" id="kbmmGenderCd" name="kbmmGenderCd">
-						<option selected value=0>성별</option>
-						<option value=1>남성</option>
-						<option value=2>여성</option>
-						<option value=3>기타</option>
+						<option selected value="">성별</option>
+						<option value="1">남성</option>
+						<option value="2">여성</option>
+						<option value="3">기타</option>
+					</select>
+				</div>
+				<div class="col-4 mb-1">
+					<label class="form-label"><b>휴대폰번호</b></label>
+						<select class="form-select" id="kbmpTelecomCd" name="kbmpTelecomCd">
+						<option selected value="">::통신사::</option>
+						<option value="1">SKT</option>
+						<option value="2">KT</option>
+						<option value="3">LGU</option>
+						<option value="4">기타</option>
 					</select>
 				</div>
 				<div class="col-8 mb-1">
-					<label for="inputId" class="form-label"><b>휴대폰번호</b></label>
-					<input type="text" class="form-control" id="kbmpPhoneFull" name="kbmpPhoneFull" placeholder="숫자만 입력(예.01012341231)"> 
+					<label class="form-label">&nbsp;</label>
+					<input type="text" class="form-control" id="kbmpNumberFull" name="kbmpNumberFull" placeholder="숫자만 입력(예.01012341231)"> 
 				</div>
-				<div class="col-4 mb-1">
-					<label for="inputId" class="form-label">&nbsp;</label>
-					<button type="button" class="btn btn-certification">인증번호 요청</button>
+				<div class="col-4 mb-4">
+					<button type="button" class="btn btn-certification p-2" id="btn-certification" name="btn-certification">인증번호 요청</button>
 				</div>
-				<div class="col-12 mx-auto mb-4">
-					<input type="text" class="form-control" id="inputNum" name="" placeholder="인증번호 입력"> 
+				<div class="col-8 mb-4">
+					<input type="text" class="form-control" id="certificationNumber" name="certificationNumber" placeholder="인증번호 입력"> 
 				</div>
 				<div class="d-grid gap-2 col-12 mx-auto mt-3">
 					<button class="btn btn-naver" type="button" id="btn_chk1"><strong>동의 및 인증 확인</strong></button>
@@ -70,51 +79,51 @@
 					<h3 class="text-center">약관동의</h3>
 				</div>
 				<div class="form-check mb-3">
-					<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-					<label class="form-check-label" for="flexCheckDefault"><strong>전체동의</strong></label>
+					<input class="form-check-input" type="checkbox" value="" id="consentAll" name="consentAll">
+					<label class="form-check-label"><strong>전체동의</strong></label>
 					<i class="fa-solid fa-angle-right float-end pt-1" style="color: gray;"></i>
 				</div>	
 				<hr class="w-100" style="color: #A2969C">
 				<div class="form-check mb-3">
 					<input class="form-check-input" type="checkbox" value="1" id="kbmmUseConsentNy_c" name="kbmmUseConsentNy_c">
-					<label class="form-check-label" for="flexCheckDefault">교보문고 이용약관<span style="color: red;">(필수)</span></label>
+					<label class="form-check-label" >교보문고 이용약관<span style="color: red;">(필수)</span></label>
 					<i class="fa-solid fa-angle-right float-end pt-1" style="color: gray;"></i>
 				</div>	
 				<div class="form-check mb-3">
 					<input class="form-check-input" type="checkbox" value="1" id="kbmmPersonalinfoConsentNy_c" name="kbmmPersonalinfoConsentNy_c">
-					<label class="form-check-label" for="flexCheckDefault">개인정보 수집 및 이용안내<span style="color: red;">(필수)</span></label>
+					<label class="form-check-label" >개인정보 수집 및 이용안내<span style="color: red;">(필수)</span></label>
 					<i class="fa-solid fa-angle-right float-end pt-1" style="color: gray;"></i>
 				</div>	
 				<hr class="w-100" style="color: #A2969C">
 				<div class="form-check mb-3">
 					<input class="form-check-input" type="checkbox" value="1" id="kbmmPersonalinfoConsentNy_s" name="kbmmPersonalinfoConsentNy_s">
-					<label class="form-check-label" for="flexCheckDefault">개인정보 수집 및 이용안내(선택)</label>
+					<label class="form-check-label" >개인정보 수집 및 이용안내(선택)</label>
 					<i class="fa-solid fa-angle-right float-end pt-1" style="color: gray;"></i>
 				</div>	
 				<div class="form-check mb-3">
 					<input class="form-check-input" type="checkbox" value="1" id="kbmmOfferinfo1ConsentNy_s" name="kbmmOfferinfo1ConsentNy_s">
-					<label class="form-check-label" for="kbmmOfferinfo1ConsentNy_s">제3자 정보제공 동의<br>교보핫트랙스. 꾸밍(선택)</label>
+					<label class="form-check-label" >제3자 정보제공 동의<br>교보핫트랙스. 꾸밍(선택)</label>
 					<i class="fa-solid fa-angle-right float-end pt-1" style="color: gray;"></i>
 				</div>	
 				<div class="form-check mb-3">
 					<input class="form-check-input" type="checkbox" value="1" id="kbmmOfferinfo2ConsentNy_s" name="kbmmOfferinfo2ConsentNy_s">
-					<label class="form-check-label" for="kbmmOfferinfo2ConsentNy_s">제3자 정보제공 동의<br>교보라이프플래닛 생명보험(선택)
+					<label class="form-check-label" >제3자 정보제공 동의<br>교보라이프플래닛 생명보험(선택)
 					</label>
 					<i class="fa-solid fa-angle-right float-end pt-1" style="color: gray;"></i>
 				</div>	
 				<hr class="w-100" style="color: #A2969C">
 				<div class="form-check mb-2">
-					<input class="form-check-input" type="checkbox" value="kbmmAllConsentNy" id="kbmmAllConsentNy">
+					<input class="form-check-input" type="checkbox" value="marketingConsentNy" id="marketingConsentNy" name="marketingConsentNy">
 					<label class="form-check-label" for="kbmmAllConsentNy">마케팅(광고) 수신여부 동의(선택)</label>
 				</div>		
 				<div class="form-check">
 					<div class="form-check form-check-inline">
 						<input class="form-check-input" type="checkbox" id="kbmmSmsConsentNy" value="1" name="kbmmSmsConsentNy">
-						<label class="form-check-label" for="kbmmSmsConsentNy">SMS</label>
+						<label class="form-check-label" >SMS</label>
 					</div>
 					<div class="form-check form-check-inline">
 						<input class="form-check-input" type="checkbox" id="kbmmEmailConsentNy" value="1" name="kbmmEmailConsentNy">
-						<label class="form-check-label" for="kbmmEmailConsentNy">이메일</label>
+						<label class="form-check-label" >이메일</label>
 					</div>
 					<div class="mb-2">
 						<p class="" style="font-size: 11px; color: #A2969C;">
@@ -126,20 +135,20 @@
 				<div class="mb-3">
 				<label class="form-check-label d-block mb-2">개인정보 유효기간제</label>
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="kbmmSavedCd" id="kbmmSavedCd" value="1" >
-						<label class="form-check-label" for="1">1년</label>
+						<input class="form-check-input" type="radio" name="kbmmSavedCd" id="kbmmSavedCd1" value="1" >
+						<label class="form-check-label">1년</label>
 					</div>
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="kbmmSavedCd" id="kbmmSavedCd" value="2">
-						<label class="form-check-label" for="2">3년</label>
+						<input class="form-check-input" type="radio" name="kbmmSavedCd" id="kbmmSavedCd2" value="2">
+						<label class="form-check-label">3년</label>
 					</div>
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="kbmmSavedCd" id="kbmmSavedCd" value="3">
-						<label class="form-check-label" for="3">5년</label>
+						<input class="form-check-input" type="radio" name="kbmmSavedCd" id="kbmmSavedCd3" value="3">
+						<label class="form-check-label">5년</label>
 					</div>
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="kbmmSavedCd" id="kbmmSavedCd" value="4">
-						<label class="form-check-label" for="4">탈퇴시까지</label>
+						<input class="form-check-input" type="radio" name="kbmmSavedCd" id="kbmmSavedCd4" value="4">
+						<label class="form-check-label">탈퇴시까지</label>
 					</div>
 		 		</div>
 				<div class="mb-3">
@@ -148,7 +157,7 @@
 				</div>	
 		 		<hr class="w-100" style="color: #A2969C">	
 		 		<div class="d-grid gap-2 col-xs-8 mx-auto">
-					<button class="btn btn-naver" type="button" id="btn_chk2">동의하기</button>
+					<button class="btn btn-naver" type="button" id="btn_chk2" name="btn_chk2">동의하기</button>
 				</div>
 			</div>
 	 		<!-- 약관동의 e -->
@@ -159,21 +168,21 @@
 					<h3 class="text-center">정보입력</h3>
 				</div>
 				<div class="col-12 mx-auto mb-4">
-					<label for="inputId" class="form-label"><b>아이디</b></label>
-					<input type="text" class="form-control" id="kbmmId" name="kbmmId" placeholder="영소문자/숫자 5~10자리"> 
+					<label class="form-label"><b>아이디</b></label>
+					<input type="text" class="form-control" id="kbmmId" name="kbmmId" placeholder="영소문자/숫자 5~20자리"> 
 				</div>
 				<div class="col-12 mb-4">
-					<label for="inputId" class="form-label"><b>비밀번호</b></label>
-					<input type="text" class="form-control mb-2" id="kbmmPassword" name="kbmmPassword" placeholder="영문/숫자/특수문자 조합 8~15자리(대소문자 구분)"> 
-					<input type="text" class="form-control" id="kbmmPasswordChk" name="kbmmPasswordChk" placeholder="비밀번호 확인"> 
+					<label class="form-label"><b>비밀번호</b></label>
+					<input type="password" class="form-control mb-2" id="kbmmPassword" name="kbmmPassword" placeholder="영문/숫자/특수문자 조합 8~20자리(대소문자 포함)"> 
+					<input type="password" class="form-control" id="kbmmPasswordChk" name="kbmmPasswordChk" placeholder="비밀번호 확인"> 
 				</div>
 				<div class="col-12 mb-4">
-					<label for="inputId" class="form-label"><b>이메일</b></label>
+					<label class="form-label"><b>이메일</b></label>
 					<input type="text" class="form-control" id="kbmeEmailFull" name="kbmeEmailFull" placeholder="이메일주소 입력"> 
 				</div>
 		
 				<div class="d-grid gap-2 col-xs-8 mx-auto">
-					<button class="btn btn-naver" type="submit" id="btn_submit">가입완료</button>
+					<button class="btn btn-naver" type="submit" id="btnSubmit" name="btnSubmit">가입완료</button>
 				</div>
 			</div>
 			<!-- 정보입력 e-->
@@ -189,7 +198,118 @@
 
 <script type="text/javascript">
 
+$("#btn_chk1").on("click",function(){
 	
+	/* kbmmName */
+	if(!checkNull($("#kbmmName"), $("#kbmmName").val(), "이름을 입력하세요.")) return false;
+/*  	if(!checkName($("#kbmmName"), $("#kbmmName").val(), "한글로 입력하세요.")) return false;  */
+		
+	/* kbmmDob */
+	if(!checkNull($("#kbmmDob"), $("#kbmmDob").val(), "생년월일을 입력하세요")) return false;
+ 	if(!checkDob($("#kbmmDob"), $("#kbmmDob").val(), "생년월일을 8자리 숫자로 입력 가능해주세요.")) return false;	
+	
+	/* kbmmGenderCd, kbmpTelecomCd*/
+	if(!checkNull($("#kbmmGenderCd"), $("#kbmmGenderCd").val(), "성별을 선택하세요.")) return false;
+	
+	
+	/* "kbmpNumberFull" */
+	if(!checkNull($("#kbmpTelecomCd"), $("#kbmpTelecomCd").val(), "통신사를 선택하세요.")) return false;
+	if(!checkNull($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호를 입력하세요.")) return false;
+ 	if(!checkOnlyNumber($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호는 숫자만 입력 가능합니다.")) return false;
+ 	if(!checkNumber($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호는 11자리로 입력해주세요.")) return false;	 	 
+	
+ 	/* certificationNumber */
+ 	/* if(!checkNull($("#certificationNumber"), $("#certificationNumber").val(), "인증번호를 입력하세요.")) return false; */
+	/* 보낸인증번호와 인증번호 value값이 같다면 return true, 다르다면 return false */
+	
+ 	/* kbmmId */
+ 	if(!checkNull($("#kbmmId"), $("#kbmmId").val(), "아이디를 입력하세요.")) return false;
+ 	if(!checkId($("#kbmmId"), $("#kbmmId").val(), "아이디를 형식에 맞게 입력하세요. (영문/숫자/특수문자 조합 8~15자리(대소문자 구분))")) return false;
+	
+ 	/* kbmmPassword */
+ 	if(!checkNull($("#kbmmPassword"), $("#kbmmPassword").val(), "비밀번호를 입력하세요.")) return false;
+ 	if(!checkPassword($("#kbmmPassword"), $("#kbmmPassword").val(), "비밀번호를 형식에 맞게 입력하세요. (영문/숫자/특수문자 조합 8~20자리(대소문자 구분))")) return false;
+
+ 	/* kbmmPasswordChk */
+ 	if(!checkNull($("#kbmmPasswordChk"), $("#kbmmPasswordChk").val(), "비밀번호 확인을 입력하세요.")) return false;
+ 	
+ 	if($("#kbmmPassword").val() == $("#kbmmPasswordChk").val()){
+ 	}else{
+ 		alert("비밀번호 확인이 틀립니다.");
+ 		return false;
+ 	}
+ 	
+ 	/* kbmeEmailFull */
+ 	if(!checkNull($("#kbmeEmailFull"), $("#kbmeEmailFull").val(), "이메일을 입력하세요.")) return false;
+ 	if(!checkEmail($("#kbmeEmailFull"), $("#kbmeEmailFull").val(), "이메일을 형식에 맞게 입력하세요. (@를 포함한 형태)")) return false;
+ 	
+
+ 	
+ 	
+});
+
+$("#btn-certification").on("click",function(){
+	
+	/* "kbmpNumberFull" */
+	if(!checkNull($("#kbmpTelecomCd"), $("#kbmpTelecomCd").val(), "통신사를 선택하세요.")) return false;
+	if(!checkNull($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호를 입력하세요.")) return false;
+ 	if(!checkOnlyNumber($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호는 숫자만 입력 가능합니다.")) return false;
+ 	if(!checkNumber($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호를 11자리로 입력해주세요.")) return false;	 
+
+});
+	
+/* consentAll */
+$('#consentAll').click(function(){
+	var checked = $('#consentAll').is(':checked');
+	if(checked)
+		$('input:checkbox').prop('checked',true);
+});
+	
+$("#btn_chk2").on("click",function(){
+	
+	if ($("input:checkbox[name=kbmmUseConsentNy_c]").is(":checked") == true) {
+	} else {
+		alert("필수항목은 반드시 동의하세요. (교보문고 이용약관)");
+		return false;
+	}
+	 
+	if ($("input:checkbox[name=kbmmPersonalinfoConsentNy_c]").is(":checked") == true) {
+		return true;   
+	} else {
+		alert("필수항목은 반드시 동의하세요. (개인정보 수집 및 이용안내)");
+		return false;
+	}
+     
+    
+});
+
+$("#btnSubmit").on("click",function(){
+ 	
+	/* kbmmId */
+ 	if(!checkNull($("#kbmmId"), $("#kbmmId").val(), "아이디를 입력하세요.")) return false;
+ 	if(!checkId($("#kbmmId"), $("#kbmmId").val(), "아이디를 형식에 맞게 입력하세요. (영문/숫자/특수문자 조합 8~15자리(대소문자 구분))")) return false;
+	
+ 	/* kbmmPassword */
+ 	if(!checkNull($("#kbmmPassword"), $("#kbmmPassword").val(), "비밀번호를 입력하세요.")) return false;
+ 	if(!checkPassword($("#kbmmPassword"), $("#kbmmPassword").val(), "비밀번호를 형식에 맞게 입력하세요. (영문/숫자/특수문자 조합 8~20자리(대소문자 구분))")) return false;
+
+ 	/* kbmmPasswordChk */
+ 	if(!checkNull($("#kbmmPasswordChk"), $("#kbmmPasswordChk").val(), "비밀번호 확인을 입력하세요.")) return false;
+ 	
+ 	if($("#kbmmPassword").val() == $("#kbmmPasswordChk").val()){
+ 	}else{
+ 		alert("비밀번호 확인이 틀립니다.");
+ 		return false;
+ 	}
+ 	
+ 	/* kbmeEmailFull */
+ 	if(!checkNull($("#kbmeEmailFull"), $("#kbmeEmailFull").val(), "이메일을 입력하세요.")) return false;
+ 	if(!checkEmail($("#kbmeEmailFull"), $("#kbmeEmailFull").val(), "이메일을 형식에 맞게 입력하세요. (@를 포함한 형태)")) return false;
+ 	
+
+});
+	
+
 
 </script>
 <!-- Optional JavaScript; choose one of the two! -->

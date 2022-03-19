@@ -53,6 +53,8 @@ public class Member {
 	private String kbmeEmailDomain;
 	private String kbmeEmailDomainCd;
 	private String kbmeDelNy;
+	
+	
 	public String getKbmmSeq() {
 		return kbmmSeq;
 	}
