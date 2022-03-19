@@ -6,9 +6,7 @@
 	}
 	.my-wrap{
 		width: 380px;
-		
 	}
-
 	.btn-certification{
 		border: 1px solid #CED4DA;
 		background-color: white;
@@ -23,17 +21,13 @@
 		background-color: white;
 		margin-top: 2px;
 	}
-
 	.btn-naver:hover,
 	.btn-naver:active,
 	.btn-naver:visited,
 	.btn-naver:focus{
-		
 		background-color :#56A900;
 		color: #ffffff;
-		
 	}
-	
 	a:Link,
 	a:hover,
 	a:active,
@@ -52,7 +46,10 @@
 		margin-top: 100px;
 	} 
 	input::placeholder {
-		  color: #A2969C;
-		  font-size: 13px;
-
+		color: #A2969C;
+		font-size: 13px;
+	}
+	#divShow1
+	,#divShow2{
+		display: none;
 	}
