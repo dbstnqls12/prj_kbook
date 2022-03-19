@@ -113,7 +113,6 @@
 			</div>	
 			<hr class="w-100" style="color: #A2969C">
 			<div class="form-check mb-2">
-				<input class="form-check-input" type="checkbox" value="marketingConsentNy" id="marketingConsentNy" name="marketingConsentNy">
 				<label class="form-check-label" for="kbmmAllConsentNy">마케팅(광고) 수신여부 동의(선택)</label>
 			</div>		
 			<div class="form-check">
@@ -255,6 +254,7 @@ $("#btn_chk2").on("click",function(){
 		alert("필수항목은 반드시 동의하세요. (개인정보 수집 및 이용안내)");
 		return false;
 	}
+	
 	if ($("input:radio[name=kbmmSavedCd]").is(":checked") == false) {
 		alert("개인정보 유효기간을 선택하세요.");
 		return false;

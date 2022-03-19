@@ -50,19 +50,16 @@
 			<form action="" method="get" id="memberView" name="memberView" enctype="multipart/form-data" class="row g-3">
 				<div class="col-md-6">
 					<label class="form-label">이름</label>
-					<input type="text" class="form-control form-control-sm" id="kbmmName" placeholder="<c:out value="${item.kbmmName}"/>">
+					<input type="text" class="form-control form-control-sm" id="kbmmName" name="kbmmName" placeholder="<c:out value="${item.kbmmName}"/>">
 				</div>
-				<div class="col-md-6">
-					<label class="form-label">이름(영문)</label>
-					<input type="text" class="form-control form-control-sm" id="kbmmNameEng" placeholder="">
-				</div>
+				<div class="col-6 d-none d-sm-block"></div><!-- 줄바꿈 -->
 				<div class="col-md-6">
 					<label for="inputId" class="form-label">아이디</label>
-					<input type="text" class="form-control form-control-sm" id="inputId" placeholder="<c:out value="${item.kbmmId}"/>"> 
+					<input type="text" class="form-control form-control-sm" id="inputId" name="kbmmName"placeholder="<c:out value="${item.kbmmId}"/>"> 
 				</div>
 				<div class="col-md-6">
 					<label for="inputPwd" class="form-label">비밀번호</label>
-					<input type="password" class="form-control form-control-sm" id="inputPwd" placeholder="<c:out value="${item.kbmmPassword}"/>">
+					<input type="password" class="form-control form-control-sm" id="inputPwd" name="kbmmName"placeholder="<c:out value="${item.kbmmPassword}"/>">
 				</div>
 
 				<div class="col-md-6">
