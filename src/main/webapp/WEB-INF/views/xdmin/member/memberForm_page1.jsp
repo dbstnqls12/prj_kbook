@@ -290,6 +290,7 @@ $("#btnSubmit").on("click",function(){
  	if(!checkNull($("#kbmeEmailFull"), $("#kbmeEmailFull").val(), "이메일을 입력하세요.")) return false;
  	if(!checkEmail($("#kbmeEmailFull"), $("#kbmeEmailFull").val(), "이메일을 형식에 맞게 입력하세요. (@를 포함한 형태)")) return false;
  	
+ 	alert("회원가입이 완료되었습니다!");
 
 });
 	

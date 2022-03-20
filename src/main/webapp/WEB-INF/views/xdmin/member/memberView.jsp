@@ -55,16 +55,16 @@
 				<div class="col-6 d-none d-sm-block"></div><!-- 줄바꿈 -->
 				<div class="col-md-6">
 					<label for="inputId" class="form-label">아이디</label>
-					<input type="text" class="form-control form-control-sm" id="inputId" name="kbmmName"placeholder="<c:out value="${item.kbmmId}"/>"> 
+					<input type="text" class="form-control form-control-sm" id="kbmmId" name="kbmmId" placeholder="<c:out value="${item.kbmmId}"/>"> 
 				</div>
 				<div class="col-md-6">
 					<label for="inputPwd" class="form-label">비밀번호</label>
-					<input type="password" class="form-control form-control-sm" id="inputPwd" name="kbmmName"placeholder="<c:out value="${item.kbmmPassword}"/>">
+					<input type="password" class="form-control form-control-sm" id="kbmmPassword" name="kbmmPassword" placeholder="<c:out value="${item.kbmmPassword}"/>">
 				</div>
 
 				<div class="col-md-6">
 					<label class="form-label">생년월일</label>
-					<input type="text" id="inputDob" name="inputDob" max="2022-01-08" class="form-control form-control-sm" placeholder="">
+					<input type="text" id="kbmmDob" name="kbmmDob" max="2022-01-08" class="form-control form-control-sm" placeholder="<c:out value="${item.kbmmDob}"/>">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">성별</label>
@@ -84,11 +84,11 @@
 						<option value="3">LGU</option>
 						<option value="3">기타</option>
 					</select>
-					<input type="text" class="form-control form-control-sm" id="inputMobile" placeholder="<c:out value="${item.kbmpNumberFull}"/>">
+					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" placeholder="<c:out value="${item.kbmpNumberFull}"/>">
 				</div>
 				<div class="col-md-6">
 					<label class="col-form-label pt-0">이메일</label>
-					<input type="text" class="form-control form-control-sm" id="inputEmail" placeholder="<c:out value="${item.kbmeEmailFull}"/>">
+					<input type="text" class="form-control form-control-sm" id="kbmeEmailFull" name="kbmeEmailFull" placeholder="<c:out value="${item.kbmeEmailFull}"/>">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">전화번호</label>
@@ -108,7 +108,10 @@
 						<option value="3"></option>
 					</select>
 				</div>
-				<div class="col-6 d-none d-sm-block"></div><!-- 줄바꿈 -->
+				<div class="col-md-6">
+					<label class="form-label">회원등급</label>
+					<input type="text" class="form-control form-control-sm" id="inputFax" placeholder="">
+				</div>
 				<div class="col-md-6">
 					<label class="form-label">주소 (한국전용)</label>
 					<input type="text" class="form-control form-control-sm" id="inputZipcode" placeholder="">
@@ -208,7 +211,7 @@
 						</div>
 		 			</div>
 		 		</div>
-				<div class="col-md-6">
+<!-- 				<div class="col-md-6">
 					<label class="col-form-label">성인 인증</label>
 					<div class="col-md-6">
 						<div class="form-check form-check-inline">
@@ -220,9 +223,8 @@
 							<label class="form-check-label" for="adultCertification2">매회 인증</label>
 						</div>
 		 			</div>
-		 		</div>
+		 		</div> -->
 		 		
-				<div class="col-6 d-none d-sm-block"></div>
 				<div class="col-md-3">
 					<label class="form-label">최종수정자</label>
 					<input type="text" class="form-control form-control-sm" id="inputEditP" placeholder="윤수빈" disabled>

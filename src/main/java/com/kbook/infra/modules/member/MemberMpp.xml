@@ -40,12 +40,15 @@
 		<include refid="selectCommon"/>	
 		limit #{startRnumForMysql}, #{rowNumToShow}
 	</select>
+	
 	<select id="selectOne" resultMap="resultMapObj">
 		select
 			a.kbmmSeq
 			,a.kbmmId
 			,a.kbmmName
+			,a.kbmmDob
 			,a.kbmmPassword
+			,a.kbmmSavedCd
 			,b.kbmpNumberFull
 			,c.kbmeEmailFull
 		FROM	
@@ -55,7 +58,9 @@
 		WHERE 1=1
 			AND a.kbmmSeq=#{kbmmSeq}
 	</select>
-	
+	<select id="selectCode">
+		
+	</select>
 <!-- 	memberForm    -->
 	
 	<insert id="insert">
@@ -65,6 +70,7 @@
 			,kbmmId
 			,kbmmPassword
 			,kbmmDob
+			,kbmmGradeCd
 			,kbmmUseConsentNy_c
 			,kbmmPersonalinfoConsentNy_c
 			,kbmmPersonalinfoConsentNy_s
@@ -81,6 +87,7 @@
 			,#{kbmmId}
 			,#{kbmmPassword}
 			,#{kbmmDob}
+			,1
 			,#{kbmmUseConsentNy_c}
 			,#{kbmmPersonalinfoConsentNy_c}
 			,#{kbmmPersonalinfoConsentNy_s}
@@ -131,6 +138,8 @@
 			,#{kbmmSeq}
 		)		
 	</insert>
+
+<!--  code 		-->
 	
 	
 

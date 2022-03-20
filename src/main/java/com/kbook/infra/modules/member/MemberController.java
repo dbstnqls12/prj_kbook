@@ -58,7 +58,7 @@ public class MemberController {
 		
 		service.insert(dto);
 				
-		return "";
+		return "redirect:/xdmin/login/login";
 	}
 	
 }

@@ -25,6 +25,7 @@ public class Member {
 	private String kbmmEmailConsentNy;
 	private String kbmmSavedCd;
 	private String kbmmDelNy;
+	private String kbmmGradeCd;
 
 	private String kbmpDefaultNy;
 	private String kbmpTypeCd;
@@ -312,6 +313,12 @@ public class Member {
 	}
 	public void setKbmeDelNy(String kbmeDelNy) {
 		this.kbmeDelNy = kbmeDelNy;
+	}
+	public String getKbmmGradeCd() {
+		return kbmmGradeCd;
+	}
+	public void setKbmmGradeCd(String kbmmGradeCd) {
+		this.kbmmGradeCd = kbmmGradeCd;
 	}
 
 
