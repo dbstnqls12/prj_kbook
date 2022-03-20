@@ -9,6 +9,7 @@ body{
 hr{
 	margin-bottom: 15px;
 }
+
 .btn-list{
 	font-size: 20px;
 	border: 1px solid #56a900;
@@ -17,6 +18,7 @@ hr{
 	background-color: white;
 	margin-top: 2px;
 }
+
 .btn-list:hover,
 .btn-list:active,
 .btn-list:visited,
@@ -26,6 +28,7 @@ hr{
 	color: #ffffff;
 	
 }
+.btn-list,
 .btn-naver{
 	background-color: #ffffff;
 	border: 1px solid #E0E0E0;
@@ -39,14 +42,7 @@ hr{
 	background-color: #ffffff;	
 	color: black;	
 }
-a:Link,
-a:hover,
-a:active,
-a:visited,
-a:focus{
-	color: gray;
-	text-decoration: underline;
-}
+
 	footer{
 	margin-top: 100px;
 } 
