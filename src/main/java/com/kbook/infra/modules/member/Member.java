@@ -55,6 +55,10 @@ public class Member {
 	private String kbmeEmailDomainCd;
 	private String kbmeDelNy;
 	
+	private String ifcdSeq;
+	private String ifcdName;
+	private String ifcdOrder;
+	private String ifcgSeq;
 	
 	public String getKbmmSeq() {
 		return kbmmSeq;
@@ -319,6 +323,30 @@ public class Member {
 	}
 	public void setKbmmGradeCd(String kbmmGradeCd) {
 		this.kbmmGradeCd = kbmmGradeCd;
+	}
+	public String getIfcdSeq() {
+		return ifcdSeq;
+	}
+	public void setIfcdSeq(String ifcdSeq) {
+		this.ifcdSeq = ifcdSeq;
+	}
+	public String getIfcdName() {
+		return ifcdName;
+	}
+	public void setIfcdName(String ifcdName) {
+		this.ifcdName = ifcdName;
+	}
+	public String getIfcdOrder() {
+		return ifcdOrder;
+	}
+	public void setIfcdOrder(String ifcdOrder) {
+		this.ifcdOrder = ifcdOrder;
+	}
+	public String getIfcgSeq() {
+		return ifcgSeq;
+	}
+	public void setIfcgSeq(String ifcgSeq) {
+		this.ifcgSeq = ifcgSeq;
 	}
 
 

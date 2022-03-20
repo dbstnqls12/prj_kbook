@@ -58,8 +58,16 @@
 		WHERE 1=1
 			AND a.kbmmSeq=#{kbmmSeq}
 	</select>
-	<select id="selectCode">
-		
+	<select id="codeTelecom" resultMap="resultMapObj">
+		SELECT
+			a.ifcdSeq
+			,a.ifcdName
+			,a.ifcdOrder
+			,a.ifcgSeq
+		FROM	
+			infrCode a
+		WHERE 1=1
+			AND a.ifcgSeq=10
 	</select>
 <!-- 	memberForm    -->
 	

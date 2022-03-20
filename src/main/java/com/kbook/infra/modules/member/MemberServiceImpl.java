@@ -5,9 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kbook.infra.modules.code.Code;
+import com.kbook.infra.modules.code.CodeVo;
+
 @Service
 public class MemberServiceImpl implements MemberService{
 
+	
 	@Autowired
 	MemberDao dao;
 
@@ -35,6 +39,11 @@ public class MemberServiceImpl implements MemberService{
 		
 		return 1;
 	}
+
+
+
+
+
 
 
 

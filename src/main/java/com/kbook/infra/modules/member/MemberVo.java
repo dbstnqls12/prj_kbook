@@ -13,6 +13,9 @@ public class MemberVo {
 	private String shOption;
 	private String shValue;
 	
+	private String ifcdSeq;
+	private String ifcgSeq;
+	
 //	paging
 	private int thisPage = 1;									// 현재 페이지
 	private int rowNumToShow = 5;								// 화면에 보여줄 데이터 줄 갯수
@@ -203,6 +206,26 @@ public class MemberVo {
 
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
+	}
+
+
+	public String getIfcdSeq() {
+		return ifcdSeq;
+	}
+
+
+	public void setIfcdSeq(String ifcdSeq) {
+		this.ifcdSeq = ifcdSeq;
+	}
+
+
+	public String getIfcgSeq() {
+		return ifcgSeq;
+	}
+
+
+	public void setIfcgSeq(String ifcgSeq) {
+		this.ifcgSeq = ifcgSeq;
 	}
 
 	
