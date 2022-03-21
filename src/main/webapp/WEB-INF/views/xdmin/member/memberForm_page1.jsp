@@ -179,20 +179,16 @@
 				<label class="form-label"><b>이메일</b></label>
 				<input type="text" class="form-control" id="kbmeEmailFull" name="kbmeEmailFull" placeholder="이메일주소 입력"> 
 			</div>
-<!-- 			<div class="col-12 mb-4">
+			<div class="col-12 mb-4">
 				<label class="form-label"><b>주소</b></label>
-					<div class="input-group mb-1">
-					  <input type="text" class="form-control" placeholder="우편번호" id="kbmaZipcode" name="kbmaZipcode" >
-					  <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="sample6_execDaumPostcode()">우편번호 찾기</button>
-					</div>
+				<div class="input-group">
+					<input class="form-control mb-1" type="text" id="kbmaZipcode" name="kbmaZipcode" placeholder="우편번호" readonly>
+					<button class="btn btn-outline-secondary mb-1" type="button" id="btnAddress"><i class= "fas fa-search"></i></button>
+					<button class="btn btn-outline-secondary mb-1" type="button" id="btnClear"><i class= "fas fa-solid fa-x"></i></button>
+				</div>
 				<input type="text" class="form-control mb-1" id="kbmaAddress1" name="kbmaAddress1" placeholder="기본주소"> 
 				<input type="text" class="form-control mb-1" id="kbmaAddress2" name="kbmaAddress2" placeholder="상세주소"> 
-			</div> -->
-	<input type="text" id="sample6_postcode" placeholder="우편번호">
-<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-<input type="text" id="sample6_address" placeholder="주소"><br>
-<input type="text" id="sample6_detailAddress" placeholder="상세주소">
-<input type="text" id="sample6_extraAddress" placeholder="참고항목">
+			</div>
 	
 	
 	
@@ -311,7 +307,16 @@ $("#btnSubmit").on("click",function(){
  	alert("회원가입이 완료되었습니다!");
 
 });
+
+$("#btnAddress").on("click",function(){
+	sample6_execDaumPostcode();
 	
+});	
+$("#btnClear").on("click",function(){
+	$("#kbmaZipcode").val("");
+	$("#kbmaAddress1").val("");
+	
+});	
 function sample6_execDaumPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -345,17 +350,17 @@ function sample6_execDaumPostcode() {
                     extraAddr = ' (' + extraAddr + ')';
                 }
                 // 조합된 참고항목을 해당 필드에 넣는다.
-                document.getElementById("sample6_extraAddress").value = extraAddr;
+                /* document.getElementById("kbmaAddress2").value = extraAddr; */
             
             } else {
-                document.getElementById("sample6_extraAddress").value = '';
+                /* document.getElementById("kbmaAddress2").value = ''; */
             }
 
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('sample6_postcode').value = data.zonecode;
-            document.getElementById("sample6_address").value = addr;
+            document.getElementById('kbmaZipcode').value = data.zonecode;
+            document.getElementById("kbmaAddress1").value = addr;
             // 커서를 상세주소 필드로 이동한다.
-            document.getElementById("sample6_detailAddress").focus();
+            document.getElementById("kbmaAddress2").focus();
         }
     }).open();
 }
