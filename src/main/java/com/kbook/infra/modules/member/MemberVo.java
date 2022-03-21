@@ -16,6 +16,8 @@ public class MemberVo {
 	private String ifcdSeq;
 	private String ifcgSeq;
 	
+	private String kbmmGenderCd;
+	
 //	paging
 	private int thisPage = 1;									// 현재 페이지
 	private int rowNumToShow = 5;								// 화면에 보여줄 데이터 줄 갯수
@@ -226,6 +228,16 @@ public class MemberVo {
 
 	public void setIfcgSeq(String ifcgSeq) {
 		this.ifcgSeq = ifcgSeq;
+	}
+
+
+	public String getKbmmGenderCd() {
+		return kbmmGenderCd;
+	}
+
+
+	public void setKbmmGenderCd(String kbmmGenderCd) {
+		this.kbmmGenderCd = kbmmGenderCd;
 	}
 
 	

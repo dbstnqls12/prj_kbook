@@ -47,28 +47,36 @@
 			,a.kbmmId
 			,a.kbmmName
 			,a.kbmmDob
+			,a.kbmmGenderCd
 			,a.kbmmPassword
 			,a.kbmmSavedCd
+			,a.kbmmGradeCd
+			,a.kbmmEmailConsentNy
+			,a.kbmmSmsConsentNy
+			,a.kbmmUseConsentNy_c
+			,a.kbmmPersonalinfoConsentNy_c
+			,a.kbmmPersonalinfoConsentNy_s
+			,a.kbmmOfferinfo1ConsentNy_s
+			,a.kbmmOfferinfo2ConsentNy_s
+			,a.kbmmdormancyNy
+			,b.kbmpTelecomCd
 			,b.kbmpNumberFull
+			,b.kbmpDeviceCd
 			,c.kbmeEmailFull
+			,d.kbmaZipcode
+			,d.kbmaAddress1
+			,d.kbmaAddress2
+			,d.kbmaDefaultNy
 		FROM	
 			kbMember a
 			left join kbMemberPhone b on b.kbmmSeq = a.kbmmSeq	
 			left join kbMemberEmail c on c.kbmmSeq = a.kbmmSeq
+			left join kbMemberAddress d on d.kbmmSeq = a.kbmmSeq
 		WHERE 1=1
 			AND a.kbmmSeq=#{kbmmSeq}
 	</select>
-	<select id="codeTelecom" resultMap="resultMapObj">
-		SELECT
-			a.ifcdSeq
-			,a.ifcdName
-			,a.ifcdOrder
-			,a.ifcgSeq
-		FROM	
-			infrCode a
-		WHERE 1=1
-			AND a.ifcgSeq=10
-	</select>
+	
+
 <!-- 	memberForm    -->
 	
 	<insert id="insert">
@@ -147,8 +155,9 @@
 		)		
 	</insert>
 
+
+
 <!--  code 		-->
-	
 	
 
 </mapper>

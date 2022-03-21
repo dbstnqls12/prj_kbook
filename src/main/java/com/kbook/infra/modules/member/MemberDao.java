@@ -2,11 +2,13 @@ package com.kbook.infra.modules.member;
 
 import java.util.List;
 
+
 import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+
 
 @Repository
 public class MemberDao {
@@ -26,4 +28,6 @@ public class MemberDao {
 	public int insert(Member dto) {return sqlSession.insert(namespace +".insert", dto);}
 	public int insertPhone(Member dto) {return sqlSession.insert(namespace +".insertPhone", dto);}
 	public int insertEmail(Member dto) {return sqlSession.insert(namespace +".insertEmail", dto);}
+
+//	code
 }

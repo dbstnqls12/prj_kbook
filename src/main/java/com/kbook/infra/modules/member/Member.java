@@ -26,6 +26,7 @@ public class Member {
 	private String kbmmSavedCd;
 	private String kbmmDelNy;
 	private String kbmmGradeCd;
+	private String kbmmdormancyNy;
 
 	private String kbmpDefaultNy;
 	private String kbmpTypeCd;
@@ -55,10 +56,6 @@ public class Member {
 	private String kbmeEmailDomainCd;
 	private String kbmeDelNy;
 	
-	private String ifcdSeq;
-	private String ifcdName;
-	private String ifcdOrder;
-	private String ifcgSeq;
 	
 	public String getKbmmSeq() {
 		return kbmmSeq;
@@ -167,6 +164,12 @@ public class Member {
 	}
 	public void setKbmmDelNy(String kbmmDelNy) {
 		this.kbmmDelNy = kbmmDelNy;
+	}
+	public String getKbmmGradeCd() {
+		return kbmmGradeCd;
+	}
+	public void setKbmmGradeCd(String kbmmGradeCd) {
+		this.kbmmGradeCd = kbmmGradeCd;
 	}
 	public String getKbmpDefaultNy() {
 		return kbmpDefaultNy;
@@ -318,35 +321,11 @@ public class Member {
 	public void setKbmeDelNy(String kbmeDelNy) {
 		this.kbmeDelNy = kbmeDelNy;
 	}
-	public String getKbmmGradeCd() {
-		return kbmmGradeCd;
+	public String getKbmmdormancyNy() {
+		return kbmmdormancyNy;
 	}
-	public void setKbmmGradeCd(String kbmmGradeCd) {
-		this.kbmmGradeCd = kbmmGradeCd;
-	}
-	public String getIfcdSeq() {
-		return ifcdSeq;
-	}
-	public void setIfcdSeq(String ifcdSeq) {
-		this.ifcdSeq = ifcdSeq;
-	}
-	public String getIfcdName() {
-		return ifcdName;
-	}
-	public void setIfcdName(String ifcdName) {
-		this.ifcdName = ifcdName;
-	}
-	public String getIfcdOrder() {
-		return ifcdOrder;
-	}
-	public void setIfcdOrder(String ifcdOrder) {
-		this.ifcdOrder = ifcdOrder;
-	}
-	public String getIfcgSeq() {
-		return ifcgSeq;
-	}
-	public void setIfcgSeq(String ifcgSeq) {
-		this.ifcgSeq = ifcgSeq;
+	public void setKbmmdormancyNy(String kbmmdormancyNy) {
+		this.kbmmdormancyNy = kbmmdormancyNy;
 	}
 
 

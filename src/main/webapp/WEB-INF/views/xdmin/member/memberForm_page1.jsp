@@ -179,6 +179,15 @@
 				<label class="form-label"><b>이메일</b></label>
 				<input type="text" class="form-control" id="kbmeEmailFull" name="kbmeEmailFull" placeholder="이메일주소 입력"> 
 			</div>
+<!-- 			<div class="col-12 mb-4">
+				<label class="form-label"><b>주소</b></label>
+					<div class="input-group mb-1">
+					  <input type="text" class="form-control" placeholder="우편번호" id="kbmaZipcode" name="kbmaZipcode" >
+					  <button class="btn btn-outline-secondary" type="button" id="button-addon2">우편번호 찾기</button>
+					</div>
+				<input type="text" class="form-control mb-1" id="kbmaAddress1" name="kbmaAddress1" placeholder="기본주소"> 
+				<input type="text" class="form-control mb-1" id="kbmaAddress2" name="kbmaAddress2" placeholder="상세주소"> 
+			</div> -->
 	
 			<div class="d-grid gap-2 col-xs-8 mx-auto">
 				<button class="btn btn-naver" type="submit" id="btnSubmit" name="btnSubmit">가입완료</button>
