@@ -233,6 +233,8 @@
 					<button type="button" class="btn btn-primary btn-sm" id="search_icon"><i class="fas fa-plus"></i></button>
 				</div>
 			</div>
+			
+
 		</div>
 		</div>
 	</div>
