@@ -19,9 +19,15 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 </head>
+<style>
+	.navbar{
+		background-color: #5E6B9E;
+	}
+	
+</style>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-light bg-light d-none d-md-block mb-4">
+<nav class="navbar navbar-expand-md navbar-dark d-none d-md-block mb-4 text-light text-white" >
 	<div class="container-fluid">
 		<a class="navbar-brand d-block d-sm-none" href="#">Navbar</a>
 		<a class="navbar-brand d-none d-sm-block" href="#">Home</a>
@@ -29,8 +35,7 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav me-auto mb-2 mb-md-0">
-
+			<ul class="navbar-nav me-auto mb-2 mb-md-0" id="list">
 				<li class="nav-item">
 					<a class="nav-link" aria-current="page" href="#">회원관리</a>
 				</li>

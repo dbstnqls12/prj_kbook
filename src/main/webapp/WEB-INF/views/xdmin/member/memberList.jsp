@@ -137,7 +137,7 @@
 				<div class="float-start"><button type="button" class="btn btn-danger btn-sm float-start"><i class="fas fa-trash"></i></button></div>
 				<div class="float-end">
 					<button type="button" class="btn btn-success btn-sm" id="search_icon"><i class="bi bi-file-earmark-x"></i></button>
-					<button type="button" class="btn btn-primary btn-sm" id="search_icon" onclick="location.href='/xdmin/member/memberForm_admin'"><i class="fas fa-plus"></i></button>
+					<button type="button" class="btn btn-primary btn-sm" id="search_icon" onclick="location.href='/xdmin/member/memberForm_xdmin'"><i class="fas fa-plus"></i></button>
 				</div>
 			</div>
 		</div>
