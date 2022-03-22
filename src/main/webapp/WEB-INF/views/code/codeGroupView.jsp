@@ -7,6 +7,8 @@
 
 <c:out value="${item.ifcgSeq}"/> | <c:out value="${item.ifcgName}"/> | <c:out value="${item.ifcgDelNy}"/><br>
 
+
+<a href="codeGroupList?shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue }"/>">목록</a>
 <a href="codeGroupForm2?ifcgSeq=${item.ifcgSeq}">수정</a>
 
 

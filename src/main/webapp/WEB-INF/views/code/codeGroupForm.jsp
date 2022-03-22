@@ -7,7 +7,7 @@
 
 <form method="get" id="" action ="/code/codeGroupInst">
 	<input type="text" name="ifcgName" id="ifcgName" value="<c:out value="${item.ifcgName}"/>" placeholder="코드그룹">
-	<input type="text" name="ifcdName" id="ifcdName" value="<c:out value="${item.ifcdName}"/>" placeholder="코드">
+<%-- 	<input type="text" name="ifcdName" id="ifcdName" value="<c:out value="${item.ifcdName}"/>" placeholder="코드"> --%>
 	<input type="submit" name="btnSubmit" id="btnSubmit" value="제출">
 </form>
 
@@ -19,8 +19,8 @@
 	$("#btnSubmit").on("click",function(){
 		
  		if(!checkNull($("#ifcgName"), $("#ifcgName").val(), "코드그룹을 입력하세요!")) return false;
-		if(!checkNull($("#ifcdName"), $("#ifcdName").val(), "코드를 입력하세요!")) return false;
-		 
+/* 		if(!checkNull($("#ifcdName"), $("#ifcdName").val(), "코드를 입력하세요!")) return false;
+ */		 
 		
 	});
 </script>

@@ -3,6 +3,7 @@ package com.kbook.infra.modules.code;
 import java.util.List;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,11 +43,15 @@ public class CodeController {
 	public String codeGroupInst(Code dto) throws Exception {
 
 		service.insert(dto);
-		return "redirect:/code/codeGroupList";
+		
+		return "redirect:/code/codeGroupView?ifcgSeq="+dto.getIfcgSeq();
 	}
 	
 	@RequestMapping(value = "/code/codeGroupView")
-	public String codeGroupView(CodeVo vo, Model model) throws Exception {
+	public String codeGroupView(@ModelAttribute("vo") CodeVo vo, Model model) throws Exception {
+		
+		System.out.println(vo.getShOption());		
+		System.out.println(vo.getShValue());
 		
 		Code rt = service.selectOne(vo);
 		

@@ -54,8 +54,12 @@
 		) VALUES (
 			#{ifcgName}
 			,0		
-		)		
+		)	
+		<selectKey resultType="String" keyProperty="ifcgSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>		
 	</insert>
+	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			a.ifcgSeq
@@ -65,8 +69,8 @@
 			infrCodeGroup a
 		WHERE 1=1
 			AND ifcgSeq=#{ifcgSeq}
-
 	</select>
+	
 	<update id="update">
 		UPDATE infrCodeGroup SET 	
 			ifcgName = #{ifcgName}

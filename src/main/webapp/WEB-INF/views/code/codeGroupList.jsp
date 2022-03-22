@@ -23,9 +23,9 @@
 	<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>영문</option>
 </select>
 <input type="text" name="shValue" id="shValue" value="<c:out value="${vo.shValue}"/>">
-<input type="submit" id="btnSubmit" name="search">
-<input type="submit" id="btnSubmit2" name="search">
-</form>
+<input type="submit" id="btnSubmit" name="btnSubmit">
+<input type="submit" id="btnSubmit2" name="btnSubmit2">
+<br>
 <c:choose>
 	<c:when test="${fn:length(list) eq 0}">
 		<tr>
@@ -35,13 +35,15 @@
 	<c:otherwise>
 		<c:forEach items="${list}" var="item" varStatus="status">	
 		
-		<c:out value="${item.ifcgSeq}"/> | <a href="/code/codeGroupView?ifcgSeq=${item.ifcgSeq}"><c:out value="${item.ifcgName}"/></a> | <c:out value="${item.ifcgNameEng}"/> | <c:out value="${item.ifcgDelNy}"/> <br>
-		
+		<c:out value="${item.ifcgSeq}"/> | <a href="/code/codeGroupView?ifcgSeq=<c:out value="${item.ifcgSeq}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>"><c:out value="${item.ifcgName}"/></a> | <c:out value="${item.ifcgNameEng}"/> | <c:out value="${item.ifcgDelNy}"/> <br>
+											
 		
 		
 		</c:forEach>
 	</c:otherwise>
-</c:choose>	
+</c:choose>
+</form>	
+
 <nav aria-label="...">
 	<ul class="pagination">
 	
@@ -72,8 +74,8 @@
 <script type="text/javascript">
 	$("#btnSubmit").on("click",function(){
 		
-		if(!checkNull($("#shIfcgName"), $("#shIfcgName").val(), " 코드그룹 이름을 입력해주세요!")) return false;
-		if(!checkNull($("#shValue"), $("#shValue").val(), " 검색어를 입력해주세요!")) return false;			
+/* 		if(!checkNull($("#shIfcgName"), $("#shIfcgName").val(), " 코드그룹 이름을 입력해주세요!")) return false;
+ */		if(!checkNull($("#shValue"), $("#shValue").val(), " 검색어를 입력해주세요!")) return false;			
 
 	});
 	
