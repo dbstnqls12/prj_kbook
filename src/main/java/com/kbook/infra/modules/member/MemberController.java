@@ -61,5 +61,10 @@ public class MemberController {
 				
 		return "redirect:/xdmin/login/login";
 	}
+	@RequestMapping(value = "xdmin/login/login")
+	public String memberLogin(Member dto) throws Exception {
+		
+		return "/xdmin/login/login";
+	}
 	
 }
