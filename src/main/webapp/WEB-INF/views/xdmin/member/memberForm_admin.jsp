@@ -19,7 +19,7 @@
 
 <link href="/resources/xdmin/css/sidebars.css" rel="stylesheet" type="text/css">
 <link href="/resources/xdmin/css/footers.css" rel="stylesheet" type="text/css">
-<title>Kyobo_memberView</title>
+<title>Kyobo_memberForm_admin</title>
 
 </head>
 <body>
@@ -40,45 +40,45 @@
 			<form action="" method="get" id="memberView" name="memberView" enctype="multipart/form-data" class="row g-3">
 				<div class="col-md-6">
 					<label class="form-label">이름</label>
-					<input type="text" class="form-control form-control-sm" id="kbmmName" name="kbmmName" placeholder="<c:out value="${item.kbmmName}"/>">
+					<input type="text" class="form-control form-control-sm" id="kbmmName" name="kbmmName">
 				</div>
 				<div class="col-6 d-none d-sm-block"></div><!-- 줄바꿈 -->
 				<div class="col-md-6">
 					<label for="inputId" class="form-label">아이디</label>
-					<input type="text" class="form-control form-control-sm" id="kbmmId" name="kbmmId" placeholder="<c:out value="${item.kbmmId}"/>"> 
+					<input type="text" class="form-control form-control-sm" id="kbmmId" name="kbmmId"> 
 				</div>
 				<div class="col-md-6">
 					<label for="inputPwd" class="form-label">비밀번호</label>
-					<input type="password" class="form-control form-control-sm" id="kbmmPassword" name="kbmmPassword" placeholder="<c:out value="${item.kbmmPassword}"/>">
+					<input type="password" class="form-control form-control-sm" id="kbmmPassword" name="kbmmPassword" placeholder="">
 				</div>
 
 				<div class="col-md-6">
 					<label class="form-label">생년월일</label>
-					<input type="text" id="kbmmDob" name="kbmmDob" max="2022-01-08" class="form-control form-control-sm" placeholder="<c:out value="${item.kbmmDob}"/>">
+					<input type="text" id="kbmmDob" name="kbmmDob" max="2022-01-08" class="form-control form-control-sm" placeholder="">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">성별</label>
 					<select class="form-select form-select-sm" id="kbmmGenderCd" name="kbmmGenderCd">
 						<option value="">::성별::</option>
-						<option value="1" <c:if test="${item.kbmmGenderCd eq 1 }">selected</c:if>>남성</option>
-						<option value="2" <c:if test="${item.kbmmGenderCd eq 2 }">selected</c:if>>여성</option>
-						<option value="3" <c:if test="${item.kbmmGenderCd eq 3 }">selected</c:if>>기타</option>
+						<option value="1">남성</option>
+						<option value="2">여성</option>
+						<option value="3">기타</option>
 					</select>
 				</div>	
 				<div class="col-md-6">
 					<label class="form-label">핸드폰번호</label>
 					<select class="form-select form-select-sm mb-1" id="kbmpTelecomCd" name="kbmpTelecomCd">
 						<option selected>::통신사::</option>
-						<option value="1" <c:if test="${item.kbmpTelecomCd eq 1 }">selected</c:if>>SKT</option>
-						<option value="2" <c:if test="${item.kbmpTelecomCd eq 2 }">selected</c:if>>KT</option>
-						<option value="3" <c:if test="${item.kbmpTelecomCd eq 3 }">selected</c:if>>LGU</option>
-						<option value="4" <c:if test="${item.kbmpTelecomCd eq 4 }">selected</c:if>>기타</option>
+						<option value="1">SKT</option>
+						<option value="2">KT</option>
+						<option value="3">LGU</option>
+						<option value="4">기타</option>
 					</select>
-					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" placeholder="<c:out value="${item.kbmpNumberFull}"/>">
+					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" placeholder="">
 				</div>
 				<div class="col-md-6">
 					<label class="col-form-label pt-0">이메일</label>
-					<input type="text" class="form-control form-control-sm" id="kbmeEmailFull" name="kbmeEmailFull" placeholder="<c:out value="${item.kbmeEmailFull}"/>">
+					<input type="text" class="form-control form-control-sm" id="kbmeEmailFull" name="kbmeEmailFull" placeholder="">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">전화번호</label>
@@ -98,7 +98,8 @@
 						<option value="3"></option>
 					</select>
 				</div>
-				<div class="col-md-6">
+				<div class="col-6 d-none d-sm-block"></div><!-- 줄바꿈 -->
+<%-- 				<div class="col-md-6">
 					<label class="form-label">회원등급</label>
 					<input type="text" class="form-control form-control-sm" id="kbmmGradeCd" name="kbmmGradeCd" placeholder="">
 						<c:choose>
@@ -108,12 +109,12 @@
 							<c:when test="${item.kbmmGradeCd eq 4 }">플래티넘</c:when>
 						</c:choose>
 					
-				</div>
+				</div> --%>
 				<div class="col-md-6">
 					<label class="form-label">주소 (한국전용)</label>
-					<input type="text" class="form-control form-control-sm mb-1" id="kbmaZipcode" name="kbmaZipcode" placeholder="<c:out value="${item.kbmaZipcode}"/>">
-					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1" name="kbmaAddress1" placeholder="<c:out value="${item.kbmaAddress1}"/>">
-					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2" name="kbmaAddress2" placeholder="<c:out value="${item.kbmaAddress2}"/>">
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaZipcode" name="kbmaZipcode" placeholder="">
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1" name="kbmaAddress1" placeholder="">
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2" name="kbmaAddress2" placeholder="">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">주소 (국외전용)</label>
@@ -125,11 +126,11 @@
 					<label class="col-form-label">개인정보 수집 및 이용안내(선택)</label>
 					<div class="col-md-6">
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="kbmmPersonalinfoConsentNy_s" id="personalinfoConsentNy_sy" value="1" <c:if test="${item.kbmmPersonalinfoConsentNy_s eq 1 }">checked</c:if>>
+							<input class="form-check-input" type="radio" name="kbmmPersonalinfoConsentNy_s" id="personalinfoConsentNy_sy" value="1" >
 							<label class="form-check-label" for="personalinfoConsentNy_sy">동의</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="kbmmPersonalinfoConsentNy_s" id="personalinfoConsentNy_sn" value="0" <c:if test="${item.kbmmPersonalinfoConsentNy_s eq 0 || item.kbmmPersonalinfoConsentNy_s eq null}">checked</c:if>>
+							<input class="form-check-input" type="radio" name="kbmmPersonalinfoConsentNy_s" id="personalinfoConsentNy_sn" value="0" >
 							<label class="form-check-label" for="personalinfoConsentNy_sn">비동의</label>
 						</div>
 		 			</div>
@@ -138,19 +139,19 @@
 					<label class="col-form-label">개인정보 유효기간</label>
 					<div class="col-md-6">
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="kbmmSavedCd" id="kbmmSavedCd1" value="1" <c:if test="${item.kbmmSavedCd eq 1 }">checked</c:if>>
+							<input class="form-check-input" type="radio" name="kbmmSavedCd" id="kbmmSavedCd1" value="1">
 							<label class="form-check-label" for="kbmmSavedCd1">1년</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="kbmmSavedCd" id="kbmmSavedCd2" value="2" <c:if test="${item.kbmmSavedCd eq 2 }">checked</c:if>>
+							<input class="form-check-input" type="radio" name="kbmmSavedCd" id="kbmmSavedCd2" value="2">
 							<label class="form-check-label" for="kbmmSavedCd2">3년</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="kbmmSavedCd" id="kbmmSavedCd3" value="3" <c:if test="${item.kbmmSavedCd eq 3 }">checked</c:if>>
+							<input class="form-check-input" type="radio" name="kbmmSavedCd" id="kbmmSavedCd3" value="3">
 							<label class="form-check-label" for="kbmmSavedCd3">5년</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="kbmmSavedCd" id="kbmmSavedCd4" value="4" <c:if test="${item.kbmmSavedCd eq 4 }">checked</c:if>>
+							<input class="form-check-input" type="radio" name="kbmmSavedCd" id="kbmmSavedCd4" value="4">
 							<label class="form-check-label" for="kbmmSavedCd4">탈퇴시</label>
 						</div>
 		 			</div>
@@ -159,11 +160,11 @@
 					<label class="col-form-label">제3자 정보제공 동의 교보 핫트랙스, 꾸밍(선택)</label>
 					<div class="col-md-6">
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="kbmmOfferinfo1ConsentNy_s" id="offerinfo1ConsentY" value="1" <c:if test="${item.kbmmOfferinfo1ConsentNy_s eq 1 }">checked</c:if>>
+							<input class="form-check-input" type="radio" name="kbmmOfferinfo1ConsentNy_s" id="offerinfo1ConsentY" value="1">
 							<label class="form-check-label" for="offerinfo1ConsentY">동의</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="kbmmOfferinfo1ConsentNy_s" id="offerinfo1ConsentN" value="0" <c:if test="${item.kbmmOfferinfo1ConsentNy_s eq 0 || item.kbmmOfferinfo1ConsentNy_s eq null}">checked</c:if>>
+							<input class="form-check-input" type="radio" name="kbmmOfferinfo1ConsentNy_s" id="offerinfo1ConsentN" value="0">
 							<label class="form-check-label" for="offerinfo1ConsentN">비동의</label>
 						</div>
 		 			</div>
@@ -172,11 +173,11 @@
 					<label class="col-form-label">제3자 정보제공 동의 교보라이프플래닛 생명보험(선택)</label>
 					<div class="col-md-6">
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="kbmmOfferinfo2ConsentNy_s" id="offerinfo2ConsentY" value="1" <c:if test="${item.kbmmOfferinfo2ConsentNy_s eq 1 }">checked</c:if>>
+							<input class="form-check-input" type="radio" name="kbmmOfferinfo2ConsentNy_s" id="offerinfo2ConsentY" value="1">
 							<label class="form-check-label" for="offerinfo2ConsentY">동의</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="kbmmOfferinfo2ConsentNy_s" id="offerinfo2ConsentN" value="0" <c:if test="${item.kbmmOfferinfo2ConsentNy_s eq 0  || item.kbmmOfferinfo2ConsentNy_s eq null}">checked</c:if>>
+							<input class="form-check-input" type="radio" name="kbmmOfferinfo2ConsentNy_s" id="offerinfo2ConsentN" value="0">
 							<label class="form-check-label" for="offerinfo2ConsentN">비동의</label>
 						</div>
 		 			</div>
@@ -210,22 +211,7 @@
 		 		</div>
 
 		 		
-				<div class="col-md-3">
-					<label class="form-label">최종수정자</label>
-					<input type="text" class="form-control form-control-sm" id="inputEditP" placeholder="윤수빈" disabled>
-				</div>
-				<div class="col-md-3">
-					<label class="form-label">최종수정일</label>
-					<input type="text" class="form-control form-control-sm" id="inputEditDate" placeholder="2022-12-12 12:12:12" disabled>
-				</div>
-				<div class="col-md-3">
-					<label class="form-label">최초등록자</label>
-					<input type="text" class="form-control form-control-sm" id="inputRegP" placeholder="윤수빈" disabled>
-				</div>
-				<div class="col-md-3">
-					<label class="form-label">최초등록일</label>
-					<input type="text" class="form-control form-control-sm" id="inputRegDate" placeholder="2020-12-12 12:12:12" disabled>
-				</div>
+
 			</form>
 			<div class="col-mb-3 mt-3">	
 				<div class="float-start"><button type="button" class="btn btn-danger btn-sm float-start"><i class="fas fa-trash"></i></button></div>

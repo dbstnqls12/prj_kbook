@@ -36,6 +36,7 @@ public class MemberServiceImpl implements MemberService{
 		dao.insert(dto);
 		dao.insertPhone(dto);
 		dao.insertEmail(dto);
+		dao.insertAddress(dto);
 		
 		return 1;
 	}

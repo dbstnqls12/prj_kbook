@@ -189,10 +189,6 @@
 				<input type="text" class="form-control mb-1" id="kbmaAddress1" name="kbmaAddress1" placeholder="기본주소"> 
 				<input type="text" class="form-control mb-1" id="kbmaAddress2" name="kbmaAddress2" placeholder="상세주소"> 
 			</div>
-	
-	
-	
-	
 			<div class="d-grid gap-2 col-xs-8 mx-auto">
 				<button class="btn btn-naver" type="submit" id="btnSubmit" name="btnSubmit">가입완료</button>
 			</div>

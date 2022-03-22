@@ -42,16 +42,10 @@ public class MemberController {
 		
 	}
 	
-	@RequestMapping(value = "/xdmin/member/memberForm_main")
-	public String memberFormMain(Model model) throws Exception {
-		
-		return "/xdmin/member/memberForm_main";
-	}
-
-	@RequestMapping(value = "/xdmin/member/memberForm_page1")
+	@RequestMapping(value = "/xdmin/member/memberForm_user")
 	public String memberForm(Model model) throws Exception {
 
-		return "/xdmin/member/memberForm_page1";
+		return "/xdmin/member/memberForm_user";
 	}
 	
 	@RequestMapping(value = "xdmin/member/memberInst")
@@ -65,6 +59,11 @@ public class MemberController {
 	public String memberLogin(Member dto) throws Exception {
 		
 		return "/xdmin/login/login";
+	}
+	@RequestMapping(value = "xdmin/member/memberForm_admin")
+	public String memberForm_admin(Member dto) throws Exception {
+		
+		return "/xdmin/member/memberForm_admin";
 	}
 	
 }

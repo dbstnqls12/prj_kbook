@@ -57,6 +57,7 @@ public class Member {
 	private String kbmeDelNy;
 	
 	
+	
 	public String getKbmmSeq() {
 		return kbmmSeq;
 	}
