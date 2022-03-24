@@ -170,7 +170,7 @@
 			,#{kbmmSeq}
 		)		
 	</insert>
-	<insert id="insertNationality">
+<!-- 	<insert id="insertNationality">
 		INSERT INTO kbMemberAddress(
 			kbmaDefaultNy
 			,kbmaAddress1
@@ -186,9 +186,60 @@
 			,0
 			,#{kbmmSeq}
 		)		
-	</insert>
+	</insert> -->
+	
+	<update id="update">
+		UPDATE kbMember SET 	
+			kbmmName = #{kbmmName}
+			,kbmmId = #{kbmmId}
+			,kbmmPassword = #{kbmmPassword}
+			,kbmmGradeCd = #{kbmmGradeCd}
+			,kbmmPersonalinfoConsentNy_s = #{kbmmPersonalinfoConsentNy_s}
+			,kbmmOfferinfo1ConsentNy_s = #{kbmmOfferinfo1ConsentNy_s}
+			,kbmmOfferinfo2ConsentNy_s = #{kbmmOfferinfo2ConsentNy_s}
+			,kbmmSmsConsentNy = #{kbmmSmsConsentNy}
+			,kbmmEmailConsentNy = #{kbmmEmailConsentNy}
+			,kbmmSavedCd = #{kbmmSavedCd}
+		WHERE 1=1
+			AND ifcgSeq=#{ifcgSeq}
+		<selectKey resultType="String" keyProperty="kbmmSeq" order="AFTER">
+			SELECT last_update_id()
+		</selectKey>	
+	</update>
+	
+	<update id="updatePhone">
+	UPDATE kbMemberPhone SET 	
+		kbmpDefaultNy = #{kbmpDefaultNy}
+		,kbmpTypeCd = #{kbmpTypeCd}
+		,kbmpDeviceCd = #{kbmpDeviceCd}
+		,kbmpTelecomCd = #{kbmpTelecomCd}
+		,kbmpNumberFull = #{kbmpNumberFull}
+	WHERE 1=1
+		AND ifcgSeq=#{ifcgSeq}
+	</update>	
+	
+	<update id="updateEmail">
+	UPDATE kbMemberEmail SET 	
+		kbmeDefaultNy = #{kbmeDefaultNy}
+		,kbmeTypeCd = #{kbmeTypeCd}
+		,kbmeEmailFull = #{kbmeEmailFull}
+	WHERE 1=1
+		AND ifcgSeq=#{ifcgSeq}
+	</update>	
+	
+	<update id="updateAddress">
+	UPDATE kbMemberAddress SET 	
+		kbmaDefaultNy = #{kbmaDefaultNy}
+		,kbmaAddress1 = #{kbmaAddress1}
+		,kbmaAddress2 = #{kbmaAddress2}
+		,kbmaZipcode = #{kbmaZipcode}
+	WHERE 1=1
+		AND ifcgSeq=#{ifcgSeq}
+	</update>	
 
-
+	<update id="updateDelete">
+		UPDATE kbMember SET kbmmDelNy = 1 WHERE 1=1 AND kbmmSeq=#{kbmmSeq}
+	</update>
 
 
 
