@@ -60,19 +60,18 @@
 					<label class="form-label">성별</label>
 					<select class="form-select form-select-sm" id="kbmmGenderCd" name="kbmmGenderCd">
 						<option value="">::성별::</option>
-						<option value="1">남성</option>
-						<option value="2">여성</option>
-						<option value="3">기타</option>
+							<c:forEach items="${CodeGender}" var="itemGender" varStatus="statusGender">
+						<option value="<c:out value="${itemGender.ifcdSeq}"/>"><c:out value="${itemGender.ifcdName}"/></option>	
+							</c:forEach>
 					</select>
 				</div>	
 				<div class="col-md-6">
 					<label class="form-label">핸드폰번호</label>
 					<select class="form-select form-select-sm mb-1" id="kbmpTelecomCd" name="kbmpTelecomCd">
 						<option selected>::통신사::</option>
-						<option value="1">SKT</option>
-						<option value="2">KT</option>
-						<option value="3">LGU</option>
-						<option value="4">기타</option>
+							<c:forEach items="${CodeTelecom}" var="itemTelecom" varStatus="statusTelecoom">
+						<option value="<c:out value="${itemTelecom.ifcdSeq}"/>"><c:out value="${itemTelecom.ifcdName}"/></option>	
+							</c:forEach>
 					</select>
 					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" placeholder="">
 				</div>
@@ -99,29 +98,51 @@
 					</select>
 				</div>
 				<div class="col-6 d-none d-sm-block"></div><!-- 줄바꿈 -->
-<%-- 				<div class="col-md-6">
-					<label class="form-label">회원등급</label>
-					<input type="text" class="form-control form-control-sm" id="kbmmGradeCd" name="kbmmGradeCd" placeholder="">
-						<c:choose>
-							<c:when test="${item.kbmmGradeCd eq 1 }">프렌즈</c:when>
-							<c:when test="${item.kbmmGradeCd eq 2 }">실버</c:when>
-							<c:when test="${item.kbmmGradeCd eq 3 }">골드</c:when>
-							<c:when test="${item.kbmmGradeCd eq 4 }">플래티넘</c:when>
-						</c:choose>
-					
-				</div> --%>
 				<div class="col-md-6">
 					<label class="form-label">주소 (한국전용)</label>
-					<input type="text" class="form-control form-control-sm mb-1" id="kbmaZipcode" name="kbmaZipcode" placeholder="">
-					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1" name="kbmaAddress1" placeholder="">
-					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2" name="kbmaAddress2" placeholder="">
+					<div class="input-group">
+						<input class="form-control form-control-sm mb-1" type="text" id="kbmaZipcode" name="kbmaZipcode" placeholder="우편번호" readonly>
+						<button class="btn btn-outline-secondary btn-sm mb-1" type="button" id="btnAddress"><i class= "fas fa-search"></i></button>
+						<button class="btn btn-outline-secondary btn-sm mb-1" type="button" id="btnClear"><i class= "fas fa-solid fa-x"></i></button>
+					</div>
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1" name="kbmaAddress1" placeholder="기본주소"> 
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2" name="kbmaAddress2" placeholder="상세주소"> 
 				</div>
+				
+				
+				
 				<div class="col-md-6">
 					<label class="form-label">주소 (국외전용)</label>
 					<input type="text" class="form-control form-control-sm mb-1" id="inputZipcode" placeholder="">
 					<input type="text" class="form-control form-control-sm mb-1" id="inputAddress1" placeholder="">
 					<input type="text" class="form-control form-control-sm mb-1" id="inputAddress2" placeholder="">
 				</div>
+				<div class="col-md-6">
+					<label class="col-form-label">교보문고 이용약관<span style="color: red;">(필수)</span></label>
+					<div class="col-md-6">
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="kbmmUseConsentNy_c" id="kbmmUseConsentNy_cy" value="1" >
+							<label class="form-check-label" for="kbmmUseConsentNy_cy">동의</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="kbmmUseConsentNy_c" id="kbmmUseConsentNy_cn" value="0" >
+							<label class="form-check-label" for="kbmmUseConsentNy_cn">비동의</label>
+						</div>
+		 			</div>
+		 		</div>			
+				<div class="col-md-6">
+					<label class="col-form-label">개인정보 수집 및 이용안내<span style="color: red;">(필수)</span></label>
+					<div class="col-md-6">
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="kbmmPersonalinfoConsentNy_c" id="personalinfoConsentNy_cy" value="1" >
+							<label class="form-check-label" for="personalinfoConsentNy_cy">동의</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="kbmmPersonalinfoConsentNy_c" id="personalinfoConsentNy_cn" value="0" >
+							<label class="form-check-label" for="personalinfoConsentNy_cn">비동의</label>
+						</div>
+		 			</div>
+		 		</div>			
 				<div class="col-md-6">
 					<label class="col-form-label">개인정보 수집 및 이용안내(선택)</label>
 					<div class="col-md-6">
@@ -186,11 +207,11 @@
 					<label class="col-form-label">이메일 마케팅 수신여부</label>
 					<div class="col-md-6">
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="kbmmEmailConsentNy" id="emailMarketingConsentY" value="1" <c:if test="${item.kbmmEmailConsentNy eq 1 }">checked</c:if>>
+							<input class="form-check-input" type="radio" name="kbmmEmailConsentNy" id="emailMarketingConsentY" value="1" >
 							<label class="form-check-label" for="emailMarketingConsentY">동의</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="kbmmEmailConsentNy" id="emailMarketingConsentN" value="0" <c:if test="${item.kbmmEmailConsentNy eq 0  || item.kbmmEmailConsentNy eq null}">checked</c:if>>
+							<input class="form-check-input" type="radio" name="kbmmEmailConsentNy" id="emailMarketingConsentN" value="0">
 							<label class="form-check-label" for="emailMarketingConsentN">비동의</label>
 						</div>
 		 			</div>
@@ -200,11 +221,11 @@
 					<label class="col-form-label">모바일 마케팅 수신여부</label>
 					<div class="col-md-6">
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="kbmmSmsConsentNy" id="mobileMarketingConsentY" value="1" <c:if test="${item.kbmmSmsConsentNy eq 1 }">checked</c:if>>
+							<input class="form-check-input" type="radio" name="kbmmSmsConsentNy" id="mobileMarketingConsentY" value="1">
 							<label class="form-check-label" for="mobileMarketingConsentY">동의</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="kbmmSmsConsentNy" id="mobileMarketingConsentN" value="0" <c:if test="${item.kbmmSmsConsentNy eq 0 || item.kbmmSmsConsentNy eq null}">checked</c:if>>
+							<input class="form-check-input" type="radio" name="kbmmSmsConsentNy" id="mobileMarketingConsentN" value="0">
 							<label class="form-check-label" for="mobileMarketingConsentN">비동의</label>
 						</div>
 		 			</div>
@@ -230,6 +251,72 @@
 
 
 <%@ include file="/WEB-INF/views/xdmin/include/footer.jsp" %><!-- footer -->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/resources/common/js/validation.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<script>
+
+$("#btnAddress").on("click",function(){
+	sample6_execDaumPostcode();
+	
+});	
+$("#btnClear").on("click",function(){
+	$("#kbmaZipcode").val("");
+	$("#kbmaAddress1").val("");
+	
+});	
+
+function sample6_execDaumPostcode() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var addr = ''; // 주소 변수
+            var extraAddr = ''; // 참고항목 변수
+
+            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                addr = data.roadAddress;
+            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                addr = data.jibunAddress;
+            }
+
+            // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+            if(data.userSelectedType === 'R'){
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraAddr !== ''){
+                    extraAddr = ' (' + extraAddr + ')';
+                }
+                // 조합된 참고항목을 해당 필드에 넣는다.
+                /* document.getElementById("kbmaAddress2").value = extraAddr; */
+            
+            } else {
+                /* document.getElementById("kbmaAddress2").value = ''; */
+            }
+
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            document.getElementById('kbmaZipcode').value = data.zonecode;
+            document.getElementById("kbmaAddress1").value = addr;
+            // 커서를 상세주소 필드로 이동한다.
+            document.getElementById("kbmaAddress2").focus();
+        }
+    }).open();
+}
+
+</script>
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->

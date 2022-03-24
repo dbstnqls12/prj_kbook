@@ -170,6 +170,23 @@
 			,#{kbmmSeq}
 		)		
 	</insert>
+	<insert id="insertNationality">
+		INSERT INTO kbMemberAddress(
+			kbmaDefaultNy
+			,kbmaAddress1
+			,kbmaAddress2
+			,kbmaZipcode
+			,kbmaDelNy
+			,kbmmSeq
+		) VALUES (
+			1
+			,#{kbmaAddress1}
+			,#{kbmaAddress2}
+			,#{kbmaZipcode}
+			,0
+			,#{kbmmSeq}
+		)		
+	</insert>
 
 
 

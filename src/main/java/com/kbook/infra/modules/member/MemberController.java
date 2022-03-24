@@ -2,12 +2,13 @@ package com.kbook.infra.modules.member;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.kbook.infra.modules.code.CodeServiceImpl;
 
 @Controller
 public class MemberController {
@@ -38,17 +39,27 @@ public class MemberController {
 		Member rt = service.selectOne(vo);	
 		model.addAttribute("item", rt);
 		
+		model.addAttribute("CodeGender", CodeServiceImpl.selectListCachedCode("3"));
+		model.addAttribute("CodeTelecom", CodeServiceImpl.selectListCachedCode("10"));
+		
 		return "/xdmin/member/memberView";
 		
 	}
 	
-	@RequestMapping(value = "/xdmin/member/memberForm_user")
+	@RequestMapping(value = "/user/memberForm_user")
 	public String memberForm(Model model) throws Exception {
-
-		return "/xdmin/member/memberForm_user";
+		
+		model.addAttribute("CodeGender", CodeServiceImpl.selectListCachedCode("3"));
+		model.addAttribute("CodeTelecom", CodeServiceImpl.selectListCachedCode("10"));
+		
+		return "/user/memberForm_user";
 	}
+	
 	@RequestMapping(value = "/xdmin/member/memberForm_xdmin")
 	public String memberForm_xdmin(Model model) throws Exception {
+		
+		model.addAttribute("CodeGender", CodeServiceImpl.selectListCachedCode("3"));
+		model.addAttribute("CodeTelecom", CodeServiceImpl.selectListCachedCode("10"));
 		
 		return "/xdmin/member/memberForm_xdmin";
 	}

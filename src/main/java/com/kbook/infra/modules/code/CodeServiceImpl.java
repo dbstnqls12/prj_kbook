@@ -1,13 +1,13 @@
 package com.kbook.infra.modules.code;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class CodeServiceImpl implements CodeService{
@@ -16,6 +16,8 @@ public class CodeServiceImpl implements CodeService{
 	CodeDao dao;
 
 //	infrCodeGroup
+	
+	
 	
 	@Override
 	public int selectOneCount(CodeVo vo) throws Exception {
@@ -43,6 +45,7 @@ public class CodeServiceImpl implements CodeService{
 	public int update(Code dto) throws Exception {
 		return dao.update(dto);
 	}
+	
 	@Override
 	public int delete(CodeVo vo) throws Exception {
 		return dao.delete(vo);
@@ -52,12 +55,14 @@ public class CodeServiceImpl implements CodeService{
 	public int updateDelete(CodeVo vo) throws Exception {
 		return dao.updateDelete(vo);
 	}
+	
 //	infrcode---------------------------------------------------
 	
 	@Override
 	public int selectOneCodeCount(CodeVo vo) throws Exception {
 		return dao.selectOneCodeCount(vo);
 	}
+	
 	@Override
 	public List<Code> selectListCode(CodeVo vo) throws Exception {
 		return dao.selectListCode(vo);
@@ -77,6 +82,7 @@ public class CodeServiceImpl implements CodeService{
 	public int updateCode(Code dto) throws Exception {
 		return dao.updateCode(dto);
 	}
+	
 	@Override
 	public List<Code> selectListCodeGroup(CodeVo vo) throws Exception {
 		return dao.selectListCodeGroup(vo);
@@ -95,11 +101,11 @@ public class CodeServiceImpl implements CodeService{
 	
 	public static List<Code> selectListCachedCode(String ifcgSeq) throws Exception{
 		List<Code> rt = new ArrayList<Code>();
-		for(Code CodeRow : Code.cachedCodeArrayList) {
-			if(CodeRow.getIfcdSeq().equals(ifcgSeq)) {
-				rt.add(CodeRow);
+		for(Code codeRow : Code.cachedCodeArrayList) {
+			if(codeRow.getIfcgSeq().equals(ifcgSeq)) {
+				rt.add(codeRow);
 			}else {
-				//
+				//by pass
 			}
 		}
 		return rt;

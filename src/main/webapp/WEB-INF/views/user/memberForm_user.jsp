@@ -43,19 +43,18 @@
 				<label class="form-label">&nbsp;</label>
 				<select class="form-select" id="kbmmGenderCd" name="kbmmGenderCd">
 					<option selected value="">성별</option>
-					<option value="1">남성</option>
-					<option value="2">여성</option>
-					<option value="3">기타</option>
+						<c:forEach items="${CodeGender}" var="itemGender" varStatus="statusGender">
+					<option value="<c:out value="${itemGender.ifcdOrder}"/>"><c:out value="${itemGender.ifcdName}"/></option>	
+						</c:forEach>
 				</select>
 			</div>
 			<div class="col-4 mb-1">
 				<label class="form-label"><b>휴대폰번호</b></label>
 					<select class="form-select" id="kbmpTelecomCd" name="kbmpTelecomCd">
 					<option selected value="">::통신사::</option>
-					<option value="1">SKT</option>
-					<option value="2">KT</option>
-					<option value="3">LGU</option>
-					<option value="4">기타</option>
+							<c:forEach items="${CodeTelecom}" var="itemTelecom" varStatus="statusTelecoom">
+						<option value="<c:out value="${itemTelecom.ifcdOrder}"/>"><c:out value="${itemTelecom.ifcdName}"/></option>	
+							</c:forEach>
 				</select>
 			</div>
 			<div class="col-8 mb-1">

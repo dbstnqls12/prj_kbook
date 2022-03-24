@@ -60,19 +60,28 @@
 					<label class="form-label">성별</label>
 					<select class="form-select form-select-sm" id="kbmmGenderCd" name="kbmmGenderCd">
 						<option value="">::성별::</option>
+							<c:forEach items="${CodeGender}" var="itemGender" varStatus="statusGender">
+						<option value="<c:out value="${itemGender.ifcdSeq}"/>" <c:if test="${item.kbmmGenderCd eq itemGender.ifcdOrder }">selected</c:if> ><c:out value="${itemGender.ifcdName}"/></option>	
+							</c:forEach>
+					</select>
+				</div>	
+<%-- 				<div class="col-md-6">
+					<label class="form-label">성별</label>
+					<select class="form-select form-select-sm" id="kbmmGenderCd" name="kbmmGenderCd">
+						<option value="">::성별::</option>
 						<option value="1" <c:if test="${item.kbmmGenderCd eq 1 }">selected</c:if>>남성</option>
 						<option value="2" <c:if test="${item.kbmmGenderCd eq 2 }">selected</c:if>>여성</option>
 						<option value="3" <c:if test="${item.kbmmGenderCd eq 3 }">selected</c:if>>기타</option>
 					</select>
-				</div>	
+				</div>	 --%>
 				<div class="col-md-6">
 					<label class="form-label">핸드폰번호</label>
 					<select class="form-select form-select-sm mb-1" id="kbmpTelecomCd" name="kbmpTelecomCd">
 						<option selected>::통신사::</option>
-						<option value="1" <c:if test="${item.kbmpTelecomCd eq 1 }">selected</c:if>>SKT</option>
-						<option value="2" <c:if test="${item.kbmpTelecomCd eq 2 }">selected</c:if>>KT</option>
-						<option value="3" <c:if test="${item.kbmpTelecomCd eq 3 }">selected</c:if>>LGU</option>
-						<option value="4" <c:if test="${item.kbmpTelecomCd eq 4 }">selected</c:if>>기타</option>
+							<c:forEach items="${CodeTelecom}" var="itemTelecom" varStatus="statusTelecom">
+						<option value="<c:out value="${itemTelecom.ifcdSeq}"/>" <c:if test="${item.kbmpTelecomCd eq itemTelecom.ifcdOrder }">selected</c:if> ><c:out value="${itemTelecom.ifcdName}"/></option>	
+							</c:forEach>
+					</select>
 					</select>
 					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" placeholder="<c:out value="${item.kbmpNumberFull}"/>">
 				</div>
