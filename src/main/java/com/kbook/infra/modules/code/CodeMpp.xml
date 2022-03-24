@@ -76,8 +76,15 @@
 			ifcgName = #{ifcgName}
 		WHERE 1=1
 			AND ifcgSeq=#{ifcgSeq}
-
 	</update>
+	
+	<update id="updateDelete">
+		UPDATE infrCodeGroup SET igcgDelNy = 1 WHERE 1=1 AND ifcgSeq=#{ifcgSeq}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM infrCodeGroup WHERE 1=1 AND ifcgSeq=#{ifcgSeq}
+	</delete>
 
 
 	<!-- infrCode -->
@@ -88,11 +95,13 @@
 			AND ifcdDelNy = 0
 			<if test="shIfcgSeq != null and !shIfcgSeq.equals('')"> AND ifcgSeq = #{shIfcgSeq}</if> 
 	</sql>
+	
 	<select id="selectOneCodeCount" resultType="Integer">
 		SELECT
 			count(*)
 		<include refid="selectCommonCode"/>
 	</select>
+	
 	<select id="selectListCode" resultMap="resultMapObj">
 		SELECT
 			ifcdSeq
@@ -103,6 +112,7 @@
 		<include refid="selectCommonCode"/>
 		limit #{startRnumForMysql}, #{rowNumToShow}
 	</select>
+	
 	<insert id="insertCode">
 		INSERT INTO infrCode(
 			ifcdName
@@ -116,6 +126,7 @@
 			,#{ifcgSeq}
 		)		
 	</insert>
+	
 	<select id="selectOneCode" resultMap="resultMapObj">
 		SELECT
 			ifcdSeq
@@ -128,6 +139,7 @@
 		WHERE 1=1
 			AND ifcdSeq=#{ifcdSeq}
 	</select>
+	
 	<update id="updateCode">
 		UPDATE infrCode SET 	
 			ifcdName = #{ifcdName}
@@ -136,4 +148,18 @@
 		WHERE 1=1
 			AND ifcdSeq=#{ifcdSeq}
 	</update>
+	
+	<select id="selectListForCache" resultMap="resultMapObj">
+		SELECT
+			ifcdSeq
+			,ifcdName
+			,ifcdDelNy
+			,ifcdOrder
+			,ifcgSeq
+		FROM
+			infrCode
+		WHERE 1=1
+			AND ifcdDelNy = 0
+			AND ifcdUseNy = 1
+	</select>
 </mapper>    

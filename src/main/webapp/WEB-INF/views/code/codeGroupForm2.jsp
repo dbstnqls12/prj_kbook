@@ -8,5 +8,11 @@
 <form method="post" action ="/code/codeGroupUpdt">
 	<input type="hidden" name="ifcgSeq" value= <c:out value="${rt.ifcgSeq}"/>>
 	<input type="text" name="ifcgName" placeholder="이름" value= <c:out value="${rt.ifcgName}"/>>
+	
+	<input type="hidden" name="thisPage" id="thisPage" value="<c:out value="${vo.thisPage}"/>" >
+	<input type="hidden" name="shValue" id="shValue" value="<c:out value="${vo.shValue}"/>" >
+	<input type="hidden" name="shOption" id="shOption" value="<c:out value="${vo.shOption}"/>" >
+	
 	<input type="submit" value="제출">
 </form>
+<a href="codeGroupList?thisPage=<c:out value="${vo.thisPage}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue }"/>">목록</a>
