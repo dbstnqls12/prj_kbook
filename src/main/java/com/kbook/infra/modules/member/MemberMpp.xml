@@ -14,6 +14,8 @@
 			left join kbMemberPhone b on b.kbmmSeq = a.kbmmSeq	
 			left join kbMemberEmail c on c.kbmmSeq = a.kbmmSeq
 		WHERE 1=1
+			AND b.kbmpDefaultNy = 1	
+			AND c.kbmeDefaultNy = 1
 			<choose>
 				<when test="shKbmmDelNy == 1">AND kbmmDelNy=1</when>
 				<when test="shKbmmDelNy == 0">AND kbmmDelNy=0</when>
@@ -39,9 +41,10 @@
 			,c.kbmeEmailFull
 			,a.kbmmAdminNy
 		<include refid="selectCommon"/>	
+
 		limit #{startRnumForMysql}, #{rowNumToShow}
 	</select>
-	
+
 	<select id="selectOne" resultMap="resultMapObj">
 		select
 			a.kbmmSeq
@@ -61,6 +64,7 @@
 			,a.kbmmOfferinfo2ConsentNy_s
 			,a.kbmmdormancyNy
 			,b.kbmpTelecomCd
+			,b.kbmpDefaultNy
 			,b.kbmpNumberFull
 			,b.kbmpDeviceCd
 			,c.kbmeEmailFull
@@ -75,6 +79,7 @@
 			left join kbMemberAddress d on d.kbmmSeq = a.kbmmSeq
 		WHERE 1=1
 			AND a.kbmmSeq=#{kbmmSeq}
+			
 	</select>
 	
 
@@ -203,7 +208,7 @@
 			,kbmmEmailConsentNy = #{kbmmEmailConsentNy}
 			,kbmmSavedCd = #{kbmmSavedCd}
 		WHERE 1=1
-			AND ifcgSeq=#{ifcgSeq}
+			AND kbmmSeq=#{kbmmSeq}
 		<selectKey resultType="String" keyProperty="kbmmSeq" order="AFTER">
 			SELECT last_update_id()
 		</selectKey>	

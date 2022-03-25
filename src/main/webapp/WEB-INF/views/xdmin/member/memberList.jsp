@@ -35,7 +35,10 @@
 		<div class="col-md-10">
 			<!-- 검색 s -->
 			<div class="mb-2"><h4>검색</h4></div>
-			<form id="" name="" method="get" action="memberList">
+			<form id="formList" name="formList" method="post" action="memberList">
+			<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+			<input type="hidden" id="kbmmSeq" name="kbmmSeq">
+
 			<div class="border p-3 ">
 				<div class="row">
 					<div class="col-6 col-md-3 mt-2 mb-2">	 	
@@ -68,7 +71,7 @@
 					</div>
 				</div>
 			</div>	
-			</form>
+			
 			<!-- 검색 e -->
 	
 			<!-- table s -->
@@ -97,7 +100,7 @@
 							<tr>
 								<td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
 								<td><c:out value="${item.kbmmSeq}"/></td>
-								<td><a href="/xdmin/member/memberView?kbmmSeq=${item.kbmmSeq}"><c:out value="${item.kbmmName}"/></a></td>
+								<td><a href="javascript:goView(<c:out value="${item.kbmmSeq}"/>)"><c:out value="${item.kbmmName}"/></a></td>
 								<td><c:out value="${item.kbmmId}"/></td>
 								<td><c:out value="${item.kbmpNumberFull}"/></td>
 								<td><c:out value="${item.kbmeEmailFull}"/></td>
@@ -108,9 +111,32 @@
 					</tr>
 				</table> 
 			</div>
+			</form>
 			<!-- table e -->
 			<!-- page s -->
 			<nav aria-label="Page navigation">
+				<ul class="pagination justify-content-center">
+				<!-- 	<li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li> -->
+					<c:if test="${vo.startPage gt vo.pageNumToShow}">
+              			  <li class="page-item"><a class="page-link" href="javascript:goList(<c:out value='${vo.startPage - 1}'/>);">Previous</a></li>
+					</c:if>
+					 <c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+						<c:choose>
+							<c:when test="${i.index eq vo.thisPage}">
+					                <li class="page-item active"><a class="page-link" href="javascript:goList(<c:out value='${i.index}'/>);">${i.index}</a></li>
+							</c:when>
+							<c:otherwise>             
+					                <li class="page-item"><a class="page-link" href="javascript:goList(<c:out value='${i.index}'/>);"">${i.index}</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>  
+					<c:if test="${vo.endPage ne vo.totalPages}">                
+               			 <li class="page-item"><a class="page-link" href="javascript:goList(<c:out value='${vo.endPage + 1}'/>);"">Next</a></li>
+					</c:if>  
+					<!-- <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li> -->
+				</ul>
+			</nav>
+<%-- 			<nav aria-label="Page navigation">
 				<ul class="pagination justify-content-center">
 				<!-- 	<li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li> -->
 					<c:if test="${vo.startPage gt vo.pageNumToShow}">
@@ -131,13 +157,13 @@
 					</c:if>  
 					<!-- <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li> -->
 				</ul>
-			</nav>
+			</nav> --%>
 			<!-- page e -->
 			<div class="clearfix mb-3">	
 				<div class="float-start"><button type="button" class="btn btn-danger btn-sm float-start"><i class="fas fa-trash"></i></button></div>
 				<div class="float-end">
 					<button type="button" class="btn btn-success btn-sm" id="search_icon"><i class="bi bi-file-earmark-x"></i></button>
-					<button type="button" class="btn btn-primary btn-sm" id="search_icon" onclick="location.href='/xdmin/member/memberForm_xdmin'"><i class="fas fa-plus"></i></button>
+					<button type="button" class="btn btn-primary btn-sm" id="search_icon" onclick="location.href='/xdmin/member/memberForm_xdmin??&thisPage=<c:out value="${vo.thisPage}"/>&shKbmmDelNy=<c:out value="${vo.shKbmmDelNy}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>'"><i class="fas fa-plus"></i></button>
 				</div>
 			</div>
 		</div>
@@ -157,7 +183,26 @@
 		if(!checkNull($("#shValue"), $("#shValue").val(), "검색어를 입력해주세요!")) return false;			
 
 	});
+	$("#btnSubmit2").on("click",function(){
+		
+		$("#shKbmmDelNy").val("");
+		$("#shOption").val("");
+		$("#shValue").val("");	
+
+	});
 	
+ 	goList = function(seq){
+		//form 객체를 가져온다
+		$("#thisPage").val(seq);
+		$("#formList").submit();
+		//가져온 객체를 전달한다
+	}
+	
+	goView = function(seq){
+		$("#kbmmSeq").val(seq);
+		$("#formList").attr("action","/xdmin/member/memberView");
+		$("#formList").submit();
+	}
 
 </script>
 <!-- Optional JavaScript; choose one of the two! -->

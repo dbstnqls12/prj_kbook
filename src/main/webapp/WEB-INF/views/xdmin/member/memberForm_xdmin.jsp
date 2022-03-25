@@ -37,7 +37,12 @@
 		<div class="col-md-10">
 		<div class="mb-3"><h4>회원가입</h4></div>
 			<div class="container ">
-			<form action="/xdmin/member/memberInst" method="get" id="memberForm" name="memberForm" enctype="multipart/form-data" class="row g-3">
+			<form action="/xdmin/member/memberInst" method="post" id="memberForm" name="memberForm" class="row g-3">
+				<input type="hidden" id="thisPage" name="thisPage"  value="<c:out value="${vo.thisPage}"/>">
+				<input type="hidden" id="kbmmSeq" name="kbmmSeq" value="<c:out value="${vo.kbmmSeq}"/>">
+				<input type="hidden" id="shKbmmDelNy" name="shKbmmDelNy" value="<c:out value="${vo.shKbmmDelNy}"/>">
+				<input type="hidden" id="shOption" name="shOption"  value="<c:out value="${vo.shOption}"/>">
+				<input type="hidden" id="shValue" name="shValue"  value="<c:out value="${vo.shValue}"/>">
 				<div class="col-md-6">
 					<label class="form-label">이름</label>
 					<input type="text" class="form-control form-control-sm" id="kbmmName" name="kbmmName">
@@ -231,15 +236,16 @@
 		 			</div>
 		 		</div>
 
-		 		
+	</form>	 		
 
 			<div class="col-mb-3 mt-3">	
 				<div class="float-start"><button type="button" class="btn btn-danger btn-sm float-start"><i class="fas fa-trash"></i></button></div>
 				<div class="float-end">
+				<button type="button" class="btn btn-secondary btn-sm" id="btn-list" name="btn-list" onclick="javascript:goList();"><i class="fa-solid fa-list"></i></button>
 				<button type="submit" class="btn btn-primary btn-sm" id="btn-add" name="btn-add"><i class="fas fa-plus"></i></button>
 				</div>
 			</div>
-</form>
+
 			
 
 		</div>
@@ -267,6 +273,11 @@ $("#btnClear").on("click",function(){
 	$("#kbmaAddress1").val("");
 	
 });	
+
+goList = function(){
+	$("#memberForm").attr("action", "/xdmin/member/memberList");
+	$("#memberForm").submit();
+};
 
 function sample6_execDaumPostcode() {
     new daum.Postcode({

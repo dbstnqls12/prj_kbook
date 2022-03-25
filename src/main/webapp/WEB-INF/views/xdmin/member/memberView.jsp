@@ -37,7 +37,12 @@
 		<div class="col-md-10">
 		<div class="mb-3"><h4>회원정보</h4></div>
 			<div class="container ">
-			<form action="" method="get" id="memberView" name="memberView" enctype="multipart/form-data" class="row g-3">
+			<form action="" method="post" id="memberView" name="memberView" class="row g-3">
+				<input type="hidden" id="thisPage" name="thisPage"  value="<c:out value="${vo.thisPage}"/>">
+				<input type="hidden" id="kbmmSeq" name="kbmmSeq" value="<c:out value="${vo.kbmmSeq}"/>">
+				<input type="hidden" id="shKbmmDelNy" name="shKbmmDelNy" value="<c:out value="${vo.shKbmmDelNy}"/>">
+				<input type="hidden" id="shOption" name="shOption"  value="<c:out value="${vo.shOption}"/>">
+				<input type="hidden" id="shValue" name="shValue"  value="<c:out value="${vo.shValue}"/>">
 				<div class="col-md-6">
 					<label class="form-label">이름</label>
 					<input type="text" class="form-control form-control-sm" id="kbmmName" name="kbmmName" value="<c:out value="${item.kbmmName}"/>">
@@ -73,19 +78,20 @@
 						<option value="<c:out value="${itemTelecom.ifcdSeq}"/>" <c:if test="${item.kbmpTelecomCd eq itemTelecom.ifcdOrder }">selected</c:if> ><c:out value="${itemTelecom.ifcdName}"/></option>	
 							</c:forEach>
 					</select>
-					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" value="<c:out value="${item.kbmpNumberFull}"/>">
+					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull"  <c:if test="${item.kbmpDeviceCd eq 2 }">value="<c:out value="${item.kbmpNumberFull}"/>"</c:if> >
 				</div>
-				<div class="col-md-6">
-					<label class="col-form-label pt-0">이메일</label>
-					<input type="text" class="form-control form-control-sm" id="kbmeEmailFull" name="kbmeEmailFull" value="<c:out value="${item.kbmeEmailFull}"/>">
-				</div>
-				<div class="col-md-6">
+
+ 				<div class="col-md-6">
 					<label class="form-label">전화번호</label>
-					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull"  placeholder="">
+					<input type="text" class="form-control form-control-sm" id="kbmpNumberHome" name="kbmpNumberHome" <c:if test="${item.kbmpDeviceCd eq 1 }">value="<c:out value="${item.kbmpNumberFull}"/>"</c:if> >
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">팩스번호</label>
-					<input type="text" class="form-control form-control-sm" id="inputFax" placeholder="">
+					<input type="text" class="form-control form-control-sm" id="kbmpNumberFax" name="kbmpNumberFax" <c:if test="${item.kbmpDeviceCd eq 3 }">value="<c:out value="${item.kbmpNumberFull}"/>"</c:if>  >
+				</div> 
+				<div class="col-md-6">
+					<label class="col-form-label pt-0">이메일</label>
+					<input type="text" class="form-control form-control-sm" id="kbmeEmailFull" name="kbmeEmailFull" value="<c:out value="${item.kbmeEmailFull}"/>">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">국적</label>
@@ -105,8 +111,6 @@
 						<option value="<c:out value="${itemGrade.ifcdSeq}"/>" <c:if test="${item.kbmmGradeCd eq itemGrade.ifcdOrder }">selected</c:if> ><c:out value="${itemGrade.ifcdName}"/></option>	
 							</c:forEach>
 					</select>
-					
-					
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">주소 (한국전용)</label>
@@ -227,9 +231,12 @@
 				</div>
 			</form>
 			<div class="col-mb-3 mt-3">	
-				<div class="float-start"><button type="button" class="btn btn-danger btn-sm float-start"><i class="fas fa-trash"></i></button></div>
+				<div class="float-start">
+					<button type="button" class="btn btn-danger btn-sm float-start" id="btn-delete" ><i class="fas fa-trash"></i></button>
+				</div>
 				<div class="float-end">
-					<button type="button" class="btn btn-primary btn-sm" id="btn-add" name="btn-add" onclick=""><i class="fas fa-plus"></i></button>
+					<button type="button" class="btn btn-secondary btn-sm" id="btn-list" name="btn-list" onclick="javascript:goList();"><i class="fa-solid fa-list"></i></button>
+					<button type="button" class="btn btn-primary btn-sm" id="btn-edit" name="btn-edit" onclick="javascript:goEditForm();"><i class="fa-solid fa-pen-to-square"></i></button>
 				</div>
 			</div>
 			
@@ -238,6 +245,31 @@
 		</div>
 	</div>
 </div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+$("#btn-delete").on("click", function(){
+	var answer = confirm("정말 삭제하시겠습니까?");
+	
+	if(answer){
+		// /infra/code/codeView
+	}else{
+		return false;
+	}
+	
+});
+
+	goList = function(){
+		$("#memberView").attr("action", "/xdmin/member/memberList");
+		$("#memberView").submit();
+	};
+	goEditForm = function(){
+		$("#memberView").attr("action", "/xdmin/member/memberEditForm");
+		$("#memberView").submit();
+	};
+
+</script>
 
 
 

@@ -103,15 +103,15 @@ public class CodeController {
 	}
 	
 	@RequestMapping(value = "/code/codeGroupNele")
-	public String codeGroupNele(CodeVo vo, Code dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String codeGroupNele(@ModelAttribute("vo") CodeVo vo, Code dto, RedirectAttributes redirectAttributes) throws Exception {
 		
 		service.updateDelete(vo);
 		
 		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
 		redirectAttributes.addAttribute("shOption", vo.getShOption());
 		redirectAttributes.addAttribute("shValue", vo.getShValue());
-		
-		return "redirect:/code/codeGroupView?ifcgSeq="+dto.getIfcdSeq();
+
+		return "redirect:/code/codeGroupView";
 	}
 	
 	public String makeQueryString(CodeVo vo) {

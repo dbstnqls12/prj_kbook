@@ -2,6 +2,7 @@ package com.kbook.infra.modules.member;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,7 +36,15 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/xdmin/member/memberView")
-	public String memberView(MemberVo vo, Model model) throws Exception{
+	public String memberView(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception{
+		
+		System.out.println("############################");
+		System.out.println("vo.getShOption() : "+vo.getShOption());		
+		System.out.println("vo.getShKbmmDelNy() : "+vo.getShKbmmDelNy());		
+		System.out.println("vo.getShValue() : "+vo.getShValue());		
+		System.out.println("vo.getThisPage() : "+vo.getThisPage());		
+		System.out.println("vo.getkbmmSeq() : "+vo.getKbmmSeq());		
+		System.out.println("############################");
 		
 		Member rt = service.selectOne(vo);	
 		model.addAttribute("item", rt);
@@ -58,7 +67,14 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/xdmin/member/memberForm_xdmin")
-	public String memberForm_xdmin(Member dto, Model model) throws Exception {
+	public String memberForm_xdmin(@ModelAttribute("vo") MemberVo vo, Member dto, Model model) throws Exception {
+		
+		System.out.println("############################");
+		System.out.println("vo.getShOption() : "+vo.getShOption());		
+		System.out.println("vo.getShKbmmDelNy() : "+vo.getShKbmmDelNy());		
+		System.out.println("vo.getShValue() : "+vo.getShValue());		
+		System.out.println("vo.getThisPage() : "+vo.getThisPage());		
+		System.out.println("############################");
 		
 		model.addAttribute("CodeGender", CodeServiceImpl.selectListCachedCode("3"));
 		model.addAttribute("CodeTelecom", CodeServiceImpl.selectListCachedCode("10"));
@@ -66,7 +82,9 @@ public class MemberController {
 		return "/xdmin/member/memberForm_xdmin";
 	}
 	
-	@RequestMapping(value = "xdmin/member/memberInst")
+
+	
+	@RequestMapping(value = "/xdmin/member/memberInst")
 	public String memberInst(Member dto, MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
 		
 		service.insert(dto);
@@ -74,11 +92,50 @@ public class MemberController {
 		System.out.println("getKbmmSeq() : "+dto.getKbmmSeq());
 				
 		redirectAttributes.addAttribute("kbmmSeq", dto.getKbmmSeq());
-		redirectAttributes.addAttribute("thisPage", dto.getKbmmSeq());
-		redirectAttributes.addAttribute("kbmmSeq", dto.getKbmmSeq());
-		redirectAttributes.addAttribute("kbmmSeq", dto.getKbmmSeq());
-		return "redirect:/xdmin/login/login";
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+		redirectAttributes.addAttribute("shOption", vo.getShOption());
+		redirectAttributes.addAttribute("shValue", vo.getShValue());
+		redirectAttributes.addAttribute("shKbmmDelNy", vo.getShKbmmDelNy());
+		
+		return "redirect:/xdmin/member/memberView";
 	}
+	
+	@RequestMapping(value = "/xdmin/member/memberEditForm")
+	public String memberEditForm(@ModelAttribute("vo") MemberVo vo, Member dto, Model model) throws Exception {
+		
+		System.out.println("############################");
+		System.out.println("vo.getShOption() : "+vo.getShOption());		
+		System.out.println("vo.getShKbmmDelNy() : "+vo.getShKbmmDelNy());		
+		System.out.println("vo.getShValue() : "+vo.getShValue());		
+		System.out.println("vo.getThisPage() : "+vo.getThisPage());		
+		System.out.println("############################");
+		
+		model.addAttribute("CodeGender", CodeServiceImpl.selectListCachedCode("3"));
+		model.addAttribute("CodeTelecom", CodeServiceImpl.selectListCachedCode("10"));
+		
+		Member rt =  service.selectOne(vo);
+		
+		model.addAttribute("rt", rt);
+		
+		return "/xdmin/member/memberEditForm";
+	}
+	
+	@RequestMapping(value = "/xdmin/member/memberUpdt")
+	public String memberUpdt(@ModelAttribute("vo") MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.update(dto);
+		
+		redirectAttributes.addAttribute("kbmmSeq", dto.getKbmmSeq());
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+		redirectAttributes.addAttribute("shOption", vo.getShOption());
+		redirectAttributes.addAttribute("shValue", vo.getShValue());
+		redirectAttributes.addAttribute("shKbmmDelNy", vo.getShKbmmDelNy());
+		
+		return "redirect:/xdmin/member/memberView";
+		
+	}
+
+
 	
 	@RequestMapping(value = "xdmin/login/login")
 	public String memberLogin(Member dto) throws Exception {
