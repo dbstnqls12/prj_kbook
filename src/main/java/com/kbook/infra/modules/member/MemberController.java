@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kbook.infra.modules.code.CodeServiceImpl;
 
@@ -41,6 +42,7 @@ public class MemberController {
 		
 		model.addAttribute("CodeGender", CodeServiceImpl.selectListCachedCode("3"));
 		model.addAttribute("CodeTelecom", CodeServiceImpl.selectListCachedCode("10"));
+		model.addAttribute("CodeGrade", CodeServiceImpl.selectListCachedCode("2"));
 		
 		return "/xdmin/member/memberView";
 		
@@ -56,7 +58,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/xdmin/member/memberForm_xdmin")
-	public String memberForm_xdmin(Model model) throws Exception {
+	public String memberForm_xdmin(Member dto, Model model) throws Exception {
 		
 		model.addAttribute("CodeGender", CodeServiceImpl.selectListCachedCode("3"));
 		model.addAttribute("CodeTelecom", CodeServiceImpl.selectListCachedCode("10"));
@@ -65,12 +67,19 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "xdmin/member/memberInst")
-	public String memberInst(Member dto) throws Exception {
+	public String memberInst(Member dto, MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
 		
 		service.insert(dto);
+		
+		System.out.println("getKbmmSeq() : "+dto.getKbmmSeq());
 				
+		redirectAttributes.addAttribute("kbmmSeq", dto.getKbmmSeq());
+		redirectAttributes.addAttribute("thisPage", dto.getKbmmSeq());
+		redirectAttributes.addAttribute("kbmmSeq", dto.getKbmmSeq());
+		redirectAttributes.addAttribute("kbmmSeq", dto.getKbmmSeq());
 		return "redirect:/xdmin/login/login";
 	}
+	
 	@RequestMapping(value = "xdmin/login/login")
 	public String memberLogin(Member dto) throws Exception {
 		

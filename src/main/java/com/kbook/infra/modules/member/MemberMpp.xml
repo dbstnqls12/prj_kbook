@@ -7,6 +7,7 @@
 <mapper namespace="com.kbook.infra.modules.member.MemberMpp">
 
 <resultMap id="resultMapObj" type="com.kbook.infra.modules.member.Member"></resultMap>
+	
 	<sql id="selectCommon">
 		FROM
 			kbMember a
@@ -119,6 +120,7 @@
 			SELECT last_insert_id()
 		</selectKey>	
 	</insert>
+	
 	<insert id="insertPhone">
 		INSERT INTO kbMemberPhone(
 			kbmpDefaultNy

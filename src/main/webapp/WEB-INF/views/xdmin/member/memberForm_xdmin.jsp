@@ -35,9 +35,9 @@
 		
 		<hr class="d-block d-sm-none">
 		<div class="col-md-10">
-		<div class="mb-3"><h4>회원정보</h4></div>
+		<div class="mb-3"><h4>회원가입</h4></div>
 			<div class="container ">
-			<form action="" method="get" id="memberView" name="memberView" enctype="multipart/form-data" class="row g-3">
+			<form action="/xdmin/member/memberInst" method="get" id="memberForm" name="memberForm" enctype="multipart/form-data" class="row g-3">
 				<div class="col-md-6">
 					<label class="form-label">이름</label>
 					<input type="text" class="form-control form-control-sm" id="kbmmName" name="kbmmName">
@@ -89,7 +89,7 @@
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">국적</label>
-					<select class="form-select form-select-sm" id="inputNationality">
+					<select class="form-select form-select-sm" id="inputNationality" >
 						<option selected>::선택::</option>
 						<option value="1">대한민국</option>
 						<option value="2"></option>
@@ -233,13 +233,13 @@
 
 		 		
 
-			</form>
 			<div class="col-mb-3 mt-3">	
 				<div class="float-start"><button type="button" class="btn btn-danger btn-sm float-start"><i class="fas fa-trash"></i></button></div>
 				<div class="float-end">
-					<button type="button" class="btn btn-primary btn-sm" id="btn-add" name="btn-add" onclick=""><i class="fas fa-plus"></i></button>
+				<button type="submit" class="btn btn-primary btn-sm" id="btn-add" name="btn-add"><i class="fas fa-plus"></i></button>
 				</div>
 			</div>
+</form>
 			
 
 		</div>

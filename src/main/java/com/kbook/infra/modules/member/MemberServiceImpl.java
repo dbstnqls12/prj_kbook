@@ -2,11 +2,9 @@ package com.kbook.infra.modules.member;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.kbook.infra.modules.code.Code;
-import com.kbook.infra.modules.code.CodeVo;
 
 @Service
 public class MemberServiceImpl implements MemberService{

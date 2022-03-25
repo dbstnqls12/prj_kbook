@@ -40,21 +40,21 @@
 			<form action="" method="get" id="memberView" name="memberView" enctype="multipart/form-data" class="row g-3">
 				<div class="col-md-6">
 					<label class="form-label">이름</label>
-					<input type="text" class="form-control form-control-sm" id="kbmmName" name="kbmmName" placeholder="<c:out value="${item.kbmmName}"/>">
+					<input type="text" class="form-control form-control-sm" id="kbmmName" name="kbmmName" value="<c:out value="${item.kbmmName}"/>">
 				</div>
 				<div class="col-6 d-none d-sm-block"></div><!-- 줄바꿈 -->
 				<div class="col-md-6">
 					<label for="inputId" class="form-label">아이디</label>
-					<input type="text" class="form-control form-control-sm" id="kbmmId" name="kbmmId" placeholder="<c:out value="${item.kbmmId}"/>"> 
+					<input type="text" class="form-control form-control-sm" id="kbmmId" name="kbmmId" value="<c:out value="${item.kbmmId}"/>"> 
 				</div>
 				<div class="col-md-6">
 					<label for="inputPwd" class="form-label">비밀번호</label>
-					<input type="password" class="form-control form-control-sm" id="kbmmPassword" name="kbmmPassword" placeholder="<c:out value="${item.kbmmPassword}"/>">
+					<input type="password" class="form-control form-control-sm" id="kbmmPassword" name="kbmmPassword" value="<c:out value="${item.kbmmPassword}"/>">
 				</div>
 
 				<div class="col-md-6">
 					<label class="form-label">생년월일</label>
-					<input type="text" id="kbmmDob" name="kbmmDob" max="2022-01-08" class="form-control form-control-sm" placeholder="<c:out value="${item.kbmmDob}"/>">
+					<input type="text" id="kbmmDob" name="kbmmDob" max="2022-01-08" class="form-control form-control-sm" value="<c:out value="${item.kbmmDob}"/>">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">성별</label>
@@ -65,15 +65,6 @@
 							</c:forEach>
 					</select>
 				</div>	
-<%-- 				<div class="col-md-6">
-					<label class="form-label">성별</label>
-					<select class="form-select form-select-sm" id="kbmmGenderCd" name="kbmmGenderCd">
-						<option value="">::성별::</option>
-						<option value="1" <c:if test="${item.kbmmGenderCd eq 1 }">selected</c:if>>남성</option>
-						<option value="2" <c:if test="${item.kbmmGenderCd eq 2 }">selected</c:if>>여성</option>
-						<option value="3" <c:if test="${item.kbmmGenderCd eq 3 }">selected</c:if>>기타</option>
-					</select>
-				</div>	 --%>
 				<div class="col-md-6">
 					<label class="form-label">핸드폰번호</label>
 					<select class="form-select form-select-sm mb-1" id="kbmpTelecomCd" name="kbmpTelecomCd">
@@ -82,12 +73,11 @@
 						<option value="<c:out value="${itemTelecom.ifcdSeq}"/>" <c:if test="${item.kbmpTelecomCd eq itemTelecom.ifcdOrder }">selected</c:if> ><c:out value="${itemTelecom.ifcdName}"/></option>	
 							</c:forEach>
 					</select>
-					</select>
-					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" placeholder="<c:out value="${item.kbmpNumberFull}"/>">
+					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" value="<c:out value="${item.kbmpNumberFull}"/>">
 				</div>
 				<div class="col-md-6">
 					<label class="col-form-label pt-0">이메일</label>
-					<input type="text" class="form-control form-control-sm" id="kbmeEmailFull" name="kbmeEmailFull" placeholder="<c:out value="${item.kbmeEmailFull}"/>">
+					<input type="text" class="form-control form-control-sm" id="kbmeEmailFull" name="kbmeEmailFull" value="<c:out value="${item.kbmeEmailFull}"/>">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">전화번호</label>
@@ -109,13 +99,13 @@
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">회원등급</label>
-					<input type="text" class="form-control form-control-sm" id="kbmmGradeCd" name="kbmmGradeCd" placeholder="">
-						<c:choose>
-							<c:when test="${item.kbmmGradeCd eq 1 }">프렌즈</c:when>
-							<c:when test="${item.kbmmGradeCd eq 2 }">실버</c:when>
-							<c:when test="${item.kbmmGradeCd eq 3 }">골드</c:when>
-							<c:when test="${item.kbmmGradeCd eq 4 }">플래티넘</c:when>
-						</c:choose>
+					<select class="form-select form-select-sm mb-1" id="kbmmGradeCd" name="kbmmGradeCd">
+						<option selected>::회원등급::</option>
+							<c:forEach items="${CodeGrade}" var="itemGrade" varStatus="statusGrade">
+						<option value="<c:out value="${itemGrade.ifcdSeq}"/>" <c:if test="${item.kbmmGradeCd eq itemGrade.ifcdOrder }">selected</c:if> ><c:out value="${itemGrade.ifcdName}"/></option>	
+							</c:forEach>
+					</select>
+					
 					
 				</div>
 				<div class="col-md-6">

@@ -16,7 +16,6 @@ public class CodeController {
 	@Autowired
 	CodeServiceImpl service;
 	
-
 	@RequestMapping(value = "/code/codeGroupList")
 	public String codeGroupList(@ModelAttribute("vo") CodeVo vo, Model model) throws Exception {
 		
