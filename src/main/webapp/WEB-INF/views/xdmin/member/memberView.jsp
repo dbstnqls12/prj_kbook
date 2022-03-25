@@ -66,17 +66,49 @@
 					<select class="form-select form-select-sm" id="kbmmGenderCd" name="kbmmGenderCd">
 						<option value="">::성별::</option>
 							<c:forEach items="${CodeGender}" var="itemGender" varStatus="statusGender">
-						<option value="<c:out value="${itemGender.ifcdSeq}"/>" <c:if test="${item.kbmmGenderCd eq itemGender.ifcdOrder }">selected</c:if> ><c:out value="${itemGender.ifcdName}"/></option>	
+						<option value="<c:out value="${itemGender.ifcdOrder}"/>" <c:if test="${item.kbmmGenderCd eq itemGender.ifcdOrder }">selected</c:if> ><c:out value="${itemGender.ifcdName}"/></option>	
 							</c:forEach>
 					</select>
 				</div>	
+				
+
+<%-- 				<c:forEach items="${listPhone}" var="item" varStatus="statusTelecom">
+					<c:choose>
+						<c:when test="${item.kbmpDeviceCd eq 1 }"><c:set var="kbmmNumberHome" value="${item.kbmpNumberFull }"></c:set></c:when>
+						<c:when test="${item.kbmpDeviceCd eq 2 }">
+							<c:set var="kbmmNumberMobile" value="${item.kbmpNumberFull}"></c:set>
+							<c:set var="kbmmNumberTelecom" value="${item.kbmpTelecomCd}"></c:set>
+						</c:when>
+						<c:when test="${item.kbmpDeviceCd eq 3 }"><c:set var="kbmmNumberFax" value="${item.kbmpNumberFull }"></c:set></c:when>
+					</c:choose>
+				</c:forEach> --%>
+<%-- 				<div class="col-md-6">
+					<label class="form-label">핸드폰번호</label>
+					<select class="form-select form-select-sm mb-1" id="kbmpTelecomCd" name="kbmpTelecomCd">
+						<option selected>::통신사::</option>
+							<c:forEach items="${CodeTelecom}" var="itemTelecom" varStatus="statusTelecom">
+						<option value="<c:out value="${itemTelecom.ifcdSeq}"/>" <c:if test="${item.kbmmNumberTelecom eq itemTelecom.ifcdOrder }">selected</c:if> ><c:out value="${itemTelecom.ifcdName}"/></option>	
+							</c:forEach>
+					</select>
+					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" value="<c:out value="${kbmmNumberMobile }"/>" >
+				</div>
+
+ 				<div class="col-md-6">
+					<label class="form-label">전화번호</label>
+					<input type="text" class="form-control form-control-sm" id="kbmpNumberHome" name="kbmpNumberHome" value="<c:out value="${kbmmNumberHome }"/>"  >
+				</div>
+				<div class="col-md-6">
+					<label class="form-label">팩스번호</label>
+					<input type="text" class="form-control form-control-sm" id="kbmpNumberFax" name="kbmpNumberFax"  value="<c:out value="${kbmmNumberFax }"/>" >
+				</div>  --%>
+				
 				<div class="col-md-6">
 					<label class="form-label">핸드폰번호</label>
 					<select class="form-select form-select-sm mb-1" id="kbmpTelecomCd" name="kbmpTelecomCd">
 						<option selected>::통신사::</option>
 							<c:forEach items="${CodeTelecom}" var="itemTelecom" varStatus="statusTelecom">
-						<option value="<c:out value="${itemTelecom.ifcdSeq}"/>" <c:if test="${item.kbmpTelecomCd eq itemTelecom.ifcdOrder }">selected</c:if> ><c:out value="${itemTelecom.ifcdName}"/></option>	
-							</c:forEach>
+						<option value="<c:out value="${itemTelecom.ifcdOrder}"/>" <c:if test="${item.kbmpTelecomCd eq itemTelecom.ifcdOrder }">selected</c:if> ><c:out value="${itemTelecom.ifcdName}"/></option>	
+							</c:forEach>	
 					</select>
 					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull"  <c:if test="${item.kbmpDeviceCd eq 2 }">value="<c:out value="${item.kbmpNumberFull}"/>"</c:if> >
 				</div>
@@ -89,6 +121,8 @@
 					<label class="form-label">팩스번호</label>
 					<input type="text" class="form-control form-control-sm" id="kbmpNumberFax" name="kbmpNumberFax" <c:if test="${item.kbmpDeviceCd eq 3 }">value="<c:out value="${item.kbmpNumberFull}"/>"</c:if>  >
 				</div> 
+				
+				
 				<div class="col-md-6">
 					<label class="col-form-label pt-0">이메일</label>
 					<input type="text" class="form-control form-control-sm" id="kbmeEmailFull" name="kbmeEmailFull" value="<c:out value="${item.kbmeEmailFull}"/>">
@@ -108,7 +142,7 @@
 					<select class="form-select form-select-sm mb-1" id="kbmmGradeCd" name="kbmmGradeCd">
 						<option selected>::회원등급::</option>
 							<c:forEach items="${CodeGrade}" var="itemGrade" varStatus="statusGrade">
-						<option value="<c:out value="${itemGrade.ifcdSeq}"/>" <c:if test="${item.kbmmGradeCd eq itemGrade.ifcdOrder }">selected</c:if> ><c:out value="${itemGrade.ifcdName}"/></option>	
+						<option value="<c:out value="${itemGrade.ifcdOrder}"/>" <c:if test="${item.kbmmGradeCd eq itemGrade.ifcdOrder }">selected</c:if> ><c:out value="${itemGrade.ifcdName}"/></option>	
 							</c:forEach>
 					</select>
 				</div>

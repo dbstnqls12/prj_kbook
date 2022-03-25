@@ -27,7 +27,8 @@ public class Member {
 	private String kbmmDelNy;
 	private String kbmmGradeCd;
 	private String kbmmdormancyNy;
-
+	
+	private String kbmpSeq;
 	private String kbmpDefaultNy;
 	private String kbmpTypeCd;
 	private String kbmpDeviceCd;
@@ -55,6 +56,7 @@ public class Member {
 	private String kbmeEmailDomain;
 	private String kbmeEmailDomainCd;
 	private String kbmeDelNy;
+	private String ifcgSeq;
 	
 	
 	
@@ -328,7 +330,19 @@ public class Member {
 	public void setKbmmdormancyNy(String kbmmdormancyNy) {
 		this.kbmmdormancyNy = kbmmdormancyNy;
 	}
-
+	public String getKbmpSeq() {
+		return kbmpSeq;
+	}
+	public void setKbmpSeq(String kbmpSeq) {
+		this.kbmpSeq = kbmpSeq;
+	}
+	public String getIfcgSeq() {
+		return ifcgSeq;
+	}
+	public void setIfcgSeq(String ifcgSeq) {
+		this.ifcgSeq = ifcgSeq;
+	}
+	
 
 
 	

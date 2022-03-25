@@ -22,6 +22,7 @@ public class MemberDao {
 //	kbmmMember
 	public int selectOneCount(MemberVo vo) {return sqlSession.selectOne(namespace+".selectOneCount",vo);}
 	public List<Member> selectList(MemberVo vo){ return sqlSession.selectList(namespace + ".selectList",vo); }
+	public List<Member> selectListPhone(MemberVo vo){ return sqlSession.selectList(namespace + ".selectListPhone",vo); }
 	public Member selectOne(MemberVo vo) {return sqlSession.selectOne(namespace +".selectOne", vo);}
 	public int update(Member dto) {return sqlSession.update(namespace +".update", dto);}
 	public int updatePhone(Member dto) {return sqlSession.update(namespace +".updatePhone", dto);}

@@ -45,6 +45,10 @@ public class MemberController {
 		System.out.println("vo.getThisPage() : "+vo.getThisPage());		
 		System.out.println("vo.getkbmmSeq() : "+vo.getKbmmSeq());		
 		System.out.println("############################");
+		/*
+		 * List<Member> list = service.selectListPhone(vo);
+		 * model.addAttribute("listPhone",list);
+		 */
 		
 		Member rt = service.selectOne(vo);	
 		model.addAttribute("item", rt);
@@ -58,11 +62,13 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/user/memberForm_user")
-	public String memberForm(Model model) throws Exception {
+	public String memberForm( Model model) throws Exception {
 		
 		model.addAttribute("CodeGender", CodeServiceImpl.selectListCachedCode("3"));
 		model.addAttribute("CodeTelecom", CodeServiceImpl.selectListCachedCode("10"));
+		model.addAttribute("CodeGrade", CodeServiceImpl.selectListCachedCode("2"));
 		
+
 		return "/user/memberForm_user";
 	}
 	
@@ -78,12 +84,12 @@ public class MemberController {
 		
 		model.addAttribute("CodeGender", CodeServiceImpl.selectListCachedCode("3"));
 		model.addAttribute("CodeTelecom", CodeServiceImpl.selectListCachedCode("10"));
+		model.addAttribute("CodeGrade", CodeServiceImpl.selectListCachedCode("2"));
 		
 		return "/xdmin/member/memberForm_xdmin";
 	}
 	
 
-	
 	@RequestMapping(value = "/xdmin/member/memberInst")
 	public String memberInst(Member dto, MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
 		
@@ -112,6 +118,7 @@ public class MemberController {
 		
 		model.addAttribute("CodeGender", CodeServiceImpl.selectListCachedCode("3"));
 		model.addAttribute("CodeTelecom", CodeServiceImpl.selectListCachedCode("10"));
+		model.addAttribute("CodeGrade", CodeServiceImpl.selectListCachedCode("2"));
 		
 		Member rt =  service.selectOne(vo);
 		

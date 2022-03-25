@@ -37,12 +37,13 @@
 		<div class="col-md-10">
 		<div class="mb-3"><h4>회원가입</h4></div>
 			<div class="container ">
-			<form action="/xdmin/member/memberInst" method="post" id="memberForm" name="memberForm" class="row g-3">
+			<form action="xdmin/member/memberInst" method="post" id="memberForm" name="memberForm" class="row g-3">
 				<input type="hidden" id="thisPage" name="thisPage"  value="<c:out value="${vo.thisPage}"/>">
 				<input type="hidden" id="kbmmSeq" name="kbmmSeq" value="<c:out value="${vo.kbmmSeq}"/>">
 				<input type="hidden" id="shKbmmDelNy" name="shKbmmDelNy" value="<c:out value="${vo.shKbmmDelNy}"/>">
 				<input type="hidden" id="shOption" name="shOption"  value="<c:out value="${vo.shOption}"/>">
 				<input type="hidden" id="shValue" name="shValue"  value="<c:out value="${vo.shValue}"/>">
+				<input type="hidden" id="kbmmGradeCd" name="kbmmGradeCd"  value="1">
 				<div class="col-md-6">
 					<label class="form-label">이름</label>
 					<input type="text" class="form-control form-control-sm" id="kbmmName" name="kbmmName">
@@ -66,23 +67,58 @@
 					<select class="form-select form-select-sm" id="kbmmGenderCd" name="kbmmGenderCd">
 						<option value="">::성별::</option>
 							<c:forEach items="${CodeGender}" var="itemGender" varStatus="statusGender">
-						<option value="<c:out value="${itemGender.ifcdSeq}"/>"><c:out value="${itemGender.ifcdName}"/></option>	
+						<option value="<c:out value="${itemGender.ifcdOrder}"/>"><c:out value="${itemGender.ifcdName}"/></option>	
 							</c:forEach>
 					</select>
 				</div>	
+<%-- 			
+				<c:forEach items="${listPhone}" var="item" varStatus="statusTelecom">
+					<c:choose>
+						<c:when test="${item.kbmpDeviceCd eq 1 }"><c:set var="kbmmNumberHome" value="${item.kbmpNumberFull }"></c:set></c:when>
+						<c:when test="${item.kbmpDeviceCd eq 2 }">
+							<c:set var="kbmmNumberMobile" value="${item.kbmpNumberFull}"></c:set>
+							<c:set var="kbmmNumberTelecom" value="${item.kbmpTelecomCd}"></c:set>
+						</c:when>
+						<c:when test="${item.kbmpDeviceCd eq 3 }"><c:set var="kbmmNumberFax" value="${item.kbmpNumberFull }"></c:set></c:when>
+					</c:choose>
+				</c:forEach>
+					 --%>
+<%-- 					 
 				<div class="col-md-6">
 					<label class="form-label">핸드폰번호</label>
 					<select class="form-select form-select-sm mb-1" id="kbmpTelecomCd" name="kbmpTelecomCd">
 						<option selected>::통신사::</option>
+							<c:forEach items="${CodeTelecom}" var="itemTelecom" varStatus="statusTelecom">
+						<option value="<c:out value="${itemTelecom.ifcdSeq}"/>" <c:if test="${item.kbmmNumberTelecom eq itemTelecom.ifcdOrder }">selected</c:if> ><c:out value="${itemTelecom.ifcdName}"/></option>	
+							</c:forEach>
+					</select>
+					<input type="hidden" id="kbmpDeviceCd2" name="kbmpDeviceCd" value="2">
+					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" value="<c:out value="${kbmmNumberMobile }"/>" >
+				</div>
+
+ 				<div class="col-md-6">
+					<label class="form-label">전화번호</label>
+					<input type="hidden" id="kbmpDeviceCd1" name="kbmpDeviceCd" value="1">
+					<input type="text" class="form-control form-control-sm" id="kbmpNumberHome" name="kbmpNumberHome" value="<c:out value="${kbmmNumberHome }"/>"  >
+				</div>
+				<div class="col-md-6">
+					<label class="form-label">팩스번호</label>
+					<input type="hidden" id="kbmpDeviceCd3" name="kbmpDeviceCd" value="3s">
+					<input type="text" class="form-control form-control-sm" id="kbmpNumberFax" name="kbmpNumberFax"  value="<c:out value="${kbmmNumberFax }"/>" >
+				</div>  --%>
+				
+				
+				<div class="col-md-6">
+					<label class="form-label">핸드폰번호</label>
+					<input type="hidden" id="kbmpDeviceCd" name="kbmpDeviceCd" value="2">
+					<input type="hidden" id="kbmpDefaultNy" name="kbmpDefaultNy" value="1">
+					<select class="form-select form-select-sm mb-1" id="kbmpTelecomCd" name="kbmpTelecomCd">
+						<option selected>::통신사::</option>
 							<c:forEach items="${CodeTelecom}" var="itemTelecom" varStatus="statusTelecoom">
-						<option value="<c:out value="${itemTelecom.ifcdSeq}"/>"><c:out value="${itemTelecom.ifcdName}"/></option>	
+						<option value="<c:out value="${itemTelecom.ifcdOrder}"/>"><c:out value="${itemTelecom.ifcdName}"/></option>	
 							</c:forEach>
 					</select>
 					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" placeholder="">
-				</div>
-				<div class="col-md-6">
-					<label class="col-form-label pt-0">이메일</label>
-					<input type="text" class="form-control form-control-sm" id="kbmeEmailFull" name="kbmeEmailFull" placeholder="">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">전화번호</label>
@@ -91,6 +127,12 @@
 				<div class="col-md-6">
 					<label class="form-label">팩스번호</label>
 					<input type="text" class="form-control form-control-sm" id="inputFax" placeholder="">
+				</div>
+				
+				
+				<div class="col-md-6">
+					<label class="col-form-label pt-0">이메일</label>
+					<input type="text" class="form-control form-control-sm" id="kbmeEmailFull" name="kbmeEmailFull" placeholder="">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">국적</label>
@@ -242,7 +284,7 @@
 				<div class="float-start"><button type="button" class="btn btn-danger btn-sm float-start"><i class="fas fa-trash"></i></button></div>
 				<div class="float-end">
 				<button type="button" class="btn btn-secondary btn-sm" id="btn-list" name="btn-list" onclick="javascript:goList();"><i class="fa-solid fa-list"></i></button>
-				<button type="submit" class="btn btn-primary btn-sm" id="btn-add" name="btn-add"><i class="fas fa-plus"></i></button>
+				<button type="submit" class="btn btn-primary btn-sm" id="btn-add" name="btn-add" ><i class="fas fa-plus"></i></button>
 				</div>
 			</div>
 
@@ -278,6 +320,19 @@ goList = function(){
 	$("#memberForm").attr("action", "/xdmin/member/memberList");
 	$("#memberForm").submit();
 };
+
+$("#btn-add").on("click", function(){
+	var answer = confirm("가입하시겠습니까?");
+	
+	if(answer){
+		$("#memberForm").attr("action", "/xdmin/member/memberInst");
+		$("#memberForm").submit();
+	}else{
+		return false;
+	}
+	
+});
+
 
 function sample6_execDaumPostcode() {
     new daum.Postcode({

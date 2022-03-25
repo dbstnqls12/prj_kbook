@@ -22,6 +22,11 @@ public class MemberServiceImpl implements MemberService{
 	public List<Member> selectList(MemberVo vo) throws Exception {
 		return dao.selectList(vo);
 	}
+	
+	@Override
+	public List<Member> selectListPhone(MemberVo vo) throws Exception {
+		return dao.selectListPhone(vo);
+	}
 
 	@Override
 	public Member selectOne(MemberVo vo) throws Exception {
@@ -49,6 +54,7 @@ public class MemberServiceImpl implements MemberService{
 		
 		return 1;
 	}
+
 
 
 

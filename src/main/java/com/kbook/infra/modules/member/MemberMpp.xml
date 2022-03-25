@@ -44,6 +44,19 @@
 
 		limit #{startRnumForMysql}, #{rowNumToShow}
 	</select>
+	
+	<select id="selectListPhone" resultMap="resultMapObj">
+		SELECT
+			kbmpSeq
+			,kbmpDefaultNy
+			,kbmpDeviceCd
+			,kbmpTelecomCd
+			,kbmpNumberFull
+		FROM kbMemberPhone
+		WHERE 1=1
+			AND kbmpDelNy = 0
+			AND kbmmSeq = #{kbmmSeq}	
+	</select>
 
 	<select id="selectOne" resultMap="resultMapObj">
 		select
@@ -63,10 +76,10 @@
 			,a.kbmmOfferinfo1ConsentNy_s
 			,a.kbmmOfferinfo2ConsentNy_s
 			,a.kbmmdormancyNy
-			,b.kbmpTelecomCd
-			,b.kbmpDefaultNy
+ 			,b.kbmpTelecomCd
+<!--			,b.kbmpDefaultNy
 			,b.kbmpNumberFull
-			,b.kbmpDeviceCd
+			,b.kbmpDeviceCd -->
 			,c.kbmeEmailFull
 			,d.kbmaZipcode
 			,d.kbmaAddress1
@@ -208,40 +221,34 @@
 			,kbmmEmailConsentNy = #{kbmmEmailConsentNy}
 			,kbmmSavedCd = #{kbmmSavedCd}
 		WHERE 1=1
-			AND kbmmSeq=#{kbmmSeq}
-		<selectKey resultType="String" keyProperty="kbmmSeq" order="AFTER">
-			SELECT last_update_id()
-		</selectKey>	
+			AND kbmmSeq=#{kbmmSeq}	
 	</update>
 	
 	<update id="updatePhone">
 	UPDATE kbMemberPhone SET 	
-		kbmpDefaultNy = #{kbmpDefaultNy}
-		,kbmpTypeCd = #{kbmpTypeCd}
+		kbmpTypeCd = #{kbmpTypeCd}
 		,kbmpDeviceCd = #{kbmpDeviceCd}
 		,kbmpTelecomCd = #{kbmpTelecomCd}
 		,kbmpNumberFull = #{kbmpNumberFull}
 	WHERE 1=1
-		AND ifcgSeq=#{ifcgSeq}
+		AND kbmmSeq=#{kbmmSeq}
 	</update>	
 	
 	<update id="updateEmail">
 	UPDATE kbMemberEmail SET 	
-		kbmeDefaultNy = #{kbmeDefaultNy}
-		,kbmeTypeCd = #{kbmeTypeCd}
+		kbmeTypeCd = #{kbmeTypeCd}
 		,kbmeEmailFull = #{kbmeEmailFull}
 	WHERE 1=1
-		AND ifcgSeq=#{ifcgSeq}
+		AND kbmmSeq=#{kbmmSeq}
 	</update>	
 	
 	<update id="updateAddress">
 	UPDATE kbMemberAddress SET 	
-		kbmaDefaultNy = #{kbmaDefaultNy}
-		,kbmaAddress1 = #{kbmaAddress1}
+		kbmaAddress1 = #{kbmaAddress1}
 		,kbmaAddress2 = #{kbmaAddress2}
 		,kbmaZipcode = #{kbmaZipcode}
 	WHERE 1=1
-		AND ifcgSeq=#{ifcgSeq}
+		AND kbmmSeq=#{kbmmSeq}
 	</update>	
 
 	<update id="updateDelete">

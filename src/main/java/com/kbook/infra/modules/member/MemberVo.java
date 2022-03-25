@@ -12,6 +12,7 @@ public class MemberVo {
 //	common
 	private String shOption;
 	private String shValue;
+	private String kbmpSeq;
 	
 	private String ifcdSeq;
 	private String ifcgSeq;
@@ -238,6 +239,16 @@ public class MemberVo {
 
 	public void setKbmmGenderCd(String kbmmGenderCd) {
 		this.kbmmGenderCd = kbmmGenderCd;
+	}
+
+
+	public String getKbmpSeq() {
+		return kbmpSeq;
+	}
+
+
+	public void setKbmpSeq(String kbmpSeq) {
+		this.kbmpSeq = kbmpSeq;
 	}
 
 	
