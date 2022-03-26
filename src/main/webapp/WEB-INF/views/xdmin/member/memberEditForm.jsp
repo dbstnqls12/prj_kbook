@@ -73,25 +73,45 @@
 							</c:forEach>
 					</select>
 				</div>	
+			
+				<c:forEach items="${listPhone}" var="item" varStatus="statusTelecom">
+					<c:choose>
+						<c:when test="${item.kbmpDeviceCd eq 1 }"><c:set var="kbmmNumberHome" value="${item.kbmpNumberFull }"></c:set></c:when>
+						<c:when test="${item.kbmpDeviceCd eq 2 }">
+							<c:set var="kbmmNumberMobile" value="${item.kbmpNumberFull}"></c:set>
+							<c:set var="kbmmNumberTelecom" value="${item.kbmpTelecomCd}"></c:set>
+						</c:when>
+						<c:when test="${item.kbmpDeviceCd eq 3 }"><c:set var="kbmmNumberFax" value="${item.kbmpNumberFull }"></c:set></c:when>
+					</c:choose>
+				</c:forEach>
+					
+				
 				<div class="col-md-6">
 					<label class="form-label">핸드폰번호</label>
 					<select class="form-select form-select-sm mb-1" id="kbmpTelecomCd" name="kbmpTelecomCd">
 						<option selected>::통신사::</option>
 							<c:forEach items="${CodeTelecom}" var="itemTelecom" varStatus="statusTelecom">
 						<option value="<c:out value="${itemTelecom.ifcdOrder}"/>" <c:if test="${rt.kbmpTelecomCd eq itemTelecom.ifcdOrder }">selected</c:if> ><c:out value="${itemTelecom.ifcdName}"/></option>	
-							</c:forEach>
+							</c:forEach>	
 					</select>
-					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull"  <c:if test="${rt.kbmpDeviceCd eq 2 }">value="<c:out value="${rt.kbmpNumberFull}"/>"</c:if> >
+					<input type="hidden" id="kbmpDeviceCd2" name="kbmpDeviceCd" value="2">
+					<input type="hidden" id="kbmpDefaultNy" name="kbmpDefaultNy" value="1">
+					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" value="${rt.kbmmNumberMobile}"/>" 
 				</div>
 
  				<div class="col-md-6">
 					<label class="form-label">전화번호</label>
-					<input type="text" class="form-control form-control-sm" id="kbmpNumberHome" name="kbmpNumberHome" <c:if test="${rt.kbmpDeviceCd eq 1 }">value="<c:out value="${rt.kbmpNumberFull}"/>"</c:if> >
+					<input type="hidden" id="kbmpDeviceCd1" name="kbmpDeviceCd" value="1">
+					<input type="hidden" id="kbmpDefaultNy" name="kbmpDefaultNy" value="0">
+					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" value="<c:out value="${rt.kbmmNumberHome}"/>">
 				</div>
-				<div class="col-md-6">
+<%-- 				<div class="col-md-6">
 					<label class="form-label">팩스번호</label>
-					<input type="text" class="form-control form-control-sm" id="kbmpNumberFax" name="kbmpNumberFax" <c:if test="${rt.kbmpDeviceCd eq 3 }">value="<c:out value="${rt.kbmpNumberFull}"/>"</c:if>  >
+					<input type="hidden" id="kbmpDeviceCd3" name="kbmpDeviceCd" value="3">
+					<input type="hidden" id="kbmpDefaultNy" name="kbmpDefaultNy" value="0">
+					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" value="<c:out value="${rt.kbmmNumberFax}"/>"  >
 				</div> 
+				 --%>
 				<div class="col-md-6">
 					<label class="col-form-label pt-0">이메일</label>
 					<input type="text" class="form-control form-control-sm" id="kbmeEmailFull" name="kbmeEmailFull" value="<c:out value="${rt.kbmeEmailFull}"/>">

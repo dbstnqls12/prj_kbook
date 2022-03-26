@@ -40,10 +40,12 @@
 			,b.kbmpNumberFull
 			,c.kbmeEmailFull
 			,a.kbmmAdminNy
+			,a.kbmmAdminNy
+			,a.kbmmDelNy
 		<include refid="selectCommon"/>	
-
 		limit #{startRnumForMysql}, #{rowNumToShow}
 	</select>
+
 	
 	<select id="selectListPhone" resultMap="resultMapObj">
 		SELECT
@@ -52,6 +54,7 @@
 			,kbmpDeviceCd
 			,kbmpTelecomCd
 			,kbmpNumberFull
+			,kbmpDelNy
 		FROM kbMemberPhone
 		WHERE 1=1
 			AND kbmpDelNy = 0
@@ -77,9 +80,9 @@
 			,a.kbmmOfferinfo2ConsentNy_s
 			,a.kbmmdormancyNy
  			,b.kbmpTelecomCd
-<!--			,b.kbmpDefaultNy
+			,b.kbmpDefaultNy
 			,b.kbmpNumberFull
-			,b.kbmpDeviceCd -->
+			,b.kbmpDeviceCd
 			,c.kbmeEmailFull
 			,d.kbmaZipcode
 			,d.kbmaAddress1
@@ -149,15 +152,16 @@
 			,kbmpDelNy
 			,kbmmSeq
 		) VALUES (
-			1
-			,1
-			,2
+			#{kbmpDefaultNy}
+			,#{kbmpTypeCd}
+			,#{kbmpDeviceCd}
 			,#{kbmpTelecomCd}
 			,#{kbmpNumberFull}
 			,0
 			,#{kbmmSeq}
 		)		
 	</insert>
+	
 	<insert id="insertEmail">
 		INSERT INTO kbMemberEmail(
 			kbmeDefaultNy

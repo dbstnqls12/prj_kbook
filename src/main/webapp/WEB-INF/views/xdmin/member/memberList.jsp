@@ -15,6 +15,7 @@
 <link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css"  rel="stylesheet" >
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+<link  rel="stylesheet" href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css">
 
 <link href="/resources/xdmin/css/sidebars.css" rel="stylesheet" type="text/css">
 <link href="/resources/xdmin/css/footers.css" rel="stylesheet" type="text/css">
@@ -50,13 +51,13 @@
 					</div>
 					<div class="col-6 col-md-3 mt-2 mb-2">	
 						<select class="form-select form-select-sm">
-							<option selected>날짜</option>
-							<option value="1">one</option>
-							<option value="2">Two</option>
+							<option value="">::날짜::</option>
+							<option value="1">가입날짜</option>
+							<option value="2">생일</option>
 						</select>
 					</div>
-					<div class="col-6 col-md-3 mt-2 mb-2"><input type="text" class="form-control form-control-sm " id="input_sdate" placeholder="시작일"></div>
-					<div class="col-6 col-md-3 mt-2 mb-2"><input type="text" class="form-control form-control-sm " id="input_edate" placeholder="종료일"></div>
+					<div class="col-6 col-md-3 mt-2 mb-2"><input type="text" class="form-control form-control-sm " id="date_start" name="date_start" placeholder="시작일"></div>
+					<div class="col-6 col-md-3 mt-2 mb-2"><input type="text" class="form-control form-control-sm " id="date_end" name="date_end" placeholder="종료일"></div>
 					<div class="col-6 col-md-3 mt-2 mb-2">	
 						<select class="form-select form-select-sm" name="shOption" id="shOption">
 							<option value="">::검색구분::</option>
@@ -77,7 +78,7 @@
 			<!-- table s -->
 			<div class="table-responsive">
 				<table class="table table-striped table-hover caption-top mt-2">
-				<caption>Total : 12,123</caption>
+				<caption>Total : <c:out value="${vo.totalRows}"></c:out></caption>
 			 		<thead class="table-light">	
 						<tr>
 						<th><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
@@ -86,6 +87,7 @@
 						<th>아이디</th>
 						<th>전화번호</th>
 						<th>이메일</th>
+						<th>삭제여부</th>
 						</tr>
 					</thead>	
 					<tr>
@@ -103,7 +105,14 @@
 								<td><a href="javascript:goView(<c:out value="${item.kbmmSeq}"/>)"><c:out value="${item.kbmmName}"/></a></td>
 								<td><c:out value="${item.kbmmId}"/></td>
 								<td><c:out value="${item.kbmpNumberFull}"/></td>
+<%-- 								<td><c:out value="${item.kbmpNumberFull}"/></td> --%>
 								<td><c:out value="${item.kbmeEmailFull}"/></td>
+								<td>
+									<c:choose>
+										<c:when test="${item.kbmmDelNy eq 0}">X</c:when>
+										<c:otherwise>O</c:otherwise>
+									</c:choose>
+								</td>
 							</tr>
 							</c:forEach>
 						</c:otherwise>
@@ -126,12 +135,12 @@
 					                <li class="page-item active"><a class="page-link" href="javascript:goList(<c:out value='${i.index}'/>);">${i.index}</a></li>
 							</c:when>
 							<c:otherwise>             
-					                <li class="page-item"><a class="page-link" href="javascript:goList(<c:out value='${i.index}'/>);"">${i.index}</a></li>
+					                <li class="page-item"><a class="page-link" href="javascript:goList(<c:out value='${i.index}'/>);">${i.index}</a></li>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>  
 					<c:if test="${vo.endPage ne vo.totalPages}">                
-               			 <li class="page-item"><a class="page-link" href="javascript:goList(<c:out value='${vo.endPage + 1}'/>);"">Next</a></li>
+               			 <li class="page-item"><a class="page-link" href="javascript:goList(<c:out value='${vo.endPage + 1}'/>);">Next</a></li>
 					</c:if>  
 					<!-- <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li> -->
 				</ul>
@@ -174,13 +183,14 @@
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/resources/common/js/validation.js"></script>
-
+<script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 <script type="text/javascript">
 	$("#btnSubmit").on("click",function(){
 		
-		if(!checkNull($("#shKbmmDelNy"), $("#shKbmmDelNy").val(), "삭제여부를 선택해주세요!")) return false;			
-		if(!checkNull($("#shOption"), $("#shOption").val(), "검색구분을 선택해주세요!")) return false;			
-		if(!checkNull($("#shValue"), $("#shValue").val(), "검색어를 입력해주세요!")) return false;			
+		if(!checkNull($("#shKbmmDelNy"), $("#shKbmmDelNy").val(), "삭제여부를 선택해주세요!")) return false;
+		
+ 		if(!checkNull($("#shOption"), $("#shOption").val(), "검색구분을 선택해주세요!")) return false;			
+		if(!checkNull($("#shValue"), $("#shValue").val(), "검색어를 입력해주세요!")) return false;		 
 
 	});
 	$("#btnSubmit2").on("click",function(){
@@ -203,6 +213,24 @@
 		$("#formList").attr("action","/xdmin/member/memberView");
 		$("#formList").submit();
 	}
+	
+	$(document).ready(function(){
+		$("#date_start").datepicker();
+		$("#date_end").datepicker();
+	});
+	
+	$.datepicker.setDefaults({
+	    dateFormat: 'yy-mm-dd',
+	    prevText: '이전 달',
+	    nextText: '다음 달',
+	    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+	    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+	    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+	    showMonthAfterYear: true,
+	    yearSuffix: '년'
+	});
 
 </script>
 <!-- Optional JavaScript; choose one of the two! -->

@@ -28,7 +28,7 @@ public class MemberDao {
 	public int updatePhone(Member dto) {return sqlSession.update(namespace +".updatePhone", dto);}
 	public int updateEmail(Member dto) {return sqlSession.update(namespace +".updateEmail", dto);}
 	public int updateAddress(Member dto) {return sqlSession.update(namespace +".updateAddress", dto);}
-
+	public int updateDelete(MemberVo vo) {return sqlSession.update(namespace +".updateDelete", vo);}
 	
 //	kbmmMemberForm
 	public int insert(Member dto) {return sqlSession.insert(namespace +".insert", dto);}

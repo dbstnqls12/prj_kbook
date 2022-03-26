@@ -79,7 +79,7 @@
 	</update>
 	
 	<update id="updateDelete">
-		UPDATE infrCodeGroup SET igcgDelNy = 1 WHERE 1=1 AND ifcgSeq=#{ifcgSeq}
+		UPDATE infrCodeGroup SET ifcgDelNy = 1 WHERE 1=1 AND ifcgSeq=#{ifcgSeq}
 	</update>
 	
 	<delete id="delete">
