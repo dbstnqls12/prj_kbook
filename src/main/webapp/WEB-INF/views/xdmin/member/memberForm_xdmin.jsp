@@ -51,16 +51,16 @@
 				<div class="col-6 d-none d-sm-block"></div><!-- 줄바꿈 -->
 				<div class="col-md-6">
 					<label for="inputId" class="form-label">아이디</label>
-					<input type="text" class="form-control form-control-sm" id="kbmmId" name="kbmmId"> 
+					<input type="text" class="form-control form-control-sm" id="kbmmId" name="kbmmId" placeholder="영소문자/숫자 5~20자리"> 
 				</div>
 				<div class="col-md-6">
 					<label for="inputPwd" class="form-label">비밀번호</label>
-					<input type="password" class="form-control form-control-sm" id="kbmmPassword" name="kbmmPassword" placeholder="">
+					<input type="password" class="form-control form-control-sm" id="kbmmPassword" name="kbmmPassword" placeholder="영문/숫자/특수문자 조합 8~20자리(대소문자 포함)">
 				</div>
 
 				<div class="col-md-6">
 					<label class="form-label">생년월일</label>
-					<input type="text" id="kbmmDob" name="kbmmDob" max="2022-01-08" class="form-control form-control-sm" placeholder="">
+					<input type="text" id="kbmmDob" name="kbmmDob" max="2022-01-08" class="form-control form-control-sm" placeholder="8자리 입력(예.19850101)">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">성별</label>
@@ -82,7 +82,7 @@
 						<option value="<c:out value="${itemTelecom.ifcdOrder}"/>" <c:if test="${item.kbmpTelecomCd eq itemTelecom.ifcdOrder }">selected</c:if> ><c:out value="${itemTelecom.ifcdName}"/></option>	
 							</c:forEach>	
 					</select>
-					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull"  value="<c:out value="${item.kbmpNumberFull}"/>" >
+					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull"  value="<c:out value="${item.kbmpNumberFull}"/>" placeholder="숫자만 입력(예.01012341231)">
 				</div>
  
  	<%-- 			<div class="col-md-6">
@@ -149,7 +149,7 @@
 			
 				<div class="col-md-6">
 					<label class="col-form-label pt-0">이메일</label>
-					<input type="text" class="form-control form-control-sm" id="kbmeEmailFull" name="kbmeEmailFull" placeholder="">
+					<input type="text" class="form-control form-control-sm" id="kbmeEmailFull" name="kbmeEmailFull" placeholder="이메일주소 입력">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">국적</label>
@@ -339,22 +339,57 @@ goList = function(){
 };
 
 $("#btn-add").on("click", function(){
+	/* kbmmName */
+	if(!checkNull($("#kbmmName"), $("#kbmmName").val(), "이름을 입력하세요.")) return false;
+/*   	if(!checkName($("#kbmmName"), $("#kbmmName").val(), "이름을 한글로 입력하세요.")) return false; */
+		
+	/* kbmmId */
+ 	if(!checkNull($("#kbmmId"), $("#kbmmId").val(), "아이디를 입력하세요.")) return false;
+ 	if(!checkId($("#kbmmId"), $("#kbmmId").val(), "아이디를 형식에 맞게 입력하세요. (영문/숫자/특수문자 조합 8~15자리(대소문자 구분))")) return false;
+	
+ 	/* kbmmPassword */
+ 	if(!checkNull($("#kbmmPassword"), $("#kbmmPassword").val(), "비밀번호를 입력하세요.")) return false;
+ 	if(!checkPassword($("#kbmmPassword"), $("#kbmmPassword").val(), "비밀번호를 형식에 맞게 입력하세요. (영문/숫자/특수문자 조합 8~20자리(대소문자 구분))")) return false;
+
+ 	/* kbmmDob */
+	if(!checkNull($("#kbmmDob"), $("#kbmmDob").val(), "생년월일을 입력하세요")) return false;
+ 	if(!checkDob($("#kbmmDob"), $("#kbmmDob").val(), "생년월일을 8자리 숫자로 입력 가능해주세요.")) return false;	
+	
+	/* kbmmGenderCd, kbmpTelecomCd*/
+	if(!checkNull($("#kbmmGenderCd"), $("#kbmmGenderCd").val(), "성별을 선택하세요.")) return false;
+	if(!checkNull($("#kbmpTelecomCd"), $("#kbmpTelecomCd").val(), "통신사를 선택하세요.")) return false;
+	if(!checkNull($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호를 입력하세요.")) return false;
+ 	if(!checkOnlyNumber($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호는 숫자만 입력 가능합니다.")) return false;
+ 	if(!checkNumber($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호를 11자리로 입력해주세요.")) return false;	 
+ 	
+ 	/* kbmeEmailFull */
+ 	if(!checkNull($("#kbmeEmailFull"), $("#kbmeEmailFull").val(), "이메일을 입력하세요.")) return false;
+ 	if(!checkEmail($("#kbmeEmailFull"), $("#kbmeEmailFull").val(), "이메일을 형식에 맞게 입력하세요. (@를 포함한 형태)")) return false;
+ 	
+	
+ 	if(!checkNull($("#kbmaZipcode"), $("#kbmaZipcode").val(), "주소를 입력하세요.")) return false;
+ 	
 	
 
-	
-	
-	
-	
-	
-	
-	var answer = confirm("가입하시겠습니까?");
-	
-	if(answer){
-		$("#memberForm").attr("action", "/xdmin/member/memberInst");
-		$("#memberForm").submit();
-	}else{
+	if ($("input:radio[name=kbmmUseConsentNy_c]").is(":checked") == false) {
+		alert("필수항목은 반드시 동의하세요. (교보문고 이용약관)");
+		return false;
+	} 
+	 
+	if ($("input:radio[name=kbmmPersonalinfoConsentNy_c]").is(":checked") == false) {
+		alert("필수항목은 반드시 동의하세요. (개인정보 수집 및 이용안내)");
 		return false;
 	}
+	
+	if ($("input:radio[name=kbmmSavedCd]").is(":checked") == false) {
+		alert("개인정보 유효기간을 선택하세요.");
+		return false;
+	}
+ 	
+	alert("회원가입이 완료되었습니다!")	;
+		$("#memberForm").attr("action", "/xdmin/member/memberInst");
+		$("#memberForm").submit();
+	
 	
 });
 

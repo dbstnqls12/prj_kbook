@@ -112,12 +112,12 @@
 				<div class="col-md-6">
 					<label class="form-label">주소 (한국전용)</label>
 					<div class="input-group">
-						<input class="form-control form-control-sm mb-1" type="text" id="kbmaZipcode" name="kbmaZipcode" placeholder="<c:out value="${rt.kbmaZipcode}"/>" readonly>
+						<input class="form-control form-control-sm mb-1" type="text" id="kbmaZipcode" name="kbmaZipcode" value="<c:out value="${rt.kbmaZipcode}"/>" readonly>
 						<button class="btn btn-outline-secondary btn-sm mb-1" type="button" id="btnAddress"><i class= "fas fa-search"></i></button>
 						<button class="btn btn-outline-secondary btn-sm mb-1" type="button" id="btnClear"><i class= "fas fa-solid fa-x"></i></button>
 					</div>
-					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1" name="kbmaAddress1"  placeholder="<c:out value="${rt.kbmaAddress1}"/>"> 
-					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2" name="kbmaAddress2" placeholder="<c:out value="${rt.kbmaAddress2}"/>"> 
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1" name="kbmaAddress1"  value="<c:out value="${rt.kbmaAddress1}"/>"> 
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2" name="kbmaAddress2" value="<c:out value="${rt.kbmaAddress2}"/>"> 
 				</div>		
 				<div class="col-md-6">
 					<label class="form-label">주소 (국외전용)</label>
