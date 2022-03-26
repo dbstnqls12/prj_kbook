@@ -16,7 +16,7 @@
 	<c:out value="${item.ifcgSeq}"/> | <c:out value="${item.ifcgName}"/> | <c:out value="${item.ifcgDelNy}"/><br>
 	<a href="javascript:goList();">목록</a>
 	<a href="javascript:goEdit();">수정</a>
-	<a href="javascript:goDelete();" id="btnNele">삭제</a>
+	<a href="javascript:goSave();" id="btnNele">삭제</a>
 <%-- 	<a href="codeGroupList?thisPage=<c:out value="${vo.thisPage}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue }"/>">목록</a>
 	<a href="codeGroupForm2?ifcgSeq=<c:out value="${item.ifcgSeq}"/>&thisPage=<c:out value="${vo.thisPage}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue }"/>">수정</a>
 	<a href="codeGroupDele?ifcgSeq=<c:out value="${item.ifcgSeq}"/>&thisPage=<c:out value="${vo.thisPage}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue }"/>" id="btnDelete">삭제(진짜)</a>

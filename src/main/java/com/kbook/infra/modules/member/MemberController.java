@@ -73,7 +73,6 @@ public class MemberController {
 		model.addAttribute("CodeGrade", CodeServiceImpl.selectListCachedCode("2"));
 		model.addAttribute("CodeDeviceCd", CodeServiceImpl.selectListCachedCode("9"));
 		
-		
 		return "/user/memberForm_user";
 	}
 	

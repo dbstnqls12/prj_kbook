@@ -68,7 +68,7 @@
 					<div class="col-6 col-md-3 mt-2 "><input type="text" class="form-control form-control-sm " id="shValue" name="shValue" placeholder="검색어" value="<c:out value="${vo.shValue}"/>"></div>
 					<div class="col-6 col-md-3 mt-2">
 						<button type="submit" class="btn btn-warning btn-sm" id="btnSubmit"><i class="fas fa-search"></i></button>
-						<button type="button" class="btn btn-danger btn-sm" id="btnSubmit2"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+						<button type="button" class="btn btn-danger btn-sm" id="btnSubmit2" ><i class="fa-solid fa-arrow-rotate-left"></i></button>
 					</div>
 				</div>
 			</div>	
@@ -172,7 +172,7 @@
 				<div class="float-start"><button type="button" class="btn btn-danger btn-sm float-start"><i class="fas fa-trash"></i></button></div>
 				<div class="float-end">
 					<button type="button" class="btn btn-success btn-sm" id="search_icon"><i class="bi bi-file-earmark-x"></i></button>
-					<button type="button" class="btn btn-primary btn-sm" id="search_icon" onclick="location.href='/xdmin/member/memberForm_xdmin??&thisPage=<c:out value="${vo.thisPage}"/>&shKbmmDelNy=<c:out value="${vo.shKbmmDelNy}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>'"><i class="fas fa-plus"></i></button>
+					<button type="button" class="btn btn-primary btn-sm" id="btn-search" name="btn-search" onclick="javascript:goForm();"><i class="fas fa-plus"></i></button>
 				</div>
 			</div>
 		</div>
@@ -193,14 +193,14 @@
 		if(!checkNull($("#shValue"), $("#shValue").val(), "검색어를 입력해주세요!")) return false;		 
 
 	});
-	$("#btnSubmit2").on("click",function(){
+/* 	$("#btnSubmit2").on("click",function(){
 		
 		$("#shKbmmDelNy").val("");
 		$("#shOption").val("");
 		$("#shValue").val("");	
 
 	});
-	
+	 */
  	goList = function(seq){
 		//form 객체를 가져온다
 		$("#thisPage").val(seq);
@@ -213,6 +213,11 @@
 		$("#formList").attr("action","/xdmin/member/memberView");
 		$("#formList").submit();
 	}
+	goForm = function(){
+		$("#formList").attr("action","/xdmin/member/memberForm_xdmin");
+		$("#formList").submit();
+	}
+	
 	
 	$(document).ready(function(){
 		$("#date_start").datepicker();
