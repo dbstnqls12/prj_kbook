@@ -13,6 +13,9 @@ public class MemberVo {
 	private String shOption;
 	private String shValue;
 	private String kbmpSeq;
+	private String shStartDate;
+	private String shEndDate;
+	private String shDate;
 	
 	private String ifcdSeq;
 	private String ifcgSeq;
@@ -249,6 +252,36 @@ public class MemberVo {
 
 	public void setKbmpSeq(String kbmpSeq) {
 		this.kbmpSeq = kbmpSeq;
+	}
+
+
+	public String getShStartDate() {
+		return shStartDate;
+	}
+
+
+	public void setShStartDate(String shStartDate) {
+		this.shStartDate = shStartDate;
+	}
+
+
+	public String getShEndDate() {
+		return shEndDate;
+	}
+
+
+	public void setShEndDate(String shEndDate) {
+		this.shEndDate = shEndDate;
+	}
+
+
+	public String getShDate() {
+		return shDate;
+	}
+
+
+	public void setShDate(String shDate) {
+		this.shDate = shDate;
 	}
 
 	

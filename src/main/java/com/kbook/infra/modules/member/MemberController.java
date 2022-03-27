@@ -24,6 +24,9 @@ public class MemberController {
 		int count = service.selectOneCount(vo);
 		
 		System.out.println("vo.getShKbmmDelNy() : "+vo.getShKbmmDelNy());
+		System.out.println("vo.getShStartDate() : "+vo.getShStartDate());
+		System.out.println("vo.getShEndDate() : "+vo.getShEndDate());
+		System.out.println("vo.getShDate() : "+vo.getShDate());
 		
 		vo.setParamsPaging(count);
 

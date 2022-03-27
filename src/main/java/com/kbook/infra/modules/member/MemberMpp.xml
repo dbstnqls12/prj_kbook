@@ -25,8 +25,7 @@
 				<when test="shOption == 2">AND kbmmId LIKE concat('%', #{shValue}, '%')</when>
 			</choose>
 			<choose>
-				<when test="shOption == 1">AND kbmmName LIKE concat('%', #{shValue}, '%')</when>
-				<when test="shOption == 2">AND kbmmId LIKE concat('%', #{shValue}, '%')</when>
+				<when test="shDate == 1">AND kbmmDob BETWEEN #{shStartDate} AND #{shEndDate} </when>
 			</choose>
 	</sql>
 	

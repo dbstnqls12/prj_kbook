@@ -43,6 +43,9 @@
 				<input type="hidden" id="shKbmmDelNy" name="shKbmmDelNy" value="<c:out value="${vo.shKbmmDelNy}"/>">
 				<input type="hidden" id="shOption" name="shOption"  value="<c:out value="${vo.shOption}"/>">
 				<input type="hidden" id="shValue" name="shValue"  value="<c:out value="${vo.shValue}"/>">
+				<input type="hidden" id="shDate" name="shDate"  value="<c:out value="${vo.shDate}"/>">
+				<input type="hidden" id="shStartDate" name="shStartDate"  value="<c:out value="${vo.shStartDate}"/>">
+				<input type="hidden" id="shEndDate" name=shEndDate  value="<c:out value="${vo.shEndDate}"/>">
 				<input type="hidden" id="kbmmGradeCd" name="kbmmGradeCd"  value="1">
 				<div class="col-md-6">
 					<label class="form-label">이름</label>

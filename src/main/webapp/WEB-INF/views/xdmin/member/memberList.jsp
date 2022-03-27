@@ -50,14 +50,14 @@
 						</select>				
 					</div>
 					<div class="col-6 col-md-3 mt-2 mb-2">	
-						<select class="form-select form-select-sm">
-							<option value="">::날짜::</option>
-							<option value="1">가입날짜</option>
-							<option value="2">생일</option>
+						<select class="form-select form-select-sm" name="shDate" id="shDate">
+							<option value="">::날짜구분::</option>
+							<option value="1" <c:if test="${vo.shDate eq 1 }">selected</c:if>>생일</option>
+							<%-- <option value="2" <c:if test="${vo.shDate eq 2 }">selected</c:if>></option> --%>
 						</select>
 					</div>
-					<div class="col-6 col-md-3 mt-2 mb-2"><input type="text" class="form-control form-control-sm " id="date_start" name="date_start" placeholder="시작일"></div>
-					<div class="col-6 col-md-3 mt-2 mb-2"><input type="text" class="form-control form-control-sm " id="date_end" name="date_end" placeholder="종료일"></div>
+					<div class="col-6 col-md-3 mt-2 mb-2"><input type="text" class="form-control form-control-sm " id="shStartDate" name="shStartDate" placeholder="시작일" value="<c:out value="${vo.shStartDate}"/>"></div>
+					<div class="col-6 col-md-3 mt-2 mb-2"><input type="text" class="form-control form-control-sm " id="shEndDate" name="shEndDate" placeholder="종료일" value="<c:out value="${vo.shEndDate}"/>"></div>
 					<div class="col-6 col-md-3 mt-2 mb-2">	
 						<select class="form-select form-select-sm" name="shOption" id="shOption">
 							<option value="">::검색구분::</option>
@@ -105,7 +105,6 @@
 								<td><a href="javascript:goView(<c:out value="${item.kbmmSeq}"/>)"><c:out value="${item.kbmmName}"/></a></td>
 								<td><c:out value="${item.kbmmId}"/></td>
 								<td><c:out value="${item.kbmpNumberFull}"/></td>
-<%-- 								<td><c:out value="${item.kbmpNumberFull}"/></td> --%>
 								<td><c:out value="${item.kbmeEmailFull}"/></td>
 								<td>
 									<c:choose>
@@ -189,8 +188,8 @@
 		
 		if(!checkNull($("#shKbmmDelNy"), $("#shKbmmDelNy").val(), "삭제여부를 선택해주세요!")) return false;
 		
- 		if(!checkNull($("#shOption"), $("#shOption").val(), "검색구분을 선택해주세요!")) return false;			
-		if(!checkNull($("#shValue"), $("#shValue").val(), "검색어를 입력해주세요!")) return false;		 
+/*  		if(!checkNull($("#shOption"), $("#shOption").val(), "검색구분을 선택해주세요!")) return false;			
+		if(!checkNull($("#shValue"), $("#shValue").val(), "검색어를 입력해주세요!")) return false;		  */
 
 	});
 /* 	$("#btnSubmit2").on("click",function(){
@@ -220,8 +219,8 @@
 	
 	
 	$(document).ready(function(){
-		$("#date_start").datepicker();
-		$("#date_end").datepicker();
+		$("#shStartDate").datepicker();
+		$("#shEndDate").datepicker();
 	});
 	
 	$.datepicker.setDefaults({
