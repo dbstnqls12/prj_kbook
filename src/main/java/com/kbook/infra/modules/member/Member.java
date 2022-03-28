@@ -13,6 +13,7 @@ public class Member {
 	
 //	memberView
 	private String kbmmPassword;
+
 	private String kbmmDob;
 	
 //	memberForm
