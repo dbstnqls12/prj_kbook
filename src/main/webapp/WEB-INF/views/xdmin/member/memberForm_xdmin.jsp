@@ -367,10 +367,9 @@ $("#btn-add").on("click", function(){
 		return false;
 	}
  	
-	alert("회원가입이 완료되었습니다!")	;
-		$("#memberForm").attr("action", "/xdmin/member/memberInst");
-		$("#memberForm").submit();
-	
+	$("#memberForm").attr("action", "/xdmin/member/memberInst");
+	$("#memberForm").submit();
+
 	
 });
 

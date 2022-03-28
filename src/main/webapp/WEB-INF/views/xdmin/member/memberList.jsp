@@ -17,7 +17,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 <link  rel="stylesheet" href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css">
 
-<link href="/resources/xdmin/css/sidebars.css" rel="stylesheet" type="text/css">
 <link href="/resources/xdmin/css/footers.css" rel="stylesheet" type="text/css">
 <title>Kyobo_memberList</title>
 </head>
@@ -28,14 +27,13 @@
 <%@ include file="/WEB-INF/views/xdmin/include/navbar.jsp" %><!-- navbar -->
 
 <!-- 본문 s-->
-<div class="container-fluid">
+<div class="container">
 	<div class="row">
-		<%@ include file="/WEB-INF/views/xdmin/include/sidebar.jsp" %><!-- sidebar -->
 		
 		<!-- 본문 -->
-		<div class="col-md-10">
+		<!-- <div class="col-md-10"> -->
 			<!-- 검색 s -->
-			<div class="mb-2"><h4>검색</h4></div>
+			<div class="mb-2"><h4>회원관리</h4></div>
 			<form id="formList" name="formList" method="post" action="memberList">
 			<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 			<input type="hidden" id="kbmmSeq" name="kbmmSeq">
@@ -176,7 +174,6 @@
 			</div>
 		</div>
 	</div>
-</div>
 
 <%@ include file="/WEB-INF/views/xdmin/include/footer.jsp" %><!-- footer -->
 

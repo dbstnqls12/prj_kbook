@@ -39,18 +39,7 @@
 				<li class="nav-item">
 					<a class="nav-link" aria-current="page" href="#">회원관리</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link " href="#">서비스관리</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link " href="#">사이트관리</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link " href="#">로그관리</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link " href="#">시스템관리</a>
-				</li>
+
 			</ul>
 		</div>
 	</div>
