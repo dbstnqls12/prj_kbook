@@ -165,17 +165,6 @@ public class MemberController {
 
 		service.update(dto);
 
-		/*
-		 * redirectAttributes.addAttribute("kbmmSeq", dto.getKbmmSeq());
-		 * redirectAttributes.addAttribute("thisPage", vo.getThisPage());
-		 * redirectAttributes.addAttribute("shOption", vo.getShOption());
-		 * redirectAttributes.addAttribute("shValue", vo.getShValue());
-		 * redirectAttributes.addAttribute("shDate", vo.getShOptionDate());
-		 * redirectAttributes.addAttribute("shEndDate", vo.getShDateEnd());
-		 * redirectAttributes.addAttribute("shStartDate", vo.getShDateStart());
-		 * redirectAttributes.addAttribute("shKbmmDelNy", vo.getShKbmmDelNy());
-		 */
-
 		vo.setKbmmSeq(dto.getKbmmSeq());
 
 		redirectAttributes.addFlashAttribute("vo", vo);
