@@ -13,9 +13,9 @@ public class MemberVo {
 	private String shOption;
 	private String shValue;
 	private String kbmpSeq;
-	private String shStartDate;
-	private String shEndDate;
-	private String shDate;
+	private Integer shOptionDate;
+	private String shDateStart;
+	private String shDateEnd;
 	
 	private String ifcdSeq;
 	private String ifcgSeq;
@@ -255,35 +255,38 @@ public class MemberVo {
 	}
 
 
-	public String getShStartDate() {
-		return shStartDate;
+	public String getShDateStart() {
+		return shDateStart;
 	}
 
 
-	public void setShStartDate(String shStartDate) {
-		this.shStartDate = shStartDate;
+	public void setShDateStart(String shDateStart) {
+		this.shDateStart = shDateStart;
 	}
 
 
-	public String getShEndDate() {
-		return shEndDate;
+	public String getShDateEnd() {
+		return shDateEnd;
 	}
 
 
-	public void setShEndDate(String shEndDate) {
-		this.shEndDate = shEndDate;
+	public void setShDateEnd(String shDateEnd) {
+		this.shDateEnd = shDateEnd;
 	}
 
 
-	public String getShDate() {
-		return shDate;
+	public Integer getShOptionDate() {
+		return shOptionDate;
 	}
 
 
-	public void setShDate(String shDate) {
-		this.shDate = shDate;
+	public void setShOptionDate(Integer shOptionDate) {
+		this.shOptionDate = shOptionDate;
 	}
 
+
+
+	
 	
 	
 

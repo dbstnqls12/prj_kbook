@@ -3,6 +3,7 @@ package com.kbook.infra.modules.member;
 import java.util.List;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kbook.infra.common.constants.Constants;
 import com.kbook.infra.common.util.UtilDateTime;
 import com.kbook.infra.modules.code.CodeServiceImpl;
 
@@ -21,17 +23,20 @@ public class MemberController {
 	
 	@RequestMapping(value="/xdmin/member/memberList")
 	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception{
-		
-		System.out.println("UtilDateTime.nowLocalDateTime() : "+UtilDateTime.nowLocalDateTime());
-		System.out.println("UtilDateTime.nownowDate() : "+UtilDateTime.nowDate());
-		System.out.println("UtilDateTime.nowString() : "+UtilDateTime.nowString());
-		
+		/*
+		 * vo.setShOptionDate(vo.getShOptionDate() == null ? 1 : vo.getShOptionDate());
+		 * vo.setShDateStart(vo.getShDateStart() == null ?
+		 * UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(),
+		 * Constants.DATE_INTERVAL) : vo.getShDateStart());
+		 * vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() :
+		 * vo.getShDateEnd());
+		 */
 		int count = service.selectOneCount(vo);
 		
 		System.out.println("vo.getShKbmmDelNy() : "+vo.getShKbmmDelNy());
-		System.out.println("vo.getShStartDate() : "+vo.getShStartDate());
-		System.out.println("vo.getShEndDate() : "+vo.getShEndDate());
-		System.out.println("vo.getShDate() : "+vo.getShDate());
+		System.out.println("vo.getShStartDate() : "+vo.getShDateStart());
+		System.out.println("vo.getShEndDate() : "+vo.getShDateEnd());
+		System.out.println("vo.getShDate() : "+vo.getShOptionDate());
 		
 		vo.setParamsPaging(count);
 
@@ -55,9 +60,9 @@ public class MemberController {
 		System.out.println("vo.getShValue() : "+vo.getShValue());		
 		System.out.println("vo.getThisPage() : "+vo.getThisPage());		
 		System.out.println("vo.getkbmmSeq() : "+vo.getKbmmSeq());	
-		System.out.println("vo.getShStartDate() : "+vo.getShStartDate());
-		System.out.println("vo.getShEndDate() : "+vo.getShEndDate());
-		System.out.println("vo.getShDate() : "+vo.getShDate());
+		System.out.println("vo.getShStartDate() : "+vo.getShDateStart());
+		System.out.println("vo.getShEndDate() : "+vo.getShDateEnd());
+		System.out.println("vo.getShDate() : "+vo.getShOptionDate());
 		System.out.println("############################");
 		
 		Member rt = service.selectOne(vo);	
@@ -97,9 +102,9 @@ public class MemberController {
 		System.out.println("vo.getShKbmmDelNy() : "+vo.getShKbmmDelNy());		
 		System.out.println("vo.getShValue() : "+vo.getShValue());		
 		System.out.println("vo.getThisPage() : "+vo.getThisPage());	
-		System.out.println("vo.getShStartDate() : "+vo.getShStartDate());
-		System.out.println("vo.getShEndDate() : "+vo.getShEndDate());
-		System.out.println("vo.getShDate() : "+vo.getShDate());
+		System.out.println("vo.getShStartDate() : "+vo.getShDateStart());
+		System.out.println("vo.getShEndDate() : "+vo.getShDateEnd());
+		System.out.println("vo.getShDate() : "+vo.getShOptionDate());
 		System.out.println("############################");
 		
 		List<Member> list = service.selectListPhone(vo);
@@ -126,9 +131,9 @@ public class MemberController {
 		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
 		redirectAttributes.addAttribute("shOption", vo.getShOption());
 		redirectAttributes.addAttribute("shValue", vo.getShValue());
-		redirectAttributes.addAttribute("shDate", vo.getShDate());
-		redirectAttributes.addAttribute("shEndDate", vo.getShEndDate());
-		redirectAttributes.addAttribute("shStartDate", vo.getShStartDate());
+		redirectAttributes.addAttribute("shDate", vo.getShOptionDate());
+		redirectAttributes.addAttribute("shEndDate", vo.getShDateEnd());
+		redirectAttributes.addAttribute("shStartDate", vo.getShDateStart());
 		redirectAttributes.addAttribute("shKbmmDelNy", vo.getShKbmmDelNy());
 		
 		
@@ -146,9 +151,9 @@ public class MemberController {
 		System.out.println("vo.getShKbmmDelNy() : "+vo.getShKbmmDelNy());		
 		System.out.println("vo.getShValue() : "+vo.getShValue());		
 		System.out.println("vo.getThisPage() : "+vo.getThisPage());		
-		System.out.println("vo.getShStartDate() : "+vo.getShStartDate());
-		System.out.println("vo.getShEndDate() : "+vo.getShEndDate());
-		System.out.println("vo.getShDate() : "+vo.getShDate());
+		System.out.println("vo.getShStartDate() : "+vo.getShDateStart());
+		System.out.println("vo.getShEndDate() : "+vo.getShDateEnd());
+		System.out.println("vo.getShDate() : "+vo.getShOptionDate());
 		System.out.println("############################");
 		
 		List<Member> list = service.selectListPhone(vo);
@@ -176,9 +181,9 @@ public class MemberController {
 		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
 		redirectAttributes.addAttribute("shOption", vo.getShOption());
 		redirectAttributes.addAttribute("shValue", vo.getShValue());
-		redirectAttributes.addAttribute("shDate", vo.getShDate());
-		redirectAttributes.addAttribute("shEndDate", vo.getShEndDate());
-		redirectAttributes.addAttribute("shStartDate", vo.getShStartDate());
+		redirectAttributes.addAttribute("shDate", vo.getShOptionDate());
+		redirectAttributes.addAttribute("shEndDate", vo.getShDateEnd());
+		redirectAttributes.addAttribute("shStartDate", vo.getShDateStart());
 		redirectAttributes.addAttribute("shKbmmDelNy", vo.getShKbmmDelNy());
 		
 		return "redirect:/xdmin/member/memberView";
@@ -194,9 +199,9 @@ public class MemberController {
 		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
 		redirectAttributes.addAttribute("shOption", vo.getShOption());
 		redirectAttributes.addAttribute("shValue", vo.getShValue());
-		redirectAttributes.addAttribute("shDate", vo.getShDate());
-		redirectAttributes.addAttribute("shEndDate", vo.getShEndDate());
-		redirectAttributes.addAttribute("shStartDate", vo.getShStartDate());
+		redirectAttributes.addAttribute("shDate", vo.getShOptionDate());
+		redirectAttributes.addAttribute("shEndDate", vo.getShDateEnd());
+		redirectAttributes.addAttribute("shStartDate", vo.getShDateStart());
 		redirectAttributes.addAttribute("shKbmmDelNy", vo.getShKbmmDelNy());
 		
 		return "redirect:/xdmin/member/memberList";

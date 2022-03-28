@@ -48,14 +48,15 @@
 						</select>				
 					</div>
 					<div class="col-6 col-md-3 mt-2 mb-2">	
-						<select class="form-select form-select-sm" name="shDate" id="shDate">
+						<select class="form-select form-select-sm" name="shOptionDate" id="shOptionDate">
 							<option value="">::날짜구분::</option>
-							<option value="1" <c:if test="${vo.shDate eq 1 }">selected</c:if>>생일</option>
-							<%-- <option value="2" <c:if test="${vo.shDate eq 2 }">selected</c:if>></option> --%>
+							<option value="1" <c:if test="${vo.shOptionDate eq 1 }">selected</c:if>>생일</option>
+							<option value="2" <c:if test="${vo.shOptionDate eq 2 }">selected</c:if>>가입일</option>
+							<option value="3" <c:if test="${vo.shOptionDate eq 3 }">selected</c:if>>수정일</option>
 						</select>
 					</div>
-					<div class="col-6 col-md-3 mt-2 mb-2"><input type="text" class="form-control form-control-sm " id="shStartDate" name="shStartDate" placeholder="시작일" value="<c:out value="${vo.shStartDate}"/>"></div>
-					<div class="col-6 col-md-3 mt-2 mb-2"><input type="text" class="form-control form-control-sm " id="shEndDate" name="shEndDate" placeholder="종료일" value="<c:out value="${vo.shEndDate}"/>"></div>
+					<div class="col-6 col-md-3 mt-2 mb-2"><input type="text" class="form-control form-control-sm " id="shDateStart" name="shDateStart" placeholder="시작일" value="<c:out value="${vo.shDateStart}"/>"></div>
+					<div class="col-6 col-md-3 mt-2 mb-2"><input type="text" class="form-control form-control-sm " id="shDateEnd" name="shDateEnd" placeholder="종료일" value="<c:out value="${vo.shDateEnd}"/>"></div>
 					<div class="col-6 col-md-3 mt-2 mb-2">	
 						<select class="form-select form-select-sm" name="shOption" id="shOption">
 							<option value="">::검색구분::</option>
@@ -225,8 +226,8 @@
 	
 	
 	$(document).ready(function(){
-		$("#shStartDate").datepicker();
-		$("#shEndDate").datepicker();
+		$("#shDateStart").datepicker();
+		$("#shDateEnd").datepicker();
 	});
 	
 	$.datepicker.setDefaults({
