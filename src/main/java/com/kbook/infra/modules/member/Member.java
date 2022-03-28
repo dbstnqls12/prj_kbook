@@ -1,5 +1,7 @@
 package com.kbook.infra.modules.member;
 
+import java.util.Date;
+
 public class Member {
 
 //	memberList
@@ -10,6 +12,11 @@ public class Member {
 	private String kbmeEmailFull;
 	private String kbmmAdminNy;
 	private String kbmmKoreanNy;
+	
+	private Date regDateTime;
+	private Date regDateTimeSvr;
+	private Date modDateTime;
+	private Date modDateTimeSvr;
 	
 //	memberView
 	private String kbmmPassword;
@@ -349,6 +356,30 @@ public class Member {
 	}
 	public void setKbmmKoreanNy(String kbmmKoreanNy) {
 		this.kbmmKoreanNy = kbmmKoreanNy;
+	}
+	public Date getRegDateTime() {
+		return regDateTime;
+	}
+	public void setRegDateTime(Date regDateTime) {
+		this.regDateTime = regDateTime;
+	}
+	public Date getRegDateTimeSvr() {
+		return regDateTimeSvr;
+	}
+	public void setRegDateTimeSvr(Date regDateTimeSvr) {
+		this.regDateTimeSvr = regDateTimeSvr;
+	}
+	public Date getModDateTime() {
+		return modDateTime;
+	}
+	public void setModDateTime(Date modDateTime) {
+		this.modDateTime = modDateTime;
+	}
+	public Date getModDateTimeSvr() {
+		return modDateTimeSvr;
+	}
+	public void setModDateTimeSvr(Date modDateTimeSvr) {
+		this.modDateTimeSvr = modDateTimeSvr;
 	}
 	
 

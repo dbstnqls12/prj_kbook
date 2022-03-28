@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kbook.infra.common.util.UtilDateTime;
+
 @Service
 public class MemberServiceImpl implements MemberService{
 
@@ -36,6 +38,9 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int insert(Member dto) throws Exception {
 		
+		dto.setRegDateTime(UtilDateTime.nowDate());
+		dto.setModDateTime(UtilDateTime.nowDate());
+		
 		dao.insert(dto);
 		dao.insertPhone(dto);
 		dao.insertEmail(dto);
@@ -46,6 +51,8 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int update(Member dto) throws Exception {
+		
+		dto.setModDateTime(UtilDateTime.nowDate());
 		
 		dao.update(dto);
 		dao.updateEmail(dto);

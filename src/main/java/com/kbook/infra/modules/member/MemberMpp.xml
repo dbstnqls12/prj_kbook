@@ -97,6 +97,10 @@
 			,a.kbmmOfferinfo2ConsentNy_s
 			,a.kbmmdormancyNy
 			,a.kbmmKoreanNy
+			,a.modDateTime
+			,a.modDateTimeSvr
+			,a.regDateTime
+			,a.regDateTimeSvr
  			,b.kbmpTelecomCd
 			,b.kbmpDefaultNy
 			,b.kbmpNumberFull
@@ -141,6 +145,10 @@
 			,kbmmSavedCd
 			,kbmmAdminNy
 			,kbmmDelNy
+			,modDateTime
+			,modDateTimeSvr
+			,regDateTime
+			,regDateTimeSvr
 		) VALUES (
 			#{kbmmName}
 			,#{kbmmGenderCd}
@@ -159,6 +167,10 @@
 			,#{kbmmSavedCd}
 			,0
 			,0
+			,#{modDateTime}
+			,#{modDateTimeSvr}
+			,#{regDateTime}
+			,#{regDateTimeSvr}
 		)	
 		<selectKey resultType="String" keyProperty="kbmmSeq" order="AFTER">
 			SELECT last_insert_id()
@@ -237,6 +249,8 @@
 			,kbmmSmsConsentNy = #{kbmmSmsConsentNy}
 			,kbmmEmailConsentNy = #{kbmmEmailConsentNy}
 			,kbmmSavedCd = #{kbmmSavedCd}
+			,modDateTime = #{modDateTime}
+			,modDateTimeSvr = #{modDateTimeSvr}
 		WHERE 1=1
 			AND kbmmSeq=#{kbmmSeq}	
 	</update>

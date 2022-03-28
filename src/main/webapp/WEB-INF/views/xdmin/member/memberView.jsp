@@ -211,20 +211,20 @@
 
 		 		
 				<div class="col-md-3">
+					<label class="form-label">최초등록자</label>
+					<input type="text" class="form-control form-control-sm" id="inputRegP"  placeholder="윤수빈" disabled>
+				</div>
+				<div class="col-md-3">
+					<label class="form-label">최초등록일</label>
+					<input type="text" class="form-control form-control-sm" id="regDateTime" name="regDateTime" placeholder="<c:out value="${item.regDateTime}"/>" disabled>
+				</div>
+				<div class="col-md-3">
 					<label class="form-label">최종수정자</label>
 					<input type="text" class="form-control form-control-sm" id="inputEditP" placeholder="윤수빈" disabled>
 				</div>
 				<div class="col-md-3">
 					<label class="form-label">최종수정일</label>
-					<input type="text" class="form-control form-control-sm" id="inputEditDate" placeholder="2022-12-12 12:12:12" disabled>
-				</div>
-				<div class="col-md-3">
-					<label class="form-label">최초등록자</label>
-					<input type="text" class="form-control form-control-sm" id="inputRegP" placeholder="윤수빈" disabled>
-				</div>
-				<div class="col-md-3">
-					<label class="form-label">최초등록일</label>
-					<input type="text" class="form-control form-control-sm" id="inputRegDate" placeholder="2020-12-12 12:12:12" disabled>
+					<input type="text" class="form-control form-control-sm" id="modDateTime" name="modDateTime" placeholder="<c:out value="${item.modDateTime}"/>" disabled>
 				</div>
 			</form>
 			<div class="col-mb-3 mt-3">	

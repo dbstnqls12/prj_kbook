@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kbook.infra.common.util.UtilDateTime;
 import com.kbook.infra.modules.code.CodeServiceImpl;
 
 @Controller
@@ -20,6 +21,10 @@ public class MemberController {
 	
 	@RequestMapping(value="/xdmin/member/memberList")
 	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception{
+		
+		System.out.println("UtilDateTime.nowLocalDateTime() : "+UtilDateTime.nowLocalDateTime());
+		System.out.println("UtilDateTime.nownowDate() : "+UtilDateTime.nowDate());
+		System.out.println("UtilDateTime.nowString() : "+UtilDateTime.nowString());
 		
 		int count = service.selectOneCount(vo);
 		
