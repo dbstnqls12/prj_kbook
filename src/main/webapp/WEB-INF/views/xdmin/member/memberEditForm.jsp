@@ -20,7 +20,7 @@
 
 <link href="/resources/xdmin/css/sidebars.css" rel="stylesheet" type="text/css">
 <link href="/resources/xdmin/css/footers.css" rel="stylesheet" type="text/css">
-<title>Kyobo_memberView</title>
+<title>Kyobo_memberEditForm</title>
 
 </head>
 <body>
@@ -47,6 +47,9 @@
 				<input type="hidden" id="shKbmmDelNy" name="shKbmmDelNy" value="<c:out value="${vo.shKbmmDelNy}"/>">
 				<input type="hidden" id="shOption" name="shOption"  value="<c:out value="${vo.shOption}"/>">
 				<input type="hidden" id="shValue" name="shValue"  value="<c:out value="${vo.shValue}"/>">
+				<input type="hidden" id="shDate" name="shDate"  value="<c:out value="${vo.shDate}"/>">
+				<input type="hidden" id="shStartDate" name="shStartDate"  value="<c:out value="${vo.shStartDate}"/>">
+				<input type="hidden" id="shEndDate" name=shEndDate  value="<c:out value="${vo.shEndDate}"/>">
 				<div class="col-md-6">
 					<label class="form-label">이름</label>
 					<input type="text" class="form-control form-control-sm" id="kbmmName" name="kbmmName" value= <c:out value="${rt.kbmmName}"/>>
@@ -92,12 +95,11 @@
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">국적</label>
-					<select class="form-select form-select-sm" id="inputNationality">
-						<option selected>::선택::</option>
-						<option value="1">대한민국</option>
-						<option value="2"></option>
-						<option value="3"></option>
-						<option value="3"></option>
+					<select class="form-select form-select-sm" id="kbmmKoreanNy" name="kbmmKoreanNy" >
+						<option selected>::국적::</option>
+							<c:forEach items="${CodeKorean}" var="itemKorean" varStatus="statusKorean">
+						<option value="<c:out value="${itemKorean.ifcdOrder}"/>" <c:if test="${rt.kbmmKoreanNy eq itemKorean.ifcdOrder }">selected</c:if> ><c:out value="${itemKorean.ifcdName}"/></option>	
+							</c:forEach>	
 					</select>
 				</div>
 				<div class="col-md-6">
@@ -121,9 +123,9 @@
 				</div>		
 				<div class="col-md-6">
 					<label class="form-label">주소 (국외전용)</label>
-					<input type="text" class="form-control form-control-sm mb-1" id="inputZipcode" placeholder="">
-					<input type="text" class="form-control form-control-sm mb-1" id="inputAddress1" placeholder="">
-					<input type="text" class="form-control form-control-sm mb-1" id="inputAddress2" placeholder="">
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaZipcode_abroad" name="kbmaZipcode_abroad" value="<c:out value="${rt.kbmaZipcode_abroad}"/>">
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1_abroad" name="kbmaAddress1_abroad" value="<c:out value="${rt.kbmaAddress1_abroad}"/>">
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2_abroad" name="kbmaAddress2_abroad" value="<c:out value="${rt.kbmaAddress2_abroad}"/>">
 				</div>
 								<div class="col-md-6">
 					<label class="col-form-label">개인정보 수집 및 이용안내(선택)</label>

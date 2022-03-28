@@ -88,18 +88,7 @@
 					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull"  value="<c:out value="${item.kbmpNumberFull}"/>" placeholder="숫자만 입력(예.01012341231)">
 				</div>
  
- 	<%-- 			<div class="col-md-6">
-					<label class="form-label">전화번호(선택)</label>s
-					<input type="hidden" id="kbmpDefaultNy1" name="kbmpDefaultNyArray" value="0">
-					<input type="hidden" id="kbmpDeviceCd1" name="kbmpDeviceCdArray" value="1">
-					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull1" name="kbmpNumberFullArray" value="<c:out value="${kbmmNumberHome}"/>" >
-				</div>
-				<div class="col-md-6">
-					<label class="form-label">팩스번호</label>
-					<input type="hidden" id="kbmpDefaultNy2" name="kbmpDefaultNyArray" value="0">
-					<input type="hidden" id="kbmpDeviceCd2" name="kbmpDeviceCdArray" value="3">
-					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull2" name="kbmpNumberFullArray" value="<c:out value="${kbmmNumberFax}"/>"  >
-				</div>  --%>
+
 			
 			
 <%-- 				<c:forEach items="${listPhone}" var="item" varStatus="statusTelecom">
@@ -141,27 +130,18 @@
 				</div> 
 			
 			 --%>
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
 				<div class="col-md-6">
 					<label class="col-form-label pt-0">이메일</label>
 					<input type="text" class="form-control form-control-sm" id="kbmeEmailFull" name="kbmeEmailFull" placeholder="이메일주소 입력">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">국적</label>
-					<select class="form-select form-select-sm" id="inputNationality" >
-						<option selected>::선택::</option>
-						<option value="1">대한민국</option>
-						<option value="2"></option>
-						<option value="3"></option>
-						<option value="3"></option>
+					<select class="form-select form-select-sm" id="kbmmKoreanNy" name="kbmmKoreanNy" >
+						<option selected>::국적::</option>
+							<c:forEach items="${CodeKorean}" var="itemKorean" varStatus="statusKorean">
+						<option value="<c:out value="${itemKorean.ifcdOrder}"/>" <c:if test="${item.kbmmKoreanNy eq itemKorean.ifcdOrder }">selected</c:if> ><c:out value="${itemKorean.ifcdName}"/></option>	
+							</c:forEach>	
 					</select>
 				</div>
 				<div class="col-6 d-none d-sm-block"></div><!-- 줄바꿈 -->
@@ -175,14 +155,11 @@
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1" name="kbmaAddress1" placeholder="기본주소"> 
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2" name="kbmaAddress2" placeholder="상세주소"> 
 				</div>
-				
-				
-				
 				<div class="col-md-6">
 					<label class="form-label">주소 (국외전용)</label>
-					<input type="text" class="form-control form-control-sm mb-1" id="inputZipcode" placeholder="">
-					<input type="text" class="form-control form-control-sm mb-1" id="inputAddress1" placeholder="">
-					<input type="text" class="form-control form-control-sm mb-1" id="inputAddress2" placeholder="">
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaZipcode_abroad" name="kbmaZipcode_abroad" placeholder="우편번호">
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1_abroad" name="kbmaAddress1_abroad" placeholder="기본주소">
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2_abroad" name="kbmaAddress2_abroad" placeholder="상세주소">
 				</div>
 				<div class="col-md-6">
 					<label class="col-form-label">교보문고 이용약관<span style="color: red;">(필수)</span></label>
@@ -369,7 +346,8 @@ $("#btn-add").on("click", function(){
  	if(!checkNull($("#kbmeEmailFull"), $("#kbmeEmailFull").val(), "이메일을 입력하세요.")) return false;
  	if(!checkEmail($("#kbmeEmailFull"), $("#kbmeEmailFull").val(), "이메일을 형식에 맞게 입력하세요. (@를 포함한 형태)")) return false;
  	
-	
+ 	if(!checkNull($("#kbmmKoreanNy"), $("#kbmmKoreanNy").val(), "국적을 선택하세요.")) return false;
+ 	
  	if(!checkNull($("#kbmaZipcode"), $("#kbmaZipcode").val(), "주소를 입력하세요.")) return false;
  	
 	

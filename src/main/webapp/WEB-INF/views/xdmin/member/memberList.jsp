@@ -81,7 +81,7 @@
 				<caption>Total : <c:out value="${vo.totalRows}"></c:out></caption>
 			 		<thead class="table-light">	
 						<tr>
-						<th><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
+						<th><input class="form-check-input" type="checkbox" value="" id="consentAll" name="consentAll"></th>
 						<th>번호</th>
 						<th>이름</th>
 						<th>아이디</th>
@@ -200,6 +200,15 @@
 
 	});
 	 */
+	 $('#consentAll').click(function(){
+			var checked = $('#consentAll').is(':checked');
+			if(checked)
+				$('input:checkbox').prop('checked',true);
+			else{
+				$('input:checkbox').prop('checked',false);
+			}
+		});
+	 
  	goList = function(seq){
 		//form 객체를 가져온다
 		$("#thisPage").val(seq);

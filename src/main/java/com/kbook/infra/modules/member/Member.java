@@ -9,6 +9,7 @@ public class Member {
 	private String kbmpNumberFull;
 	private String kbmeEmailFull;
 	private String kbmmAdminNy;
+	private String kbmmKoreanNy;
 	
 //	memberView
 	private String kbmmPassword;
@@ -341,6 +342,12 @@ public class Member {
 	}
 	public void setIfcgSeq(String ifcgSeq) {
 		this.ifcgSeq = ifcgSeq;
+	}
+	public String getKbmmKoreanNy() {
+		return kbmmKoreanNy;
+	}
+	public void setKbmmKoreanNy(String kbmmKoreanNy) {
+		this.kbmmKoreanNy = kbmmKoreanNy;
 	}
 	
 

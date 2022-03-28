@@ -86,49 +86,6 @@
 					</select>
 					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" value="<c:out value="${item.kbmpNumberFull}"/>" >
 				</div>
- 
-			
-				
-<%-- 			
-				<c:forEach items="${listPhone}" var="item" varStatus="statusTelecom">
-					<c:choose>
-						<c:when test="${item.kbmpDeviceCd eq 1}"> <c:set var="kbmmNumberHome" value="${item.kbmpNumberFull }"/></c:when>
-						<c:when test="${item.kbmpDeviceCd eq 2}">
-							<c:set var="kbmmNumberMobile" value="${item.kbmpNumberFull}"/>
-							<c:set var="kbmmNumberTelecom" value="${item.kbmpTelecomCd}"/>
-						</c:when>
-						<c:when test="${item.kbmpDeviceCd eq 3 }"><c:set var="kbmmNumberFax" value="${item.kbmpNumberFull}"/></c:when>
-						<c:otherwise></c:otherwise>
-					</c:choose>
-				</c:forEach>
-				
-				<div class="col-md-6">
-					<label class="form-label">핸드폰번호</label>
-					<input type="hidden" id="kbmpDefaultNy0" name="kbmpDefaultNyArray" value="1">
-					<input type="hidden" id="kbmpDeviceCd0" name="kbmpDeviceCdArray" value="2">
-					<select class="form-select form-select-sm mb-1" id="kbmpTelecomCd" name="kbmpTelecomCd">
-						<option selected>::통신사::</option>
-							<c:forEach items="${CodeTelecom}" var="itemTelecom" varStatus="statusTelecom">
-						<option value="<c:out value="${itemTelecom.ifcdOrder}"/>" <c:if test="${item.kbmmTelecomCd eq itemTelecom.ifcdOrder }">selected</c:if> ><c:out value="${itemTelecom.ifcdName}"/></option>	
-							</c:forEach>	
-					</select>
-					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull0" name="kbmpNumberFullArray"  value="<c:out value="${kbmmNumberMobile}"/>" >
-				</div>
- 				<div class="col-md-6">
-					<label class="form-label">전화번호(선택)</label>s
-					<input type="hidden" id="kbmpDefaultNy1" name="kbmpDefaultNyArray" value="0">
-					<input type="hidden" id="kbmpDeviceCd1" name="kbmpDeviceCdArray" value="1">
-					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull1" name="kbmpNumberFullArray" value="<c:out value="${kbmmNumberHome}"/>" >
-				</div>
-
- 				<div class="col-md-6">
-					<label class="form-label">팩스번호</label>
-					<input type="hidden" id="kbmpDefaultNy2" name="kbmpDefaultNyArray" value="0">
-					<input type="hidden" id="kbmpDeviceCd2" name="kbmpDeviceCdArray" value="3">
-					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull2" name="kbmpNumberFullArray" value="<c:out value="${kbmmNumberFax}"/>" >
-				</div> 
-			
-				 --%>
 
 				<div class="col-md-6">
 					<label class="col-form-label pt-0">이메일</label>
@@ -136,12 +93,11 @@
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">국적</label>
-					<select class="form-select form-select-sm" id="inputNationality">
-						<option selected>::선택::</option>
-						<option value="1">대한민국</option>
-						<option value="2"></option>
-						<option value="3"></option>
-						<option value="3"></option>
+					<select class="form-select form-select-sm" id="kbmmKoreanNy" name="kbmmKoreanNy" >
+						<option selected>::국적::</option>
+							<c:forEach items="${CodeKorean}" var="itemKorean" varStatus="statusKorean">
+						<option value="<c:out value="${itemKorean.ifcdOrder}"/>" <c:if test="${item.kbmmKoreanNy eq itemKorean.ifcdOrder }">selected</c:if> ><c:out value="${itemKorean.ifcdName}"/></option>	
+							</c:forEach>	
 					</select>
 				</div>
 				<div class="col-md-6">
@@ -161,9 +117,9 @@
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">주소 (국외전용)</label>
-					<input type="text" class="form-control form-control-sm mb-1" id="inputZipcode" placeholder="">
-					<input type="text" class="form-control form-control-sm mb-1" id="inputAddress1" placeholder="">
-					<input type="text" class="form-control form-control-sm mb-1" id="inputAddress2" placeholder="">
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaZipcode_abroad" name="kbmaZipcode_abroad" placeholder="<c:out value="${item.kbmaZipcode_abroad}"/>">
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1_abroad" name="kbmaAddress1_abroad" placeholder="<c:out value="${item.kbmaAddress1_abroad}"/>">
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2_abroad" name="kbmaAddress2_abroad" placeholder="<c:out value="${item.kbmaAddress2_abroad}"/>">
 				</div>
 				<div class="col-md-6">
 					<label class="col-form-label">개인정보 수집 및 이용안내(선택)</label>

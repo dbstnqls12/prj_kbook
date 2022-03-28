@@ -63,7 +63,20 @@
 			AND kbmpDelNy = 0
 			AND kbmmSeq = #{kbmmSeq}	
 	</select>
-
+<!-- 	
+	<select id="selectListNationality" resultMap="resultMapObj">
+		SELECT
+			kbmnSeq
+			,kbmnDefaultNy
+			,kbmnDelNy
+			,kbnaSeq
+		FROM kbMemberNationality
+		WHERE 1=1
+			AND kbmnDelNy = 0
+			AND kbmmSeq = #{kbmmSeq}	
+			AND kbnaSeq = #{kbnaSeq}	
+	</select>
+ -->
 	<select id="selectOne" resultMap="resultMapObj">
 		select
 			a.kbmmSeq
@@ -74,6 +87,7 @@
 			,a.kbmmPassword
 			,a.kbmmSavedCd
 			,a.kbmmGradeCd
+			,a.kbmmKoreanNy
 			,a.kbmmEmailConsentNy
 			,a.kbmmSmsConsentNy
 			,a.kbmmUseConsentNy_c
@@ -82,6 +96,7 @@
 			,a.kbmmOfferinfo1ConsentNy_s
 			,a.kbmmOfferinfo2ConsentNy_s
 			,a.kbmmdormancyNy
+			,a.kbmmKoreanNy
  			,b.kbmpTelecomCd
 			,b.kbmpDefaultNy
 			,b.kbmpNumberFull
@@ -90,6 +105,9 @@
 			,d.kbmaZipcode
 			,d.kbmaAddress1
 			,d.kbmaAddress2
+			,d.kbmaZipcode_abroad
+			,d.kbmaAddress1_abroad
+			,d.kbmaAddress2_abroad
 			,d.kbmaDefaultNy
 		FROM	
 			kbMember a
@@ -112,6 +130,7 @@
 			,kbmmPassword
 			,kbmmDob
 			,kbmmGradeCd
+			,kbmmKoreanNy
 			,kbmmUseConsentNy_c
 			,kbmmPersonalinfoConsentNy_c
 			,kbmmPersonalinfoConsentNy_s
@@ -129,6 +148,7 @@
 			,#{kbmmPassword}
 			,#{kbmmDob}
 			,1
+			,#{kbmmKoreanNy}
 			,#{kbmmUseConsentNy_c}
 			,#{kbmmPersonalinfoConsentNy_c}
 			,#{kbmmPersonalinfoConsentNy_s}
@@ -186,6 +206,9 @@
 			,kbmaAddress1
 			,kbmaAddress2
 			,kbmaZipcode
+			,kbmaAddress1_abroad
+			,kbmaAddress2_abroad
+			,kbmaZipcode_abroad
 			,kbmaDelNy
 			,kbmmSeq
 		) VALUES (
@@ -193,34 +216,21 @@
 			,#{kbmaAddress1}
 			,#{kbmaAddress2}
 			,#{kbmaZipcode}
+			,#{kbmaAddress1_abroad}
+			,#{kbmaAddress2_abroad}
+			,#{kbmaZipcode_abroad}
 			,0
 			,#{kbmmSeq}
 		)		
 	</insert>
-<!-- 	<insert id="insertNationality">
-		INSERT INTO kbMemberAddress(
-			kbmaDefaultNy
-			,kbmaAddress1
-			,kbmaAddress2
-			,kbmaZipcode
-			,kbmaDelNy
-			,kbmmSeq
-		) VALUES (
-			1
-			,#{kbmaAddress1}
-			,#{kbmaAddress2}
-			,#{kbmaZipcode}
-			,0
-			,#{kbmmSeq}
-		)		
-	</insert> -->
-	
+
 	<update id="update">
 		UPDATE kbMember SET 	
 			kbmmName = #{kbmmName}
 			,kbmmId = #{kbmmId}
 			,kbmmPassword = #{kbmmPassword}
 			,kbmmGradeCd = #{kbmmGradeCd}
+			,kbmmKoreanNy = #{kbmmKoreanNy}
 			,kbmmPersonalinfoConsentNy_s = #{kbmmPersonalinfoConsentNy_s}
 			,kbmmOfferinfo1ConsentNy_s = #{kbmmOfferinfo1ConsentNy_s}
 			,kbmmOfferinfo2ConsentNy_s = #{kbmmOfferinfo2ConsentNy_s}
@@ -254,6 +264,9 @@
 		kbmaAddress1 = #{kbmaAddress1}
 		,kbmaAddress2 = #{kbmaAddress2}
 		,kbmaZipcode = #{kbmaZipcode}
+		,kbmaAddress1_abroad = #{kbmaAddress1_abroad}
+		,kbmaAddress2_abroad = #{kbmaAddress2_abroad}
+		,kbmaZipcode_abroad = #{kbmaZipcode_abroad}
 	WHERE 1=1
 		AND kbmmSeq=#{kbmmSeq}
 	</update>	
