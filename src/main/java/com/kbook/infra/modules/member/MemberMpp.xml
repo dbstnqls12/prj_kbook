@@ -134,10 +134,7 @@
 			,kbmmGenderCd
 			,kbmmId
 			,kbmmPassword
-			<choose>
-				<when test="kbmmDob.equals('')">,NULL</when>
-				<otherwise>,#{kbmmDob}</otherwise>
-			</choose>
+			,kbmmDob
 			,kbmmGradeCd
 			,kbmmKoreanNy
 			,kbmmUseConsentNy_c
@@ -159,7 +156,10 @@
 			,#{kbmmGenderCd}
 			,#{kbmmId}
 			,#{kbmmPassword}
-			,#{kbmmDob}
+			<choose>
+				<when test="kbmmDob.equals('')">,NULL</when>
+				<otherwise>,#{kbmmDob}</otherwise>
+			</choose> 
 			,1
 			,#{kbmmKoreanNy}
 			,#{kbmmUseConsentNy_c}

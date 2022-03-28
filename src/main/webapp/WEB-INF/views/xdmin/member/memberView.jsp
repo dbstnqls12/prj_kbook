@@ -216,7 +216,7 @@
 				</div>
 				<div class="col-md-3">
 					<label class="form-label">최초등록일</label>
-					<input type="text" class="form-control form-control-sm" id="regDateTime" name="regDateTime" placeholder="<c:out value="${item.regDateTime}"/>" disabled>
+					<input type="text" class="form-control form-control-sm" id="regDateTime" name="regDateTime" value="<fmt:formatDate value="${item.regDateTime }" pattern="yyyy-MM-dd HH:mm:ss"/>" disabled>
 				</div>
 				<div class="col-md-3">
 					<label class="form-label">최종수정자</label>
@@ -224,7 +224,7 @@
 				</div>
 				<div class="col-md-3">
 					<label class="form-label">최종수정일</label>
-					<input type="text" class="form-control form-control-sm" id="modDateTime" name="modDateTime" placeholder="<c:out value="${item.modDateTime}"/>" disabled>
+					<input type="text" class="form-control form-control-sm" id="modDateTime" name="modDateTime" value="<fmt:formatDate value="${item.modDateTime }" pattern="yyyy-MM-dd HH:mm:ss"/>" disabled>
 				</div>
 			</form>
 			<div class="col-mb-3 mt-3">	

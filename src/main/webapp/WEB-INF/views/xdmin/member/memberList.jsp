@@ -55,8 +55,14 @@
 							<option value="3" <c:if test="${vo.shOptionDate eq 3 }">selected</c:if>>수정일</option>
 						</select>
 					</div>
-					<div class="col-6 col-md-3 mt-2 mb-2"><input type="text" class="form-control form-control-sm " id="shDateStart" name="shDateStart" placeholder="시작일" value="<c:out value="${vo.shDateStart}"/>"></div>
-					<div class="col-6 col-md-3 mt-2 mb-2"><input type="text" class="form-control form-control-sm " id="shDateEnd" name="shDateEnd" placeholder="종료일" value="<c:out value="${vo.shDateEnd}"/>"></div>
+					<div class="col-6 col-md-3 mt-2 mb-2">
+						<%-- <fmt:parseDate value="${vo.shDateStart}" var="shDateStart" pattern="yyyy-MM-dd HH:mm:ss"/>	 --%>
+						<input type="text" class="form-control form-control-sm " id="shDateStart" name="shDateStart" placeholder="시작일" value="<c:out value="${vo.shDateStart}"/>">
+					</div>
+					<div class="col-6 col-md-3 mt-2 mb-2">
+						<fmt:parseDate value="${vo.shDateEnd}" var="shDateEnd" pattern="yyyy-MM-dd"/>		 				
+						<input type="text" class="form-control form-control-sm " id="shDateEnd" name="shDateEnd" placeholder="종료일" value="<c:out value="${vo.shDateEnd}"/>">
+					</div>
 					<div class="col-6 col-md-3 mt-2 mb-2">	
 						<select class="form-select form-select-sm" name="shOption" id="shOption">
 							<option value="">::검색구분::</option>
