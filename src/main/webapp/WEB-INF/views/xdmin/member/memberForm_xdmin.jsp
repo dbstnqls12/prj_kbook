@@ -17,7 +17,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 
-<link href="/resources/xdmin/css/sidebars.css" rel="stylesheet" type="text/css">
 <link href="/resources/xdmin/css/footers.css" rel="stylesheet" type="text/css">
 <title>Kyobo_memberForm_admin</title>
 
@@ -29,12 +28,9 @@
 
 
 <!-- 본문 s-->
-<div class="container-fluid">
+<div class="container">
 	<div class="row">
-		<%@ include file="/WEB-INF/views/xdmin/include/sidebar.jsp" %><!-- sidebar -->
 		
-		<hr class="d-block d-sm-none">
-		<div class="col-md-10">
 		<div class="mb-3"><h4>회원가입</h4></div>
 			<div class="container ">
 			<form action="xdmin/member/memberInst" method="post" id="memberForm" name="memberForm" class="row g-3">
@@ -290,7 +286,6 @@
 		</div>
 		</div>
 	</div>
-</div>
 
 
 
@@ -350,8 +345,6 @@ $("#btn-add").on("click", function(){
  	
  	if(!checkNull($("#kbmaZipcode"), $("#kbmaZipcode").val(), "주소를 입력하세요.")) return false;
  	
-	
-
 	if ($("input:radio[name=kbmmUseConsentNy_c]").is(":checked") == false) {
 		alert("필수항목은 반드시 동의하세요. (교보문고 이용약관)");
 		return false;
@@ -366,12 +359,17 @@ $("#btn-add").on("click", function(){
 		alert("개인정보 유효기간을 선택하세요.");
 		return false;
 	}
- 	
+	
+	if($("kbmmSmsConsentNy").is(":checked"))
+		
+	
+	
 	$("#memberForm").attr("action", "/xdmin/member/memberInst");
 	$("#memberForm").submit();
 
 	
 });
+
 
 
 function sample6_execDaumPostcode() {
@@ -420,6 +418,9 @@ function sample6_execDaumPostcode() {
             document.getElementById("kbmaAddress2").focus();
         }
     }).open();
+    
+
+
 }
 
 </script>
