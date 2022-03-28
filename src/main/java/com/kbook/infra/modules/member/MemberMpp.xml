@@ -132,7 +132,10 @@
 			,kbmmGenderCd
 			,kbmmId
 			,kbmmPassword
-			,kbmmDob
+			<choose>
+				<when test="kbmmDob.equals('')">,NULL</when>
+				<otherwise>,#{kbmmDob}</otherwise>
+			</choose>
 			,kbmmGradeCd
 			,kbmmKoreanNy
 			,kbmmUseConsentNy_c

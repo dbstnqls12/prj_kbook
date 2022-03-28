@@ -66,9 +66,9 @@ public class MemberVo {
 		if (startRnumForOracle < 1) startRnumForOracle = 1;
 		
 		
-		if (thisPage == 1) {
+		if(thisPage == 1 || thisPage == 0) {
 			startRnumForMysql = 0;
-		} else {
+		}else {
 			startRnumForMysql = ((rowNumToShow * (thisPage-1)));
 		}
 		
