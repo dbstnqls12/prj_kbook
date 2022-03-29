@@ -197,7 +197,7 @@ public class MemberController {
 	@RequestMapping(value = "/xdmin/member/updateDeleteMulti")
 	public String updateDeleteMulti(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
-		  String[] checkboxSeqArray = vo.getCheckboxSeqArray();
+		  String[] checkboxSeqArray = vo.getCheckboxSeqArray();	
 		  
 		  for(String checkboxSeq : checkboxSeqArray) {
 			  vo.setKbmmSeq(checkboxSeq);
