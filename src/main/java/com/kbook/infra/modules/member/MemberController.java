@@ -2,6 +2,8 @@ package com.kbook.infra.modules.member;
 
 import java.util.List;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -172,7 +174,7 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/xdmin/member/updateDelete")
-	public String updateDelete(@ModelAttribute("vo") MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String updateDelete(MemberVo vo,  Member dto,RedirectAttributes redirectAttributes) throws Exception {
 
 		service.updateDelete(vo);
 
@@ -182,9 +184,18 @@ public class MemberController {
 		return "redirect:/xdmin/member/memberList";
 	}
 	
-	@RequestMapping(value = "/xdmin/member/updateDeleteListMulti")
-	public String updateDeleteListMulti(@ModelAttribute("vo") MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+	@RequestMapping(value = "/xdmin/member/delete")
+	public String delete(MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
+
+		service.delete(vo);
 		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/xdmin/member/memberList";
+	}
+	
+	@RequestMapping(value = "/xdmin/member/updateDeleteMulti")
+	public String updateDeleteMulti(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
 		  String[] checkboxSeqArray = vo.getCheckboxSeqArray();
 		  
@@ -193,6 +204,22 @@ public class MemberController {
 			  service.updateDelete(vo); 
 		  }
 		 
+		vo.setKbmmSeq(dto.getKbmmSeq());  
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/xdmin/member/memberList";
+	}
+	
+	@RequestMapping(value = "/xdmin/member/deleteMulti")
+	public String deleteMulti(MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		
+		String[] checkboxSeqArray = vo.getCheckboxSeqArray();
+		
+		for(String checkboxSeq : checkboxSeqArray) {
+			vo.setKbmmSeq(checkboxSeq);
+//			service.delete(vo);
+		}
+		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
 		return "redirect:/xdmin/member/memberList";

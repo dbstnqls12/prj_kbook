@@ -68,20 +68,7 @@
 			AND kbmpDelNy = 0
 			AND kbmmSeq = #{kbmmSeq}	
 	</select>
-<!-- 	
-	<select id="selectListNationality" resultMap="resultMapObj">
-		SELECT
-			kbmnSeq
-			,kbmnDefaultNy
-			,kbmnDelNy
-			,kbnaSeq
-		FROM kbMemberNationality
-		WHERE 1=1
-			AND kbmnDelNy = 0
-			AND kbmmSeq = #{kbmmSeq}	
-			AND kbnaSeq = #{kbnaSeq}	
-	</select>
- -->
+
 	<select id="selectOne" resultMap="resultMapObj">
 		select
 			a.kbmmSeq
@@ -300,12 +287,10 @@
 	<update id="updateDelete">
 		UPDATE kbMember SET kbmmDelNy = 1 WHERE 1=1 AND kbmmSeq=#{kbmmSeq}
 	</update>
-<!-- 	<delete id="">
-DELETE FROM
-		infrMember
-	WHERE 1=1
-		AND ifmmSeq = #{checkbox1}
-	</delete> -->
+	
+	<delete id="delete">
+		DELETE FROM kbmmMember WHERE 1=1 AND kbmmSeq = #{kbmmSeq}
+	</delete>
 
 </mapper>
 

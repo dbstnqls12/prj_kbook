@@ -13,6 +13,7 @@ public interface MemberService {
 	public int insert(Member dto) throws Exception;
 	public int update(Member dto) throws Exception;
 	public int updateDelete(MemberVo vo) throws Exception;
+	public int delete(MemberVo vo) throws Exception;
 	
 	
 

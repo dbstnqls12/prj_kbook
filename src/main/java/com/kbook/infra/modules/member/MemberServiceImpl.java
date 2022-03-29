@@ -27,6 +27,7 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Override
 	public List<Member> selectListPhone(MemberVo vo) throws Exception {
+		
 		return dao.selectListPhone(vo);
 	}
 
@@ -42,7 +43,13 @@ public class MemberServiceImpl implements MemberService{
 		dto.setModDateTime(UtilDateTime.nowDate());
 		
 		dao.insert(dto);
-		dao.insertPhone(dto);
+		for(int i=0; i<dto.getKbmpNumberFullArray().length; i++) {
+			dto.setKbmpDefaultNy(dto.getKbmpDefaultNyArray()[i]);
+			dto.setKbmpDeviceCd(dto.getKbmpDeviceCdArray()[i]);
+			dto.setKbmpNumberFull(dto.getKbmpNumberFullArray()[i]);
+			dao.insertPhone(dto);
+		}
+		
 		dao.insertEmail(dto);
 		dao.insertAddress(dto);
 		
@@ -55,9 +62,16 @@ public class MemberServiceImpl implements MemberService{
 		dto.setModDateTime(UtilDateTime.nowDate());
 		
 		dao.update(dto);
+		dao.updatePhone(dto);
+		for(int i=0; i<dto.getKbmpNumberFullArray().length; i++) {
+			dto.setKbmpDefaultNy(dto.getKbmpDefaultNyArray()[i]);
+			dto.setKbmpDeviceCd(dto.getKbmpDeviceCdArray()[i]);
+			dto.setKbmpNumberFull(dto.getKbmpNumberFullArray()[i]);
+			dao.updatePhone(dto);
+		}
+		
 		dao.updateEmail(dto);
 		dao.updateAddress(dto);
-		dao.updatePhone(dto);
 		
 		return 1;
 	}
@@ -65,6 +79,11 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int updateDelete(MemberVo vo) throws Exception {
 		return dao.updateDelete(vo);
+	}
+
+	@Override
+	public int delete(MemberVo vo) throws Exception {
+		return dao.delete(vo);
 	}
 
 

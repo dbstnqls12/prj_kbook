@@ -5,6 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+<%-- <% pageContext.setAttribute("br", "\n"); %> --%>
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -70,16 +72,44 @@
 							</c:forEach>
 					</select>
 				</div>	
+				
+				<c:forEach items="${listPhone}" var="item" varStatus="statusTelecom">
+					<c:choose>
+						<c:when test="${item.kbmpDeviceCd eq 1}"> <c:set var="kbmmNumberHome" value="${item.kbmpNumberFull }"/></c:when>
+						<c:when test="${item.kbmpDeviceCd eq 2}">
+							<c:set var="kbmmNumberMobile" value="${item.kbmpNumberFull}"/>
+							<c:set var="kbmmNumberTelecom" value="${item.kbmpTelecomCd}"/>
+						</c:when>
+						<c:when test="${item.kbmpDeviceCd eq 3 }"><c:set var="kbmmNumberFax" value="${item.kbmpNumberFull}"/></c:when>
+						<c:otherwise></c:otherwise>
+					</c:choose>
+				</c:forEach>	
+					
+				
 				<div class="col-md-6">
 					<label class="form-label">핸드폰번호</label>
-					<select class="form-select form-select-sm mb-1" id="kbmpTelecomCd" name="kbmpTelecomCd">
+					<input type="hidden" id="kbmpDefaultNyArray0" name="kbmpDefaultNyArray" value="1">
+					<input type="hidden" id="kbmpDeviceCdArray0" name="kbmpDeviceCdArray" value="2">
+					<select class="form-select form-select-sm mb-1" id="kbmpTelecomCdArray0" name="kbmpTelecomCdArray">
 						<option selected>::통신사::</option>
 							<c:forEach items="${CodeTelecom}" var="itemTelecom" varStatus="statusTelecom">
-						<option value="<c:out value="${itemTelecom.ifcdOrder}"/>" <c:if test="${rt.kbmpTelecomCd eq itemTelecom.ifcdOrder }">selected</c:if> ><c:out value="${itemTelecom.ifcdName}"/></option>	
+						<option value="<c:out value="${itemTelecom.ifcdOrder}"/>" <c:if test="${kbmmNumberTelecom eq itemTelecom.ifcdOrder }">selected</c:if> ><c:out value="${itemTelecom.ifcdName}"/></option>	
 							</c:forEach>	
 					</select>
-					<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" value="${rt.kbmpNumberFull}"/>
+					<input type="text" class="form-control form-control-sm" id="kbmpNumberFullArray0" name="kbmpNumberFullArray"  value="<c:out value="${kbmmNumberMobile}"/>"  placeholder="숫자만 입력(예.01012341231)">
+				</div>	
+ 				<div class="col-md-6">
+					<label class="form-label">전화번호(선택)</label>s
+					<input type="hidden" id="kbmpDefaultNyArray1" name="kbmpDefaultNyArray" value="0">
+					<input type="hidden" id="kbmpDeviceCd1Array" name="kbmpDeviceCdArray" value="1">
+					<input type="text" class="form-control form-control-sm" id="kbmpNumberFullArray1" name="kbmpNumberFullArray" value="<c:out value="${kbmmNumberHome}"/>" >
 				</div>
+				<div class="col-md-6">
+					<label class="form-label">팩스번호</label>
+					<input type="hidden" id="kbmpDefaultNyArray2" name="kbmpDefaultNyArray" value="0">
+					<input type="hidden" id="kbmpDeviceCdArray2" name="kbmpDeviceCdArray" value="3">
+					<input type="text" class="form-control form-control-sm" id="kbmpNumberFullArray2" name="kbmpNumberFullArray" value="<c:out value="${kbmmNumberFax}"/>"  >
+				</div> 
 				<div class="col-md-6">
 					<label class="col-form-label pt-0">이메일</label>
 					<input type="text" class="form-control form-control-sm" id="kbmeEmailFull" name="kbmeEmailFull" value="<c:out value="${rt.kbmeEmailFull}"/>">
@@ -209,9 +239,7 @@
 		            <label class="col-form-label">설명</label>
 		            <div class="col-md-6">
 		            <%-- <p>${fn:replace(item.ifmmDesc, br, '<br/>')}</p> --%>
-		            <textarea rows="3" cols="80" id="kbmmDesc" name="kbmmDesc">
-		         	   <c:out value="${item.kbmmDesc}" escapeXml = "false"/>
-		            </textarea>
+		            <textarea rows="3" cols="80" id="kbmmDesc" name="kbmmDesc"><c:out value="${item.kbmmDesc}" escapeXml="false"/></textarea>
 		            </div>
 		        </div>
 		 		<div class="col-6 d-none d-sm-block"></div><!-- 줄바꿈 -->

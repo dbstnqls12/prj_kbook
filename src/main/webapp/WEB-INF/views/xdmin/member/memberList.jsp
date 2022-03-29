@@ -39,7 +39,7 @@
 			<form id="formList" name="formList" method="post" action="memberList">
 			<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 			<%-- <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>"> --%>
-			<input type="hidden" name="checkboxArray">
+			<input type="hidden" name="checkboxSeqArray" id="checkboxSeqArray">
 			<input type="hidden" id="kbmmSeq" name="kbmmSeq">
 
 			<div class="border p-3 ">
@@ -201,9 +201,11 @@
 			</nav> --%>
 			<!-- page e -->
 			<div class="clearfix mb-3">	
-				<div class="float-start"><button type="button" class="btn btn-danger btn-sm float-start" name="btn-Nele" id="btn-Nele"><i class="fas fa-trash"></i></button></div>
+				<div class="float-start">
+					<button type="button" class="btn btn-danger btn-sm my-2" name="btn-delete" id="btn-delete" ><i class="fa-solid fa-x"></i></button>
+					<button type="button" class="btn btn-danger btn-sm" name="btn-updateDelete" id="btn-updateDelete"><i class="fas fa-trash"></i></button>
+				</div>
 				<div class="float-end">
-					<button type="button" class="btn btn-success btn-sm" id="search_icon"><i class="bi bi-file-earmark-x"></i></button>
 					<button type="button" class="btn btn-primary btn-sm" id="btn-search" name="btn-search" onclick="javascript:goForm();"><i class="fas fa-plus"></i></button>
 				</div>
 			</div>
@@ -225,15 +227,7 @@
 		if(!checkNull($("#shValue"), $("#shValue").val(), "검색어를 입력해주세요!")) return false;		  */
 
 	});
- 	$("#btnSubmit2").on("click",function(){
-		
 
-	});
-	 
-	 $('#listChkAll').click(function(){
-			if($("#checkboxAll").is(':checked')) $("input[name=checkboxSeq]").prop("checked",true);
-			else $("input[name=checkboxSeq]").prop("checked", false);
-		});
 	 
  	goList = function(seq){
 		//form 객체를 가져온다
@@ -248,23 +242,65 @@
 		$("#formList").submit();
 	}
 	
-	$("#btn-Nele").on("click", function(){
-		var answer = confirm("삭제하시겠습니까?");
+	 $('#checkboxAll').click(function(){
+			if($("#checkboxAll").is(':checked')) $("input[name=checkboxSeq]").prop("checked",true);
+			else $("input[name=checkboxSeq]").prop("checked", false);
+	});
+	
+	$("input[name=checkboxSeq]").click(function(){
 		
-		if(answer){
-			$("#formList").attr("action", "/xdmin/member/updateDeleteList");
+		var total = $("input[name=checkboxSeq]").length;
+		var checked = $("input[name=checkboxSeq]:checked").length;
+		
+		if(total != checked) $("checkboxAll").prop("checked", false); 
+		else $("checkboxAll").prop("checked", true);
+	});	 
+	
+	$("#btn-delete").on("click", function(){
+		var answer = confirm("삭제하시겠습니까? (DB에서 삭제)");
+		
+ 		if(answer){
+ 	 		$("input[name=checkboxSeq]:checked").each(function() { 
+				checkboxSeqArray.push($(this).val());
+			}); 
+	 
+ 	 		$("#formList").attr("action", "/xdmin/member/deleteMulti");
 			$("#formList").submit();
+/* 	 		$("input:hidden[name=checkboxSeqArray]").val(checkboxSeqArray);
+			form.attr("action", "/xdmin/member/deleteMulti").submit(); */
 		}else{
 			return false;
 		}
+	});
+	
+	$("#btn-updateDelete").on("click", function(){
+		var answer = confirm("삭제하시겠습니까?");
+		
+ 		if(answer){
+  			$("input[name=checkboxSeq]:checked").each(function() { 
+				checkboxSeqArray.push($(this).val());
+			});  
+			
+			$("input:hidden[name=checkboxSeqArray]").val(checkboxSeqArray); 
+			form.attr("action", "/xdmin/member/updateDeleteMulti").submit();
+			
+			$("#formList").attr("action", "/xdmin/member/updateDeleteMulti");
+			$("#formList").submit();
+/* 			$("input:hidden[name=checkboxSeqArray]").val(checkboxSeqArray); 
+			form.attr("action", "/xdmin/member/updateDeleteMulti").submit(); */
+			
+		}else{
+			return false;
+		} 
 		
 	});
 	
+
+
 	goForm = function(){
 		$("#formList").attr("action","/xdmin/member/memberForm_xdmin");
 		$("#formList").submit();
 	}
-	
 	
 	$(document).ready(function(){
 		$("#shDateStart").datepicker();
@@ -287,6 +323,13 @@
 	    yearSuffix: '년'
 	});
 
+	
+	 
+
+	
+
+	
+	
 </script>
 <!-- Optional JavaScript; choose one of the two! -->
 

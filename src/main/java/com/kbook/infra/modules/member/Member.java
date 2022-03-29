@@ -38,14 +38,14 @@ public class Member {
 	private String kbmmDesc;
 	
 	private String kbmpSeq;
-	private String kbmpDefaultNy;
-	private String kbmpTypeCd;
-	private String kbmpDeviceCd;
+	private Integer kbmpDefaultNy;
+	private Integer kbmpTypeCd;
+	private Integer kbmpDeviceCd;
 	private String kbmpTelecomCd;
 	private String kbmpNumber1Cd;
 	private String kbmpNumber2;
 	private String kbmpNumber3;
-	private String kbmpDelNy;
+	private Integer kbmpDelNy;
 
 	private String kbmaDefaultNy;
 	private String kbmaTypeCd;
@@ -67,8 +67,9 @@ public class Member {
 	private String kbmeDelNy;
 	private String ifcgSeq;
 	
-	
-	
+	private Integer[] kbmpDefaultNyArray;
+	private Integer[] kbmpDeviceCdArray;
+	private String[] kbmpNumberFullArray;
 	public String getKbmmSeq() {
 		return kbmmSeq;
 	}
@@ -104,6 +105,36 @@ public class Member {
 	}
 	public void setKbmmAdminNy(String kbmmAdminNy) {
 		this.kbmmAdminNy = kbmmAdminNy;
+	}
+	public String getKbmmKoreanNy() {
+		return kbmmKoreanNy;
+	}
+	public void setKbmmKoreanNy(String kbmmKoreanNy) {
+		this.kbmmKoreanNy = kbmmKoreanNy;
+	}
+	public Date getRegDateTime() {
+		return regDateTime;
+	}
+	public void setRegDateTime(Date regDateTime) {
+		this.regDateTime = regDateTime;
+	}
+	public Date getRegDateTimeSvr() {
+		return regDateTimeSvr;
+	}
+	public void setRegDateTimeSvr(Date regDateTimeSvr) {
+		this.regDateTimeSvr = regDateTimeSvr;
+	}
+	public Date getModDateTime() {
+		return modDateTime;
+	}
+	public void setModDateTime(Date modDateTime) {
+		this.modDateTime = modDateTime;
+	}
+	public Date getModDateTimeSvr() {
+		return modDateTimeSvr;
+	}
+	public void setModDateTimeSvr(Date modDateTimeSvr) {
+		this.modDateTimeSvr = modDateTimeSvr;
 	}
 	public String getKbmmPassword() {
 		return kbmmPassword;
@@ -183,22 +214,40 @@ public class Member {
 	public void setKbmmGradeCd(String kbmmGradeCd) {
 		this.kbmmGradeCd = kbmmGradeCd;
 	}
-	public String getKbmpDefaultNy() {
+	public String getKbmmdormancyNy() {
+		return kbmmdormancyNy;
+	}
+	public void setKbmmdormancyNy(String kbmmdormancyNy) {
+		this.kbmmdormancyNy = kbmmdormancyNy;
+	}
+	public String getKbmmDesc() {
+		return kbmmDesc;
+	}
+	public void setKbmmDesc(String kbmmDesc) {
+		this.kbmmDesc = kbmmDesc;
+	}
+	public String getKbmpSeq() {
+		return kbmpSeq;
+	}
+	public void setKbmpSeq(String kbmpSeq) {
+		this.kbmpSeq = kbmpSeq;
+	}
+	public Integer getKbmpDefaultNy() {
 		return kbmpDefaultNy;
 	}
-	public void setKbmpDefaultNy(String kbmpDefaultNy) {
+	public void setKbmpDefaultNy(Integer kbmpDefaultNy) {
 		this.kbmpDefaultNy = kbmpDefaultNy;
 	}
-	public String getKbmpTypeCd() {
+	public Integer getKbmpTypeCd() {
 		return kbmpTypeCd;
 	}
-	public void setKbmpTypeCd(String kbmpTypeCd) {
+	public void setKbmpTypeCd(Integer kbmpTypeCd) {
 		this.kbmpTypeCd = kbmpTypeCd;
 	}
-	public String getKbmpDeviceCd() {
+	public Integer getKbmpDeviceCd() {
 		return kbmpDeviceCd;
 	}
-	public void setKbmpDeviceCd(String kbmpDeviceCd) {
+	public void setKbmpDeviceCd(Integer kbmpDeviceCd) {
 		this.kbmpDeviceCd = kbmpDeviceCd;
 	}
 	public String getKbmpTelecomCd() {
@@ -225,10 +274,10 @@ public class Member {
 	public void setKbmpNumber3(String kbmpNumber3) {
 		this.kbmpNumber3 = kbmpNumber3;
 	}
-	public String getKbmpDelNy() {
+	public Integer getKbmpDelNy() {
 		return kbmpDelNy;
 	}
-	public void setKbmpDelNy(String kbmpDelNy) {
+	public void setKbmpDelNy(Integer kbmpDelNy) {
 		this.kbmpDelNy = kbmpDelNy;
 	}
 	public String getKbmaDefaultNy() {
@@ -333,60 +382,32 @@ public class Member {
 	public void setKbmeDelNy(String kbmeDelNy) {
 		this.kbmeDelNy = kbmeDelNy;
 	}
-	public String getKbmmdormancyNy() {
-		return kbmmdormancyNy;
-	}
-	public void setKbmmdormancyNy(String kbmmdormancyNy) {
-		this.kbmmdormancyNy = kbmmdormancyNy;
-	}
-	public String getKbmpSeq() {
-		return kbmpSeq;
-	}
-	public void setKbmpSeq(String kbmpSeq) {
-		this.kbmpSeq = kbmpSeq;
-	}
 	public String getIfcgSeq() {
 		return ifcgSeq;
 	}
 	public void setIfcgSeq(String ifcgSeq) {
 		this.ifcgSeq = ifcgSeq;
 	}
-	public String getKbmmKoreanNy() {
-		return kbmmKoreanNy;
+	public Integer[] getKbmpDefaultNyArray() {
+		return kbmpDefaultNyArray;
 	}
-	public void setKbmmKoreanNy(String kbmmKoreanNy) {
-		this.kbmmKoreanNy = kbmmKoreanNy;
+	public void setKbmpDefaultNyArray(Integer[] kbmpDefaultNyArray) {
+		this.kbmpDefaultNyArray = kbmpDefaultNyArray;
 	}
-	public Date getRegDateTime() {
-		return regDateTime;
+	public Integer[] getKbmpDeviceCdArray() {
+		return kbmpDeviceCdArray;
 	}
-	public void setRegDateTime(Date regDateTime) {
-		this.regDateTime = regDateTime;
+	public void setKbmpDeviceCdArray(Integer[] kbmpDeviceCdArray) {
+		this.kbmpDeviceCdArray = kbmpDeviceCdArray;
 	}
-	public Date getRegDateTimeSvr() {
-		return regDateTimeSvr;
+	public String[] getKbmpNumberFullArray() {
+		return kbmpNumberFullArray;
 	}
-	public void setRegDateTimeSvr(Date regDateTimeSvr) {
-		this.regDateTimeSvr = regDateTimeSvr;
+	public void setKbmpNumberFullArray(String[] kbmpNumberFullArray) {
+		this.kbmpNumberFullArray = kbmpNumberFullArray;
 	}
-	public Date getModDateTime() {
-		return modDateTime;
-	}
-	public void setModDateTime(Date modDateTime) {
-		this.modDateTime = modDateTime;
-	}
-	public Date getModDateTimeSvr() {
-		return modDateTimeSvr;
-	}
-	public void setModDateTimeSvr(Date modDateTimeSvr) {
-		this.modDateTimeSvr = modDateTimeSvr;
-	}
-	public String getKbmmDesc() {
-		return kbmmDesc;
-	}
-	public void setKbmmDesc(String kbmmDesc) {
-		this.kbmmDesc = kbmmDesc;
-	}
+	
+	
 	
 
 
