@@ -20,7 +20,6 @@ public class Member {
 	
 //	memberView
 	private String kbmmPassword;
-
 	private String kbmmDob;
 	
 //	memberForm
@@ -36,6 +35,7 @@ public class Member {
 	private String kbmmDelNy;
 	private String kbmmGradeCd;
 	private String kbmmdormancyNy;
+	private String kbmmDesc;
 	
 	private String kbmpSeq;
 	private String kbmpDefaultNy;
@@ -381,7 +381,14 @@ public class Member {
 	public void setModDateTimeSvr(Date modDateTimeSvr) {
 		this.modDateTimeSvr = modDateTimeSvr;
 	}
+	public String getKbmmDesc() {
+		return kbmmDesc;
+	}
+	public void setKbmmDesc(String kbmmDesc) {
+		this.kbmmDesc = kbmmDesc;
+	}
 	
+
 
 
 	

@@ -39,7 +39,10 @@ public class UtilDateTime {
 			localDateTimeNew = localDateTime.minusDays(Math.abs(day));
 		}
 
-		String localDateTimeNewString = localDateTimeNew.format(DateTimeFormatter.ofPattern(Constants.DATE_FORMAT_BASIC));
+		String localDateTimeNewString = localDateTimeNew.format(DateTimeFormatter.ofPattern(Constants.DATETIME_FORMAT_BASIC));
 		return localDateTimeNewString;
+	}
+	public static String addStringTime(String date) {
+		return date + " 00:00:00";
 	}
 }

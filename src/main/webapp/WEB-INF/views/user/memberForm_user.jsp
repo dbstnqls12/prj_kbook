@@ -224,7 +224,6 @@ $("#btn_chk1").on("click",function(){
 	if(!checkNull($("#kbmpTelecomCd"), $("#kbmpTelecomCd").val(), "통신사를 선택하세요.")) return false;
 	if(!checkNull($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호를 입력하세요.")) return false;
  	if(!checkOnlyNumber($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호는 숫자만 입력 가능합니다.")) return false;
- 	if(!checkNumber($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호는 11자리로 입력해주세요.")) return false;	 	 
 	
  	/* certificationNumber */
  	/* if(!checkNull($("#certificationNumber"), $("#certificationNumber").val(), "인증번호를 입력하세요.")) return false; */
@@ -240,7 +239,6 @@ $("#btn-certification").on("click",function(){
 	if(!checkNull($("#kbmpTelecomCd"), $("#kbmpTelecomCd").val(), "통신사를 선택하세요.")) return false;
 	if(!checkNull($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호를 입력하세요.")) return false;
  	if(!checkOnlyNumber($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호는 숫자만 입력 가능합니다.")) return false;
- 	if(!checkNumber($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호를 11자리로 입력해주세요.")) return false;	 
 
  	
 });

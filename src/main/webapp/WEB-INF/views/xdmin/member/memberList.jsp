@@ -5,6 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+<jsp:useBean id="CodeServiceImpl" class="com.kbook.infra.modules.code.CodeServiceImpl"/>
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -36,6 +38,8 @@
 			<div class="mb-2"><h4 style="font-weight: bold;">회원관리</h4></div>
 			<form id="formList" name="formList" method="post" action="memberList">
 			<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+			<%-- <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>"> --%>
+			<input type="hidden" name="checkboxArray">
 			<input type="hidden" id="kbmmSeq" name="kbmmSeq">
 
 			<div class="border p-3 ">
@@ -56,12 +60,13 @@
 						</select>
 					</div>
 					<div class="col-6 col-md-3 mt-2 mb-2">
-						<%-- <fmt:parseDate value="${vo.shDateStart}" var="shDateStart" pattern="yyyy-MM-dd HH:mm:ss"/>	 --%>
-						<input type="text" class="form-control form-control-sm " id="shDateStart" name="shDateStart" placeholder="시작일" value="<c:out value="${vo.shDateStart}"/>" autocomplete="off">
+						<fmt:parseDate var="shDateStart" value="${vo.shDateStart}"  pattern="yyyy-MM-dd HH:mm:ss"/>	
+						<input type="text" class="form-control form-control-sm " id="shDateStart" name="shDateStart" placeholder="시작일" value="<fmt:formatDate value="${shDateStart}" pattern="yyyy-MM-dd"/>" autocomplete="off">
 					</div>
+					
 					<div class="col-6 col-md-3 mt-2 mb-2">
-						<fmt:parseDate value="${vo.shDateEnd}" var="shDateEnd" pattern="yyyy-MM-dd"/>		 				
-						<input type="text" class="form-control form-control-sm " id="shDateEnd" name="shDateEnd" placeholder="종료일" value="<c:out value="${vo.shDateEnd}"/>" autocomplete="off">
+						<fmt:parseDate var="shDateEnd" value="${vo.shDateEnd}" pattern="yyyy-MM-dd HH:mm:ss"/>		 				
+						<input type="text" class="form-control form-control-sm " id="shDateEnd" name="shDateEnd" placeholder="종료일" value="<fmt:formatDate value="${shDateEnd}" pattern="yyyy-MM-dd"/>" autocomplete="off">
 					</div>
 					<div class="col-6 col-md-3 mt-2 mb-2">	
 						<select class="form-select form-select-sm" name="shOption" id="shOption">
@@ -73,7 +78,7 @@
 					<div class="col-6 col-md-3 mt-2 "><input type="text" class="form-control form-control-sm " id="shValue" name="shValue" placeholder="검색어" value="<c:out value="${vo.shValue}"/>"></div>
 					<div class="col-6 col-md-3 mt-2">
 						<button type="submit" class="btn btn-warning btn-sm" id="btnSubmit"><i class="fas fa-search"></i></button>
-						<button type="button" class="btn btn-danger btn-sm" id="btnSubmit2" ><i class="fa-solid fa-arrow-rotate-left"></i></button>
+						<button type="button" class="btn btn-danger btn-sm" id="btnSubmit2" onclick="location.href='memberList'"><i class="fa-solid fa-arrow-rotate-left"></i></button>
 					</div>
 				</div>
 			</div>	
@@ -86,16 +91,19 @@
 				<caption>Total : <c:out value="${vo.totalRows}"></c:out></caption>
 			 		<thead class="table-light">	
 						<tr>
-						<th><input class="form-check-input" type="checkbox" value="" id="listChkAll" name="listChkAll"></th>
+						<th><input class="form-check-input" type="checkbox" value="" id="checkboxAll" name="checkboxAll"></th>
 						<th>번호</th>
 						<th>이름</th>
 						<th>아이디</th>
 						<th>전화번호</th>
 						<th>이메일</th>
+						<th>성별</th>
+						<th>생일</th>
 						<th>삭제여부</th>
 						</tr>
 					</thead>	
 					<tr>
+					<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('3')}"/>
 					<c:choose>
 						<c:when test="${fn:length(list) eq 0}">
 							<tr>
@@ -105,12 +113,32 @@
 						<c:otherwise>
 							<c:forEach items="${list}" var="item" varStatus="status">	
 							<tr>
-								<td><input class="form-check-input" type="checkbox" name="listChk" value="<c:out value="${item.kbmmSeq}"/>"></td>
+								<td><input class="form-check-input" type="checkbox" name="checkboxSeq" id="checkboxSeq" value="<c:out value="${item.kbmmSeq}"/>"></td>
 								<td><c:out value="${item.kbmmSeq}"/></td>
 								<td><a href="javascript:goView(<c:out value="${item.kbmmSeq}"/>)"><c:out value="${item.kbmmName}"/></a></td>
 								<td><c:out value="${item.kbmmId}"/></td>
-								<td><c:out value="${item.kbmpNumberFull}"/></td>
+								<td>
+									<c:set var="numberPhone" value="${item.kbmpNumberFull}"/>
+				                	<c:choose>
+				                		<c:when test="${fn:length(numberPhone) eq 10 }">
+											<c:out value="${fn:substring(numberPhone,0,3)}"/>
+											- <c:out value="${fn:substring(numberPhone,3,6)}"/>
+											- <c:out value="${fn:substring(numberPhone,6,10)}"/>
+				                		</c:when>
+				                		<c:otherwise>
+											<c:out value="${fn:substring(numberPhone,0,3)}"/>
+											- <c:out value="${fn:substring(numberPhone,3,7)}"/>
+											- <c:out value="${fn:substring(numberPhone,7,11)}"/>
+				                		</c:otherwise>
+				               		</c:choose>
+								</td>
 								<td><c:out value="${item.kbmeEmailFull}"/></td>
+								<td>
+									<c:forEach items="${listCodeGender}" var="itemGender" varStatus="statusGender">
+										<c:if test="${item.kbmmGenderCd eq itemGender.ifcdOrder}"><c:out value="${itemGender.ifcdName}"/></c:if>	
+									</c:forEach>
+								</td>
+								<td><c:out value="${item.kbmmDob}"/></td>
 								<td>
 									<c:choose>
 										<c:when test="${item.kbmmDelNy eq 0}">X</c:when>
@@ -199,22 +227,12 @@
 	});
  	$("#btnSubmit2").on("click",function(){
 		
-		$("#shKbmmDelNy").val("");
-		$("#shOptionDate").val("");
-		$("#shDateStart").val("");
-		$("#shDateEnd").val("");
-		$("#shOption").val("");
-		$("#shValue").val("");	
 
 	});
 	 
 	 $('#listChkAll').click(function(){
-			var checked = $('#listChkAll').is(':checked');
-			if(checked)
-				$('input:checkbox').prop('checked',true);
-			else{
-				$('input:checkbox').prop('checked',false);
-			}
+			if($("#checkboxAll").is(':checked')) $("input[name=checkboxSeq]").prop("checked",true);
+			else $("input[name=checkboxSeq]").prop("checked", false);
 		});
 	 
  	goList = function(seq){
@@ -259,7 +277,7 @@
 	    nextText: '다음 달',
 	    changeYear: true, //연도 선택 콤보박스
 	    changeMonth: true, //월 선택 콤보박스
-	    yearRange: 'c-100:c+10',
+	    yearRange: 'c-100:c+40',
 	    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
 	    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
 	    dayNames: ['일', '월', '화', '수', '목', '금', '토'],

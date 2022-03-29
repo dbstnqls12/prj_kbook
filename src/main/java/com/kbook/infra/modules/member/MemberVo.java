@@ -22,6 +22,7 @@ public class MemberVo {
 	private String listChk;
 	
 	private String kbmmGenderCd;
+	private String[] checkboxSeqArray;
 	
 //	paging
 	private int thisPage = 1;									// 현재 페이지
@@ -293,6 +294,16 @@ public class MemberVo {
 
 	public void setListChk(String listChk) {
 		this.listChk = listChk;
+	}
+
+
+	public String[] getCheckboxSeqArray() {
+		return checkboxSeqArray;
+	}
+
+
+	public void setCheckboxSeqArray(String[] checkboxSeqArray) {
+		this.checkboxSeqArray = checkboxSeqArray;
 	}
 
 

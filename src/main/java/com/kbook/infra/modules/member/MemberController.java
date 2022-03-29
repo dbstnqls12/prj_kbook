@@ -23,8 +23,8 @@ public class MemberController {
 	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 		
 //		vo.setShOptionDate(vo.getShOptionDate() == null ? 1 : vo.getShOptionDate());
-		vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : vo.getShDateStart());
-		vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : vo.getShDateEnd());
+		vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : UtilDateTime.addStringTime(vo.getShDateStart()));
+		vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : UtilDateTime.addStringTime(vo.getShDateEnd()));
 		 
 		int count = service.selectOneCount(vo);
 
@@ -169,7 +169,6 @@ public class MemberController {
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
 		return "redirect:/xdmin/member/memberView";
-
 	}
 
 	@RequestMapping(value = "/xdmin/member/updateDelete")
@@ -182,17 +181,25 @@ public class MemberController {
 
 		return "redirect:/xdmin/member/memberList";
 	}
-	@RequestMapping(value = "/xdmin/member/updateDeleteList")
-	public String updateDeleteList(@ModelAttribute("vo") MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+	
+	@RequestMapping(value = "/xdmin/member/updateDeleteListMulti")
+	public String updateDeleteListMulti(@ModelAttribute("vo") MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
-		service.updateDeleteList(vo);
 		
-		vo.setKbmmSeq(dto.getKbmmSeq());
+		  String[] checkboxSeqArray = vo.getCheckboxSeqArray();
+		  
+		  for(String checkboxSeq : checkboxSeqArray) {
+			  vo.setKbmmSeq(checkboxSeq);
+			  service.updateDelete(vo); 
+		  }
+		 
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
 		return "redirect:/xdmin/member/memberList";
 	}
 
+	
+	
 	@RequestMapping(value = "xdmin/login/login")
 	public String memberLogin(Member dto) throws Exception {
 

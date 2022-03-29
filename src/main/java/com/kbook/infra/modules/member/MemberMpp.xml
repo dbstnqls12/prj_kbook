@@ -45,8 +45,11 @@
 			,b.kbmpNumberFull
 			,c.kbmeEmailFull
 			,a.kbmmAdminNy
-			,a.kbmmAdminNy
+			,a.kbmmGenderCd
 			,a.kbmmDelNy
+<!-- 			,a.regDateTime
+			,a.modDateTime -->
+			,a.kbmmDob
 		<include refid="selectCommon"/>	
 		limit #{startRnumForMysql}, #{rowNumToShow}
 	</select>
@@ -90,6 +93,7 @@
 			,a.kbmmSavedCd
 			,a.kbmmGradeCd
 			,a.kbmmKoreanNy
+			,a.kbmmDesc
 			,a.kbmmEmailConsentNy
 			,a.kbmmSmsConsentNy
 			,a.kbmmUseConsentNy_c
@@ -147,6 +151,7 @@
 			,kbmmSavedCd
 			,kbmmAdminNy
 			,kbmmDelNy
+			,kbmmDesc
 			,modDateTime
 			,modDateTimeSvr
 			,regDateTime
@@ -172,6 +177,7 @@
 			,#{kbmmSavedCd}
 			,0
 			,0
+			,#{kbmmDesc}
 			,#{modDateTime}
 			,#{modDateTimeSvr}
 			,#{regDateTime}
@@ -253,6 +259,7 @@
 			,kbmmOfferinfo2ConsentNy_s = #{kbmmOfferinfo2ConsentNy_s}
 			,kbmmSmsConsentNy = #{kbmmSmsConsentNy}
 			,kbmmEmailConsentNy = #{kbmmEmailConsentNy}
+			,kbmmDesc  = #{kbmmDesc}
 			,kbmmSavedCd = #{kbmmSavedCd}
 			,modDateTime = #{modDateTime}
 			,modDateTimeSvr = #{modDateTimeSvr}
@@ -292,9 +299,6 @@
 
 	<update id="updateDelete">
 		UPDATE kbMember SET kbmmDelNy = 1 WHERE 1=1 AND kbmmSeq=#{kbmmSeq}
-	</update>
-	<update id="updateDeleteList">
-		UPDATE kbMember SET kbmmDelNy = 1 WHERE 1=1 AND kbmmSeq=#{listChk}
 	</update>
 <!-- 	<delete id="">
 DELETE FROM

@@ -203,8 +203,16 @@
 						</div>
 		 			</div>
 		 		</div>
-
-		 		
+		        <div class="col-sm-6">
+		            <label class="col-form-label">설명</label>
+		            <div class="col-md-6">
+		            <%-- <p>${fn:replace(item.ifmmDesc, br, '<br/>')}</p> --%>
+		            <textarea rows="3" cols="80" id="kbmmDesc" name="kbmmDesc">
+		         	   <c:out value="${fn:replace(item.kbmmDesc, br, '<br/>')}" escapeXml = "false"/>
+		            </textarea>
+		            </div>
+		        </div>
+		 		<div class="col-6 d-none d-sm-block"></div><!-- 줄바꿈 -->
 				<div class="col-md-3">
 					<label class="form-label">최초등록자</label>
 					<input type="text" class="form-control form-control-sm" id="inputRegP"  placeholder="윤수빈" disabled>

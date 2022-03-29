@@ -70,9 +70,6 @@
 							</c:forEach>
 					</select>
 				</div>	
-			
-
-					
 				<div class="col-md-6">
 					<label class="form-label">핸드폰번호</label>
 					<select class="form-select form-select-sm mb-1" id="kbmpTelecomCd" name="kbmpTelecomCd">
@@ -208,6 +205,16 @@
 						</div>
 		 			</div>
 		 		</div>
+		 		<div class="col-sm-6">
+		            <label class="col-form-label">설명</label>
+		            <div class="col-md-6">
+		            <%-- <p>${fn:replace(item.ifmmDesc, br, '<br/>')}</p> --%>
+		            <textarea rows="3" cols="80" id="kbmmDesc" name="kbmmDesc">
+		         	   <c:out value="${item.kbmmDesc}" escapeXml = "false"/>
+		            </textarea>
+		            </div>
+		        </div>
+		 		<div class="col-6 d-none d-sm-block"></div><!-- 줄바꿈 -->
 			</form>
 			<div class="col-mb-3 mt-3">	
 				<div class="float-start">

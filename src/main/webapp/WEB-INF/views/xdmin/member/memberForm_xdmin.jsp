@@ -4,6 +4,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+
+<% pageContext.setAttribute("br", "\n"); %>
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -127,6 +130,7 @@
 			
 			 --%>
 
+				
 				<div class="col-md-6">
 					<label class="col-form-label pt-0">이메일</label>
 					<input type="text" class="form-control form-control-sm" id="kbmeEmailFull" name="kbmeEmailFull" placeholder="이메일주소 입력">
@@ -157,6 +161,7 @@
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1_abroad" name="kbmaAddress1_abroad" placeholder="기본주소">
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2_abroad" name="kbmaAddress2_abroad" placeholder="상세주소">
 				</div>
+				
 				<div class="col-md-6">
 					<label class="col-form-label">교보문고 이용약관<span style="color: red;">(필수)</span></label>
 					<div class="col-md-6">
@@ -270,6 +275,13 @@
 						</div>
 		 			</div>
 		 		</div>
+		 		<div class="col-sm-6">
+		            <label class="col-form-label">설명</label>
+		            <div class="col-md-6">
+		            <%-- <p>${fn:replace(item.ifmmDesc, br, '<br/>')}</p> --%>
+		            <textarea rows="3" cols="80" id="kbmmDesc" name="kbmmDesc"><c:out value="${item.kbmmDesc}"/></textarea>
+		            </div>
+		        </div>
 
 	</form>	 		
 
@@ -335,7 +347,7 @@ $("#btn-add").on("click", function(){
 	if(!checkNull($("#kbmpTelecomCd"), $("#kbmpTelecomCd").val(), "통신사를 선택하세요.")) return false;
 	if(!checkNull($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호를 입력하세요.")) return false;
  	if(!checkOnlyNumber($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호는 숫자만 입력 가능합니다.")) return false;
- 	if(!checkNumber($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호를 11자리로 입력해주세요.")) return false;	 
+ 	/* if(!checkNumber($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호를 11자리로 입력해주세요.")) return false;	  */
  	
  	/* kbmeEmailFull */
  	if(!checkNull($("#kbmeEmailFull"), $("#kbmeEmailFull").val(), "이메일을 입력하세요.")) return false;
