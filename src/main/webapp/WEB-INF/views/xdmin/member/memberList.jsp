@@ -33,7 +33,7 @@
 		<!-- 본문 -->
 		<!-- <div class="col-md-10"> -->
 			<!-- 검색 s -->
-			<div class="mb-2"><h4>회원관리</h4></div>
+			<div class="mb-2"><h4 style="font-weight: bold;">회원관리</h4></div>
 			<form id="formList" name="formList" method="post" action="memberList">
 			<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 			<input type="hidden" id="kbmmSeq" name="kbmmSeq">
@@ -57,11 +57,11 @@
 					</div>
 					<div class="col-6 col-md-3 mt-2 mb-2">
 						<%-- <fmt:parseDate value="${vo.shDateStart}" var="shDateStart" pattern="yyyy-MM-dd HH:mm:ss"/>	 --%>
-						<input type="text" class="form-control form-control-sm " id="shDateStart" name="shDateStart" placeholder="시작일" value="<c:out value="${vo.shDateStart}"/>">
+						<input type="text" class="form-control form-control-sm " id="shDateStart" name="shDateStart" placeholder="시작일" value="<c:out value="${vo.shDateStart}"/>" autocomplete="off">
 					</div>
 					<div class="col-6 col-md-3 mt-2 mb-2">
 						<fmt:parseDate value="${vo.shDateEnd}" var="shDateEnd" pattern="yyyy-MM-dd"/>		 				
-						<input type="text" class="form-control form-control-sm " id="shDateEnd" name="shDateEnd" placeholder="종료일" value="<c:out value="${vo.shDateEnd}"/>">
+						<input type="text" class="form-control form-control-sm " id="shDateEnd" name="shDateEnd" placeholder="종료일" value="<c:out value="${vo.shDateEnd}"/>" autocomplete="off">
 					</div>
 					<div class="col-6 col-md-3 mt-2 mb-2">	
 						<select class="form-select form-select-sm" name="shOption" id="shOption">
@@ -86,7 +86,7 @@
 				<caption>Total : <c:out value="${vo.totalRows}"></c:out></caption>
 			 		<thead class="table-light">	
 						<tr>
-						<th><input class="form-check-input" type="checkbox" value="" id="consentAll" name="consentAll"></th>
+						<th><input class="form-check-input" type="checkbox" value="" id="listChkAll" name="listChkAll"></th>
 						<th>번호</th>
 						<th>이름</th>
 						<th>아이디</th>
@@ -105,7 +105,7 @@
 						<c:otherwise>
 							<c:forEach items="${list}" var="item" varStatus="status">	
 							<tr>
-								<td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+								<td><input class="form-check-input" type="checkbox" name="listChk" value="<c:out value="${item.kbmmSeq}"/>"></td>
 								<td><c:out value="${item.kbmmSeq}"/></td>
 								<td><a href="javascript:goView(<c:out value="${item.kbmmSeq}"/>)"><c:out value="${item.kbmmName}"/></a></td>
 								<td><c:out value="${item.kbmmId}"/></td>
@@ -124,7 +124,7 @@
 					</tr>
 				</table> 
 			</div>
-			</form>
+			
 			<!-- table e -->
 			<!-- page s -->
 			<nav aria-label="Page navigation">
@@ -173,12 +173,13 @@
 			</nav> --%>
 			<!-- page e -->
 			<div class="clearfix mb-3">	
-				<div class="float-start"><button type="button" class="btn btn-danger btn-sm float-start"><i class="fas fa-trash"></i></button></div>
+				<div class="float-start"><button type="button" class="btn btn-danger btn-sm float-start" name="btn-Nele" id="btn-Nele"><i class="fas fa-trash"></i></button></div>
 				<div class="float-end">
 					<button type="button" class="btn btn-success btn-sm" id="search_icon"><i class="bi bi-file-earmark-x"></i></button>
 					<button type="button" class="btn btn-primary btn-sm" id="btn-search" name="btn-search" onclick="javascript:goForm();"><i class="fas fa-plus"></i></button>
 				</div>
 			</div>
+		</form>	
 		</div>
 	</div>
 
@@ -189,23 +190,26 @@
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 <script type="text/javascript">
 	$("#btnSubmit").on("click",function(){
-		
+		/*		
 		if(!checkNull($("#shKbmmDelNy"), $("#shKbmmDelNy").val(), "삭제여부를 선택해주세요!")) return false;
 		
-/*  		if(!checkNull($("#shOption"), $("#shOption").val(), "검색구분을 선택해주세요!")) return false;			
+  		if(!checkNull($("#shOption"), $("#shOption").val(), "검색구분을 선택해주세요!")) return false;			
 		if(!checkNull($("#shValue"), $("#shValue").val(), "검색어를 입력해주세요!")) return false;		  */
 
 	});
-/* 	$("#btnSubmit2").on("click",function(){
+ 	$("#btnSubmit2").on("click",function(){
 		
 		$("#shKbmmDelNy").val("");
+		$("#shOptionDate").val("");
+		$("#shDateStart").val("");
+		$("#shDateEnd").val("");
 		$("#shOption").val("");
 		$("#shValue").val("");	
 
 	});
-	 */
-	 $('#consentAll').click(function(){
-			var checked = $('#consentAll').is(':checked');
+	 
+	 $('#listChkAll').click(function(){
+			var checked = $('#listChkAll').is(':checked');
 			if(checked)
 				$('input:checkbox').prop('checked',true);
 			else{
@@ -225,6 +229,19 @@
 		$("#formList").attr("action","/xdmin/member/memberView");
 		$("#formList").submit();
 	}
+	
+	$("#btn-Nele").on("click", function(){
+		var answer = confirm("삭제하시겠습니까?");
+		
+		if(answer){
+			$("#formList").attr("action", "/xdmin/member/updateDeleteList");
+			$("#formList").submit();
+		}else{
+			return false;
+		}
+		
+	});
+	
 	goForm = function(){
 		$("#formList").attr("action","/xdmin/member/memberForm_xdmin");
 		$("#formList").submit();
@@ -242,6 +259,7 @@
 	    nextText: '다음 달',
 	    changeYear: true, //연도 선택 콤보박스
 	    changeMonth: true, //월 선택 콤보박스
+	    yearRange: 'c-100:c+10',
 	    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
 	    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
 	    dayNames: ['일', '월', '화', '수', '목', '금', '토'],

@@ -67,6 +67,11 @@ public class MemberServiceImpl implements MemberService{
 		return dao.updateDelete(vo);
 	}
 
+	@Override
+	public int updateDeleteList(MemberVo vo) throws Exception {
+		return dao.updateDeleteList(vo);
+	}
+
 
 
 

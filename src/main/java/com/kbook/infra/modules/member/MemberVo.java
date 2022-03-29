@@ -6,7 +6,7 @@ public class MemberVo {
 	private String kbmmSeq;
 
 //	memberList Search
-	private String shKbmmDelNy;
+	private Integer shKbmmDelNy;
 	private String shKbmmSeq;
 	
 //	common
@@ -19,6 +19,7 @@ public class MemberVo {
 	
 	private String ifcdSeq;
 	private String ifcgSeq;
+	private String listChk;
 	
 	private String kbmmGenderCd;
 	
@@ -94,11 +95,11 @@ public class MemberVo {
 		this.kbmmSeq = kbmmSeq;
 	}
 
-	public String getShKbmmDelNy() {
+	public Integer getShKbmmDelNy() {
 		return shKbmmDelNy;
 	}
 
-	public void setShKbmmDelNy(String shKbmmDelNy) {
+	public void setShKbmmDelNy(Integer shKbmmDelNy) {
 		this.shKbmmDelNy = shKbmmDelNy;
 	}
 
@@ -282,6 +283,16 @@ public class MemberVo {
 
 	public void setShOptionDate(Integer shOptionDate) {
 		this.shOptionDate = shOptionDate;
+	}
+
+
+	public String getListChk() {
+		return listChk;
+	}
+
+
+	public void setListChk(String listChk) {
+		this.listChk = listChk;
 	}
 
 

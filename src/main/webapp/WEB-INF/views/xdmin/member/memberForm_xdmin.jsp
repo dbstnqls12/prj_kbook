@@ -31,7 +31,7 @@
 <div class="container">
 	<div class="row">
 		
-		<div class="mb-3"><h4>회원가입</h4></div>
+		<div class="mb-3"><h4 style="font-weight: bold;">회원가입</h4></div>
 			<div class="container ">
 			<form action="xdmin/member/memberInst" method="post" id="memberForm" name="memberForm" class="row g-3">
 				<input type="hidden" id="thisPage" name="thisPage"  value="<c:out value="${vo.thisPage}"/>">
@@ -360,8 +360,6 @@ $("#btn-add").on("click", function(){
 		return false;
 	}
 	
-	if($("kbmmSmsConsentNy").is(":checked"))
-		
 	
 	
 	$("#memberForm").attr("action", "/xdmin/member/memberInst");

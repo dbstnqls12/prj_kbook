@@ -22,7 +22,7 @@ public class MemberController {
 	@RequestMapping(value = "/xdmin/member/memberList")
 	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 		
-		vo.setShOptionDate(vo.getShOptionDate() == null ? 1 : vo.getShOptionDate());
+//		vo.setShOptionDate(vo.getShOptionDate() == null ? 1 : vo.getShOptionDate());
 		vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : vo.getShDateStart());
 		vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : vo.getShDateEnd());
 		 
@@ -160,8 +160,7 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/xdmin/member/memberUpdt")
-	public String memberUpdt(@ModelAttribute("vo") MemberVo vo, Member dto, RedirectAttributes redirectAttributes)
-			throws Exception {
+	public String memberUpdt(@ModelAttribute("vo") MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 
 		service.update(dto);
 
@@ -174,20 +173,23 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/xdmin/member/updateDelete")
-	public String updateDelete(@ModelAttribute("vo") MemberVo vo, Member dto, RedirectAttributes redirectAttributes)
-			throws Exception {
+	public String updateDelete(@ModelAttribute("vo") MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 
 		service.updateDelete(vo);
 
-		redirectAttributes.addAttribute("kbmmSeq", dto.getKbmmSeq());
-		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
-		redirectAttributes.addAttribute("shOption", vo.getShOption());
-		redirectAttributes.addAttribute("shValue", vo.getShValue());
-		redirectAttributes.addAttribute("shDate", vo.getShOptionDate());
-		redirectAttributes.addAttribute("shEndDate", vo.getShDateEnd());
-		redirectAttributes.addAttribute("shStartDate", vo.getShDateStart());
-		redirectAttributes.addAttribute("shKbmmDelNy", vo.getShKbmmDelNy());
+		vo.setKbmmSeq(dto.getKbmmSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
 
+		return "redirect:/xdmin/member/memberList";
+	}
+	@RequestMapping(value = "/xdmin/member/updateDeleteList")
+	public String updateDeleteList(@ModelAttribute("vo") MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.updateDeleteList(vo);
+		
+		vo.setKbmmSeq(dto.getKbmmSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
 		return "redirect:/xdmin/member/memberList";
 	}
 

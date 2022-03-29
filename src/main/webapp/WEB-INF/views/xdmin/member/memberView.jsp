@@ -17,7 +17,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 
-<link href="/resources/xdmin/css/sidebars.css" rel="stylesheet" type="text/css">
 <link href="/resources/xdmin/css/footers.css" rel="stylesheet" type="text/css">
 <title>Kyobo_memberView</title>
 
@@ -29,13 +28,9 @@
 
 
 <!-- 본문 s-->
-<div class="container-fluid">
+<div class="container">
 	<div class="row">
-		<%@ include file="/WEB-INF/views/xdmin/include/sidebar.jsp" %><!-- sidebar -->
-		
-		<hr class="d-block d-sm-none">
-		<div class="col-md-10">
-		<div class="mb-3"><h4>회원정보</h4></div>
+		<div class="mb-3"><h4 style="font-weight: bold;">회원정보</h4></div>
 			<div class="container ">
 			<form action="" method="post" id="memberView" name="memberView" class="row g-3">
 				<input type="hidden" id="thisPage" name="thisPage"  value="<c:out value="${vo.thisPage}"/>">
@@ -241,7 +236,6 @@
 		</div>
 		</div>
 	</div>
-</div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>

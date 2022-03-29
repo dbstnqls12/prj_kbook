@@ -18,7 +18,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 
-<link href="/resources/xdmin/css/sidebars.css" rel="stylesheet" type="text/css">
 <link href="/resources/xdmin/css/footers.css" rel="stylesheet" type="text/css">
 <title>Kyobo_memberEditForm</title>
 
@@ -31,14 +30,9 @@
 
 
 <!-- 본문 s-->
-<div class="container-fluid">
+<div class="container">
 	<div class="row">
-		<%@ include file="/WEB-INF/views/xdmin/include/sidebar.jsp" %><!-- sidebar -->
-		
-				
-		<hr class="d-block d-sm-none">
-		<div class="col-md-10">
-		<div class="mb-3"><h4>회원정보 수정</h4></div>
+		<div class="mb-3"><h4  style="font-weight: bold;">회원정보 수정</h4></div>
 			<div class="container">
 		
 			<form method="post" id="memberEditForm" name="memberEditForm" action ="/xdmin/member/memberUpdt" class="row g-3">
@@ -220,6 +214,7 @@
 					<button type="button" class="btn btn-danger btn-sm float-start" id="btn-delete" name="btn-delete"><i class="fas fa-trash"></i></button>
 				</div>
 				<div class="float-end">
+					<button type="button" class="btn btn-dark btn-sm" id="btn-list" name="btn-list" onclick="javascript:goView();"><i class="fa-solid fa-rotate-left"></i></button>
 					<button type="button" class="btn btn-secondary btn-sm" id="btn-list" name="btn-list" onclick="javascript:goList();"><i class="fa-solid fa-list"></i></button>
 					<button type="submit" class="btn btn-primary btn-sm" id="btn-Form" name="btn-Form" ><i class="fa-solid fa-floppy-disk"></i></button>
 				</div>
@@ -231,7 +226,6 @@
 		</div>	
 
 	</div>
-</div>
 
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -241,6 +235,11 @@
 		$("#memberEditForm").attr("action", "/xdmin/member/memberList");
 		$("#memberEditForm").submit();
 	};
+	
+	goView = function(seq){
+		$("#memberEditForm").attr("action","/xdmin/member/memberView");
+		$("#memberEditForm").submit();
+	}
 $("#btn-Form").on("click", function(){
 	var answer = confirm("수정하시겠습니까?");
 	
@@ -252,6 +251,9 @@ $("#btn-Form").on("click", function(){
 	}
 	
 });
+
+
+
 	$("#btnAddress").on("click",function(){
 		sample6_execDaumPostcode();
 		

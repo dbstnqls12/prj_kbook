@@ -293,8 +293,15 @@
 	<update id="updateDelete">
 		UPDATE kbMember SET kbmmDelNy = 1 WHERE 1=1 AND kbmmSeq=#{kbmmSeq}
 	</update>
-
-
+	<update id="updateDeleteList">
+		UPDATE kbMember SET kbmmDelNy = 1 WHERE 1=1 AND kbmmSeq=#{listChk}
+	</update>
+<!-- 	<delete id="">
+DELETE FROM
+		infrMember
+	WHERE 1=1
+		AND ifmmSeq = #{checkbox1}
+	</delete> -->
 
 </mapper>
 
