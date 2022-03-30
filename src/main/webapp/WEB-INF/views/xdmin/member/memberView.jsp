@@ -71,7 +71,7 @@
 							</c:forEach>
 					</select>
 				</div>	
-				
+ 								
 				<c:forEach items="${listPhone}" var="item" varStatus="statusTelecom">
 					<c:choose>
 						<c:when test="${item.kbmpDeviceCd eq 1}"> <c:set var="kbmmNumberHome" value="${item.kbmpNumberFull }"/></c:when>
@@ -83,11 +83,12 @@
 						<c:otherwise></c:otherwise>
 					</c:choose>
 				</c:forEach>	
+					
 				<div class="col-md-6">
 					<label class="form-label">핸드폰번호</label>
 					<input type="hidden" id="kbmpDefaultNyArray0" name="kbmpDefaultNyArray" value="1">
 					<input type="hidden" id="kbmpDeviceCdArray0" name="kbmpDeviceCdArray" value="2">
-					<select class="form-select form-select-sm mb-1" id="kbmpTelecomCdArray0" name="kbmpTelecomCdArray">
+						<select class="form-select form-select-sm mb-1" id="kbmpTelecomCdArray0" name="kbmpTelecomCdArray">
 						<option selected>::통신사::</option>
 							<c:forEach items="${CodeTelecom}" var="itemTelecom" varStatus="statusTelecom">
 						<option value="<c:out value="${itemTelecom.ifcdOrder}"/>" <c:if test="${kbmmNumberTelecom eq itemTelecom.ifcdOrder }">selected</c:if> ><c:out value="${itemTelecom.ifcdName}"/></option>	
@@ -106,7 +107,7 @@
 					<input type="hidden" id="kbmpDefaultNyArray2" name="kbmpDefaultNyArray" value="0">
 					<input type="hidden" id="kbmpDeviceCdArray2" name="kbmpDeviceCdArray" value="3">
 					<input type="text" class="form-control form-control-sm" id="kbmpNumberFullArray2" name="kbmpNumberFullArray" value="<c:out value="${kbmmNumberFax}"/>"  >
-				</div> 
+				</div>  --
 					
 
 				<div class="col-md-6">

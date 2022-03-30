@@ -115,7 +115,10 @@
 			AND a.kbmmSeq=#{kbmmSeq}
 			
 	</select>
-	
+ 	<select id="selectOneList" resultType="list">
+		SELECT
+			count(*)
+	</select> 
 
 <!-- 	memberForm    -->
 	
