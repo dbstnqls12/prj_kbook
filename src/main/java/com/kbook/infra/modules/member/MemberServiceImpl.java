@@ -45,6 +45,7 @@ public class MemberServiceImpl implements MemberService{
 		dao.insert(dto);
 		for(int i=0; i<dto.getKbmpNumberFullArray().length; i++) {
 			dto.setKbmpDefaultNy(dto.getKbmpDefaultNyArray()[i]);
+			dto.setKbmpTelecomCd(dto.getKbmpTelecomCdArray()[i]);
 			dto.setKbmpDeviceCd(dto.getKbmpDeviceCdArray()[i]);
 			dto.setKbmpNumberFull(dto.getKbmpNumberFullArray()[i]);
 			dao.insertPhone(dto);
@@ -62,13 +63,13 @@ public class MemberServiceImpl implements MemberService{
 		dto.setModDateTime(UtilDateTime.nowDate());
 		
 		dao.update(dto);
-		/*
-		 * for(int i=0; i<dto.getKbmpNumberFullArray().length; i++) {
-		 * dto.setKbmpDefaultNy(dto.getKbmpDefaultNyArray()[i]);
-		 * dto.setKbmpDeviceCd(dto.getKbmpDeviceCdArray()[i]);
-		 * dto.setKbmpNumberFull(dto.getKbmpNumberFullArray()[i]); }
-		 */
+		for(int i=0; i<dto.getKbmpNumberFullArray().length; i++) {
+			dto.setKbmpDefaultNy(dto.getKbmpDefaultNyArray()[i]);
+			dto.setKbmpTelecomCd(dto.getKbmpTelecomCdArray()[i]);
+			dto.setKbmpDeviceCd(dto.getKbmpDeviceCdArray()[i]);
+			dto.setKbmpNumberFull(dto.getKbmpNumberFullArray()[i]); 
 			dao.updatePhone(dto);
+		}
 		
 		dao.updateEmail(dto);
 		dao.updateAddress(dto);

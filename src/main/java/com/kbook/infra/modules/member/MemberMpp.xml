@@ -94,10 +94,6 @@
 			,a.modDateTimeSvr
 			,a.regDateTime
 			,a.regDateTimeSvr
- 			,b.kbmpTelecomCd
-			,b.kbmpDefaultNy
-			,b.kbmpNumberFull
-			,b.kbmpDeviceCd
 			,c.kbmeEmailFull
 			,d.kbmaZipcode
 			,d.kbmaAddress1
@@ -108,7 +104,6 @@
 			,d.kbmaDefaultNy
 		FROM	
 			kbMember a
-			left join kbMemberPhone b on b.kbmmSeq = a.kbmmSeq	
 			left join kbMemberEmail c on c.kbmmSeq = a.kbmmSeq
 			left join kbMemberAddress d on d.kbmmSeq = a.kbmmSeq
 		WHERE 1=1

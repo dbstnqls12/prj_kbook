@@ -50,6 +50,7 @@ public class MemberController {
 	@RequestMapping(value = "/xdmin/member/memberView")
 	public String memberView(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 
+		
 		System.out.println("############################");
 		System.out.println("vo.getShOption() : " + vo.getShOption());
 		System.out.println("vo.getShKbmmDelNy() : " + vo.getShKbmmDelNy());

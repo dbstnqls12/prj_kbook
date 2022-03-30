@@ -41,7 +41,7 @@ public class Member {
 	private Integer kbmpDefaultNy;
 	private Integer kbmpTypeCd;
 	private Integer kbmpDeviceCd;
-	private String kbmpTelecomCd;
+	private Integer kbmpTelecomCd;
 	private String kbmpNumber1Cd;
 	private String kbmpNumber2;
 	private String kbmpNumber3;
@@ -70,6 +70,7 @@ public class Member {
 	private Integer[] kbmpDefaultNyArray;
 	private Integer[] kbmpDeviceCdArray;
 	private String[] kbmpNumberFullArray;
+	private Integer[] kbmpTelecomCdArray;
 	public String getKbmmSeq() {
 		return kbmmSeq;
 	}
@@ -250,10 +251,10 @@ public class Member {
 	public void setKbmpDeviceCd(Integer kbmpDeviceCd) {
 		this.kbmpDeviceCd = kbmpDeviceCd;
 	}
-	public String getKbmpTelecomCd() {
+	public Integer getKbmpTelecomCd() {
 		return kbmpTelecomCd;
 	}
-	public void setKbmpTelecomCd(String kbmpTelecomCd) {
+	public void setKbmpTelecomCd(Integer kbmpTelecomCd) {
 		this.kbmpTelecomCd = kbmpTelecomCd;
 	}
 	public String getKbmpNumber1Cd() {
@@ -405,6 +406,12 @@ public class Member {
 	}
 	public void setKbmpNumberFullArray(String[] kbmpNumberFullArray) {
 		this.kbmpNumberFullArray = kbmpNumberFullArray;
+	}
+	public Integer[] getKbmpTelecomCdArray() {
+		return kbmpTelecomCdArray;
+	}
+	public void setKbmpTelecomCdArray(Integer[] kbmpTelecomCdArray) {
+		this.kbmpTelecomCdArray = kbmpTelecomCdArray;
 	}
 	
 	
