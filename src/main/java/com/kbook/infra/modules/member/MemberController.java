@@ -238,21 +238,22 @@ public class MemberController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "loginProc")
+	@RequestMapping(value = "member/loginProc")
 	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
 		Member rtMember = service.selectOneLogin(dto);
-
+		
 		if(rtMember != null) {
 //			rtMember = service.selectOneLogin(dto);
 			returnMap.put("rt", "success");
 		} else {
 			returnMap.put("rt", "fail");
 		}
+		
+		returnMap.put("rt", "success");
+		
 		return returnMap;
 	}
-	
-	
 
 }

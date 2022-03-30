@@ -156,12 +156,11 @@
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/resources/common/js/validation.js"></script>
-<script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
+<!-- <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script> -->
 
 <script type="text/javascript">
 	$("#btnLogin").on("click",function(){
 		
-		/* if(validation() == false) return false; */
 		$.ajax({
 			async: true 
 			,cache: false
@@ -170,28 +169,22 @@
 			,data : { "kbmmId" : $("#kbmmId").val(), "kbmmPassword" : $("#kbmmPassword").val()}
 			,success: function(response) {
 				if(response.rt == "success") {
-					location.href = "/member/login";
+					location.href = "/index/indexView";
 				} else {
 					alert("회원없음");
 				}
-			}
+			}			
 			,error : function(jqXHR, textStatus, errorThrown){
 				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 			}
 		});
 
 	});
-
-
-
-	
-
-	
-
-
-
 	
 	
+	
+	
+
 </script>
 
 <!-- Optional JavaScript; choose one of the two! -->

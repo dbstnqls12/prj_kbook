@@ -29,15 +29,13 @@
 <%@ include file="/WEB-INF/views/xdmin/include/navbar.jsp" %><!-- navbar -->
 <!-- 본문 s-->
 <div class="container">
-	
 
-
-			<div>	
-				<p>sessSeq : </p>
-				<p>sessName : </p>
-				<p>sessId : </p>
-				<button type="button" class="btn btn-danger btn-sm" name="btn-updateDelete" id="btn-updateDelete"><i class="fa-solid fa-power-off"></i></button>
-			</div>
+	<div>	
+		<p>sessSeq : </p>
+		<p>sessName : </p>
+		<p>sessId : </p>
+		<button type="button" class="btn btn-danger btn-sm" name="btn-updateDelete" id="btn-updateDelete"><i class="fa-solid fa-power-off"></i></button>
+	</div>
 
 
 </div>

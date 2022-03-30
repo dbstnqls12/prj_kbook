@@ -297,6 +297,7 @@
 			kbmmSeq
 			,kbmmId
 			,kbmmName
+			,kbmmPassword
 		FROM
 			kbMember
 		WHERE 1=1 
