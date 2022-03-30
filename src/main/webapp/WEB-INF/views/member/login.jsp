@@ -19,97 +19,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 
 <title>Kyobo_Login</title>
-<style type="text/css">
-	.my-wrap{
-		width: 380px;
-		
-	}
-
-	#logo{
-		display: block;
- 		margin-left:auto;
-		margin-right: auto; 
-		width: 130px;
-		height: 90px;
-		margin-top: 30px; 
-		margin-bottom: 20px;
-	
-	}
-	hr{
-		margin-bottom: 15px;
-	}
-	
-	.btn-kakao,
-	.btn-kakao:hover,
-	.btn-kakao:active,
-	.btn-kakao:visited,
-	.btn-kakao:focus {
-	    background-color: #F7E600;
-	    border-color: #F7E600;
-	    color: #3A1D1D;
-	}
-	.btn-naver,
-	.btn-naver:hover,
-	.btn-naver:active,
-	.btn-naver:visited,
-	.btn-naver:focus {
-	    background-color: #2DB400;
-	    border-color: #2DB400;
-	    color: white;
-	}
-	
-	.btn-facebook,
-	.btn-facebook:hover,
-	.btn-facebook:active,
-	.btn-facebook:visited,
-	.btn-facebook:focus {
-	    background-color: #3b5998;
-	    border-color: #3b5998;
-	    color: white;
-	}
-	
-	.btn-google,
-	.btn-google:hover,
-	.btn-google:active,
-	.btn-google:visited,
-	.btn-google:focus {
-	    background-color: #ea4335;
-	    border-color: #ea4335;
-	    color: white;
-	}
-	a:link,
-	a:visited
-	{
-		color: gray;
-		text-decoration: none;
-	}
-	a:hover{
-		color: gray;
-		text-decoration: underline;
-	}
-	a:active{
-		color: gray;
-		text-decoration: none;
-	}
-	
-	#searchpwd{
-		text-align: center;
-		padding: 15px;
-		padding-bottom: 30px;
-		
-	}
-	#inputusername, #inputpwd{
-		margin-bottom: 15px; 
-	}
-	#loginbtn{
-		margin-top: 15px;
-	}
-	#icon{
-		width: 25px;
-		padding-bottom: 3px;
-	}
-
-</style>
+<link href="/resources/common/css/user/login.css"  rel="stylesheet" >
 </head>
 <body>
 <!--  -->
@@ -180,10 +90,6 @@
 		});
 
 	});
-	
-	
-	
-	
 
 </script>
 
