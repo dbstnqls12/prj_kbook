@@ -30,12 +30,6 @@
 <!-- 본문 s-->
 <div class="container">
 	
-	
-	
-	
-	
-	
-	
 
 
 			<div>	
@@ -44,9 +38,6 @@
 				<p>sessId : </p>
 				<button type="button" class="btn btn-danger btn-sm" name="btn-updateDelete" id="btn-updateDelete"><i class="fa-solid fa-power-off"></i></button>
 			</div>
-
-
-
 
 
 </div>
