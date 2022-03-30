@@ -125,17 +125,17 @@
 	</div>
 	<hr>
 	<div class="col-xs-8 mx-auto">
-		<input class="form-control" type="text" id="inputusername" placeholder="username" aria-label="input id">	
-		<input class="form-control" type="password" id="inputpwd" placeholder="password" aria-label="input pwd">
+		<input class="form-control mb-2" type="text" id="kbmmId" name="kbmmId" placeholder="kbmmId" aria-label="input id">	
+		<input class="form-control mb-2" type="password" id="kbmmPassword" name="kbmmPassword" placeholder="password" aria-label="input pwd">
 		
-		<div class="form-check col-xs-8">
+		<div class="form-check col-xs-8 mb-3">
 			<input class="form-check-input" type="checkbox" name="autologin" value="autologin" id="autologin">
-			<span class="form-check-label" for="autologin" id="autologin" >자동 로그인</span>
+			<span class="form-check-label" id="autologin" >자동 로그인</span>
 		</div>
 	</div>	
 	
 	<div class="d-grid gap-2 col-xs-8 mx-auto">
-		<button class="btn btn-primary" type="button" onclick="location.href=''" id="loginbtn">로그인</button>	
+		<button class="btn btn-primary" type="button" id="btnLogin" name="">로그인</button>	
 		<button class="btn btn-secondary" type="button" onclick="location.href=''">회원가입</button>
 	</div>
 		
@@ -154,6 +154,45 @@
 	
 </div>
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/resources/common/js/validation.js"></script>
+<script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
+
+<script type="text/javascript">
+	$("#btnLogin").on("click",function(){
+		
+		/* if(validation() == false) return false; */
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/member/loginProc"
+			,data : { "kbmmId" : $("#kbmmId").val(), "kbmmPassword" : $("#kbmmPassword").val()}
+			,success: function(response) {
+				if(response.rt == "success") {
+					location.href = "/member/login";
+				} else {
+					alert("회원없음");
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+
+	});
+
+
+
+	
+
+	
+
+
+
+	
+	
+</script>
 
 <!-- Optional JavaScript; choose one of the two! -->
 

@@ -292,6 +292,18 @@
 		DELETE FROM kbMember WHERE 1=1 AND kbmmSeq = #{kbmmSeq}
 	</delete>
 
+	<select id="selectOneLogin" resultMap="resultMapObj">
+		SELECT
+			kbmmSeq
+			,kbmmId
+			,kbmmName
+		FROM
+			kbMember
+		WHERE 1=1 
+			AND kbmmId = #{kbmmId}	
+			AND kbmmPassword = #{kbmmPassword}	
+	</select>
+
 </mapper>
 
 
