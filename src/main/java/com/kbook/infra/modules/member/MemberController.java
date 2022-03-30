@@ -217,7 +217,7 @@ public class MemberController {
 		
 		for(String checkboxSeq : checkboxSeqArray) {
 			vo.setKbmmSeq(checkboxSeq);
-//			service.delete(vo);
+			service.delete(vo);
 		}
 		
 		redirectAttributes.addFlashAttribute("vo", vo);

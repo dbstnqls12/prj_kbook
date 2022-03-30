@@ -240,6 +240,7 @@
 			,kbmmId = #{kbmmId}
 			,kbmmPassword = #{kbmmPassword}
 			,kbmmGradeCd = #{kbmmGradeCd}
+			,kbmmGenderCd = #{kbmmGenderCd}
 			,kbmmKoreanNy = #{kbmmKoreanNy}
 			,kbmmPersonalinfoConsentNy_s = #{kbmmPersonalinfoConsentNy_s}
 			,kbmmOfferinfo1ConsentNy_s = #{kbmmOfferinfo1ConsentNy_s}
@@ -257,6 +258,7 @@
 	<update id="updatePhone">
 	UPDATE kbMemberPhone SET 	
 		kbmpTypeCd = #{kbmpTypeCd}
+		,kbmpDefaultNy=#{kbmpDefaultNy}
 		,kbmpDeviceCd = #{kbmpDeviceCd}
 		,kbmpTelecomCd = #{kbmpTelecomCd}
 		,kbmpNumberFull = #{kbmpNumberFull}
@@ -289,7 +291,7 @@
 	</update>
 	
 	<delete id="delete">
-		DELETE FROM kbmmMember WHERE 1=1 AND kbmmSeq = #{kbmmSeq}
+		DELETE FROM kbMember WHERE 1=1 AND kbmmSeq = #{kbmmSeq}
 	</delete>
 
 </mapper>

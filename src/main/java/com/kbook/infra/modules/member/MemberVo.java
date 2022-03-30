@@ -23,7 +23,6 @@ public class MemberVo {
 	
 	private String kbmmGenderCd;
 	
-	
 	private String[] checkboxSeqArray;
 	
 //	paging

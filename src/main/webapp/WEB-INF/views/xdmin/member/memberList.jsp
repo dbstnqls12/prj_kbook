@@ -202,7 +202,7 @@
 			<!-- page e -->
 			<div class="clearfix mb-3">	
 				<div class="float-start">
-					<button type="button" class="btn btn-danger btn-sm my-2" name="btn-delete" id="btn-delete" ><i class="fa-solid fa-x"></i></button>
+					<!-- <button type="button" class="btn btn-danger btn-sm my-2" name="btn-delete" id="btn-delete" ><i class="fa-solid fa-x"></i></button> -->
 					<button type="button" class="btn btn-danger btn-sm" name="btn-updateDelete" id="btn-updateDelete"><i class="fas fa-trash"></i></button>
 				</div>
 				<div class="float-end">
@@ -242,21 +242,9 @@
 		$("#formList").submit();
 	}
 	
-	 $('#checkboxAll').click(function(){
-			if($("#checkboxAll").is(':checked')) $("input[name=checkboxSeq]").prop("checked",true);
-			else $("input[name=checkboxSeq]").prop("checked", false);
-	});
-	
-	$("input[name=checkboxSeq]").click(function(){
-		
-		var total = $("input[name=checkboxSeq]").length;
-		var checked = $("input[name=checkboxSeq]:checked").length;
-		
-		if(total != checked) $("checkboxAll").prop("checked", false); 
-		else $("checkboxAll").prop("checked", true);
-	});	 
-	
-	$("#btn-delete").on("click", function(){
+	var checkboxSeqArray = [];
+
+/* 	$("#btn-delete").on("click", function(){
 		var answer = confirm("삭제하시겠습니까? (DB에서 삭제)");
 		
  		if(answer){
@@ -264,30 +252,25 @@
 				checkboxSeqArray.push($(this).val());
 			}); 
 	 
- 	 		$("#formList").attr("action", "/xdmin/member/deleteMulti");
+ 	 		$("input:hidden[name=checkboxSeqArray]").val(checkboxSeqArray);
+			$("#formList").attr("action", "/xdmin/member/deleteMulti");
 			$("#formList").submit();
-/* 	 		$("input:hidden[name=checkboxSeqArray]").val(checkboxSeqArray);
-			form.attr("action", "/xdmin/member/deleteMulti").submit(); */
 		}else{
 			return false;
 		}
-	});
+	}); */
 	
 	$("#btn-updateDelete").on("click", function(){
 		var answer = confirm("삭제하시겠습니까?");
 		
  		if(answer){
-  			$("input[name=checkboxSeq]:checked").each(function() { 
-				checkboxSeqArray.push($(this).val());
+  			$("input[name=checkboxSeq]:checked").each(function() { //체크되어있는지 확인하고 
+				checkboxSeqArray.push($(this).val());				//되어있으면 checkboxSeqArray에 순차적으로 값을 넣는다
 			});  
 			
 			$("input:hidden[name=checkboxSeqArray]").val(checkboxSeqArray); 
-			form.attr("action", "/xdmin/member/updateDeleteMulti").submit();
-			
 			$("#formList").attr("action", "/xdmin/member/updateDeleteMulti");
 			$("#formList").submit();
-/* 			$("input:hidden[name=checkboxSeqArray]").val(checkboxSeqArray); 
-			form.attr("action", "/xdmin/member/updateDeleteMulti").submit(); */
 			
 		}else{
 			return false;
@@ -295,7 +278,6 @@
 		
 	});
 	
-
 
 	goForm = function(){
 		$("#formList").attr("action","/xdmin/member/memberForm_xdmin");
@@ -323,6 +305,20 @@
 	    yearSuffix: '년'
 	});
 
+	
+	 $('#checkboxAll').click(function(){
+			if($("#checkboxAll").is(':checked')) $("input[name=checkboxSeq]").prop("checked",true);
+			else $("input[name=checkboxSeq]").prop("checked", false);
+	});
+	
+	$("input[name=checkboxSeq]").click(function(){
+		
+		var total = $("input[name=checkboxSeq]").length;
+		var checked = $("input[name=checkboxSeq]:checked").length;
+		
+		if(total != checked) $("checkboxAll").prop("checked", false); 
+		else $("checkboxAll").prop("checked", true);
+	});	 
 	
 	 
 

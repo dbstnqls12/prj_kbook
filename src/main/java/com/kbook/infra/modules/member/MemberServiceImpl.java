@@ -27,12 +27,12 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Override
 	public List<Member> selectListPhone(MemberVo vo) throws Exception {
-		
 		return dao.selectListPhone(vo);
 	}
 
 	@Override
 	public Member selectOne(MemberVo vo) throws Exception {
+		
 		return dao.selectOne(vo);
 	}
 
@@ -62,13 +62,13 @@ public class MemberServiceImpl implements MemberService{
 		dto.setModDateTime(UtilDateTime.nowDate());
 		
 		dao.update(dto);
-		dao.updatePhone(dto);
-		for(int i=0; i<dto.getKbmpNumberFullArray().length; i++) {
-			dto.setKbmpDefaultNy(dto.getKbmpDefaultNyArray()[i]);
-			dto.setKbmpDeviceCd(dto.getKbmpDeviceCdArray()[i]);
-			dto.setKbmpNumberFull(dto.getKbmpNumberFullArray()[i]);
+		/*
+		 * for(int i=0; i<dto.getKbmpNumberFullArray().length; i++) {
+		 * dto.setKbmpDefaultNy(dto.getKbmpDefaultNyArray()[i]);
+		 * dto.setKbmpDeviceCd(dto.getKbmpDeviceCdArray()[i]);
+		 * dto.setKbmpNumberFull(dto.getKbmpNumberFullArray()[i]); }
+		 */
 			dao.updatePhone(dto);
-		}
 		
 		dao.updateEmail(dto);
 		dao.updateAddress(dto);
