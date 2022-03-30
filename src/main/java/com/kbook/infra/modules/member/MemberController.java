@@ -105,7 +105,7 @@ public class MemberController {
 		System.out.println("vo.getShEndDate() : " + vo.getShDateEnd());
 		System.out.println("vo.getShDate() : " + vo.getShOptionDate());
 		System.out.println("############################");
-
+		
 		List<Member> list = service.selectListPhone(vo);
 		model.addAttribute("listPhone", list);
 
@@ -166,12 +166,14 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/xdmin/member/memberUpdt")
-	public String memberUpdt(@ModelAttribute("vo") MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String memberUpdt(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, RedirectAttributes redirectAttributes) throws Exception {
 
 		service.update(dto);
 
+		List<Member> list = service.selectListPhone(vo);
+		model.addAttribute("listPhone", list);
+		
 		vo.setKbmmSeq(dto.getKbmmSeq());
-
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
 		return "redirect:/xdmin/member/memberView";
@@ -251,7 +253,6 @@ public class MemberController {
 			returnMap.put("rt", "fail");
 		}
 		
-		returnMap.put("rt", "success");
 		
 		return returnMap;
 	}

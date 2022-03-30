@@ -71,6 +71,7 @@ public class Member {
 	private Integer[] kbmpDeviceCdArray;
 	private String[] kbmpNumberFullArray;
 	private Integer[] kbmpTelecomCdArray;
+	
 	public String getKbmmSeq() {
 		return kbmmSeq;
 	}

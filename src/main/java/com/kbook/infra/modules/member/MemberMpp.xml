@@ -245,7 +245,7 @@
 			,kbmmOfferinfo2ConsentNy_s = #{kbmmOfferinfo2ConsentNy_s}
 			,kbmmSmsConsentNy = #{kbmmSmsConsentNy}
 			,kbmmEmailConsentNy = #{kbmmEmailConsentNy}
-			,kbmmDesc  = #{kbmmDesc}
+			,kbmmDesc = #{kbmmDesc}
 			,kbmmSavedCd = #{kbmmSavedCd}
 			,modDateTime = #{modDateTime}
 			,modDateTimeSvr = #{modDateTimeSvr}
@@ -254,14 +254,15 @@
 	</update>
 	
 	<update id="updatePhone">
-	UPDATE kbMemberPhone SET 	
-		kbmpTypeCd = #{kbmpTypeCd}
-		,kbmpDefaultNy=#{kbmpDefaultNy}
-		,kbmpDeviceCd = #{kbmpDeviceCd}
-		,kbmpTelecomCd = #{kbmpTelecomCd}
-		,kbmpNumberFull = #{kbmpNumberFull}
-	WHERE 1=1
-		AND kbmmSeq=#{kbmmSeq}
+		UPDATE kbMemberPhone SET 	
+			kbmpTypeCd = #{kbmpTypeCd}
+			,kbmpDefaultNy = #{kbmpDefaultNy}
+			,kbmpDeviceCd = #{kbmpDeviceCd}
+			,kbmpTelecomCd = #{kbmpTelecomCd}
+			,kbmpNumberFull = #{kbmpNumberFull}
+		WHERE 1=1
+			AND kbmmSeq=#{kbmmSeq}
+			AND kbmpDeviceCd = #{kbmpDeviceCd}
 	</update>	
 	
 	<update id="updateEmail">
