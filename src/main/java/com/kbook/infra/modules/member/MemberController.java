@@ -228,10 +228,11 @@ public class MemberController {
 
 	
 	
-	@RequestMapping(value = "xdmin/login/login")
-	public String memberLogin(Member dto) throws Exception {
+	@RequestMapping(value = "member/login")
+	public String memberLogin() throws Exception {
 
-		return "/xdmin/login/login";
+		return "member/login";
 	}
+	
 
 }

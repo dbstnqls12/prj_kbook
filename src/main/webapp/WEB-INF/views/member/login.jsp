@@ -18,8 +18,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 
-<link href="resources/xdmin/css/sidebars.css" rel="stylesheet" type="text/css">
-<link href="resources/xdmin/css/footers.css" rel="stylesheet" type="text/css">
 <title>Kyobo_Login</title>
 <style type="text/css">
 	.my-wrap{
