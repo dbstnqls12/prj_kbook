@@ -81,16 +81,19 @@ public class MemberController {
 
 	}
 
-	@RequestMapping(value = "/user/memberForm_user")
-	public String memberForm(Model model) throws Exception {
+	@RequestMapping(value = "/member/memberForm_user")
+	public String memberForm_user(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 
+		List<Member> list = service.selectListPhone(vo);
+		model.addAttribute("listPhone", list);
+		
 		model.addAttribute("CodeGender", CodeServiceImpl.selectListCachedCode("3"));
 		model.addAttribute("CodeTelecom", CodeServiceImpl.selectListCachedCode("10"));
 		model.addAttribute("CodeGrade", CodeServiceImpl.selectListCachedCode("2"));
 		model.addAttribute("CodeDeviceCd", CodeServiceImpl.selectListCachedCode("9"));
 		model.addAttribute("CodeKorean", CodeServiceImpl.selectListCachedCode("30"));
 
-		return "/user/memberForm_user";
+		return "/member/memberForm_user";
 	}
 
 	@RequestMapping(value = "/xdmin/member/memberForm_xdmin")
@@ -256,5 +259,11 @@ public class MemberController {
 		
 		return returnMap;
 	}
+
+	@RequestMapping(value = "member/kyobo_main")
+	public String kyobo_main() throws Exception {
+		
+		return "member/kyobo_main";
+}
 
 }

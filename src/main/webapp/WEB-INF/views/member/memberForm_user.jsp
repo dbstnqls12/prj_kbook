@@ -26,7 +26,9 @@
 <!-- 본문 s -->		
 <hr class="w-100" style="color: #DDDDDD">
 <div class="container my-wrap">
-	<form action="/xdmin/member/memberInst" method="get" id="memberForm" name="memberForm" enctype="multipart/form-data" class="row">
+	<form action="/xdmin/member/memberInst" method="post" id="memberForm" name="memberForm" class="row">
+		<input type="hidden" id="kbmmSeq" name="kbmmSeq" value="<c:out value="${vo.kbmmSeq}"/>">
+		<input type="hidden" id="kbmmGradeCd" name="kbmmGradeCd"  value="1">
 		<!-- 정보입력 s -->
 			<div class="mt-4 mb-4">
 				<h3 class="text-center">정보입력</h3>
@@ -48,19 +50,47 @@
 						</c:forEach>
 				</select>
 			</div>
+			
+			<c:forEach items="${listPhone}" var="item" varStatus="statusTelecom">
+				<c:choose>
+					<c:when test="${item.kbmpDeviceCd eq 1}"> <c:set var="kbmmNumberHome" value="${item.kbmpNumberFull }"/></c:when>
+					<c:when test="${item.kbmpDeviceCd eq 2}">
+						<c:set var="kbmmNumberMobile" value="${item.kbmpNumberFull}"/>
+						<c:set var="kbmmNumberTelecom" value="${item.kbmpTelecomCd}"/>
+					</c:when>
+					<c:when test="${item.kbmpDeviceCd eq 3 }"><c:set var="kbmmNumberFax" value="${item.kbmpNumberFull}"/></c:when>
+					<c:otherwise></c:otherwise>
+				</c:choose>
+			</c:forEach>
+			
 			<div class="col-4 mb-1">
-				<label class="form-label"><b>휴대폰번호</b></label>
-					<select class="form-select" id="kbmpTelecomCd" name="kbmpTelecomCd">
-					<option selected value="">::통신사::</option>
-							<c:forEach items="${CodeTelecom}" var="itemTelecom" varStatus="statusTelecoom">
-						<option value="<c:out value="${itemTelecom.ifcdSeq}"/>"><c:out value="${itemTelecom.ifcdName}"/></option>	
-							</c:forEach>
-				</select>
-			</div>
+				<label class="form-label">핸드폰번호</label>
+				<input type="hidden" id="kbmpDefaultNyArray0" name="kbmpDefaultNyArray" value="1">
+				<input type="hidden" id="kbmpDeviceCdArray0" name="kbmpDeviceCdArray" value="2">
+					<select class="form-select" id="kbmpTelecomCdArray0" name="kbmpTelecomCdArray">
+					<option selected>::통신사::</option>
+						<c:forEach items="${CodeTelecom}" var="itemTelecom" varStatus="statusTelecom">
+							<option value="<c:out value="${itemTelecom.ifcdOrder}"/>" <c:if test="${kbmmNumberTelecom eq itemTelecom.ifcdOrder }">selected</c:if> ><c:out value="${itemTelecom.ifcdName}"/></option>	
+						</c:forEach>	
+					</select>
+			</div>	
 			<div class="col-8 mb-1">
 				<label class="form-label">&nbsp;</label>
-				<input type="text" class="form-control" id="kbmpNumberFull" name="kbmpNumberFull" placeholder="숫자만 입력(예.01012341231)"> 
+				<input type="text" class="form-control" id="kbmpNumberFullArray0" name="kbmpNumberFullArray"  value="<c:out value="${kbmmNumberMobile}"/>"  placeholder="숫자만 입력(예.01012341231)">
 			</div>
+			<div class="d-none">
+				<input type="hidden" id="kbmpDefaultNyArray1" name="kbmpDefaultNyArray" value="0">
+				<input type="hidden" id="kbmpDeviceCdArray1" name="kbmpDeviceCdArray" value="1">
+				<input type="hidden" id="kbmpTelecomCdArray1" name="kbmpTelecomCdArray" value="">
+				<input type="hidden" id="kbmpNumberFullArray1" name="kbmpNumberFullArray" value="<c:out value="${kbmmNumberHome}"/>" >
+			</div>	
+			<div class="d-none">
+				<input type="hidden" id="kbmpDefaultNyArray2" name="kbmpDefaultNyArray" value="0">
+				<input type="hidden" id="kbmpDeviceCdArray2" name="kbmpDeviceCdArray" value="3">
+				<input type="hidden" id="kbmpTelecomCdArray2" name="kbmpTelecomCdArray" value="">
+				<input type="hidden" id="kbmpNumberFullArray2" name="kbmpNumberFullArray" value="<c:out value="${kbmmNumberFax}"/>" >
+			</div>
+			
 			<div class="col-4 mb-4">
 				<button type="button" class="btn btn-certification p-2" id="btn-certification" name="btn-certification">인증번호 요청</button>
 			</div>
@@ -174,10 +204,38 @@
 				<input type="password" class="form-control mb-2" id="kbmmPassword" name="kbmmPassword" placeholder="영문/숫자/특수문자 조합 8~20자리(대소문자 포함)"> 
 				<input type="password" class="form-control" id="kbmmPasswordChk" name="kbmmPasswordChk" placeholder="비밀번호 확인"> 
 			</div>
-			<div class="col-12 mb-4">
-				<label class="form-label"><b>이메일</b></label>
+			<div class="col-7 mb-4">
+				<label class="form-label"><b>이메일/국적</b></label>
 				<input type="text" class="form-control" id="kbmeEmailFull" name="kbmeEmailFull" placeholder="이메일주소 입력"> 
 			</div>
+			<div class="col-4 mb-4">
+				<label class="form-label">&nbsp;</label>
+				<select class="form-select" id="kbmmKoreanNy" name="kbmmKoreanNy" >
+					<option selected>국적</option>
+						<c:forEach items="${CodeKorean}" var="itemKorean" varStatus="statusKorean">
+					<option value="<c:out value="${itemKorean.ifcdOrder}"/>" <c:if test="${item.kbmmKoreanNy eq itemKorean.ifcdOrder }">selected</c:if> ><c:out value="${itemKorean.ifcdName}"/></option>	
+						</c:forEach>	
+				</select>
+			</div>
+			
+			<div class="col-8 mb-4">
+				<label class="form-label"><b>생년월일/성별</b></label>
+				<input type="text" class="form-control" id="kbmmDob" name="kbmmDob" placeholder="8자리 입력(예.19850101)"> 
+			</div>
+			<div class="col-4 mb-4">
+				<label class="form-label">&nbsp;</label>
+				<select class="form-select" id="kbmmGenderCd" name="kbmmGenderCd">
+					<option selected value="">성별</option>
+						<c:forEach items="${CodeGender}" var="itemGender" varStatus="statusGender">
+					<option value="<c:out value="${itemGender.ifcdSeq}"/>"><c:out value="${itemGender.ifcdName}"/></option>	
+						</c:forEach>
+				</select>
+			</div>
+			
+			
+			
+			
+			
 			<div class="col-12 mb-4">
 				<label class="form-label"><b>주소</b></label>
 				<div class="input-group">
@@ -210,7 +268,6 @@ $("#btn_chk1").on("click",function(){
 	
 	/* kbmmName */
 	if(!checkNull($("#kbmmName"), $("#kbmmName").val(), "이름을 입력하세요.")) return false;
-/*   	if(!checkName($("#kbmmName"), $("#kbmmName").val(), "이름을 한글로 입력하세요.")) return false; */
 		
 	/* kbmmDob */
 	if(!checkNull($("#kbmmDob"), $("#kbmmDob").val(), "생년월일을 입력하세요")) return false;
@@ -221,9 +278,9 @@ $("#btn_chk1").on("click",function(){
 	
 	
 	/* "kbmpNumberFull" */
-	if(!checkNull($("#kbmpTelecomCd"), $("#kbmpTelecomCd").val(), "통신사를 선택하세요.")) return false;
-	if(!checkNull($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호를 입력하세요.")) return false;
- 	if(!checkOnlyNumber($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호는 숫자만 입력 가능합니다.")) return false;
+	if(!checkNull($("#kbmpTelecomCdArray0"), $("#kbmpTelecomCdArray0").val(), "통신사를 선택하세요.")) return false;
+	if(!checkNull($("#kbmpNumberFullArray0"), $("#kbmpNumberFullArray0").val(), "휴대폰번호를 입력하세요.")) return false;
+ 	if(!checkOnlyNumber($("#kbmpNumberFullArray0"), $("#kbmpNumberFullArray0").val(), "휴대폰번호는 숫자만 입력 가능합니다.")) return false;
 	
  	/* certificationNumber */
  	/* if(!checkNull($("#certificationNumber"), $("#certificationNumber").val(), "인증번호를 입력하세요.")) return false; */
@@ -236,9 +293,9 @@ $("#btn_chk1").on("click",function(){
 $("#btn-certification").on("click",function(){
 	
 	/* "kbmpNumberFull" */
-	if(!checkNull($("#kbmpTelecomCd"), $("#kbmpTelecomCd").val(), "통신사를 선택하세요.")) return false;
-	if(!checkNull($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호를 입력하세요.")) return false;
- 	if(!checkOnlyNumber($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호는 숫자만 입력 가능합니다.")) return false;
+	if(!checkNull($("#kbmpTelecomCdArray0"), $("#kbmpTelecomCdArray0").val(), "통신사를 선택하세요.")) return false;
+	if(!checkNull($("#kbmpNumberFullArray0"), $("#kbmpNumberFullArray0").val(), "휴대폰번호를 입력하세요.")) return false;
+ 	if(!checkOnlyNumber($("#kbmpNumberFullArray0"), $("#kbmpNumberFullArray0").val(), "휴대폰번호는 숫자만 입력 가능합니다.")) return false;
 
  	
 });
