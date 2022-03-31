@@ -204,12 +204,12 @@
 				<input type="password" class="form-control mb-2" id="kbmmPassword" name="kbmmPassword" placeholder="영문/숫자/특수문자 조합 8~20자리(대소문자 포함)"> 
 				<input type="password" class="form-control" id="kbmmPasswordChk" name="kbmmPasswordChk" placeholder="비밀번호 확인"> 
 			</div>
-			<div class="col-7 mb-4">
-				<label class="form-label"><b>이메일/국적</b></label>
+			<div class="col-12 mb-4">
+				<label class="form-label"><b>이메일</b></label>
 				<input type="text" class="form-control" id="kbmeEmailFull" name="kbmeEmailFull" placeholder="이메일주소 입력"> 
 			</div>
-			<div class="col-4 mb-4">
-				<label class="form-label">&nbsp;</label>
+			<div class="col-12 mb-4">
+				<label class="form-label"><b>국적</b></label>
 				<select class="form-select" id="kbmmKoreanNy" name="kbmmKoreanNy" >
 					<option selected>국적</option>
 						<c:forEach items="${CodeKorean}" var="itemKorean" varStatus="statusKorean">
@@ -217,22 +217,6 @@
 						</c:forEach>	
 				</select>
 			</div>
-			
-			<div class="col-8 mb-4">
-				<label class="form-label"><b>생년월일/성별</b></label>
-				<input type="text" class="form-control" id="kbmmDob" name="kbmmDob" placeholder="8자리 입력(예.19850101)"> 
-			</div>
-			<div class="col-4 mb-4">
-				<label class="form-label">&nbsp;</label>
-				<select class="form-select" id="kbmmGenderCd" name="kbmmGenderCd">
-					<option selected value="">성별</option>
-						<c:forEach items="${CodeGender}" var="itemGender" varStatus="statusGender">
-					<option value="<c:out value="${itemGender.ifcdSeq}"/>"><c:out value="${itemGender.ifcdName}"/></option>	
-						</c:forEach>
-				</select>
-			</div>
-			
-			
 			
 			
 			
