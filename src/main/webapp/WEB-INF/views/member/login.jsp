@@ -66,7 +66,7 @@
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/resources/common/js/validation.js"></script>
-<!-- <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script> -->
+<script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 
 <script type="text/javascript">
 	$("#btnLogin").on("click",function(){

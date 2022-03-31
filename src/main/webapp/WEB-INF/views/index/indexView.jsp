@@ -30,18 +30,44 @@
 <!-- 본문 s-->
 <div class="container">
 
-	<div>	
-		<p>sessSeq : </p>
-		<p>sessName : </p>
-		<p>sessId : </p>
-		<button type="button" class="btn btn-danger btn-sm" name="btn-updateDelete" id="btn-updateDelete"><i class="fa-solid fa-power-off"></i></button>
-	</div>
+	sessSeq: <c:out value="${sessSeq }"/><br>
+	sessName: <c:out value="${sessName }"/><br>
+	sessId: <c:out value="${sessId }"/><br>
+	<c:if test="${not empty sessSeq}">
+		<button type="button" class="btn btn-danger btn-sm" name="" id="btnLogout"><i class="fa-solid fa-power-off"></i></button>
+	</c:if>
 
 
 </div>
 
 <%@ include file="/WEB-INF/views/xdmin/include/footer.jsp" %><!-- footer -->
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
+<script type="text/javascript">
+	$("#btnLogout").on("click",function(){
+		
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/member/logoutProc"
+			,data : { "kbmmId" : $("#kbmmId").val(), "kbmmPassword" : $("#kbmmPassword").val()}
+			,success: function(response) {
+				if(response.rt == "success") {
+					location.href = "/member/login";
+				} else {
+					//
+				}
+			}			
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+
+	});
+
+</script>
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
