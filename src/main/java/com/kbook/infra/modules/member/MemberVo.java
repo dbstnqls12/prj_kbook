@@ -48,31 +48,36 @@ public class MemberVo {
 
 		totalPages = totalRows / rowNumToShow;
 
-		if (totalRows % rowNumToShow > 0) {
-			totalPages = totalPages+ 1;
+		if (getTotalRows() == 0) {
+			setTotalPages(1);
+		} else {
+			setTotalPages(getTotalRows() / getRowNumToShow());
 		}
 
-		if (totalPages < thisPage) {
-			thisPage = totalPages;
+		if (getTotalRows() % getRowNumToShow() > 0) {
+			setTotalPages(getTotalPages() + 1);
+		}
+
+		if (getTotalPages() < getThisPage()) {
+			setThisPage(getTotalPages());
 		}
 		
-		startPage = (((thisPage - 1) / pageNumToShow) * pageNumToShow + 1);
+		setStartPage(((getThisPage() - 1) / getPageNumToShow()) * getPageNumToShow() + 1);
 
-		endPage = (startPage + pageNumToShow - 1);
+		setEndPage(getStartPage() + getPageNumToShow() - 1);
 
-		if (endPage > totalPages) {
-			endPage = (totalPages);
+		if (getEndPage() > getTotalPages()) {
+			setEndPage(getTotalPages());
 		}
 		
-		endRnumForOracle = ((rowNumToShow * thisPage));
-		startRnumForOracle = ((endRnumForOracle - rowNumToShow) + 1);
-		if (startRnumForOracle < 1) startRnumForOracle = 1;
+		setEndRnumForOracle((getRowNumToShow() * getThisPage()));
+		setStartRnumForOracle((getEndRnumForOracle() - getRowNumToShow()) + 1);
+		if (getStartRnumForOracle() < 1) setStartRnumForOracle(1);
 		
-		
-		if(thisPage == 1 || thisPage == 0) {
-			startRnumForMysql = 0;
-		}else {
-			startRnumForMysql = ((rowNumToShow * (thisPage-1)));
+		if (thisPage == 1) {
+			setStartRnumForMysql(0);
+		} else {
+			setStartRnumForMysql((getRowNumToShow() * (getThisPage()-1)));
 		}
 		
 		System.out.println("getThisPage():" + thisPage);
@@ -84,6 +89,8 @@ public class MemberVo {
 		System.out.println("getStartRnumForOracle():" + startRnumForOracle);
 		System.out.println("getEndRnumForOracle():" + endRnumForOracle);
 		System.out.println("getStartRnumForMysql(): " + startRnumForMysql);
+		
+
 		
 	}
 	//------------
