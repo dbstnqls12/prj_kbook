@@ -299,6 +299,7 @@
 			,kbmmId
 			,kbmmName
 			,kbmmPassword
+			,kbmmAdminNy
 		FROM
 			kbMember
 		WHERE 1=1 

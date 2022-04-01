@@ -79,7 +79,12 @@
 			,data : { "kbmmId" : $("#kbmmId").val(), "kbmmPassword" : $("#kbmmPassword").val()}
 			,success: function(response) {
 				if(response.rt == "success") {
-					location.href = "/index/indexView";
+					if($("#kbmmAdminNy").val() == 1){
+						location.href = "/index/indexView";
+					}else{
+						location.href = "/member/kyobo_main";
+						//
+					}	
 				} else {
 					alert("회원없음");
 				}

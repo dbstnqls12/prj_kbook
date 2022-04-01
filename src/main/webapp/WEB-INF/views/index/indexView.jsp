@@ -33,6 +33,7 @@
 	sessSeq: <c:out value="${sessSeq }"/><br>
 	sessName: <c:out value="${sessName }"/><br>
 	sessId: <c:out value="${sessId }"/><br>
+	sessDelNy: <c:out value="${sessDelNy }"/><br>
 	<c:if test="${not empty sessSeq}">
 		<button type="button" class="btn btn-danger btn-sm" name="" id="btnLogout"><i class="fa-solid fa-power-off"></i></button>
 	</c:if>

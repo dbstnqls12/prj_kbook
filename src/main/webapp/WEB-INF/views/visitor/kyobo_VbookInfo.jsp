@@ -24,7 +24,7 @@
 </head>
 <body>
 			
-<%@ include file="/WEB-INF/views/member/include/main_header_member.jsp" %><!--  header_member -->
+<%@ include file="/WEB-INF/views/member/include/main_header_visitor.jsp" %><!-- header_visitor -->
 <%@ include file="/WEB-INF/views/member/include/main_navbar.jsp" %><!-- navbar -->
 	
 

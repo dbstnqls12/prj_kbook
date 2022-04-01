@@ -261,6 +261,7 @@ public class MemberController {
 			 httpSession.setAttribute("sessSeq", rtMember.getKbmmSeq());
 			 httpSession.setAttribute("sessId", rtMember.getKbmmId());
 			 httpSession.setAttribute("sessName", rtMember.getKbmmName());
+			 httpSession.setAttribute("sessAdminNy", rtMember.getKbmmAdminNy());
 			 
 			returnMap.put("rt", "success");
 			
@@ -282,14 +283,6 @@ public class MemberController {
 		return returnMap;
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 
 	@RequestMapping(value = "member/kyobo_main")
 	public String kyobo_main() throws Exception {
@@ -297,11 +290,24 @@ public class MemberController {
 		return "member/kyobo_main";
 	}
 
+
 	@RequestMapping(value = "member/kyobo_bookInfo")
 	public String kyobo_bookInfo() throws Exception {
 		
 		return "member/kyobo_bookInfo";
 	}
+	
+	@RequestMapping(value = "visitor/kyobo_VbookInfo")
+	public String kyobo_VbookInfo() throws Exception {
+		
+		return "visitor/kyobo_VbookInfo";
+	}
+	@RequestMapping(value = "visitor/kyobo_Vmain")
+	public String kyobo_Vmain() throws Exception {
+		
+		return "visitor/kyobo_Vmain";
+	}
+	
 	@RequestMapping(value = "member/kyobo_purchase")
 	public String kyobo_purchase() throws Exception {
 		
