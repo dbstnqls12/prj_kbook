@@ -256,6 +256,8 @@ public class MemberController {
 		if(rtMember != null) {
 //			rtMember = service.selectOneLogin(dto);
 			
+			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+			
 			 httpSession.setAttribute("sessSeq", rtMember.getKbmmSeq());
 			 httpSession.setAttribute("sessId", rtMember.getKbmmId());
 			 httpSession.setAttribute("sessName", rtMember.getKbmmName());

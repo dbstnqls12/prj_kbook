@@ -9,4 +9,6 @@ public class Constants {
 	public static final String URL_LOGINFORM = "/member/login";
 	
 	public static final String TIME_FORMAT_BASIC = "HH:mm:ss";
+	
+	public static final int SESSION_MINUTE =30;
 }

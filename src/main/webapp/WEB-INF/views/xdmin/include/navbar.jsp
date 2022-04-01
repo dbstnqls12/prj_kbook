@@ -29,7 +29,7 @@
 
 <nav class="navbar navbar-expand-md navbar-dark d-none d-md-block mb-4 text-light text-white" >
 	<div class="container-fluid">
-		<a class="navbar-brand d-block d-sm-none" href="#">Navbar</a>
+		<a class="navbar-brand d-block d-sm-none" href="/WEB-INF/views/xdmin/memberList">Navbar</a>
 	<!-- 	<a class="navbar-brand d-none d-sm-block" href="#">Home</a> -->
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>

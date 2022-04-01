@@ -42,6 +42,7 @@ public class UtilDateTime {
 		String localDateTimeNewString = localDateTimeNew.format(DateTimeFormatter.ofPattern(Constants.DATETIME_FORMAT_BASIC));
 		return localDateTimeNewString;
 	}
+	
 	public static String addNowTimeString(String date) {
 		LocalDateTime localDateTime = LocalDateTime.now();
 		String localDateTimeString = localDateTime.format(DateTimeFormatter.ofPattern(Constants.TIME_FORMAT_BASIC));
