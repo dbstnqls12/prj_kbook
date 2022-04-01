@@ -295,6 +295,17 @@ public class MemberController {
 	public String kyobo_main() throws Exception {
 		
 		return "member/kyobo_main";
-}
+	}
+
+	@RequestMapping(value = "member/kyobo_bookInfo")
+	public String kyobo_bookInfo() throws Exception {
+		
+		return "member/kyobo_bookInfo";
+	}
+	@RequestMapping(value = "member/kyobo_purchase")
+	public String kyobo_purchase() throws Exception {
+		
+		return "member/kyobo_purchase";
+	}
 
 }

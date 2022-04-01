@@ -1,0 +1,67 @@
+p{
+	font-size: 14px;
+}
+hr{
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.btn-cart{
+	border: 1px #5E6B9F solid;
+	background: #5E6B9F;
+	color: white;
+	width: 18%;
+	height: 50px;
+}
+.btn-purchaseNow{
+	border: 1px #7B8ED1 solid;
+	background: #7B8ED1;
+	color: white;
+	width: 100%;
+	height: 50px;
+}
+.btn-purchase{
+	border: 1px solid black;
+	width: 18%;
+	height: 50px;
+}
+.bookKeyword,
+.relatedItem{
+	margin-top: 20px;
+	border: 1px solid #BCBCBC;
+	width: 250px;
+	padding: 10px;
+}
+table{
+	font-size: 14px;
+}
+.keyword{
+	border: 1px solid #BCBCBC;
+	border-radius: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.bookDesc1{
+	border: 1px solid none;
+}
+#goUp {
+	color: black;
+	width: 100px;
+	position: fixed;
+	right:0;
+	bottom: 45px;
+	text-decoration: none;
+}
+#goDown {
+	color: black;
+	width: 100px;
+	position: fixed;
+	right:0;
+	bottom: 0;
+	text-decoration: none;
+}
+	.navbar{
+		background-color: #5E6B9E;
+	}
+	
