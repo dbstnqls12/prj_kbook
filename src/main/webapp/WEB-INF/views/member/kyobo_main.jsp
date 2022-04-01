@@ -155,18 +155,27 @@
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 
 <script type="text/javascript">
-	 $(document).ready(function(){
+$("#btnLogout").on("click",function(){
+	
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		,url: "/member/logoutProc"
+		,data : { "kbmmId" : $("#kbmmId").val(), "kbmmPassword" : $("#kbmmPassword").val()}
+		,success: function(response) {
+			if(response.rt == "success") {
+				location.href = "/visitor/kyobo_Vmain";
+			} else {
+				//
+			}
+		}			
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});
 
-			$('#top_menu .sub_1').hide();
-
-			$('.menu_1').mouseover(function(){
-				$('.sub_1').slideDown();
-
-			});
-			$('.menu_1').mouseleave(function(){
-				$('.sub_1').hide();
-			});
-
+});
 
 
 </script>

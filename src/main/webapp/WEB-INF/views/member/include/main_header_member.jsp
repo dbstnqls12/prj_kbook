@@ -38,14 +38,17 @@
 		<div class="col-lg-2 my-auto d-none d-md-block">	
 	        <div class="dropdown">
 	          <a href="#" class="d-inline link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-	            <span>윤수빈 회원님 <u>(프렌즈)</u></span>
+	            <span><c:out value="${sessName }"/> 회원님 <u>(프렌즈)</u></span>
 	          </a>
 	          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
 	            <li><a class="dropdown-item" href="../user/member/myInfo_main.html">내 정보</a></li>
 	            <li><a class="dropdown-item" href="../user/member/myInfo_coupon.html">쿠폰함</a></li>
 	          </ul>
-	          <span class="badge bg-light text-dark" role="button">로그아웃</span>
-	        <!--   <button type="button" class="btn btn-sm btn-outline-secondary" role="" name="" id="" >로그아웃</button> -->
+	          	<c:if test="${not empty sessSeq}">
+					<span class="badge bg-light text-dark" role="button" id="btnLogout">로그아웃</span>
+<!-- 				<button type="button" class="btn btn-danger btn-sm" name="" id="btnLogout"><i class="fa-solid fa-power-off"></i></button> -->
+				</c:if>
+	          
 	        </div>
 		</div>
 	</div>

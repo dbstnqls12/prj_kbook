@@ -35,8 +35,8 @@
 	</div>
 	<hr>
 	<div class="col-xs-8 mx-auto">
-		<input class="form-control mb-2" type="text" id="kbmmId" name="kbmmId" placeholder="kbmmId" aria-label="input id">	
-		<input class="form-control mb-2" type="password" id="kbmmPassword" name="kbmmPassword" placeholder="password" aria-label="input pwd">
+		<input class="form-control mb-2" type="text" id="kbmmId" name="kbmmId" placeholder="kbmmId">	
+		<input class="form-control mb-2" type="password" id="kbmmPassword" name="kbmmPassword" placeholder="password" >
 		
 		<div class="form-check col-xs-8 mb-3">
 			<input class="form-check-input" type="checkbox" name="autologin" value="autologin" id="autologin">
@@ -83,7 +83,6 @@
 						location.href = "/index/indexView";
 					}else{
 						location.href = "/member/kyobo_main";
-						//
 					}	
 				} else {
 					alert("회원없음");

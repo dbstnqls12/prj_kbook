@@ -37,10 +37,11 @@
 		</form>
 		<div class="col-lg-2 my-auto d-none d-md-block">	
 	        <div class="dropdown">
-	          <a href="#" class="d-inline link-dark text-decoration-none" id="dropdownUser1" >
+<!-- 	          <a href="#" class="d-inline link-dark text-decoration-none" id="dropdownUser1" >
 	            <span><u>로그인하기</u></span>
-	          </a>
+	          </a> -->
 
+	          <span class="badge bg-light text-dark" role="button" onclick="location.href='../member/login'">로그인</span> |
 	          <span class="badge bg-light text-dark" role="button">회원가입</span>
 	        <!--   <button type="button" class="btn btn-sm btn-outline-secondary" role="" name="" id="" >로그아웃</button> -->
 	        </div>

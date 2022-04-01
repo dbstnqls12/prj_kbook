@@ -291,12 +291,6 @@ public class MemberController {
 	}
 
 
-	@RequestMapping(value = "member/kyobo_bookInfo")
-	public String kyobo_bookInfo() throws Exception {
-		
-		return "member/kyobo_bookInfo";
-	}
-	
 	@RequestMapping(value = "visitor/kyobo_VbookInfo")
 	public String kyobo_VbookInfo() throws Exception {
 		
@@ -307,6 +301,12 @@ public class MemberController {
 		
 		return "visitor/kyobo_Vmain";
 	}
+	@RequestMapping(value = "member/kyobo_bookInfo")
+	public String kyobo_bookInfo() throws Exception {
+		
+		return "member/kyobo_bookInfo";
+	}
+	
 	
 	@RequestMapping(value = "member/kyobo_purchase")
 	public String kyobo_purchase() throws Exception {
