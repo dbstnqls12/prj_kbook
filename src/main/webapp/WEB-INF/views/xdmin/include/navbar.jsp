@@ -37,7 +37,7 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-md-0" id="list">
 				<li class="nav-item">
-					<a class="nav-link" aria-current="page" href="#">회원관리</a>
+					<a class="nav-link" aria-current="page" href="../xdmin/member/memberList">회원관리</a>
 				</li>
 
 			</ul>
