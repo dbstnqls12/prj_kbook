@@ -4,6 +4,9 @@
 	.dropdown-menu{
 		font-size: 13px;
 	}
+	.dropdown-item{
+		font-size: 9px;
+	}
 	.navbar{
 		background-color: #5E6B9E;
 	}

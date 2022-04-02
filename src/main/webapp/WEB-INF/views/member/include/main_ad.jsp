@@ -29,16 +29,16 @@
 		</div>
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img src="../../images/xdmin_img/ad2.jpg" class="d-block w-100" alt="...">
+				<img src="/resources/user/image/book/ad2.jpg" class="d-block w-100" alt="...">
 			</div>
 			<div class="carousel-item">
-				<img src="../../images/xdmin_img/ad3.jpg" class="d-block w-100" alt="...">
+				<img src="/resources/user/image/book/ad3.jpg" class="d-block w-100" alt="...">
 			</div>
 			<div class="carousel-item">
-				<img src="../../images/xdmin_img/ad4.jpg" class="d-block w-100" alt="...">
+				<img src="/resources/user/image/book/ad4.jpg" class="d-block w-100" alt="...">
 			</div>
 			<div class="carousel-item">
-				<img src="../../images/xdmin_img/ad6.jpg" class="d-block w-100" alt="...">
+				<img src="/resources/user/image/book/ad6.jpg" class="d-block w-100" alt="...">
 			</div>
 		</div>
 		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

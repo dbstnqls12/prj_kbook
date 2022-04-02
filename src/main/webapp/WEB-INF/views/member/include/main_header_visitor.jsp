@@ -24,7 +24,7 @@
 <div class="container"> <!--d-none d-sm-block : sm사이즈에서는 보이지 않음 --><!-- d-block d-sm-none : sm에서만 보임 -->
 	<div class="row">	
 		<div class="col-6 col-md-2 col-lg-2">
-			<img src="../../images/xdmin_img/kyobo2_removebg.png"  class="img-fluid mx-auto" onclick="location.href='../main.html'">
+			<img src="/resources/xdmin/image/kyobo2_removebg.png"  class="img-fluid mx-auto" onclick="location.href='../main.html'">
 		</div>				
 		<div class="col-6 d-block d-md-none mt-2 text-end">
 			<a class="d-block d-md-none mt-3 ml-1" data-bs-toggle="offcanvas" href="#offcanvasRight" aria-controls="offcanvasRight">

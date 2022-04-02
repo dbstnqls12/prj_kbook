@@ -45,7 +45,7 @@
 					<div class="row row-cols-1 row-cols-md-3 g-4">
 					<div class="col-lg-3 ">
 						<div class="card h-100">
-						<img src="../../images/xdmin_img/bookEx12.jpg" class="card-img-top" alt="...">
+						<img src="/resources/user/image/book/bookEx12.jpg" class="card-img-top" alt="...">
 							<div class="card-body">
 								<h6 class="card-title mx-auto h-25">나의 아저씨 세트</h6>
 						 		<p class="card-text mx-auto h-50">첫 독자들을 위한 한정판!<br><br>수많은 사람의 인생드라마가 또다시 인생책이 되다</p>
@@ -54,7 +54,7 @@
 					</div>
 					<div class="col-lg-3">
 						<div class="card h-100">
-							<img src="../../images/xdmin_img/bookEx9.jpg" class="card-img-top" alt="...">
+							<img src="/resources/user/image/book/bookEx9.jpg" class="card-img-top" alt="...">
 							<div class="card-body">
 								<h6 class="card-title mx-auto">아무튼 피아노</h6>
 						 		<p class="card-text mx-auto">40만부 기념 특별 에디션!<br><br>힘겨운 시대를 살아가는 우리들에게 다가온 조금 특별한 편의점 이야기</p>
@@ -63,7 +63,7 @@
 					</div>
 					<div class="col-lg-3">
 						<div class="card h-100">
-							<img src="../../images/xdmin_img/bookEx10.jpg" class="card-img-top" alt="...">
+							<img src="/resources/user/image/book/bookEx10.jpg" class="card-img-top" alt="...">
 							<div class="card-body">
 								<h6 class="card-title mx-auto">무성교실</h6>
 						 		<p class="card-text mx-auto">40만부 기념 특별 에디션!<br><br>힘겨운 시대를 살아가는 우리들에게 다가온 조금 특별한 편의점 이야기</p>
@@ -72,7 +72,7 @@
 					</div>
 					<div class="col-lg-3">
 						<div class="card h-100">
-							<img src="../../images/xdmin_img/bookEx11.jpg" class="card-img-top" alt="...">
+							<img src="/resources/user/image/book/bookEx11.jpg" class="card-img-top" alt="...">
 							<div class="card-body">
 								<h6 class="card-title mx-auto">모든 사람에게 <br>사랑받을 필요는 없다</h6>
 						 		<p class="card-text mx-auto">40만부 기념 특별 에디션!<br><br>힘겨운 시대를 살아가는 우리들에게 다가온 조금 특별한 편의점 이야기</p>
@@ -98,10 +98,10 @@
 							<td class="w-20"><i class="fa-regular fa-4"></i></td>
 						</tr>
 						<tr>
-							<td><img src="../../images/xdmin_img/book1.jpg"  id="best" name="best"></td>
-							<td><img src="../../images/xdmin_img/bookEx2.jpg" id="best" name="best"></td>
-							<td><img src="../../images/xdmin_img/bookEx3.jpg" id="best" name="best"></td>
-							<td><img src="../../images/xdmin_img/bookEx4.jpg" id="best" name="best"></td>
+							<td><img src="/resources/user/image/book/book1.jpg"  id="best" name="best"></td>
+							<td><img src="/resources/user/image/book/bookEx2.jpg" id="best" name="best"></td>
+							<td><img src="/resources/user/image/book/bookEx3.jpg" id="best" name="best"></td>
+							<td><img src="/resources/user/image/book/bookEx4.jpg" id="best" name="best"></td>
 						</tr>
 						<tr>
 							<td><h6>불편한 편의점</h6><p>김호연</p></td>
@@ -116,10 +116,10 @@
 							<td><i class="fa-regular fa-8"></i></td>
 						</tr>
 						<tr>
-							<td><img src="../../images/xdmin_img/bookEx5.jpg" id="best" name="best"></td>
-							<td><img src="../../images/xdmin_img/bookEx6.jpg" id="best" name="best"></td>
-							<td><img src="../../images/xdmin_img/bookEx7.jpg" id="best" name="best"></td>
-							<td><img src="../../images/xdmin_img/bookEx8.jpg" id="best" name="best"></td>
+							<td><img src="/resources/user/image/book/bookEx5.jpg" id="best" name="best"></td>
+							<td><img src="/resources/user/image/book/bookEx6.jpg" id="best" name="best"></td>
+							<td><img src="/resources/user/image/book/bookEx7.jpg" id="best" name="best"></td>
+							<td><img src="/resources/user/image/book/bookEx8.jpg" id="best" name="best"></td>
 						</tr>
 						<tr>
 							<td><h6>나에게 고맙다</h6><p>전승환</p></td>
@@ -134,11 +134,12 @@
 		<div class="col-md-2">
 			<div class="card" style="width: 12rem;">
 			    <div class="card-header"><h5>오늘의 추천 도서</h5></div>
-			  <img src="../../images/xdmin_img/bookEx.jpg" class="card-img-top" >
+			  <img src="/resources/user/image/book/bookEx.jpg" class="card-img-top" >
 			  
 			  <div class="card-body">
 			    <h5 class="card-title" style="font-weight: bold;">명상 살인</h5>
-			    <p class="card-text">								★ 106주 연속 슈피겔 베스트셀러<br>
+			    <p class="card-text">				
+			    				★ 106주 연속 슈피겔 베스트셀러<br>
 								★ 독일 판매 부수 100만 부 돌파, 17개국 수출<br>
 								★ 유럽 대형 제작사 Constantin 영화화 확정<br><br></p>
 			    <a href=" /member/kyobo_bookInfo" class="btn btn-primary">바로가기</a>
@@ -155,19 +156,6 @@
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 
 <script type="text/javascript">
-	 $(document).ready(function(){
-
-			$('#top_menu .sub_1').hide();
-
-			$('.menu_1').mouseover(function(){
-				$('.sub_1').slideDown();
-
-			});
-			$('.menu_1').mouseleave(function(){
-				$('.sub_1').hide();
-			});
-
-
 
 </script>
 

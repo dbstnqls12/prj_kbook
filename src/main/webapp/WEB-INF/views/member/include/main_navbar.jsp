@@ -49,14 +49,12 @@
 					<a class="nav-link " href="#">외국도서</a>
 				</li>
 				 <li class="nav-item dropdown">
-		          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-		           ebook
-		          </a>
+		          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">ebook</a>
 		          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-		            <li><a class="dropdown-item" href="#">Action</a></li>
-		            <li><a class="dropdown-item" href="#">Another action</a></li>
-		            <li><hr class="dropdown-divider"></li>
-		            <li><a class="dropdown-item" href="#">Something else here</a></li>
+		            <li><a class="dropdown-item" href="#">일반도서</a></li>
+		            <li><a class="dropdown-item" href="#">로맨스</a></li>
+		            <li><a class="dropdown-item" href="#">판타지</a></li>
+		            <li><a class="dropdown-item" href="#">코믹스</a></li>
 		          </ul>
        			 </li>
 	
@@ -64,29 +62,25 @@
 					<a class="nav-link " href="#">웹소설</a>
 				</li>
 				<li class="nav-item dropdown">
-		          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-		            기프트
-		          </a>
+		          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">기프트</a>
 		          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-		            <li><a class="dropdown-item" href="#">Action</a></li>
-		            <li><a class="dropdown-item" href="#">Another action</a></li>
-		            <li><hr class="dropdown-divider"></li>
-		            <li><a class="dropdown-item" href="#">Something else here</a></li>
+		            <li><a class="dropdown-item" href="#">2022 DIARY</a></li>
+		            <li><a class="dropdown-item" href="#">디자인 문구</a></li>
+		            <li><a class="dropdown-item" href="#">디지털</a></li>
+		            <li><a class="dropdown-item" href="#">오피스</a></li>
+		            <li><a class="dropdown-item" href="#">필기구</a></li>
 		          </ul>
 		        </li>
 				<li class="nav-item dropdown">
-		          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-		            음반
-		          </a>
+		          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">음반</a>
 		          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-		            <li><a class="dropdown-item" href="#">Action</a></li>
-		            <li><a class="dropdown-item" href="#">Another action</a></li>
-		            <li><hr class="dropdown-divider"></li>
-		            <li><a class="dropdown-item" href="#">Something else here</a></li>
+		            <li><a class="dropdown-item" href="#">음반</a></li>
+		            <li><a class="dropdown-item" href="#">DVD</a></li>
+		            <li><a class="dropdown-item" href="#">블루레이</a></li>
 		          </ul>
 		        </li>
 				<li class="nav-item">
-					<a class="nav-link " href="#">중고장터 </a>
+					<a class="nav-link" href="#">중고장터</a>
 				</li>
 			</ul>
 		</div>
