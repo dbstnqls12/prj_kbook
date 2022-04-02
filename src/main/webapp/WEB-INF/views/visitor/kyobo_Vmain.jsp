@@ -142,7 +142,7 @@
 			    				★ 106주 연속 슈피겔 베스트셀러<br>
 								★ 독일 판매 부수 100만 부 돌파, 17개국 수출<br>
 								★ 유럽 대형 제작사 Constantin 영화화 확정<br><br></p>
-			    <a href=" /member/kyobo_bookInfo" class="btn btn-primary">바로가기</a>
+			    <a href=" /visitor/kyobo_VbookInfo" class="btn btn-primary">바로가기</a>
 			  </div>
 			</div>
 		</div>
