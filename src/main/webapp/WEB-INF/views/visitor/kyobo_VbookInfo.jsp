@@ -74,7 +74,7 @@
 				<img class="mx-auto mb-2 d-block d-md-none"alt="" src="../../../images/xdmin_img/bookEx.jpg" style="width: 250px; height: 330px;">
 				<img class="mx-auto"alt="" src="../../../images/xdmin_img/btn_freedelivery.gif">
 				<img class="mx-auto"alt="" src="../../../images/xdmin_img/btn_2.gif">
-				<h4 class="mt-1" style="color: #3A60DF;"><b>명상살인</b></h4>
+				<h4 class="mt-1" style="color: #3A60DF;"><b>명상살인<c:out value="${item.tditTitle}"/></b></h4>
 				<p><strong>내 안의 살인 파트너</strong></p>
 				<p>카르스텐 두세</p>
 				<p>세계사 | 2021-07-05</p>

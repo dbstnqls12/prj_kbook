@@ -42,6 +42,13 @@
 	
 		<div class="collapse navbar-collapse" id="menuListY">
 			<ul class="navbar-nav me-auto mb-2 mb-md-0">
+<%-- 				<c:forEach items="${listCateParent1}" var="itemCateNum1" varStatus="statusCateNum1">
+					<li class="nav-item">
+						<a class="nav-link" aria-current="page" href="#">
+							<c:out value="${itemCateNum1.ifctName}"/>	
+						</a>
+					</li>
+				</c:forEach> --%>
 				<li class="nav-item">
 					<a class="nav-link" aria-current="page" href="#">국내도서</a>
 				</li>

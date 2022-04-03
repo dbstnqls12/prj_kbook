@@ -141,7 +141,8 @@
 			    <p class="card-text">								★ 106주 연속 슈피겔 베스트셀러<br>
 								★ 독일 판매 부수 100만 부 돌파, 17개국 수출<br>
 								★ 유럽 대형 제작사 Constantin 영화화 확정<br><br></p>
-			    <a href=" /member/kyobo_bookInfo" class="btn btn-primary">바로가기</a>
+			    <a href="javascript:goView(<c:out value="${item.tditSeq}"/>)" class="btn btn-primary">바로가기</a>
+<!-- 			    <a href=" /member/kyobo_bookInfo" class="btn btn-primary">바로가기</a> -->
 			  </div>
 			</div>
 		</div>
@@ -155,8 +156,16 @@
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 
 <script type="text/javascript">
+
+goView = function(seq){
+	$("#tditSeq").val(seq);
+	attr("action","/visitor/kyobo_VbookInfo");
+/* 	$("#formList").submit(); */
+}
+
 $("#btnLogout").on("click",function(){
 	
+
 	$.ajax({
 		async: true 
 		,cache: false

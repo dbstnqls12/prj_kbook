@@ -162,4 +162,5 @@
 			AND ifcdDelNy = 0
 			AND ifcdUseNy = 1
 	</select>
+	
 </mapper>    

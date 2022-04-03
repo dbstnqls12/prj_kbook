@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kbook.infra.common.constants.Constants;
 import com.kbook.infra.common.util.UtilDateTime;
+import com.kbook.infra.modules.cate.CateServiceImpl;
 import com.kbook.infra.modules.code.CodeServiceImpl;
 
 @Controller
@@ -27,10 +28,6 @@ public class MemberController {
 	@RequestMapping(value = "/xdmin/member/memberList")
 	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 		
-//		vo.setShOptionDate(vo.getShOptionDate() == null ? 1 : vo.getShOptionDate());
-//		vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : UtilDateTime.addStringTime(vo.getShDateStart()));
-//		vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : UtilDateTime.addStringTime(vo.getShDateEnd()));
-
 //		vo.setShOptionDate(vo.getShOptionDate() == null ? 1 : vo.getShOptionDate());
 		vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : UtilDateTime.add00TimeString(vo.getShDateStart()));
 		vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : UtilDateTime.addNowTimeString(vo.getShDateEnd()));
@@ -284,28 +281,19 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "member/kyobo_main")
-	public String kyobo_main() throws Exception {
+	public String kyobo_main(Model model) throws Exception {
+		
+//		model.addAttribute("CodeGender", CodeServiceImpl.selectListCachedCode("3"));
 		
 		return "member/kyobo_main";
 	}
 
-
-	@RequestMapping(value = "visitor/kyobo_VbookInfo")
-	public String kyobo_VbookInfo() throws Exception {
-		
-		return "visitor/kyobo_VbookInfo";
-	}
 	@RequestMapping(value = "visitor/kyobo_Vmain")
-	public String kyobo_Vmain() throws Exception {
+	public String kyobo_Vmain(Model model) throws Exception {
+		
 		
 		return "visitor/kyobo_Vmain";
 	}
-	@RequestMapping(value = "member/kyobo_bookInfo")
-	public String kyobo_bookInfo() throws Exception {
-		
-		return "member/kyobo_bookInfo";
-	}
-	
 	
 	@RequestMapping(value = "member/kyobo_purchase")
 	public String kyobo_purchase() throws Exception {

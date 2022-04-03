@@ -10,9 +10,51 @@
 
 <select id="selectList" resultMap="resultMapObj">
 	SELECT
-		*
+		a.tditSeq
+		,a.tditTitle
+		,a.tditSubTitle
+		,a.tditPublisherCd
+		,a.tditPublishingDate
+		,a.tditPrice
+		,a.tditDiscountCd
+		,a.tditStateCd
+		,a.tditItemCate
+		,a.tditIsbn
+		,a.tditPage
+		,a.tditSize
+		,a.tditWeight
+		,a.tditBookDesc
+		,a.tditBookDesc2
+		,a.tditTableOfContents 
+		,a.tditDelNy
 	FROM
-		
+		tradItem a
+	WHERE 1=1 	
+</select>
+
+<select id="selectOne" resultMap="resultMapObj">
+	SELECT
+		a.tditSeq
+		,a.tditTitle
+		,a.tditSubTitle
+		,a.tditPublisherCd
+		,a.tditPublishingDate
+		,a.tditPrice
+		,a.tditDiscountCd
+		,a.tditStateCd
+		,a.tditItemCate
+		,a.tditIsbn
+		,a.tditPage
+		,a.tditSize
+		,a.tditWeight
+		,a.tditBookDesc
+		,a.tditBookDesc2
+		,a.tditTableOfContents 
+		,a.tditDelNy
+	FROM
+		tradItem a
+	WHERE 1=1 	
+		AND a.tditSeq = #{tditSeq}
 </select>
 
 
