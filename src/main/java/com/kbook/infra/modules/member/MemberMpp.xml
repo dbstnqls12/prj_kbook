@@ -47,8 +47,6 @@
 			,a.kbmmAdminNy
 			,a.kbmmGenderCd
 			,a.kbmmDelNy
-<!-- 			,a.regDateTime
-			,a.modDateTime -->
 			,a.kbmmDob
 		<include refid="selectCommon"/>	
 		limit #{startRnumForMysql}, #{rowNumToShow}

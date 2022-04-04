@@ -20,6 +20,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 </head>
 <body>
+<c:set var="listCateDepth1" value="${CateServiceImpl.selelctListCachedCate('1')}"/>
+<c:set var="listCateDepth2" value="${CateServiceImpl.selelctListCachedCate('2')}"/>
 
 
 <div class="col-md-2 d-none d-md-block">

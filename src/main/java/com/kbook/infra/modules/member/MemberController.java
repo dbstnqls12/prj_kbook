@@ -1,5 +1,6 @@
 package com.kbook.infra.modules.member;
 
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -280,25 +281,6 @@ public class MemberController {
 		return returnMap;
 	}
 
-	@RequestMapping(value = "member/kyobo_main")
-	public String kyobo_main(Model model) throws Exception {
-		
-//		model.addAttribute("CodeGender", CodeServiceImpl.selectListCachedCode("3"));
-		
-		return "member/kyobo_main";
-	}
 
-	@RequestMapping(value = "visitor/kyobo_Vmain")
-	public String kyobo_Vmain(Model model) throws Exception {
-		
-		
-		return "visitor/kyobo_Vmain";
-	}
-	
-	@RequestMapping(value = "member/kyobo_purchase")
-	public String kyobo_purchase() throws Exception {
-		
-		return "member/kyobo_purchase";
-	}
 
 }

@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-<jsp:useBean id="CodeServiceImpl" class="com.kbook.infra.modules.code.CodeServiceImpl"/>
+<jsp:useBean id="CateServiceImpl" class="com.kbook.infra.modules.cate.CateServiceImpl"/>
 
 <!doctype html>
 <html lang="ko">
@@ -27,8 +27,6 @@
 <%@ include file="/WEB-INF/views/member/include/main_header_visitor.jsp" %><!-- header_visitor -->
 <%@ include file="/WEB-INF/views/member/include/main_navbar.jsp" %><!-- navbar -->
 	
-
-
 <!-- 본문 s-->
 <div class="container">
 	<div class="row">
@@ -39,98 +37,102 @@
 			<div class="col">
 				<div class="col-new">
 					<h6 class="d-inline">화제의 신간</h6>
-					<button type="button" class="btn btn-book btn-sm">국내도서</button>
-					<button type="button" class="btn btn-book btn-sm">외국도서</button>
-					<button type="button" class="btn btn-book btn-sm">ebook</button>
-					<div class="row row-cols-1 row-cols-md-3 g-4">
-					<div class="col-lg-3 ">
-						<div class="card h-100">
-						<img src="/resources/user/image/book/bookEx12.jpg" class="card-img-top" alt="...">
-							<div class="card-body">
-								<h6 class="card-title mx-auto h-25">나의 아저씨 세트</h6>
-						 		<p class="card-text mx-auto h-50">첫 독자들을 위한 한정판!<br><br>수많은 사람의 인생드라마가 또다시 인생책이 되다</p>
+					<button type="button" class="btn btn-book btn-sm" id="btn-domesticNew">국내도서</button>
+					<button type="button" class="btn btn-book btn-sm" id="btn-abraodNew">외국도서</button>
+					<button type="button" class="btn btn-book btn-sm" id="btn-ebookNew">ebook</button>
+				
+					<div class="row row-cols-1 row-cols-md-3 g-4" id="domesticNew">
+						<c:forEach items="${listDomesticNew}" var="item" varStatus="status">	
+						<div class="col-lg-3 ">
+							<div class="card h-100">
+								<img src="/resources/user/image/book/bookEx11.jpg" class="card-img-top">
+									<div class="card-body">
+									<p class="card-title mx-auto" id="title"><c:out value="${item.tditTitle}"/></p>
+							 		<p class="card-text mx-auto" id="subTitle"><c:out value="${item.tditSubTitle}"/></p>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-lg-3">
-						<div class="card h-100">
-							<img src="/resources/user/image/book/bookEx9.jpg" class="card-img-top" alt="...">
-							<div class="card-body">
-								<h6 class="card-title mx-auto">아무튼 피아노</h6>
-						 		<p class="card-text mx-auto">40만부 기념 특별 에디션!<br><br>힘겨운 시대를 살아가는 우리들에게 다가온 조금 특별한 편의점 이야기</p>
+						</c:forEach>
+					</div> 
+					<div class="row row-cols-1 row-cols-md-3 g-4" id="abroadNew">
+						<c:forEach items="${listAbroadNew}" var="item" varStatus="status">	
+						<div class="col-lg-3 ">
+							<div class="card h-100">
+								<img src="/resources/user/image/book/bookEx10.jpg" class="card-img-top">
+									<div class="card-body">
+									<p class="card-title mx-auto" id="title"><c:out value="${item.tditTitle}"/></p>
+							 		<p class="card-text mx-auto" id="subTitle"><c:out value="${item.tditSubTitle}"/></p>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-lg-3">
-						<div class="card h-100">
-							<img src="/resources/user/image/book/bookEx10.jpg" class="card-img-top" alt="...">
-							<div class="card-body">
-								<h6 class="card-title mx-auto">무성교실</h6>
-						 		<p class="card-text mx-auto">40만부 기념 특별 에디션!<br><br>힘겨운 시대를 살아가는 우리들에게 다가온 조금 특별한 편의점 이야기</p>
+						</c:forEach>
+					</div> 
+					<div class="row row-cols-1 row-cols-md-3 g-4" id="ebookNew">
+						<c:forEach items="${listEbookNew}" var="item" varStatus="status">	
+							<div class="col-lg-3 ">
+								<div class="card h-100">
+									<img src="/resources/user/image/book/bookEx9.jpg" class="card-img-top">
+										<div class="card-body">
+										<p class="card-title mx-auto" id="title"><c:out value="${item.tditTitle}"/></p>
+								 		<p class="card-text mx-auto" id="subTitle"><c:out value="${item.tditSubTitle}"/></p>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div class="card h-100">
-							<img src="/resources/user/image/book/bookEx11.jpg" class="card-img-top" alt="...">
-							<div class="card-body">
-								<h6 class="card-title mx-auto">모든 사람에게 <br>사랑받을 필요는 없다</h6>
-						 		<p class="card-text mx-auto">40만부 기념 특별 에디션!<br><br>힘겨운 시대를 살아가는 우리들에게 다가온 조금 특별한 편의점 이야기</p>
-							</div>
-						</div>
-					</div>
-					</div>	
-				</div>
-			</div>
+						</c:forEach>
+					</div> 
+				</div>			
+			</div>					
+					
+			
 
-			<div class="mt-5">
-				<div class="best">
-					<h6 class="d-inline">베스트셀러</h6>
-					<button type="button" class="btn btn-book btn-sm">교보문고종합</button>
-					<button type="button" class="btn btn-book btn-sm">국내도서</button>
-					<button type="button" class="btn btn-book btn-sm">외국도서</button>
-					<button type="button" class="btn btn-book btn-sm">ebook</button>
-					<table class="table">
-						<tr>
-							<td class="w-20"><h4><i class="fa-regular fa-1" style="color: red;"></i></h4></td>
-							<td class="w-20"><i class="fa-regular fa-2"></i></td>
-							<td class="w-20"><i class="fa-regular fa-3"></i></td>
-							<td class="w-20"><i class="fa-regular fa-4"></i></td>
-						</tr>
-						<tr>
-							<td><img src="/resources/user/image/book/book1.jpg"  id="best" name="best"></td>
-							<td><img src="/resources/user/image/book/bookEx2.jpg" id="best" name="best"></td>
-							<td><img src="/resources/user/image/book/bookEx3.jpg" id="best" name="best"></td>
-							<td><img src="/resources/user/image/book/bookEx4.jpg" id="best" name="best"></td>
-						</tr>
-						<tr>
-							<td><h6>불편한 편의점</h6><p>김호연</p></td>
-							<td><h6>파친코 1</h6><p>이민진</p></td>
-							<td><h6>여름이 온다</h6><p>이수지</p></td>
-							<td><h6>물고기는 존재하지 않는다</h6><p>룰루밀러</p></td>
-						</tr>
-						<tr>
-							<td><i class="fa-regular fa-5"></i></td>
-							<td><i class="fa-regular fa-6"></i></td>
-							<td><i class="fa-regular fa-7"></i></td>
-							<td><i class="fa-regular fa-8"></i></td>
-						</tr>
-						<tr>
-							<td><img src="/resources/user/image/book/bookEx5.jpg" id="best" name="best"></td>
-							<td><img src="/resources/user/image/book/bookEx6.jpg" id="best" name="best"></td>
-							<td><img src="/resources/user/image/book/bookEx7.jpg" id="best" name="best"></td>
-							<td><img src="/resources/user/image/book/bookEx8.jpg" id="best" name="best"></td>
-						</tr>
-						<tr>
-							<td><h6>나에게 고맙다</h6><p>전승환</p></td>
-							<td><h6>월씽킹</h6><p>켈리최</p></td>
-							<td><h6>세븐 테크</h6><p>김미경</p></td>
-							<td><h6>마음의 법칙</h6><p>폴커 키츠</p></td>
-						</tr>
-					</table>
-				</div> 
-			</div>
-		</div>	
+				<div class="mt-5">
+					<div class="best">
+						<h6 class="d-inline">베스트셀러</h6>
+						<button type="button" class="btn btn-book btn-sm">교보문고종합</button>
+						<button type="button" class="btn btn-book btn-sm">국내도서</button>
+						<button type="button" class="btn btn-book btn-sm">외국도서</button>
+						<button type="button" class="btn btn-book btn-sm">ebook</button>
+						<table class="table">
+							<tr>
+								<td class="w-20"><h4><i class="fa-regular fa-1" style="color: red;"></i></h4></td>
+								<td class="w-20"><i class="fa-regular fa-2"></i></td>
+								<td class="w-20"><i class="fa-regular fa-3"></i></td>
+								<td class="w-20"><i class="fa-regular fa-4"></i></td>
+							</tr>
+							<tr>
+								<td><img src="/resources/user/image/book/book1.jpg"  id="best" name="best"></td>
+								<td><img src="/resources/user/image/book/bookEx2.jpg" id="best" name="best"></td>
+								<td><img src="/resources/user/image/book/bookEx3.jpg" id="best" name="best"></td>
+								<td><img src="/resources/user/image/book/bookEx4.jpg" id="best" name="best"></td>
+							</tr>
+							<tr>
+								<td><h6>불편한 편의점</h6><p>김호연</p></td>
+								<td><h6>파친코 1</h6><p>이민진</p></td>
+								<td><h6>여름이 온다</h6><p>이수지</p></td>
+								<td><h6>물고기는 존재하지 않는다</h6><p>룰루밀러</p></td>
+							</tr>
+							<tr>
+								<td><i class="fa-regular fa-5"></i></td>
+								<td><i class="fa-regular fa-6"></i></td>
+								<td><i class="fa-regular fa-7"></i></td>
+								<td><i class="fa-regular fa-8"></i></td>
+							</tr>
+							<tr>
+								<td><img src="/resources/user/image/book/bookEx5.jpg" id="best" name="best"></td>
+								<td><img src="/resources/user/image/book/bookEx6.jpg" id="best" name="best"></td>
+								<td><img src="/resources/user/image/book/bookEx7.jpg" id="best" name="best"></td>
+								<td><img src="/resources/user/image/book/bookEx8.jpg" id="best" name="best"></td>
+							</tr>
+							<tr>
+								<td><h6>나에게 고맙다</h6><p>전승환</p></td>
+								<td><h6>월씽킹</h6><p>켈리최</p></td>
+								<td><h6>세븐 테크</h6><p>김미경</p></td>
+								<td><h6>마음의 법칙</h6><p>폴커 키츠</p></td>
+							</tr>
+						</table>
+					</div> 
+				</div>
+		</div>
 		<div class="col-md-2">
 			<div class="card" style="width: 12rem;">
 			    <div class="card-header"><h5>오늘의 추천 도서</h5></div>
@@ -147,8 +149,8 @@
 			</div>
 		</div>
 	</div>
-</div>	
-
+	
+</div>
 <%@ include file="/WEB-INF/views/xdmin/include/footer.jsp" %><!-- footer -->
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -156,25 +158,31 @@
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 
 <script type="text/javascript">
+$("#ebookNew").hide();
+$("#abroadNew").hide();
+	
 
-//Hide SubMenus.
-$(".subMenu").hide();
+$("#btn-domesticNew").on("click",function(){
 
-// Shows SubMenu when it's parent is hovered.
-$(".subMenu").parent("li").hover(function () {
-  $(this).find(">.subMenu").not(':animated').slideDown(300);
-  $(this).toggleClass("active ");
-});
+	$("#domesticNew").show();
+	$("#ebookNew").hide();
+	$("#abroadNew").hide();
+		
+});  
+$("#btn-abraodNew").on("click",function(){
 
-// Hides SubMenu when mouse leaves the zone.
-$(".subMenu").parent("li").mouseleave(function () {
-  $(this).find(">.subMenu").slideUp(150);
-});
+	$("#abroadNew").show();
+	$("#domesticNew").hide();
+	$("#ebookNew").hide();
+		
+});  
+$("#btn-ebookNew").on("click",function(){
 
-// Prevents scroll to top when clicking on <a href="#"> 
-$("a[href=\"#\"]").click(function () {
-  return false;
-});
+	$("#ebookNew").show();
+	$("#domesticNew").hide();
+	$("#abroadNew").hide();
+		
+}); 
 
 </script>
 

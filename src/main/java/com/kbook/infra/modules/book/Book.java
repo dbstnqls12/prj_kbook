@@ -8,7 +8,8 @@ public class Book {
 	private String tditTitle;
 	private String tditSubTitle;
 	private String tditPublisherCd;
-	private Date tditPrice;
+	private Date tditPublishingDate;
+	private String tditPrice;
 	private String tditDiscountCd;
 	private String tditStateCd;
 	private String tditItemCate;
@@ -20,7 +21,6 @@ public class Book {
 	private String tditBookDesc2;
 	private String tditTableOfContents;
 	private String tditDelNy;
-	
 	public String getTditSeq() {
 		return tditSeq;
 	}
@@ -45,10 +45,16 @@ public class Book {
 	public void setTditPublisherCd(String tditPublisherCd) {
 		this.tditPublisherCd = tditPublisherCd;
 	}
-	public Date getTditPrice() {
+	public Date getTditPublishingDate() {
+		return tditPublishingDate;
+	}
+	public void setTditPublishingDate(Date tditPublishingDate) {
+		this.tditPublishingDate = tditPublishingDate;
+	}
+	public String getTditPrice() {
 		return tditPrice;
 	}
-	public void setTditPrice(Date tditPrice) {
+	public void setTditPrice(String tditPrice) {
 		this.tditPrice = tditPrice;
 	}
 	public String getTditDiscountCd() {
@@ -117,6 +123,8 @@ public class Book {
 	public void setTditDelNy(String tditDelNy) {
 		this.tditDelNy = tditDelNy;
 	}
+	
+
 	
 	
 	

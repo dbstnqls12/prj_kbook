@@ -6,21 +6,19 @@
 <mapper namespace="com.kbook.infra.modules.cate.CateMpp">
 
 <resultMap id="resultMapObj" type="com.kbook.infra.modules.cate.Cate"></resultMap>
-
+	
 	<select id="selectListCateForCache" resultMap="resultMapObj">
 		SELECT
 			ifctSeq
 			,ifctName
 			,ifctParents
 			,ifctDepth
-			,ifctUseNy
 			,ifctOrder
 			,ifctDelNy
 		FROM
 			infrCate
 		WHERE 1=1
-			AND ifctDelNy = 0
-			AND ifctUseNy = 1
+ 			AND ifctDelNy = 0
 	</select>
-	
+
 </mapper>
