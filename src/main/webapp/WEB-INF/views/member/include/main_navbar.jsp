@@ -21,27 +21,89 @@
 </head>
 <body>
 
-
 <!-- navbar1 s -->
-<nav class="navbar navbar-expand-md navbar-dark d-none d-md-block mb-4">
+<nav class="navbar navbar-expand-md navbar-dark d-none d-md-block mb-4" id="cate">
 	<div class="container">
 		<div class="dropdown">
 			<a class="navbar-brand navbar-toggle d-none d-sm-block" type="button" data-bs-toggle="dropdown" id="menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></a>
-				<ul class="dropdown-menu" aria-labelledby="menu1">
-					<li><a class="dropdown-item" href="#">국내도서</a></li>
-					<li><a class="dropdown-item" href="#">외국도서</a></li>
-					<li><a class="dropdown-item" href="#">ebook</a></li>
-					<li><a class="dropdown-item" href="#">장르/코믹스</a></li>
-					<li><a class="dropdown-item" href="#">sam</a></li>
-					<li><a class="dropdown-item" href="#">기프트</a></li>
-					<li><a class="dropdown-item" href="#">음반/DVD</a></li>
-					<li><a class="dropdown-item" href="#">중고장터</a></li>
-					<li><a class="dropdown-item" href="#">Only 교보문고</a></li>
-				</ul>	
-		</div>
+				<ul class="list-unstyled ps-0 dropdown-menu" id="subMenu1">
+					<li class="mb-1">
+						<button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">국내도서</button>
+								          <ul class="subMenu">
+			            <li><a href="#">Item 1.2.1 </a></li>
+			            <li><a href="#">Item 1.2.2 &nbsp;<i class="fa fa-angle-right"></i></a></li>
+			          </ul>
+					</li>
+					<li class="mb-1">
+						<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">외국도서</button>
+						<div class="collapse" id="dashboard-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a href="#" class="rounded">Overview</a></li>
+								<li><a href="#" class="rounded">Weekly</a></li>
+								<li><a href="#" class="rounded">Monthly</a></li>
+								<li><a href="#" class="rounded">Annually</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="mb-1">
+						<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">ebook</button>
+						<div class="collapse" id="orders-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a href="#" class="rounded">New</a></li>
+								<li><a href="#" class="rounded">Processed</a></li>
+								<li><a href="#" class="rounded">Shipped</a></li>
+								<li><a href="#" class="rounded">Returned</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="mb-1">
+						<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">음반</button>
+						<div class="collapse" id="orders-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a href="#" class="rounded">New</a></li>
+								<li><a href="#" class="rounded">Processed</a></li>
+								<li><a href="#" class="rounded">Shipped</a></li>
+								<li><a href="#" class="rounded">Returned</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="mb-1">
+						<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">DVD</button>
+						<div class="collapse" id="orders-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a href="#" class="rounded">New</a></li>
+								<li><a href="#" class="rounded">Processed</a></li>
+								<li><a href="#" class="rounded">Shipped</a></li>
+								<li><a href="#" class="rounded">Returned</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="mb-1">
+						<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">중고장터</button>
+						<div class="collapse" id="orders-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a href="#" class="rounded">New</a></li>
+								<li><a href="#" class="rounded">Processed</a></li>
+								<li><a href="#" class="rounded">Shipped</a></li>
+								<li><a href="#" class="rounded">Returned</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="border-top my-3"></li>
+					<li class="mb-1">
+					<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">ONLY 교보문고</button>
+						<div class="collapse" id="account-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a href="#" class="rounded">New...</a></li>
+								<li><a href="#" class="rounded">Profile</a></li>
+								<li><a href="#" class="rounded">Settings</a></li>
+								<li><a href="#" class="rounded">Sign out</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+		</div> 
 	
-		<div class="collapse navbar-collapse" id="menuListY">
-			<ul class="navbar-nav me-auto mb-2 mb-md-0">
 <%-- 				<c:forEach items="${listCateParent1}" var="itemCateNum1" varStatus="statusCateNum1">
 					<li class="nav-item">
 						<a class="nav-link" aria-current="page" href="#">
@@ -49,6 +111,8 @@
 						</a>
 					</li>
 				</c:forEach> --%>
+		<div class="collapse navbar-collapse" id="menuListY">
+			<ul class="navbar-nav me-auto mb-2 mb-md-0">
 				<li class="nav-item">
 					<a class="nav-link" aria-current="page" href="#">국내도서</a>
 				</li>
@@ -92,5 +156,5 @@
 			</ul>
 		</div>
 	</div>
-</nav>
+</nav> 
 <!-- navbar1 e -->
