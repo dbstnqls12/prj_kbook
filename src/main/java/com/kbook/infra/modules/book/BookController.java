@@ -34,6 +34,8 @@ public class BookController {
 		model.addAttribute("listAbroadNew", listANew);
 		List<Book> listENew = service.selectListEbookNew(vo);
 		model.addAttribute("listEbookNew", listENew);
+		List<Book> listBest = service.selectListBest(vo);
+		model.addAttribute("listbookBest", listBest);
 		
 		return "visitor/kyobo_Vmain";
 	}

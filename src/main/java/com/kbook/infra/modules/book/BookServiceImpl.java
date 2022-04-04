@@ -31,4 +31,9 @@ public class BookServiceImpl implements BookService {
 		return dao.selectListEbookNew(vo);
 	}
 
+	@Override
+	public List<Book> selectListBest(BookVo vo) throws Exception {
+		return dao.selectListBest(vo);
+	}
+
 }

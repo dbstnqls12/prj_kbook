@@ -9,7 +9,6 @@
 <resultMap id="resultMapObj" type="com.kbook.infra.modules.book.Book"></resultMap>
 
 <!-- selectNew -->
-
 <select id="selectListDomesticNew" resultMap="resultMapObj">
 	SELECT
 		a.tditSeq
@@ -62,7 +61,24 @@
 	limit 4	
 </select>
 
-
+<!-- selectBest -->
+<select id="selectListBest" resultMap="resultMapObj">
+	SELECT
+		a.tditSeq
+		,a.tditTitle
+		,a.tditSubTitle
+		,a.tditStateCd
+		,a.tditItemCate
+		,a.tditDelNy
+		,b.tdatAuthorCd
+		,b.tdatDefaultNy
+	FROM
+		tradItem a
+		LEFT JOIN tradAuthor b ON b.tditSeq = a.tditSeq
+	WHERE 1=1 	
+		AND b.tdatDefaultNy = 1		
+		AND a.tditSeq BETWEEN 3 AND 10
+</select>
 
 
 <select id="selectOne" resultMap="resultMapObj">

@@ -82,9 +82,6 @@
 					</div> 
 				</div>			
 			</div>					
-					
-			
-
 				<div class="mt-5">
 					<div class="best">
 						<h6 class="d-inline">베스트셀러</h6>
@@ -92,6 +89,64 @@
 						<button type="button" class="btn btn-book btn-sm">국내도서</button>
 						<button type="button" class="btn btn-book btn-sm">외국도서</button>
 						<button type="button" class="btn btn-book btn-sm">ebook</button>
+					
+						<table class="table">
+							
+							<tr>
+								<td class="w-25"><h4><i class="fa-regular fa-1" style="color: red;"></i></h4></td>
+								<td class="w-25"><h4><i class="fa-regular fa-2"></i></h4></td>
+								<td class="w-25"><h4><i class="fa-regular fa-3"></i></h4></td>
+								<td class="w-25"><h4><i class="fa-regular fa-4"></i></h4></td>
+								<td class="w-25"><i class="fa-regular fa-5"></i></td>
+								<td class="w-25"><i class="fa-regular fa-6"></i></td>
+								<td class="w-25"><i class="fa-regular fa-7"></i></td>
+								<td class="w-25"><i class="fa-regular fa-8"></i></td>
+							</tr>
+							<tr>
+								<td><img src="/resources/user/image/book/book1.jpg"  id="best" name="best"></td>
+								<td><img src="/resources/user/image/book/bookEx2.jpg"  id="best" name="best"></td>
+								<td><img src="/resources/user/image/book/bookEx3.jpg"  id="best" name="best"></td>
+								<td><img src="/resources/user/image/book/bookEx4.jpg"  id="best" name="best"></td>
+								<td><img src="/resources/user/image/book/bookEx5.jpg" id="best" name="best"></td>
+								<td><img src="/resources/user/image/book/bookEx6.jpg" id="best" name="best"></td>
+								<td><img src="/resources/user/image/book/bookEx7.jpg" id="best" name="best"></td>
+								<td><img src="/resources/user/image/book/bookEx8.jpg" id="best" name="best"></td>
+							</tr>
+							<tr>
+							<c:forEach items="${listbookBest}" var="item" varStatus="status">	
+								<td><h6><c:out value="${item.tditTitle}"/></h6><p><c:out value="${item.tdatAuthorCd}"/></p></td>
+							</c:forEach>
+							</tr>
+							<tr>
+								<td><i class="fa-regular fa-5"></i></td>
+								<td><i class="fa-regular fa-6"></i></td>
+								<td><i class="fa-regular fa-7"></i></td>
+								<td><i class="fa-regular fa-8"></i></td>
+							</tr>
+							<tr>
+
+							</tr>
+						</table>
+<%-- 						
+						<c:forEach items="${list}" var="item" varStatus="status">	
+							<tr>
+								<td><input class="form-check-input" type="checkbox" name="checkboxSeq" id="checkboxSeq" value="<c:out value="${item.kbmmSeq}"/>"></td>
+								<td><c:out value="${item.kbmmSeq}"/></td>
+								<td><c:out value="${item.kbmmId}"/></td>
+								<td><c:out value="${item.kbmeEmailFull}"/></td>
+							</tr>
+						</c:forEach> --%>
+						
+					</div> 
+				</div>
+<!-- 				<div class="mt-5">
+					<div class="best">
+						<h6 class="d-inline">베스트셀러</h6>
+						<button type="button" class="btn btn-book btn-sm">교보문고종합</button>
+						<button type="button" class="btn btn-book btn-sm">국내도서</button>
+						<button type="button" class="btn btn-book btn-sm">외국도서</button>
+						<button type="button" class="btn btn-book btn-sm">ebook</button>
+					
 						<table class="table">
 							<tr>
 								<td class="w-20"><h4><i class="fa-regular fa-1" style="color: red;"></i></h4></td>
@@ -131,7 +186,10 @@
 							</tr>
 						</table>
 					</div> 
-				</div>
+				</div> -->
+		
+		
+		
 		</div>
 		<div class="col-md-2">
 			<div class="card" style="width: 12rem;">

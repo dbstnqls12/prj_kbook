@@ -21,6 +21,11 @@ public class Book {
 	private String tditBookDesc2;
 	private String tditTableOfContents;
 	private String tditDelNy;
+	
+	private String tdatAuthorCd;
+	private String tdatDefaultNy;
+	
+	
 	public String getTditSeq() {
 		return tditSeq;
 	}
@@ -122,6 +127,18 @@ public class Book {
 	}
 	public void setTditDelNy(String tditDelNy) {
 		this.tditDelNy = tditDelNy;
+	}
+	public String getTdatAuthorCd() {
+		return tdatAuthorCd;
+	}
+	public void setTdatAuthorCd(String tdatAuthorCd) {
+		this.tdatAuthorCd = tdatAuthorCd;
+	}
+	public String getTdatDefaultNy() {
+		return tdatDefaultNy;
+	}
+	public void setTdatDefaultNy(String tdatDefaultNy) {
+		this.tdatDefaultNy = tdatDefaultNy;
 	}
 	
 
