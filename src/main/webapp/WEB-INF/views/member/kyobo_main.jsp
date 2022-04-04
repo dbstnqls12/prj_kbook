@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-<jsp:useBean id="CodeServiceImpl" class="com.kbook.infra.modules.code.CodeServiceImpl"/>
+<jsp:useBean id="CateServiceImpl" class="com.kbook.infra.modules.cate.CateServiceImpl"/>
 
 <!doctype html>
 <html lang="ko">
@@ -23,7 +23,7 @@
 <title>Kyobo_main</title>
 </head>
 <body>
-			
+			asd
 <%@ include file="/WEB-INF/views/member/include/main_header_member.jsp" %><!--  header_member -->
 <%@ include file="/WEB-INF/views/member/include/main_navbar.jsp" %><!-- navbar -->
 	
