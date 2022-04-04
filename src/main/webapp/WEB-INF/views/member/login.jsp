@@ -25,7 +25,7 @@
 <!--  -->
 <div class="container my-wrap">
 	<div class="header">
-		<div class="logo"><a href=""><img src="/resources/xdmin/image/kyobo2.png" id="logo"></a></div>
+		<div class="logo"><a href="/visitor/kyobo_Vmain"><img src="/resources/xdmin/image/kyobo2.png" id="logo"></a></div>
 		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item">홈</li>
@@ -80,7 +80,7 @@
 			,success: function(response) {
 				if(response.rt == "success") {
 				/* 	if($("#kbmmAdminNy").val() == 1){ */
-						location.href = "/index/indexView";
+						location.href = "/member/kyobo_main";
 				} else {
 					alert("회원없음");
 				}
