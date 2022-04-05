@@ -8,7 +8,7 @@ public class Book {
 	private String tditTitle;
 	private String tditSubTitle;
 	private String tditPublisherCd;
-	private Date tditPublishingDate;
+	private String tditPublishingDate;
 	private String tditPrice;
 	private String tditDiscountCd;
 	private String tditStateCd;
@@ -58,10 +58,10 @@ public class Book {
 	public void setTditPublisherCd(String tditPublisherCd) {
 		this.tditPublisherCd = tditPublisherCd;
 	}
-	public Date getTditPublishingDate() {
+	public String getTditPublishingDate() {
 		return tditPublishingDate;
 	}
-	public void setTditPublishingDate(Date tditPublishingDate) {
+	public void setTditPublishingDate(String tditPublishingDate) {
 		this.tditPublishingDate = tditPublishingDate;
 	}
 	public String getTditPrice() {

@@ -8,6 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.kbook.infra.common.constants.Constants;
+import com.kbook.infra.common.util.UtilDateTime;
+
 import org.springframework.ui.Model;
 
 @Controller
@@ -45,7 +48,7 @@ public class BookController {
 	}
 	
 	@RequestMapping(value="/visitor/kyobo_VbookInfo")
-	public String kyobo_VbookInfo(@ModelAttribute("vo") BookVo vo, Model model) throws Exception {
+	public String kyobo_VbookInfo(@ModelAttribute("vo") BookVo vo, Book dto, Model model) throws Exception {
 		
 		System.out.println("vo.getTditSeq() : "+vo.getTditSeq());
 		

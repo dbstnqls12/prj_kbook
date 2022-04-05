@@ -86,7 +86,6 @@
 						<c:if test="${itemAuthor.tdatAuthorCd eq item2.ifacSeq}"><p style="display: inline;"><c:out value="${item2.ifacName}" /></p></c:if>
 					</c:forEach>	
 				</c:forEach>	
-<%-- 				<p>출판사 | <fmt:parseDate var="tditPublishingDate" value="${item.tditPublishingDate}"  pattern="yyyy-MM-dd"/>	</p> --%>
 				<p>출판사 | <c:out value="${item.tditPublishingDate}"/></p>
 				<p><i class="fa-solid fa-clover" style="color: green;"></i> 9.5 (리뷰 62개) 
 				<hr>
