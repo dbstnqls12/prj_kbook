@@ -11,10 +11,6 @@ public class BookServiceImpl implements BookService {
 	@Autowired 
 	BookDao dao;
 
-	@Override
-	public Book selectOne(BookVo vo) throws Exception {
-		return dao.selectOne(vo);
-	}
 
 	@Override
 	public List<Book> selectListDomesticNew(BookVo vo) throws Exception {
@@ -34,6 +30,23 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public List<Book> selectListBest(BookVo vo) throws Exception {
 		return dao.selectListBest(vo);
+	}
+
+	@Override
+	public List<Book> selectListToday(BookVo vo) throws Exception {
+		return dao.selectListToday(vo);
+	}
+
+	
+	/* bookInfo */
+	@Override
+	public Book selectOne(BookVo vo) throws Exception {
+		return dao.selectOne(vo);
+	}
+	
+	@Override
+	public List<Book> selectListAuthor(BookVo vo) throws Exception {
+		return dao.selectListAuthor(vo);
 	}
 
 }

@@ -10,14 +10,13 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class AuthorDao {
-	
+
 	@Inject
 	@Resource(name="sqlSession")
-	private SqlSession sqlsession;
+	private SqlSession sqlSession;
 	
 	private static String namespace = "com.kbook.infra.modules.author.AuthorMpp";
 	
-	public List<Author> selectListAuthorForCache(){List<Author> list = sqlsession.selectList(namespace + ".selectListAuthorForCache",""); return list;}
-
-
+	public List<Author> selectListAuthorForCache(){List<Author> list = sqlSession.selectList(namespace + ".selectListAuthorForCache",""); return list;}
+	
 }

@@ -244,6 +244,7 @@ public class MemberController {
 		return "member/login";
 	}
 	
+	
 	@ResponseBody
 	@RequestMapping(value = "member/loginProc")
 	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {

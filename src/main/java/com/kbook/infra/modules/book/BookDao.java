@@ -23,6 +23,9 @@ public class BookDao {
 	public List<Book> selectListAbroadNew(BookVo vo){ return sqlSession.selectList(namespace + ".selectListAbroadNew",vo); }
 	public List<Book> selectListEbookNew(BookVo vo){ return sqlSession.selectList(namespace + ".selectListEbookNew",vo); }
 	public List<Book> selectListBest(BookVo vo){ return sqlSession.selectList(namespace + ".selectListBest",vo); }
+	public List<Book> selectListToday(BookVo vo){ return sqlSession.selectList(namespace + ".selectListToday",vo); }
 	
+	/* bookInfo */
+	public List<Book> selectListAuthor(BookVo vo){ return sqlSession.selectList(namespace + ".selectListAuthor",vo); }
 	public Book selectOne(BookVo vo) {return sqlSession.selectOne(namespace +".selectOne", vo);}
 }

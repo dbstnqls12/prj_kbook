@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Author {
-
+	
 	private String ifacSeq;
 	private String ifacName;
 	private String ifacNameEng;
@@ -43,6 +43,6 @@ public class Author {
 	public void setIfcgSeq(String ifcgSeq) {
 		this.ifcgSeq = ifcgSeq;
 	}
-	
+
 	
 }

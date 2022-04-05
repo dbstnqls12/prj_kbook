@@ -3,10 +3,10 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.kbook.infra.modules.author.AuthorMpp">
+<mapper  namespace="com.kbook.infra.modules.author.AuthorMpp">
 
-<resultMap id="resultMapObj" type="com.kbook.infra.modules.author.AuthorMpp"></resultMap>
-	
+<resultMap id="resultMapObj" type="com.kbook.infra.modules.author.Author"></resultMap>
+
 	<select id="selectListAuthorForCache" resultMap="resultMapObj">
 		SELECT
 			ifacSeq
@@ -20,4 +20,4 @@
  			AND ifacDelNy = 0
 	</select>
 
-</mapper>
+</mapper>    

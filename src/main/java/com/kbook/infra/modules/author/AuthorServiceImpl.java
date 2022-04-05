@@ -21,7 +21,7 @@ public class AuthorServiceImpl implements AuthorService {
 		
 		Author.cachedAuthorArrayList.clear();
 		Author.cachedAuthorArrayList.addAll(authorListFromDb);
-		System.out.println("cachedAuthorArrayList : " + Author.cachedAuthorArrayList.size());
+		System.out.println("cachedAuthorArrayList : "+Author.cachedAuthorArrayList.size());
 	}
 	
 	public static List<Author> selelctListCachedAuthor(String ifcgSeq) throws Exception{

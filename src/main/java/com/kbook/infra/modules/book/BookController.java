@@ -34,22 +34,25 @@ public class BookController {
 		model.addAttribute("listAbroadNew", listANew);
 		List<Book> listENew = service.selectListEbookNew(vo);
 		model.addAttribute("listEbookNew", listENew);
+		
 		List<Book> listBest = service.selectListBest(vo);
 		model.addAttribute("listbookBest", listBest);
+		
+		List<Book> listToday = service.selectListToday(vo);
+		model.addAttribute("listbookToday", listToday);
 		
 		return "visitor/kyobo_Vmain";
 	}
 	
-	@RequestMapping(value = "member/kyobo_purchase")
-	public String kyobo_purchase() throws Exception {
-		
-		return "member/kyobo_purchase";
-	}
 	
 	
 	
 	@RequestMapping(value="/visitor/kyobo_VbookInfo")
 	public String kyobo_VbookInfo(@ModelAttribute("vo") BookVo vo, Model model) throws Exception {
+		
+		
+		List<Book> listAuthor = service.selectListAuthor(vo);
+		model.addAttribute("listAuthor", listAuthor);
 		
 		Book rt = service.selectOne(vo);
 		model.addAttribute("item", rt);
@@ -66,4 +69,9 @@ public class BookController {
 		return "/member/kyobo_bookInfo";
 	}
 	
+	@RequestMapping(value = "member/kyobo_purchase")
+	public String kyobo_purchase() throws Exception {
+		
+		return "member/kyobo_purchase";
+	}
 }
