@@ -6,6 +6,7 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <jsp:useBean id="CateServiceImpl" class="com.kbook.infra.modules.cate.CateServiceImpl"/>
+<jsp:useBean id="AuthorServiceImpl" class="com.kbook.infra.modules.author.AuthorServiceImpl"/>
 
 <!doctype html>
 <html lang="ko">
@@ -81,7 +82,7 @@
 						</c:forEach>
 					</div> 
 				</div>			
-			</div>					
+			</div>		
 				<div class="mt-5">
 					<div class="best">
 						<h6 class="d-inline">베스트셀러</h6>
@@ -91,31 +92,23 @@
 						<button type="button" class="btn btn-book btn-sm">ebook</button>
 					
 						<table class="table">
-							
 							<tr>
-								<td class="w-25"><h4><i class="fa-regular fa-1" style="color: red;"></i></h4></td>
-								<td class="w-25"><h4><i class="fa-regular fa-2"></i></h4></td>
-								<td class="w-25"><h4><i class="fa-regular fa-3"></i></h4></td>
-								<td class="w-25"><h4><i class="fa-regular fa-4"></i></h4></td>
-								<td class="w-25"><i class="fa-regular fa-5"></i></td>
-								<td class="w-25"><i class="fa-regular fa-6"></i></td>
-								<td class="w-25"><i class="fa-regular fa-7"></i></td>
-								<td class="w-25"><i class="fa-regular fa-8"></i></td>
+								<td class="col-lg-4"><h4><i class="fa-regular fa-1" style="color: red;"></i></h4></td>
+								<td class="col-lg-4"><h4><i class="fa-regular fa-2"></i></h4></td>
+								<td class="col-lg-4"><h4><i class="fa-regular fa-3"></i></h4></td>
+								<td class="col-lg-4"><h4><i class="fa-regular fa-4"></i></h4></td>
 							</tr>
 							<tr>
-								<td><img src="/resources/user/image/book/book1.jpg"  id="best" name="best"></td>
-								<td><img src="/resources/user/image/book/bookEx2.jpg"  id="best" name="best"></td>
-								<td><img src="/resources/user/image/book/bookEx3.jpg"  id="best" name="best"></td>
-								<td><img src="/resources/user/image/book/bookEx4.jpg"  id="best" name="best"></td>
-								<td><img src="/resources/user/image/book/bookEx5.jpg" id="best" name="best"></td>
-								<td><img src="/resources/user/image/book/bookEx6.jpg" id="best" name="best"></td>
-								<td><img src="/resources/user/image/book/bookEx7.jpg" id="best" name="best"></td>
-								<td><img src="/resources/user/image/book/bookEx8.jpg" id="best" name="best"></td>
+								<td><img src="/resources/user/image/book/book1.jpg" id="best" name="best"></td>
+								<td><img src="/resources/user/image/book/bookEx2.jpg" id="best" name="best"></td>
+								<td><img src="/resources/user/image/book/bookEx3.jpg" id="best" name="best"></td>
+								<td><img src="/resources/user/image/book/bookEx4.jpg" id="best" name="best"></td>
+
 							</tr>
 							<tr>
-							<c:forEach items="${listbookBest}" var="item" varStatus="status">	
-								<td><h6><c:out value="${item.tditTitle}"/></h6><p><c:out value="${item.tdatAuthorCd}"/></p></td>
-							</c:forEach>
+								<c:forEach items="${listbookBest}" var="item" varStatus="status" begin="0" end="3">	
+									<td><p id="bestTitle"><c:out value="${item.tditTitle}"/></p><p><c:out value="${item.tdatAuthorCd}"/></p></td>
+								</c:forEach>
 							</tr>
 							<tr>
 								<td><i class="fa-regular fa-5"></i></td>
@@ -123,8 +116,16 @@
 								<td><i class="fa-regular fa-7"></i></td>
 								<td><i class="fa-regular fa-8"></i></td>
 							</tr>
+							<tr>	
+								<td><img src="/resources/user/image/book/bookEx5.jpg" id="best" name="best"></td>
+								<td><img src="/resources/user/image/book/bookEx6.jpg" id="best" name="best"></td>
+								<td><img src="/resources/user/image/book/bookEx7.jpg" id="best" name="best"></td>
+								<td><img src="/resources/user/image/book/bookEx8.jpg" id="best" name="best"></td>
+							</tr>
 							<tr>
-
+								<c:forEach items="${listbookBest}" var="item" varStatus="status" begin="4" end="7">	
+									<td><p id="bestTitle"><c:out value="${item.tditTitle}"/></p><p id="bestAuthor"><c:out value="${item.tdatAuthorCd}"/></p></td>
+								</c:forEach>
 							</tr>
 						</table>
 <%-- 						

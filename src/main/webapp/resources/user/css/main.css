@@ -54,7 +54,11 @@
 		font-size: 11px;
 		text-align: center;
 	}
-	
+	#bestTitle{
+		text-align: center;
+		font-size: 15px;
+		font-weight: bold;
+	}
 	/* //////////////////////////////////////// */
 
 	

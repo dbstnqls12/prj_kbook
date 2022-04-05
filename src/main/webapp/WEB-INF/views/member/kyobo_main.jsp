@@ -23,7 +23,6 @@
 <title>Kyobo_main</title>
 </head>
 <body>
-			asd
 <%@ include file="/WEB-INF/views/member/include/main_header_member.jsp" %><!--  header_member -->
 <%@ include file="/WEB-INF/views/member/include/main_navbar.jsp" %><!-- navbar -->
 	
@@ -90,18 +89,19 @@
 					<button type="button" class="btn btn-book btn-sm">국내도서</button>
 					<button type="button" class="btn btn-book btn-sm">외국도서</button>
 					<button type="button" class="btn btn-book btn-sm">ebook</button>
+					
 					<table class="table">
 						<tr>
-							<td class="w-20"><h4><i class="fa-regular fa-1" style="color: red;"></i></h4></td>
-							<td class="w-20"><i class="fa-regular fa-2"></i></td>
-							<td class="w-20"><i class="fa-regular fa-3"></i></td>
-							<td class="w-20"><i class="fa-regular fa-4"></i></td>
+							<td class="col-lg-4"><h4><i class="fa-regular fa-1" style="color: red;"></i></h4></td>
+							<td class="col-lg-4"><i class="fa-regular fa-2"></i></td>
+							<td class="col-lg-4"><i class="fa-regular fa-3"></i></td>
+							<td class="col-lg-4"><i class="fa-regular fa-4"></i></td>
 						</tr>
 						<tr>
-							<td><img src="../../images/xdmin_img/book1.jpg"  id="best" name="best"></td>
-							<td><img src="../../images/xdmin_img/bookEx2.jpg" id="best" name="best"></td>
-							<td><img src="../../images/xdmin_img/bookEx3.jpg" id="best" name="best"></td>
-							<td><img src="../../images/xdmin_img/bookEx4.jpg" id="best" name="best"></td>
+							<td class="col-lg-4"><img src="../../images/xdmin_img/book1.jpg"  id="best" name="best"></td>
+							<td class="col-lg-4"><img src="../../images/xdmin_img/bookEx2.jpg" id="best" name="best"></td>
+							<td class="col-lg-4"><img src="../../images/xdmin_img/bookEx3.jpg" id="best" name="best"></td>
+							<td class="col-lg-4"><img src="../../images/xdmin_img/bookEx4.jpg" id="best" name="best"></td>
 						</tr>
 						<tr>
 							<td><h6>불편한 편의점</h6><p>김호연</p></td>
