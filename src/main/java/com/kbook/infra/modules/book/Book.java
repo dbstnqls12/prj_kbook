@@ -28,6 +28,11 @@ public class Book {
 	private String tdatDelNy;
 	private String tdatDefaultNy;
 	
+	private String tdkwSeq;
+	private String tdkwKeyword;
+	
+	private String[] tdatAuthorCdArray;
+	private String[] tdkwKeywordArray;
 	
 	public String getTditSeq() {
 		return tditSeq;
@@ -160,6 +165,30 @@ public class Book {
 	}
 	public void setTdatDelNy(String tdatDelNy) {
 		this.tdatDelNy = tdatDelNy;
+	}
+	public String getTdkwSeq() {
+		return tdkwSeq;
+	}
+	public void setTdkwSeq(String tdkwSeq) {
+		this.tdkwSeq = tdkwSeq;
+	}
+	public String getTdkwKeyword() {
+		return tdkwKeyword;
+	}
+	public void setTdkwKeyword(String tdkwKeyword) {
+		this.tdkwKeyword = tdkwKeyword;
+	}
+	public String[] getTdkwKeywordArray() {
+		return tdkwKeywordArray;
+	}
+	public void setTdkwKeywordArray(String[] tdkwKeywordArray) {
+		this.tdkwKeywordArray = tdkwKeywordArray;
+	}
+	public String[] getTdatAuthorCdArray() {
+		return tdatAuthorCdArray;
+	}
+	public void setTdatAuthorCdArray(String[] tdatAuthorCdArray) {
+		this.tdatAuthorCdArray = tdatAuthorCdArray;
 	}
 	
 

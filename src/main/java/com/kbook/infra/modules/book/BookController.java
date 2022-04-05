@@ -44,15 +44,16 @@ public class BookController {
 		return "visitor/kyobo_Vmain";
 	}
 	
-	
-	
-	
 	@RequestMapping(value="/visitor/kyobo_VbookInfo")
 	public String kyobo_VbookInfo(@ModelAttribute("vo") BookVo vo, Model model) throws Exception {
 		
+		System.out.println("vo.getTditSeq() : "+vo.getTditSeq());
 		
 		List<Book> listAuthor = service.selectListAuthor(vo);
-		model.addAttribute("listAuthor", listAuthor);
+		model.addAttribute("listAuthorL", listAuthor);
+
+		List<Book> listKeyword = service.selectListKeyword(vo);
+		model.addAttribute("listKeyword", listKeyword);
 		
 		Book rt = service.selectOne(vo);
 		model.addAttribute("item", rt);

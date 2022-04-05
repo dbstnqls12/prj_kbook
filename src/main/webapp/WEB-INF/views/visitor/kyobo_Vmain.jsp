@@ -31,6 +31,7 @@
 <!-- 본문 s-->
 <div class="container">
 	<form action="" method="post" id="bookMain" name="bookMain">
+	<input type="hidden" name="tditSeq" id="tditSeq" >
 	<div class="row">
 	<%@ include file="/WEB-INF/views/member/include/main_sidebar.jsp" %> <!-- sidebar -->	
 	<!-- 9단길이의 첫번째 열 -->	
@@ -151,7 +152,7 @@
 		<div class="col-md-2">
 			<div class="card" style="width: 12rem;">
 			<div class="card-header"><p id="today"><i class="fa-solid fa-book-bookmark"></i>오늘의 추천 도서</p></div>
-			<img src="/resources/user/image/book/bookEx.jpg" class="card-img-top" >
+			<img src="/resources/user/image/book/bookEx5.jpg" class="card-img-top" >
 			
 			<c:forEach items="${listbookToday}" var="item" varStatus="status">	
 				<div class="card-body">

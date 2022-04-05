@@ -122,6 +122,7 @@
 	WHERE 1=1 	
 		AND a.tditSeq = #{tditSeq}
 </select>
+
 <select id="selectListAuthor" resultMap="resultMapObj">
 	SELECT
 		tdatSeq
@@ -133,6 +134,16 @@
 	FROM tradAuthor
 	WHERE 1=1
 		AND tdatDelNy = 0
+		AND tditSeq = #{tditSeq}	
+</select>
+
+<select id="selectListKeyword" resultMap="resultMapObj">
+	SELECT
+		tdkwSeq
+		,tdkwKeyword
+		,tditSeq
+	FROM tradItemKeyword
+	WHERE 1=1
 		AND tditSeq = #{tditSeq}	
 </select>
 

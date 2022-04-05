@@ -19,6 +19,8 @@ public class Code {
 	private String ifcdName;
 	private Integer ifcdDelNy;
 	private Integer ifcdOrder;
+	private String ifcdReferenceI1;
+	private String ifcdReferenceI2;
 //	private String ifcgSeq;
 	
 	public static List<Code> cachedCodeArrayList = new ArrayList<Code>();
@@ -77,6 +79,24 @@ public class Code {
 	}
 	public void setIfcdOrder(Integer ifcdOrder) {
 		this.ifcdOrder = ifcdOrder;
+	}
+	public String getIfcdReferenceI1() {
+		return ifcdReferenceI1;
+	}
+	public void setIfcdReferenceI1(String ifcdReferenceI1) {
+		this.ifcdReferenceI1 = ifcdReferenceI1;
+	}
+	public String getIfcdReferenceI2() {
+		return ifcdReferenceI2;
+	}
+	public void setIfcdReferenceI2(String ifcdReferenceI2) {
+		this.ifcdReferenceI2 = ifcdReferenceI2;
+	}
+	public static List<Code> getCachedCodeArrayList() {
+		return cachedCodeArrayList;
+	}
+	public static void setCachedCodeArrayList(List<Code> cachedCodeArrayList) {
+		Code.cachedCodeArrayList = cachedCodeArrayList;
 	}
 	
 	

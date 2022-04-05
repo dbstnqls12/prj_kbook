@@ -40,6 +40,7 @@
 			<exclude-mapping path="/resources/**" />
 			<exclude-mapping path="/visitor/**" />
 			<exclude-mapping path="/xdmin/**" />
+			<exclude-mapping path="/member/**" />
 			<exclude-mapping path="/member/login" />
 			<exclude-mapping path="/member/loginProc" />
 			<beans:bean id="checkLoginSessionInterception" class="com.kbook.infra.common.interceptor.CheckLoginSessionInterception"/>

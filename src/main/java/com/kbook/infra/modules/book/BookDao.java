@@ -27,5 +27,6 @@ public class BookDao {
 	
 	/* bookInfo */
 	public List<Book> selectListAuthor(BookVo vo){ return sqlSession.selectList(namespace + ".selectListAuthor",vo); }
+	public List<Book> selectListKeyword(BookVo vo){ return sqlSession.selectList(namespace + ".selectListKeyword",vo); }
 	public Book selectOne(BookVo vo) {return sqlSession.selectOne(namespace +".selectOne", vo);}
 }

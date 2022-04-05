@@ -155,6 +155,8 @@
 			,ifcdName
 			,ifcdDelNy
 			,ifcdOrder
+			,ifcdReferenceI1
+			,ifcdReferenceI2
 			,ifcgSeq
 		FROM
 			infrCode

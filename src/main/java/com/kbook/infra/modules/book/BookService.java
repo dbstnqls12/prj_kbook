@@ -14,6 +14,7 @@ public interface BookService {
 	
 	/* bookInfo */
 	public List<Book> selectListAuthor(BookVo vo) throws Exception;
+	public List<Book> selectListKeyword(BookVo vo) throws Exception;
 	public Book selectOne(BookVo vo) throws Exception;
 
 }
