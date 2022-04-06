@@ -54,4 +54,9 @@ public class BookServiceImpl implements BookService {
 		return dao.selectListKeyword(vo);
 	}
 
+	@Override
+	public List<Book> selectListRelatedItem(BookVo vo) throws Exception {
+		return dao.selectListRelatedItem(vo);
+	}
+
 }

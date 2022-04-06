@@ -67,8 +67,15 @@
 				</div>
 				<div class="relatedItem">
 					<p style="font-size: 20px; font-weight: bold; ">이 책의 다른 상품정보</p>
-					<hr style="margin: 5px;"><p>ebook : 11,500원</p>
-					<hr style="margin: 5px;"><p>원서/번역서: <br>[해외]Achtsam morden <br>(Paperback)</p>
+					<c:set var="listCodeRelatedItem" value="${CodeServiceImpl.selectListCachedCode('17')}"/>
+						<c:forEach items="${listRelatedItem}" var="itemRelatedItem" varStatus="statusRelatedItem">
+							<c:forEach items="${listCodeRelatedItem}" var="itemRelatedItemC" varStatus="statusRelatedItem">
+								<c:if test="${itemRelatedItem.tdriTypeCd eq itemRelatedItemC.ifcdOrder}"><hr style="margin: 5px;"><p><c:out value="${itemRelatedItemC.ifcdName}"/>
+								 : <fmt:formatNumber value="${itemRelatedItem.tdriPrice}"/>원<br>
+								 <c:out value="${itemRelatedItem.tdriTitle}"/>
+								</p></c:if>
+							</c:forEach>
+						</c:forEach>
 				</div>
 
 			</div>

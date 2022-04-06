@@ -147,6 +147,20 @@
 	WHERE 1=1
 		AND tditSeq = #{tditSeq}	
 </select>
+<select id="selectListRelatedItem" resultMap="resultMapObj">
+	SELECT
+		tdriSeq
+		,tdriTypeCd
+		,tdriTitle
+		,tdriAuthorCd
+		,tdriPrice
+		,tdriDelNy
+		,tditSeq
+	FROM tradRelatedItem
+	WHERE 1=1
+		AND tditSeq = #{tditSeq}
+		AND tdriDelNy = 0	
+</select>
 
 
 </mapper>    

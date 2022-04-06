@@ -32,8 +32,22 @@ public class Book {
 	private String tdkwSeq;
 	private String tdkwKeyword;
 	
+	private String tdriSeq;
+	private String tdriTypeCd;
+	private String tdriTitle;
+	private String tdriAuthorCd;
+	private String tdriPrice;
+	private String tdriDelNy;
+	
 	private String[] tdatAuthorCdArray;
 	private String[] tdkwKeywordArray;
+
+	private String[] tdriTypeCdArray;
+	private String[] tdriTitleArray;
+	private String[] tdriAuthorCdArray;
+	private String[] tdriPriceArray;
+	private String[] tdriDelNyArray;
+
 	
 	public String getTditSeq() {
 		return tditSeq;
@@ -196,6 +210,72 @@ public class Book {
 	}
 	public void setTditItemCate2(String tditItemCate2) {
 		this.tditItemCate2 = tditItemCate2;
+	}
+	public String getTdriSeq() {
+		return tdriSeq;
+	}
+	public void setTdriSeq(String tdriSeq) {
+		this.tdriSeq = tdriSeq;
+	}
+	public String getTdriTypeCd() {
+		return tdriTypeCd;
+	}
+	public void setTdriTypeCd(String tdriTypeCd) {
+		this.tdriTypeCd = tdriTypeCd;
+	}
+	public String getTdriTitle() {
+		return tdriTitle;
+	}
+	public void setTdriTitle(String tdriTitle) {
+		this.tdriTitle = tdriTitle;
+	}
+	public String getTdriAuthorCd() {
+		return tdriAuthorCd;
+	}
+	public void setTdriAuthorCd(String tdriAuthorCd) {
+		this.tdriAuthorCd = tdriAuthorCd;
+	}
+	public String getTdriPrice() {
+		return tdriPrice;
+	}
+	public void setTdriPrice(String tdriPrice) {
+		this.tdriPrice = tdriPrice;
+	}
+	public String getTdriDelNy() {
+		return tdriDelNy;
+	}
+	public void setTdriDelNy(String tdriDelNy) {
+		this.tdriDelNy = tdriDelNy;
+	}
+	public String[] getTdriTypeCdArray() {
+		return tdriTypeCdArray;
+	}
+	public void setTdriTypeCdArray(String[] tdriTypeCdArray) {
+		this.tdriTypeCdArray = tdriTypeCdArray;
+	}
+	public String[] getTdriTitleArray() {
+		return tdriTitleArray;
+	}
+	public void setTdriTitleArray(String[] tdriTitleArray) {
+		this.tdriTitleArray = tdriTitleArray;
+	}
+	public String[] getTdriAuthorCdArray() {
+		return tdriAuthorCdArray;
+	}
+	public void setTdriAuthorCdArray(String[] tdriAuthorCdArray) {
+		this.tdriAuthorCdArray = tdriAuthorCdArray;
+	}
+	public String[] getTdriPriceArray() {
+		return tdriPriceArray;
+	}
+	public void setTdriPriceArray(String[] tdriPriceArray) {
+		this.tdriPriceArray = tdriPriceArray;
+	}
+	public String[] getTdriDelNyArray() {
+		return tdriDelNyArray;
+	}
+	public void setTdriDelNyArray(String[] tdriDelNyArray) {
+		this.tdriDelNyArray = tdriDelNyArray;
 	}
 	
 

@@ -57,6 +57,9 @@ public class BookController {
 
 		List<Book> listKeyword = service.selectListKeyword(vo);
 		model.addAttribute("listKeyword", listKeyword);
+
+		List<Book> listRelatedItem= service.selectListRelatedItem(vo);
+		model.addAttribute("listRelatedItem", listRelatedItem);
 		
 		Book rt = service.selectOne(vo);
 		model.addAttribute("item", rt);
