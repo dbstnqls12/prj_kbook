@@ -13,6 +13,7 @@ public class Book {
 	private String tditDiscountCd;
 	private String tditStateCd;
 	private String tditItemCate;
+	private String tditItemCate2;
 	private String tditIsbn;
 	private String tditPage;
 	private String tditSize;
@@ -189,6 +190,12 @@ public class Book {
 	}
 	public void setTdatAuthorCdArray(String[] tdatAuthorCdArray) {
 		this.tdatAuthorCdArray = tdatAuthorCdArray;
+	}
+	public String getTditItemCate2() {
+		return tditItemCate2;
+	}
+	public void setTditItemCate2(String tditItemCate2) {
+		this.tditItemCate2 = tditItemCate2;
 	}
 	
 

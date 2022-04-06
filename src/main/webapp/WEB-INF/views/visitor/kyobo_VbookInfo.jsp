@@ -151,14 +151,17 @@
 					<h5 style="font-weight: bold; ">책 소개</h5>
 					<div class="mb-4">
 						<h6 class="mb-2" style="font-weight: bold;"> 이 책이 속한 분야</h6>
-							<c:forEach items="${listCateDepth1}" var="item1" varStatus="status2">
-								<c:if test="${item.tditItemCate eq item1.ifctSeq}"><p><c:out value="${item1.ifctName}" /> > cate2</p></c:if>
+							<c:forEach items="${listCateDepth1}" var="item1" varStatus="status1">
+								<c:if test="${item.tditItemCate eq item1.ifctSeq}"><p class="d-inline"><c:out value="${item1.ifctName}" /> > </p></c:if> 
 							</c:forEach> 	
+							<c:forEach items="${listCateDepth2}" var="item2" varStatus="status2">
+								<c:if test="${item.tditItemCate2 eq item2.ifctSeq}"><p class="d-inline"><c:out value="${item2.ifctName}" /></p></c:if> 
+							</c:forEach> 
 					</div>
 					<div class="mb-4">
 						<h6 class="mb-2" style="font-weight: bold;"> 이 책의 주제어</h6>
 					<c:forEach items="${listKeyword}" var="itemKeyword" varStatus="statusKeyword">
-						<p><span class="keyword"># <c:out value="${itemKeyword.tdkwKeyword}"/></span></p>
+						<span class="keyword"># <c:out value="${itemKeyword.tdkwKeyword}"/> &nbsp;</span>
 					</c:forEach>
 					</div>
 					<div class="mb-4 mt-5">

@@ -109,6 +109,7 @@
 		,a.tditDiscountCd
 		,a.tditStateCd
 		,a.tditItemCate
+		,a.tditItemCate2
 		,a.tditIsbn
 		,a.tditPage
 		,a.tditSize
