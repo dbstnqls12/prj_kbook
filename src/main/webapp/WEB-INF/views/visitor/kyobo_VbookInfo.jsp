@@ -76,45 +76,55 @@
 		<!-- 9단길이의 첫번째 열 -->
 		<div class="col-md-8">
 			<div class="px-0 mt-4">
-				<img class="mx-auto mb-2 d-block d-md-none"alt="" src="../../../images/xdmin_img/bookEx.jpg" style="width: 250px; height: 330px;">
-				<img class="mx-auto"alt="" src="../../../images/xdmin_img/btn_freedelivery.gif">
-				<img class="mx-auto"alt="" src="../../../images/xdmin_img/btn_2.gif">
-				<h4 class="mt-1" style="color: #3A60DF;"><b><c:out value="${item.tditTitle}"/></b></h4>
-				<p><strong><c:out value="${item.tditSubTitle}"/></strong></p>
-				<c:set var="listAuthor" value="${AuthorServiceImpl.selelctListCachedAuthor('15')}"/>
-				<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><!-- 작가리스트 -->
-					<c:forEach items="${listAuthor}" var="item2" varStatus="status"><!-- 작가코드 -->
-						<c:if test="${itemAuthor.tdatAuthorCd eq item2.ifacSeq}"><p style="display: inline;"><c:out value="${item2.ifacName}" /></p></c:if>
-					</c:forEach>	
-				</c:forEach>
- 				<c:set var="listPublisher" value="${PublisherServiceImpl.selelctListCachedPublisher('24')}"/>
-				<c:forEach items="${listPublisher}" var="itemPublisher" varStatus="statusPublisher">
-					<c:if test="${item.tditPublisherCd eq itemPublisher.ifpcSeq}"><p><c:out value="${itemPublisher.ifpcName}"/> | <c:out value="${item.tditPublishingDate}"></c:out></p></c:if> 
-				</c:forEach>
-					
-				<p><i class="fa-solid fa-clover" style="color: green;"></i> 9.5 (리뷰 62개) 
+				<div class="title">
+					<img class="mx-auto mb-2 d-block d-md-none"alt="" src="../../../images/xdmin_img/bookEx.jpg" style="width: 250px; height: 330px;">
+					<!-- <img class="mx-auto"alt="" src="../../../images/xdmin_img/btn_freedelivery.gif">
+					<img class="mx-auto"alt="" src="../../../images/xdmin_img/btn_2.gif"> -->
+					<h4 class="mt-1" style="color: #3A60DF;"><b><c:out value="${item.tditTitle}"/></b></h4>
+					<p><strong><c:out value="${item.tditSubTitle}"/></strong></p>
+					<c:set var="listAuthor" value="${AuthorServiceImpl.selelctListCachedAuthor('15')}"/>
+						<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><!-- 작가리스트 -->
+							<c:forEach items="${listAuthor}" var="item2" varStatus="status"><!-- 작가코드 -->
+								<c:if test="${itemAuthor.tdatAuthorCd eq item2.ifacSeq}"><p style="display: inline;"><c:out value="${item2.ifacName}" /></p></c:if>
+							</c:forEach>	
+						</c:forEach>
+	 				<c:set var="listPublisher" value="${PublisherServiceImpl.selelctListCachedPublisher('24')}"/>
+						<c:forEach items="${listPublisher}" var="itemPublisher" varStatus="statusPublisher">
+							<c:if test="${item.tditPublisherCd eq itemPublisher.ifpcSeq}"><p><c:out value="${itemPublisher.ifpcName}"/> | <c:out value="${item.tditPublishingDate}"></c:out></p></c:if> 
+						</c:forEach>
+					<p><i class="fa-solid fa-clover" style="color: green;"></i> 9.5 (리뷰 62개) 
+					<hr>
+				</div>
+				<div class="price">
+					<p>정가 : <fmt:formatNumber value="${item.tditPrice}"/>원</p>
+					<c:set var="listCodeDiscount" value="${CodeServiceImpl.selectListCachedCode('13')}"/>
+						<c:forEach items="${listCodeDiscount}" var="itemDiscount" varStatus="statusDiscount">
+							<c:if test="${item.tditDiscountCd eq itemDiscount.ifcdOrder}">
+							<p>판매가 : <span style="color: #F84450; font-size: 23px; font-weight: bold;"> <fmt:formatNumber value="${item.tditPrice-(itemDiscount.ifcdReferenceI2*item.tditPrice)}"/>원</span>
+							[<c:out value="${itemDiscount.ifcdName}"/> <fmt:formatNumber value="${itemDiscount.ifcdReferenceI2*item.tditPrice}"/>원 인하]</p>
+							</c:if>	
+						</c:forEach>
+	 				<p>혜택 : <br>[기본적립] 790원 적립 [5% 적립]<br>[추가적립] 5만원 이상 구매시 2,000원 추가적립 <span class="badge bg-light text-dark">안내</span>
+							<br>[회원혜택] 회원 등급별 최대 4% 추가적립 <span class="badge bg-light text-dark">안내</span><br>[리뷰혜택] 리뷰 작성시 e교환권 최대 300원 추가적립 <span class="badge bg-light text-dark">안내</span></p>
+					<p>추가혜택 : <span class="badge bg-light text-dark">포인트 안내</span> <span class="badge bg-light text-dark">도서소득공제 안내</span> <span class="badge bg-light text-dark">추가혜택 더보기</span>
+				</div>
 				<hr>
-				<p>정가 : <fmt:formatNumber value="${item.tditPrice}"/>원</p>
-				<c:set var="listCodeDiscount" value="${CodeServiceImpl.selectListCachedCode('13')}"/>
-					<c:forEach items="${listCodeDiscount}" var="itemDiscount" varStatus="statusDiscount">
-						<c:if test="${item.tditDiscountCd eq itemDiscount.ifcdOrder}">
-						<p>판매가 : <span style="color: #F84450; font-size: 23px; font-weight: bold;"> <fmt:formatNumber value="${item.tditPrice-(itemDiscount.ifcdReferenceI2*item.tditPrice)}"/>원</span>
-						[<c:out value="${itemDiscount.ifcdName}"/> <fmt:formatNumber value="${itemDiscount.ifcdReferenceI2*item.tditPrice}"/>원 인하]</p>
-						</c:if>	
-					</c:forEach>
-				<!-- <p>판매가 : <span style="color: #F84450; font-size: 23px; font-weight: bold;">14,220원 </span>[10% 1,580원 인하]</p> -->
-				<p>혜택 : <br>[기본적립] 790원 적립 [5% 적립]<br>[추가적립] 5만원 이상 구매시 2,000원 추가적립 <span class="badge bg-light text-dark">안내</span>
-						<br>[회원혜택] 회원 등급별 최대 4% 추가적립 <span class="badge bg-light text-dark">안내</span><br>[리뷰혜택] 리뷰 작성시 e교환권 최대 300원 추가적립 <span class="badge bg-light text-dark">안내</span></p>
-				<p>추가혜택 : <span class="badge bg-light text-dark">포인트 안내</span> <span class="badge bg-light text-dark">도서소득공제 안내</span> <span class="badge bg-light text-dark">추가혜택 더보기</span>
-				<hr>
-				<p>배송비 : 무료 <span class="badge bg-light text-dark">배송비 안내</span></p>
-				<p>배송일정 : 현재 내 주소 <span class="badge bg-light text-dark">지역변경</span> 
-							<br> *월 *일 출고예정 <span class="badge bg-light text-dark">배송일정 안내</span> </p>
-				<p>바로드림 : 인터넷으로 주문하고 매장에서 직접 수령 <span class="badge bg-light text-dark">안내</span> <span class="badge bg-light text-dark">바로드림 혜택</span> </p>
-				<p>책 그리고 꽃</p>
+				<div class="deli">
+					<c:choose>
+						<c:when test="${item.tditPrice ge 10000}"><p>배송비 : 무료 <span class="badge bg-light text-dark">배송비 안내</span></p></c:when>
+						<c:when test="${item.tditPrice lt 10000}"><p>배송비 : 2500원 <span class="badge bg-light text-dark">배송비 안내</span></p></c:when>
+						<c:otherwise></c:otherwise>
+					</c:choose>
+					<c:set var="ymd" value="<%=new java.util.Date()%>" /> 
+					<p>배송일정 : 현재 내 주소 <span class="badge bg-light text-dark">지역변경</span> 
+								<br><fmt:formatDate value="${ymd}" pattern="MM" />월
+								<fmt:formatDate value="${ymd}" pattern="dd" />일 출고예정 <span class="badge bg-light text-dark">배송일정 안내</span> </p>
+					<p>바로드림 : 인터넷으로 주문하고 매장에서 직접 수령 <span class="badge bg-light text-dark">안내</span> <span class="badge bg-light text-dark">바로드림 혜택</span> </p>
+					<p>책 그리고 꽃</p>
+				</div>
+				<hr><!-- <div id="result">0</div> -->
 				
-				<hr>
-				<p>주문수량 <input type="text" id="" name="" style="width: 50px;"> <i class="bi bi-plus-square"></i> <i class="bi bi-dash-square"></i></p>
+				<p>주문수량 <input type="text" id="result" name="result" style="width: 50px;" value="1"> <i class="bi bi-plus-square" role="button" onclick='count("plus")'></i> <i class="bi bi-dash-square" role="button" onclick='count("minus")'></i></p>
 				<button type="button" class="btn btn-purchaseNow" onclick="location.href='/member/kyobo_purchase'">바로구매</button>
 				<button type="button" class="btn btn-purchase">바로드림 주문</button>
 				<button type="button" class="btn btn-purchase">선물하기</button>
@@ -153,8 +163,8 @@
 							<td>원서 / 번역서</td>
 						</tr>
 					</table>
-					<h5 style="font-weight: bold; ">책 소개</h5>
-					<div class="mb-4">
+					<h5 style="font-weight: bold; margin-top: 50px;">책 소개</h5>
+					<div class="mb-4 mt-4">
 						<h6 class="mb-2" style="font-weight: bold;"> 이 책이 속한 분야</h6>
 							<c:forEach items="${listCateDepth1}" var="item1" varStatus="status1">
 								<c:if test="${item.tditItemCate eq item1.ifctSeq}"><p class="d-inline"><c:out value="${item1.ifctName}" /> > </p></c:if> 
@@ -163,7 +173,7 @@
 								<c:if test="${item.tditItemCate2 eq item2.ifctSeq}"><p class="d-inline"><c:out value="${item2.ifctName}" /></p></c:if> 
 							</c:forEach> 
 					</div>
-					<div class="mb-4">
+					<div class="mb-4 mt-5">
 						<h6 class="mb-2" style="font-weight: bold;"> 이 책의 주제어</h6>
 					<c:forEach items="${listKeyword}" var="itemKeyword" varStatus="statusKeyword">
 						<span class="keyword"># <c:out value="${itemKeyword.tdkwKeyword}"/> &nbsp;</span>
@@ -172,15 +182,15 @@
 					<div class="mb-4 mt-5">
 						<p>${fn:replace(item.tditBookDesc, lf, "<br>")}</p>
 					</div>	
-					<div class="mb-4">
+					<div class="mb-4 mt-5">
 						<h6 class="mb-2" style="font-weight: bold;">상세이미지</h6>
 						<img class="mx-auto "alt="" src="../../../images/xdmin_img/image_bookDesc1.jpg" style="width: 80%; height: 100%;">
 					</div>
-					<div class="mb-4">
+					<div class="mb-4 mt-5">
 						<h6 class="mb-2" style="font-weight: bold;">목차</h6>
 						<p>${fn:replace(item.tditTableOfContents, lf, "<br>")}</p>
 					</div>
-					<div class="mb-4">
+					<div class="mb-4 mt-5">
 						<h6 class="mb-2" style="font-weight: bold;">책속으로</h6>
 						<p>${fn:replace(item.tditBookDesc2, lf, "<br>")}</p>
 					</div>
@@ -310,6 +320,26 @@
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 
 <script type="text/javascript">
+
+/* function count(type)  {
+	  // 결과를 표시할 element
+	  const resultElement = document.getElementById('result');
+	  
+	  // 현재 화면에 표시된 값
+	  let number = resultElement.innerText;
+	  
+	  // 더하기/빼기
+	  if(type === 'plus') {
+	    number = parseInt(number) + 1;
+	  }else if(type === 'minus')  {
+	    number = parseInt(number) - 1;
+	  }
+	  
+	  // 결과 출력
+	  resultElement.innerText = number;
+	}
+ */
+
 /* 	 $(document).ready(function(){
 
 			$('#top_menu .sub_1').hide();
@@ -323,7 +353,27 @@
 			});
 
  */
+function count(type)  {
 
+	if(type === 'plus') {
+    
+		var tmp = document.getElementById("result").value;
+		tmp++;
+		document.getElementById("result").value = tmp;
+
+	}else if(type === 'minus')  {
+   
+		var tmp = document.getElementById("result").value;
+			if(tmp<2){
+				alert("최소수량은 1개입니다");
+				return true;
+			}else{
+				tmp--;
+			}
+		document.getElementById("result").value = tmp;
+	}
+	 
+}
 </script>
 
 <!-- Optional JavaScript; choose one of the two! -->

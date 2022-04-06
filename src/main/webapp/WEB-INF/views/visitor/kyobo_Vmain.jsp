@@ -111,7 +111,7 @@
 							<tr>
 								<c:forEach items="${listbookBest}" var="item" varStatus="status" begin="0" end="3">	
 									<td>
-										<p id="bestTitle"><c:out value="${item.tditTitle}"/></p>
+										<p id="bestTitle"><a href="javascript:goInfo(<c:out value="${item.tditSeq}"/>)"><c:out value="${item.tditTitle}"/></a></p>
 										<c:forEach items="${listAuthor}" var="item2" varStatus="status">
 											<c:if test="${item.tdatAuthorCd eq item2.ifacSeq}">
 												<p id="bestAuthor"><c:out value="${item2.ifacName}" /></p>
@@ -214,7 +214,6 @@ $("#btn-ebookNew").on("click",function(){
 
 
 </script>
-
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
