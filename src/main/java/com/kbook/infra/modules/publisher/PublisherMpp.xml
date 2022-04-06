@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper  namespace="com.kbook.infra.modules.publisher.PublisherMpp">
+
+<resultMap id="resultMapObj" type="com.kbook.infra.modules.publisher.Publisher"></resultMap>
+
+	<select id="selectListPublisherForCache" resultMap="resultMapObj">
+		SELECT
+			ifpcSeq
+			,ifpcName
+			,ifpcDelNy
+			,ifpcUseNy
+			,ifpcOrder
+			,ifcgSeq
+		FROM
+			infrPublisherCode
+		WHERE 1=1
+ 			AND ifpcDelNy = 0
+	</select>
+
+</mapper>    

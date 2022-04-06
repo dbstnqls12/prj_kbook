@@ -8,6 +8,7 @@
 <jsp:useBean id="CateServiceImpl" class="com.kbook.infra.modules.cate.CateServiceImpl"/>
 <jsp:useBean id="AuthorServiceImpl" class="com.kbook.infra.modules.author.AuthorServiceImpl"/>
 <jsp:useBean id="CodeServiceImpl" class="com.kbook.infra.modules.code.CodeServiceImpl"/>
+<jsp:useBean id="PublisherServiceImpl" class="com.kbook.infra.modules.publisher.PublisherServiceImpl"/>
 
 <% pageContext.setAttribute("cr", "\r"); %>
 <% pageContext.setAttribute("lf", "\\n"); %>
@@ -85,8 +86,12 @@
 					<c:forEach items="${listAuthor}" var="item2" varStatus="status"><!-- 작가코드 -->
 						<c:if test="${itemAuthor.tdatAuthorCd eq item2.ifacSeq}"><p style="display: inline;"><c:out value="${item2.ifacName}" /></p></c:if>
 					</c:forEach>	
-				</c:forEach>	
-				<p>출판사 | <c:out value="${item.tditPublishingDate}"/></p>
+				</c:forEach>
+ 				<c:set var="listPublisher" value="${PublisherServiceImpl.selelctListCachedPublisher('24')}"/>
+				<c:forEach items="${listPublisher}" var="itemPublisher" varStatus="statusPublisher">
+					<c:if test="${item.tditPublisherCd eq itemPublisher.ifpcSeq}"><p><c:out value="${itemPublisher.ifpcName}"/> | <c:out value="${item.tditPublishingDate}"></c:out></p></c:if> 
+				</c:forEach>
+					
 				<p><i class="fa-solid fa-clover" style="color: green;"></i> 9.5 (리뷰 62개) 
 				<hr>
 				<p>정가 : <fmt:formatNumber value="${item.tditPrice}"/>원</p>
