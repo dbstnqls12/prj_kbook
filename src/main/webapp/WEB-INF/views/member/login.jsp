@@ -59,9 +59,9 @@
 		<!-- <button class="btn btn-outline-secondary" type="button"><img src="../../../images/emailicon.png"> 번호로 로그인</button> -->
 		<button class="btn btn-naver" type="button"><img src="/resources/xdmin/image/navericon.png" id="icon"><b> 네이버</b> 로그인</button>
 		<button class="btn btn-kakao" type="button"><img src="/resources/xdmin/image/kakaoicon.png" id="icon"><b> 카카오</b> 로그인</button>
-		<button class="btn btn-facebook" type="button"><img src="/resources/xdmin/image/fbicon.png" id="icon"><b> 페이스북</b> 로그인</button>
+		<button class="btn btn-facebook" type="button" id="btn-facebook"><img src="/resources/xdmin/image/fbicon.png" id="icon"><b> 페이스북</b> 로그인</button>
 	</div>
-	
+</fb:login-button>
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -69,32 +69,8 @@
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 
 <script type="text/javascript">
-
-/* 
-	window.fbAsyncInit = function() {
-	  FB.init({
-	    appId      : '{your-app-id}',
-	    cookie     : true,
-	    xfbml      : true,
-	    version    : '{api-version}'
-	  });
-	    
-	  FB.AppEvents.logPageView();   
-	    
-	};
-	
-	(function(d, s, id){
-	   var js, fjs = d.getElementsByTagName(s)[0];
-	   if (d.getElementById(id)) {return;}
-	   js = d.createElement(s); js.id = id;
-	   js.src = "https://connect.facebook.net/en_US/sdk.js";
-	   fjs.parentNode.insertBefore(js, fjs);
-	 }(document, 'script', 'facebook-jssdk'));
-
-	 */
-	
-	
-	$("#btnLogin").on("click",function(){
+//페이스북 (로그인) 기본 설정
+  	$("#btnLogin").on("click",function(){
 		
 		$.ajax({
 			async: true 
@@ -103,7 +79,7 @@
 			,url: "/member/loginProc"
 			,data : { "kbmmId" : $("#kbmmId").val(), "kbmmPassword" : $("#kbmmPassword").val()}
 			,success: function(response) {
-				if(response.rt == "success") {
+				if(response.rt == "success") { 
 				/* 	if($("#kbmmAdminNy").val() == 1){ */
 						location.href = "/member/kyobo_main";
 				} else {
@@ -115,7 +91,7 @@
 			}
 		});
 
-	});
+	}); 
 
 </script>
 

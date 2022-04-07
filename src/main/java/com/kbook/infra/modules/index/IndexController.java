@@ -11,4 +11,9 @@ public class IndexController {
 		
 		return "index/indexView";
 	}
+	@RequestMapping(value = "xdmin/facebookLogin")
+	public String facebookLogin() throws Exception {
+		
+		return "xdmin/facebookLogin";
+	}
 }
