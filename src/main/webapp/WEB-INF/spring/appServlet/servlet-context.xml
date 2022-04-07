@@ -38,6 +38,7 @@
 		<interceptor>
 			<mapping path="/**"/>
 			<exclude-mapping path="/resources/**" />
+			<exclude-mapping path="/code/**" />
 			<exclude-mapping path="/visitor/**" />
 			<exclude-mapping path="/xdmin/**" />
 			<exclude-mapping path="/member/**" />
