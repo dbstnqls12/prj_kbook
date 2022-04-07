@@ -1,7 +1,5 @@
 package com.kbook.infra.modules.book;
 
-import java.util.Date;
-
 public class Book {
 	
 	private String tditSeq;
