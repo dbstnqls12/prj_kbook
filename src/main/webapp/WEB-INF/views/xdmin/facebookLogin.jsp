@@ -15,15 +15,59 @@
 </head>
 <body>
 
- 
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
+<!--  
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
+<ul>
+ <li onclick="fnFbCustomLogin();">
+  <a href="javascript:void(0)">
+   <span>Login with Facebook</span>
+  </a>
+ </li>
+</ul>
 
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v13.0&appId=2175623275927646 nonce="JutAfaKH"></script><!-- &autoLogAppEvents=1 -->
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v13.0&appId=2175623275927646 nonce="JutAfaKH"></script><!-- &autoLogAppEvents=1 -->
 <script type="text/javascript">
+	function statusChangeCallback(res){
+		statusChangeCallback(response);
+	}
 	
+	function fnFbCustomLogin(){
+		FB.login(function(response) {
+			if (response.status === 'connected') {
+				FB.api('/me', 'get', {fields: 'name,email'}, function(r) {
+					console.log(r);
+				})
+			} else if (response.status === 'not_authorized') {
+				// 사람은 Facebook에 로그인했지만 앱에는 로그인하지 않았습니다.
+				alert('앱에 로그인해야 이용가능한 기능입니다.');
+			} else {
+				// 그 사람은 Facebook에 로그인하지 않았으므로이 앱에 로그인했는지 여부는 확실하지 않습니다.
+				alert('페이스북에 로그인해야 이용가능한 기능입니다.');
+			}
+		}, {scope: 'public_profile,email'});
+	}
+	
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId      : '1588150011384568', // 내 앱 ID를 입력한다.
+			cookie     : true,
+			xfbml      : true,
+			version    : 'v10.0'
+		});
+		FB.AppEvents.logPageView();   
+	};
+
+
+
+
+
+
+
+
+	/* 
 	function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
 	  console.log('statusChangeCallback');
 	  console.log(response);                   // The current login status of the person.
@@ -64,7 +108,7 @@
 	    document.getElementById('status').innerHTML =
 	      'Thanks for logging in, ' + response.name + '!';
 	  }); 
-	}
+	} */
 </script>
 
 <!-- Optional JavaScript; choose one of the two! -->
