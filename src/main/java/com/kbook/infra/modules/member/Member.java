@@ -73,8 +73,6 @@ public class Member {
 	private Integer[] kbmpDeviceCdArray;
 	private String[] kbmpNumberFullArray;
 	private Integer[] kbmpTelecomCdArray;
-	private Double[] kbmaLatArray;
-	private Double[] kbmaLngArray;
 	
 	public String getKbmmSeq() {
 		return kbmmSeq;
@@ -429,18 +427,6 @@ public class Member {
 	}
 	public void setKbmaLng(Double kbmaLng) {
 		this.kbmaLng = kbmaLng;
-	}
-	public Double[] getKbmaLatArray() {
-		return kbmaLatArray;
-	}
-	public void setKbmaLatArray(Double[] kbmaLatArray) {
-		this.kbmaLatArray = kbmaLatArray;
-	}
-	public Double[] getKbmaLngArray() {
-		return kbmaLngArray;
-	}
-	public void setKbmaLngArray(Double[] kbmaLngArray) {
-		this.kbmaLngArray = kbmaLngArray;
 	}
 	
 	

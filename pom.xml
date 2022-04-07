@@ -189,7 +189,7 @@
 		</dependency>
 		<!-- mysql, mariadb log s 2022.03.14 -->
 		
-		<!-- for ajax s 2022.03.12 -->
+		<!-- for ajax s 2022.03.12 --> 
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
@@ -209,7 +209,13 @@
 		</dependency>
 		<!-- for ajax s 2022.03.12 -->	
 		
-
+		<!-- fileupload s 2022.03.30 -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<!-- fileupload e 2022.03.30 -->	
 
 	</dependencies>
     <build>

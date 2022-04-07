@@ -139,8 +139,8 @@
 					</div>
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1" name="kbmaAddress1" placeholder="기본주소"> 
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2" name="kbmaAddress2" placeholder="상세주소"> 
-					<input type="text" class="form-control form-control-sm mb-1" id="kbmaLatArray0" name="kbmaLatArray" placeholder="kbmaLat"> 
-					<input type="text" class="form-control form-control-sm mb-1" id="kbmaLngArray0" name="kbmaLngArray" placeholder="kbmaLng"> 
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaLat" name="kbmaLat" placeholder="kbmaLat"> 
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaLng" name="kbmaLng" placeholder="kbmaLng"> 
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">주소 (국외전용)</label>
@@ -415,8 +415,8 @@ $("#btn-add").on("click", function(){
 		         	// 정상적으로 검색이 완료됐으면,
 		         	if (status == daum.maps.services.Status.OK) {
 		         		
-		         		document.getElementById('kbmaLatArray0').value=result[0].x;
-		         		document.getElementById('kbmaLngArray0').value=result[0].y;
+		         		document.getElementById('kbmaLat').value=result[0].x;
+		         		document.getElementById('kbmaLng').value=result[0].y;
 		         		
 		         /* 						
 		         		var coords = new daum.maps.LatLng(result[0].y, result[0].x);
