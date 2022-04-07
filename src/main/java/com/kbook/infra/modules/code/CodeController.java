@@ -45,18 +45,19 @@ public class CodeController {
 	@RequestMapping(value = "/code/codeGroupInst")
 	public String codeGroupInst(CodeVo vo, Code dto, RedirectAttributes redirectAttributes) throws Exception {
 		
-		System.out.println("dto.getFile() : "+dto.getFile());
-		
 		MultipartFile multipartFile = dto.getFile();
 		
 		System.out.println("multipartFile : "+multipartFile.getOriginalFilename());
 		
-//		String fileName = multipartFile.getOriginalFilename();
-//		String ext = fileName.substring(fileName.lastIndexOf(".")+1);
-//		String uuid = UUID.randomUUID().toString();
-//		String uuidFileName = uuid + "." + ext;
+		String fileName = multipartFile.getOriginalFilename();
+		String ext = fileName.substring(fileName.lastIndexOf(".")+1);
+		String uuid = UUID.randomUUID().toString();
+		String uuidFileName = uuid + "." + ext;
 		
-		multipartFile.transferTo(new File("C:/factory/ws_sts_4130/prj_kbook/src/main/webapp/resources/uploaded/"+multipartFile.getOriginalFilename()));
+		dto.setOriginalFileName(fileName);		
+		dto.setUuidName(uuidFileName);		
+
+		multipartFile.transferTo(new File("C:/factory/ws_sts_4130/prj_kbook/src/main/webapp/resources/uploaded/"+uuidFileName));
 		
 		service.insert(dto);
 		
@@ -72,7 +73,7 @@ public class CodeController {
 	}
 	
 	@RequestMapping(value = "/code/codeGroupView")
-	public String codeGroupView(@ModelAttribute("vo") CodeVo vo, Model model) throws Exception {
+	public String codeGroupView(@ModelAttribute("vo") CodeVo vo, Code dto, Model model) throws Exception {
 		
 		System.out.println("############################");
 		System.out.println("vo.getShOption() : "+vo.getShOption());		

@@ -1,7 +1,6 @@
 package com.kbook.infra.modules.code;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -16,6 +15,8 @@ public class Code {
 	private String ifcgName;
 	private String ifcgNameEng;
 	private Integer ifcgDelNy;
+	private String uuidName;
+	private String originalFileName;
 	
 //	infrCode
 	private String ifcdSeq;
@@ -26,8 +27,8 @@ public class Code {
 	private String ifcdReferenceI2;
 //	private String ifcgSeq;
 	
-	public MultipartFile file;
-	public MultipartFile file1;
+	private MultipartFile file;
+	private MultipartFile file1;
 	
 	public static List<Code> cachedCodeArrayList = new ArrayList<Code>();
 //------------
@@ -127,7 +128,23 @@ public class Code {
 	public void setFile1(MultipartFile file1) {
 		this.file1 = file1;
 	}
-	
+
+	public String getUuidName() {
+		return uuidName;
+	}
+
+	public void setUuidName(String uuidName) {
+		this.uuidName = uuidName;
+	}
+
+	public String getOriginalFileName() {
+		return originalFileName;
+	}
+
+	public void setOriginalFileName(String originalFileName) {
+		this.originalFileName = originalFileName;
+	}
+
 
 	
 	

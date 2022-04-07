@@ -14,6 +14,9 @@
 	<input type="hidden" id="shValue" name="shValue"  value="<c:out value="${vo.shValue}"/>">
 </form>
 	<c:out value="${item.ifcgSeq}"/> | <c:out value="${item.ifcgName}"/> | <c:out value="${item.ifcgDelNy}"/><br>
+<%-- 	<c:out value="${item.originalFileName}"/> | <c:out value="${item.uuidName}"/> --%>
+		<img src="/resources/uploaded/<c:out value="${item.uuidName}"/>"/><br> 
+	
 	<a href="javascript:goList();">목록</a>
 	<a href="javascript:goEdit();">수정</a>
 	<a href="javascript:goSave();" id="btnNele">삭제</a>

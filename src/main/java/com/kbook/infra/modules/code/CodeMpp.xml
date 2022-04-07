@@ -51,9 +51,13 @@
 		INSERT INTO infrCodeGroup(
 			ifcgName
 			,ifcgDelNy
+			,uuidName
+			,originalFileName
 		) VALUES (
 			#{ifcgName}
 			,0		
+			,#{uuidName}
+			,#{originalFileName}
 		)	
 		<selectKey resultType="String" keyProperty="ifcgSeq" order="AFTER">
 			SELECT last_insert_id()
@@ -65,6 +69,8 @@
 			a.ifcgSeq
 			,a.ifcgName
 			,a.ifcgDelNy
+			,a.uuidName
+			,a.originalFileName
 		FROM 
 			infrCodeGroup a
 		WHERE 1=1
