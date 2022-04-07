@@ -58,6 +58,8 @@ public class Member {
 	private String kbmaAddress3_abroad;
 	private String kbmaZipcode_abroad;
 	private String kbmaDelNy;
+	private Double kbmaLat;
+	private Double kbmaLng;
 
 	private String kbmeDefaultNy;
 	private String kbmeTypeCd;
@@ -71,6 +73,8 @@ public class Member {
 	private Integer[] kbmpDeviceCdArray;
 	private String[] kbmpNumberFullArray;
 	private Integer[] kbmpTelecomCdArray;
+	private Double[] kbmaLatArray;
+	private Double[] kbmaLngArray;
 	
 	public String getKbmmSeq() {
 		return kbmmSeq;
@@ -413,6 +417,30 @@ public class Member {
 	}
 	public void setKbmpTelecomCdArray(Integer[] kbmpTelecomCdArray) {
 		this.kbmpTelecomCdArray = kbmpTelecomCdArray;
+	}
+	public Double getKbmaLat() {
+		return kbmaLat;
+	}
+	public void setKbmaLat(Double kbmaLat) {
+		this.kbmaLat = kbmaLat;
+	}
+	public Double getKbmaLng() {
+		return kbmaLng;
+	}
+	public void setKbmaLng(Double kbmaLng) {
+		this.kbmaLng = kbmaLng;
+	}
+	public Double[] getKbmaLatArray() {
+		return kbmaLatArray;
+	}
+	public void setKbmaLatArray(Double[] kbmaLatArray) {
+		this.kbmaLatArray = kbmaLatArray;
+	}
+	public Double[] getKbmaLngArray() {
+		return kbmaLngArray;
+	}
+	public void setKbmaLngArray(Double[] kbmaLngArray) {
+		this.kbmaLngArray = kbmaLngArray;
 	}
 	
 	

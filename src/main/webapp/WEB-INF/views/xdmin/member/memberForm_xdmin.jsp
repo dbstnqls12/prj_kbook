@@ -139,6 +139,8 @@
 					</div>
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1" name="kbmaAddress1" placeholder="기본주소"> 
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2" name="kbmaAddress2" placeholder="상세주소"> 
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaLatArray0" name="kbmaLatArray" placeholder="kbmaLat"> 
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaLngArray0" name="kbmaLngArray" placeholder="kbmaLng"> 
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">주소 (국외전용)</label>
@@ -292,19 +294,11 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/resources/common/js/validation.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6ec915718ae8d23e16c65e0f6d22a62e&libraries=services"></script>
 
 <script>
 
-$("#btnAddress").on("click",function(){
-	sample6_execDaumPostcode();
-	
-});	
-$("#btnClear").on("click",function(){
-	$("#kbmaZipcode").val("");
-	$("#kbmaAddress1").val("");
-	
-});	
-
+ 
 goList = function(){
 	$("#memberForm").attr("action", "/xdmin/member/memberList");
 	$("#memberForm").submit();
@@ -357,8 +351,6 @@ $("#btn-add").on("click", function(){
 		return false;
 	}
 	
-	
-	
 	$("#memberForm").attr("action", "/xdmin/member/memberInst");
 	$("#memberForm").submit();
 
@@ -367,56 +359,107 @@ $("#btn-add").on("click", function(){
 
 
 
-function sample6_execDaumPostcode() {
-    new daum.Postcode({
-        oncomplete: function(data) {
-            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-            var addr = ''; // 주소 변수
-            var extraAddr = ''; // 참고항목 변수
-
-            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                addr = data.roadAddress;
-            } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                addr = data.jibunAddress;
-            }
-
-            // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-            if(data.userSelectedType === 'R'){
-                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                    extraAddr += data.bname;
-                }
-                // 건물명이 있고, 공동주택일 경우 추가한다.
-                if(data.buildingName !== '' && data.apartment === 'Y'){
-                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                }
-                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                if(extraAddr !== ''){
-                    extraAddr = ' (' + extraAddr + ')';
-                }
-                // 조합된 참고항목을 해당 필드에 넣는다.
-                /* document.getElementById("kbmaAddress2").value = extraAddr; */
-            
-            } else {
-                /* document.getElementById("kbmaAddress2").value = ''; */
-            }
-
-            // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('kbmaZipcode').value = data.zonecode;
-            document.getElementById("kbmaAddress1").value = addr;
-            // 커서를 상세주소 필드로 이동한다.
-            document.getElementById("kbmaAddress2").focus();
-        }
-    }).open();
-    
-
-
-}
+	function sample6_execDaumPostcode() {
+	    new daum.Postcode({
+	        oncomplete: function(data) {
+	            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+	
+	            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+	            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	            var addr = ''; // 주소 변수
+	            var extraAddr = ''; // 참고항목 변수
+	
+	            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+	            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+	                addr = data.roadAddress;
+	            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+	                addr = data.jibunAddress;
+	            }
+	
+	            // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+	            if(data.userSelectedType === 'R'){
+	                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+	                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+	                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+	                    extraAddr += data.bname;
+	                }
+	                // 건물명이 있고, 공동주택일 경우 추가한다.
+	                if(data.buildingName !== '' && data.apartment === 'Y'){
+	                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	                }
+	                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+	                if(extraAddr !== ''){
+	                    extraAddr = ' (' + extraAddr + ')';
+	                }
+	                // 조합된 참고항목을 해당 필드에 넣는다.
+	                /* document.getElementById("kbmaAddress2").value = extraAddr; */
+	            
+	            } else {
+	                /* document.getElementById("kbmaAddress2").value = ''; */
+	            }
+	
+	            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+	            document.getElementById('kbmaZipcode').value = data.zonecode;
+	            document.getElementById("kbmaAddress1").value = addr;
+	            // 커서를 상세주소 필드로 이동한다.
+	            document.getElementById("kbmaAddress2").focus();
+	            
+				/* lat and lng from address s */
+				        	
+		         // 주소-좌표 변환 객체를 생성
+		         var geocoder = new daum.maps.services.Geocoder();
+		
+		         // 주소로 좌표를 검색
+		         geocoder.addressSearch(addr, function(result, status) {
+		          
+		         	// 정상적으로 검색이 완료됐으면,
+		         	if (status == daum.maps.services.Status.OK) {
+		         		
+		         		document.getElementById('kbmaLatArray0').value=result[0].x;
+		         		document.getElementById('kbmaLngArray0').value=result[0].y;
+		         		
+		         /* 						
+		         		var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+		
+		         		y = result[0].x;
+		         		x = result[0].y;
+		
+		         		// 결과값으로 받은 위치를 마커로 표시합니다.
+		         		var marker = new daum.maps.Marker({
+		         			map: map,
+		         			position: coords
+		         		});
+		
+		         		// 인포윈도우로 장소에 대한 설명표시
+		         		var infowindow = new daum.maps.InfoWindow({
+		         			content: '<div style="width:150px;text-align:center;padding:5px 0;">좌표위치</div>'
+		         		});
+		
+		         		infowindow.open(map,marker);
+		
+		         		// 지도 중심을 이동
+		         		map.setCenter(coords);
+		         		
+		         		document.getElementById("ifmaLatArray0").value=x;
+		         		document.getElementById("ifmaLngArray0").value=y;
+		         */						
+		         	}
+		         });
+				/* lat and lng from address e */
+	            
+	            
+	        }
+	    }).open();
+	}
+	$("#btnAddress").on("click",function(){
+		sample6_execDaumPostcode();
+		
+	});	
+	$("#btnClear").on("click",function(){
+		$("#kbmaZipcode").val("");
+		$("#kbmaAddress1").val("");
+		
+	});	
 
 </script>
 <!-- Optional JavaScript; choose one of the two! -->

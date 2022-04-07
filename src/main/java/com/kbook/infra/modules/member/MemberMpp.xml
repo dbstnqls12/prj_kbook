@@ -99,6 +99,8 @@
 			,d.kbmaZipcode_abroad
 			,d.kbmaAddress1_abroad
 			,d.kbmaAddress2_abroad
+			,d.kbmaLat
+			,d.kbmaLng
 			,d.kbmaDefaultNy
 		FROM	
 			kbMember a
@@ -215,6 +217,8 @@
 			,kbmaAddress1_abroad
 			,kbmaAddress2_abroad
 			,kbmaZipcode_abroad
+			,kbmaLat
+			,kbmaLng
 			,kbmaDelNy
 			,kbmmSeq
 		) VALUES (
@@ -225,6 +229,8 @@
 			,#{kbmaAddress1_abroad}
 			,#{kbmaAddress2_abroad}
 			,#{kbmaZipcode_abroad}
+			,#{kbmaLat}
+			,#{kbmaLng}
 			,0
 			,#{kbmmSeq}
 		)		
