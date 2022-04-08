@@ -22,7 +22,18 @@
 
 <link href="/resources/xdmin/css/footers.css" rel="stylesheet" type="text/css">
 <title>Kyobo_memberForm_admin</title>
-
+<style type="text/css">
+	.addScroll {
+		overflow: auto;
+		height : 90px;
+		background-color: #F0F8FF;
+	}
+	
+	.input-file-button {
+		padding : auto;
+		cursor : pointer;
+	}
+</style>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/xdmin/include/xdmin_header.jsp" %><!-- xdmin_header -->
@@ -143,12 +154,19 @@
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaLng" name="kbmaLng" placeholder="kbmaLng"> 
 				</div>
 				<div class="col-md-6">
+					<label for="file0" class="form-label input-file-button ">이미지 파일</label>
+					<input type="file" class="form-control form-control-sm mb-1" id="file0" name="file0" multiple onChange="upload(0,2);"style="display: none;" >
+					<div class="addScroll">
+						<ul id="ulFile0" class="list-group" ></ul>
+					</div>
+				</div>
+				<div class="col-md-6">
 					<label class="form-label">주소 (국외전용)</label>
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaZipcode_abroad" name="kbmaZipcode_abroad" placeholder="우편번호">
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1_abroad" name="kbmaAddress1_abroad" placeholder="기본주소">
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2_abroad" name="kbmaAddress2_abroad" placeholder="상세주소">
 				</div>
-				
+				<div class="col-6 d-none d-sm-block"></div><!-- 줄바꿈 -->
 				<div class="col-md-6">
 					<label class="col-form-label">교보문고 이용약관<span style="color: red;">(필수)</span></label>
 					<div class="col-md-6">
@@ -293,10 +311,64 @@
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/resources/common/js/validation.js"></script>
+<script src="/resources/common/js/commonXdmin.js"></script>
+<script src="/resources/common/js/common.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6ec915718ae8d23e16c65e0f6d22a62e&libraries=services"></script>
 
 <script>
+
+	upload = function(seq,div){
+		
+		$("#ulFile" + seq).children().remove();
+		
+		var fileCount = $("input[type=file]")[seq].files.length;
+		
+		if(checkUploadedTotalFileNumber(fileCount, seq) == false) {return false;}
+		
+		var totalFileSize;
+		for(var i = 0; i < fileCount; i++){
+			if(div==1){
+				if(checkUploadedAllExt($("input[type=file]")[seq].files[i].name, seq) == false) {return false;}
+			}else if(div==2){
+				if(checkUploadedImageExt($("input[type=file]")[seq].files[i].name, seq) == false) {return false;}
+			}else {
+				return false;
+			}
+			
+			if(checkUploadedEachFileSize($("input[type=file]")[seq].files[i].name, seq) == false) {return false;}
+			totalFileSize += $("input[type=file]")[seq].files[i].size;
+		}
+		if(checkUploadedTotalFileSize(totalFileSize, seq) == false) {return false;}
+		
+		for(var i=0; i<fileCount; i++){
+			addUploadLi(seq, i, $("input[type=file]")[seq].files[i].name);
+		}
+	}
+
+	addUploadLi = function(seq,index,name){
+		
+		var ul_list = $("#ulFile0");
+		
+		li = '<li id="li_'+seq+'_'+index+'" class="list-group-item d-flex justify-content-between align-item-center">';
+		li = li + name;
+		li = li + '<span class="badge bg-danger rounded-pill" onClick="delLi('+ seq +','+index +')"><i class="fa-solid fa-x" style="cursor: pointer;"></i></span>';
+		li = li + '</li>';
+		
+		$("#ulFile"+seq).append(li);
+	}
+	
+	delLi = function(seq, index){
+		$("#li_"+seq+"_"+index).remove();
+	}
+		
+
+
+
+
+
+
+
 
  
 goList = function(){

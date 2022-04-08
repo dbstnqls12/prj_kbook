@@ -53,3 +53,7 @@
 	,#divShow2{
 		display: none;
 	}
+	.classgroup{
+		width: 100px;
+		background-color: #E0FFFF;
+	}

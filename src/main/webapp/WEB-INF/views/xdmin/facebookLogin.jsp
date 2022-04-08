@@ -28,7 +28,7 @@
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v13.0&appId=2175623275927646 nonce="JutAfaKH"></script><!-- &autoLogAppEvents=1 -->
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v13.0&appId=2175623275927646" nonce="JutAfaKH"></script><!-- &autoLogAppEvents=1 -->
 <script type="text/javascript">
 	function statusChangeCallback(res){
 		statusChangeCallback(response);
