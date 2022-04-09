@@ -195,11 +195,21 @@
 					</div>
 					<div class="mb-4 mt-5">
 						<h6 class="mb-2" style="font-weight: bold;">목차</h6>
-						<p>${fn:replace(item.tditTableOfContents, lf, "<br>")}</p>
+						<c:choose>
+							<c:when test="${item.tditTableOfContents eq null}"><p>이 도서는 목차가 없습니다.</p></c:when>
+							<c:otherwise>
+								<p>${fn:replace(item.tditTableOfContents, lf, "<br>")}</p>
+							</c:otherwise>
+						</c:choose>
 					</div>
 					<div class="mb-4 mt-5">
 						<h6 class="mb-2" style="font-weight: bold;">책속으로</h6>
-						<p>${fn:replace(item.tditBookDesc2, lf, "<br>")}</p>
+						<c:choose>
+							<c:when test="${item.tditBookDesc2 eq null}"><p>이 도서는 데이터를 제공하지 않습니다.</p></c:when>
+							<c:otherwise>
+								<p>${fn:replace(item.tditBookDesc2, lf, "<br>")}</p>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 					 	
