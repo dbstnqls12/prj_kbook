@@ -22,9 +22,6 @@ public class BookController {
 	
 	@RequestMapping(value = "member/kyobo_main")
 	public String kyobo_main(@ModelAttribute("vo") BookVo vo, Model model) throws Exception {
-		
-
-		
 		return "member/kyobo_main";
 	}
 
@@ -80,5 +77,29 @@ public class BookController {
 	public String kyobo_purchase() throws Exception {
 		
 		return "member/kyobo_purchase";
+	}
+	
+	//xdmin/book
+	
+	@RequestMapping(value = "xdmin/book/bookList")
+	public String bookList() throws Exception {
+		
+		return "xdmin/book/bookList";
+	}
+
+	@RequestMapping(value = "xdmin/book/bookForm")
+	public String bookForm() throws Exception {
+		
+		return "xdmin/book/bookForm";
+	}
+	@RequestMapping(value = "xdmin/book/bookView")
+	public String bookView() throws Exception {
+		
+		return "xdmin/book/bookView";
+	}
+	@RequestMapping(value = "xdmin/book/bookEditForm")
+	public String bookEditForm() throws Exception {
+		
+		return "xdmin/book/bookEditForm";
 	}
 }

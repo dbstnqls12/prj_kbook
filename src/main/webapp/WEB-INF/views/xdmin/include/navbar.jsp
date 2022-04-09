@@ -39,6 +39,9 @@
 				<li class="nav-item">
 					<a class="nav-link" aria-current="page" href="../xdmin/member/memberList">회원관리</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" aria-current="page" href="../xdmin/book/bookList">도서관리</a>
+				</li>
 
 			</ul>
 		</div>
