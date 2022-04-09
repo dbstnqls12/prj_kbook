@@ -47,7 +47,7 @@
 		
 		<div class="mb-3"><h4 style="font-weight: bold;">회원가입</h4></div>
 			<div class="container ">
-			<form action="xdmin/member/memberInst" method="post" id="memberForm" name="memberForm" class="row g-3">
+			<form action="xdmin/member/memberInst" method="post" id="memberForm" name="memberForm" class="row g-3" enctype="multipart/form-data">
 				<input type="hidden" id="thisPage" name="thisPage"  value="<c:out value="${vo.thisPage}"/>">
 				<input type="hidden" id="kbmmSeq" name="kbmmSeq" value="<c:out value="${vo.kbmmSeq}"/>">
 				<input type="hidden" id="shKbmmDelNy" name="shKbmmDelNy" value="<c:out value="${vo.shKbmmDelNy}"/>">
@@ -154,7 +154,7 @@
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaLng" name="kbmaLng" placeholder="kbmaLng"> 
 				</div>
 				<div class="col-md-6">
-					<label for="file0" class="form-label input-file-button ">이미지 파일</label>
+					<label for="file0" class="form-label input-file-button">이미지 파일</label>
 					<input type="file" class="form-control form-control-sm mb-1" id="file0" name="file0" multiple onChange="upload(0,2);"style="display: none;" >
 					<div class="addScroll">
 						<ul id="ulFile0" class="list-group" ></ul>

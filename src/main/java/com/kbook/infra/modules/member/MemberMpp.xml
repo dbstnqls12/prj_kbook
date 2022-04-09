@@ -235,6 +235,30 @@
 			,#{kbmmSeq}
 		)		
 	</insert>
+	
+	<insert id="insertUploaded">
+		INSERT INTO ${tableName} (
+			type
+			,defaultNy
+			,sort
+			,originalName
+			,uuidName
+			,ext
+			,size
+			,delNy
+			,pseq
+		) VALUES (
+			#{type}
+			,#{defaultNy}
+			,#{sort}
+			,#{originalName}
+			,#{uuidName}
+			,#{ext}
+			,#{size}
+			,#{delNy}
+			,#{pseq}
+		)		
+	</insert>
 
 	<update id="update">
 		UPDATE kbMember SET 	

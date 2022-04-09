@@ -2,6 +2,8 @@ package com.kbook.infra.modules.member;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Member {
 
 //	memberList
@@ -69,10 +71,26 @@ public class Member {
 	private String kbmeDelNy;
 	private String ifcgSeq;
 	
+	private String tableName;
+	
+	private String seq;
+	private Integer type;
+	private String uuidName;
+	private String originalName;
+	private Integer defaultNy;
+	private Integer sort;
+	private String ext;
+	private long size;
+	private Integer delNy;
+	private String pseq;
+
 	private Integer[] kbmpDefaultNyArray;
 	private Integer[] kbmpDeviceCdArray;
 	private String[] kbmpNumberFullArray;
 	private Integer[] kbmpTelecomCdArray;
+	
+	private MultipartFile[] file0;
+	private MultipartFile[] file1;
 	
 	public String getKbmmSeq() {
 		return kbmmSeq;
@@ -350,6 +368,18 @@ public class Member {
 	public void setKbmaDelNy(String kbmaDelNy) {
 		this.kbmaDelNy = kbmaDelNy;
 	}
+	public Double getKbmaLat() {
+		return kbmaLat;
+	}
+	public void setKbmaLat(Double kbmaLat) {
+		this.kbmaLat = kbmaLat;
+	}
+	public Double getKbmaLng() {
+		return kbmaLng;
+	}
+	public void setKbmaLng(Double kbmaLng) {
+		this.kbmaLng = kbmaLng;
+	}
 	public String getKbmeDefaultNy() {
 		return kbmeDefaultNy;
 	}
@@ -392,6 +422,72 @@ public class Member {
 	public void setIfcgSeq(String ifcgSeq) {
 		this.ifcgSeq = ifcgSeq;
 	}
+	public String getTableName() {
+		return tableName;
+	}
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+	}
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
+	public Integer getType() {
+		return type;
+	}
+	public void setType(Integer type) {
+		this.type = type;
+	}
+	public String getUuidName() {
+		return uuidName;
+	}
+	public void setUuidName(String uuidName) {
+		this.uuidName = uuidName;
+	}
+	public String getOriginalName() {
+		return originalName;
+	}
+	public void setOriginalName(String originalName) {
+		this.originalName = originalName;
+	}
+	public Integer getDefaultNy() {
+		return defaultNy;
+	}
+	public void setDefaultNy(Integer defaultNy) {
+		this.defaultNy = defaultNy;
+	}
+	public Integer getSort() {
+		return sort;
+	}
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
+	public String getExt() {
+		return ext;
+	}
+	public void setExt(String ext) {
+		this.ext = ext;
+	}
+	public long getSize() {
+		return size;
+	}
+	public void setSize(long size) {
+		this.size = size;
+	}
+	public Integer getDelNy() {
+		return delNy;
+	}
+	public void setDelNy(Integer delNy) {
+		this.delNy = delNy;
+	}
+	public String getPseq() {
+		return pseq;
+	}
+	public void setPseq(String pseq) {
+		this.pseq = pseq;
+	}
 	public Integer[] getKbmpDefaultNyArray() {
 		return kbmpDefaultNyArray;
 	}
@@ -416,24 +512,19 @@ public class Member {
 	public void setKbmpTelecomCdArray(Integer[] kbmpTelecomCdArray) {
 		this.kbmpTelecomCdArray = kbmpTelecomCdArray;
 	}
-	public Double getKbmaLat() {
-		return kbmaLat;
+	public MultipartFile[] getFile0() {
+		return file0;
 	}
-	public void setKbmaLat(Double kbmaLat) {
-		this.kbmaLat = kbmaLat;
+	public void setFile0(MultipartFile[] file0) {
+		this.file0 = file0;
 	}
-	public Double getKbmaLng() {
-		return kbmaLng;
+	public MultipartFile[] getFile1() {
+		return file1;
 	}
-	public void setKbmaLng(Double kbmaLng) {
-		this.kbmaLng = kbmaLng;
+	public void setFile1(MultipartFile[] file1) {
+		this.file1 = file1;
 	}
 	
-	
-	
-
-
-
 	
 
 

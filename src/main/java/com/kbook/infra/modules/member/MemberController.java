@@ -2,6 +2,7 @@ package com.kbook.infra.modules.member;
 
 
 import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kbook.infra.common.constants.Constants;
 import com.kbook.infra.common.util.UtilDateTime;
-import com.kbook.infra.modules.cate.CateServiceImpl;
 import com.kbook.infra.modules.code.CodeServiceImpl;
 
 @Controller
@@ -124,17 +124,16 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/xdmin/member/memberInst")
-	public String memberInst(Member dto, MemberVo vo, Model model, RedirectAttributes redirectAttributes)
-			throws Exception {
-
+	public String memberInst(Member dto, MemberVo vo, Model model, RedirectAttributes redirectAttributes) throws Exception {
+		
 		service.insert(dto);
 
 		System.out.println("getKbmmSeq() : " + dto.getKbmmSeq());
 
+		vo.setKbmmSeq(dto.getKbmmSeq());
+
 		List<Member> list = service.selectListPhone(vo);
 		model.addAttribute("listPhone", list);
-
-		vo.setKbmmSeq(dto.getKbmmSeq());
 
 		redirectAttributes.addFlashAttribute("vo", vo);
 

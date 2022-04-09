@@ -5,8 +5,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kbook.infra.common.util.UtilDateTime;
+import com.kbook.infra.common.util.UtilUpload;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -44,15 +46,33 @@ public class MemberServiceImpl implements MemberService{
 		
 		dao.insert(dto);
 		for(int i=0; i<dto.getKbmpNumberFullArray().length; i++) {
+			
 			dto.setKbmpDefaultNy(dto.getKbmpDefaultNyArray()[i]);
 			dto.setKbmpTelecomCd(dto.getKbmpTelecomCdArray()[i]);
 			dto.setKbmpDeviceCd(dto.getKbmpDeviceCdArray()[i]);
 			dto.setKbmpNumberFull(dto.getKbmpNumberFullArray()[i]);
 			dao.insertPhone(dto);
 		}
+		int j = 0;
+		for(MultipartFile multipartFile : dto.getFile0()) {
+			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+			UtilUpload.upload(multipartFile, pathModule, dto);
+			
+			dto.setTableName("kbMemberUploaded");
+			dto.setType(0);
+			dto.setDefaultNy(0);
+			dto.setSort(j);
+			dto.setDelNy(0);
+			dto.setPseq(dto.getKbmmSeq());
+			
+			dao.insertUploaded(dto);
+			j++;
+			
+		}
 		
 		dao.insertEmail(dto);
 		dao.insertAddress(dto);
+		
 		
 		return 1;
 	}
