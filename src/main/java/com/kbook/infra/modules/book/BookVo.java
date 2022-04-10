@@ -5,6 +5,7 @@ public class BookVo {
 	private String tditSeq;
 	private String tditDelNy;
 	private String tditItemCate;
+	private String tdkwSeq;
 	
 //	bookList Search
 	private Integer shTditDelNy;
@@ -291,6 +292,14 @@ public class BookVo {
 
 	public void setTditItemCate(String tditItemCate) {
 		this.tditItemCate = tditItemCate;
+	}
+
+	public String getTdkwSeq() {
+		return tdkwSeq;
+	}
+
+	public void setTdkwSeq(String tdkwSeq) {
+		this.tdkwSeq = tdkwSeq;
 	}
 	
 	

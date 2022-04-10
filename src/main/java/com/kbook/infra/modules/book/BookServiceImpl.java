@@ -86,7 +86,6 @@ public class BookServiceImpl implements BookService {
 			dao.updateKeyword(dto);
 		}
 		
-		
 		int j = 0;
 		for(MultipartFile multipartFile : dto.getFile0()) {
 			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");

@@ -144,7 +144,7 @@
 				<div class="col-md-6">
 					<label class="form-label">키워드</label>
 					<c:forEach items="${listKeyword}" var="itemKeyword" varStatus="statusKeyword">
-						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeyWord" name="tdkwKeyWord" value="<c:out value="${itemKeyword.tdkwKeyword}"/>">
+						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeyWord" name="tdkwKeyWordArray" value="<c:out value="${itemKeyword.tdkwKeyword}"/>">
 					</c:forEach>
 				</div>
 <!-- 				<div class="col-md-6">
