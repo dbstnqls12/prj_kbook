@@ -59,17 +59,116 @@
 		<!-- <button class="btn btn-outline-secondary" type="button"><img src="../../../images/emailicon.png"> 번호로 로그인</button> -->
 		<button class="btn btn-naver" type="button"><img src="/resources/xdmin/image/navericon.png" id="icon"><b> 네이버</b> 로그인</button>
 		<button class="btn btn-kakao" type="button"><img src="/resources/xdmin/image/kakaoicon.png" id="icon"><b> 카카오</b> 로그인</button>
-		<button class="btn btn-facebook" type="button" id="btn-facebook"><img src="/resources/xdmin/image/fbicon.png" id="icon"><b> 페이스북</b> 로그인</button>
+<!-- 		<button class="btn btn-facebook" type="button" id="btn-facebook" onclick="fnFbCustomLogin();"><img src="/resources/xdmin/image/fbicon.png" id="icon"><b> 페이스북</b> 로그인</button> -->
+		<button class="btn btn-facebook" type="button" id="btn-facebook" onclick="fnFbCustomLogin();"><img src="/resources/xdmin/image/fbicon.png" id="icon"><b> 페이스북</b> 로그인</button>
 	</div>
-</fb:login-button>
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/resources/common/js/validation.js"></script>
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v13.0&appId=2175623275927646" nonce="JutAfaKH"></script><!-- &autoLogAppEvents=1 -->
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
 <script type="text/javascript">
+/* 
+	function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+		console.log('statusChangeCallback');
+		console.log(response);                   // The current login status of the person.
+		if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+			testAPI();  
+		} else {                                 // Not logged into your webpage or we are unable to tell.
+			document.getElementById('status').innerHTML = 'Please log ' +
+			'into this webpage.';
+		}
+	}
+
+
+  function checkLoginState() {               // Called when a person is finished with the Login Button.
+    FB.getLoginStatus(function(response) {   // See the onlogin handler
+      statusChangeCallback(response);
+    });
+  }
+
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId      : '2175623275927646',
+			cookie     : true,                     // Enable cookies to allow the server to access the session.
+			xfbml      : true,                     // Parse social plugins on this webpage.
+			version    : 'v13.0'           // Use this Graph API version for this call.
+		});
+	
+	
+		FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+			statusChangeCallback(response);        // Returns the login status.
+		});
+	};
+ 
+  function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+       document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!'; 
+    });
+  }
+ */
+
+
+
 //페이스북 (로그인) 기본 설정
+
+ 	function checkLoginState() {               					//로그인 클릭시 호출
+ 	    FB.getLoginStatus(function(response) {  
+ 	      statusChangeCallback(response);
+ 	    });
+ 	  }
+
+	function statusChangeCallback(response) { 					// FB.getLoginStatus()의 결과호출
+		
+	 console.log(response);             			 			//사용자의 현재 로그인 상태.
+		if (response.status === 'connected') {   				// 웹페이지와 페이스북에 로그인이 되어있다면
+			testAPI();  
+		} else {         			                       		// 웹페이지와 페이스북에 로그인이 되어있지 않다면
+			console.log('Please log into this webpage.'); 
+		}
+	}
+	
+ 	function fnFbCustomLogin(){
+		FB.login(function(response) {
+			if (response.status === 'connected') {
+				FB.api('/me', 'get', {fields: 'name,email'}, function(r) {
+					console.log(r);
+					console.log('Successful login for: ' + r.name);
+				/* 	console.log(testAPI(response)); */
+				})
+			} 
+		}, {scope: 'public_profile,email'});		//profile, email 권한을 나중에 추가하려는 경우 FB.login() 함수로 다시 실행할 수 있다.
+	}
+	
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId      : '2175623275927646', // 내 앱 ID.
+			cookie     : true,
+			xfbml      : true,
+			version    : 'v13.0'
+		});
+		FB.getLoginStatus(function(response) {   
+			statusChangeCallback(response);        // 로그인 상태를 말해줌
+		});
+	}; 
+
+ 	function testAPI(response) {                      
+		console.log('Welcome!  Fetching your information.... ');
+		FB.api('/me', function(response) {
+			console.log('Thanks for logging in ' + response.name);
+		});
+	} 
+
+
+	  
+	  
+	  
   	$("#btnLogin").on("click",function(){
 		
 		$.ajax({

@@ -30,6 +30,7 @@
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v13.0&appId=2175623275927646" nonce="JutAfaKH"></script><!-- &autoLogAppEvents=1 -->
 <script type="text/javascript">
+	
 	function statusChangeCallback(res){
 		statusChangeCallback(response);
 	}
@@ -55,7 +56,7 @@
 			appId      : '1588150011384568', // 내 앱 ID를 입력한다.
 			cookie     : true,
 			xfbml      : true,
-			version    : 'v10.0'
+			version    : 'v13.0'
 		});
 		FB.AppEvents.logPageView();   
 	};

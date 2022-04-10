@@ -1,5 +1,9 @@
 package com.kbook.infra.modules.book;
 
+import java.util.Date;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class Book {
 	
 	private String tditSeq;
@@ -9,6 +13,7 @@ public class Book {
 	private String tditPublishingDate;
 	private String tditPrice;
 	private String tditDiscountCd;
+	private Double tditDiscountRate;
 	private String tditStateCd;
 	private String tditItemCate;
 	private String tditItemCate2;
@@ -20,6 +25,11 @@ public class Book {
 	private String tditBookDesc2;
 	private String tditTableOfContents;
 	private String tditDelNy;
+
+	private Date regDateTime;
+	private Date regDateTimeSvr;
+	private Date modDateTime;
+	private Date modDateTimeSvr;
 	
 	private String tdatAuthorCd;
 	private String tdatSeq;
@@ -37,6 +47,18 @@ public class Book {
 	private String tdriPrice;
 	private String tdriDelNy;
 	
+	private String tableName;
+	private String seq;
+	private Integer type;
+	private String uuidName;
+	private String originalName;
+	private Integer defaultNy;
+	private Integer sort;
+	private String ext;
+	private long size;
+	private Integer delNy;
+	private String pseq;
+	
 	private String[] tdatAuthorCdArray;
 	private String[] tdkwKeywordArray;
 
@@ -46,6 +68,8 @@ public class Book {
 	private String[] tdriPriceArray;
 	private String[] tdriDelNyArray;
 
+	private MultipartFile[] file0;
+	private MultipartFile[] file1;
 	
 	public String getTditSeq() {
 		return tditSeq;
@@ -274,6 +298,114 @@ public class Book {
 	}
 	public void setTdriDelNyArray(String[] tdriDelNyArray) {
 		this.tdriDelNyArray = tdriDelNyArray;
+	}
+	public Date getRegDateTime() {
+		return regDateTime;
+	}
+	public void setRegDateTime(Date regDateTime) {
+		this.regDateTime = regDateTime;
+	}
+	public Date getRegDateTimeSvr() {
+		return regDateTimeSvr;
+	}
+	public void setRegDateTimeSvr(Date regDateTimeSvr) {
+		this.regDateTimeSvr = regDateTimeSvr;
+	}
+	public Date getModDateTime() {
+		return modDateTime;
+	}
+	public void setModDateTime(Date modDateTime) {
+		this.modDateTime = modDateTime;
+	}
+	public Date getModDateTimeSvr() {
+		return modDateTimeSvr;
+	}
+	public void setModDateTimeSvr(Date modDateTimeSvr) {
+		this.modDateTimeSvr = modDateTimeSvr;
+	}
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
+	public Integer getType() {
+		return type;
+	}
+	public void setType(Integer type) {
+		this.type = type;
+	}
+	public String getUuidName() {
+		return uuidName;
+	}
+	public void setUuidName(String uuidName) {
+		this.uuidName = uuidName;
+	}
+	public String getOriginalName() {
+		return originalName;
+	}
+	public void setOriginalName(String originalName) {
+		this.originalName = originalName;
+	}
+	public Integer getDefaultNy() {
+		return defaultNy;
+	}
+	public void setDefaultNy(Integer defaultNy) {
+		this.defaultNy = defaultNy;
+	}
+	public Integer getSort() {
+		return sort;
+	}
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
+	public String getExt() {
+		return ext;
+	}
+	public void setExt(String ext) {
+		this.ext = ext;
+	}
+	public long getSize() {
+		return size;
+	}
+	public void setSize(long size) {
+		this.size = size;
+	}
+	public Integer getDelNy() {
+		return delNy;
+	}
+	public void setDelNy(Integer delNy) {
+		this.delNy = delNy;
+	}
+	public String getPseq() {
+		return pseq;
+	}
+	public void setPseq(String pseq) {
+		this.pseq = pseq;
+	}
+	public MultipartFile[] getFile0() {
+		return file0;
+	}
+	public void setFile0(MultipartFile[] file0) {
+		this.file0 = file0;
+	}
+	public MultipartFile[] getFile1() {
+		return file1;
+	}
+	public void setFile1(MultipartFile[] file1) {
+		this.file1 = file1;
+	}
+	public Double getTditDiscountRate() {
+		return tditDiscountRate;
+	}
+	public void setTditDiscountRate(Double tditDiscountRate) {
+		this.tditDiscountRate = tditDiscountRate;
+	}
+	public String getTableName() {
+		return tableName;
+	}
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
 	}
 	
 

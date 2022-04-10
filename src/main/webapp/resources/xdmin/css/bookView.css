@@ -1,0 +1,10 @@
+.addScroll {
+	overflow: auto;
+	height : 90px;
+	background-color: #F0F8FF;
+}
+
+.input-file-button {
+	padding : auto;
+	cursor : pointer;
+}

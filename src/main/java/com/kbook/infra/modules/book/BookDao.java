@@ -19,6 +19,10 @@ public class BookDao {
 	
 	private static String namespace = "com.kbook.infra.modules.book.BookMpp";
 	
+	public int selectOneCount(BookVo vo) {return sqlSession.selectOne(namespace+".selectOneCount",vo);}	
+	public List<Book> selectList(BookVo vo){ return sqlSession.selectList(namespace + ".selectList",vo); }
+	
+	/* bookMain */
 	public List<Book> selectListDomesticNew(BookVo vo){ return sqlSession.selectList(namespace + ".selectListDomesticNew",vo); }
 	public List<Book> selectListAbroadNew(BookVo vo){ return sqlSession.selectList(namespace + ".selectListAbroadNew",vo); }
 	public List<Book> selectListEbookNew(BookVo vo){ return sqlSession.selectList(namespace + ".selectListEbookNew",vo); }
@@ -30,4 +34,9 @@ public class BookDao {
 	public List<Book> selectListKeyword(BookVo vo){ return sqlSession.selectList(namespace + ".selectListKeyword",vo); }
 	public List<Book> selectListRelatedItem(BookVo vo){ return sqlSession.selectList(namespace + ".selectListRelatedItem",vo); }
 	public Book selectOne(BookVo vo) {return sqlSession.selectOne(namespace +".selectOne", vo);}
+
+	public int update(Book dto) {return sqlSession.update(namespace +".update", dto);}
+	public int updateKeyword(Book dto) {return sqlSession.update(namespace +".updateKeyword", dto);}
+	public int updateUploaded(Book dto) {return sqlSession.update(namespace +".updateUploaded", dto);}
+
 }

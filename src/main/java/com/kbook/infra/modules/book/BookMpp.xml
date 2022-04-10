@@ -8,7 +8,50 @@
 
 <resultMap id="resultMapObj" type="com.kbook.infra.modules.book.Book"></resultMap>
 
-<!-- selectNew -->
+<sql id="selectCommon">
+	FROM
+		tradItem a
+		LEFT JOIN tradAuthor b ON b.tditSeq = a.tditSeq
+		LEFT JOIN infrAuthorCode c ON c.ifacSeq = b.tdatSeq
+		LEFT JOIN infrPublisherCode d ON d.ifpcSeq = a.tditPublisherCd
+	WHERE 1=1 	
+		AND b.tdatDefaultNy = 1
+		<choose>
+			<when test="shTditDelNy == 1">AND tditDelNy = 1</when>
+			<when test="shTditDelNy == 0">AND tditDelNy = 0</when>
+		</choose>
+		<choose>
+			<when test="shOption == 1">AND tditTitle LIKE concat('%', #{shValue}, '%')</when>
+			<when test="shOption == 2">AND c.ifacName LIKE concat('%', #{shValue}, '%')</when>
+			<when test="shOption == 3">AND d.ifpcName LIKE concat('%', #{shValue}, '%')</when>
+		</choose>
+		<choose>
+			<when test="shOptionDate == 1">AND a.tditPublishingDate BETWEEN #{shDateStart} AND #{shDateEnd} </when>
+			<when test="shOptionDate == 2">AND a.regDateTime BETWEEN #{shDateStart} AND #{shDateEnd} </when>
+			<when test="shOptionDate == 3">AND a.modDateTime BETWEEN #{shDateStart} AND #{shDateEnd} </when>
+		</choose>
+</sql>
+
+<select id="selectList" resultMap="resultMapObj">
+	SELECT
+		a.tditSeq
+		,a.tditTitle
+		,a.tditPublisherCd
+		,a.tditPublishingDate
+		,a.tditPrice
+		,a.tditDelNy
+		,a.tditItemCate
+		,b.tdatAuthorCd
+	<include refid="selectCommon"/>	
+	limit #{startRnumForMysql}, #{rowNumToShow}	
+</select>
+
+<select id="selectOneCount" resultType="Integer">
+	SELECT
+		count(*)
+	<include refid="selectCommon"/>	
+</select>
+
 <select id="selectListDomesticNew" resultMap="resultMapObj">
 	SELECT
 		a.tditSeq
@@ -53,6 +96,10 @@
 		,a.tditStateCd
 		,a.tditItemCate
 		,a.tditDelNy
+		,a.modDateTime
+		,a.modDateTimeSvr
+		,a.regDateTime
+		,a.regDateTimeSvr
 	FROM
 		tradItem a
 	WHERE 1=1 	
@@ -107,6 +154,7 @@
 		,a.tditPublishingDate
 		,a.tditPrice
 		,a.tditDiscountCd
+		,a.tditDiscountRate
 		,a.tditStateCd
 		,a.tditItemCate
 		,a.tditItemCate2
@@ -147,6 +195,7 @@
 	WHERE 1=1
 		AND tditSeq = #{tditSeq}	
 </select>
+
 <select id="selectListRelatedItem" resultMap="resultMapObj">
 	SELECT
 		tdriSeq
@@ -161,6 +210,44 @@
 		AND tditSeq = #{tditSeq}
 		AND tdriDelNy = 0	
 </select>
+
+<update id="update">
+	UPDATE tradItem SET 
+		tditPrice = #{tditPrice}
+		,tditDiscountCd = #{tditDiscountCd}
+		,tditDiscountRate = #{tditDiscountRate}
+		,tditStateCd = #{tditStateCd}
+		,tditItemCate = #{tditItemCate}
+		,tditItemCate2 = #{tditItemCate2}
+		,tditPage = #{tditPage}
+		,tditWeight = #{tditWeight}
+		,tditBookDesc = #{tditBookDesc}
+		,tditBookDesc2 = #{tditBookDesc2}
+		,tditTableOfContents = #{tditTableOfContents}
+		,modDateTime = #{modDateTime}
+	WHERE 1=1
+		AND tditSeq=#{tditSeq}
+</update>
+<update id="updateKeyword">
+	UPDATE tradItemKeyword SET 
+		tdkwKeyword = #{tdkwKeyword}
+	WHERE 1=1
+		AND tditSeq=#{tditSeq}
+</update>
+<insert id="updateUploaded">
+	UPDATE ${tableName} SET
+		type = #{type}
+		,defaultNy = #{defaultNy} 
+		,sort = #{sort}
+		,originalName = #{originalName}
+		,uuidName = #{uuidName}
+		,ext = #{ext}
+		,size = #{size}
+		,delNy = #{delNy}
+		,pseq = #{pseq}
+	)WHERE 1=1
+		AND tditSeq=#{tditSeq}		
+</insert>
 
 
 </mapper>    
