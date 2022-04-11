@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kbook.infra.common.util.UtilUpload;
+
 import org.springframework.ui.Model;
 
 @Controller
@@ -39,6 +41,9 @@ public class BookController {
 		List<Book> listToday = service.selectListToday(vo);
 		model.addAttribute("listbookToday", listToday);
 		
+		List<Book> listUploaded = service.selectListBookUploaded(vo);
+		model.addAttribute("listUploaded", listUploaded);
+		
 		return "visitor/kyobo_Vmain";
 	}
 	
@@ -53,11 +58,11 @@ public class BookController {
 		List<Book> listKeyword = service.selectListKeyword(vo);
 		model.addAttribute("listKeyword", listKeyword);
 
-		List<Book> listRelatedItem= service.selectListRelatedItem(vo);
-		model.addAttribute("listRelatedItem", listRelatedItem);
-		
 		Book rt = service.selectOne(vo);
 		model.addAttribute("item", rt);
+		
+		List<Book> listUploaded = service.selectListBookUploaded(vo);
+		model.addAttribute("listUploaded", listUploaded);
 		
 		return "/visitor/kyobo_VbookInfo";
 	}
@@ -107,9 +112,6 @@ public class BookController {
 	@RequestMapping(value = "xdmin/book/bookView")
 	public String bookView(@ModelAttribute("vo") BookVo vo, Book dto,Model model) throws Exception {
 	
-		System.out.println("dto.getPseq() : "+dto.getPseq());
-		System.out.println("dto.getOriginalName() : "+dto.getOriginalName());
-//		System.out.println("dto.getTdkwKeywordArray().length : "+dto.getTdkwKeywordArray().length);
 		
 		Book rt = service.selectOne(vo);
 		model.addAttribute("item", rt);
@@ -119,13 +121,11 @@ public class BookController {
 
 		List<Book> listKeyword = service.selectListKeyword(vo);
 		model.addAttribute("listKeyword", listKeyword);
-		
-		List<Book> listRelatedItem = service.selectListRelatedItem(vo);
-		model.addAttribute("listRelatedItem", listRelatedItem);
 
-		List<Book> listImage = service.selectListImage(vo);
-		model.addAttribute("listImage", listImage);
+		List<Book> listUploaded = service.selectListBookUploaded(vo);
+		model.addAttribute("listUploaded", listUploaded);
 		
+//		model.addAttribute("listUploaded", service.selectListBookUploaded(vo));
 		
 		return "xdmin/book/bookView";
 	}
@@ -139,8 +139,8 @@ public class BookController {
 		List<Book> listKeyword = service.selectListKeyword(vo);
 		model.addAttribute("listKeyword", listKeyword);
 
-		List<Book> listRelatedItem= service.selectListRelatedItem(vo);
-		model.addAttribute("listRelatedItem", listRelatedItem);
+//		List<Book> listRelatedItem= service.selectListRelatedItem(vo);
+//		model.addAttribute("listRelatedItem", listRelatedItem);
 		
 		
 		
@@ -159,9 +159,6 @@ public class BookController {
 		List<Book> listKeyword = service.selectListKeyword(vo);
 		model.addAttribute("listKeyword", listKeyword);
 		
-		List<Book> listRelatedItem= service.selectListRelatedItem(vo);
-		model.addAttribute("listRelatedItem", listRelatedItem);
-		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
 		return "redirect:/xdmin/book/bookView";
@@ -169,7 +166,6 @@ public class BookController {
 	}
 	@RequestMapping(value = "xdmin/book/bookEditForm")
 	public String bookEditForm(@ModelAttribute("vo") BookVo vo, Book dto, Model model) throws Exception {
-		
 		
 		Book rt = service.selectOne(vo);
 		model.addAttribute("rt", rt);
@@ -180,9 +176,6 @@ public class BookController {
 		List<Book> listKeyword = service.selectListKeyword(vo);
 		model.addAttribute("listKeyword", listKeyword);
 
-		List<Book> listRelatedItem= service.selectListRelatedItem(vo);
-		model.addAttribute("listRelatedItem", listRelatedItem);
-		
 		return "xdmin/book/bookEditForm";
 	}
 	@RequestMapping(value = "xdmin/book/bookUpdt")
@@ -197,9 +190,6 @@ public class BookController {
 		
 		List<Book> listKeyword = service.selectListKeyword(vo);
 		model.addAttribute("listKeyword", listKeyword);
-		
-		List<Book> listRelatedItem= service.selectListRelatedItem(vo);
-		model.addAttribute("listRelatedItem", listRelatedItem);
 		
 		redirectAttributes.addFlashAttribute("vo",vo);
 		

@@ -33,6 +33,8 @@ public class UtilUpload {
 //		dto.setPath("/resources/uploaded/" + pathModule + "/" + pathDate + "/");
 	
 	}
+	
+	
 	public static void uploadBook (MultipartFile multipartFile, String className, Book dto) throws Exception{
 		String fileName = multipartFile.getOriginalFilename();
 		String ext = fileName.substring(fileName.lastIndexOf(".")+1);
@@ -51,7 +53,7 @@ public class UtilUpload {
 		dto.setUuidName(uuidFileName);
 		dto.setExt(ext);
 		dto.setSize(multipartFile.getSize());
-//		dto.setPath("/resources/uploaded/" + pathModule + "/" + pathDate + "/");
+		dto.setPath("/resources/uploaded/" + pathModule + "/" + pathDate + "/");
 	}
 	
 	public static void createPath (String path) {

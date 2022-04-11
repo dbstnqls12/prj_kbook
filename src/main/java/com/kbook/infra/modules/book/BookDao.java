@@ -31,8 +31,8 @@ public class BookDao {
 	/* bookInfo */
 	public List<Book> selectListAuthor(BookVo vo){ return sqlSession.selectList(namespace + ".selectListAuthor",vo); }
 	public List<Book> selectListKeyword(BookVo vo){ return sqlSession.selectList(namespace + ".selectListKeyword",vo); }
-	public List<Book> selectListRelatedItem(BookVo vo){ return sqlSession.selectList(namespace + ".selectListRelatedItem",vo); }
-	public List<Book> selectListImage(BookVo vo){ return sqlSession.selectList(namespace + ".selectListImage",vo); }
+//	public List<Book> selectListRelatedItem(BookVo vo){ return sqlSession.selectList(namespace + ".selectListRelatedItem",vo); }
+	public List<Book> selectListBookUploaded(BookVo vo){ return sqlSession.selectList(namespace + ".selectListBookUploaded",vo); }
 	public Book selectOne(BookVo vo) {return sqlSession.selectOne(namespace +".selectOne", vo);}
 
 	public int insert(Book dto) {return sqlSession.insert(namespace +".insert", dto);}

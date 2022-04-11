@@ -62,8 +62,13 @@
 		,a.tditStateCd
 		,a.tditItemCate
 		,a.tditDelNy
+		,b.path
+		,b.uuidName
+		,b.pseq
+		,b.type
 	FROM
 		tradItem a
+		LEFT JOIN tradItemUploaded b ON b.pseq= a.tditSeq
 	WHERE 1=1 	
 		AND a.tditItemCate = 2
 	ORDER BY a.tditPublishingDate DESC
@@ -79,8 +84,13 @@
 		,a.tditStateCd
 		,a.tditItemCate
 		,a.tditDelNy
+		,b.path
+		,b.uuidName
+		,b.pseq
+		,b.type
 	FROM
 		tradItem a
+		LEFT JOIN tradItemUploaded b ON b.pseq= a.tditSeq
 	WHERE 1=1 	
 		AND a.tditItemCate = 3
 		ORDER BY a.tditPublishingDate DESC
@@ -100,8 +110,13 @@
 		,a.modDateTimeSvr
 		,a.regDateTime
 		,a.regDateTimeSvr
+		,b.path
+		,b.uuidName
+		,b.pseq
+		,b.type
 	FROM
 		tradItem a
+		LEFT JOIN tradItemUploaded b ON b.pseq= a.tditSeq
 	WHERE 1=1 	
 		AND a.tditItemCate = 4
 	ORDER BY a.tditPublishingDate DESC
@@ -119,9 +134,14 @@
 		,a.tditDelNy
 		,b.tdatAuthorCd
 		,b.tdatDefaultNy
+		,c.path
+		,c.uuidName
+		,c.pseq
+		,c.type
 	FROM
 		tradItem a
 		LEFT JOIN tradAuthor b ON b.tditSeq = a.tditSeq
+		LEFT JOIN tradItemUploaded c ON c.pseq= a.tditSeq
 	WHERE 1=1 	
 		AND b.tdatDefaultNy = 1		
 		AND a.tditSeq BETWEEN 3 AND 10
@@ -134,10 +154,15 @@
 		,a.tditTitle
 		,a.tditSubTitle
 		,b.tdatAuthorCd
-		,b.tdatDefaultNy
+		,b.tdatDefaultNy	
+		,c.path
+		,c.uuidName
+		,c.pseq
+		,c.type
 	FROM 
 		tradItem a
 		LEFT JOIN tradAuthor b ON b.tditSeq = a.tditSeq
+		LEFT JOIN tradItemUploaded c ON c.pseq= a.tditSeq
 	WHERE 1=1 	
 		AND b.tdatDefaultNy = 1		
 	ORDER BY RAND()
@@ -186,23 +211,26 @@
 		AND tditSeq = #{tditSeq}	
 </select>
 
-<select id="selectListImage" resultMap="resultMapObj">
+<select id="selectListBookUploaded" resultMap = "resultMapObj">
+	
 	SELECT
-		a.type
-		,a.defaultNy
-		,a.sort
-		,a.originalName
-		,a.uuidName
-		,a.ext
-		,a.size
-		,a.delNy
-		,a.pseq
-	FROM tradItemUploaded a
-		LEFT JOIN tradItem b ON b.tditSeq = a.pseq
+		seq
+		, type
+		, defaultNy
+		, sort
+		, originalName
+		, uuidName 
+		, ext
+		, size
+		, delNy
+		, pseq
+		, path
+	FROM
+		tradItemUploaded
 	WHERE 1=1
-		AND a.pseq = #{tditSeq} 
+		AND pseq = #{tditSeq}
+	
 </select>
-
 <select id="selectListKeyword" resultMap="resultMapObj">
 	SELECT
 		tdkwSeq
@@ -215,7 +243,7 @@
 		AND tditSeq = #{tditSeq}	
 </select>
 
-<select id="selectListRelatedItem" resultMap="resultMapObj">
+<!-- <select id="selectListRelatedItem" resultMap="resultMapObj">
 	SELECT
 		tdriSeq
 		,tdriTypeCd
@@ -228,7 +256,7 @@
 	WHERE 1=1
 		AND tditSeq = #{tditSeq}
 		AND tdriDelNy = 0	
-</select>
+</select> -->
 
 <insert id="insert">
 	INSERT INTO tradItem(	
@@ -322,6 +350,7 @@
 		,ext
 		,size
 		,delNy
+		,path
 		,pseq
 	) VALUES (
 		#{type}
@@ -332,6 +361,7 @@
 		,#{ext}
 		,#{size}
 		,#{delNy}
+		,#{path}
 		,#{pseq}
 	)		
 </insert>
@@ -362,8 +392,8 @@
 		,uuidName = #{uuidName}
 		,ext = #{ext}
 		,size = #{size}
+		,path = #{path}
 		,delNy = #{delNy}
-		,pseq = #{pseq}
 	WHERE 1=1
 		AND pseq = #{pseq}
 </update>

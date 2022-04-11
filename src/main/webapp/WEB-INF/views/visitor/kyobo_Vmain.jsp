@@ -48,7 +48,7 @@
 						<c:forEach items="${listDomesticNew}" var="item" varStatus="status">	
 						<div class="col-lg-3 ">
 							<div class="card h-100">
-								<a href="javascript:goInfo(<c:out value="${item.tditSeq}"/>)"><img src="/resources/user/image/book/bookEx11.jpg" class="card-img-top"></a>
+								<a href="javascript:goInfo(<c:out value="${item.tditSeq}"/>)"><img src="<c:out value="${item.path}"/><c:out value="${item.uuidName}"/>" class="card-img-top"></a>
 									<div class="card-body">
 									<p class="card-title mx-auto" id="title"><a href="javascript:goInfo(<c:out value="${item.tditSeq}"/>)"><c:out value="${item.tditTitle}"/></a></p>
 							 		<p class="card-text mx-auto" id="subTitle"><c:out value="${item.tditSubTitle}"/></p>
@@ -61,7 +61,7 @@
 						<c:forEach items="${listAbroadNew}" var="item" varStatus="status">	
 						<div class="col-lg-3 ">
 							<div class="card h-100">
-								<a href="javascript:goInfo(<c:out value="${item.tditSeq}"/>)"><img src="/resources/user/image/book/bookEx10.jpg" class="card-img-top"></a>
+								<a href="javascript:goInfo(<c:out value="${item.tditSeq}"/>)"><img src="<c:out value="${item.path}"/><c:out value="${item.uuidName}"/>" class="card-img-top"></a>
 									<div class="card-body">
 									<p class="card-title mx-auto" id="title"><a href="javascript:goInfo(<c:out value="${item.tditSeq}"/>)"><c:out value="${item.tditTitle}"/></a></p>
 							 		<p class="card-text mx-auto" id="subTitle"><c:out value="${item.tditSubTitle}"/></p>
@@ -74,7 +74,7 @@
 						<c:forEach items="${listEbookNew}" var="item" varStatus="status">	
 							<div class="col-lg-3 ">
 								<div class="card h-100">
-									<a href="javascript:goInfo(<c:out value="${item.tditSeq}"/>)"><img src="/resources/user/image/book/bookEx9.jpg" class="card-img-top"></a>
+									<a href="javascript:goInfo(<c:out value="${item.tditSeq}"/>)"><img src="<c:out value="${item.path}"/><c:out value="${item.uuidName}"/>" class="card-img-top"></a>
 										<div class="card-body">
 										<p class="card-title mx-auto" id="title"><a href="javascript:goInfo(<c:out value="${item.tditSeq}"/>)"><c:out value="${item.tditTitle}"/></a></p>
 								 		<p class="card-text mx-auto" id="subTitle"><c:out value="${item.tditSubTitle}"/></p>
@@ -108,6 +108,7 @@
 								<td><img src="/resources/user/image/book/bookEx4.jpg" id="best" name="best"></td>
 
 							</tr>
+							<%-- <c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/> --%>
 							<tr>
 								<c:forEach items="${listbookBest}" var="item" varStatus="status" begin="0" end="3">	
 									<td>
@@ -152,9 +153,8 @@
 		<div class="col-md-2">
 			<div class="card" style="width: 12rem;">
 			<div class="card-header"><p id="today"><i class="fa-solid fa-book-bookmark"></i>오늘의 추천 도서</p></div>
-			<img src="/resources/user/image/book/bookEx5.jpg" class="card-img-top" >
-			
 			<c:forEach items="${listbookToday}" var="item" varStatus="status">	
+					<img src="<c:out value="${item.path}"/><c:out value="${item.uuidName}"/>" class="card-img-top">
 				<div class="card-body">
 					<h5 class="card-title" id="todayTitle"><a href="javascript:goInfo(<c:out value="${item.tditSeq}"/>)"><c:out value="${item.tditTitle}"/></a></h5>
 					<c:forEach items="${listAuthor}" var="item2" varStatus="status">

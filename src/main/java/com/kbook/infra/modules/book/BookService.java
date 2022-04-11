@@ -17,8 +17,8 @@ public interface BookService {
 	/* bookInfo */
 	public List<Book> selectListAuthor(BookVo vo) throws Exception;
 	public List<Book> selectListKeyword(BookVo vo) throws Exception;
-	public List<Book> selectListRelatedItem(BookVo vo) throws Exception;
-	public List<Book> selectListImage(BookVo vo) throws Exception;
+//	public List<Book> selectListRelatedItem(BookVo vo) throws Exception;
+	public List<Book> selectListBookUploaded(BookVo vo) throws Exception;
 	public Book selectOne(BookVo vo) throws Exception;
 	
 	public int insert(Book dto) throws Exception;

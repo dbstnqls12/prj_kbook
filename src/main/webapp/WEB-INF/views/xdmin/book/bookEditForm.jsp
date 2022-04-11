@@ -290,7 +290,7 @@
 			addUploadLi(seq, i, $("input[type=file]")[seq].files[i].name);
 		}
 	}
-
+	
 	addUploadLi = function(seq,index,name){
 		
 		var ul_list = $("#ulFile0");

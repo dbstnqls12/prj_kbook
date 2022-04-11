@@ -58,11 +58,6 @@ public class BookServiceImpl implements BookService {
 		return dao.selectListKeyword(vo);
 	}
 
-	@Override
-	public List<Book> selectListRelatedItem(BookVo vo) throws Exception {
-		return dao.selectListRelatedItem(vo);
-	}
-
 //	bookList
 	
 	@Override
@@ -75,10 +70,10 @@ public class BookServiceImpl implements BookService {
 		return dao.selectOneCount(vo);
 	}
 
-	@Override
-	public List<Book> selectListImage(BookVo vo) throws Exception {
-		return dao.selectListImage(vo);
-	}
+//	@Override
+//	public List<Book> selectListImage(BookVo vo) throws Exception {
+//		return dao.selectListImage(vo);
+//	}
 	
 	@Override
 	public int update(Book dto) throws Exception {
@@ -189,6 +184,12 @@ public class BookServiceImpl implements BookService {
 		
 		return 1;
 	}
+
+	@Override
+	public List<Book> selectListBookUploaded(BookVo vo) throws Exception {
+		return dao.selectListBookUploaded(vo);
+	}
+
 
 
 

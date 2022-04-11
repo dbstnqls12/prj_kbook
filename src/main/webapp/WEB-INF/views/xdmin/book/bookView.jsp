@@ -208,22 +208,17 @@
 					</select>
 				</div>	
 				<div class="col-md-6">
-					<label for="file0" class="form-label input-file-button">책 대표이미지(image)</label>
-					<input type="file" class="form-control form-control-sm mb-1" id="file0" name="file0" multiple onChange="upload(0,2);"style="display: none;" >
-					<div class="addScroll">
-					<c:forEach items="${listImage}" var="itemImage" varStatus="statusImage">
-						<ul id="ulFile0" class="list-group" ><c:if test="${itemImage.type eq 0}"><c:out value="${itemImage.originalName}"/></c:if></ul>
-					</c:forEach>	
-					</div>
+					<label for="file0" class="form-label input-file-button d-block">책 대표이미지(image)</label>
+					<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
+					<img id="mainimage" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>" style="width: 100px;">
+					</c:forEach>
 				</div>
 				
 				<div class="col-md-6">
 					<label for="file1" class="form-label input-file-button">책 설명(image)</label>
 					<input type="file" class="form-control form-control-sm mb-1" id="file1" name="file1" multiple onChange="upload(1,2);"style="display: none;" >
 					<div class="addScroll">
-					<c:forEach items="${listImage}" var="itemImage" varStatus="statusImage">
-						<ul id="ulFile0" class="list-group" ><c:if test="${itemImage.type eq 1}"><c:out value="${itemImage.originalName}"/></c:if></ul>
-					</c:forEach>
+						<ul id="ulFile1" class="list-group" ></ul>
 					</div>
 				</div>
 				
@@ -279,8 +274,8 @@
 <script src="/resources/common/js/validation.js"></script>
 <script src="/resources/common/js/commonXdmin.js"></script>
 <script src="/resources/common/js/common.js"></script>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6ec915718ae8d23e16c65e0f6d22a62e&libraries=services"></script>
+<!-- <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> -->
+<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6ec915718ae8d23e16c65e0f6d22a62e&libraries=services"></script> -->
 
 <script>
 
