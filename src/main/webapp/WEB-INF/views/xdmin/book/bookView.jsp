@@ -65,16 +65,45 @@
 				</div>
 				
 				
+<%-- 				<c:set var="listAuthor" value="${AuthorServiceImpl.selelctListCachedAuthor('15')}"/>
+				<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><!-- 작가리스트 내가 여기에 집어넣을껴-->
+					<c:choose>
+						<c:when test="${item.tdatDefaultNy eq 1}"> <c:set var="tdatAuthorCd1" value="${item.tdatAuthorCd}"/></c:when>
+						<c:when test="${item.tdatDefaultNy eq 0}"><c:set var="tdatAuthorCd2" value="${item.tdatAuthorCd}"/></c:when>
+						<c:otherwise></c:otherwise>
+					</c:choose>
+				</c:forEach>
 				<div class="col-md-6">
+					<label for="inputId" class="form-label">저자명</label>
+					<input type="hidden" id="tdatDefaultNyArray0" name="tdatDefaultNyArray" value="1">
+					<input type="hidden" id="tdatDelNyArray0" name="tdatDelNyArray" value="0">
+					<select class="form-select form-select-sm mb-1" id="tdatAuthorCdArray0" name="tdatAuthorCdArray" >
+					<option value="">::저자선택::</option>
+						<c:forEach items="${listAuthor}" var="item2" varStatus="status">
+							<option value="<c:out value="${item2.ifacSeq}"/>"><c:if test="${tdatAuthorCd1 eq item2.ifacSeq}">selected</c:if><c:out value="${item2.ifacName}"/></option>	
+						</c:forEach>
+					</select>	
+					
+					<input type="hidden" id="tdatDefaultNyArray1" name="tdatDefaultNyArray" value="0">
+					<input type="hidden" id="tdatDelNyArray1" name="tdatDelNyArray" value="0">
+					<select class="form-select form-select-sm mb-1" id="tdatAuthorCdArray1" name="tdatAuthorCdArray" >
+					<option value="">::저자선택::</option>
+						<c:forEach items="${listAuthor}" var="item2" varStatus="status">
+							<option value="<c:out value="${item2.ifacSeq}"/>"><c:if test="${tdatAuthorCd1 eq item2.ifacSeq}">selected</c:if><c:out value="${item2.ifacName}"/></option>	
+						</c:forEach>
+					</select>	
+				</div> --%>
+				
+<%-- 				<div class="col-md-6">
 					<label for="inputId" class="form-label">저자명</label>
 					<c:set var="listAuthor" value="${AuthorServiceImpl.selelctListCachedAuthor('15')}"/>
 						<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><!-- 작가리스트 -->
 							<c:forEach items="${listAuthor}" var="item2" varStatus="status"><!-- 작가코드 -->
 								<c:if test="${itemAuthor.tdatAuthorCd eq item2.ifacSeq}"><p style="display: inline;">
-								<input type="text" class="form-control form-control-sm mb-1" id="tdatAuthorCd"name="tdatAuthorCd" value="<c:out value="${item2.ifacName}" />"> </p></c:if>
+								<input type="text" class="form-control form-control-sm mb-1" id="tdatAuthorCd"name="tdatAuthorCd" value="<c:out value="${item2.ifacName}" />"></p></c:if>
 							</c:forEach>	
 						</c:forEach>
-				</div>
+				</div> --%>
 				
 				<div class="col-md-6">
 					<label class="col-form-label pt-0">카테고리</label>
@@ -110,7 +139,7 @@
 				</div>
 				<div class="col-md-6">
 				<c:set var="listCodeDiscount" value="${CodeServiceImpl.selectListCachedCode('13')}"/>
-					<label class="form-label">할인울</label>
+					<label class="form-label">할인율</label>
 					<select class="form-select form-select-sm mb-1" id="tditDiscountCd" name="tditDiscountCd" >
 						<option selected>::할인율::</option>
 							<c:forEach items="${listCodeDiscount}" var="itemDiscount" varStatus="statusDiscount">
@@ -131,6 +160,43 @@
 					<label class="form-label">크기</label>
 					<input type="text" class="form-control form-control-sm" id="tditSize" name="tditSize" value="<c:out value="${item.tditSize}"/>">
 				</div>
+
+					<c:forEach items="${listKeyword}" var="itemKeyword" varStatus="statusKeyword">
+					<c:choose>
+						<c:when test="${itemKeyword.tdkwOrder eq 1}"> <c:set var="tdkwKeyWord1" value="${itemKeyword.tdkwKeyword}"/></c:when>
+						<c:when test="${itemKeyword.tdkwOrder eq 2}"> <c:set var="tdkwKeyWord2" value="${itemKeyword.tdkwKeyword}"/></c:when>
+						<c:when test="${itemKeyword.tdkwOrder eq 3}"> <c:set var="tdkwKeyWord3" value="${itemKeyword.tdkwKeyword}"/></c:when>
+						<c:when test="${itemKeyword.tdkwOrder eq 4}"> <c:set var="tdkwKeyWord4" value="${itemKeyword.tdkwKeyword}"/></c:when>
+						<c:when test="${itemKeyword.tdkwOrder eq 5}"> <c:set var="tdkwKeyWord5" value="${itemKeyword.tdkwKeyword}"/></c:when>
+						<c:otherwise></c:otherwise>
+					</c:choose>
+				</c:forEach>
+				
+				<div class="col-md-6">
+					<label class="form-label">키워드</label>
+						<input type="hidden" id="tdkwDefaultNyArray0" name="tdkwDefaultNyArray" value="1">
+						<input type="hidden" id="tdkwOrderArray0" name="tdkwOrderArray" value="1">
+						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray0" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord1}"/>">
+
+						<input type="hidden" id="tdkwDefaultNyArray1" name="tdkwDefaultNyArray" value="0">
+						<input type="hidden" id="tdkwOrderArray1" name="tdkwOrderArray" value="2">
+						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray0" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord2}"/>">
+
+						<input type="hidden" id="tdkwDefaultNyArray2" name="tdkwDefaultNyArray" value="0">
+						<input type="hidden" id="tdkwOrderArray2" name="tdkwOrderArray" value="3">
+						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray0" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord3}"/>">
+						
+						<input type="hidden" id="tdkwDefaultNyArray3" name="tdkwDefaultNyArray" value="0">
+						<input type="hidden" id="tdkwOrderArray3" name="tdkwOrderArray" value="4">
+						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray0" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord4}"/>">
+
+						<input type="hidden" id="tdkwDefaultNyArray4" name="tdkwDefaultNyArray" value="0">
+						<input type="hidden" id="tdkwOrderArray4" name="tdkwOrderArray" value="5">
+						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray0" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord5}"/>">
+						<div>
+							<button class="btn btn-sm-danger" type="button" onclick="MaterialCreate()" id="" name="">추가</button>
+						</div>
+				</div>
 				<div class="col-md-6">
 					<label class="form-label">판매상태</label>
 					<c:set var="listCodeState" value="${CodeServiceImpl.selectListCachedCode('14')}"/>
@@ -141,26 +207,6 @@
 						</c:forEach>	
 					</select>
 				</div>	
-				
-				 				
-<%-- 				<c:forEach items="${listPhone}" var="item" varStatus="statusTelecom">
-					<c:choose>
-						<c:when test="${item.kbmpDeviceCd eq 1}"> <c:set var="kbmmNumberHome" value="${item.kbmpNumberFull }"/></c:when>
-						<c:when test="${item.kbmpDeviceCd eq 2}">
-							<c:set var="kbmmNumberMobile" value="${item.kbmpNumberFull}"/>
-							<c:set var="kbmmNumberTelecom" value="${item.kbmpTelecomCd}"/>
-						</c:when>
-						<c:when test="${item.kbmpDeviceCd eq 3 }"><c:set var="kbmmNumberFax" value="${item.kbmpNumberFull}"/></c:when>
-						<c:otherwise></c:otherwise>
-					</c:choose>
-				</c:forEach> --%>
-				
-				<div class="col-md-6">
-					<label class="form-label">키워드</label>
-<%-- 					<c:forEach items="${listKeyword}" var="itemKeyword" varStatus="statusKeyword"><c:out value="${statusKeyword.count}}"/>
-						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeyWordArray0" name="tdkwKeyWordArray" value="<c:out value="${itemKeyword.tdkwKeyword}"/>">
-					</c:forEach>	 --%>
-				</div>
 <!-- 				<div class="col-md-6">
 					<label class="form-label">시리즈</label>
 					<input type="text" class="form-control form-control-sm" id="inputSeries" placeholder="시리즈를 검색하세요" name="tdsiBookCd">
@@ -303,6 +349,7 @@
 			$("#bookView").attr("action", "/xdmin/book/bookList");
 			$("#bookView").submit();
 		};
+		
 		goEditForm = function(){
 			$("#bookView").attr("action", "/xdmin/book/bookEditForm");
 			$("#bookView").submit();

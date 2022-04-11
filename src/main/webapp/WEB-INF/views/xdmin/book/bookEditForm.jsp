@@ -65,7 +65,7 @@
 				</div>
 				
 				
-				<div class="col-md-6">
+<%-- 				<div class="col-md-6">
 					<label for="inputId" class="form-label">저자명</label>
 					<c:set var="listAuthor" value="${AuthorServiceImpl.selelctListCachedAuthor('15')}"/>
 						<c:forEach items="${listAuthorL}" var="rtAuthor" varStatus="statusAuthor"><!-- 작가리스트 -->
@@ -74,7 +74,7 @@
 								<input type="text" class="form-control form-control-sm mb-1" id="tdatAuthorCd"name="tdatAuthorCd" value="<c:out value="${rt2.ifacName}" />" disabled> </p></c:if>
 							</c:forEach>	
 						</c:forEach>
-				</div>
+				</div> --%>
 				
 				<div class="col-md-6">
 					<label class="col-form-label pt-0">카테고리</label>
@@ -131,6 +131,43 @@
 					<label class="form-label">크기</label>
 					<input type="text" class="form-control form-control-sm" id="tditSize" name="tditSize" value="<c:out value="${rt.tditSize}"/>">
 				</div>
+
+				<c:forEach items="${listKeyword}" var="itemKeyword" varStatus="statusKeyword">
+					<c:choose>
+						<c:when test="${itemKeyword.tdkwOrder eq 1}"> <c:set var="tdkwKeyWord1" value="${itemKeyword.tdkwKeyword}"/></c:when>
+						<c:when test="${itemKeyword.tdkwOrder eq 2}"> <c:set var="tdkwKeyWord2" value="${itemKeyword.tdkwKeyword}"/></c:when>
+						<c:when test="${itemKeyword.tdkwOrder eq 3}"> <c:set var="tdkwKeyWord3" value="${itemKeyword.tdkwKeyword}"/></c:when>
+						<c:when test="${itemKeyword.tdkwOrder eq 4}"> <c:set var="tdkwKeyWord4" value="${itemKeyword.tdkwKeyword}"/></c:when>
+						<c:when test="${itemKeyword.tdkwOrder eq 5}"> <c:set var="tdkwKeyWord5" value="${itemKeyword.tdkwKeyword}"/></c:when>
+						<c:otherwise></c:otherwise>
+					</c:choose>
+				</c:forEach>
+				
+				<div class="col-md-6">
+					<label class="form-label">키워드</label>
+						<input type="hidden" id="tdkwDefaultNyArray0" name="tdkwDefaultNyArray" value="1">
+						<input type="hidden" id="tdkwOrderArray0" name="tdkwOrderArray" value="1">
+						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray0" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord1}"/>">
+
+						<input type="hidden" id="tdkwDefaultNyArray1" name="tdkwDefaultNyArray" value="0">
+						<input type="hidden" id="tdkwOrderArray1" name="tdkwOrderArray" value="2">
+						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray0" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord2}"/>">
+
+						<input type="hidden" id="tdkwDefaultNyArray2" name="tdkwDefaultNyArray" value="0">
+						<input type="hidden" id="tdkwOrderArray2" name="tdkwOrderArray" value="3">
+						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray0" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord3}"/>">
+						
+						<input type="hidden" id="tdkwDefaultNyArray3" name="tdkwDefaultNyArray" value="0">
+						<input type="hidden" id="tdkwOrderArray3" name="tdkwOrderArray" value="4">
+						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray0" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord4}"/>">
+
+						<input type="hidden" id="tdkwDefaultNyArray4" name="tdkwDefaultNyArray" value="0">
+						<input type="hidden" id="tdkwOrderArray4" name="tdkwOrderArray" value="5">
+						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray0" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord5}"/>">
+						<div>
+							<button class="btn btn-sm-danger" type="button" onclick="MaterialCreate()" id="" name="">추가</button>
+						</div>
+				</div>
 				<div class="col-md-6">
 					<label class="form-label">판매상태</label>
 					<c:set var="listCodeState" value="${CodeServiceImpl.selectListCachedCode('14')}"/>
@@ -141,12 +178,6 @@
 						</c:forEach>	
 					</select>
 				</div>	
-				<div class="col-md-6">
-					<label class="form-label">키워드</label>
-<%-- 					<c:forEach items="${listKeyword}" var="rtKeyword" varStatus="statusKeyword">
-						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeyWordArray" name="tdkwKeyWordArray" value="<c:out value="${rtKeyword.tdkwKeyword}"/>">
-					</c:forEach> --%>
-				</div>
 <!-- 				<div class="col-md-6">
 					<label class="form-label">시리즈</label>
 					<input type="text" class="form-control form-control-sm" id="inputSeries" placeholder="시리즈를 검색하세요" name="tdsiBookCd">

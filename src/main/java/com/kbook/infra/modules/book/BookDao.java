@@ -37,11 +37,11 @@ public class BookDao {
 
 	public int insert(Book dto) {return sqlSession.insert(namespace +".insert", dto);}
 	public int insertKeyword(Book dto) {return sqlSession.insert(namespace +".insertKeyword", dto);}
-	public int insertAuthor(Book dto) {return sqlSession.insert(namespace +".insertAuthor", dto);}
+//	public int insertAuthor(Book dto) {return sqlSession.insert(namespace +".insertAuthor", dto);}
 
 	
 	public int update(Book dto) {return sqlSession.update(namespace +".update", dto);}
-//	public int updateKeyword(Book dto) {return sqlSession.update(namespace +".updateKeyword", dto);}
+	public int updateKeyword(Book dto) {return sqlSession.update(namespace +".updateKeyword", dto);}
 	public int updateUploaded(Book dto) {return sqlSession.update(namespace +".updateUploaded", dto);}
 
 }

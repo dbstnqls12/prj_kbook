@@ -39,6 +39,8 @@ public class Book {
 	
 	private String tdkwSeq;
 	private String tdkwKeyword;
+	private Integer tdkwDefaultNy;
+	private Integer tdkwOrder;
 	
 	private String tdriSeq;
 	private String tdriTypeCd;
@@ -65,6 +67,8 @@ public class Book {
 	private Integer[] tdatDelNyArray;
 	
 	private String[] tdkwKeywordArray;
+	private Integer[] tdkwDefaultNyArray; 
+	private Integer[] tdkwOrderArray; 
 
 	private String[] tdriTypeCdArray;
 	private String[] tdriTitleArray;
@@ -74,6 +78,8 @@ public class Book {
 
 	private MultipartFile[] file0;
 	private MultipartFile[] file1;
+	
+	
 	public String getTditSeq() {
 		return tditSeq;
 	}
@@ -427,6 +433,30 @@ public class Book {
 	}
 	public void setFile1(MultipartFile[] file1) {
 		this.file1 = file1;
+	}
+	public Integer getTdkwDefaultNy() {
+		return tdkwDefaultNy;
+	}
+	public void setTdkwDefaultNy(Integer tdkwDefaultNy) {
+		this.tdkwDefaultNy = tdkwDefaultNy;
+	}
+	public Integer getTdkwOrder() {
+		return tdkwOrder;
+	}
+	public void setTdkwOrder(Integer tdkwOrder) {
+		this.tdkwOrder = tdkwOrder;
+	}
+	public Integer[] getTdkwDefaultNyArray() {
+		return tdkwDefaultNyArray;
+	}
+	public void setTdkwDefaultNyArray(Integer[] tdkwDefaultNyArray) {
+		this.tdkwDefaultNyArray = tdkwDefaultNyArray;
+	}
+	public Integer[] getTdkwOrderArray() {
+		return tdkwOrderArray;
+	}
+	public void setTdkwOrderArray(Integer[] tdkwOrderArray) {
+		this.tdkwOrderArray = tdkwOrderArray;
 	}
 
 	

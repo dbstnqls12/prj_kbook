@@ -148,6 +148,8 @@ public class BookController {
 	public String bookInst(BookVo vo, Book dto, Model model, RedirectAttributes redirectAttributes) throws Exception {
 		
 		service.insert(dto);
+
+		System.out.println("dto.getTdkwKeywordArray().length : "+dto.getTdkwKeywordArray().length);
 		
 		vo.setTditSeq(dto.getTditSeq());
 		
@@ -167,6 +169,8 @@ public class BookController {
 	}
 	@RequestMapping(value = "xdmin/book/bookEditForm")
 	public String bookEditForm(@ModelAttribute("vo") BookVo vo, Book dto, Model model) throws Exception {
+		
+		System.out.println("dto.getTdkwKeywordArray().length : "+dto.getTdkwKeywordArray().length);
 		
 		Book rt = service.selectOne(vo);
 		model.addAttribute("rt", rt);

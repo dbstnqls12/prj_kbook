@@ -64,7 +64,7 @@
 					<input type="date" id="tditPublishingDate" class="form-control form-control-sm" name="tditPublishingDate" value="<c:out value="${item.tditPublishingDate}"/>">
 				</div>
 				
-				
+<%-- 				
 				<c:set var="listAuthor" value="${AuthorServiceImpl.selelctListCachedAuthor('15')}"/>
 				<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><!-- 작가리스트 내가 여기에 집어넣을껴-->
 					<c:choose>
@@ -92,7 +92,7 @@
 							<option value="<c:out value="${item2.ifacSeq}"/>"><c:if test="${tdatAuthorCd1 eq item2.ifacSeq}">selected</c:if><c:out value="${item2.ifacName}"/></option>	
 						</c:forEach>
 					</select>	
-				</div>
+				</div> --%>
 				
 				<div class="col-md-6">
 					<label class="col-form-label pt-0">카테고리</label>
@@ -122,8 +122,6 @@
 							<option value="<c:out value="${itemPublisher.ifpcSeq}"/>"><c:if test="${item.tditPublisherCd eq itemPublisher.ifpcSeq}">selected</c:if><c:out value="${itemPublisher.ifpcName}"/></option>	
 						</c:forEach>
 					</select>
-					<%-- <input type="text" class="form-control form-control-sm" id="tditPublisherCd" name="tditPublisherCd" value="<c:out value="${item.tditPublisherCd}"/>"> --%>
-					<!-- <span class="badge bg-light text-dark">출판사 찾기</span> -->
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">정가</label>
@@ -166,11 +164,11 @@
 				 				
 				<c:forEach items="${listKeyword}" var="itemKeyword" varStatus="statusKeyword">
 					<c:choose>
-						<c:when test="${item.tdkwOrder eq 1}"> <c:set var="tdkwKeyWord1" value="${item.tdkwKeyword}"/></c:when>
-						<c:when test="${item.tdkwOrder eq 2}"> <c:set var="tdkwKeyWord2" value="${item.tdkwKeyword}"/></c:when>
-						<c:when test="${item.tdkwOrder eq 3}"> <c:set var="tdkwKeyWord3" value="${item.tdkwKeyword}"/></c:when>
-						<c:when test="${item.tdkwOrder eq 4}"> <c:set var="tdkwKeyWord4" value="${item.tdkwKeyword}"/></c:when>
-						<c:when test="${item.tdkwOrder eq 5}"> <c:set var="tdkwKeyWord5" value="${item.tdkwKeyword}"/></c:when>
+						<c:when test="${itemKeyword.tdkwOrder eq 1}"> <c:set var="tdkwKeyWord1" value="${itemKeyword.tdkwKeyword}"/></c:when>
+						<c:when test="${itemKeyword.tdkwOrder eq 2}"> <c:set var="tdkwKeyWord2" value="${itemKeyword.tdkwKeyword}"/></c:when>
+						<c:when test="${itemKeyword.tdkwOrder eq 3}"> <c:set var="tdkwKeyWord3" value="${itemKeyword.tdkwKeyword}"/></c:when>
+						<c:when test="${itemKeyword.tdkwOrder eq 4}"> <c:set var="tdkwKeyWord4" value="${itemKeyword.tdkwKeyword}"/></c:when>
+						<c:when test="${itemKeyword.tdkwOrder eq 5}"> <c:set var="tdkwKeyWord5" value="${itemKeyword.tdkwKeyword}"/></c:when>
 						<c:otherwise></c:otherwise>
 					</c:choose>
 				</c:forEach>
@@ -178,33 +176,28 @@
 				<div class="col-md-6">
 					<label class="form-label">키워드</label>
 						<input type="hidden" id="tdkwDefaultNyArray0" name="tdkwDefaultNyArray" value="1">
-						<input type="hidden" id="tdkwDefaultNyOrderArray0" name="tdkwDefaultNyOrderArray" value="1">
+						<input type="hidden" id="tdkwOrderArray0" name="tdkwOrderArray" value="1">
 						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray0" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord1}"/>">
 
 						<input type="hidden" id="tdkwDefaultNyArray1" name="tdkwDefaultNyArray" value="0">
-						<input type="hidden" id="tdkwDefaultNyOrderArray1" name="tdkwDefaultNyOrderArray" value="2">
+						<input type="hidden" id="tdkwOrderArray1" name="tdkwOrderArray" value="2">
 						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray0" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord2}"/>">
 
 						<input type="hidden" id="tdkwDefaultNyArray2" name="tdkwDefaultNyArray" value="0">
-						<input type="hidden" id="tdkwDefaultNyOrderArray2" name="tdkwDefaultNyOrderArray" value="3">
+						<input type="hidden" id="tdkwOrderArray2" name="tdkwOrderArray" value="3">
 						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray0" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord3}"/>">
 						
 						<input type="hidden" id="tdkwDefaultNyArray3" name="tdkwDefaultNyArray" value="0">
-						<input type="hidden" id="tdkwDefaultNyOrderArray3" name="tdkwDefaultNyOrderArray" value="4">
+						<input type="hidden" id="tdkwOrderArray3" name="tdkwOrderArray" value="4">
 						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray0" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord4}"/>">
 
 						<input type="hidden" id="tdkwDefaultNyArray4" name="tdkwDefaultNyArray" value="0">
-						<input type="hidden" id="tdkwDefaultNyOrderArray4" name="tdkwDefaultNyOrderArray" value="5">
+						<input type="hidden" id="tdkwOrderArray4" name="tdkwOrderArray" value="5">
 						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray0" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord5}"/>">
 						<div>
 							<button class="btn btn-sm-danger" type="button" onclick="MaterialCreate()" id="" name="">추가</button>
 						</div>
 				</div>
-<!-- 				<div class="col-md-6">
-					<label class="form-label">시리즈</label>
-					<input type="text" class="form-control form-control-sm" id="inputSeries" placeholder="시리즈를 검색하세요" name="tdsiBookCd">
-					<span class="badge bg-light text-dark">시리즈 검색</span>
-				</div> -->
 				
 				<div class="col-md-6">
 					<label for="file0" class="form-label input-file-button">책 대표이미지(image)</label>
@@ -234,10 +227,6 @@
 					<label class="form-label">책속으로(text)</label>
 		            <textarea rows="3" cols="80" id="tditBookDesc2" name="tditBookDesc2"><c:out value="${item.tditBookDesc2}" escapeXml="false"/></textarea>
 				</div>
-<!-- 				<div class="col-md-6">
-					<label class="form-label">이벤트</label>
-					<input type="text" class="form-control form-control-sm" id="inputEvent" name="tdpeTypeCd">
-				</div> -->
 
 				<div class="col-6 d-none d-sm-block"></div>
 
@@ -339,31 +328,7 @@
 		
 	});
 
-	function MaterialCreate(){
-		var html = '';
-	 	var remove = $("remove").val(); 
-					
-/* 			var Name = $("#MaterialName").val();
-		var Amount = $("#MaterialAmount").val(); */
-		
-					
-		html += '<div id="" style="margin-bottom: 10px;">';
-		html += '<input type="text" name="fdmtMaterialArray[]" id="fdmtMaterialArray" class="form-control" style="width:330px; float: left; margin-right: 10px; margin-bottom: 8px;" placeholder="예) 양배추">';
-		html += '<input type="text" name="fdmtAmountArray[]" id="fdmtAmountArray" class="form-control" style="width:310px; float:left; margin-bottom: 8px;"; placeholder="예) 1/2개">';
-		html += '<button class="btn" onclick="MaterialDelete(this)" id="remove" style="margin-top: 7px;"><i class="bi bi-x-circle" style="size: 20px;"></i></button>'; 
-		html += "</div>";
-		
-		$("#divMaterialArea_1").append(html);
-					
-		$("#MaterialName").val('');
-		$("#MaterialAmount").val('');
-	};
 
-	function MaterialDelete(obj){
-		var tr = $(obj).parent();
-
-		tr.remove();
-	}
 	
 	
 </script>

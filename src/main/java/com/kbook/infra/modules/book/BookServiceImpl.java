@@ -131,16 +131,19 @@ public class BookServiceImpl implements BookService {
 		
 		dao.insert(dto);
 		
-		for(int i=0; i<dto.getTdatAuthorCdArray().length; i++) {
-			dto.setTdatDefaultNy(dto.getTdatDefaultNyArray()[i]);
-			dto.setTdatDelNy(dto.getTdatDelNyArray()[i]);
-			dto.setTdatAuthorCd(dto.getTdatAuthorCdArray()[i]);
-			dao.insertAuthor(dto);
-		}
-//		for(int i=0; i<dto.getTdkwKeywordArray().length; i++) {
-//			dto.setTdkwKeyword(dto.getTdkwKeywordArray()[i]);
-//			dao.insertKeyword(dto);
+//		for(int i=0; i<dto.getTdatAuthorCdArray().length; i++) {
+//			dto.setTdatDefaultNy(dto.getTdatDefaultNyArray()[i]);
+//			dto.setTdatDelNy(dto.getTdatDelNyArray()[i]);
+//			dto.setTdatAuthorCd(dto.getTdatAuthorCdArray()[i]);
+//			dao.insertAuthor(dto);
 //		}
+		
+		for(int i=0; i<dto.getTdkwKeywordArray().length; i++) {
+			dto.setTdkwKeyword(dto.getTdkwKeywordArray()[i]);
+			dto.setTdkwDefaultNy(dto.getTdkwDefaultNyArray()[i]);
+			dto.setTdkwOrder(dto.getTdkwOrderArray()[i]);
+			dao.insertKeyword(dto);
+		}
 
 		
 		

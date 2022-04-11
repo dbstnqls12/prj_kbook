@@ -190,6 +190,8 @@
 	SELECT
 		tdkwSeq
 		,tdkwKeyword
+		,tdkwOrder
+		,tdkwDefaultNy
 		,tditSeq
 	FROM tradItemKeyword
 	WHERE 1=1
@@ -266,12 +268,17 @@
 <insert id="insertKeyword">
 	INSERT INTO tradItemKeyword(
 		tdkwKeyword
+		,tdkwDefaultNy
+		,tdkwOrder
 		,tditSeq
 	) VALUES (
 		#{tdkwKeyword}
+		,#{tdkwDefaultNy}
+		,#{tdkwOrder}
 		,#{tditSeq}
 	)		
 </insert>
+<!-- 
 <insert id="insertAuthor">
 	INSERT INTO tradAuthor(
 		tdatAuthorCd
@@ -286,7 +293,7 @@
 		,#{tdatDefaultNy}
 		,#{tditSeq}
 	)		
-</insert>
+</insert> -->
 <insert id="insertUploaded">
 	INSERT INTO ${tableName} (
 		type
@@ -330,12 +337,16 @@
 	WHERE 1=1
 		AND tditSeq=#{tditSeq}
 </update>
+
 <!-- <update id="updateKeyword">
 	UPDATE tradItemKeyword SET 
 		tdkwKeyword = #{tdkwKeyword}
+		tdkwDefaultNy = #{tdkwDefaultNy}
+		tdkwOrder = #{tdkwOrder}
 	WHERE 1=1
 		AND tditSeq=#{tditSeq}
 </update> -->
+
 <insert id="updateUploaded">
 	UPDATE ${tableName} SET
 		type = #{type}
