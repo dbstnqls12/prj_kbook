@@ -107,8 +107,8 @@ public class BookController {
 	@RequestMapping(value = "xdmin/book/bookView")
 	public String bookView(@ModelAttribute("vo") BookVo vo, Book dto,Model model) throws Exception {
 	
-		System.out.println("dto.getTdkwKeywordArray().length : "+dto.getTdkwKeyword());
-//		System.out.println("dto.getTdatAuthorCd().length() : "+dto.getTdatAuthorCd().length());
+//		System.out.println("dto.getTdkwKeywordArray().length : "+dto.getTdkwKeywordArray().length);
+		System.out.println("dto.getTdkwKeyword: ");
 		
 		Book rt = service.selectOne(vo);
 		model.addAttribute("item", rt);

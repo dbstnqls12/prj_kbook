@@ -141,11 +141,26 @@
 						</c:forEach>	
 					</select>
 				</div>	
+				
+				 				
+<%-- 				<c:forEach items="${listPhone}" var="item" varStatus="statusTelecom">
+					<c:choose>
+						<c:when test="${item.kbmpDeviceCd eq 1}"> <c:set var="kbmmNumberHome" value="${item.kbmpNumberFull }"/></c:when>
+						<c:when test="${item.kbmpDeviceCd eq 2}">
+							<c:set var="kbmmNumberMobile" value="${item.kbmpNumberFull}"/>
+							<c:set var="kbmmNumberTelecom" value="${item.kbmpTelecomCd}"/>
+						</c:when>
+						<c:when test="${item.kbmpDeviceCd eq 3 }"><c:set var="kbmmNumberFax" value="${item.kbmpNumberFull}"/></c:when>
+						<c:otherwise></c:otherwise>
+					</c:choose>
+				</c:forEach> --%>
+				
 				<div class="col-md-6">
 					<label class="form-label">키워드</label>
-					<c:forEach items="${listKeyword}" var="itemKeyword" varStatus="statusKeyword">
-						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeyWord" name="tdkwKeyWordArray" value="<c:out value="${itemKeyword.tdkwKeyword}"/>">
-					</c:forEach>
+					<c:forEach items="${listKeyword}" var="itemKeyword" varStatus="statusKeyword"><%-- <c:out value="${statusKeyword.count}}"/> --%>
+						for(int i=1; )
+						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeyWordArray" name="tdkwKeyWordArray" value="<c:out value="${itemKeyword.tdkwKeyword}"/>">
+					</c:forEach>	
 				</div>
 <!-- 				<div class="col-md-6">
 					<label class="form-label">시리즈</label>
@@ -170,7 +185,6 @@
 				</div>
 				<div class="col-md-6">
 					<label class="col-form-label">책소개(text)</label>
-		            <%-- <p>${fn:replace(item.tditBookDesc, lf, '<br/>')}</p> --%>
 		            <textarea rows="3" cols="80" id="tditBookDesc" name="tditBookDesc"><c:out value="${item.tditBookDesc}" escapeXml="false"/></textarea>
 		        </div>
 				

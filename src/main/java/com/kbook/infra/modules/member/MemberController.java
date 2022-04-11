@@ -143,6 +143,8 @@ public class MemberController {
 	@RequestMapping(value = "/xdmin/member/memberEditForm")
 	public String memberEditForm(@ModelAttribute("vo") MemberVo vo, Member dto, Model model) throws Exception {
 
+		System.out.println("dto.getKbmpNumberFullArray(): "+dto.getKbmpNumberFullArray().length);
+		
 		System.out.println("############################");
 		System.out.println("vo.getShOption() : " + vo.getShOption());
 		System.out.println("vo.getShKbmmDelNy() : " + vo.getShKbmmDelNy());
