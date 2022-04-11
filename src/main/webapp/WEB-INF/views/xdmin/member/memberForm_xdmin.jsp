@@ -123,10 +123,6 @@
 					<input type="hidden" id="kbmpTelecomCdArray2" name="kbmpTelecomCdArray" value="">
 					<input type="text" class="form-control form-control-sm" id="kbmpNumberFullArray2" name="kbmpNumberFullArray" value="<c:out value="${kbmmNumberFax}"/>"  >
 				</div> 
-
-			
-
-				
 				<div class="col-md-6">
 					<label class="col-form-label pt-0">이메일</label>
 					<input type="text" class="form-control form-control-sm" id="kbmeEmailFull" name="kbmeEmailFull" placeholder="이메일주소 입력">

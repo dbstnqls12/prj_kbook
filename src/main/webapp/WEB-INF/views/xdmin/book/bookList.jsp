@@ -127,7 +127,7 @@
 											<c:when test="${item.tditItemCate eq 3}"><c:out value="${itemAuthor.ifacNameEng}" /></c:when>
 											<c:otherwise><c:out value="${itemAuthor.ifacName}" /></c:otherwise>
 										</c:choose>
-										</c:if>	
+									</c:if>	
 									</c:forEach>
 										<%-- <c:if test="${item.tdatAuthorCd eq itemAuthor.ifacSeq}"><c:out value="${itemAuthor.ifacName}"/> | <c:out value="${itemAuthor.ifacNameEng}"/></c:if>	 --%>									
 								</td>

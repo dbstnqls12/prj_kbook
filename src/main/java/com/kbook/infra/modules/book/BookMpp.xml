@@ -211,6 +211,108 @@
 		AND tdriDelNy = 0	
 </select>
 
+<insert id="insert">
+	INSERT INTO tradItem(	
+		tditTitle
+		,tditSubTitle
+		,tditPublisherCd
+		,tditPublishingDate
+		,tditPrice
+		,tditDiscountCd
+		,tditDiscountRate
+		,tditStateCd 
+		,tditItemCate
+		,tditItemCate2
+		,tditIsbn
+		,tditPage
+		,tditSize
+		,tditWeight
+		,tditBookDesc
+		,tditBookDesc2
+		,tditTableOfContents
+		,tditDelNy
+		,regDateTime
+		,modDateTime
+	)VALUES(
+		#{tditTitle}
+		,#{tditSubTitle}
+		,#{tditPublisherCd}
+		<choose>
+			<when test="tditPublishingDate.equals('')">,NULL</when>
+			<otherwise>,#{tditPublishingDate}</otherwise>
+		</choose>
+		,#{tditPrice}
+		,#{tditDiscountCd}
+		,#{tditDiscountRate}
+		,#{tditStateCd}
+		,#{tditItemCate}
+		,#{tditItemCate2}
+		,#{tditIsbn}
+		,#{tditPage}
+		,#{tditSize}
+		,#{tditWeight}
+		,#{tditBookDesc}
+		,#{tditBookDesc2}
+		,#{tditTableOfContents}
+		,0
+		,#{regDateTime}
+		,#{modDateTime}
+	)
+	<selectKey resultType="String" keyProperty="tditSeq" order="AFTER">
+		SELECT last_insert_id()
+	</selectKey>
+</insert>
+
+<insert id="insertKeyword">
+	INSERT INTO tradItemKeyword(
+		tdkwKeyword
+		,tditSeq
+	) VALUES (
+		#{tdkwKeyword}
+		,#{tditSeq}
+	)		
+</insert>
+<insert id="insertAuthor">
+	INSERT INTO tradAuthor(
+		tdatAuthorCd
+		,tdatTranslatorCd
+		,tdatDelNy
+		,tdatDefaultNy
+		,tditSeq
+	) VALUES (
+		#{tdatAuthorCd}
+		,#{tdatTranslatorCd}
+		,0
+		,#{tdatDefaultNy}
+		,#{tditSeq}
+	)		
+</insert>
+<insert id="insertUploaded">
+	INSERT INTO ${tableName} (
+		type
+		,defaultNy
+		,sort
+		,originalName
+		,uuidName
+		,ext
+		,size
+		,delNy
+		,pseq
+	) VALUES (
+		#{type}
+		,#{defaultNy}
+		,#{sort}
+		,#{originalName}
+		,#{uuidName}
+		,#{ext}
+		,#{size}
+		,#{delNy}
+		,#{pseq}
+	)		
+</insert>
+
+
+
 <update id="update">
 	UPDATE tradItem SET 
 		tditPrice = #{tditPrice}
@@ -228,12 +330,12 @@
 	WHERE 1=1
 		AND tditSeq=#{tditSeq}
 </update>
-<update id="updateKeyword">
+<!-- <update id="updateKeyword">
 	UPDATE tradItemKeyword SET 
 		tdkwKeyword = #{tdkwKeyword}
 	WHERE 1=1
 		AND tditSeq=#{tditSeq}
-</update>
+</update> -->
 <insert id="updateUploaded">
 	UPDATE ${tableName} SET
 		type = #{type}
@@ -245,8 +347,8 @@
 		,size = #{size}
 		,delNy = #{delNy}
 		,pseq = #{pseq}
-	)WHERE 1=1
-		AND tditSeq=#{tditSeq}		
+	WHERE 1=1
+		<!-- AND tditSeq=#{tditSeq}	 -->	
 </insert>
 
 

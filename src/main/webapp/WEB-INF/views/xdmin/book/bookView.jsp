@@ -157,10 +157,9 @@
 				
 				<div class="col-md-6">
 					<label class="form-label">키워드</label>
-					<c:forEach items="${listKeyword}" var="itemKeyword" varStatus="statusKeyword"><%-- <c:out value="${statusKeyword.count}}"/> --%>
-						for(int i=1; )
-						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeyWordArray" name="tdkwKeyWordArray" value="<c:out value="${itemKeyword.tdkwKeyword}"/>">
-					</c:forEach>	
+<%-- 					<c:forEach items="${listKeyword}" var="itemKeyword" varStatus="statusKeyword"><c:out value="${statusKeyword.count}}"/>
+						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeyWordArray0" name="tdkwKeyWordArray" value="<c:out value="${itemKeyword.tdkwKeyword}"/>">
+					</c:forEach>	 --%>
 				</div>
 <!-- 				<div class="col-md-6">
 					<label class="form-label">시리즈</label>

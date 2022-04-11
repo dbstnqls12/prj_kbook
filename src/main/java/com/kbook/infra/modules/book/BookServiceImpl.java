@@ -81,10 +81,68 @@ public class BookServiceImpl implements BookService {
 		dto.setModDateTime(UtilDateTime.nowDate());
 		
 		dao.update(dto);
-		for(int i=0; i<dto.getTdkwKeywordArray().length; i++) {
-			dto.setTdkwKeyword(dto.getTdkwKeywordArray()[i]);
-			dao.updateKeyword(dto);
+//		for(int i=0; i<dto.getTdkwKeywordArray().length; i++) {
+//			dto.setTdkwKeyword(dto.getTdkwKeywordArray()[i]);
+//			dao.updateKeyword(dto);
+//		}
+		
+		int j = 0;
+		for(MultipartFile multipartFile : dto.getFile0()) {
+			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+			UtilUpload.uploadBook(multipartFile, pathModule, dto);
+			
+			dto.setTableName("tradItemUploaded");
+			dto.setType(0);
+			dto.setDefaultNy(0);
+			dto.setSort(j);
+			dto.setDelNy(0);
+			dto.setPseq(dto.getTditSeq());
+			
+			dao.updateUploaded(dto);
+			j++;
+			
 		}
+		
+		j = 0;
+		for(MultipartFile multipartFile : dto.getFile1()) {
+			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+			UtilUpload.uploadBook(multipartFile, pathModule, dto);
+			
+			dto.setTableName("tradItemUploaded");
+			dto.setType(1);
+			dto.setDefaultNy(0);
+			dto.setSort(j);
+			dto.setDelNy(0);
+			dto.setPseq(dto.getTditSeq());
+			
+			dao.updateUploaded(dto);
+			j++;
+			
+		}
+		
+		return 1;
+	}
+
+	@Override
+	public int insert(Book dto) throws Exception {
+
+		dto.setModDateTime(UtilDateTime.nowDate());
+		dto.setRegDateTime(UtilDateTime.nowDate());
+		
+		dao.insert(dto);
+		
+		for(int i=0; i<dto.getTdatAuthorCdArray().length; i++) {
+			dto.setTdatDefaultNy(dto.getTdatDefaultNyArray()[i]);
+			dto.setTdatDelNy(dto.getTdatDelNyArray()[i]);
+			dto.setTdatAuthorCd(dto.getTdatAuthorCdArray()[i]);
+			dao.insertAuthor(dto);
+		}
+//		for(int i=0; i<dto.getTdkwKeywordArray().length; i++) {
+//			dto.setTdkwKeyword(dto.getTdkwKeywordArray()[i]);
+//			dao.insertKeyword(dto);
+//		}
+
+		
 		
 		int j = 0;
 		for(MultipartFile multipartFile : dto.getFile0()) {

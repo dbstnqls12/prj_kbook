@@ -90,7 +90,7 @@
 					<h4 class="mt-1" style="color: #3A60DF;"><b><c:out value="${item.tditTitle}"/></b></h4>
 					<p><strong><c:out value="${item.tditSubTitle}"/></strong></p>
 					<c:set var="listAuthor" value="${AuthorServiceImpl.selelctListCachedAuthor('15')}"/>
-						<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><!-- 작가리스트 -->
+						<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><!-- 작가리스트(배열에 들어가 있어야함) -->
 							<c:forEach items="${listAuthor}" var="item2" varStatus="status"><!-- 작가코드 -->
 								<c:if test="${itemAuthor.tdatAuthorCd eq item2.ifacSeq}"><p style="display: inline;"><c:out value="${item2.ifacName}" /></p></c:if>
 							</c:forEach>	

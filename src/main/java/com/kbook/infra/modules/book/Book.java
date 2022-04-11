@@ -31,11 +31,11 @@ public class Book {
 	private Date modDateTime;
 	private Date modDateTimeSvr;
 	
-	private String tdatAuthorCd;
+	private Integer tdatAuthorCd;
 	private String tdatSeq;
-	private String tdatTranslatorCd;
-	private String tdatDelNy;
-	private String tdatDefaultNy;
+	private Integer tdatTranslatorCd;
+	private Integer tdatDelNy;
+	private Integer tdatDefaultNy;
 	
 	private String tdkwSeq;
 	private String tdkwKeyword;
@@ -59,7 +59,11 @@ public class Book {
 	private Integer delNy;
 	private String pseq;
 	
-	private String[] tdatAuthorCdArray;
+	private Integer[] tdatAuthorCdArray;
+	private Integer[] tdatDefaultNyArray;
+	private String[] tdatTransLatorCdArray;
+	private Integer[] tdatDelNyArray;
+	
 	private String[] tdkwKeywordArray;
 
 	private String[] tdriTypeCdArray;
@@ -70,7 +74,6 @@ public class Book {
 
 	private MultipartFile[] file0;
 	private MultipartFile[] file1;
-	
 	public String getTditSeq() {
 		return tditSeq;
 	}
@@ -113,6 +116,12 @@ public class Book {
 	public void setTditDiscountCd(String tditDiscountCd) {
 		this.tditDiscountCd = tditDiscountCd;
 	}
+	public Double getTditDiscountRate() {
+		return tditDiscountRate;
+	}
+	public void setTditDiscountRate(Double tditDiscountRate) {
+		this.tditDiscountRate = tditDiscountRate;
+	}
 	public String getTditStateCd() {
 		return tditStateCd;
 	}
@@ -124,6 +133,12 @@ public class Book {
 	}
 	public void setTditItemCate(String tditItemCate) {
 		this.tditItemCate = tditItemCate;
+	}
+	public String getTditItemCate2() {
+		return tditItemCate2;
+	}
+	public void setTditItemCate2(String tditItemCate2) {
+		this.tditItemCate2 = tditItemCate2;
 	}
 	public String getTditIsbn() {
 		return tditIsbn;
@@ -173,17 +188,35 @@ public class Book {
 	public void setTditDelNy(String tditDelNy) {
 		this.tditDelNy = tditDelNy;
 	}
-	public String getTdatAuthorCd() {
+	public Date getRegDateTime() {
+		return regDateTime;
+	}
+	public void setRegDateTime(Date regDateTime) {
+		this.regDateTime = regDateTime;
+	}
+	public Date getRegDateTimeSvr() {
+		return regDateTimeSvr;
+	}
+	public void setRegDateTimeSvr(Date regDateTimeSvr) {
+		this.regDateTimeSvr = regDateTimeSvr;
+	}
+	public Date getModDateTime() {
+		return modDateTime;
+	}
+	public void setModDateTime(Date modDateTime) {
+		this.modDateTime = modDateTime;
+	}
+	public Date getModDateTimeSvr() {
+		return modDateTimeSvr;
+	}
+	public void setModDateTimeSvr(Date modDateTimeSvr) {
+		this.modDateTimeSvr = modDateTimeSvr;
+	}
+	public Integer getTdatAuthorCd() {
 		return tdatAuthorCd;
 	}
-	public void setTdatAuthorCd(String tdatAuthorCd) {
+	public void setTdatAuthorCd(Integer tdatAuthorCd) {
 		this.tdatAuthorCd = tdatAuthorCd;
-	}
-	public String getTdatDefaultNy() {
-		return tdatDefaultNy;
-	}
-	public void setTdatDefaultNy(String tdatDefaultNy) {
-		this.tdatDefaultNy = tdatDefaultNy;
 	}
 	public String getTdatSeq() {
 		return tdatSeq;
@@ -191,17 +224,23 @@ public class Book {
 	public void setTdatSeq(String tdatSeq) {
 		this.tdatSeq = tdatSeq;
 	}
-	public String getTdatTranslatorCd() {
+	public Integer getTdatTranslatorCd() {
 		return tdatTranslatorCd;
 	}
-	public void setTdatTranslatorCd(String tdatTranslatorCd) {
+	public void setTdatTranslatorCd(Integer tdatTranslatorCd) {
 		this.tdatTranslatorCd = tdatTranslatorCd;
 	}
-	public String getTdatDelNy() {
+	public Integer getTdatDelNy() {
 		return tdatDelNy;
 	}
-	public void setTdatDelNy(String tdatDelNy) {
+	public void setTdatDelNy(Integer tdatDelNy) {
 		this.tdatDelNy = tdatDelNy;
+	}
+	public Integer getTdatDefaultNy() {
+		return tdatDefaultNy;
+	}
+	public void setTdatDefaultNy(Integer tdatDefaultNy) {
+		this.tdatDefaultNy = tdatDefaultNy;
 	}
 	public String getTdkwSeq() {
 		return tdkwSeq;
@@ -214,24 +253,6 @@ public class Book {
 	}
 	public void setTdkwKeyword(String tdkwKeyword) {
 		this.tdkwKeyword = tdkwKeyword;
-	}
-	public String[] getTdkwKeywordArray() {
-		return tdkwKeywordArray;
-	}
-	public void setTdkwKeywordArray(String[] tdkwKeywordArray) {
-		this.tdkwKeywordArray = tdkwKeywordArray;
-	}
-	public String[] getTdatAuthorCdArray() {
-		return tdatAuthorCdArray;
-	}
-	public void setTdatAuthorCdArray(String[] tdatAuthorCdArray) {
-		this.tdatAuthorCdArray = tdatAuthorCdArray;
-	}
-	public String getTditItemCate2() {
-		return tditItemCate2;
-	}
-	public void setTditItemCate2(String tditItemCate2) {
-		this.tditItemCate2 = tditItemCate2;
 	}
 	public String getTdriSeq() {
 		return tdriSeq;
@@ -269,59 +290,11 @@ public class Book {
 	public void setTdriDelNy(String tdriDelNy) {
 		this.tdriDelNy = tdriDelNy;
 	}
-	public String[] getTdriTypeCdArray() {
-		return tdriTypeCdArray;
+	public String getTableName() {
+		return tableName;
 	}
-	public void setTdriTypeCdArray(String[] tdriTypeCdArray) {
-		this.tdriTypeCdArray = tdriTypeCdArray;
-	}
-	public String[] getTdriTitleArray() {
-		return tdriTitleArray;
-	}
-	public void setTdriTitleArray(String[] tdriTitleArray) {
-		this.tdriTitleArray = tdriTitleArray;
-	}
-	public String[] getTdriAuthorCdArray() {
-		return tdriAuthorCdArray;
-	}
-	public void setTdriAuthorCdArray(String[] tdriAuthorCdArray) {
-		this.tdriAuthorCdArray = tdriAuthorCdArray;
-	}
-	public String[] getTdriPriceArray() {
-		return tdriPriceArray;
-	}
-	public void setTdriPriceArray(String[] tdriPriceArray) {
-		this.tdriPriceArray = tdriPriceArray;
-	}
-	public String[] getTdriDelNyArray() {
-		return tdriDelNyArray;
-	}
-	public void setTdriDelNyArray(String[] tdriDelNyArray) {
-		this.tdriDelNyArray = tdriDelNyArray;
-	}
-	public Date getRegDateTime() {
-		return regDateTime;
-	}
-	public void setRegDateTime(Date regDateTime) {
-		this.regDateTime = regDateTime;
-	}
-	public Date getRegDateTimeSvr() {
-		return regDateTimeSvr;
-	}
-	public void setRegDateTimeSvr(Date regDateTimeSvr) {
-		this.regDateTimeSvr = regDateTimeSvr;
-	}
-	public Date getModDateTime() {
-		return modDateTime;
-	}
-	public void setModDateTime(Date modDateTime) {
-		this.modDateTime = modDateTime;
-	}
-	public Date getModDateTimeSvr() {
-		return modDateTimeSvr;
-	}
-	public void setModDateTimeSvr(Date modDateTimeSvr) {
-		this.modDateTimeSvr = modDateTimeSvr;
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
 	}
 	public String getSeq() {
 		return seq;
@@ -383,6 +356,66 @@ public class Book {
 	public void setPseq(String pseq) {
 		this.pseq = pseq;
 	}
+	public Integer[] getTdatAuthorCdArray() {
+		return tdatAuthorCdArray;
+	}
+	public void setTdatAuthorCdArray(Integer[] tdatAuthorCdArray) {
+		this.tdatAuthorCdArray = tdatAuthorCdArray;
+	}
+	public Integer[] getTdatDefaultNyArray() {
+		return tdatDefaultNyArray;
+	}
+	public void setTdatDefaultNyArray(Integer[] tdatDefaultNyArray) {
+		this.tdatDefaultNyArray = tdatDefaultNyArray;
+	}
+	public String[] getTdatTransLatorCdArray() {
+		return tdatTransLatorCdArray;
+	}
+	public void setTdatTransLatorCdArray(String[] tdatTransLatorCdArray) {
+		this.tdatTransLatorCdArray = tdatTransLatorCdArray;
+	}
+	public Integer[] getTdatDelNyArray() {
+		return tdatDelNyArray;
+	}
+	public void setTdatDelNyArray(Integer[] tdatDelNyArray) {
+		this.tdatDelNyArray = tdatDelNyArray;
+	}
+	public String[] getTdkwKeywordArray() {
+		return tdkwKeywordArray;
+	}
+	public void setTdkwKeywordArray(String[] tdkwKeywordArray) {
+		this.tdkwKeywordArray = tdkwKeywordArray;
+	}
+	public String[] getTdriTypeCdArray() {
+		return tdriTypeCdArray;
+	}
+	public void setTdriTypeCdArray(String[] tdriTypeCdArray) {
+		this.tdriTypeCdArray = tdriTypeCdArray;
+	}
+	public String[] getTdriTitleArray() {
+		return tdriTitleArray;
+	}
+	public void setTdriTitleArray(String[] tdriTitleArray) {
+		this.tdriTitleArray = tdriTitleArray;
+	}
+	public String[] getTdriAuthorCdArray() {
+		return tdriAuthorCdArray;
+	}
+	public void setTdriAuthorCdArray(String[] tdriAuthorCdArray) {
+		this.tdriAuthorCdArray = tdriAuthorCdArray;
+	}
+	public String[] getTdriPriceArray() {
+		return tdriPriceArray;
+	}
+	public void setTdriPriceArray(String[] tdriPriceArray) {
+		this.tdriPriceArray = tdriPriceArray;
+	}
+	public String[] getTdriDelNyArray() {
+		return tdriDelNyArray;
+	}
+	public void setTdriDelNyArray(String[] tdriDelNyArray) {
+		this.tdriDelNyArray = tdriDelNyArray;
+	}
 	public MultipartFile[] getFile0() {
 		return file0;
 	}
@@ -395,20 +428,11 @@ public class Book {
 	public void setFile1(MultipartFile[] file1) {
 		this.file1 = file1;
 	}
-	public Double getTditDiscountRate() {
-		return tditDiscountRate;
-	}
-	public void setTditDiscountRate(Double tditDiscountRate) {
-		this.tditDiscountRate = tditDiscountRate;
-	}
-	public String getTableName() {
-		return tableName;
-	}
-	public void setTableName(String tableName) {
-		this.tableName = tableName;
-	}
-	
 
+	
+	
+	
+	
 	
 	
 	

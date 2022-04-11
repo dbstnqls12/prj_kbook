@@ -107,11 +107,29 @@ public class BookController {
 	@RequestMapping(value = "xdmin/book/bookView")
 	public String bookView(@ModelAttribute("vo") BookVo vo, Book dto,Model model) throws Exception {
 	
+		
 //		System.out.println("dto.getTdkwKeywordArray().length : "+dto.getTdkwKeywordArray().length);
-		System.out.println("dto.getTdkwKeyword: ");
 		
 		Book rt = service.selectOne(vo);
 		model.addAttribute("item", rt);
+		
+		List<Book> listAuthor = service.selectListAuthor(vo);
+		model.addAttribute("listAuthorL", listAuthor);
+
+		List<Book> listKeyword = service.selectListKeyword(vo);
+		model.addAttribute("listKeyword", listKeyword);
+		System.out.println("listKeyword.get(0) : "+listKeyword.size());
+		
+		
+		List<Book> listRelatedItem= service.selectListRelatedItem(vo);
+		model.addAttribute("listRelatedItem", listRelatedItem);
+		
+		
+		return "xdmin/book/bookView";
+	}
+
+	@RequestMapping(value = "xdmin/book/bookForm")
+	public String bookForm(@ModelAttribute("vo") BookVo vo, Book dto, Model model) throws Exception {
 		
 		List<Book> listAuthor = service.selectListAuthor(vo);
 		model.addAttribute("listAuthorL", listAuthor);
@@ -123,18 +141,32 @@ public class BookController {
 		model.addAttribute("listRelatedItem", listRelatedItem);
 		
 		
-		return "xdmin/book/bookView";
-	}
-
-	@RequestMapping(value = "xdmin/book/bookForm")
-	public String bookForm() throws Exception {
 		
 		return "xdmin/book/bookForm";
 	}
+	@RequestMapping(value = "xdmin/book/bookInst")
+	public String bookInst(BookVo vo, Book dto, Model model, RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.insert(dto);
+		
+		vo.setTditSeq(dto.getTditSeq());
+		
+		List<Book> listAuthor = service.selectListAuthor(vo);
+		model.addAttribute("listAuthorL", listAuthor);
+		
+		List<Book> listKeyword = service.selectListKeyword(vo);
+		model.addAttribute("listKeyword", listKeyword);
+		
+		List<Book> listRelatedItem= service.selectListRelatedItem(vo);
+		model.addAttribute("listRelatedItem", listRelatedItem);
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/xdmin/book/bookView";
+		
+	}
 	@RequestMapping(value = "xdmin/book/bookEditForm")
 	public String bookEditForm(@ModelAttribute("vo") BookVo vo, Book dto, Model model) throws Exception {
-		
-//		System.out.println("dto.getTdkwKeywordArray().length : "+dto.getTdkwKeywordArray().length);
 		
 		Book rt = service.selectOne(vo);
 		model.addAttribute("rt", rt);

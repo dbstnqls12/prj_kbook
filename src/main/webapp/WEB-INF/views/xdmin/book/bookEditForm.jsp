@@ -143,9 +143,9 @@
 				</div>	
 				<div class="col-md-6">
 					<label class="form-label">키워드</label>
-					<c:forEach items="${listKeyword}" var="rtKeyword" varStatus="statusKeyword">
-						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeyWordArray<c:out value="${statusKeyword.count}}"/>" name="tdkwKeyWordArray" value="<c:out value="${rtKeyword.tdkwKeyword}"/>">
-					</c:forEach>
+<%-- 					<c:forEach items="${listKeyword}" var="rtKeyword" varStatus="statusKeyword">
+						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeyWordArray" name="tdkwKeyWordArray" value="<c:out value="${rtKeyword.tdkwKeyword}"/>">
+					</c:forEach> --%>
 				</div>
 <!-- 				<div class="col-md-6">
 					<label class="form-label">시리즈</label>

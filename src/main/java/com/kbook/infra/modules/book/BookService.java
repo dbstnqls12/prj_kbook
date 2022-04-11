@@ -20,6 +20,7 @@ public interface BookService {
 	public List<Book> selectListRelatedItem(BookVo vo) throws Exception;
 	public Book selectOne(BookVo vo) throws Exception;
 	
+	public int insert(Book dto) throws Exception;
 	public int update(Book dto) throws Exception;
 	
 	
