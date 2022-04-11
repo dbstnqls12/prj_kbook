@@ -207,17 +207,13 @@
 						</c:forEach>	
 					</select>
 				</div>	
-<!-- 				<div class="col-md-6">
-					<label class="form-label">시리즈</label>
-					<input type="text" class="form-control form-control-sm" id="inputSeries" placeholder="시리즈를 검색하세요" name="tdsiBookCd">
-					<span class="badge bg-light text-dark">시리즈 검색</span>
-				</div> -->
-				
 				<div class="col-md-6">
 					<label for="file0" class="form-label input-file-button">책 대표이미지(image)</label>
 					<input type="file" class="form-control form-control-sm mb-1" id="file0" name="file0" multiple onChange="upload(0,2);"style="display: none;" >
 					<div class="addScroll">
-						<ul id="ulFile0" class="list-group" ></ul>
+					<c:forEach items="${listImage}" var="itemImage" varStatus="statusImage">
+						<ul id="ulFile0" class="list-group" ><c:if test="${itemImage.type eq 0}"><c:out value="${itemImage.originalName}"/></c:if></ul>
+					</c:forEach>	
 					</div>
 				</div>
 				
@@ -225,9 +221,12 @@
 					<label for="file1" class="form-label input-file-button">책 설명(image)</label>
 					<input type="file" class="form-control form-control-sm mb-1" id="file1" name="file1" multiple onChange="upload(1,2);"style="display: none;" >
 					<div class="addScroll">
-						<ul id="ulFile1" class="list-group" ></ul>
+					<c:forEach items="${listImage}" var="itemImage" varStatus="statusImage">
+						<ul id="ulFile0" class="list-group" ><c:if test="${itemImage.type eq 1}"><c:out value="${itemImage.originalName}"/></c:if></ul>
+					</c:forEach>
 					</div>
 				</div>
+				
 				<div class="col-md-6">
 					<label class="col-form-label">책소개(text)</label>
 		            <textarea rows="3" cols="80" id="tditBookDesc" name="tditBookDesc"><c:out value="${item.tditBookDesc}" escapeXml="false"/></textarea>
@@ -241,10 +240,6 @@
 					<label class="form-label">책속으로(text)</label>
 		            <textarea rows="3" cols="80" id="tditBookDesc2" name="tditBookDesc2"><c:out value="${item.tditBookDesc2}" escapeXml="false"/></textarea>
 				</div>
-<!-- 				<div class="col-md-6">
-					<label class="form-label">이벤트</label>
-					<input type="text" class="form-control form-control-sm" id="inputEvent" name="tdpeTypeCd">
-				</div> -->
 
 				<div class="col-6 d-none d-sm-block"></div>
 
@@ -289,7 +284,7 @@
 
 <script>
 
-	upload = function(seq,div){
+/* 	upload = function(seq,div){
 		
 		$("#ulFile" + seq).children().remove();
 		
@@ -327,7 +322,7 @@
 		li = li + '</li>';
 		
 		$("#ulFile"+seq).append(li);
-	}
+	} */
 	
 	delLi = function(seq, index){
 		$("#li_"+seq+"_"+index).remove();

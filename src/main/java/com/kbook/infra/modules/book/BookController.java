@@ -107,7 +107,8 @@ public class BookController {
 	@RequestMapping(value = "xdmin/book/bookView")
 	public String bookView(@ModelAttribute("vo") BookVo vo, Book dto,Model model) throws Exception {
 	
-		
+		System.out.println("dto.getPseq() : "+dto.getPseq());
+		System.out.println("dto.getOriginalName() : "+dto.getOriginalName());
 //		System.out.println("dto.getTdkwKeywordArray().length : "+dto.getTdkwKeywordArray().length);
 		
 		Book rt = service.selectOne(vo);
@@ -118,11 +119,12 @@ public class BookController {
 
 		List<Book> listKeyword = service.selectListKeyword(vo);
 		model.addAttribute("listKeyword", listKeyword);
-		System.out.println("listKeyword.get(0) : "+listKeyword.size());
 		
-		
-		List<Book> listRelatedItem= service.selectListRelatedItem(vo);
+		List<Book> listRelatedItem = service.selectListRelatedItem(vo);
 		model.addAttribute("listRelatedItem", listRelatedItem);
+
+		List<Book> listImage = service.selectListImage(vo);
+		model.addAttribute("listImage", listImage);
 		
 		
 		return "xdmin/book/bookView";
@@ -149,8 +151,6 @@ public class BookController {
 		
 		service.insert(dto);
 
-		System.out.println("dto.getTdkwKeywordArray().length : "+dto.getTdkwKeywordArray().length);
-		
 		vo.setTditSeq(dto.getTditSeq());
 		
 		List<Book> listAuthor = service.selectListAuthor(vo);
@@ -170,7 +170,6 @@ public class BookController {
 	@RequestMapping(value = "xdmin/book/bookEditForm")
 	public String bookEditForm(@ModelAttribute("vo") BookVo vo, Book dto, Model model) throws Exception {
 		
-		System.out.println("dto.getTdkwKeywordArray().length : "+dto.getTdkwKeywordArray().length);
 		
 		Book rt = service.selectOne(vo);
 		model.addAttribute("rt", rt);
@@ -191,6 +190,8 @@ public class BookController {
 		
 		service.update(dto);
 		
+		vo.setTditSeq(dto.getTditSeq());
+		
 		List<Book> listAuthor = service.selectListAuthor(vo);
 		model.addAttribute("listAuthorL", listAuthor);
 		
@@ -200,7 +201,6 @@ public class BookController {
 		List<Book> listRelatedItem= service.selectListRelatedItem(vo);
 		model.addAttribute("listRelatedItem", listRelatedItem);
 		
-		vo.setTditSeq(dto.getTditSeq());
 		redirectAttributes.addFlashAttribute("vo",vo);
 		
 		return "redirect:/xdmin/book/bookView";

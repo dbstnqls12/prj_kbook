@@ -186,6 +186,23 @@
 		AND tditSeq = #{tditSeq}	
 </select>
 
+<select id="selectListImage" resultMap="resultMapObj">
+	SELECT
+		a.type
+		,a.defaultNy
+		,a.sort
+		,a.originalName
+		,a.uuidName
+		,a.ext
+		,a.size
+		,a.delNy
+		,a.pseq
+	FROM tradItemUploaded a
+		LEFT JOIN tradItem b ON b.tditSeq = a.pseq
+	WHERE 1=1
+		AND a.pseq = #{tditSeq} 
+</select>
+
 <select id="selectListKeyword" resultMap="resultMapObj">
 	SELECT
 		tdkwSeq
@@ -293,7 +310,8 @@
 		,#{tdatDefaultNy}
 		,#{tditSeq}
 	)		
-</insert> -->
+</insert>
+ -->
 <insert id="insertUploaded">
 	INSERT INTO ${tableName} (
 		type
@@ -318,8 +336,6 @@
 	)		
 </insert>
 
-
-
 <update id="update">
 	UPDATE tradItem SET 
 		tditPrice = #{tditPrice}
@@ -337,17 +353,7 @@
 	WHERE 1=1
 		AND tditSeq=#{tditSeq}
 </update>
-
-<!-- <update id="updateKeyword">
-	UPDATE tradItemKeyword SET 
-		tdkwKeyword = #{tdkwKeyword}
-		tdkwDefaultNy = #{tdkwDefaultNy}
-		tdkwOrder = #{tdkwOrder}
-	WHERE 1=1
-		AND tditSeq=#{tditSeq}
-</update> -->
-
-<insert id="updateUploaded">
+<update id="updateUploaded">
 	UPDATE ${tableName} SET
 		type = #{type}
 		,defaultNy = #{defaultNy} 
@@ -359,8 +365,18 @@
 		,delNy = #{delNy}
 		,pseq = #{pseq}
 	WHERE 1=1
-		<!-- AND tditSeq=#{tditSeq}	 -->	
-</insert>
+		AND pseq = #{pseq}
+</update>
+<!-- 
+<update id="updateKeyword">
+	UPDATE tradItemKeyword SET 
+		tdkwKeyword = #{tdkwKeyword}
+		tdkwDefaultNy = #{tdkwDefaultNy}
+		tdkwOrder = #{tdkwOrder}
+	WHERE 1=1
+		AND tditSeq=#{tditSeq}
+</update>
+ -->
 
 
 </mapper>    

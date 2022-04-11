@@ -41,7 +41,7 @@
 	<div class="row">
 		<div class="mb-3"><h4>도서정보</h4></div>
 			<div class="container ">
-			<form action="xdmin/book/bookUpdt" method="post" id="bookEditForm" name="bookEditForm" enctype="multipart/form-data" class="row g-3">
+			<form action="" method="post" id="bookEditForm" name="bookEditForm" enctype="multipart/form-data" class="row g-3">
 			<input type="hidden" id="thisPage" name="thisPage"  value="<c:out value="${vo.thisPage}"/>">
 			<input type="hidden" id="tditSeq" name="tditSeq" value="<c:out value="${vo.tditSeq}"/>">
 			<input type="hidden" id="shTditDelNy" name="shTditDelNy" value="<c:out value="${vo.shTditDelNy}"/>">

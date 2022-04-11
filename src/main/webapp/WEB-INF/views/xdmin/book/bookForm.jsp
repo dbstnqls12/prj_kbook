@@ -214,6 +214,8 @@
 						<ul id="ulFile1" class="list-group" ></ul>
 					</div>
 				</div>
+				
+				
 				<div class="col-md-6">
 					<label class="col-form-label">책소개(text)</label>
 		            <textarea rows="3" cols="80" id="tditBookDesc" name="tditBookDesc"><c:out value="${item.tditBookDesc}" escapeXml="false"/></textarea>

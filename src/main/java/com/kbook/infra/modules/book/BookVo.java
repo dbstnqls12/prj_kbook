@@ -19,6 +19,7 @@ public class BookVo {
 	private Integer shOptionDate;
 	private String shDateStart;
 	private String shDateEnd;
+	private String pseq;
 	
 	private String listChk;
 	
@@ -300,6 +301,14 @@ public class BookVo {
 
 	public void setTdkwSeq(String tdkwSeq) {
 		this.tdkwSeq = tdkwSeq;
+	}
+
+	public String getPseq() {
+		return pseq;
+	}
+
+	public void setPseq(String pseq) {
+		this.pseq = pseq;
 	}
 	
 	

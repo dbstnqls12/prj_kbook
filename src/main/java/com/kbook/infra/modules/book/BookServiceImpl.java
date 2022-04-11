@@ -76,6 +76,11 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
+	public List<Book> selectListImage(BookVo vo) throws Exception {
+		return dao.selectListImage(vo);
+	}
+	
+	@Override
 	public int update(Book dto) throws Exception {
 		
 		dto.setModDateTime(UtilDateTime.nowDate());
@@ -116,9 +121,9 @@ public class BookServiceImpl implements BookService {
 			dto.setPseq(dto.getTditSeq());
 			
 			dao.updateUploaded(dto);
-			j++;
 			
-		}
+			j++;
+		}		
 		
 		return 1;
 	}
@@ -159,7 +164,7 @@ public class BookServiceImpl implements BookService {
 			dto.setDelNy(0);
 			dto.setPseq(dto.getTditSeq());
 			
-			dao.updateUploaded(dto);
+			dao.insertUploaded(dto);
 			j++;
 			
 		}
@@ -176,12 +181,15 @@ public class BookServiceImpl implements BookService {
 			dto.setDelNy(0);
 			dto.setPseq(dto.getTditSeq());
 			
-			dao.updateUploaded(dto);
+			dao.insertUploaded(dto);
+			
 			j++;
 			
 		}
 		
 		return 1;
 	}
+
+
 
 }

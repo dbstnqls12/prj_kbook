@@ -25,6 +25,12 @@ public class UtilUpload {
 		createPath(path);
 		
 		multipartFile.transferTo(new File(path+uuidFileName));
+		
+		dto.setOriginalName(fileName);
+		dto.setUuidName(uuidFileName);
+		dto.setExt(ext);
+		dto.setSize(multipartFile.getSize());
+//		dto.setPath("/resources/uploaded/" + pathModule + "/" + pathDate + "/");
 	
 	}
 	public static void uploadBook (MultipartFile multipartFile, String className, Book dto) throws Exception{
@@ -41,7 +47,13 @@ public class UtilUpload {
 		
 		multipartFile.transferTo(new File(path+uuidFileName));
 		
+		dto.setOriginalName(fileName);
+		dto.setUuidName(uuidFileName);
+		dto.setExt(ext);
+		dto.setSize(multipartFile.getSize());
+//		dto.setPath("/resources/uploaded/" + pathModule + "/" + pathDate + "/");
 	}
+	
 	public static void createPath (String path) {
 		File uploadPath = new File(path);
 		
