@@ -102,11 +102,9 @@
 								<td class="col-lg-4"><h4><i class="fa-regular fa-4"></i></h4></td>
 							</tr>
 							<tr>
-								<td><img src="/resources/user/image/book/book1.jpg" id="best" name="best"></td>
-								<td><img src="/resources/user/image/book/bookEx2.jpg" id="best" name="best"></td>
-								<td><img src="/resources/user/image/book/bookEx3.jpg" id="best" name="best"></td>
-								<td><img src="/resources/user/image/book/bookEx4.jpg" id="best" name="best"></td>
-
+								<c:forEach items="${listbookBest}" var="item" varStatus="status" begin="0" end="3">
+									<td><a href="javascript:goInfo(<c:out value="${item.tditSeq}"/>)"><img src="<c:out value="${item.path}"/><c:out value="${item.uuidName}"/>" id="best" name="best"></a></td>
+								</c:forEach>
 							</tr>
 							<%-- <c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/> --%>
 							<tr>
@@ -127,11 +125,10 @@
 								<td><i class="fa-regular fa-7"></i></td>
 								<td><i class="fa-regular fa-8"></i></td>
 							</tr>
-							<tr>	
-								<td><img src="/resources/user/image/book/bookEx5.jpg" id="best" name="best"></td>
-								<td><img src="/resources/user/image/book/bookEx6.jpg" id="best" name="best"></td>
-								<td><img src="/resources/user/image/book/bookEx7.jpg" id="best" name="best"></td>
-								<td><img src="/resources/user/image/book/bookEx8.jpg" id="best" name="best"></td>
+							<tr>
+								<c:forEach items="${listbookBest}" var="item" varStatus="status" begin="4" end="7">
+									<td><a href="javascript:goInfo(<c:out value="${item.tditSeq}"/>)"><img src="<c:out value="${item.path}"/><c:out value="${item.uuidName}"/>" id="best" name="best"></a></td>
+								</c:forEach>
 							</tr>
 							<tr>
 								<c:forEach items="${listbookBest}" var="item" varStatus="status" begin="4" end="7">	

@@ -44,8 +44,11 @@
 	<div class="row">
 		<!-- 3단길이의 첫번째 열 -->
 		<div class="col-md-3 d-none d-md-block">
-			<div class="px-0 mt-4">
-				<img class="mx-auto "alt="" src="../../../images/xdmin_img/bookEx.jpg" style="width: 250px; height: 330px;">
+			<div class="px-0 mt-4"><%-- <img src="<c:out value="${item.path}"/><c:out value="${item.uuidName}"/> --%>
+				<!-- <img class="mx-auto "alt="" src="../../../images/xdmin_img/bookEx.jpg" style="width: 250px; height: 330px;"> -->
+				<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
+				<img class="mx-auto "alt="" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/> " style="width: 250px; height: 330px;">
+				</c:forEach>
 				<span class="badge bg-light text-dark mx-auto" role="button" data-bs-toggle="modal" data-bs-target="#imageZoom">이미지 크게보기</span>
 				<div class="modal fade" id="imageZoom" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
@@ -54,7 +57,9 @@
 							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
-							<img class="mx-auto "alt="" src="../../../images/xdmin_img/bookEx.jpg" style="width: 100%; height: 100%px;">
+							<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
+								<img class="mx-auto "alt="" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>"  style="width: 100%; height: 100%;">
+							</c:forEach>
 						</div>
 						</div>
 					</div>
