@@ -2,6 +2,7 @@ package com.kbook.infra.modules.index;
 
 import org.springframework.stereotype.Controller;
 
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -21,11 +22,12 @@ import com.kbook.infra.modules.naver.NaverLoginBO;
 @Controller
 public class IndexController {
 
-//	@RequestMapping(value = "index/indexView")
-//	public String indexView() throws Exception {
-//		
-//		return "index/indexView";
-//	}
+	@RequestMapping(value = "index/indexView")
+	public String indexView() throws Exception {
+		
+		return "index/indexView";
+	}
+	
 //	@RequestMapping(value = "xdmin/facebookLogin")
 //	public String facebookLogin() throws Exception {
 //		
@@ -41,6 +43,15 @@ public class IndexController {
 		}
 
 		@RequestMapping("/xdmin/naverLogin")
+		public ModelAndView naverlogin(HttpSession session) {
+			/* 네아로 인증 URL을 생성하기 위하여 getAuthorizationUrl을 호출 */
+			String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+			
+			/* 생성한 인증 URL을 View로 전달 */
+			return new ModelAndView("/xdmin/callback", "url", naverAuthUrl);
+		}
+		
+		@RequestMapping("/xdmin/Login")
 		public ModelAndView login(HttpSession session) {
 			/* 네아로 인증 URL을 생성하기 위하여 getAuthorizationUrl을 호출 */
 			String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
@@ -60,7 +71,7 @@ public class IndexController {
 			System.out.println("result"+apiResult);
 			
 			session.setAttribute("sessSeq", 0); //생략 가능
-//			return new ModelAndView("callback", "result", apiResult);
+//			return "redirect:/index/indexView";
 			return "redirect:/member/kyobo_main";
 	 }
 	

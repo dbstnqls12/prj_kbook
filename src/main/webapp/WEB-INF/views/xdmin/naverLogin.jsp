@@ -3,23 +3,23 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8">
-  <title>네이버 로그인</title>
+  <title>네이버 로그인1</title>
   <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
   <!-- 네이버 로그인 버튼 노출 영역 -->
-<%--   <div id="naver_id_login"></div>
+  <div id="naver_id_login"></div>
   
   <div class="col-auto linksq" style="margin-left:auto;" onclick="location.href='${url}';">
-	<div id="naver_id_login" style="display:none;"></div>
+<!-- 	<div id="naver_id_login" style="display:none;"></div>
 	<div class="circle linksns naverlogin" style="float: none;">
 		<img alt="" src="/resources/user/image/icon_naver_128.png">
-	</div>
+	</div> -->
 	<div class="linksns linksen">
 		<div>네이버 로그인</div>
 	</div>
-  </div> --%>
+  </div>
 
  <div style="text-align:center"><a href="${url}">NaverIdLogin</a></div>
 

@@ -18,9 +18,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 <link  rel="stylesheet" href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css">
-
 <link href="/resources/user/css/main.css" rel="stylesheet" type="text/css">
 <title>Kyobo_main</title>
+ <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+ <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/member/include/main_header_member.jsp" %><!--  header_member -->
@@ -37,7 +38,7 @@
 			<%@ include file="/WEB-INF/views/member/include/main_ad.jsp" %> <!-- ad -->	
 			<div class="col">
 				<div class="col-new">
-				<div>${ }</div>
+				
 					<h6 class="d-inline">화제의 신간</h6>
 					<button type="button" class="btn btn-book btn-sm">국내도서</button>
 					<button type="button" class="btn btn-book btn-sm">외국도서</button>
@@ -209,7 +210,7 @@ $("#btnLogout").on("click",function(){
 });
 
 $(document).ready(function() {
-    var name = ${result}.response.nickname;
+    var name = ${result}.response.name;
     $("#name").html(name); //font 부분 텍스트 바꾸는 코드
     });
   //location.href = "${pageContext.request.contextPath}/";

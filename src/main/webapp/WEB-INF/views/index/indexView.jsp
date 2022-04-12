@@ -30,10 +30,16 @@
 <!-- 본문 s-->
 <div class="container">
 
-	sessSeq: <c:out value="${sessSeq }"/><br>
+	nickname: <p id="nickname" class="d-inline"></p><br>
+	name: <p id="name" class="d-inline"></p><br>
+	birthday: <p id="birthday" class="d-inline"></p><br>
+	mobile: <p id="mobile" class="d-inline"></p><br>
+	email: <p id="email" class="d-inline"></p><br>
+<%-- 	sessSeq: <c:out value="${sessSeq }"/><br>
+	sessSeq: <c:out value="${session }"/><br>
 	sessName: <c:out value="${sessName }"/><br>
 	sessId: <c:out value="${sessId }"/><br>
-	sessAdminNy: <c:out value="${sessAdminNy }"/><br>
+	sessAdminNy: <c:out value="${sessAdminNy }"/><br> --%>
 	<c:if test="${not empty sessSeq}">
 		<button type="button" class="btn btn-danger btn-sm" name="" id="btnLogout"><i class="fa-solid fa-power-off"></i></button>
 	</c:if>
@@ -67,6 +73,19 @@
 		});
 
 	});
+	
+	$(document).ready(function() {
+	    var nickname = ${result}.response.nickname;
+	    $("#nickname").html(nickname);
+	    var email = ${result}.response.email;
+	    $("#email").html(email);
+	    var mobile = ${result}.response.mobile;
+	    $("#mobile").html(mobile);
+	    var birthday = ${result}.response.birthday;
+	    $("#birthday").html(birthday);
+	    var name = ${result}.response.name;
+	    $("#name").html(name);
+	    });
 
 </script>
 <!-- Optional JavaScript; choose one of the two! -->

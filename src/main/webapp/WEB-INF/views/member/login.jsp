@@ -19,6 +19,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 
 <title>Kyobo_Login</title>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <link href="/resources/common/css/user/login.css"  rel="stylesheet" >
 </head>
 <body>
@@ -55,11 +57,10 @@
 	  <small><a href=""> 아이디/비밀번호 찾기 > </a></small>
 	</div>
 	
-	<div class="d-grid gap-2 col-xs-8 mx-auto">
-		<!-- <button class="btn btn-outline-secondary" type="button"><img src="../../../images/emailicon.png"> 번호로 로그인</button> -->
-		<button class="btn btn-naver" type="button"><img src="/resources/xdmin/image/navericon.png" id="icon"><b> 네이버</b> 로그인</button>
-		<button class="btn btn-kakao" type="button"><img src="/resources/xdmin/image/kakaoicon.png" id="icon"><b> 카카오</b> 로그인</button>
-<!-- 		<button class="btn btn-facebook" type="button" id="btn-facebook" onclick="fnFbCustomLogin();"><img src="/resources/xdmin/image/fbicon.png" id="icon"><b> 페이스북</b> 로그인</button> -->
+	<div class="d-grid gap-2 col-xs-8 mx-auto"><%--  --%><!-- onclick="location.href='${url}'" -->
+		<button class="btn btn-naver" type="button" onclick="location.href='/xdmin/Login'"><img src="/resources/xdmin/image/navericon.png" id="icon"><b> 네이버</b> 로그인</button>
+		<button class="btn btn-kakao" type="button" ><img src="/resources/xdmin/image/kakaoicon.png" id="icon"><b> 카카오</b> 로그인</button>
+		<%--  <div style="text-align:center" id="naver_id_login"><a href="${url}">NaverIdLogin</a></div> --%>
 		<button class="btn btn-facebook" type="button" id="btn-facebook" onclick="fnFbCustomLogin();"><img src="/resources/xdmin/image/fbicon.png" id="icon"><b> 페이스북</b> 로그인</button>
 	</div>
 </div>
@@ -69,53 +70,18 @@
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v13.0&appId=2175623275927646" nonce="JutAfaKH"></script><!-- &autoLogAppEvents=1 -->
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-
 <script type="text/javascript">
-/* 
-	function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
-		console.log('statusChangeCallback');
-		console.log(response);                   // The current login status of the person.
-		if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-			testAPI();  
-		} else {                                 // Not logged into your webpage or we are unable to tell.
-			document.getElementById('status').innerHTML = 'Please log ' +
-			'into this webpage.';
-		}
-	}
 
-
-  function checkLoginState() {               // Called when a person is finished with the Login Button.
-    FB.getLoginStatus(function(response) {   // See the onlogin handler
-      statusChangeCallback(response);
-    });
-  }
-
-	window.fbAsyncInit = function() {
-		FB.init({
-			appId      : '2175623275927646',
-			cookie     : true,                     // Enable cookies to allow the server to access the session.
-			xfbml      : true,                     // Parse social plugins on this webpage.
-			version    : 'v13.0'           // Use this Graph API version for this call.
-		});
-	
-	
-		FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
-			statusChangeCallback(response);        // Returns the login status.
-		});
-	};
- 
-  function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-       document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!'; 
-    });
-  }
- */
-
-
-
+ 	/*  $("#btn-naver").on("click",function(){	   */ 
+		//네이버 로그인
+		var naver_id_login = new naver_id_login("sp11vVbZCiR4lPwGCFnm", "http://localhost/xdmin/callback");
+		var state = naver_id_login.getUniqState();
+		/* naver_id_login.setButton("white", 2,40); */
+		naver_id_login.setDomain("http://localhost/member/kyobo_main");
+		naver_id_login.setState(state);
+		naver_id_login.setPopup();
+		/* naver_id_login.init_naver_id_login(); */
+/* });	 */	
 //페이스북 (로그인) 기본 설정
 
  	function checkLoginState() {               					//로그인 클릭시 호출
@@ -165,8 +131,6 @@
 		});
 	} 
 
-
-	  
 	  
 	  
   	$("#btnLogin").on("click",function(){
