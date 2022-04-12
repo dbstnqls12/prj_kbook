@@ -46,7 +46,7 @@ public class IndexController {
 			String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
 			
 			/* 생성한 인증 URL을 View로 전달 */
-			return new ModelAndView("xdmin/naverLogin", "url", naverAuthUrl);
+			return new ModelAndView("/xdmin/callback", "url", naverAuthUrl);
 		}
 	
 		@RequestMapping("/xdmin/callback")
@@ -59,7 +59,8 @@ public class IndexController {
 			session.setAttribute("result", apiResult);
 			System.out.println("result"+apiResult);
 			
-//			session.setAttribute("sessSeq", 0); //생략 가능
+			session.setAttribute("sessSeq", 0); //생략 가능
+//			return new ModelAndView("callback", "result", apiResult);
 			return "redirect:/member/kyobo_main";
 	 }
 	

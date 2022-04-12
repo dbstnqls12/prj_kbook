@@ -18,7 +18,7 @@ public class NaverLoginBO {
 
 	private final static String CLIENT_ID = "sp11vVbZCiR4lPwGCFnm";
 	private final static String CLIENT_SECRET = "JcKhWdbor9";
-	private final static String REDIRECT_URI = "http://localhost/member/kyobo_main";
+	private final static String REDIRECT_URI = "http://localhost/xdmin/callback";
 	private final static String SESSION_STATE = "oauth_state";
 	
 	/* 프로필 조회 API URL */

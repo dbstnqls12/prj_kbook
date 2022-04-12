@@ -37,6 +37,7 @@
 			<%@ include file="/WEB-INF/views/member/include/main_ad.jsp" %> <!-- ad -->	
 			<div class="col">
 				<div class="col-new">
+				<div>${ }</div>
 					<h6 class="d-inline">화제의 신간</h6>
 					<button type="button" class="btn btn-book btn-sm">국내도서</button>
 					<button type="button" class="btn btn-book btn-sm">외국도서</button>
@@ -206,6 +207,7 @@ $("#btnLogout").on("click",function(){
 	});
 
 });
+
 $(document).ready(function() {
     var name = ${result}.response.nickname;
     $("#name").html(name); //font 부분 텍스트 바꾸는 코드
