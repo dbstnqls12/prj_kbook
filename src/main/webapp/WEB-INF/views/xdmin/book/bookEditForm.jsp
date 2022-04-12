@@ -188,7 +188,11 @@
 					<label for="file0" class="form-label input-file-button">책 대표이미지(image)</label>
 					<input type="file" class="form-control form-control-sm mb-1" id="file0" name="file0" multiple onChange="upload(0,2);"style="display: none;" >
 					<div class="addScroll">
-						<ul id="ulFile0" class="list-group" ></ul>
+					<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
+						<c:if test="${itemUploaded.type eq 0}"><c:out value="${itemUploaded.uuidName}"/></c:if>
+					</c:forEach>
+						<ul id="ulFile0" class="list-group" >
+						</ul>
 					</div>
 				</div>
 				
@@ -196,7 +200,11 @@
 					<label for="file1" class="form-label input-file-button">책 설명(image)</label>
 					<input type="file" class="form-control form-control-sm mb-1" id="file1" name="file1" multiple onChange="upload(1,2);"style="display: none;" >
 					<div class="addScroll">
-						<ul id="ulFile1" class="list-group" ></ul>
+					<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
+						<c:if test="${itemUploaded.type eq 1}"><c:out value="${itemUploaded.uuidName}"/></c:if>
+					</c:forEach>
+						<ul id="ulFile1" class="list-group" >
+						</ul>
 					</div>
 				</div>
 				

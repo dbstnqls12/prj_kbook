@@ -50,8 +50,6 @@ public class BookController {
 	@RequestMapping(value="/visitor/kyobo_VbookInfo")
 	public String kyobo_VbookInfo(@ModelAttribute("vo") BookVo vo, Book dto, Model model) throws Exception {
 		
-		System.out.println("vo.getTditSeq() : "+vo.getTditSeq());
-		
 		List<Book> listAuthor = service.selectListAuthor(vo);
 		model.addAttribute("listAuthorL", listAuthor);
 
@@ -125,7 +123,6 @@ public class BookController {
 		List<Book> listUploaded = service.selectListBookUploaded(vo);
 		model.addAttribute("listUploaded", listUploaded);
 		
-//		model.addAttribute("listUploaded", service.selectListBookUploaded(vo));
 		
 		return "xdmin/book/bookView";
 	}
@@ -175,6 +172,9 @@ public class BookController {
 
 		List<Book> listKeyword = service.selectListKeyword(vo);
 		model.addAttribute("listKeyword", listKeyword);
+		
+		List<Book> listUploaded = service.selectListBookUploaded(vo);
+		model.addAttribute("listUploaded", listUploaded);
 
 		return "xdmin/book/bookEditForm";
 	}

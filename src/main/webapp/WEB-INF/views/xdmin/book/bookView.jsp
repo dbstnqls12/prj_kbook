@@ -210,16 +210,15 @@
 				<div class="col-md-6">
 					<label for="file0" class="form-label input-file-button d-block">책 대표이미지(image)</label>
 					<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
-					<img id="mainimage" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>" style="width: 100px;">
+						<c:if test="${itemUploaded.type eq 0}"><img id="mainimage" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>" style="width: 100px;"></c:if>
 					</c:forEach>
 				</div>
 				
 				<div class="col-md-6">
-					<label for="file1" class="form-label input-file-button">책 설명(image)</label>
-					<input type="file" class="form-control form-control-sm mb-1" id="file1" name="file1" multiple onChange="upload(1,2);"style="display: none;" >
-					<div class="addScroll">
-						<ul id="ulFile1" class="list-group" ></ul>
-					</div>
+					<label for="file1" class="form-label input-file-button d-block">책 설명(image)</label>
+					<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
+						<c:if test="${itemUploaded.type eq 1}"><img id="mainimage" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>" style="width: 100px;"></c:if>
+					</c:forEach>
 				</div>
 				
 				<div class="col-md-6">

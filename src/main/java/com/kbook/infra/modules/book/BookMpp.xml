@@ -374,6 +374,7 @@
 		,tditStateCd = #{tditStateCd}
 		,tditItemCate = #{tditItemCate}
 		,tditItemCate2 = #{tditItemCate2}
+		,tditSize=#{tditSize}
 		,tditPage = #{tditPage}
 		,tditWeight = #{tditWeight}
 		,tditBookDesc = #{tditBookDesc}

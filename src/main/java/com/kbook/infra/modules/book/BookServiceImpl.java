@@ -70,11 +70,6 @@ public class BookServiceImpl implements BookService {
 		return dao.selectOneCount(vo);
 	}
 
-//	@Override
-//	public List<Book> selectListImage(BookVo vo) throws Exception {
-//		return dao.selectListImage(vo);
-//	}
-	
 	@Override
 	public int update(Book dto) throws Exception {
 		
@@ -104,6 +99,7 @@ public class BookServiceImpl implements BookService {
 		}
 		
 		j = 0;
+		
 		for(MultipartFile multipartFile : dto.getFile1()) {
 			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
 			UtilUpload.uploadBook(multipartFile, pathModule, dto);
