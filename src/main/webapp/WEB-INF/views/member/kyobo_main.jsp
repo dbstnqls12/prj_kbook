@@ -159,6 +159,10 @@
 
 <script type="text/javascript">
 
+	  $(document).ready(function() {
+		    var name = ${result}.response.nickname;
+		    $("#name").html(name); 
+	});
 //Hide SubMenus.
 $(".subMenu").hide();
 
@@ -209,10 +213,7 @@ $("#btnLogout").on("click",function(){
 
 });
 
-$(document).ready(function() {
-    var name = ${result}.response.name;
-    $("#name").html(name); //font 부분 텍스트 바꾸는 코드
-    });
+
   //location.href = "${pageContext.request.contextPath}/";
 
 

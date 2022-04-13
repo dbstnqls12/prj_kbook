@@ -30,16 +30,18 @@
 <!-- 본문 s-->
 <div class="container">
 
-	nickname: <p id="nickname" class="d-inline"></p><br>
+<!-- 	nickname: <p id="nickname" class="d-inline"></p><br>
 	name: <p id="name" class="d-inline"></p><br>
 	birthday: <p id="birthday" class="d-inline"></p><br>
 	mobile: <p id="mobile" class="d-inline"></p><br>
-	email: <p id="email" class="d-inline"></p><br>
-<%-- 	sessSeq: <c:out value="${sessSeq }"/><br>
+	email: <p id="email" class="d-inline"></p><br> -->
+	sessSeq: <c:out value="${sessSeq }"/><br>
 	sessSeq: <c:out value="${session }"/><br>
 	sessName: <c:out value="${sessName }"/><br>
+	sessName: <c:out value="${name }"/><br>
 	sessId: <c:out value="${sessId }"/><br>
-	sessAdminNy: <c:out value="${sessAdminNy }"/><br> --%>
+	
+	sessAdminNy: <c:out value="${sessAdminNy }"/><br>
 	<c:if test="${not empty sessSeq}">
 		<button type="button" class="btn btn-danger btn-sm" name="" id="btnLogout"><i class="fa-solid fa-power-off"></i></button>
 	</c:if>
@@ -85,7 +87,7 @@
 	    $("#birthday").html(birthday);
 	    var name = ${result}.response.name;
 	    $("#name").html(name);
-	    });
+	});
 
 </script>
 <!-- Optional JavaScript; choose one of the two! -->

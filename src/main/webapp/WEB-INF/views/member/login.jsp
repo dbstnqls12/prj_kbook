@@ -58,7 +58,8 @@
 	</div>
 	
 	<div class="d-grid gap-2 col-xs-8 mx-auto"><%--  --%><!-- onclick="location.href='${url}'" -->
-		<button class="btn btn-naver" type="button" onclick="location.href='/xdmin/Login'"><img src="/resources/xdmin/image/navericon.png" id="icon"><b> 네이버</b> 로그인</button>
+		<button class="btn btn-naver" type="button" onclick="location.href='${url}'"><img src="/resources/xdmin/image/navericon.png" id="icon"><b> 네이버</b> 로그인</button>
+		
 		<button class="btn btn-kakao" type="button" ><img src="/resources/xdmin/image/kakaoicon.png" id="icon"><b> 카카오</b> 로그인</button>
 		<%--  <div style="text-align:center" id="naver_id_login"><a href="${url}">NaverIdLogin</a></div> --%>
 		<button class="btn btn-facebook" type="button" id="btn-facebook" onclick="fnFbCustomLogin();"><img src="/resources/xdmin/image/fbicon.png" id="icon"><b> 페이스북</b> 로그인</button>
@@ -74,7 +75,7 @@
 
  	/*  $("#btn-naver").on("click",function(){	   */ 
 		//네이버 로그인
-		var naver_id_login = new naver_id_login("sp11vVbZCiR4lPwGCFnm", "http://localhost/xdmin/callback");
+		var naver_id_login = new naver_id_login("sp11vVbZCiR4lPwGCFnm", "http://localhost/member/callback");
 		var state = naver_id_login.getUniqState();
 		/* naver_id_login.setButton("white", 2,40); */
 		naver_id_login.setDomain("http://localhost/member/kyobo_main");
@@ -82,6 +83,9 @@
 		naver_id_login.setPopup();
 		/* naver_id_login.init_naver_id_login(); */
 /* });	 */	
+
+
+
 //페이스북 (로그인) 기본 설정
 
  	function checkLoginState() {               					//로그인 클릭시 호출

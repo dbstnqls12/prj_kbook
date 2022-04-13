@@ -49,7 +49,6 @@
 					<span class="badge bg-light text-dark" role="button" id="btnLogout">로그아웃</span>
 <!-- 				<button type="button" class="btn btn-danger btn-sm" name="" id="btnLogout"><i class="fa-solid fa-power-off"></i></button> -->
 				</c:if>
-	          
 	        </div>
 		</div>
 	</div>

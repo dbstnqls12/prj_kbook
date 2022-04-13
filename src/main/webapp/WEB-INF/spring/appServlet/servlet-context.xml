@@ -44,6 +44,7 @@
 			<exclude-mapping path="/member/**" />
 			<exclude-mapping path="/member/login" />
 			<exclude-mapping path="/member/loginProc" />
+			<exclude-mapping path="/index/**" />
 			<beans:bean id="checkLoginSessionInterception" class="com.kbook.infra.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
 	</interceptors>	
