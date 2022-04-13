@@ -32,14 +32,14 @@
 			</a>
 		</div>		
 		<form class="d-flex col-lg-5 mx-auto mt-4"  style="height: 40px;">
-			<input class="form-control form-control-sm rounded-pill" type="search"" placeholder="Search" aria-label="Search">
+			<input class="form-control form-control-sm rounded-pill" type="search" placeholder="Search" aria-label="Search">
 			<button class="btn rounded-pill" type="button" onclick="location.href='book/bookSearch.html'"><i class="fa-solid fa-magnifying-glass"></i></button>
 		</form>
 		<div class="col-lg-2 my-auto d-none d-md-block">	
 	        <div class="dropdown">
 	          <a href="#" class="d-inline link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 	            <%-- <span><font id="name"><c:out value="${sessName }"/></font> 회원님 <u>(프렌즈)</u></span> --%>
-	            <span><font id="name"></font> 회원님 <u>(프렌즈)</u></span>
+	            <span><font id="name"></font>${name}${sessFName}${sessGName}${sessName} 회원님 <u>(프렌즈)</u></span>
 	          </a>
 	          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
 	            <li><a class="dropdown-item" href="../user/member/myInfo_main.html">내 정보</a></li>

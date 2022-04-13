@@ -10,6 +10,7 @@
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name ="google-signin-client_id" content="576534236545-g5mu42l7eup81kd6d8majpgh6lj4n3eb.apps.googleusercontent.com">
 <!-- Bootstrap CSS -->
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
  -->
@@ -59,83 +60,162 @@
 	
 	<div class="d-grid gap-2 col-xs-8 mx-auto"><%--  --%><!-- onclick="location.href='${url}'" -->
 		<button class="btn btn-naver" type="button" onclick="location.href='${url}'"><img src="/resources/xdmin/image/navericon.png" id="icon"><b> 네이버</b> 로그인</button>
-		
+		<!-- <button class="w-100 btn btn-lg" id="GgCustomLogin">구글 로그인</button> -->
+		<button class="w-100 btn btn-lg" id="GgCustomLogin" onclick="javascript:void(0)">구글 로그인</button>
 		<button class="btn btn-kakao" type="button" ><img src="/resources/xdmin/image/kakaoicon.png" id="icon"><b> 카카오</b> 로그인</button>
 		<%--  <div style="text-align:center" id="naver_id_login"><a href="${url}">NaverIdLogin</a></div> --%>
 		<button class="btn btn-facebook" type="button" id="btn-facebook" onclick="fnFbCustomLogin();"><img src="/resources/xdmin/image/fbicon.png" id="icon"><b> 페이스북</b> 로그인</button>
 	</div>
 </div>
-
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 <script src="/resources/common/js/validation.js"></script>
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v13.0&appId=2175623275927646" nonce="JutAfaKH"></script><!-- &autoLogAppEvents=1 -->
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 <script type="text/javascript">
 
- 	/*  $("#btn-naver").on("click",function(){	   */ 
-		//네이버 로그인
-		var naver_id_login = new naver_id_login("sp11vVbZCiR4lPwGCFnm", "http://localhost/member/callback");
-		var state = naver_id_login.getUniqState();
-		/* naver_id_login.setButton("white", 2,40); */
-		naver_id_login.setDomain("http://localhost/member/kyobo_main");
-		naver_id_login.setState(state);
-		naver_id_login.setPopup();
-		/* naver_id_login.init_naver_id_login(); */
-/* });	 */	
+//네이버 로그인
+var naver_id_login = new naver_id_login("sp11vVbZCiR4lPwGCFnm", "http://localhost/member/callback");
+var state = naver_id_login.getUniqState();
+/* naver_id_login.setButton("white", 2,40); */
+naver_id_login.setDomain("http://localhost/member/kyobo_main");
+naver_id_login.setState(state);
+naver_id_login.setPopup();
+/* naver_id_login.init_naver_id_login(); */
 
 
 
 //페이스북 (로그인) 기본 설정
 
- 	function checkLoginState() {               					//로그인 클릭시 호출
- 	    FB.getLoginStatus(function(response) {  
- 	      statusChangeCallback(response);
- 	    });
- 	  }
+function checkLoginState() {               					//로그인 클릭시 호출
+	    FB.getLoginStatus(function(response) {  
+	      statusChangeCallback(response);
+	    });
+	  }
 
-	function statusChangeCallback(response) { 					// FB.getLoginStatus()의 결과호출
+function statusChangeCallback(response) { 					// FB.getLoginStatus()의 결과호출
+	
+ console.log(response);             			 			//사용자의 현재 로그인 상태.
+	if (response.status === 'connected') {   				// 웹페이지와 페이스북에 로그인이 되어있다면
+		testAPI();  
+	} else {         			                       		// 웹페이지와 페이스북에 로그인이 되어있지 않다면
+		console.log('Please log into this webpage.'); 
+	}
+}
+
+function fnFbCustomLogin(){
+	FB.login(function(response) {
+		if (response.status === 'connected') {
+			FB.api('/me', 'get', {fields: 'name,email'}, function(r) {
+				console.log(r);
+				console.log('Successful login for: ' + r.name);
+			/* 	console.log(testAPI(response)); */
+				$.ajax({
+					async: true 
+					,cache: false
+					,type: "post"
+					,url: "/member/FBLgProc"
+					,data : {"kbmmName" : r.name}		// 넘겨줄 데이터를 설정
+					,success: function(response) {
+						if(response.item == "success") {
+							location.href = "/member/kyobo_main";
+						} else {
+							alert("페이스북 로그인 실패");
+						}
+					}
+					,error : function(jqXHR, textStatus, errorThrown){
+						alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+					}
+				}) 
+			})
+		} 
+	}, {scope: 'public_profile,email'});		//profile, email 권한을 나중에 추가하려는 경우 FB.login() 함수로 다시 실행할 수 있다.
+}
+
+window.fbAsyncInit = function() {
+	FB.init({
+		appId      : '2175623275927646', // 내 앱 ID.
+		cookie     : true,
+		xfbml      : true,
+		version    : 'v13.0'
+	});
+	FB.getLoginStatus(function(response) {   
+		statusChangeCallback(response);        // 로그인 상태를 말해줌
+	});
+}; 
+
+	function testAPI(response) {                      
+	console.log('Welcome!  Fetching your information.... ');
+	FB.api('/me', function(response) {
+		console.log('Thanks for logging in ' + response.name);
+	});
+} 
+	/* 구글 로그인 */
+ function init() {
+	gapi.load('auth2', function() {
+		gapi.auth2.init();
+		options = new gapi.auth2.SigninOptionsBuilder();
+		options.setPrompt('select_account');
+        // 추가는 Oauth 승인 권한 추가 후 띄어쓰기 기준으로 추가
+		options.setScope('email profile openid https://www.googleapis.com/auth/user.birthday.read');
+        // 인스턴스의 함수 호출 - element에 로그인 기능 추가
+        // GgCustomLogin은 li태그안에 있는 ID, 위에 설정한 options와 아래 성공,실패시 실행하는 함수들
+		gapi.auth2.getAuthInstance().attachClickHandler('GgCustomLogin', options, onSignIn, onSignInFailure);
+	})
+}
+
+function onSignIn(googleUser) {
+	var access_token = googleUser.getAuthResponse().access_token
+	$.ajax({
+    	// people api를 이용하여 프로필 및 생년월일에 대한 선택동의후 가져온다.
+		// url: 'https://people.googleapis.com/v1/people/me'
+        // key에 자신의 API 키를 넣습니다.
+       	// url : "/infra/member/GloginProc"
+		 data: {personFields:'birthdays', key:'AIzaSyB8OZaXqmi829PZf7vjIqqgUzcj-cuoOWU', 'access_token': access_token}
+		, method:'GET'
+	})
+	.done(function(e){
+        //프로필을 가져온다.
+     
+		 var profile = googleUser.getBasicProfile();
+		/* console.log(profile); */
+		var id= profile.getId();
+		var username = profile.getName();
 		
-	 console.log(response);             			 			//사용자의 현재 로그인 상태.
-		if (response.status === 'connected') {   				// 웹페이지와 페이스북에 로그인이 되어있다면
-			testAPI();  
-		} else {         			                       		// 웹페이지와 페이스북에 로그인이 되어있지 않다면
-			console.log('Please log into this webpage.'); 
-		}
-	}
+		console.log(username);
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/member/loginProcGoogle"
+			,data : {"kbmmName" : profile.getName()}
+			,success: function(response) {
+				if(response.rt == "success") {
+					/* location.href = "/infra/index/indexView"; */
+					location.href = "/member/kyobo_main";
+				} else {
+					alert("구글 로그인 실패");
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		})
+		
+	})
+	.fail(function(e){
+		console.log(e);
+	})
 	
- 	function fnFbCustomLogin(){
-		FB.login(function(response) {
-			if (response.status === 'connected') {
-				FB.api('/me', 'get', {fields: 'name,email'}, function(r) {
-					console.log(r);
-					console.log('Successful login for: ' + r.name);
-				/* 	console.log(testAPI(response)); */
-				})
-			} 
-		}, {scope: 'public_profile,email'});		//profile, email 권한을 나중에 추가하려는 경우 FB.login() 함수로 다시 실행할 수 있다.
-	}
+}
+
+function onSignInFailure(t){	
 	
-	window.fbAsyncInit = function() {
-		FB.init({
-			appId      : '2175623275927646', // 내 앱 ID.
-			cookie     : true,
-			xfbml      : true,
-			version    : 'v13.0'
-		});
-		FB.getLoginStatus(function(response) {   
-			statusChangeCallback(response);        // 로그인 상태를 말해줌
-		});
-	}; 
-
- 	function testAPI(response) {                      
-		console.log('Welcome!  Fetching your information.... ');
-		FB.api('/me', function(response) {
-			console.log('Thanks for logging in ' + response.name);
-		});
-	} 
-
-	  
+	console.log(t);
+	
+}
+	/* 구글 로그인 */
 	  
   	$("#btnLogin").on("click",function(){
 		

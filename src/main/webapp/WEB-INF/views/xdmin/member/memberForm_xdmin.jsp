@@ -483,8 +483,8 @@ $("#btn-add").on("click", function(){
 		         	// 정상적으로 검색이 완료됐으면,
 		         	if (status == daum.maps.services.Status.OK) {
 		         		
-		         		document.getElementById('kbmaLat').value=result[0].x;
-		         		document.getElementById('kbmaLng').value=result[0].y;
+		         		document.getElementById('kbmaLat').value=result[0].y;
+		         		document.getElementById('kbmaLng').value=result[0].x;
 		         		
 		         /* 						
 		         		var coords = new daum.maps.LatLng(result[0].y, result[0].x);

@@ -14,43 +14,73 @@
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 
 <script type="text/javascript">
-	function init() {
-		gapi.load('auth2', function() {
-			gapi.auth2.init();
-			options = new gapi.auth2.SigninOptionsBuilder();
-			options.setPrompt('select_account');
-	        // 추가는 Oauth 승인 권한 추가 후 띄어쓰기 기준으로 추가
-			options.setScope('email profile openid https://www.googleapis.com/auth/user.birthday.read');
-	        // 인스턴스의 함수 호출 - element에 로그인 기능 추가
-	        // GgCustomLogin은 li태그안에 있는 ID, 위에 설정한 options와 아래 성공,실패시 실행하는 함수들
-			gapi.auth2.getAuthInstance().attachClickHandler('GgCustomLogin', options, onSignIn, onSignInFailure);
-		})
-	}
-	function onSignIn(googleUser) {
-		var access_token = googleUser.getAuthResponse().access_token
-		$.ajax({
-	    	// people api를 이용하여 프로필 및 생년월일에 대한 선택동의후 가져온다.
-			 url: 'https://people.googleapis.com/v1/people/me'
-	        // key에 자신의 API 키를 넣습니다.
-			, data: {personFields:'birthdays', key:'AIzaSyB8OZaXqmi829PZf7vjIqqgUzcj-cuoOWU', 'access_token': access_token}
-			, method:'GET'
-		})
-		.done(function(e){
-	        //프로필을 가져온다.
-			var profile = googleUser.getBasicProfile();
-			console.log(profile);
-			/* location.href = "/index/indexView"; */
-		})
-		.fail(function(e){
-			console.log(e);
-		})
-	}
-	function onSignInFailure(t){		
-		console.log(t);
-	}
 
+//처음 실행하는 함수
+<script>
+function checkLoginState() {               					//로그인 클릭시 호출
+	    FB.getLoginStatus(function(response) {  
+	      statusChangeCallback(response);
+	    });
+	  }
+
+function statusChangeCallback(response) { 					// FB.getLoginStatus()의 결과호출
+	
+ console.log(response);             			 			//사용자의 현재 로그인 상태.
+	if (response.status === 'connected') {   				// 웹페이지와 페이스북에 로그인이 되어있다면
+		testAPI();  
+	} else {         			                       		// 웹페이지와 페이스북에 로그인이 되어있지 않다면
+		console.log('Please log into this webpage.'); 
+	}
+}
+
+function fnFbCustomLogin(){
+	FB.login(function(response) {
+		if (response.status === 'connected') {
+			FB.api('/me', 'get', {fields: 'name,email'}, function(r) {
+				console.log(r);
+				console.log('Successful login for: ' + r.name);
+			/* 	console.log(testAPI(response)); */
+				$.ajax({
+					async: true 
+					,cache: false
+					,type: "post"
+					,url: "/member/FBLgProc"
+					,data : {"kbmmName" : r.name}		// 넘겨줄 데이터를 설정
+					,success: function(response) {
+						if(response.item == "success") {
+							location.href = "/member/kyobo_main";
+						} else {
+							alert("페이스북 로그인 실패");
+						}
+					}
+					,error : function(jqXHR, textStatus, errorThrown){
+						alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+					}
+				}) 
+			})
+		} 
+	}, {scope: 'public_profile,email'});		//profile, email 권한을 나중에 추가하려는 경우 FB.login() 함수로 다시 실행할 수 있다.
+}
+
+window.fbAsyncInit = function() {
+	FB.init({
+		appId      : '2175623275927646', // 내 앱 ID.
+		cookie     : true,
+		xfbml      : true,
+		version    : 'v13.0'
+	});
+	FB.getLoginStatus(function(response) {   
+		statusChangeCallback(response);        // 로그인 상태를 말해줌
+	});
+}; 
+
+	function testAPI(response) {                      
+	console.log('Welcome!  Fetching your information.... ');
+	FB.api('/me', function(response) {
+		console.log('Thanks for logging in ' + response.name);
+	});
+} 
 </script>
-
 </body>
 
 

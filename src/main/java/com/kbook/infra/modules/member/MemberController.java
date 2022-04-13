@@ -282,7 +282,9 @@ public class MemberController {
         /* 네이버 로그인 성공 페이지 View 호출 */
         return "redirect:/member/kyobo_main";
     }
-	
+    
+    
+	//일반
 	@ResponseBody
 	@RequestMapping(value = "member/loginProc")
 	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
@@ -319,6 +321,7 @@ public class MemberController {
 		return returnMap;
 	}
 	
+	
 	//구글//
 	
 	@RequestMapping(value = "xdmin/googleLogin")
@@ -327,22 +330,35 @@ public class MemberController {
 		return "xdmin/googleLogin";
 	}
 	
-	@ResponseBody //구글 로그인
-	@RequestMapping(value = "/xdmin/loginProcGoogle")
+	@ResponseBody 
+	@RequestMapping(value = "/member/loginProcGoogle")
 	public Map<String, Object> GloginProc(@RequestParam("kbmmName")String name,Member dto, HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
 		System.out.println(name);
-		httpSession.setAttribute("sessName",name);
+		httpSession.setAttribute("sessGName",name);
 		httpSession.setAttribute("sessId","구글 회원입니다");
 		httpSession.setAttribute("sessSeq","구글 회원입니다");
 	
 		returnMap.put("rt", "success");
-		
+	
 		return returnMap;
 	}
-	
-
+	//페북 로그인
+	@ResponseBody
+	@RequestMapping(value = "/member/FBLgProc")
+	public Map<String, Object> FBLgProc(@RequestParam("kbmmName")String name, Member dto, HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		System.out.println(name);
+		httpSession.setAttribute("sessFName", name);
+		httpSession.setAttribute("sessId","페이스북 회원입니다");
+		httpSession.setAttribute("sessSeq","페이스북 회원입니다");
+		
+		returnMap.put("item", "success");
+		
+		return returnMap;	
+	}
 
 
 

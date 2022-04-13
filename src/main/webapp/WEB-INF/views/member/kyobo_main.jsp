@@ -159,36 +159,30 @@
 
 <script type="text/javascript">
 
-	  $(document).ready(function() {
-		    var name = ${result}.response.nickname;
-		    $("#name").html(name); 
+  $(document).ready(function() {
+	    var name = ${result}.response.nickname;
+	    $("#name").html(name); 
 	});
-//Hide SubMenus.
-$(".subMenu").hide();
+  
+	//Hide SubMenus.
+	$(".subMenu").hide();
+	
+	// Shows SubMenu when it's parent is hovered.
+	$(".subMenu").parent("li").hover(function () {
+	  $(this).find(">.subMenu").not(':animated').slideDown(300);
+	  $(this).toggleClass("active ");
+	});
+	
+	// Hides SubMenu when mouse leaves the zone.
+	$(".subMenu").parent("li").mouseleave(function () {
+	  $(this).find(">.subMenu").slideUp(150);
+	});
+	
+	// Prevents scroll to top when clicking on <a href="#"> 
+	$("a[href=\"#\"]").click(function () {
+	  return false;
+	});
 
-// Shows SubMenu when it's parent is hovered.
-$(".subMenu").parent("li").hover(function () {
-  $(this).find(">.subMenu").not(':animated').slideDown(300);
-  $(this).toggleClass("active ");
-});
-
-// Hides SubMenu when mouse leaves the zone.
-$(".subMenu").parent("li").mouseleave(function () {
-  $(this).find(">.subMenu").slideUp(150);
-});
-
-// Prevents scroll to top when clicking on <a href="#"> 
-$("a[href=\"#\"]").click(function () {
-  return false;
-});
-
-
-
-goView = function(seq){
-	$("#tditSeq").val(seq);
-	attr("action","/visitor/kyobo_VbookInfo");
-/* 	$("#formList").submit(); */
-}
 
 $("#btnLogout").on("click",function(){
 	
@@ -212,6 +206,14 @@ $("#btnLogout").on("click",function(){
 	});
 
 });
+
+goView = function(seq){
+	$("#tditSeq").val(seq);
+	attr("action","/visitor/kyobo_VbookInfo");
+/* 	$("#formList").submit(); */
+}
+
+
 
 
   //location.href = "${pageContext.request.contextPath}/";
