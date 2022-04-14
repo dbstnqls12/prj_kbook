@@ -186,13 +186,12 @@
 
 $("#btnLogout").on("click",function(){
 	
-
 	$.ajax({
 		async: true 
 		,cache: false
 		,type: "post"
 		,url: "/member/logoutProc"
-		,data : { "kbmmId" : $("#kbmmId").val(), "kbmmPassword" : $("#kbmmPassword").val()}
+		/* ,data : { "kbmmId" : $("#kbmmId").val(), "kbmmPassword" : $("#kbmmPassword").val()} */
 		,success: function(response) {
 			if(response.rt == "success") {
 				location.href = "/visitor/kyobo_Vmain";
@@ -207,7 +206,8 @@ $("#btnLogout").on("click",function(){
 
 });
 
-goView = function(seq){
+goView
+= function(seq){
 	$("#tditSeq").val(seq);
 	attr("action","/visitor/kyobo_VbookInfo");
 /* 	$("#formList").submit(); */

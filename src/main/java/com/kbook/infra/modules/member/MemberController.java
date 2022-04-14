@@ -251,40 +251,18 @@ public class MemberController {
 		this.naverLoginBO = naverLoginBO;
 	}
 
-	
-	@RequestMapping(value = "member/login", method = { RequestMethod.GET, RequestMethod.POST })
+//	기본로그인 + 네이버
+	@RequestMapping(value = "/member/login", method = { RequestMethod.GET, RequestMethod.POST })
 	public String memberLogin(Model model, HttpSession session) throws Exception {
 		
 		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-		System.out.println("네이버:" + naverAuthUrl);
         
         //네이버 
         model.addAttribute("url", naverAuthUrl);
 		return "member/login";
 	}
-	//네이버
-    //네이버 로그인 성공시 callback호출 메소드
-    @RequestMapping(value = "/member/callback", method = { RequestMethod.GET, RequestMethod.POST })
-    public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session) throws IOException {
-    	
-        OAuth2AccessToken oauthToken;
-        oauthToken = naverLoginBO.getAccessToken(session, code, state);
-
-        //로그인 사용자 정보를 읽어온다.
-        String apiResult = naverLoginBO.getUserProfile(oauthToken);
-        apiResult = naverLoginBO.getUserProfile(oauthToken);
-        session.setAttribute("result", apiResult);
-        System.out.println("result" + apiResult);
-        
-//        session.setAttribute("resultcode", 00);  // 세션값(로그인 하고 계속 갖고있음. Seq, ID , name)
-        session.setAttribute("sessSeq", 0); //생략 가능
-        /* 네이버 로그인 성공 페이지 View 호출 */
-        return "redirect:/member/kyobo_main";
-    }
-    
-    
-	//일반
+//	기본로그인
 	@ResponseBody
 	@RequestMapping(value = "member/loginProc")
 	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
@@ -294,25 +272,24 @@ public class MemberController {
 		
 		if(rtMember != null) {
 //			rtMember = service.selectOneLogin(dto);
-			
-			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
-			
-			 httpSession.setAttribute("sessSeq", rtMember.getKbmmSeq());
-			 httpSession.setAttribute("sessId", rtMember.getKbmmId());
-			 httpSession.setAttribute("sessName", rtMember.getKbmmName());
-			 httpSession.setAttribute("sessAdminNy", rtMember.getKbmmAdminNy());
-			 
-			returnMap.put("rt", "success");
-			
+			if(rtMember.getKbmmSeq() != null) {
+				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+				
+				httpSession.setAttribute("sessSeq", rtMember.getKbmmSeq());
+				httpSession.setAttribute("sessId", rtMember.getKbmmId());
+				httpSession.setAttribute("sessName", rtMember.getKbmmName());
+				
+				returnMap.put("rt", "success");
+			} else {
+				returnMap.put("rt", "fail");
+			}
 		} else {
 			returnMap.put("rt", "fail");
 		}
-		
-		
 		return returnMap;
 	}
 	@ResponseBody
-	@RequestMapping(value = "member/logoutProc")
+	@RequestMapping(value = "/member/logoutProc")
 	public Map<String, Object> logoutProc(HttpSession httpSession) throws Exception {
 		
 		Map<String, Object> returnMap = new HashMap<String, Object>();
@@ -320,38 +297,62 @@ public class MemberController {
 		returnMap.put("rt","success");
 		return returnMap;
 	}
-	
-	
-	//구글//
-	
-	@RequestMapping(value = "xdmin/googleLogin")
-	public String googleLogin() throws Exception {
-		
-		return "xdmin/googleLogin";
-	}
-	
+//	구글로그인
 	@ResponseBody 
-	@RequestMapping(value = "/member/loginProcGoogle")
-	public Map<String, Object> GloginProc(@RequestParam("kbmmName")String name,Member dto, HttpSession httpSession) throws Exception {
+	@RequestMapping(value = "member/loginProcGoogle")
+	public Map<String, Object> GloginProc(@RequestParam("kbmmName")String name, Member dto, HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
 		System.out.println(name);
-		httpSession.setAttribute("sessGName",name);
+		httpSession.setAttribute("sessName",name);
 		httpSession.setAttribute("sessId","구글 회원입니다");
 		httpSession.setAttribute("sessSeq","구글 회원입니다");
-	
+		
 		returnMap.put("rt", "success");
-	
+		
 		return returnMap;
+		
 	}
-	//페북 로그인
+//	네이버
+   @RequestMapping(value = "/member/callback", method = { RequestMethod.GET, RequestMethod.POST })	//네이버 로그인
+    public String callback(@RequestParam String code, @RequestParam String state, HttpSession session) throws IOException {
+	
+	   OAuth2AccessToken oauthToken = naverLoginBO.getAccessToken(session, code, state);
+		
+		//로그인 사용자 정보를 읽어온다.
+		String apiResult = naverLoginBO.getUserProfile(oauthToken);
+//	      System.out.println(naverLoginBO.getUserProfile(oauthToken).toString());
+        session.setAttribute("result", apiResult);
+        System.out.println("result"+apiResult);
+        
+        session.setAttribute("sessSeq", 0); //생략 가능
+        /* 네이버 로그인 성공 페이지 View 호출 */
+        return "redirect:/member/kyobo_main";
+    }	//    //네이버 로그인 성공시 callback호출 메소드
+
+//	카카오로그인
+	@ResponseBody //카카오 로그인
+	@RequestMapping(value = "/member/KakaoLgProc")
+	public Map<String, Object> KakaoLgProc(@RequestParam("kbmmName")String name, Member dto, HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		System.out.println(name);
+		httpSession.setAttribute("sessName", name);
+		httpSession.setAttribute("sessId","카카오 회원입니다");
+		httpSession.setAttribute("sessSeq","카카오 회원입니다");
+		
+		returnMap.put("item", "success");
+		
+		return returnMap;	
+	}
+//페북 로그인
 	@ResponseBody
 	@RequestMapping(value = "/member/FBLgProc")
 	public Map<String, Object> FBLgProc(@RequestParam("kbmmName")String name, Member dto, HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
 		System.out.println(name);
-		httpSession.setAttribute("sessFName", name);
+		httpSession.setAttribute("sessName", name);
 		httpSession.setAttribute("sessId","페이스북 회원입니다");
 		httpSession.setAttribute("sessSeq","페이스북 회원입니다");
 		
@@ -359,6 +360,8 @@ public class MemberController {
 		
 		return returnMap;	
 	}
+
+
 
 
 

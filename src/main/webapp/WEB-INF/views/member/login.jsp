@@ -60,9 +60,8 @@
 	
 	<div class="d-grid gap-2 col-xs-8 mx-auto"><%--  --%><!-- onclick="location.href='${url}'" -->
 		<button class="btn btn-naver" type="button" onclick="location.href='${url}'"><img src="/resources/xdmin/image/navericon.png" id="icon"><b> 네이버</b> 로그인</button>
-		<!-- <button class="w-100 btn btn-lg" id="GgCustomLogin">구글 로그인</button> -->
 		<button class="w-100 btn btn-lg" id="GgCustomLogin" onclick="javascript:void(0)">구글 로그인</button>
-		<button class="btn btn-kakao" type="button" ><img src="/resources/xdmin/image/kakaoicon.png" id="icon"><b> 카카오</b> 로그인</button>
+		<button class="btn btn-kakao" type="button" onclick="javascript:kakaoLogin()"><img src="/resources/xdmin/image/kakaoicon.png" id="icon"><b> 카카오</b> 로그인</button>
 		<%--  <div style="text-align:center" id="naver_id_login"><a href="${url}">NaverIdLogin</a></div> --%>
 		<button class="btn btn-facebook" type="button" id="btn-facebook" onclick="fnFbCustomLogin();"><img src="/resources/xdmin/image/fbicon.png" id="icon"><b> 페이스북</b> 로그인</button>
 	</div>
@@ -73,22 +72,102 @@
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v13.0&appId=2175623275927646" nonce="JutAfaKH"></script><!-- &autoLogAppEvents=1 -->
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type="text/javascript">
 
-//네이버 로그인
-var naver_id_login = new naver_id_login("sp11vVbZCiR4lPwGCFnm", "http://localhost/member/callback");
-var state = naver_id_login.getUniqState();
-/* naver_id_login.setButton("white", 2,40); */
-naver_id_login.setDomain("http://localhost/member/kyobo_main");
-naver_id_login.setState(state);
-naver_id_login.setPopup();
-/* naver_id_login.init_naver_id_login(); */
+<!--일반 로그인 -->  
+$("#btnLogin").on("click",function(){
+	
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		,url: "/member/loginProc"
+		,data : { "kbmmId" : $("#kbmmId").val(), "kbmmPassword" : $("#kbmmPassword").val()}
+		,success: function(response) {
+			if(response.rt == "success") { 
+					location.href = "/member/kyobo_main";
+			} else {
+				alert("회원없음");
+			}
+		}			
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});
 
+}); 
 
+<!-- 구글로그인 -->
+//처음 실행하는 함수
+function init() {
+	gapi.load('auth2', function() {
+		gapi.auth2.init();
+		options = new gapi.auth2.SigninOptionsBuilder();
+		options.setPrompt('select_account');
+        // 추가는 Oauth 승인 권한 추가 후 띄어쓰기 기준으로 추가
+		options.setScope('email profile openid https://www.googleapis.com/auth/user.birthday.read');
+        // 인스턴스의 함수 호출 - element에 로그인 기능 추가
+        // GgCustomLogin은 li태그안에 있는 ID, 위에 설정한 options와 아래 성공,실패시 실행하는 함수들
+		gapi.auth2.getAuthInstance().attachClickHandler('GgCustomLogin', options, onSignIn, onSignInFailure);
+	})
+}
 
-//페이스북 (로그인) 기본 설정
+function onSignIn(googleUser) {
+	var access_token = googleUser.getAuthResponse().access_token
+	$.ajax({
+        // key에 자신의 API 키를 넣습니다.
+		 data: {personFields:'birthdays', key:'AIzaSyB8OZaXqmi829PZf7vjIqqgUzcj-cuoOWU', 'access_token': access_token}
+		, method:'GET'
+	})
+	.done(function(e){
+        //프로필을 가져온다.
+     
+		 var profile = googleUser.getBasicProfile();
+		var id= profile.getId();
+		var username = profile.getName();
+		
+		console.log(username);
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/member/loginProcGoogle"	// controller의 loginProc value (url)
+			,data : {"kbmmName" : profile.getName()}	
+			,success: function(response) {
+				if(response.rt == "success") {
+					location.href = "/member/kyobo_main"; 
+				} else {
+					alert("구글 로그인 실패");
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		})
+	})
+	.fail(function(e){
+		console.log(e);
+	})
+}
 
-function checkLoginState() {               					//로그인 클릭시 호출
+function onSignInFailure(t){	
+	console.log(t);
+}
+
+<!-- 네이버로그인 -->
+	//네이버
+	var naver_id_login = new naver_id_login("sp11vVbZCiR4lPwGCFnm", "http://localhost/member/callback"); // client ID, callBack URL
+	var state = naver_id_login.getUniqState();
+	naver_id_login.setButton("white", 2,40);
+	naver_id_login.setDomain("http://localhost/member/kyobo_main");	// service URL
+	naver_id_login.setState(state);
+	naver_id_login.setPopup();
+	naver_id_login.init_naver_id_login();
+
+<!-- 페이스북 로그인-->
+
+ function checkLoginState() {               					//로그인 클릭시 호출
 	    FB.getLoginStatus(function(response) {  
 	      statusChangeCallback(response);
 	    });
@@ -111,7 +190,7 @@ function fnFbCustomLogin(){
 				console.log(r);
 				console.log('Successful login for: ' + r.name);
 			/* 	console.log(testAPI(response)); */
-				$.ajax({
+ 				$.ajax({
 					async: true 
 					,cache: false
 					,type: "post"
@@ -131,9 +210,8 @@ function fnFbCustomLogin(){
 			})
 		} 
 	}, {scope: 'public_profile,email'});		//profile, email 권한을 나중에 추가하려는 경우 FB.login() 함수로 다시 실행할 수 있다.
-}
-
-window.fbAsyncInit = function() {
+} 
+ window.fbAsyncInit = function() {
 	FB.init({
 		appId      : '2175623275927646', // 내 앱 ID.
 		cookie     : true,
@@ -150,95 +228,64 @@ window.fbAsyncInit = function() {
 	FB.api('/me', function(response) {
 		console.log('Thanks for logging in ' + response.name);
 	});
-} 
-	/* 구글 로그인 */
- function init() {
-	gapi.load('auth2', function() {
-		gapi.auth2.init();
-		options = new gapi.auth2.SigninOptionsBuilder();
-		options.setPrompt('select_account');
-        // 추가는 Oauth 승인 권한 추가 후 띄어쓰기 기준으로 추가
-		options.setScope('email profile openid https://www.googleapis.com/auth/user.birthday.read');
-        // 인스턴스의 함수 호출 - element에 로그인 기능 추가
-        // GgCustomLogin은 li태그안에 있는 ID, 위에 설정한 options와 아래 성공,실패시 실행하는 함수들
-		gapi.auth2.getAuthInstance().attachClickHandler('GgCustomLogin', options, onSignIn, onSignInFailure);
-	})
-}
+}  
 
-function onSignIn(googleUser) {
-	var access_token = googleUser.getAuthResponse().access_token
-	$.ajax({
-    	// people api를 이용하여 프로필 및 생년월일에 대한 선택동의후 가져온다.
-		// url: 'https://people.googleapis.com/v1/people/me'
-        // key에 자신의 API 키를 넣습니다.
-       	// url : "/infra/member/GloginProc"
-		 data: {personFields:'birthdays', key:'AIzaSyB8OZaXqmi829PZf7vjIqqgUzcj-cuoOWU', 'access_token': access_token}
-		, method:'GET'
-	})
-	.done(function(e){
-        //프로필을 가져온다.
-     
-		 var profile = googleUser.getBasicProfile();
-		/* console.log(profile); */
-		var id= profile.getId();
-		var username = profile.getName();
-		
-		console.log(username);
-		$.ajax({
-			async: true 
-			,cache: false
-			,type: "post"
-			,url: "/member/loginProcGoogle"
-			,data : {"kbmmName" : profile.getName()}
-			,success: function(response) {
-				if(response.rt == "success") {
-					/* location.href = "/infra/index/indexView"; */
-					location.href = "/member/kyobo_main";
-				} else {
-					alert("구글 로그인 실패");
-				}
-			}
-			,error : function(jqXHR, textStatus, errorThrown){
-				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-			}
-		})
-		
-	})
-	.fail(function(e){
-		console.log(e);
-	})
+<!-- 카카오 로그인-->
 	
-}
+window.Kakao.init('6ec915718ae8d23e16c65e0f6d22a62e');	// 자바스크립트 키 입력
+console.log(Kakao.isInitialized()); 
+function kakaoLogin() {
+    window.Kakao.Auth.login({
+        scope: 'profile_nickname', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
+        success: function(response) {
+            console.log(response) // 로그인 성공하면 받아오는 데이터
+            window.Kakao.API.request({ // 사용자 정보 가져오기 
+                url: '/v2/user/me',
+                success: (res) => {
+                    const kakao_account = res.kakao_account; 
+                    const profile_nickname = res.properties.nickname; 
+                    console.log(kakao_account)		// 받아온 정보들을 출력
+                    console.log(profile_nickname)		// 받아온 정보들을 출력
+                    $.ajax({
+            			async: true 
+            			,cache: false
+            			,type: "post"
+            			,url: "/member/KakaoLgProc"
+            			,data : {"kbmmName" : profile_nickname}
+            			,success: function(response) {
+            				if(response.item == "success") {
+            					location.href = "/member/kyobo_main";
+            				} else {
+            					alert("카카오 로그인 실패");
+            				}
+            			}
+            			,error : function(jqXHR, textStatus, errorThrown){
+            				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+            			}
+            		})
+                }
+            });
+        }, fail: function(err) { //다른 로그인 일때 실행
+    	    $.ajax({
+        		
+        		type: "post"
+        		,url: "/member/logoutProc"
+        		
+        		,success: function(response) {
+        			if(response.rt == "success") {
+        				location.href = "/member/KakaoLgProc";
+        			} 
+        		}
+        		,error : function(jqXHR, textStatus, errorThrown){
+        			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+        		}
+        		
+        	}); 
+      }
+      
+    })
 
-function onSignInFailure(t){	
-	
-	console.log(t);
-	
 }
-	/* 구글 로그인 */
-	  
-  	$("#btnLogin").on("click",function(){
-		
-		$.ajax({
-			async: true 
-			,cache: false
-			,type: "post"
-			,url: "/member/loginProc"
-			,data : { "kbmmId" : $("#kbmmId").val(), "kbmmPassword" : $("#kbmmPassword").val()}
-			,success: function(response) {
-				if(response.rt == "success") { 
-				/* 	if($("#kbmmAdminNy").val() == 1){ */
-						location.href = "/member/kyobo_main";
-				} else {
-					alert("회원없음");
-				}
-			}			
-			,error : function(jqXHR, textStatus, errorThrown){
-				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-			}
-		});
-
-	}); 
 
 </script>
 

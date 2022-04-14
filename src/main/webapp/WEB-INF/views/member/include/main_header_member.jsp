@@ -39,7 +39,7 @@
 	        <div class="dropdown">
 	          <a href="#" class="d-inline link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 	            <%-- <span><font id="name"><c:out value="${sessName }"/></font> 회원님 <u>(프렌즈)</u></span> --%>
-	            <span><font id="name"></font>${name}${sessFName}${sessGName}${sessName} 회원님 <u>(프렌즈)</u></span>
+	            <span><font id="name"></font>${name}${sessName} 회원님 <u>(프렌즈)</u></span>
 	          </a>
 	          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
 	            <li><a class="dropdown-item" href="../user/member/myInfo_main.html">내 정보</a></li>
@@ -47,7 +47,6 @@
 	          </ul>
 	          	<c:if test="${not empty sessSeq}">
 					<span class="badge bg-light text-dark" role="button" id="btnLogout">로그아웃</span>
-<!-- 				<button type="button" class="btn btn-danger btn-sm" name="" id="btnLogout"><i class="fa-solid fa-power-off"></i></button> -->
 				</c:if>
 	        </div>
 		</div>
