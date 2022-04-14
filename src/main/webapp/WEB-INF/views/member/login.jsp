@@ -95,7 +95,7 @@ $("#btnLogin").on("click",function(){
 			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 		}
 	});
-
+	return false; 
 }); 
 
 <!-- 구글로그인 -->
@@ -145,6 +145,7 @@ function onSignIn(googleUser) {
 				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 			}
 		})
+		return false; 
 	})
 	.fail(function(e){
 		console.log(e);
@@ -206,7 +207,8 @@ function fnFbCustomLogin(){
 					,error : function(jqXHR, textStatus, errorThrown){
 						alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 					}
-				}) 
+				})
+				return false; 
 			})
 		} 
 	}, {scope: 'public_profile,email'});		//profile, email 권한을 나중에 추가하려는 경우 FB.login() 함수로 다시 실행할 수 있다.
@@ -263,6 +265,7 @@ function kakaoLogin() {
             				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
             			}
             		})
+            		return false; 
                 }
             });
         }, fail: function(err) { //다른 로그인 일때 실행
