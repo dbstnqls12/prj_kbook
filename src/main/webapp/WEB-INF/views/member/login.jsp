@@ -58,7 +58,8 @@
 	  <small><a href=""> 아이디/비밀번호 찾기 > </a></small>
 	</div>
 	
-	<div class="d-grid gap-2 col-xs-8 mx-auto"><%--  --%><!-- onclick="location.href='${url}'" -->
+	<div class="d-grid gap-2 col-xs-8 mx-auto">
+		<div id="naver_id_login" style="display:none;"></div>
 		<button class="btn btn-naver" type="button" onclick="location.href='${url}'"><img src="/resources/xdmin/image/navericon.png" id="icon"><b> 네이버</b> 로그인</button>
 		<button class="w-100 btn btn-lg" id="GgCustomLogin" onclick="javascript:void(0)">구글 로그인</button>
 		<button class="btn btn-kakao" type="button" onclick="javascript:kakaoLogin()"><img src="/resources/xdmin/image/kakaoicon.png" id="icon"><b> 카카오</b> 로그인</button>
@@ -76,7 +77,7 @@
 <script type="text/javascript">
 
 <!--일반 로그인 -->  
-$("#btnLogin").on("click",function(){
+ $("#btnLogin").on("click",function(){
 	
 	$.ajax({
 		async: true 
@@ -95,20 +96,19 @@ $("#btnLogin").on("click",function(){
 			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 		}
 	});
-	return false; 
-}); 
-
-<!-- 구글로그인 -->
+	
+});  
+ <!-- 구글로그인 -->
 //처음 실행하는 함수
 function init() {
 	gapi.load('auth2', function() {
 		gapi.auth2.init();
 		options = new gapi.auth2.SigninOptionsBuilder();
 		options.setPrompt('select_account');
-        // 추가는 Oauth 승인 권한 추가 후 띄어쓰기 기준으로 추가
+       // 추가는 Oauth 승인 권한 추가 후 띄어쓰기 기준으로 추가
 		options.setScope('email profile openid https://www.googleapis.com/auth/user.birthday.read');
-        // 인스턴스의 함수 호출 - element에 로그인 기능 추가
-        // GgCustomLogin은 li태그안에 있는 ID, 위에 설정한 options와 아래 성공,실패시 실행하는 함수들
+       // 인스턴스의 함수 호출 - element에 로그인 기능 추가
+       // GgCustomLogin은 li태그안에 있는 ID, 위에 설정한 options와 아래 성공,실패시 실행하는 함수들
 		gapi.auth2.getAuthInstance().attachClickHandler('GgCustomLogin', options, onSignIn, onSignInFailure);
 	})
 }
@@ -116,13 +116,13 @@ function init() {
 function onSignIn(googleUser) {
 	var access_token = googleUser.getAuthResponse().access_token
 	$.ajax({
-        // key에 자신의 API 키를 넣습니다.
+       // key에 자신의 API 키를 넣습니다.
 		 data: {personFields:'birthdays', key:'AIzaSyB8OZaXqmi829PZf7vjIqqgUzcj-cuoOWU', 'access_token': access_token}
 		, method:'GET'
 	})
 	.done(function(e){
-        //프로필을 가져온다.
-     
+       //프로필을 가져온다.
+    
 		 var profile = googleUser.getBasicProfile();
 		var id= profile.getId();
 		var username = profile.getName();
@@ -145,7 +145,6 @@ function onSignIn(googleUser) {
 				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 			}
 		})
-		return false; 
 	})
 	.fail(function(e){
 		console.log(e);
@@ -165,10 +164,9 @@ function onSignInFailure(t){
 	naver_id_login.setState(state);
 	naver_id_login.setPopup();
 	naver_id_login.init_naver_id_login();
-
 <!-- 페이스북 로그인-->
 
- function checkLoginState() {               					//로그인 클릭시 호출
+function checkLoginState() {               					//로그인 클릭시 호출
 	    FB.getLoginStatus(function(response) {  
 	      statusChangeCallback(response);
 	    });
@@ -176,7 +174,7 @@ function onSignInFailure(t){
 
 function statusChangeCallback(response) { 					// FB.getLoginStatus()의 결과호출
 	
- console.log(response);             			 			//사용자의 현재 로그인 상태.
+console.log(response);             			 			//사용자의 현재 로그인 상태.
 	if (response.status === 'connected') {   				// 웹페이지와 페이스북에 로그인이 되어있다면
 		testAPI();  
 	} else {         			                       		// 웹페이지와 페이스북에 로그인이 되어있지 않다면
@@ -191,7 +189,7 @@ function fnFbCustomLogin(){
 				console.log(r);
 				console.log('Successful login for: ' + r.name);
 			/* 	console.log(testAPI(response)); */
- 				$.ajax({
+				$.ajax({
 					async: true 
 					,cache: false
 					,type: "post"
@@ -208,12 +206,11 @@ function fnFbCustomLogin(){
 						alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 					}
 				})
-				return false; 
 			})
 		} 
 	}, {scope: 'public_profile,email'});		//profile, email 권한을 나중에 추가하려는 경우 FB.login() 함수로 다시 실행할 수 있다.
 } 
- window.fbAsyncInit = function() {
+window.fbAsyncInit = function() {
 	FB.init({
 		appId      : '2175623275927646', // 내 앱 ID.
 		cookie     : true,
@@ -237,56 +234,55 @@ function fnFbCustomLogin(){
 window.Kakao.init('6ec915718ae8d23e16c65e0f6d22a62e');	// 자바스크립트 키 입력
 console.log(Kakao.isInitialized()); 
 function kakaoLogin() {
-    window.Kakao.Auth.login({
-        scope: 'profile_nickname', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
-        success: function(response) {
-            console.log(response) // 로그인 성공하면 받아오는 데이터
-            window.Kakao.API.request({ // 사용자 정보 가져오기 
-                url: '/v2/user/me',
-                success: (res) => {
-                    const kakao_account = res.kakao_account; 
-                    const profile_nickname = res.properties.nickname; 
-                    console.log(kakao_account)		// 받아온 정보들을 출력
-                    console.log(profile_nickname)		// 받아온 정보들을 출력
-                    $.ajax({
-            			async: true 
-            			,cache: false
-            			,type: "post"
-            			,url: "/member/KakaoLgProc"
-            			,data : {"kbmmName" : profile_nickname}
-            			,success: function(response) {
-            				if(response.item == "success") {
-            					location.href = "/member/kyobo_main";
-            				} else {
-            					alert("카카오 로그인 실패");
-            				}
-            			}
-            			,error : function(jqXHR, textStatus, errorThrown){
-            				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-            			}
-            		})
-            		return false; 
-                }
-            });
-        }, fail: function(err) { //다른 로그인 일때 실행
-    	    $.ajax({
-        		
-        		type: "post"
-        		,url: "/member/logoutProc"
-        		
-        		,success: function(response) {
-        			if(response.rt == "success") {
-        				location.href = "/member/KakaoLgProc";
-        			} 
-        		}
-        		,error : function(jqXHR, textStatus, errorThrown){
-        			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-        		}
-        		
-        	}); 
-      }
-      
-    })
+   window.Kakao.Auth.login({
+       scope: 'profile_nickname', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
+       success: function(response) {
+           console.log(response) // 로그인 성공하면 받아오는 데이터
+           window.Kakao.API.request({ // 사용자 정보 가져오기 
+               url: '/v2/user/me',
+               success: (res) => {
+                   const kakao_account = res.kakao_account; 
+                   const profile_nickname = res.properties.nickname; 
+                   console.log(kakao_account)		// 받아온 정보들을 출력
+                   console.log(profile_nickname)		// 받아온 정보들을 출력
+                   $.ajax({
+           			async: true 
+           			,cache: false
+           			,type: "post"
+           			,url: "/member/KakaoLgProc"
+           			,data : {"kbmmName" : profile_nickname}
+           			,success: function(response) {
+           				if(response.item == "success") {
+           					location.href = "/member/kyobo_main";
+           				} else {
+           					alert("카카오 로그인 실패");
+           				}
+           			}
+           			,error : function(jqXHR, textStatus, errorThrown){
+           				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+           			}
+           		})
+               }
+           });
+       }, fail: function(err) { //다른 로그인 일때 실행
+   	    $.ajax({
+       		
+       		type: "post"
+       		,url: "/member/logoutProc"
+       		
+       		,success: function(response) {
+       			if(response.rt == "success") {
+       				location.href = "/member/KakaoLgProc";
+       			} 
+       		}
+       		,error : function(jqXHR, textStatus, errorThrown){
+       			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+       		}
+       		
+       	}); 
+     }
+     
+   })
 
 }
 

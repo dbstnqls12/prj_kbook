@@ -257,14 +257,14 @@ public class MemberController {
 		
 		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-        
-        //네이버 
+
+//        //네이버 
         model.addAttribute("url", naverAuthUrl);
 		return "member/login";
 	}
 //	기본로그인
 	@ResponseBody
-	@RequestMapping(value = "member/loginProc")
+	@RequestMapping(value = "member/loginProc", method = { RequestMethod.GET, RequestMethod.POST })
 	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
@@ -288,22 +288,24 @@ public class MemberController {
 		}
 		return returnMap;
 	}
-	@ResponseBody
+	
+
+	@ResponseBody	//	로그아웃
 	@RequestMapping(value = "/member/logoutProc")
 	public Map<String, Object> logoutProc(HttpSession httpSession) throws Exception {
-		
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		httpSession.invalidate();
-		returnMap.put("rt","success");
+		returnMap.put("rt", "success");
 		return returnMap;
 	}
+
 //	구글로그인
 	@ResponseBody 
 	@RequestMapping(value = "member/loginProcGoogle")
 	public Map<String, Object> GloginProc(@RequestParam("kbmmName")String name, Member dto, HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-		System.out.println(name);
+		System.out.println("구글 " + name);
 		httpSession.setAttribute("sessName",name);
 		httpSession.setAttribute("sessId","구글 회원입니다");
 		httpSession.setAttribute("sessSeq","구글 회원입니다");
@@ -323,7 +325,7 @@ public class MemberController {
 		String apiResult = naverLoginBO.getUserProfile(oauthToken);
 //	      System.out.println(naverLoginBO.getUserProfile(oauthToken).toString());
         session.setAttribute("result", apiResult);
-        System.out.println("result"+apiResult);
+        System.out.println("result : "+apiResult);
         
         session.setAttribute("sessSeq", 0); //생략 가능
         /* 네이버 로그인 성공 페이지 View 호출 */
@@ -332,11 +334,11 @@ public class MemberController {
 
 //	카카오로그인
 	@ResponseBody //카카오 로그인
-	@RequestMapping(value = "/member/KakaoLgProc")
-	public Map<String, Object> KakaoLgProc(@RequestParam("kbmmName")String name, Member dto, HttpSession httpSession) throws Exception {
+	@RequestMapping(value = "/member/KakaoLgProc", method = { RequestMethod.GET, RequestMethod.POST })
+	public Map<String, Object> KakaoLgProc(@RequestParam("kbmmName") String name, Member dto, HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-		System.out.println(name);
+		System.out.println("카카오 "+name);
 		httpSession.setAttribute("sessName", name);
 		httpSession.setAttribute("sessId","카카오 회원입니다");
 		httpSession.setAttribute("sessSeq","카카오 회원입니다");
@@ -351,7 +353,7 @@ public class MemberController {
 	public Map<String, Object> FBLgProc(@RequestParam("kbmmName")String name, Member dto, HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-		System.out.println(name);
+		System.out.println("페북"+name);
 		httpSession.setAttribute("sessName", name);
 		httpSession.setAttribute("sessId","페이스북 회원입니다");
 		httpSession.setAttribute("sessSeq","페이스북 회원입니다");
@@ -360,8 +362,6 @@ public class MemberController {
 		
 		return returnMap;	
 	}
-
-
 
 
 
