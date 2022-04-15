@@ -65,45 +65,64 @@
 				</div>
 				
 				
-<%-- 				<c:set var="listAuthor" value="${AuthorServiceImpl.selelctListCachedAuthor('15')}"/>
-				<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><!-- 작가리스트 내가 여기에 집어넣을껴-->
+
+<%--  				<c:set var="listAuthor" value="${AuthorServiceImpl.selelctListCachedAuthor('15')}"/>
+				<div class="col-md-6">
+					<label for="inputId" class="form-label">저자명</label>
+					<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><!-- 작가리스트(배열에 들어가 있어야함) -->
+						<c:forEach items="${listAuthor}" var="item2" varStatus="status">
+							<c:if test="${itemAuthor.tdatAuthorCd eq item2.ifacSeq}"><input type="text" class="form-control form-control-sm" id="tdatAuthorCd" name="tdatAuthorCd" value="<c:out value="${item2.ifacName}" />"></c:if>
+						</c:forEach>
+					</c:forEach>
+				</div> --%>
+ 				<c:set var="listAuthor" value="${AuthorServiceImpl.selelctListCachedAuthor('15')}"/>
+				<div class="col-md-6">
+					<label for="inputId" class="form-label">저자명</label>
+					
+					<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><!-- 작가리스트(배열에 들어가 있어야함) -->
+						<c:forEach items="${listAuthor}" var="item2" varStatus="status">
+							<c:if test="${itemAuthor.tdatAuthorCd eq item2.ifacSeq}"><input type="text" class="form-control form-control-sm" id="tdatAuthorCd" name="tdatAuthorCd" 
+							value="<c:out value="${item2.ifacName}" />"></c:if>
+						</c:forEach>
+					</c:forEach>
+				
+				</div>
+				
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 작가의 결과물 봉인-->				
+<%-- 				<c:forEach items="${listAuthorL}" var="item" varStatus="statusAuthor"><!-- 작가리스트 내가 여기에 집어넣을껴-->
 					<c:choose>
 						<c:when test="${item.tdatDefaultNy eq 1}"> <c:set var="tdatAuthorCd1" value="${item.tdatAuthorCd}"/></c:when>
 						<c:when test="${item.tdatDefaultNy eq 0}"><c:set var="tdatAuthorCd2" value="${item.tdatAuthorCd}"/></c:when>
 						<c:otherwise></c:otherwise>
 					</c:choose>
-				</c:forEach>
-				<div class="col-md-6">
-					<label for="inputId" class="form-label">저자명</label>
-					<input type="hidden" id="tdatDefaultNyArray0" name="tdatDefaultNyArray" value="1">
+				</c:forEach> --%>
+<%-- 					<input type="hidden" id="tdatDefaultNyArray0" name="tdatDefaultNyArray" value="1">
 					<input type="hidden" id="tdatDelNyArray0" name="tdatDelNyArray" value="0">
 					<select class="form-select form-select-sm mb-1" id="tdatAuthorCdArray0" name="tdatAuthorCdArray" >
 					<option value="">::저자선택::</option>
 						<c:forEach items="${listAuthor}" var="item2" varStatus="status">
-							<option value="<c:out value="${item2.ifacSeq}"/>"><c:if test="${tdatAuthorCd1 eq item2.ifacSeq}">selected</c:if><c:out value="${item2.ifacName}"/></option>	
+							<option value="<c:out value="${item2.ifacSeq}"/>" <c:if test="${tdatAuthorCd1 eq item2.ifacSeq}">selected</c:if>><c:out value="${item2.ifacName}"/></option>	
 						</c:forEach>
-					</select>	
-					
-					<input type="hidden" id="tdatDefaultNyArray1" name="tdatDefaultNyArray" value="0">
+					</select>	 --%>
+<%-- 					<input type="hidden" id="tdatDefaultNyArray1" name="tdatDefaultNyArray" value="0">
 					<input type="hidden" id="tdatDelNyArray1" name="tdatDelNyArray" value="0">
 					<select class="form-select form-select-sm mb-1" id="tdatAuthorCdArray1" name="tdatAuthorCdArray" >
 					<option value="">::저자선택::</option>
 						<c:forEach items="${listAuthor}" var="item2" varStatus="status">
 							<option value="<c:out value="${item2.ifacSeq}"/>"><c:if test="${tdatAuthorCd1 eq item2.ifacSeq}">selected</c:if><c:out value="${item2.ifacName}"/></option>	
 						</c:forEach>
-					</select>	
-				</div> --%>
-				
+					</select> --%>	
 <%-- 				<div class="col-md-6">
 					<label for="inputId" class="form-label">저자명</label>
 					<c:set var="listAuthor" value="${AuthorServiceImpl.selelctListCachedAuthor('15')}"/>
 						<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><!-- 작가리스트 -->
-							<c:forEach items="${listAuthor}" var="item2" varStatus="status"><!-- 작가코드 -->
+							<c:forEach items="${listAuthor}" var="item2" varStatus="status"><!-- 작가코드 -->s
 								<c:if test="${itemAuthor.tdatAuthorCd eq item2.ifacSeq}"><p style="display: inline;">
 								<input type="text" class="form-control form-control-sm mb-1" id="tdatAuthorCd"name="tdatAuthorCd" value="<c:out value="${item2.ifacName}" />"></p></c:if>
 							</c:forEach>	
 						</c:forEach>
-				</div> --%>
+--%>
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 작가의 결과물 봉인-->
 				
 				<div class="col-md-6">
 					<label class="col-form-label pt-0">카테고리</label>
@@ -135,7 +154,7 @@
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">정가</label>
-					<input type="text" id="tditPrice" class="form-control form-control-sm" name="tditPrice" value="<fmt:formatNumber value="${item.tditPrice}"/>">
+					<input type="text" id="tditPrice" class="form-control form-control-sm" name="tditPrice" value="<c:out value="${item.tditPrice}"/>">
 				</div>
 				<div class="col-md-6">
 				<c:set var="listCodeDiscount" value="${CodeServiceImpl.selectListCachedCode('13')}"/>

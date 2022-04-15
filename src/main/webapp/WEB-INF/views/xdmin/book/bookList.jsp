@@ -138,7 +138,7 @@
 									</c:forEach>
 								</td>
 								<td><c:out value="${item.tditPublishingDate}"/></td>
-								<td><c:out value="${item.tditPrice}"/></td>
+								<td><fmt:formatNumber value="${item.tditPrice}"/></td>
 								<td>
 									<c:choose>
 										<c:when test="${item.tditDelNy eq 0}">X</c:when>
