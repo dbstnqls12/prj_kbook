@@ -63,7 +63,17 @@
 					<label class="form-label">출판일</label>
 					<input type="date" id="tditPublishingDate" class="form-control form-control-sm" name="tditPublishingDate" value="<c:out value="${rt.tditPublishingDate}"/>" disabled>
 				</div>
-				
+								
+
+<%--  				<c:set var="listAuthor" value="${AuthorServiceImpl.selelctListCachedAuthor('15')}"/>
+				<div class="col-md-6">
+					<label for="inputId" class="form-label">저자명</label>
+					<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><!-- 작가리스트(배열에 들어가 있어야함) -->
+						<c:forEach items="${listAuthor}" var="item2" varStatus="status">
+							<c:if test="${itemAuthor.tdatAuthorCd eq item2.ifacSeq}"><input type="text" class="form-control form-control-sm" id="tdatAuthorCd" name="tdatAuthorCd" value="<c:out value="${item2.ifacName}" />"></c:if>
+						</c:forEach>
+					</c:forEach>
+				</div> --%>
 				
 <%-- 				<div class="col-md-6">
 					<label for="inputId" class="form-label">저자명</label>
