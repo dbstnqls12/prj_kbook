@@ -49,10 +49,6 @@
 			<input type="hidden" id="shOptionDate" name="shOptionDate"  value="<c:out value="${vo.shOptionDate}"/>">
 			<input type="hidden" id="shDateStart" name="shDateStart"  value="<c:out value="${vo.shDateStart}"/>">
 			<input type="hidden" id="shDateEnd" name=shDateEnd  value="<c:out value="${vo.shDateEnd}"/>">
-<%-- 				<div class="col-md-6">
-					<label class="form-label">제목</label>
-					<input type="text" class="form-control form-control-sm" id="tditTitle" name="tditTitle" value="<c:out value="${item.tditTitle}"/>" >
-				</div> --%>
 				<div class="col-md-6">
 					<label class="form-label d-block">제목</label>
 					<input type="text" class="form-control form-control-sm" id="tditTitle" name="tditTitle" value="<c:out value="${item.tditTitle}"/>" >

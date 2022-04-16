@@ -6,7 +6,7 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <jsp:useBean id="CateServiceImpl" class="com.kbook.infra.modules.cate.CateServiceImpl"/>
-<jsp:useBean id="AuthorServiceImpl" class="com.kbook.infra.modules.author.AuthorServiceImpl"/>
+<%-- <jsp:useBean id="AuthorServiceImpl" class="com.kbook.infra.modules.author.AuthorServiceImpl"/> --%>
 <jsp:useBean id="CodeServiceImpl" class="com.kbook.infra.modules.code.CodeServiceImpl"/>
 <jsp:useBean id="PublisherServiceImpl" class="com.kbook.infra.modules.publisher.PublisherServiceImpl"/>
 
@@ -63,18 +63,41 @@
 					<label class="form-label">출판일</label>
 					<input type="date" id="tditPublishingDate" class="form-control form-control-sm" name="tditPublishingDate" value="<c:out value="${rt.tditPublishingDate}"/>" disabled>
 				</div>
-				
- 				<c:set var="listAuthor" value="${AuthorServiceImpl.selelctListCachedAuthor('15')}"/>
+<%-- 				
+				<c:set var="listAuthor" value="${AuthorServiceImpl.selelctListCachedAuthor('15')}"/>
+				<c:forEach items="${listAuthorL}" var="rtAuthor" varStatus="statusAuthor"><!-- 작가리스트 내가 여기에 집어넣을껴-->
+					<c:choose>
+						<c:when test="${rt.tdatDefaultNy eq 1}"> <c:set var="tdatAuthorCd1" value="${rt.tdatAuthorCd}"/></c:when>
+						<c:when test="${rt.tdatDefaultNy eq 0}"><c:set var="tdatAuthorCd2" value="${rt.tdatAuthorCd}"/></c:when>
+						<c:otherwise></c:otherwise>
+					</c:choose>
+				</c:forEach>
 				<div class="col-md-6">
 					<label for="inputId" class="form-label">저자명</label>
-<%-- 					<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><!-- 작가리스트(배열에 들어가 있어야함) -->
-						<c:forEach items="${listAuthor}" var="item2" varStatus="status">
-							<c:if test="${itemAuthor.tdatAuthorCd eq item2.ifacSeq}"><input type="text" id="tdatAuthorCd" name="tdatAuthorCd" 
-							value="<c:out value="${item2.ifacName}" />"></c:if>
+					<input type="hidden" id="tdatDefaultNyArray0" name="tdatDefaultNyArray" value="1">
+					<input type="hidden" id="tdatDelNyArray0" name="tdatDelNyArray" value="0">
+					<select class="form-select form-select-sm mb-1" id="tdatAuthorCdArray0" name="tdatAuthorCdArray" >
+					<option value="">::저자선택::</option>
+						<c:forEach items="${listAuthor}" var="rt2" varStatus="status">
+							<option value="<c:out value="${rt2.ifacSeq}"/>"><c:if test="${tdatAuthorCd1 eq rt2.ifacSeq}">selected</c:if><c:out value="${rt2.ifacName}"/></option>	
 						</c:forEach>
-					</c:forEach> --%>
-					<input type="text" class="form-control form-control-sm" id="tdatAuthorCd" name="tdatAuthorCd" value="<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><c:forEach items="${listAuthor}" var="item2" varStatus="status"><c:if test="${itemAuthor.tdatAuthorCd eq item2.ifacSeq}"><c:out value="${item2.ifacName} " /></c:if></c:forEach></c:forEach>" disabled>	
+					</select>	
+					
+					<input type="hidden" id="tdatDefaultNyArray1" name="tdatDefaultNyArray" value="0">
+					<input type="hidden" id="tdatDelNyArray1" name="tdatDelNyArray" value="0">
+					<select class="form-select form-select-sm mb-1" id="tdatAuthorCdArray1" name="tdatAuthorCdArray" >
+					<option value="">::저자선택::</option>
+						<c:forEach items="${listAuthor}" var="rt2" varStatus="status">
+							<option value="<c:out value="${rt2.ifacSeq}"/>"><c:if test="${tdatAuthorCd1 eq rt2.ifacSeq}">selected</c:if><c:out value="${rt2.ifacName}"/></option>	
+						</c:forEach>
+					</select>	
 				</div>
+				 --%>
+<%--  				<c:set var="listAuthor" value="${AuthorServiceImpl.selelctListCachedAuthor('15')}"/>
+				<div class="col-md-6">
+					<label for="inputId" class="form-label">저자명</label>
+					<input type="text" class="form-control form-control-sm" id="tdatAuthorCd" name="tdatAuthorCd" value="<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><c:forEach items="${listAuthor}" var="item2" varStatus="status"><c:if test="${itemAuthor.tdatAuthorCd eq item2.ifacSeq}"><c:out value="${item2.ifacName} " /></c:if></c:forEach></c:forEach>" disabled>	
+				</div --%>>
 				
 				<div class="col-md-6">
 					<label class="col-form-label pt-0">카테고리</label>
@@ -178,11 +201,6 @@
 						</c:forEach>	
 					</select>
 				</div>	
-<!-- 				<div class="col-md-6">
-					<label class="form-label">시리즈</label>
-					<input type="text" class="form-control form-control-sm" id="inputSeries" placeholder="시리즈를 검색하세요" name="tdsiBookCd">
-					<span class="badge bg-light text-dark">시리즈 검색</span>
-				</div> -->
 				
 				<div class="col-md-6">
 					<label for="file0" class="form-label input-file-button">책 대표이미지(image)</label>

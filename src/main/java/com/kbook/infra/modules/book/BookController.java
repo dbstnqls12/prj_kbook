@@ -175,8 +175,8 @@ public class BookController {
 		Book rt = service.selectOne(vo);
 		model.addAttribute("rt", rt);
 		
-		List<Book> listAuthor = service.selectListAuthor(vo);
-		model.addAttribute("listAuthorL", listAuthor);
+//		List<Book> listAuthor = service.selectListAuthor(vo);
+//		model.addAttribute("listAuthorL", listAuthor);
 
 		List<Book> listKeyword = service.selectListKeyword(vo);
 		model.addAttribute("listKeyword", listKeyword);
