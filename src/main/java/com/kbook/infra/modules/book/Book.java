@@ -62,6 +62,8 @@ public class Book {
 	private Integer delNy;
 	private String pseq;
 	
+	private Integer[] tditSeqArray;
+	
 	private Integer[] tdatAuthorCdArray;
 	private Integer[] tdatDefaultNyArray;
 	private String[] tdatTransLatorCdArray;
@@ -464,6 +466,12 @@ public class Book {
 	}
 	public void setPath(String path) {
 		this.path = path;
+	}
+	public Integer[] getTditSeqArray() {
+		return tditSeqArray;
+	}
+	public void setTditSeqArray(Integer[] tditSeqArray) {
+		this.tditSeqArray = tditSeqArray;
 	}
 
 	

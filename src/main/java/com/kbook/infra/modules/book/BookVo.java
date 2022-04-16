@@ -24,8 +24,9 @@ public class BookVo {
 	private String listChk;
 	
 	private String[] checkboxSeqArray;
-	
-//	paging
+	private String[] tditSeqArray;
+
+	//	paging
 	private int thisPage = 1;									// 현재 페이지
 	private int rowNumToShow = 5;								// 화면에 보여줄 데이터 줄 갯수
 	private int pageNumToShow = 5;								// 화면에 보여줄 페이징 번호 갯수
@@ -309,6 +310,14 @@ public class BookVo {
 
 	public void setPseq(String pseq) {
 		this.pseq = pseq;
+	}
+
+	public String[] getTditSeqArray() {
+		return tditSeqArray;
+	}
+
+	public void setTditSeqArray(String[] tditSeqArray) {
+		this.tditSeqArray = tditSeqArray;
 	}
 	
 	

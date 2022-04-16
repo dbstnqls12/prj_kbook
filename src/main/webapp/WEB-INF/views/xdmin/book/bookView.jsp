@@ -50,9 +50,13 @@
 			<input type="hidden" id="shOptionDate" name="shOptionDate"  value="<c:out value="${vo.shOptionDate}"/>">
 			<input type="hidden" id="shDateStart" name="shDateStart"  value="<c:out value="${vo.shDateStart}"/>">
 			<input type="hidden" id="shDateEnd" name=shDateEnd  value="<c:out value="${vo.shDateEnd}"/>">
-				<div class="col-md-6">
+<%-- 				<div class="col-md-6">
 					<label class="form-label">제목</label>
 					<input type="text" class="form-control form-control-sm" id="tditTitle" name="tditTitle" value="<c:out value="${item.tditTitle}"/>" >
+				</div> --%>
+				<div class="col-md-6">
+					<label class="form-label">제목</label>
+					<input type="text" id="tditTitle" name="tditTitle" value="<c:out value="${item.tditTitle}"/>" >
 				</div>
 				<div class="col-6 d-none d-sm-block"></div>
 				<div class="col-md-6">
@@ -78,7 +82,6 @@
  				<c:set var="listAuthor" value="${AuthorServiceImpl.selelctListCachedAuthor('15')}"/>
 				<div class="col-md-6">
 					<label for="inputId" class="form-label">저자명</label>
-					
 					<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><!-- 작가리스트(배열에 들어가 있어야함) -->
 						<c:forEach items="${listAuthor}" var="item2" varStatus="status">
 							<c:if test="${itemAuthor.tdatAuthorCd eq item2.ifacSeq}"><input type="text" class="form-control form-control-sm" id="tdatAuthorCd" name="tdatAuthorCd" 
