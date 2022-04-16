@@ -192,12 +192,12 @@ public class BookController {
 		service.update(dto);
 		
 		vo.setTditSeq(dto.getTditSeq());
-		
-		List<Book> listAuthor = service.selectListAuthor(vo);
-		model.addAttribute("listAuthorL", listAuthor);
-		
+
 		List<Book> listKeyword = service.selectListKeyword(vo);
 		model.addAttribute("listKeyword", listKeyword);
+		
+		List<Book> listUploaded = service.selectListBookUploaded(vo);
+		model.addAttribute("listUploaded", listUploaded);
 		
 		redirectAttributes.addFlashAttribute("vo",vo);
 		

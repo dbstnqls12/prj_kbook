@@ -398,7 +398,7 @@
 	WHERE 1=1
 		AND pseq = #{pseq}
 </update>
-<!-- 
+
 <update id="updateKeyword">
 	UPDATE tradItemKeyword SET 
 		tdkwKeyword = #{tdkwKeyword}
@@ -407,7 +407,7 @@
 	WHERE 1=1
 		AND tditSeq=#{tditSeq}
 </update>
- -->
+
 
 
 </mapper>    

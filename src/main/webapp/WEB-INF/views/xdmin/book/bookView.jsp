@@ -76,8 +76,7 @@
 							value="<c:out value="${item2.ifacName}" />"></c:if>
 						</c:forEach>
 					</c:forEach> --%>
-					<c:set var="listAuthor" value="${AuthorServiceImpl.selelctListCachedAuthor('15')}"/>
-					<input type="text" class="form-control form-control-sm" id="tdatAuthorCd" name="tdatAuthorCd" value="<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><c:forEach items="${listAuthor}" var="item2" varStatus="status"><c:if test="${itemAuthor.tdatAuthorCd eq item2.ifacSeq}"><c:out value="${item2.ifacName} " /></c:if></c:forEach></c:forEach>">	
+ 					<input type="text" class="form-control form-control-sm" id="tdatAuthorCdArray" name="tdatAuthorCdArray" value="<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><c:forEach items="${listAuthor}" var="item2" varStatus="status"><c:if test="${itemAuthor.tdatAuthorCd eq item2.ifacSeq}"><c:out value="${item2.ifacName} " /></c:if></c:forEach></c:forEach>">	
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">ISBN</label>

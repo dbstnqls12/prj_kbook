@@ -64,7 +64,7 @@
 					<input type="date" id="tditPublishingDate" class="form-control form-control-sm" name="tditPublishingDate" value="<c:out value="${item.tditPublishingDate}"/>">
 				</div>
 				
-<%-- 				
+				
 				<c:set var="listAuthor" value="${AuthorServiceImpl.selelctListCachedAuthor('15')}"/>
 				<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><!-- 작가리스트 내가 여기에 집어넣을껴-->
 					<c:choose>
@@ -92,7 +92,7 @@
 							<option value="<c:out value="${item2.ifacSeq}"/>"><c:if test="${tdatAuthorCd1 eq item2.ifacSeq}">selected</c:if><c:out value="${item2.ifacName}"/></option>	
 						</c:forEach>
 					</select>	
-				</div> --%>
+				</div>
 				
 				<div class="col-md-6">
 					<label class="col-form-label pt-0">카테고리</label>

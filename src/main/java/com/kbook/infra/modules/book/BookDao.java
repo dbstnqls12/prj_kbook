@@ -37,7 +37,7 @@ public class BookDao {
 
 	public int insert(Book dto) {return sqlSession.insert(namespace +".insert", dto);}
 	public int insertKeyword(Book dto) {return sqlSession.insert(namespace +".insertKeyword", dto);}
-//	public int insertAuthor(Book dto) {return sqlSession.insert(namespace +".insertAuthor", dto);}
+	public int insertAuthor(Book dto) {return sqlSession.insert(namespace +".insertAuthor", dto);}
 	public int insertUploaded(Book dto) {return sqlSession.insert(namespace +".insertUploaded", dto);}
 	
 	public int update(Book dto) {return sqlSession.update(namespace +".update", dto);}
