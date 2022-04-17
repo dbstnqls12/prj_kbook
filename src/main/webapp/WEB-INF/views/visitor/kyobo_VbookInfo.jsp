@@ -47,7 +47,9 @@
 			<div class="px-0 mt-4"><%-- <img src="<c:out value="${item.path}"/><c:out value="${item.uuidName}"/> --%>
 				<!-- <img class="mx-auto "alt="" src="../../../images/xdmin_img/bookEx.jpg" style="width: 250px; height: 330px;"> -->
 				<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
-				<img class="mx-auto "alt="" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/> " style="width: 250px; height: 330px;">
+					<c:if test="${itemUploaded.defaultNy eq 1}">
+						<img class="mx-auto "alt="" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/> " style="width: 230px; height: 330px;">
+					</c:if>
 				</c:forEach>
 				<span class="badge bg-light text-dark mx-auto" role="button" data-bs-toggle="modal" data-bs-target="#imageZoom">이미지 크게보기</span>
 				<div class="modal fade" id="imageZoom" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -58,7 +60,9 @@
 						</div>
 						<div class="modal-body">
 							<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
+							<c:if test="${itemUploaded.defaultNy eq 1}">
 								<img class="mx-auto "alt="" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>"  style="width: 100%; height: 100%;">
+							</c:if>
 							</c:forEach>
 						</div>
 						</div>
@@ -196,7 +200,11 @@
 					</div>	
 					<div class="mb-4 mt-5">
 						<h6 class="mb-2" style="font-weight: bold;">상세이미지</h6>
-						<img class="mx-auto "alt="" src="../../../images/xdmin_img/image_bookDesc1.jpg" style="width: 80%; height: 100%;">
+						<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
+							<c:if test="${itemUploaded.defaultNy eq 0}">
+								<img class="mx-auto "alt="" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>"   style="width: 80%; height: 100%;">
+							</c:if>
+						</c:forEach>
 					</div>
 					<div class="mb-4 mt-5">
 						<h6 class="mb-2" style="font-weight: bold;">목차</h6>

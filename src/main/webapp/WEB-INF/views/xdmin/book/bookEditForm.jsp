@@ -125,13 +125,13 @@
 					<input type="text" class="form-control form-control-sm" id="tditSize" name="tditSize" value="<c:out value="${rt.tditSize}"/>">
 				</div>
 
-				<c:forEach items="${listKeyword}" var="itemKeyword" varStatus="statusKeyword">
+				<c:forEach items="${listKeyword}" var="rtKeyword" varStatus="statusKeyword">
 					<c:choose>
-						<c:when test="${itemKeyword.tdkwOrder eq 1}"> <c:set var="tdkwKeyWord1" value="${itemKeyword.tdkwKeyword}"/></c:when>
-						<c:when test="${itemKeyword.tdkwOrder eq 2}"> <c:set var="tdkwKeyWord2" value="${itemKeyword.tdkwKeyword}"/></c:when>
-						<c:when test="${itemKeyword.tdkwOrder eq 3}"> <c:set var="tdkwKeyWord3" value="${itemKeyword.tdkwKeyword}"/></c:when>
-						<c:when test="${itemKeyword.tdkwOrder eq 4}"> <c:set var="tdkwKeyWord4" value="${itemKeyword.tdkwKeyword}"/></c:when>
-						<c:when test="${itemKeyword.tdkwOrder eq 5}"> <c:set var="tdkwKeyWord5" value="${itemKeyword.tdkwKeyword}"/></c:when>
+						<c:when test="${rtKeyword.tdkwOrder eq 1}"> <c:set var="tdkwKeyWord1" value="${rtKeyword.tdkwKeyword}"/></c:when>
+						<c:when test="${rtKeyword.tdkwOrder eq 2}"> <c:set var="tdkwKeyWord2" value="${rtKeyword.tdkwKeyword}"/></c:when>
+						<c:when test="${rtKeyword.tdkwOrder eq 3}"> <c:set var="tdkwKeyWord3" value="${rtKeyword.tdkwKeyword}"/></c:when>
+						<c:when test="${rtKeyword.tdkwOrder eq 4}"> <c:set var="tdkwKeyWord4" value="${rtKeyword.tdkwKeyword}"/></c:when>
+						<c:when test="${rtKeyword.tdkwOrder eq 5}"> <c:set var="tdkwKeyWord5" value="${rtKeyword.tdkwKeyword}"/></c:when>
 						<c:otherwise></c:otherwise>
 					</c:choose>
 				</c:forEach>
@@ -144,22 +144,19 @@
 
 						<input type="hidden" id="tdkwDefaultNyArray1" name="tdkwDefaultNyArray" value="0">
 						<input type="hidden" id="tdkwOrderArray1" name="tdkwOrderArray" value="2">
-						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray0" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord2}"/>">
+						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray1" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord2}"/>">
 
 						<input type="hidden" id="tdkwDefaultNyArray2" name="tdkwDefaultNyArray" value="0">
 						<input type="hidden" id="tdkwOrderArray2" name="tdkwOrderArray" value="3">
-						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray0" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord3}"/>">
+						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray2" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord3}"/>">
 						
 						<input type="hidden" id="tdkwDefaultNyArray3" name="tdkwDefaultNyArray" value="0">
 						<input type="hidden" id="tdkwOrderArray3" name="tdkwOrderArray" value="4">
-						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray0" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord4}"/>">
+						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray3" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord4}"/>">
 
 						<input type="hidden" id="tdkwDefaultNyArray4" name="tdkwDefaultNyArray" value="0">
 						<input type="hidden" id="tdkwOrderArray4" name="tdkwOrderArray" value="5">
-						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray0" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord5}"/>">
-						<div>
-							<button class="btn btn-sm-danger" type="button" onclick="MaterialCreate()" id="" name="">추가</button>
-						</div>
+						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray4" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord5}"/>">
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">판매상태</label>
@@ -171,13 +168,13 @@
 						</c:forEach>	
 					</select>
 				</div>	
-<!-- 				<div class="col-md-6">
+				<div class="col-md-6">
 					<label for="file0" class="form-label input-file-button">책 대표이미지(image)</label>
 					<input type="file" class="form-control form-control-sm mb-1" id="file0" name="file0" multiple onChange="upload(0,2);"style="display: none;" >
 					<div class="addScroll">
 						<ul id="ulFile0" class="list-group" ></ul>
 					</div>
-				</div>
+				</div>	
 				
 				<div class="col-md-6">
 					<label for="file1" class="form-label input-file-button">책 설명(image)</label>
@@ -185,16 +182,14 @@
 					<div class="addScroll">
 						<ul id="ulFile1" class="list-group" ></ul>
 					</div>
-				</div> -->
-				<div class="col-md-6">
+				</div>
+<%-- 				<div class="col-md-6">
 					<label for="file0" class="form-label input-file-button">책 대표이미지(image)</label>
 					<input type="file" class="form-control form-control-sm mb-1" id="file0" name="file0" multiple onChange="upload(0,2);"style="display: none;" >
 					<div class="addScroll">
-					<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
-						<c:if test="${itemUploaded.type eq 0}"><c:out value="${itemUploaded.originalName}"/></c:if>
-					</c:forEach>
-						<ul id="ulFile0" class="list-group" value="<c:out value="${itemUploaded.originalName}"/>">
-						</ul>
+						<c:forEach items="${listUploaded}" var="rtUploaded" varStatus="statusUploaded">
+							<c:if test="${rtUploaded.type eq 0}"><c:out value="${rtUploaded.originalName}"/></c:if>
+						</c:forEach>
 					</div>
 				</div>
 				
@@ -202,14 +197,11 @@
 					<label for="file1" class="form-label input-file-button">책 설명(image)</label>
 					<input type="file" class="form-control form-control-sm mb-1" id="file1" name="file1" multiple onChange="upload(1,2);"style="display: none;" >
 					<div class="addScroll">
-					<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
-						<c:if test="${itemUploaded.type eq 1}"><c:out value="${itemUploaded.originalName}"/></c:if>
-					</c:forEach>
-						<ul id="ulFile1" class="list-group" >
-							<li ></li>
-						</ul>
+						<c:forEach items="${listUploaded}" var="rtUploaded" varStatus="statusUploaded">
+							<c:if test="${rtUploaded.type eq 1}"><c:out value="${rtUploaded.originalName}"/></c:if>
+						</c:forEach>
 					</div>
-				</div>
+				</div> --%>
 				
 				<div class="col-md-6">
 					<label class="col-form-label">책소개(text)</label>

@@ -191,7 +191,6 @@ public class BookController {
 		
 		service.update(dto);
 		
-		vo.setTditSeq(dto.getTditSeq());
 
 		List<Book> listKeyword = service.selectListKeyword(vo);
 		model.addAttribute("listKeyword", listKeyword);
@@ -199,6 +198,7 @@ public class BookController {
 		List<Book> listUploaded = service.selectListBookUploaded(vo);
 		model.addAttribute("listUploaded", listUploaded);
 		
+		vo.setTditSeq(dto.getTditSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
 		return "redirect:/xdmin/book/bookView";

@@ -82,10 +82,12 @@ public class BookServiceImpl implements BookService {
 		
 		dao.update(dto);
 		for(int i=0; i<dto.getTdkwKeywordArray().length; i++) {
+			
 			dto.setTdkwKeyword(dto.getTdkwKeywordArray()[i]);
 			dto.setTdkwDefaultNy(dto.getTdkwDefaultNyArray()[i]);
 			dto.setTdkwOrder(dto.getTdkwOrderArray()[i]);
-			dao.insertKeyword(dto);
+			
+			dao.updateKeyword(dto);
 		}
 		
 		int j = 0;
@@ -95,7 +97,7 @@ public class BookServiceImpl implements BookService {
 			
 			dto.setTableName("tradItemUploaded");
 			dto.setType(0);
-			dto.setDefaultNy(0);
+			dto.setDefaultNy(1);
 			dto.setSort(j);
 			dto.setDelNy(0);
 			dto.setPseq(dto.getTditSeq());
@@ -156,7 +158,7 @@ public class BookServiceImpl implements BookService {
 			
 			dto.setTableName("tradItemUploaded");
 			dto.setType(0);
-			dto.setDefaultNy(0);
+			dto.setDefaultNy(1);
 			dto.setSort(j);
 			dto.setDelNy(0);
 			dto.setPseq(dto.getTditSeq());

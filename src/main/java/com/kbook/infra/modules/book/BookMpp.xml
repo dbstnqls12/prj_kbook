@@ -165,7 +165,8 @@
 		LEFT JOIN tradItemUploaded c ON c.pseq= a.tditSeq
 	WHERE 1=1 	
 		AND b.tdatDefaultNy = 1		
-	ORDER BY RAND()
+		AND a.tditSeq = 1		
+<!-- 	ORDER BY RAND() -->
 	LIMIT 1
 </select>
 
@@ -401,15 +402,17 @@
 		,delNy = #{delNy}
 	WHERE 1=1
 		AND pseq = #{pseq}
+		AND type = #{type}
 </update>
 
 <update id="updateKeyword">
 	UPDATE tradItemKeyword SET 
 		tdkwKeyword = #{tdkwKeyword}
-		tdkwDefaultNy = #{tdkwDefaultNy}
-		tdkwOrder = #{tdkwOrder}
+		,tdkwDefaultNy = #{tdkwDefaultNy}
+		,tdkwOrder = #{tdkwOrder}
 	WHERE 1=1
 		AND tditSeq=#{tditSeq}
+		AND tdkwOrder = #{tdkwOrder}
 </update>
 
 

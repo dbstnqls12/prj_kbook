@@ -6,6 +6,8 @@ public class BookVo {
 	private String tditDelNy;
 	private String tditItemCate;
 	private String tdkwSeq;
+	private String tdkwOrder;
+	private String type;
 	
 //	bookList Search
 	private Integer shTditDelNy;
@@ -318,6 +320,22 @@ public class BookVo {
 
 	public void setTditSeqArray(String[] tditSeqArray) {
 		this.tditSeqArray = tditSeqArray;
+	}
+
+	public String getTdkwOrder() {
+		return tdkwOrder;
+	}
+
+	public void setTdkwOrder(String tdkwOrder) {
+		this.tdkwOrder = tdkwOrder;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	
