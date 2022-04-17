@@ -159,11 +159,11 @@
 
 <script type="text/javascript">
 
-if ( name == "" ) {
+/* if ( name == "" ) {
 	var name = ${result}.response.nickname;
 	 $("#name").html(name); 
 } 
-
+ */
 $("#btnLogout").on("click",function(){
 	
 	$.ajax({

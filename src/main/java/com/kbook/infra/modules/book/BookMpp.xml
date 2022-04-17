@@ -174,7 +174,6 @@
 		LEFT JOIN tradItemUploaded c ON c.pseq= a.tditSeq
 	WHERE 1=1 	
 		AND b.tdatDefaultNy = 1		
-		AND a.tditSeq = 1		
 		AND c.defaultNy = 1		
 	ORDER BY RAND()
 	LIMIT 1
