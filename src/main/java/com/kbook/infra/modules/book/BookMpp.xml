@@ -233,6 +233,7 @@
 		AND pseq = #{tditSeq}
 	
 </select>
+
 <select id="selectListKeyword" resultMap="resultMapObj">
 	SELECT
 		tdkwSeq
@@ -386,6 +387,7 @@
 	WHERE 1=1
 		AND tditSeq=#{tditSeq}
 </update>
+
 <update id="updateUploaded">
 	UPDATE ${tableName} SET
 		type = #{type}

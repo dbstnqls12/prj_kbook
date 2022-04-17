@@ -199,7 +199,7 @@ public class BookController {
 		List<Book> listUploaded = service.selectListBookUploaded(vo);
 		model.addAttribute("listUploaded", listUploaded);
 		
-		redirectAttributes.addFlashAttribute("vo",vo);
+		redirectAttributes.addFlashAttribute("vo", vo);
 		
 		return "redirect:/xdmin/book/bookView";
 	}

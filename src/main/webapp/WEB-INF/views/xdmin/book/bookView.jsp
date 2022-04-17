@@ -184,7 +184,6 @@
 					<label class="col-form-label">책소개(text)</label>
 		            <textarea rows="3" cols="80" id="tditBookDesc" name="tditBookDesc"><c:out value="${item.tditBookDesc}" escapeXml="false"/></textarea>
 		        </div>
-				
 				<div class="col-md-6">
 					<label class="form-label">목차</label>
 		            <textarea rows="3" cols="80" id="tditTableOfContents" name="tditTableOfContents"><c:out value="${item.tditTableOfContents}" escapeXml="false"/></textarea>
@@ -196,7 +195,6 @@
 
 				<div class="col-6 d-none d-sm-block"></div>
 
-		 		
 				<div class="col-md-3">
 					<label class="form-label">최종수정자</label>
 					<input type="text" class="form-control form-control-sm" id="inputEditP" placeholder="윤수빈" disabled>

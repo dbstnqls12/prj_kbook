@@ -71,15 +71,22 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
+	public List<Book> selectListBookUploaded(BookVo vo) throws Exception {
+		return dao.selectListBookUploaded(vo);
+	}
+
+	@Override
 	public int update(Book dto) throws Exception {
 		
 		dto.setModDateTime(UtilDateTime.nowDate());
 		
 		dao.update(dto);
-//		for(int i=0; i<dto.getTdkwKeywordArray().length; i++) {
-//			dto.setTdkwKeyword(dto.getTdkwKeywordArray()[i]);
-//			dao.updateKeyword(dto);
-//		}
+		for(int i=0; i<dto.getTdkwKeywordArray().length; i++) {
+			dto.setTdkwKeyword(dto.getTdkwKeywordArray()[i]);
+			dto.setTdkwDefaultNy(dto.getTdkwDefaultNyArray()[i]);
+			dto.setTdkwOrder(dto.getTdkwOrderArray()[i]);
+			dao.insertKeyword(dto);
+		}
 		
 		int j = 0;
 		for(MultipartFile multipartFile : dto.getFile0()) {
@@ -99,7 +106,6 @@ public class BookServiceImpl implements BookService {
 		}
 		
 		j = 0;
-		
 		for(MultipartFile multipartFile : dto.getFile1()) {
 			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
 			UtilUpload.uploadBook(multipartFile, pathModule, dto);
@@ -112,9 +118,9 @@ public class BookServiceImpl implements BookService {
 			dto.setPseq(dto.getTditSeq());
 			
 			dao.updateUploaded(dto);
-			
 			j++;
-		}		
+			
+		}
 		
 		return 1;
 	}
@@ -179,11 +185,6 @@ public class BookServiceImpl implements BookService {
 		}
 		
 		return 1;
-	}
-
-	@Override
-	public List<Book> selectListBookUploaded(BookVo vo) throws Exception {
-		return dao.selectListBookUploaded(vo);
 	}
 
 
