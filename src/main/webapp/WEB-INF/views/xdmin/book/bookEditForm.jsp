@@ -6,7 +6,7 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <jsp:useBean id="CateServiceImpl" class="com.kbook.infra.modules.cate.CateServiceImpl"/>
-<%-- <jsp:useBean id="AuthorServiceImpl" class="com.kbook.infra.modules.author.AuthorServiceImpl"/> --%>
+<jsp:useBean id="AuthorServiceImpl" class="com.kbook.infra.modules.author.AuthorServiceImpl"/>
 <jsp:useBean id="CodeServiceImpl" class="com.kbook.infra.modules.code.CodeServiceImpl"/>
 <jsp:useBean id="PublisherServiceImpl" class="com.kbook.infra.modules.publisher.PublisherServiceImpl"/>
 
@@ -63,42 +63,28 @@
 					<label class="form-label">출판일</label>
 					<input type="date" id="tditPublishingDate" class="form-control form-control-sm" name="tditPublishingDate" value="<c:out value="${rt.tditPublishingDate}"/>" disabled>
 				</div>
-<%-- 				
 				<c:set var="listAuthor" value="${AuthorServiceImpl.selelctListCachedAuthor('15')}"/>
-				<c:forEach items="${listAuthorL}" var="rtAuthor" varStatus="statusAuthor"><!-- 작가리스트 내가 여기에 집어넣을껴-->
-					<c:choose>
-						<c:when test="${rt.tdatDefaultNy eq 1}"> <c:set var="tdatAuthorCd1" value="${rt.tdatAuthorCd}"/></c:when>
-						<c:when test="${rt.tdatDefaultNy eq 0}"><c:set var="tdatAuthorCd2" value="${rt.tdatAuthorCd}"/></c:when>
-						<c:otherwise></c:otherwise>
-					</c:choose>
-				</c:forEach>
 				<div class="col-md-6">
 					<label for="inputId" class="form-label">저자명</label>
-					<input type="hidden" id="tdatDefaultNyArray0" name="tdatDefaultNyArray" value="1">
-					<input type="hidden" id="tdatDelNyArray0" name="tdatDelNyArray" value="0">
-					<select class="form-select form-select-sm mb-1" id="tdatAuthorCdArray0" name="tdatAuthorCdArray" >
-					<option value="">::저자선택::</option>
-						<c:forEach items="${listAuthor}" var="rt2" varStatus="status">
-							<option value="<c:out value="${rt2.ifacSeq}"/>"><c:if test="${tdatAuthorCd1 eq rt2.ifacSeq}">selected</c:if><c:out value="${rt2.ifacName}"/></option>	
-						</c:forEach>
-					</select>	
-					
-					<input type="hidden" id="tdatDefaultNyArray1" name="tdatDefaultNyArray" value="0">
-					<input type="hidden" id="tdatDelNyArray1" name="tdatDelNyArray" value="0">
-					<select class="form-select form-select-sm mb-1" id="tdatAuthorCdArray1" name="tdatAuthorCdArray" >
-					<option value="">::저자선택::</option>
-						<c:forEach items="${listAuthor}" var="rt2" varStatus="status">
-							<option value="<c:out value="${rt2.ifacSeq}"/>"><c:if test="${tdatAuthorCd1 eq rt2.ifacSeq}">selected</c:if><c:out value="${rt2.ifacName}"/></option>	
-						</c:forEach>
-					</select>	
+ 					<input type="text" class="form-control form-control-sm" value="<c:forEach items="${listAuthorL}" var="rtAuthor" varStatus="statusAuthor"><c:forEach items="${listAuthor}" var="rt2" varStatus="status"><c:if test="${rtAuthor.tdatAuthorCd eq rt2.ifacSeq}"><c:out value="${rt2.ifacName} " /></c:if></c:forEach></c:forEach>" disabled>	
 				</div>
-				 --%>
-<%--  				<c:set var="listAuthor" value="${AuthorServiceImpl.selelctListCachedAuthor('15')}"/>
 				<div class="col-md-6">
-					<label for="inputId" class="form-label">저자명</label>
-					<input type="text" class="form-control form-control-sm" id="tdatAuthorCd" name="tdatAuthorCd" value="<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><c:forEach items="${listAuthor}" var="item2" varStatus="status"><c:if test="${itemAuthor.tdatAuthorCd eq item2.ifacSeq}"><c:out value="${item2.ifacName} " /></c:if></c:forEach></c:forEach>" disabled>	
-				</div --%>>
-				
+					<label class="form-label">출판사</label>
+					<c:set var="listPublisher" value="${PublisherServiceImpl.selelctListCachedPublisher('24')}"/>
+					<c:forEach items="${listPublisher}" var="rtPublisher" varStatus="statusPublisher">
+						<c:if test="${rt.tditPublisherCd eq rtPublisher.ifpcSeq}"><input type="text" class="form-control form-control-sm" id="tditPublisherCd" name="tditPublisherCd" value="<c:out value="${rtPublisher.ifpcName}"/>" disabled></c:if>
+					</c:forEach>
+					<%-- <input type="text" class="form-control form-control-sm" id="tditPublisherCd" name="tditPublisherCd" value="<c:out value="${item.tditPublisherCd}"/>"> --%>
+					<!-- <span class="badge bg-light text-dark">출판사 찾기</span> -->
+				</div>
+				<div class="col-md-6">
+					<label class="form-label">ISBN</label>
+					<input type="text" class="form-control form-control-sm" id="tditIsbn" name="tditIsbn" value="<c:out value="${rt.tditIsbn}"/>" disabled>
+				</div>
+				<div class="col-md-6">
+					<label class="form-label">정가</label>
+					<input type="text" id="tditPrice" class="form-control form-control-sm" name="tditPrice" value="<c:out value="${rt.tditPrice}"/>"/>
+				</div>
 				<div class="col-md-6">
 					<label class="col-form-label pt-0">카테고리</label>
 					<c:set var="listCateDepth1" value="${CateServiceImpl.selelctListCachedCate('1')}"/>
@@ -119,19 +105,6 @@
 					</select>
 				</div>
 				<div class="col-md-6">
-					<label class="form-label">출판사</label>
-					<c:set var="listPublisher" value="${PublisherServiceImpl.selelctListCachedPublisher('24')}"/>
-					<c:forEach items="${listPublisher}" var="rtPublisher" varStatus="statusPublisher">
-						<c:if test="${rt.tditPublisherCd eq rtPublisher.ifpcSeq}"><input type="text" class="form-control form-control-sm" id="tditPublisherCd" name="tditPublisherCd" value="<c:out value="${rtPublisher.ifpcName}"/>" disabled></c:if>
-					</c:forEach>
-					<%-- <input type="text" class="form-control form-control-sm" id="tditPublisherCd" name="tditPublisherCd" value="<c:out value="${item.tditPublisherCd}"/>"> --%>
-					<!-- <span class="badge bg-light text-dark">출판사 찾기</span> -->
-				</div>
-				<div class="col-md-6">
-					<label class="form-label">정가</label>
-					<input type="text" id="tditPrice" class="form-control form-control-sm" name="tditPrice" value="<c:out value="${rt.tditPrice}"/>"/>
-				</div>
-				<div class="col-md-6">
 				<c:set var="listCodeDiscount" value="${CodeServiceImpl.selectListCachedCode('13')}"/>
 					<label class="form-label">할인율</label>
 					<select class="form-select form-select-sm mb-1" id="tditDiscountCd" name="tditDiscountCd" >
@@ -142,10 +115,7 @@
 					</select>
 					<input type="text" id="tditDiscountRate" class="form-control form-control-sm" name="tditDiscountRate" placeholder="직접입력(소수점형태로 입력) ex_54%할인 -> 0.54" value="<c:out value="${rt.tditDiscountRate}"/>">
 				</div>
-				<div class="col-md-6">
-					<label class="form-label">ISBN</label>
-					<input type="text" class="form-control form-control-sm" id="tditIsbn" name="tditIsbn" value="<c:out value="${rt.tditIsbn}"/>" disabled>
-				</div>
+
 				<div class="col-md-6">
 					<label class="form-label">쪽수</label>
 					<input type="text" class="form-control form-control-sm" id="tditPage" name="tditPage" value="<c:out value="${rt.tditPage}"/>">
@@ -201,16 +171,11 @@
 						</c:forEach>	
 					</select>
 				</div>	
-				
 				<div class="col-md-6">
 					<label for="file0" class="form-label input-file-button">책 대표이미지(image)</label>
 					<input type="file" class="form-control form-control-sm mb-1" id="file0" name="file0" multiple onChange="upload(0,2);"style="display: none;" >
 					<div class="addScroll">
-					<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
-						<c:if test="${itemUploaded.type eq 0}"><c:out value="${itemUploaded.uuidName}"/></c:if>
-					</c:forEach>
-						<ul id="ulFile0" class="list-group" >
-						</ul>
+						<ul id="ulFile0" class="list-group" ></ul>
 					</div>
 				</div>
 				
@@ -218,11 +183,7 @@
 					<label for="file1" class="form-label input-file-button">책 설명(image)</label>
 					<input type="file" class="form-control form-control-sm mb-1" id="file1" name="file1" multiple onChange="upload(1,2);"style="display: none;" >
 					<div class="addScroll">
-					<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
-						<c:if test="${itemUploaded.type eq 1}"><c:out value="${itemUploaded.uuidName}"/></c:if>
-					</c:forEach>
-						<ul id="ulFile1" class="list-group" >
-						</ul>
+						<ul id="ulFile1" class="list-group" ></ul>
 					</div>
 				</div>
 				

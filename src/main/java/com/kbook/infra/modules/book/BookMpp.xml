@@ -191,6 +191,8 @@
 		,a.tditBookDesc2
 		,a.tditTableOfContents 
 		,a.tditDelNy
+		,a.modDateTime
+		,a.regDateTime
 	FROM
 		tradItem a
 	WHERE 1=1 	
@@ -323,7 +325,7 @@
 		,#{tditSeq}
 	)		
 </insert>
-<!-- 
+
 <insert id="insertAuthor">
 	INSERT INTO tradAuthor(
 		tdatAuthorCd
@@ -339,7 +341,7 @@
 		,#{tditSeq}
 	)		
 </insert>
- -->
+
 <insert id="insertUploaded">
 	INSERT INTO ${tableName} (
 		type

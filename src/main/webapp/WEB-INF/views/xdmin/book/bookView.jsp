@@ -72,7 +72,7 @@
 							value="<c:out value="${item2.ifacName}" />"></c:if>
 						</c:forEach>
 					</c:forEach> --%>
- 					<input type="text" class="form-control form-control-sm" id="tdatAuthorCdArray" name="tdatAuthorCdArray" value="<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><c:forEach items="${listAuthor}" var="item2" varStatus="status"><c:if test="${itemAuthor.tdatAuthorCd eq item2.ifacSeq}"><c:out value="${item2.ifacName} " /></c:if></c:forEach></c:forEach>">	
+ 					<input type="text" class="form-control form-control-sm" value="<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><c:forEach items="${listAuthor}" var="item2" varStatus="status"><c:if test="${itemAuthor.tdatAuthorCd eq item2.ifacSeq}"><c:out value="${item2.ifacName} " /></c:if></c:forEach></c:forEach>">	
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">ISBN</label>
@@ -130,7 +130,6 @@
 					<label class="form-label">크기</label>
 					<input type="text" class="form-control form-control-sm" id="tditSize" name="tditSize" value="<c:out value="${item.tditSize}"/>">
 				</div>
-
 					<c:forEach items="${listKeyword}" var="itemKeyword" varStatus="statusKeyword">
 					<c:choose>
 						<c:when test="${itemKeyword.tdkwOrder eq 1}"> <c:set var="tdkwKeyWord1" value="${itemKeyword.tdkwKeyword}"/></c:when>
@@ -162,14 +161,22 @@
 				<div class="col-md-6">
 					<label for="file0" class="form-label input-file-button d-block">책 대표이미지(image)</label>
 					<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
-						<c:if test="${itemUploaded.type eq 0}"><img id="mainimage" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>" style="width: 100px;"></c:if>
+						<c:choose>
+							<c:when test="${itemUploaded.type eq 0 && itemUploaded.size ne 0}"><img id="mainimage" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>" style="width: 100px;"></c:when>
+							<c:when test="${itemUploaded.type eq 0 && itemUploaded.size eq 0}"><p style="font-size: 13px; font-style: italic;">선택된 파일이 없습니다!</p></c:when>
+							<c:otherwise></c:otherwise>
+						</c:choose>
 					</c:forEach>
 				</div>
 				
 				<div class="col-md-6">
 					<label for="file1" class="form-label input-file-button d-block">책 설명(image)</label>
 					<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
-						<c:if test="${itemUploaded.type eq 1}"><img id="mainimage" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>" style="width: 100px;"></c:if>
+						<c:choose>
+							<c:when test="${itemUploaded.type eq 1 && itemUploaded.size ne 0}"><img id="mainimage" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>" style="width: 100px;"></c:when>
+							<c:when test="${itemUploaded.type eq 1 && itemUploaded.size eq 0}"><p style="font-size: 13px; font-style: italic;">선택된 파일이 없습니다!</p></c:when>
+							<c:otherwise></c:otherwise>
+						</c:choose>
 					</c:forEach>
 				</div>
 				
@@ -196,7 +203,7 @@
 				</div>
 				<div class="col-md-3">
 					<label class="form-label">최종수정일</label>
-					<input type="text" class="form-control form-control-sm" id="modDateTime" name="modDateTime" value="<c:out value="${item.modDateTime}"/>" disabled>
+					<input type="text" class="form-control form-control-sm" id="modDateTime" name="modDateTime" value="<fmt:formatDate value="${item.modDateTime }" pattern="yyyy-MM-dd HH:mm:ss"/>" disabled>
 				</div>
 				<div class="col-md-3">
 					<label class="form-label">최초등록자</label>
@@ -204,7 +211,7 @@
 				</div>
 				<div class="col-md-3">
 					<label class="form-label">최초등록일</label>
-					<input type="text" class="form-control form-control-sm" id="regDateTime" name="regDateTime" value="<c:out value="${item.regDateTime}"/>" disabled>
+					<input type="text" class="form-control form-control-sm" id="regDateTime" name="regDateTime" value="<fmt:formatDate value="${item.regDateTime }" pattern="yyyy-MM-dd HH:mm:ss"/>" disabled>
 				</div>
 			</form>
 			<div class="col-mb-3 mt-3">	
