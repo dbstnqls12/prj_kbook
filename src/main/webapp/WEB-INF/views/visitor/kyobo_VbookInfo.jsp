@@ -59,10 +59,10 @@
 							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
-							<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
-							<c:if test="${itemUploaded.defaultNy eq 1}">
-								<img class="mx-auto "alt="" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>"  style="width: 100%; height: 100%;">
-							</c:if>
+							<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">	
+								<c:if test="${itemUploaded.defaultNy eq 1}">
+									<img class="mx-auto "alt="" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>"  style="width: 100%; height: 100%;">
+								</c:if>
 							</c:forEach>
 						</div>
 						</div>
@@ -200,16 +200,19 @@
 					</div>	
 					<div class="mb-4 mt-5">
 						<h6 class="mb-2" style="font-weight: bold;">상세이미지</h6>
-						<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
-							<c:if test="${itemUploaded.defaultNy eq 0}">
-								<img class="mx-auto "alt="" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>"   style="width: 80%; height: 100%;">
-							</c:if>
+						<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">	
+							<c:choose>
+								<c:when test="${itemUploaded.defaultNy eq 0 && itemUploaded.size ne 0 && itemUploaded.size ne NULL}"><img class="mx-auto "alt="" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>"  style="width: 80%; height: 100%;"></c:when>
+								<c:when test="${itemUploaded.defaultNy eq 0 && itemUploaded.size ne 0}"><p style="font-size: 13px; font-style: italic;">이 도서는 상세이미지를 제공하지 않습니다.</p></c:when>
+								<c:when test="${itemUploaded.defaultNy eq 0 && itemUploaded.size ne NULL}"><p style="font-size: 13px; font-style: italic;">이 도서는 상세이미지를 제공하지 않습니다.</p></c:when>
+								<c:otherwise></c:otherwise>
+							</c:choose>
 						</c:forEach>
 					</div>
 					<div class="mb-4 mt-5">
 						<h6 class="mb-2" style="font-weight: bold;">목차</h6>
 						<c:choose>
-							<c:when test="${item.tditTableOfContents eq null}"><p>이 도서는 목차가 없습니다.</p></c:when>
+							<c:when test="${item.tditTableOfContents eq null}"><p style="font-size: 13px; font-style: italic;">이 도서는 목차를 제공하지 않습니다.</p></c:when>
 							<c:otherwise>
 								<p>${fn:replace(item.tditTableOfContents, lf, "<br>")}</p>
 							</c:otherwise>
@@ -218,7 +221,7 @@
 					<div class="mb-4 mt-5">
 						<h6 class="mb-2" style="font-weight: bold;">책속으로</h6>
 						<c:choose>
-							<c:when test="${item.tditBookDesc2 eq null}"><p>이 도서는 데이터를 제공하지 않습니다.</p></c:when>
+							<c:when test="${item.tditBookDesc2 eq null}"><p style="font-size: 13px; font-style: italic;">이 도서는 데이터를 제공하지 않습니다.</p></c:when>
 							<c:otherwise>
 								<p>${fn:replace(item.tditBookDesc2, lf, "<br>")}</p>
 							</c:otherwise>

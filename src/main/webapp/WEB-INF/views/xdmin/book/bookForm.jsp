@@ -201,6 +201,7 @@
 				
 				<div class="col-md-6">
 					<label for="file0" class="form-label input-file-button">책 대표이미지(image)</label>
+					<img style="width: 100px;" id="preview-image0" src="">
 					<input type="file" class="form-control form-control-sm mb-1" id="file0" name="file0" multiple onChange="upload(0,2);"style="display: none;" >
 					<div class="addScroll">
 						<ul id="ulFile0" class="list-group" ></ul>
@@ -316,6 +317,26 @@
 		$("#li_"+seq+"_"+index).remove();
 	}
 
+	function readImage(input) {
+	    // 인풋 태그에 파일이 있는 경우
+	    if(input.files && input.files[0]) {
+	        // 이미지 파일인지 검사 (생략)
+	        // FileReader 인스턴스 생성
+	        const reader = new FileReader()
+	        // 이미지가 로드가 된 경우
+	        reader.onload = e => {
+	            const previewImage = document.getElementById("preview-image0")
+	            previewImage.src = e.target.result
+	        }
+	        // reader가 이미지 읽도록 하기
+	        reader.readAsDataURL(input.files[0])
+	    }
+	}
+	// input file에 change 이벤트 부여
+	const inputImage = document.getElementById("file0")
+	inputImage.addEventListener("change", e => {
+	    readImage(e.target)
+	})
 
 	goList = function(){
 		$("#bookForm").attr("action", "/xdmin/book/bookList");

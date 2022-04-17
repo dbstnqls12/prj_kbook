@@ -64,6 +64,7 @@
 		,a.tditDelNy
 		,b.path
 		,b.uuidName
+		,b.defaultNy
 		,b.pseq
 		,b.type
 	FROM
@@ -71,6 +72,7 @@
 		LEFT JOIN tradItemUploaded b ON b.pseq= a.tditSeq
 	WHERE 1=1 	
 		AND a.tditItemCate = 2
+		AND b.defaultNy = 1	
 	ORDER BY a.tditPublishingDate DESC
 	limit 4	
 </select>
@@ -86,6 +88,7 @@
 		,a.tditDelNy
 		,b.path
 		,b.uuidName
+		,b.defaultNy
 		,b.pseq
 		,b.type
 	FROM
@@ -93,6 +96,7 @@
 		LEFT JOIN tradItemUploaded b ON b.pseq= a.tditSeq
 	WHERE 1=1 	
 		AND a.tditItemCate = 3
+		AND b.defaultNy = 1	
 		ORDER BY a.tditPublishingDate DESC
 	limit 4	
 </select>
@@ -112,6 +116,7 @@
 		,a.regDateTimeSvr
 		,b.path
 		,b.uuidName
+		,b.defaultNy
 		,b.pseq
 		,b.type
 	FROM
@@ -119,6 +124,7 @@
 		LEFT JOIN tradItemUploaded b ON b.pseq= a.tditSeq
 	WHERE 1=1 	
 		AND a.tditItemCate = 4
+		AND b.defaultNy = 1	
 	ORDER BY a.tditPublishingDate DESC
 	limit 4	
 </select>
@@ -136,6 +142,7 @@
 		,b.tdatDefaultNy
 		,c.path
 		,c.uuidName
+		,c.defaultNy
 		,c.pseq
 		,c.type
 	FROM
@@ -145,6 +152,7 @@
 	WHERE 1=1 	
 		AND b.tdatDefaultNy = 1		
 		AND a.tditSeq BETWEEN 3 AND 10
+		AND c.defaultNy = 1	
 </select>
 
 <!-- 랜덤추천 -->
@@ -157,6 +165,7 @@
 		,b.tdatDefaultNy	
 		,c.path
 		,c.uuidName
+		,c.defaultNy
 		,c.pseq
 		,c.type
 	FROM 
@@ -166,7 +175,8 @@
 	WHERE 1=1 	
 		AND b.tdatDefaultNy = 1		
 		AND a.tditSeq = 1		
-<!-- 	ORDER BY RAND() -->
+		AND c.defaultNy = 1		
+	ORDER BY RAND()
 	LIMIT 1
 </select>
 
