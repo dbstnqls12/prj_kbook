@@ -21,6 +21,7 @@
 <link  rel="stylesheet" href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css">
 
 <link href="/resources/user/css/main.css" rel="stylesheet" type="text/css">
+<!-- <link rel="shortcut icon" href="https://img.cgv.co.kr/theater_img/favicon.ico" type="image/x-icon" /> -->
 <title>Kyobo_main</title>
 </head>
 <body>
@@ -217,6 +218,7 @@ goInfo = function(seq){
 	$("#bookMain").attr("action","/visitor/kyobo_VbookInfo");
 	$("#bookMain").submit();
 }	
+
 
 $("#btn-domesticNew").on("click",function(){
 
