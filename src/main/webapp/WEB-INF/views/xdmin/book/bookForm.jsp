@@ -28,7 +28,7 @@
 <link href="/resources/xdmin/css/sidebars.css" rel="stylesheet" type="text/css">
 <link href="/resources/xdmin/css/footers.css" rel="stylesheet" type="text/css">
 <link href="/resources/xdmin/css/bookView.css" rel="stylesheet" type="text/css">
-<title>Kyobo_bookView</title>
+<title>Kyobo_bookForm</title>
 
 </head>
 <body>
@@ -93,6 +93,7 @@
 						</c:forEach>
 					</select>	
 				</div>
+
 				
 				<div class="col-md-6">
 					<label class="col-form-label pt-0">카테고리</label>
@@ -173,7 +174,7 @@
 					</c:choose>
 				</c:forEach>
 				
-				<div class="col-md-6">
+				<div class="col-md-6" id="keyword">
 					<label class="form-label">키워드</label>
 						<input type="hidden" id="tdkwDefaultNyArray0" name="tdkwDefaultNyArray" value="1">
 						<input type="hidden" id="tdkwOrderArray0" name="tdkwOrderArray" value="1">
@@ -194,9 +195,6 @@
 						<input type="hidden" id="tdkwDefaultNyArray4" name="tdkwDefaultNyArray" value="0">
 						<input type="hidden" id="tdkwOrderArray4" name="tdkwOrderArray" value="5">
 						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray0" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord5}"/>">
-						<div>
-							<button class="btn btn-sm-danger" type="button" onclick="MaterialCreate()" id="" name="">추가</button>
-						</div>
 				</div>
 				
 				<div class="col-md-6">
@@ -332,11 +330,13 @@
 	        reader.readAsDataURL(input.files[0])
 	    }
 	}
-	// input file에 change 이벤트 부여
+	// input file에 change 이벤트 부여 (파일 미리보기)
 	const inputImage = document.getElementById("file0")
 	inputImage.addEventListener("change", e => {
 	    readImage(e.target)
 	})
+	
+
 
 	goList = function(){
 		$("#bookForm").attr("action", "/xdmin/book/bookList");
