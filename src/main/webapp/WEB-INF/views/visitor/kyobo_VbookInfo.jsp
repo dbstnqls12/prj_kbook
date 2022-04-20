@@ -353,7 +353,6 @@
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 
 <script type="text/javascript">
-
 /* function count(type)  {
 	  // 결과를 표시할 element
 	  const resultElement = document.getElementById('result');

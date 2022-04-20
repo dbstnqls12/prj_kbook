@@ -1,11 +1,18 @@
-	<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+<jsp:useBean id="CateServiceImpl" class="com.kbook.infra.modules.cate.CateServiceImpl"/>
+<jsp:useBean id="AuthorServiceImpl" class="com.kbook.infra.modules.author.AuthorServiceImpl"/>
 <jsp:useBean id="CodeServiceImpl" class="com.kbook.infra.modules.code.CodeServiceImpl"/>
+<jsp:useBean id="PublisherServiceImpl" class="com.kbook.infra.modules.publisher.PublisherServiceImpl"/>
+
+<% pageContext.setAttribute("cr", "\r"); %>
+<% pageContext.setAttribute("lf", "\\n"); %>
+<% pageContext.setAttribute("crlf", "\r\\n");  %>
 
 <!doctype html>
 <html lang="ko">
@@ -28,7 +35,6 @@
 <%@ include file="/WEB-INF/views/member/include/main_navbar.jsp" %><!-- navbar -->
 	
 
-
 <!-- 본문 s-->
 <!-- 본문 s-->
 <div class="container">
@@ -36,8 +42,13 @@
 	<div class="row">
 		<!-- 3단길이의 첫번째 열 -->
 		<div class="col-md-3 d-none d-md-block">
-			<div class="px-0 mt-4">
-				<img class="mx-auto "alt="" src="../../../images/xdmin_img/bookEx.jpg" style="width: 250px; height: 330px;">
+			<div class="px-0 mt-4"><%-- <img src="<c:out value="${item.path}"/><c:out value="${item.uuidName}"/> --%>
+				<!-- <img class="mx-auto "alt="" src="../../../images/xdmin_img/bookEx.jpg" style="width: 250px; height: 330px;"> -->
+				<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
+					<c:if test="${itemUploaded.defaultNy eq 1}">
+						<img class="mx-auto "alt="" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/> " style="width: 230px; height: 330px;">
+					</c:if>
+				</c:forEach>
 				<span class="badge bg-light text-dark mx-auto" role="button" data-bs-toggle="modal" data-bs-target="#imageZoom">이미지 크게보기</span>
 				<div class="modal fade" id="imageZoom" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
@@ -46,24 +57,32 @@
 							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
-							<img class="mx-auto "alt="" src="../../../images/xdmin_img/bookEx.jpg" style="width: 100%; height: 100%px;">
+							<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">	
+								<c:if test="${itemUploaded.defaultNy eq 1}">
+									<img class="mx-auto "alt="" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>"  style="width: 100%; height: 100%;">
+								</c:if>
+							</c:forEach>
 						</div>
 						</div>
 					</div>
 				</div>
 				<div class="bookKeyword ">
 					<p style="font-size: 20px; font-weight: bold; ">키워드 Pick</p>
-					<h5><span class="badge rounded-pill bg-light text-dark">영화원작소설</span></h5>			
-					<h5><span class="badge rounded-pill bg-light text-dark">미스터리소설</span></h5>			
-					<h5><span class="badge rounded-pill bg-light text-dark">변호사</span></h5>			
-					<h5><span class="badge rounded-pill bg-light text-dark">장르소설</span></h5>			
-					<h5><span class="badge rounded-pill bg-light text-dark">프로파일러</span></h5>			
+					<c:forEach items="${listKeyword}" var="itemKeyword" varStatus="statusKeyword">
+						<h5><span class="badge rounded-pill bg-light text-dark"><c:out value="${itemKeyword.tdkwKeyword}"/></span></h5>			
+					</c:forEach>
 				</div>
 				<div class="relatedItem">
 					<p style="font-size: 20px; font-weight: bold; ">이 책의 다른 상품정보</p>
-					<hr style="margin: 5px;"><p>ebook : 11,500원</p>
-					<hr style="margin: 5px;"><p>원서/번역서: <br>[해외]Achtsam morden <br>(Paperback)</p>
-							
+					<c:set var="listCodeRelatedItem" value="${CodeServiceImpl.selectListCachedCode('17')}"/>
+						<c:forEach items="${listRelatedItem}" var="itemRelatedItem" varStatus="statusRelatedItem">
+							<c:forEach items="${listCodeRelatedItem}" var="itemRelatedItemC" varStatus="statusRelatedItem">
+								<c:if test="${itemRelatedItem.tdriTypeCd eq itemRelatedItemC.ifcdOrder}"><hr style="margin: 5px;"><p><c:out value="${itemRelatedItemC.ifcdName}"/>
+								 : <fmt:formatNumber value="${itemRelatedItem.tdriPrice}"/>원<br>
+								 <c:out value="${itemRelatedItem.tdriTitle}"/>
+								</p></c:if>
+							</c:forEach>
+						</c:forEach>
 				</div>
 
 			</div>
@@ -71,30 +90,55 @@
 		<!-- 9단길이의 첫번째 열 -->
 		<div class="col-md-8">
 			<div class="px-0 mt-4">
-				<img class="mx-auto mb-2 d-block d-md-none"alt="" src="../../../images/xdmin_img/bookEx.jpg" style="width: 250px; height: 330px;">
-				<img class="mx-auto"alt="" src="../../../images/xdmin_img/btn_freedelivery.gif">
-				<img class="mx-auto"alt="" src="../../../images/xdmin_img/btn_2.gif">
-				<h4 class="mt-1" style="color: #3A60DF;"><b>명상살인</b></h4>
-				<p><strong>내 안의 살인 파트너</strong></p>
-				<p>카르스텐 두세</p>
-				<p>세계사 | 2021-07-05</p>
-				<p><i class="fa-solid fa-clover" style="color: green;"></i> 9.5 (리뷰 62개) 
+				<div class="title">
+					<img class="mx-auto mb-2 d-block d-md-none"alt="" src="../../../images/xdmin_img/bookEx.jpg" style="width: 250px; height: 330px;">
+					<!-- <img class="mx-auto"alt="" src="../../../images/xdmin_img/btn_freedelivery.gif">
+					<img class="mx-auto"alt="" src="../../../images/xdmin_img/btn_2.gif"> -->
+					<h4 class="mt-1" style="color: #3A60DF;"><b><c:out value="${item.tditTitle}"/></b></h4>
+					<p><strong><c:out value="${item.tditSubTitle}"/></strong></p>
+					<c:set var="listAuthor" value="${AuthorServiceImpl.selelctListCachedAuthor('15')}"/>
+						<c:forEach items="${listAuthorL}" var="itemAuthor" varStatus="statusAuthor"><!-- 작가리스트(배열에 들어가 있어야함) -->
+							<c:forEach items="${listAuthor}" var="item2" varStatus="status"><!-- 작가코드 -->
+								<c:if test="${itemAuthor.tdatAuthorCd eq item2.ifacSeq}"><p style="display: inline;"><c:out value="${item2.ifacName}" /></p></c:if>
+							</c:forEach>	
+						</c:forEach>
+	 				<c:set var="listPublisher" value="${PublisherServiceImpl.selelctListCachedPublisher('24')}"/>
+						<c:forEach items="${listPublisher}" var="itemPublisher" varStatus="statusPublisher">
+							<c:if test="${item.tditPublisherCd eq itemPublisher.ifpcSeq}"><p><c:out value="${itemPublisher.ifpcName}"/> | <c:out value="${item.tditPublishingDate}"></c:out></p></c:if> 
+						</c:forEach>
+					<p><i class="fa-solid fa-clover" style="color: green;"></i> 9.5 (리뷰 62개) 
+					<hr>
+				</div>
+				<div class="price">
+					<p>정가 : <fmt:formatNumber value="${item.tditPrice}"/>원</p>
+					<c:set var="listCodeDiscount" value="${CodeServiceImpl.selectListCachedCode('13')}"/>
+						<c:forEach items="${listCodeDiscount}" var="itemDiscount" varStatus="statusDiscount">
+							<c:if test="${item.tditDiscountCd eq itemDiscount.ifcdOrder}">
+							<p>판매가 : <span style="color: #F84450; font-size: 23px; font-weight: bold;"> <fmt:formatNumber value="${item.tditPrice-(itemDiscount.ifcdReferenceI2*item.tditPrice)}"/>원</span>
+							[<c:out value="${itemDiscount.ifcdName}"/> <fmt:formatNumber value="${itemDiscount.ifcdReferenceI2*item.tditPrice}"/>원 인하]</p>
+							</c:if>	
+						</c:forEach>
+	 				<p>혜택 : <br>[기본적립] 790원 적립 [5% 적립]<br>[추가적립] 5만원 이상 구매시 2,000원 추가적립 <span class="badge bg-light text-dark">안내</span>
+							<br>[회원혜택] 회원 등급별 최대 4% 추가적립 <span class="badge bg-light text-dark">안내</span><br>[리뷰혜택] 리뷰 작성시 e교환권 최대 300원 추가적립 <span class="badge bg-light text-dark">안내</span></p>
+					<p>추가혜택 : <span class="badge bg-light text-dark">포인트 안내</span> <span class="badge bg-light text-dark">도서소득공제 안내</span> <span class="badge bg-light text-dark">추가혜택 더보기</span>
+				</div>
 				<hr>
-				<p>정가 : 15,800원</p>
-				<p>판매가 : <span style="color: #F84450; font-size: 23px; font-weight: bold;">14,220원 </span>[10% 1,580원 인하]</p>
-				<p>혜택 : <br>[기본적립] 790원 적립 [5% 적립]<br>[추가적립] 5만원 이상 구매시 2,000원 추가적립 <span class="badge bg-light text-dark">안내</span>
-						<br>[회원혜택] 회원 등급별 최대 4% 추가적립 <span class="badge bg-light text-dark">안내</span><br>[리뷰혜택] 리뷰 작성시 e교환권 최대 300원 추가적립 <span class="badge bg-light text-dark">안내</span></p>
-				<p>추가혜택 : <span class="badge bg-light text-dark">포인트 안내</span> <span class="badge bg-light text-dark">도서소득공제 안내</span> <span class="badge bg-light text-dark">추가혜택 더보기</span>
-				<hr>
-				<p>배송비 : 무료 <span class="badge bg-light text-dark">배송비 안내</span></p>
-				<p>배송일정 : 현재 내 주소 <span class="badge bg-light text-dark">지역변경</span> 
-							<br> *월 *일 출고예정 <span class="badge bg-light text-dark">배송일정 안내</span> </p>
-				<p>바로드림 : 인터넷으로 주문하고 매장에서 직접 수령 <span class="badge bg-light text-dark">안내</span> <span class="badge bg-light text-dark">바로드림 혜택</span> </p>
-				<p>책 그리고 꽃</p>
+				<div class="deli">
+					<c:choose>
+						<c:when test="${item.tditPrice ge 10000}"><p>배송비 : 무료 <span class="badge bg-light text-dark">배송비 안내</span></p></c:when>
+						<c:when test="${item.tditPrice lt 10000}"><p>배송비 : 2500원 <span class="badge bg-light text-dark">배송비 안내</span></p></c:when>
+						<c:otherwise></c:otherwise>
+					</c:choose>
+					<c:set var="ymd" value="<%=new java.util.Date()%>" /> 
+					<p>배송일정 : 현재 내 주소 <span class="badge bg-light text-dark">지역변경</span> 
+								<br><fmt:formatDate value="${ymd}" pattern="MM" />월
+								<fmt:formatDate value="${ymd}" pattern="dd" />일 출고예정 <span class="badge bg-light text-dark">배송일정 안내</span> </p>
+					<p>바로드림 : 인터넷으로 주문하고 매장에서 직접 수령 <span class="badge bg-light text-dark">안내</span> <span class="badge bg-light text-dark">바로드림 혜택</span> </p>
+					<p>책 그리고 꽃</p>
+				</div>
+				<hr><!-- <div id="result">0</div> -->
 				
-				<hr>
-				<p>주문수량 <input type="text" id="" name="" style="width: 50px;"> <i class="bi bi-plus-square"></i> <i class="bi bi-dash-square"></i></p>
-			<!-- 	<button type="button" class="btn btn-cart">장바구니 담기</button> -->
+				<p>주문수량 <input type="text" id="result" name="result" style="width: 50px;" value="1"> <i class="bi bi-plus-square" role="button" onclick='count("plus")'></i> <i class="bi bi-dash-square" role="button" onclick='count("minus")'></i></p>
 				<button type="button" class="btn btn-purchaseNow" onclick="location.href='/member/kyobo_purchase'">바로구매</button>
 				<button type="button" class="btn btn-purchase">바로드림 주문</button>
 				<button type="button" class="btn btn-purchase">선물하기</button>
@@ -118,100 +162,68 @@
 					<table class="table table-bordered mx-auto mt-5 mb-4">
 						<tr>
 							<th>ISBN</th>
-							<td>9788933871645(8933871640)</td>
+							<td><c:out value="${item.tditIsbn}"/></td>
 						</tr>
 						<tr>
 							<th>쪽수</th>
-							<td>412쪽</td>
+							<td><c:out value="${item.tditPage}"/>쪽</td>
 						</tr>
 						<tr>
 							<th>크기</th>
-							<td>130 * 188 * 29 mm / 429g</td>
+							<td><c:out value="${item.tditSize}"/> mm / <c:out value="${item.tditWeight}"/>g</td>
 						</tr>
 						<tr>
 							<th>이 책의 원서/번역서</th>
-							<td>Achtsam morden / Dusse, Karsten</td>
+							<td>원서 / 번역서</td>
 						</tr>
-						
 					</table>
-					<h5 style="font-weight: bold; ">책 소개</h5>
-					<div class="mb-4">
+					<h5 style="font-weight: bold; margin-top: 50px;">책 소개</h5>
+					<div class="mb-4 mt-4">
 						<h6 class="mb-2" style="font-weight: bold;"> 이 책이 속한 분야</h6>
-						<p>소설 > 독일소설 > 미스터리/스릴러소설<br>
-						소설 > 독일소설 > 드라마/영화소설<br>
-						소설 > 장르소설 > 미스터리/스릴러소설<br>
-						소설 > 장르소설 > 드라마/영화소설</p>
-					</div>
-					<div class="mb-4">
-						<h6 class="mb-2" style="font-weight: bold;"> 이 책의 주제어</h6>
-						<p><span class="keyword">영화원작소설</span>			
-							<span class="keyword">미스터리소설</span>			
-							<span class="keyword">변호사</span>			
-							<span class="keyword">장르소설</span>			
-							<span class="keyword">프로파일러</span></p>
+							<c:forEach items="${listCateDepth1}" var="item1" varStatus="status1">
+								<c:if test="${item.tditItemCate eq item1.ifctSeq}"><p class="d-inline"><c:out value="${item1.ifctName}" /> > </p></c:if> 
+							</c:forEach> 	
+							<c:forEach items="${listCateDepth2}" var="item2" varStatus="status2">
+								<c:if test="${item.tditItemCate2 eq item2.ifctSeq}"><p class="d-inline"><c:out value="${item2.ifctName}" /></p></c:if> 
+							</c:forEach> 
 					</div>
 					<div class="mb-4 mt-5">
-						<div class="bookDesc1">
-							<strong>“누구도 이런 살인은 상상하지 못했다”</strong><br><br><br>
-								★ 106주 연속 슈피겔 베스트셀러<br>
-								★ 독일 판매 부수 100만 부 돌파, 17개국 수출<br>
-								★ 유럽 대형 제작사 Constantin 영화화 확정<br><br>
-								누구나 한 번쯤 마음속으로 사람을 죽여봤다<br><br>
-
-								인간관계와 업무 스트레스에 시달리다 못해 그 원흉이 되는 사람이 사라지길 바란 경험이 한 번도 없는 현대인이 있을까? 그런 면에서 『명상 살인』의 주인공 비요른 디멜도 처음엔 여느 사람과 다를 바 없었다. 
-								대형 로펌에서 일하는 변호사로서 그는 밤낮도, 주말도 없이 일해야 했다. 아내와는 마주칠 때마다 싸웠고 소중한 딸의 얼굴은 거의 보지 못했다.<br><br>
-								비요른이 살인자가 되던 주말도 평소와 같았다. 딸과 여행을 가기 위해 전날 늦은 밤까지 일했지만 휴가를 제대로 즐길 수 있다면 괜찮았다. 그런데 이제 막 별장으로 출발한 순간 전화벨이 울렸다. 
-								조직폭력범 의뢰인이 또 범죄를 저질렀고 그는 언제나와 같이 비요른에게 뒤처리를 맡겼다. 비요른이 명상을 시작했다는 점만이 달랐다. 그러나 이 책을 읽은 독자들은 명상이 엄청난 차이를 만들어낸다는 사실에 모두 동감할 수밖에 없을 것이다.<br><br>
-
-								“클리셰라고는 찾아볼 수 없는 기발한 범죄 이야기에 머리를 꽝 맞은 것 같았다”-표창원 프로파일러<br><br>
-
-								『명상 살인』이 출간 이후 무려 2년 넘게 독일의 베스트셀러인 데에는 이유가 있다.<br>
-								이 책은 살인자의 이야기지만 페이지마다 공감되는 현실과 거부할 수 없는 유쾌함이 있다. 가족을 부양하고 더 많은 돈을 벌기 위해 정의 수호보다는 범죄자 두둔에 앞장서야 하는 변호사의 내적 갈등,
-								 평등이나 환경 보호 등의 고고한 가치를 내세우지만 자신의 이익만을 챙기는 기업의 이면 등을 우아하고도 재미있게 짚어내 블랙코미디의 정수를 보여준다.<br><br>
-
-								명상과 살인을 연결시키는 주인공의 심리는 자연스럽고도 치밀해 독자가 자신도 모르게 고개를 끄덕이게 한다. 소설 속 가상의 책이 제시하는 명상 원칙은 실제로도 삶에 도움이 될 가르침이라 읽다가 문득 실행에 옮기고 싶어질지도 모른다.<br>
-								『명상 살인』은 추리, 범죄 심리, 블랙코미디와 명상, 이 의외의 조합이 완벽하게 어우러지는 새로운 장르의 탄생이다.<br><br>
-
-								“올해 읽은 소설 중 가장 재미있었다. 완전히 취향 저격을 당해 이 작가 책은 다 읽고 싶은 마음이다. 다음과 같은 독자들께 자신 있게 추천한다.
-								 앞뒤가 딱 맞으면서 빠르고 허를 찌르는 장르소설을 좋아하는 분, 사회 풍자와 지적인 블랙유머를 즐기는 분, 명상에 과연 실제적인 쓸모가 있는지 의심하는 분, 결혼 생활에 위기를 맞은 분, 꼰대 상사와 진상 고객에게 시달리는 분, 수류탄을 좋아하는 분.”-장강명 소설가
-								<br><br>
-						</div>
+						<h6 class="mb-2" style="font-weight: bold;"> 이 책의 주제어</h6>
+					<c:forEach items="${listKeyword}" var="itemKeyword" varStatus="statusKeyword">
+						<span class="keyword"># <c:out value="${itemKeyword.tdkwKeyword}"/> &nbsp;</span>
+					</c:forEach>
+					</div>
+					<div class="mb-4 mt-5">
+						<p>${fn:replace(item.tditBookDesc, lf, "<br>")}</p>
 					</div>	
-					<div class="mb-4">
+					<div class="mb-4 mt-5">
 						<h6 class="mb-2" style="font-weight: bold;">상세이미지</h6>
-						<img class="mx-auto "alt="" src="../../../images/xdmin_img/image_bookDesc1.jpg" style="width: 80%; height: 100%;">
+						<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">	
+							<c:choose>
+								<c:when test="${itemUploaded.defaultNy eq 0 && itemUploaded.size ne 0 && itemUploaded.size ne NULL}"><img class="mx-auto "alt="" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>"  style="width: 80%; height: 100%;"></c:when>
+								<c:when test="${itemUploaded.defaultNy eq 0 && itemUploaded.size ne 0}"><p style="font-size: 13px; font-style: italic;">이 도서는 상세이미지를 제공하지 않습니다.</p></c:when>
+								<c:when test="${itemUploaded.defaultNy eq 0 && itemUploaded.size ne NULL}"><p style="font-size: 13px; font-style: italic;">이 도서는 상세이미지를 제공하지 않습니다.</p></c:when>
+								<c:otherwise></c:otherwise>
+							</c:choose>
+						</c:forEach>
 					</div>
-					<div class="mb-4">
+					<div class="mb-4 mt-5">
 						<h6 class="mb-2" style="font-weight: bold;">목차</h6>
-						<p>명상<br>자유<br>호흡<br>시간의 섬<br>디지털 다이어트<br>상대방의 내면세계<br>평가 없이 받아들이기<br>긴장을 완화하는 3화음	<br>싱글태스킹<br>행복<br>깨어나기<br>의도적으로 초점 맞추기<br>친절<br>공포<br>객관<br>조바심<br>불안<br>파렴치<br>시간의 압박<br>음미하며 식사하기
-						<br>패닉<br>불쾌<br>행동주의<br>소통<br>용서<br>내면의 저항<br>브레인스토밍<br>주고받기<br>증명하기<br>위임<br>고마움<br>질투<br>거짓<br>속으로 미소 짓기<br>고통<br>최소화<br>죽음</p>
+						<c:choose>
+							<c:when test="${item.tditTableOfContents eq null}"><p style="font-size: 13px; font-style: italic;">이 도서는 목차를 제공하지 않습니다.</p></c:when>
+							<c:otherwise>
+								<p>${fn:replace(item.tditTableOfContents, lf, "<br>")}</p>
+							</c:otherwise>
+						</c:choose>
 					</div>
-					
-										
-					<div class="mb-4">
+					<div class="mb-4 mt-5">
 						<h6 class="mb-2" style="font-weight: bold;">책속으로</h6>
-						<p>미리 말해두자면, 나는 결코 난폭한 사람이 아니다. 오히려 그 반대다. 일례로 나는 평생 동안 누군가를 때린 적이 없다. 그리고 마흔두 살이 되어서야 처음으로 살인을 했다. 현재 업무 환경에 비추어보면 도리어 늦은 감이 있다. 인정하건대, 일주일 뒤 여섯 건이 추가되긴 했다.<br>
-						_〈명상〉 중<br><br>
-
-						“당신이 하고 싶지 않은 일을 반드시 할 필요는 없습니다. 그 사실을 받아들이고 나면 비로소 자유로워질 것입니다.”<br>
-						내가 하고 싶지 않은 일을 꼭 할 필요는 없다. 나는 자유롭다.<br>
-						이후 4개월이 채 지나지 않아 나는 자유의 구체적인 개념을 알게 되었다. 하고 싶지 않은 것을 굳이 하지 않는 자유를 맛보게 된 것이다. 안타깝게도 이것 때문에 타인의 자유를 제한해야만 했다. 남의 목숨을 빼앗았기 때문이다. 하지만 나는 세상을 구원하려고 이 명상 코스에 참여한 게 아니다. 스스로를 구원하기 위해서였다.<br>
-						_〈자유〉 중<br><br>
-						
-						우리는 드라간의 통화 내용이 수년간 도청당하는 걸 인지했기에 중요한 대화는 절대 전화로 나누지 않았다. 대신 변호사와 의뢰인 간의 암호 몇 가지를 정했다. … 
-						엊그제 누구 다리를 부러뜨렸는지도 기억 못 하는 사람에게는 위험 상황을 암시하는 코드 여섯 개 정도를 외우는 것도 무리다. 그래서 우리는 암호를 정확히 두 개만 정했다. 하나는 ‘타이타닉 보기’, 다른 하나는 ‘아이스크림 먹기’였다.<br>
-						_〈디지털 다이어트〉 중<br><br>
-						
-						“어떤 사건도 그 자체로 좋거나 나쁜 것은 없다.”<br>
-						… 한 남자가 불에 탔다. 또 다른 남자가 불타는 남자를 때렸다. 그래, 폭력범이 사이코패스라는 건 단지 평가일 뿐이다. 좋지 않다. … 불에 타 죽는 것은 역겨운 일이 아니다. 그저 일종의 평가일 뿐. 이론상으로는 그렇다.<br>
-						_〈평가 없이 받아들이기〉 중<br><br>
-						
-						그때 아이가 노크 소리를 들었다.<br>
-						“아빠, 이게 무슨 소리죠?” 에밀리가 물었다.<br>
-						“그건… 일거리야. 아빠가 할 일이 남아서 트렁크에 넣어왔거든. 그것도 빨리 집에 가져가야 해.”<br>
-						… 에밀리가 검지를 들고 나를 심각하게 바라보았다. “아빠, 일은 하면 안 돼요. 소풍이 먼저예요. 일은 그다음에 하면 되는 거예요.”<br>
-						…“소풍이 먼저. 그다음에 일.” 내가 되뇌었다. 그걸로 모든 문제가 해결되었다.<br>
-						_〈싱글태스킹〉 중</p>
+						<c:choose>
+							<c:when test="${item.tditBookDesc2 eq null}"><p style="font-size: 13px; font-style: italic;">이 도서는 데이터를 제공하지 않습니다.</p></c:when>
+							<c:otherwise>
+								<p>${fn:replace(item.tditBookDesc2, lf, "<br>")}</p>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 					 	
@@ -339,7 +351,30 @@
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 
 <script type="text/javascript">
-	 $(document).ready(function(){
+goMain = function(seq){
+	attr("action","/visitor/kyobo_VbookInfo");
+/* 	$("#formList").submit(); */
+}
+/* function count(type)  {
+	  // 결과를 표시할 element
+	  const resultElement = document.getElementById('result');
+	  
+	  // 현재 화면에 표시된 값
+	  let number = resultElement.innerText;
+	  
+	  // 더하기/빼기
+	  if(type === 'plus') {
+	    number = parseInt(number) + 1;
+	  }else if(type === 'minus')  {
+	    number = parseInt(number) - 1;
+	  }
+	  
+	  // 결과 출력
+	  resultElement.innerText = number;
+	}
+ */
+
+/* 	 $(document).ready(function(){
 
 			$('#top_menu .sub_1').hide();
 
@@ -351,10 +386,29 @@
 				$('.sub_1').hide();
 			});
 
+ */
+function count(type)  {
 
+	if(type === 'plus') {
+    
+		var tmp = document.getElementById("result").value;
+		tmp++;
+		document.getElementById("result").value = tmp;
 
+	}else if(type === 'minus')  {
+   
+		var tmp = document.getElementById("result").value;
+			if(tmp<2){
+				alert("최소수량은 1개입니다");
+				return true;
+			}else{
+				tmp--;
+			}
+		document.getElementById("result").value = tmp;
+	}
+	 
+}
 </script>
-
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->

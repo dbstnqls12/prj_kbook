@@ -30,6 +30,23 @@ public class BookController {
 	
 	@RequestMapping(value = "member/kyobo_main")
 	public String kyobo_main(@ModelAttribute("vo") BookVo vo, Model model) throws Exception {
+		
+		List<Book> listDNew = service.selectListDomesticNew(vo);
+		model.addAttribute("listDomesticNew", listDNew);
+		List<Book> listANew = service.selectListAbroadNew(vo);
+		model.addAttribute("listAbroadNew", listANew);
+		List<Book> listENew = service.selectListEbookNew(vo);
+		model.addAttribute("listEbookNew", listENew);
+		
+		List<Book> listBest = service.selectListBest(vo);
+		model.addAttribute("listbookBest", listBest);
+		
+		List<Book> listToday = service.selectListToday(vo);
+		model.addAttribute("listbookToday", listToday);
+		
+		List<Book> listUploaded = service.selectListBookUploaded(vo);
+		model.addAttribute("listUploaded", listUploaded);
+		
 		return "member/kyobo_main";
 	}
 
@@ -74,10 +91,20 @@ public class BookController {
 	}
 	
 	@RequestMapping(value="/member/kyobo_bookInfo")
-	public String kyobo_bookInfo(@ModelAttribute("vo") BookVo vo, Model model) throws Exception {
+	public String kyobo_bookInfo(@ModelAttribute("vo") BookVo vo, Book dto, Model model) throws Exception {
 		
+		List<Book> listAuthor = service.selectListAuthor(vo);
+		model.addAttribute("listAuthorL", listAuthor);
+
+		List<Book> listKeyword = service.selectListKeyword(vo);
+		model.addAttribute("listKeyword", listKeyword);
+
 		Book rt = service.selectOne(vo);
 		model.addAttribute("item", rt);
+		
+		List<Book> listUploaded = service.selectListBookUploaded(vo);
+		model.addAttribute("listUploaded", listUploaded);
+		
 		
 		return "/member/kyobo_bookInfo";
 	}

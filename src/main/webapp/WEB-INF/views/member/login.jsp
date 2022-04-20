@@ -38,8 +38,8 @@
 	</div>
 	<hr>
 	<div class="col-xs-8 mx-auto">
-		<input class="form-control mb-2" type="text" id="kbmmId" name="kbmmId" placeholder="kbmmId">	
-		<input class="form-control mb-2" type="password" id="kbmmPassword" name="kbmmPassword" placeholder="password" >
+		<input class="form-control mb-2" type="text" id="kbmmId" name="kbmmId" placeholder="아이디" value="qwe123">	
+		<input class="form-control mb-2" type="password" id="kbmmPassword" name="kbmmPassword" placeholder="비밀번호" value="1111">
 		
 		<div class="form-check col-xs-8 mb-3">
 			<input class="form-check-input" type="checkbox" name="autologin" value="autologin" id="autologin">
