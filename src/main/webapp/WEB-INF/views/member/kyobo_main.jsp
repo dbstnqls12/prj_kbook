@@ -242,7 +242,26 @@ $("#btn-ebookNew").on("click",function(){
 	$("#abroadNew").hide();
 		
 }); 
-
+$("#btnLogout").on("click", function(){
+	
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		,url: "/member/logoutProc"
+		/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
+		,success: function(response) {
+			if(response.rt == "success") {
+				location.href = "/visitor/kyobo_Vmain";
+			} else {
+				// by pass
+			}
+		}
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});	
+});
 
 </script>
 
