@@ -24,16 +24,16 @@ public class AuthorServiceImpl implements AuthorService {
 		System.out.println("cachedAuthorArrayList : "+Author.cachedAuthorArrayList.size());
 	}
 	
-	public static List<Author> selelctListCachedAuthor(String ifcgSeq) throws Exception{
-		List<Author> rt = new ArrayList<Author>();
-		for(Author authorRow : Author.cachedAuthorArrayList) {
-			if(authorRow.getIfcgSeq().equals(ifcgSeq)) {
-				rt.add(authorRow);
-			}else {
-				//
-			}
-		}
-		return rt;
-	}
+//	public static List<Author> selelctListCachedAuthor(String ifcgSeq) throws Exception{
+//		List<Author> rt = new ArrayList<Author>();
+//		for(Author authorRow : Author.cachedAuthorArrayList) {
+//			if(authorRow.getIfcgSeq().equals(ifcgSeq)) {
+//				rt.add(authorRow);
+//			}else {
+//				//
+//			}
+//		}
+//		return rt;
+//	}
 	
 }

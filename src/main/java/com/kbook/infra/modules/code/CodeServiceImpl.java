@@ -99,17 +99,17 @@ public class CodeServiceImpl implements CodeService{
 		
 	}
 	
-//	public static List<Code> selectListCachedCode(String ifcgSeq) throws Exception{
-//		List<Code> rt = new ArrayList<Code>();
-//		for(Code codeRow : Code.cachedCodeArrayList) {
-//			if(codeRow.getIfcgSeq().equals(ifcgSeq)) {
-//				rt.add(codeRow);
-//			}else {
-//				//by pass
-//			}
-//		}
-//		return rt;
-//	}
+	public static List<Code> selectListCachedCode(String ifcgSeq) throws Exception{
+		List<Code> rt = new ArrayList<Code>();
+		for(Code codeRow : Code.cachedCodeArrayList) {
+			if(codeRow.getIfcgSeq().equals(ifcgSeq)) {
+				rt.add(codeRow);
+			}else {
+				//by pass
+			}
+		}
+		return rt;
+	}
 
 
 
