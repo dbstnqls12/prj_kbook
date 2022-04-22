@@ -95,21 +95,21 @@ public class CodeServiceImpl implements CodeService{
 		
 		Code.cachedCodeArrayList.clear();
 		Code.cachedCodeArrayList.addAll(codeListFromDb);
-		System.out.println("cachedCodeArrayList : "+Code.cachedCodeArrayList.size() + " cached");
+//		System.out.println("cachedCodeArrayList : "+Code.cachedCodeArrayList.size() + " cached");
 		
 	}
 	
-	public static List<Code> selectListCachedCode(String ifcgSeq) throws Exception{
-		List<Code> rt = new ArrayList<Code>();
-		for(Code codeRow : Code.cachedCodeArrayList) {
-			if(codeRow.getIfcgSeq().equals(ifcgSeq)) {
-				rt.add(codeRow);
-			}else {
-				//by pass
-			}
-		}
-		return rt;
-	}
+//	public static List<Code> selectListCachedCode(String ifcgSeq) throws Exception{
+//		List<Code> rt = new ArrayList<Code>();
+//		for(Code codeRow : Code.cachedCodeArrayList) {
+//			if(codeRow.getIfcgSeq().equals(ifcgSeq)) {
+//				rt.add(codeRow);
+//			}else {
+//				//by pass
+//			}
+//		}
+//		return rt;
+//	}
 
 
 
