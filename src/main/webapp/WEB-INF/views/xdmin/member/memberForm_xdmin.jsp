@@ -223,6 +223,7 @@
 						</div>
 		 			</div>
 		 		</div>
+		 		
 				<div class="col-md-6">
 					<label class="col-form-label">제3자 정보제공 동의 교보 핫트랙스, 꾸밍(선택)</label>
 					<div class="col-md-6">
