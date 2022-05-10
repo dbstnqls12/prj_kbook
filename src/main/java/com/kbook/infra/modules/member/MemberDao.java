@@ -39,4 +39,7 @@ public class MemberDao {
 	public int insertUploaded(Member dto) {return sqlSession.insert(namespace +".insertUploaded", dto);}
 
 	public Member selectOneLogin(Member dto) {return sqlSession.selectOne(namespace +".selectOneLogin", dto);}
+	
+	public int insertRest(Member dto) {return sqlSession.insert(namespace +".insertRest", dto);}	
+	public int updateRest(Member dto) {return sqlSession.update(namespace +".updateRest", dto);}
 }

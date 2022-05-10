@@ -17,5 +17,8 @@ public interface MemberService {
 	
 	public Member selectOneLogin(Member dto) throws Exception;
 	
+	public int insertRest(Member dto) throws Exception;
+	public int updateRest(Member dto) throws Exception;
+	
 
 }

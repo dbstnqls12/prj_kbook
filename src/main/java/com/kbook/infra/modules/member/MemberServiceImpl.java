@@ -111,6 +111,16 @@ public class MemberServiceImpl implements MemberService{
 		return dao.selectOneLogin(dto);
 	}
 
+	@Override
+	public int insertRest(Member dto) throws Exception {
+		return dao.insertRest(dto);
+	}
+
+	@Override
+	public int updateRest(Member dto) throws Exception {
+		return dao.updateRest(dto);
+	}
+
 
 
 
