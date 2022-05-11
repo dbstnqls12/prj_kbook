@@ -259,30 +259,6 @@
 			,#{pseq}
 		)		
 	</insert>
-	
-	<insert id="insertRest">
-		INSERT INTO kbMember(
-			kbmmName
-			,kbmmId
-			,kbmmPassword
-			,kbmmDelNy
-		) VALUES (
-			#{kbmmName}
-			,#{kbmmId}
-			,#{kbmmPassword}
-			,0
-		)	
-	</insert>
-	
-	<update id="updateRest">
-		UPDATE kbMember SET 	
-			kbmmName = #{kbmmName}
-			,kbmmId = #{kbmmId}
-			,kbmmPassword = #{kbmmPassword}
-		WHERE 1=1
-			AND kbmmSeq=#{kbmmSeq}	
-	</update>
-	
 	<update id="update">
 		UPDATE kbMember SET 	
 			kbmmName = #{kbmmName}
@@ -357,7 +333,29 @@
 			AND kbmmId = #{kbmmId}	
 			AND kbmmPassword = #{kbmmPassword}	
 	</select>
-
+	
+	<insert id="insertRest">
+		INSERT INTO kbMember(
+			kbmmName
+			,kbmmId
+			,kbmmPassword
+			,kbmmDelNy
+		) VALUES (
+			#{kbmmName}
+			,#{kbmmId}
+			,#{kbmmPassword}
+			,0
+		)	
+	</insert>
+	
+	<update id="updateRest">
+		UPDATE kbMember SET 	
+			kbmmName = #{kbmmName}
+			,kbmmId = #{kbmmId}
+			,kbmmPassword = #{kbmmPassword}
+		WHERE 1=1
+			AND kbmmSeq=#{kbmmSeq}	
+	</update>
 
 </mapper>
 
