@@ -78,6 +78,9 @@
 
 <!--일반 로그인 -->  
  $("#btnLogin").on("click",function(){
+	 
+	if(!checkNull($("kbmmId"), $.trim($("#kbmmId").val()), "아이디를 입력해 주세요!")) return false;
+	if(!checkNull($("kbmmPassword"), $.trim($("#kbmmPassword").val()), "비밀번호를 입력해 주세요!")) return false;
 	
 	$.ajax({
 		async: true 
@@ -89,7 +92,7 @@
 			if(response.rt == "success") { 
 					location.href = "/member/kyobo_main";
 			} else {
-				alert("회원없음");
+				alert("아이디 또는 비밀번호를 확인해주세요!");
 			}
 		}			
 		,error : function(jqXHR, textStatus, errorThrown){
