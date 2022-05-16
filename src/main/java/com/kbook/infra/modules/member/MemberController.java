@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.kbook.infra.common.constants.Constants;
@@ -379,6 +380,7 @@ public class MemberController {
 		
 		URL url = new URL(apiUrl);
 		HttpURLConnection httpURLConnection =(HttpURLConnection) url.openConnection();
+		httpURLConnection.setRequestMethod("GET");
 		
 		BufferedReader bufferedReader;
 		if(httpURLConnection.getResponseCode() >= 200 && httpURLConnection.getResponseCode() <=300) {
@@ -412,8 +414,44 @@ public class MemberController {
 //		model 객체를 이용해서 jsp로 데이터를 넘겨준다
 //			객체:Member
 		
-		
 		return "/test/memberView";
+	}
+	
+	@RequestMapping(value = "/test/memberList")
+	public String memberList(Model model) throws Exception {
+		
+//		api 호출해서 값을 가져온다.
+		String apiUrl = "http://localhost/rest/member";
+		
+		URL url = new URL(apiUrl);
+		HttpURLConnection httpURLConnection =(HttpURLConnection) url.openConnection();
+		httpURLConnection.setRequestMethod("GET");
+		
+		BufferedReader bufferedReader;
+		if(httpURLConnection.getResponseCode() >= 200 && httpURLConnection.getResponseCode() <=300) {
+			bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+		}else {
+			bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+		}
+		
+		StringBuilder stringBuilder = new StringBuilder();
+		String line; 
+		while((line = bufferedReader.readLine()) != null) {
+			System.out.println("line : "+line);
+			stringBuilder.append(line);
+		}
+		
+		bufferedReader.close();
+		httpURLConnection.disconnect();
+		
+		System.out.println("final line : "+stringBuilder.append(line));
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		List<Member> memberList = objectMapper.readValue(stringBuilder.toString(), new TypeReference<List<Member>>() {});
+		
+		model.addAttribute("list", memberList);
+		
+		return "/test/memberList";
 	}
 	
 	
