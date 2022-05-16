@@ -1,7 +1,11 @@
 package com.kbook.infra.modules.member;
 
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
 
 import java.util.List;
@@ -19,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.kbook.infra.common.constants.Constants;
 import com.kbook.infra.common.util.UtilDateTime;
@@ -363,6 +368,76 @@ public class MemberController {
 		return returnMap;	
 	}
 
+	
+	
+	
+	@RequestMapping(value = "/test/memberView")
+	public String memberView(Model model) throws Exception {
 
+//		api 호출해서 값을 가져온다.
+		String apiUrl = "http://localhost/rest/member/103";
+		
+		URL url = new URL(apiUrl);
+		HttpURLConnection httpURLConnection =(HttpURLConnection) url.openConnection();
+		
+		BufferedReader bufferedReader;
+		if(httpURLConnection.getResponseCode() >= 200 && httpURLConnection.getResponseCode() <=300) {
+			bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+		}else {
+			bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+		}
 
+		StringBuilder stringBuilder = new StringBuilder();
+		String line;
+		while((line = bufferedReader.readLine()) != null) {
+			System.out.println("line : "+line);
+			stringBuilder.append(line);
+		}
+		
+		bufferedReader.close();
+		httpURLConnection.disconnect();
+		
+		System.out.println("final line : "+stringBuilder.append(line));
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		Member member = objectMapper.readValue(stringBuilder.toString(), Member.class);
+	   
+		model.addAttribute("item", member);
+//			json Object
+//				json String, json객체가 아니다
+		
+//			json Object -> 객체로 변환 : convert
+//			json String -> 객체로 변환
+		
+//		model 객체를 이용해서 jsp로 데이터를 넘겨준다
+//			객체:Member
+		
+		
+		return "/test/memberView";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
