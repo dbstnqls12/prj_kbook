@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kbook.infra.Home;
 import com.kbook.infra.modules.member.Member;
@@ -207,6 +208,70 @@ public class HomeController {
 		
 		return "/test/publicCorona1List";
 	}
+	
+	
+	
+	
+	
+	@RequestMapping(value = "/test/publicCorona1JsonNodeList")
+	public String publicCorona1JsonNodeList(Model model) throws Exception {
+		
+		//api 호출해서 값을 가져온다.
+		String apiUrl = "http://apis.data.go.kr/1471000/CovidDagnsRgntProdExprtStusService/getCovidDagnsRgntProdExprtStusInq?serviceKey=T3HrNl6n1tVJSnDZZkXFejhqLurfLKpoU1KSaTbBnvuM49Q%2FFbBPVqta6Cw2912Sjyc4zsS1CTUM3whVseApKQ%3D%3D&numOfRows=3&pageNo=1&type=json";
+		
+		URL url = new URL(apiUrl);
+		HttpURLConnection httpURLConnection =(HttpURLConnection) url.openConnection();
+		httpURLConnection.setRequestMethod("GET");
+		
+		BufferedReader bufferedReader;
+		if(httpURLConnection.getResponseCode() >= 200 && httpURLConnection.getResponseCode() <=300) {
+			bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+		}else {
+			bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+		}
+		
+		StringBuilder stringBuilder = new StringBuilder();
+		String line; 
+		while((line = bufferedReader.readLine()) != null) {
+			System.out.println("line : "+line);
+			stringBuilder.append(line);
+		}
+		
+		bufferedReader.close();
+		httpURLConnection.disconnect();
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode node = objectMapper.readTree(stringBuilder.toString());
+		
+		System.out.println("node.get(\"header\").get(\"resultCode\").asText():" + node.get("header").get("resultCode").asText());
+		System.out.println("node.get(\"header\").get(\"resultMsg\").asText():" + node.get("header").get("resultMsg").asText());
+		System.out.println("node.get(\"header\").get(\"resultMsg\").asText():" + node.get("body").get("items").get(0).get("KIT_PROD_QTY").asText());
+		
+		model.addAttribute("node", node);
+		
+		
+		return "/test/publicCorona1JsonNodeList";
+	}
+	
+	@RequestMapping(value = "/test/rtcView")
+	public String rtcView(Model model) throws Exception {
+		
+		return "/test/rtcView";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping(value = "/test/weather")
 	public String weather(Model model) throws Exception {

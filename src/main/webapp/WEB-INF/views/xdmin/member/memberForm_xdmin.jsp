@@ -358,13 +358,6 @@
 	delLi = function(seq, index){
 		$("#li_"+seq+"_"+index).remove();
 	}
-		
-
-
-
-
-
-
 
 
  
