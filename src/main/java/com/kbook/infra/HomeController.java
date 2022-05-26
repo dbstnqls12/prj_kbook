@@ -259,29 +259,16 @@ public class HomeController {
 		return "/test/rtcView";
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	@RequestMapping(value = "/test/weather")
-	public String weather(Model model) throws Exception {
+	@RequestMapping(value = "/zoomlist")
+	public String zoomlist(Model model) throws Exception {
 		
 //		api 호출해서 값을 가져온다.
-		String apiUrl = "http://apis.data.go.kr/1360000/VilageFcstMsgService/getWthrSituation?serviceKey=T3HrNl6n1tVJSnDZZkXFejhqLurfLKpoU1KSaTbBnvuM49Q%2FFbBPVqta6Cw2912Sjyc4zsS1CTUM3whVseApKQ%3D%3D&numOfRows=10&pageNo=1&stnId=108&dataType=JSON";
+		String apiUrl = "https://api.zoom.us/v2/users/binson1123@naver.com/meetings";
 		
 		URL url = new URL(apiUrl);
 		HttpURLConnection httpURLConnection =(HttpURLConnection) url.openConnection();
 		httpURLConnection.setRequestMethod("GET");
+		httpURLConnection.setRequestProperty("authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6Ikl0NndnRkR4VGktV2hwQnRqRWpuSXciLCJleHAiOjE2NTM1NjMxMDEsImlhdCI6MTY1MzQ3NjY5OH0.Yr053Ab1Ri2ldS816kgWsKFBS1YMbB5XRkpmHplXZSY");
 		
 		BufferedReader bufferedReader;
 		if(httpURLConnection.getResponseCode() >= 200 && httpURLConnection.getResponseCode() <=300) {
@@ -304,28 +291,15 @@ public class HomeController {
 		
 //		json object + array string -> java map
 		
-		ObjectMapper objectMapper = new ObjectMapper();
-		Map<String, Object> map = objectMapper.readValue(stringBuilder.toString(), Map.class);
-		
-		System.out.println("#####Map");
-		for(String key : map.keySet()) {
-//			String value = (String)map.get(key);
-//			String value = map.get(key).toString();
-			String value = String.valueOf(map.get(key));
-			System.out.println("[key]: "+key + ", [value]: " + value);
-		}
-		
-		Map<String, Object> response = new HashMap<String, Object>();
-		response = (Map<String, Object>)map.get("response");
-		
-		System.out.println("#####response");
-		for(String key : response.keySet()) {
-			String value = String.valueOf(response.get(key));
-			System.out.println("[key]: "+key + ", [value]: " + value);
-		}
-		System.out.println("header.get(\"resultCode\") : "+response.get("resultCode"));
-		System.out.println("header.get(\"resultMsg\") : "+response.get("resultMsg"));
-		
+//		ObjectMapper objectMapper = new ObjectMapper();
+//		Map<String, Object> map = objectMapper.readValue(stringBuilder.toString(), Map.class);
+//		
+//		System.out.println("#####Map");
+//		for(String key : map.keySet()) {
+//			String value = String.valueOf(map.get(key));
+//			System.out.println("[key]: "+key + ", [value]: " + value);
+//		}
+//		
 //		Map<String, Object> header = new HashMap<String, Object>();
 //		header = (Map<String, Object>)map.get("header");
 //		
@@ -336,9 +310,110 @@ public class HomeController {
 //		}
 //		System.out.println("header.get(\"resultCode\") : "+header.get("resultCode"));
 //		System.out.println("header.get(\"resultMsg\") : "+header.get("resultMsg"));
-	
-		return "/test/weather";
+//		
+//		Map<String, Object> body = new HashMap<String, Object>();
+//		body = (Map<String, Object>)map.get("body");
+//		
+//		List<Home> items = new ArrayList<Home>();
+//		items = (List<Home>) body.get("items");
+//		
+//		System.out.println("items.size() : "+items.size());
+//		
+//		for(int i=0; i < items.size(); i++) {
+//			
+//		}
+////		map X
+//		
+////		header -> java 객체 (Home)
+//		
+////		body -> java 객체 (Home)
+//		
+////		item -> java 객체 (Home)
+//		
+//		model.addAllAttributes(header);
+//		model.addAllAttributes(body);
+		
+		return "/classroom/common/zoomlist";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	@RequestMapping(value = "/test/weather")
+//	public String weather(Model model) throws Exception {
+//		
+////		api 호출해서 값을 가져온다.
+//		String apiUrl = "http://apis.data.go.kr/1360000/VilageFcstMsgService/getWthrSituation?serviceKey=T3HrNl6n1tVJSnDZZkXFejhqLurfLKpoU1KSaTbBnvuM49Q%2FFbBPVqta6Cw2912Sjyc4zsS1CTUM3whVseApKQ%3D%3D&numOfRows=10&pageNo=1&stnId=108&dataType=JSON";
+//		
+//		URL url = new URL(apiUrl);
+//		HttpURLConnection httpURLConnection =(HttpURLConnection) url.openConnection();
+//		httpURLConnection.setRequestMethod("GET");
+//		
+//		BufferedReader bufferedReader;
+//		if(httpURLConnection.getResponseCode() >= 200 && httpURLConnection.getResponseCode() <=300) {
+//			bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+//		}else {
+//			bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+//		}
+//		
+//		StringBuilder stringBuilder = new StringBuilder();
+//		String line; 
+//		while((line = bufferedReader.readLine()) != null) {
+//			System.out.println("line : "+line);
+//			stringBuilder.append(line);
+//		}
+//		
+//		bufferedReader.close();
+//		httpURLConnection.disconnect();
+//		
+//		System.out.println("final line : "+stringBuilder.append(line));
+//		
+////		json object + array string -> java map
+//		
+//		ObjectMapper objectMapper = new ObjectMapper();
+//		Map<String, Object> map = objectMapper.readValue(stringBuilder.toString(), Map.class);
+//		
+//		System.out.println("#####Map");
+//		for(String key : map.keySet()) {
+////			String value = (String)map.get(key);
+////			String value = map.get(key).toString();
+//			String value = String.valueOf(map.get(key));
+//			System.out.println("[key]: "+key + ", [value]: " + value);
+//		}
+//		
+//		Map<String, Object> response = new HashMap<String, Object>();
+//		response = (Map<String, Object>)map.get("response");
+//		
+//		System.out.println("#####response");
+//		for(String key : response.keySet()) {
+//			String value = String.valueOf(response.get(key));
+//			System.out.println("[key]: "+key + ", [value]: " + value);
+//		}
+//		System.out.println("header.get(\"resultCode\") : "+response.get("resultCode"));
+//		System.out.println("header.get(\"resultMsg\") : "+response.get("resultMsg"));
+//		
+//		Map<String, Object> header = new HashMap<String, Object>();
+//		header = (Map<String, Object>)map.get("header");
+//		
+//		System.out.println("#####Header");
+//		for(String key : header.keySet()) {
+//			String value = String.valueOf(header.get(key));
+//			System.out.println("[key]: "+key + ", [value]: " + value);
+//		}
+//		System.out.println("header.get(\"resultCode\") : "+header.get("resultCode"));
+//		System.out.println("header.get(\"resultMsg\") : "+header.get("resultMsg"));
+//	
+//		return "/test/weather";
+//	}
 	
 	
 	

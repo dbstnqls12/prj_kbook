@@ -217,6 +217,13 @@
 		</dependency>
 		<!-- fileupload e 2022.03.30 -->
 
+		<!-- mail s 2022.05.26 -->
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <version>1.4.7</version>
+		</dependency>
+
 		<!-- OAuth 2022.04.11 -->
 		<dependency>
 			<groupId>com.github.scribejava</groupId>

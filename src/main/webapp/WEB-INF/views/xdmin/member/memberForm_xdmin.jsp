@@ -44,7 +44,6 @@
 <!-- 본문 s-->
 <div class="container">
 	<div class="row">
-		
 		<div class="mb-3"><h4 style="font-weight: bold;">회원가입</h4></div>
 			<div class="container ">
 			<form action="xdmin/member/memberInst" method="post" id="memberForm" name="memberForm" class="row g-3" enctype="multipart/form-data">

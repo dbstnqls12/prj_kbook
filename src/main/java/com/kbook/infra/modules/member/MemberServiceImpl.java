@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kbook.infra.common.util.UtilDateTime;
+import com.kbook.infra.common.util.UtilMail;
 import com.kbook.infra.common.util.UtilUpload;
 
 @Service
@@ -72,6 +73,7 @@ public class MemberServiceImpl implements MemberService{
 		dao.insertEmail(dto);
 		dao.insertAddress(dto);
 		
+		UtilMail.sendMail();
 		
 		return 1;
 	}

@@ -289,14 +289,14 @@ $("#btn-delete").on("click", function(){
 	
 });
 
-	goList = function(){
-		$("#memberView").attr("action", "/xdmin/member/memberList");
-		$("#memberView").submit();
-	};
-	goEditForm = function(){
-		$("#memberView").attr("action", "/xdmin/member/memberEditForm");
-		$("#memberView").submit();
-	};
+goList = function(){
+	$("#memberView").attr("action", "/xdmin/member/memberList");
+	$("#memberView").submit();
+};
+goEditForm = function(){
+	$("#memberView").attr("action", "/xdmin/member/memberEditForm");
+	$("#memberView").submit();
+};
 
 	
 	
