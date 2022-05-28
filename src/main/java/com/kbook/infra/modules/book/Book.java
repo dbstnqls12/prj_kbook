@@ -25,7 +25,6 @@ public class Book {
 	private String tditBookDesc2;
 	private String tditTableOfContents;
 	private String tditDelNy;
-	private String path;
 
 	private Date regDateTime;
 	private Date regDateTimeSvr;
@@ -61,6 +60,7 @@ public class Book {
 	private long size;
 	private Integer delNy;
 	private String pseq;
+	private String path;
 	
 	private Integer[] tditSeqArray;
 	
