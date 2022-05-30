@@ -44,7 +44,7 @@
 				<input type="hidden" id="shOptionDate" name="shOptionDate"  value="<c:out value="${vo.shOptionDate}"/>">
 				<input type="hidden" id="shDateStart" name="shDateStart"  value="<c:out value="${vo.shDateStart}"/>">
 				<input type="hidden" id="shDateEnd" name=shDateEnd  value="<c:out value="${vo.shDateEnd}"/>">
-				<div class="col-md-6">
+				<div class="col-md-6 col-12">
 					<label class="form-label">이름</label>
 					<input type="text" class="form-control form-control-sm" id="kbmmName" name="kbmmName" value="<c:out value="${item.kbmmName}"/>">
 				</div>
@@ -234,7 +234,7 @@
 						</div>
 		 			</div>
 		 		</div>
-		 		<div class="col-sm-6">
+		 		<div class="col-md-6">
 		            <label class="col-form-label">설명</label>
 		            <div class="col-md-6">
 		            <%-- <p>${fn:replace(item.ifmmDesc, br, '<br/>')}</p> --%>

@@ -2,17 +2,22 @@
 		width: 380px;
 		
 	}
+	body{
+		background-color: #F6F9F7;
+	}
+/*  	#logo{
 
-	#logo{
 		display: block;
+		padding-left: auto;
+		padding-right: auto; 
  		margin-left:auto;
 		margin-right: auto; 
-		width: 130px;
+		width: 200px;
 		height: 90px;
 		margin-top: 30px; 
 		margin-bottom: 20px;
 	
-	}
+	}  */
 	hr{
 		margin-bottom: 15px;
 	}
@@ -55,16 +60,19 @@
 	    border-color: #ea4335;
 	    color: white;
 	}
+	
 	a:link,
 	a:visited
 	{
 		color: gray;
 		text-decoration: none;
 	}
+	
 	a:hover{
 		color: gray;
 		text-decoration: underline;
 	}
+	
 	a:active{
 		color: gray;
 		text-decoration: none;

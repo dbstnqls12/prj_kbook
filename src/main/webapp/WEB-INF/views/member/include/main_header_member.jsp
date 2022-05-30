@@ -24,14 +24,14 @@
 <div class="container"> <!--d-none d-sm-block : sm사이즈에서는 보이지 않음 --><!-- d-block d-sm-none : sm에서만 보임 -->
 	<div class="row">	
 		<div class="col-6 col-md-2 col-lg-2">
-			<img src="/resources/xdmin/image/kyobo2_removebg.png"  class="img-fluid mx-auto" onclick="location.href='kyobo_main'">
+			<img src="/resources/xdmin/image/SU-BOOK5.png"  class="img-fluid mx-auto" onclick="location.href='kyobo_main'">
 		</div>				
 		<div class="col-6 d-block d-md-none mt-2 text-end">
 			<a class="d-block d-md-none mt-3 ml-1" data-bs-toggle="offcanvas" href="#offcanvasRight" aria-controls="offcanvasRight">
 				<i class="fa-solid fa-bars"></i>
 			</a>
 		</div>		
-		<form class="d-flex col-lg-5 mx-auto mt-4"  style="height: 40px;">
+		<form class="d-flex col-lg-5 mx-auto"  style="height: 40px; margin-top: 30px;">
 			<input class="form-control form-control-sm rounded-pill" type="search" placeholder="Search" aria-label="Search">
 			<button class="btn rounded-pill" type="button" onclick=""><i class="fa-solid fa-magnifying-glass"></i></button>
 		</form>
@@ -39,7 +39,7 @@
 	        <div class="dropdown">
 	          <a href="#" class="d-inline link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 	            <%-- <span><font id="name"><c:out value="${sessName }"/></font> 회원님 <u>(프렌즈)</u></span> --%>
-	            <span><font id="name"></font>${sessName}${name} 회원님 <u>(프렌즈)</u></span>
+	            <span><font id="name"></font>${sessName} 회원님 <u>(프렌즈)</u></span>
 	          </a>
 	          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
 	            <li><a class="dropdown-item" href="../user/member/myInfo_main.html">내 정보</a></li>
