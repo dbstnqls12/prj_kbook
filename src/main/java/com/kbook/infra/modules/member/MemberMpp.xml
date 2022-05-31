@@ -327,6 +327,7 @@
 			,kbmmName
 			,kbmmPassword
 			,kbmmAdminNy
+			,kbmmGradeCd
 		FROM
 			kbMember
 		WHERE 1=1 

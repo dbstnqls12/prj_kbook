@@ -7,7 +7,7 @@
 
 <jsp:useBean id="CateServiceImpl" class="com.kbook.infra.modules.cate.CateServiceImpl"/>
 <jsp:useBean id="AuthorServiceImpl" class="com.kbook.infra.modules.author.AuthorServiceImpl"/>
-
+<jsp:useBean id="CodeServiceImpl" class="com.kbook.infra.modules.code.CodeServiceImpl"/>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -32,6 +32,7 @@
 
 <!-- 본문 s-->
 <div class="container">
+
 	<form action="" method="post" id="bookMain" name="bookMain">
 	<input type="hidden" name="tditSeq" id="tditSeq" >
 	<div class="row">
@@ -252,7 +253,7 @@ $("#btnLogout").on("click", function(){
 		/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
 		,success: function(response) {
 			if(response.rt == "success") {
-				location.href = "/visitor/kyobo_Vmain";
+				location.href = "/member/login";
 			} else {
 				// by pass
 			}

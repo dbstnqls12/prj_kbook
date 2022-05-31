@@ -1,105 +1,168 @@
-	<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+<jsp:useBean id="CodeServiceImpl" class="com.kbook.infra.modules.code.CodeServiceImpl"/>
 
-<!doctype html>
-<html lang="ko">
+<!DOCTYPE HTML>
+<html>
+
 <head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Bootstrap CSS -->
-<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css"  rel="stylesheet" >
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
-<link  rel="stylesheet" href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css">
-
-<link href="/resources/xdmin/css/footers.css" rel="stylesheet" type="text/css">
-<title></title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Surjith S M">
+    <meta name="keywords" content="GGV, 지지브이, 영화관, 극장, 영화, 티켓, 박스오피스, 극장, Movie, Theater, Cinema, Ggv, ggv, 예매, 상영작" />
+    <meta name="description" content="GGV는 선진화된 관람문화와 최고의 서비스로 고객에게 잊을 수 없는 감동을 선사합니다. GGV홈페이지를 통해 영화 예매뿐만 아니라 그 이상의 서비스와 감동을 전달하고, 다양한 즐거움과 특별한 경험을 제공하고자 합니다." />
+    <meta property="og:site_name" content="영화 그 이상의 감동. GGV"/>
+    <meta id="ctl00_og_title" property="og:title" content="영화 그 이상의 감동. GGV"></meta>
+    <meta id="ctl00_og_image" property="og:image" content="https://img.cgv.co.kr/WebApp/images/common/logo_new_kakao_prevw.png"></meta>    
+    
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="https://img.cgv.co.kr/theater_img/favicon.ico" type="image/x-icon" /> <!-- cj아이콘 -->
+    <!-- Page Title -->
+    <title id="ctl00_headerTitle">영화 그 이상의 감동. GGV</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/resources/xdmin/assets/css/bootstrap.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+    <!-- Themify Icon -->
+    <link rel="stylesheet" href="/resources/xdmin/assets/css/themify-icons.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/resources/xdmin/assets/css/font-awesome.min.css">
+    <!-- Hover Effects -->
+    <link href="/resources/xdmin/assets/css/set1.css" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="/resources/xdmin/assets/css/style.css">
 </head>
+
 <body>
+    <!--============================= HEADER =============================-->
+    <div class="nav-menu sticky-top">
+        <div class="bg transition">
+            <div class="container-fluid fixed">
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item" style="padding : 10px;">
+                                        <c:out value="${sessName}"/>
+                                    </li>
+                                    <li> </li>
+                                    <li><a href="" id="btnLogout" class="btn btn-outline-danger top-btn"> logout</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--//END HEADER -->
+    <!--============================= SUBPAGE HEADER BG =============================-->
+    <section class="subpage-bg">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="titile-block title-block_subpage">
+                        <h2>portfolio</h2>
+                        <p> <a href="index.html"> 영화예매 페이지(GGV)</a> / 회원관리 페이지</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--// SUBPAGE HEADER BG -->
+    <!--============================= PRICING =============================-->
+    <section class="main-block">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 article-first">
+                    <div class="pricing-wrap">
+                        <div class="pricing-head">
+                            <h2>영화예매</h2>
+                            <span>웹 / HTML</span>
+                        </div>
+                        <ul class="pricing-text-block">
+                            <li><img src="/resources/xdmin/image/ggv.JPG" width="100%" height="339px"/></li>
+                            <li>홈 / 영화상세 / 예매 / 결제 / 결제완료</li>
+                        </ul>
+                        <div class="pricing-signup">
+                            <a href="/movie/userHome" class="btn btn-danger">입장하기</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 article-first">
+                    <div class="pricing-wrap">
+                        <div class="pricing-head">
+                            <h2>회원관리</h2>
+                            <span>웹 / HTML</span>
+                        </div>
+                        <ul class="pricing-text-block">
+                            <li><img src="/resources/xdmin/image/member.JPG" width="100%" height="339px"/></li>
+                            <li>회원리스트 / 회원상세 / 회원등록 / 회원수정 / 회원삭제</li>
+                        </ul>
+                        <div class="pricing-signup">
+                            <a href="/member/memberList" class="btn btn-danger">입장하기</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!--//END PRICING -->
 
 
-<%@ include file="/WEB-INF/views/xdmin/include/xdmin_header.jsp" %><!-- xdmin_header -->
-<%@ include file="/WEB-INF/views/xdmin/include/offcanvas.jsp" %><!-- offcanvas -->
-<%@ include file="/WEB-INF/views/xdmin/include/navbar.jsp" %><!-- navbar -->
-<!-- 본문 s-->
-<div class="container">
-
-<!-- 	nickname: <p id="nickname" class="d-inline"></p><br>
-	name: <p id="name" class="d-inline"></p><br>
-	birthday: <p id="birthday" class="d-inline"></p><br>
-	mobile: <p id="mobile" class="d-inline"></p><br>
-	email: <p id="email" class="d-inline"></p><br> -->
-	sessSeq: <c:out value="${sessSeq }"/><br>
-	sessSeq: <c:out value="${session }"/><br>
-	sessName: <c:out value="${sessName }"/><br>
-	sessName: <c:out value="${name }"/><br>
-	sessId: <c:out value="${sessId }"/><br>
-	
-	sessAdminNy: <c:out value="${sessAdminNy }"/><br>
-	<c:if test="${not empty sessSeq}">
-		<button type="button" class="btn btn-danger btn-sm" name="" id="btnLogout"><i class="fa-solid fa-power-off"></i></button>
-	</c:if>
 
 
-</div>
 
-<%@ include file="/WEB-INF/views/xdmin/include/footer.jsp" %><!-- footer -->
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- jQuery, Bootstrap JS. -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="/resources/xdmin/assets/js/jquery-3.2.1.min.js"></script>
+<script src="/resources/xdmin/assets/js/popper.min.js"></script>
+<script src="/resources/xdmin/assets/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/resources/common/js/validation.js"></script>
+
+<!-- Jquery ui -->
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
-<script type="text/javascript">
-	$("#btnLogout").on("click",function(){
-		
+
+<script>
+	$("#btnLogout").on("click", function(){
+		/* if(validation() == false) return false; */
 		$.ajax({
 			async: true 
 			,cache: false
 			,type: "post"
 			,url: "/member/logoutProc"
-			,data : { "kbmmId" : $("#kbmmId").val(), "kbmmPassword" : $("#kbmmPassword").val()}
+			/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
 			,success: function(response) {
 				if(response.rt == "success") {
-					location.href = "/member/login";
+					location.href = "/member/loginForm";
 				} else {
-					//
+					// by pass
 				}
-			}			
+			}
 			,error : function(jqXHR, textStatus, errorThrown){
 				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 			}
-		});
-
-	});
-	
-	$(document).ready(function() {
-	    var nickname = ${result}.response.nickname;
-	    $("#nickname").html(nickname);
-	    var email = ${result}.response.email;
-	    $("#email").html(email);
-	    var mobile = ${result}.response.mobile;
-	    $("#mobile").html(mobile);
-	    var birthday = ${result}.response.birthday;
-	    $("#birthday").html(birthday);
-	    var name = ${result}.response.name;
-	    $("#name").html(name);
+		});	
 	});
 
+	validation = function(){
+		if(!checkNull($("mvmmId"), $.trim($("#mfmmId").val()), "아이디를 입력해 주세요!")) return false;
+		if(!checkNull($("mvmmPassword"), $.trim($("#mvmmPassword").val()), "비밀번호를 입력해 주세요!")) return false;
+	}
 </script>
-<!-- Optional JavaScript; choose one of the two! -->
 
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>-->
-<script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>  
-
-<!-- Option 2: Separate Popper and Bootstrap JS -->
-<!--
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
--->
 </body>
+
 </html>

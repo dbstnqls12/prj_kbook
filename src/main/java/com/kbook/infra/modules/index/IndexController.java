@@ -27,6 +27,11 @@ public class IndexController {
 		
 		return "index/indexView";
 	}
+	@RequestMapping(value = "index/index")
+	public String index() throws Exception {
+		
+		return "index/index";
+	}
 	
 
 	}

@@ -89,7 +89,7 @@ $("#btnLogin").on("click",function(){
 		,data : { "kbmmId" : $("#kbmmId").val(), "kbmmPassword" : $("#kbmmPassword").val()}
 		,success: function(response) {
 			if(response.rt == "success") { 
-					location.href = "/member/kyobo_main";
+					location.href = "/index/index";
 			} else {
 				alert("아이디 또는 비밀번호를 확인해주세요!");
 			}

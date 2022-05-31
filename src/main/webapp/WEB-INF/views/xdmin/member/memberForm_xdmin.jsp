@@ -521,7 +521,27 @@ $("#btn-add").on("click", function(){
 		$("#kbmaAddress1").val("");
 		
 	});	
-
+	
+	
+	$("#btn-Logout").on("click", function(){
+		
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/member/logoutProc"
+			,success: function(response) {
+				if(response.rt == "success") {
+					location.href = "/member/login";
+				} else {
+					// by pass
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});	
+	});
 </script>
 <!-- Optional JavaScript; choose one of the two! -->
 

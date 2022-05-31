@@ -33,12 +33,12 @@
 		</div>
 		<div class="col-1 d-none d-md-block">	
 			<div class="row">
-				<div class="col" style=" margin-top: 40px; "><p class="name" style="font-size: 16px; font-weight:bold;display: inline;">윤수빈 <span>님</span></p> </div>
+				<div class="col" style=" margin-top: 40px; "><p class="name" style="font-size: 16px; font-weight:bold;display: inline;">${sessName} <span>님</span></p> </div>
 			</div>
 		</div>
 		<div class="col-1 d-none d-md-block float-end">	
 			<div class="row">
-				<span class="badge bg-primary" role="button" id="btnLogout" style="width: 100px; height:30px; margin-top: 38px;"><p style="font-size: 13px; margin-top: 5px; ">로그아웃 <i class="fa-solid fa-right-from-bracket"></i></p></span>
+				<span class="badge bg-primary" role="button" id="btn-Logout" style="width: 100px; height:30px; margin-top: 38px;"><p style="font-size: 13px; margin-top: 5px; ">로그아웃 <i class="fa-solid fa-right-from-bracket"></i></p></span>
 			</div>
 		</div>
 	</div>

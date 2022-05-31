@@ -22,6 +22,7 @@
 <body>
 
 <div class="container"> <!--d-none d-sm-block : sm사이즈에서는 보이지 않음 --><!-- d-block d-sm-none : sm에서만 보임 -->
+<c:set var="CodeGrade" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
 	<div class="row">	
 		<div class="col-6 col-md-2 col-lg-2">
 			<img src="/resources/xdmin/image/SU-BOOK5.png"  class="img-fluid mx-auto" onclick="location.href='kyobo_main'">
@@ -35,20 +36,35 @@
 			<input class="form-control form-control-sm rounded-pill" type="search" placeholder="Search" aria-label="Search">
 			<button class="btn rounded-pill" type="button" onclick=""><i class="fa-solid fa-magnifying-glass"></i></button>
 		</form>
-		<div class="col-lg-2 my-auto d-none d-md-block">	
-	        <div class="dropdown">
-	          <a href="#" class="d-inline link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-	            <%-- <span><font id="name"><c:out value="${sessName }"/></font> 회원님 <u>(프렌즈)</u></span> --%>
-	            <span><font id="name"></font>${sessName} 회원님 <u>(프렌즈)</u></span>
-	          </a>
-	          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-	            <li><a class="dropdown-item" href="../user/member/myInfo_main.html">내 정보</a></li>
-	            <li><a class="dropdown-item" href="../user/member/myInfo_coupon.html">쿠폰함</a></li>
-	          </ul>
-	          	<c:if test="${not empty sessSeq}">
-					<span class="badge bg-light text-dark" role="button" id="btnLogout">로그아웃</span>
-				</c:if>
-	        </div>
-		</div>
+		<c:if test="${sessSeq ne null}">
+			<div class="col-lg-2 my-auto d-none d-md-block">	
+		        <div class="dropdown">
+		          <a href="#" class="d-inline link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+		            <span>${sessName} 회원님 
+		            <c:forEach items="${CodeGrade}" var="itemGrade" varStatus="statusGrade">
+		           		 <c:if test="${sessGrade eq itemGrade.ifcdOrder }"><u><c:out value="${itemGrade.ifcdName}"/></u></c:if>
+		          	 <%--  <u>${sessGrade}</u> --%>
+		         	</c:forEach>
+		         	</span>
+
+		          </a>
+		          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+		            <li><a class="dropdown-item" href="../user/member/myInfo_main.html">내 정보</a></li>
+		            <li><a class="dropdown-item" href="../user/member/myInfo_coupon.html">쿠폰함</a></li>
+		          </ul>
+		          	<c:if test="${not empty sessSeq}">
+						<span class="badge bg-light text-dark" role="button" id="btnLogout">로그아웃</span>
+					</c:if>
+		        </div>
+			</div>
+		</c:if>
+		<c:if test="${sessSeq eq null}">
+			<div class="col-lg-2 my-auto d-none d-md-block">
+		        <div class="dropdown">
+		          <span class="badge bg-light text-dark" role="button" onclick="location.href='../member/login'">로그인</span> |
+		          <span class="badge bg-light text-dark" role="button">회원가입</span>
+		        </div>
+			</div>
+		</c:if>
 	</div>
 </div>		

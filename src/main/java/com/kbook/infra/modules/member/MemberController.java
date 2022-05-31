@@ -285,6 +285,7 @@ public class MemberController {
 				httpSession.setAttribute("sessSeq", rtMember.getKbmmSeq());
 				httpSession.setAttribute("sessId", rtMember.getKbmmId());
 				httpSession.setAttribute("sessName", rtMember.getKbmmName());
+				httpSession.setAttribute("sessGrade", rtMember.getKbmmGradeCd());
 				
 				returnMap.put("rt", "success");
 			} else {
