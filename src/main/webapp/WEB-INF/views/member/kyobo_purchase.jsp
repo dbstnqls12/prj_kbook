@@ -38,9 +38,9 @@
 	<div class="row">
 	<div class="col-md-8">
 		<div class="px-0 mt-4">
-			<h4 style="font-weight: bold;" class="mb-4">주문/결제</h4>
+			<h3 style="font-weight: bold; color: darkblue;" class="mb-4">주문/결제</h3>
 				<div style="width: 90%;" class="mx-auto">
-				<h5 class="mb-2" style="font-weight: bold;"> 주문자</h5>
+				<p class="mb-2" style="font-weight: bold;  font-size: 23px;"> 주문자</p>
 					<table class="table mb-4">
 						<tr>
 							<td><c:out value="${itemMember.kbmmName}"/></td>
@@ -64,7 +64,7 @@
 					</table>
 				</div>
 				<div style="width: 90%;" class="mx-auto mt-5">
-					<h5 class="mb-2" style="font-weight: bold;"> 배송정보</h5>
+					<p class="mb-4" style="font-weight: bold;  font-size: 23px;"> 배송정보</p>
 					<ul class="nav nav-tabs" id="myTab" role="tablist">
 						<li class="nav-item" role="presentation">
 							<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">국내배송</button>
@@ -72,72 +72,70 @@
 						<li class="nav-item" role="presentation">
 							<button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">해외배송</button>
 						</li>
-						<li class="nav-item" role="presentation">
-							<button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">여러곳배송</button>
-						</li>		
 					</ul>
 					<div class="tab-content" id="myTabContent">
 					<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 						<table class="table mb-4 mx-auto">
 							<tr>
-								<td class="w-25">이름</td>
+								<th class="w-25">이름</th>
 								<td><input type="text" class="form-control form-control-sm" id="kbmmName" name="kbmmName" value="${itemMember.kbmmName}"></td>
 							</tr>
 							<tr>
 							<c:set var="numberPhone" value="${itemMember.kbmpNumberFull}"/>	
-								<td>휴대폰번호</td>
+								<th>휴대폰번호</th>
 								<!-- <td><input type="text" class="form-control form-control-sm" id="phone" name="phone" value=""></td> -->
-			                	<c:choose>
 								<td>
+			                	<c:choose>
 			                		<c:when test="${fn:length(numberPhone) eq 10 }">
-									<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" value="
-										<c:out value="${fn:substring(numberPhone,0,3)}"/>
-										- <c:out value="${fn:substring(numberPhone,3,6)}"/>
-										- <c:out value="${fn:substring(numberPhone,6,10)}"/>
-									">
+										<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" value="<c:out value="${fn:substring(numberPhone,0,3)}"/> - <c:out value="${fn:substring(numberPhone,3,6)}"/> - <c:out value="${fn:substring(numberPhone,6,10)}"/>">
 			                		</c:when>
 			                		<c:otherwise>
-			                		<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" value="
-										<c:out value="${fn:substring(numberPhone,0,3)}"/>
-										- <c:out value="${fn:substring(numberPhone,3,7)}"/>
-										- <c:out value="${fn:substring(numberPhone,7,11)}"/>
+			                		<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" value="<c:out value="${fn:substring(numberPhone,0,3)}"/> - <c:out value="${fn:substring(numberPhone,3,7)}"/> - <c:out value="${fn:substring(numberPhone,7,11)}"/>">
 			                		</c:otherwise>
-									">
-								</td>
 			               		</c:choose>
+								</td>
 							</tr>
 							<tr>
-								<td>주소</td>
+								<th>주소</th>
 								<td><div class="input-group">
-									<input class="form-control form-control-sm mb-1" type="text" id="zipCode" name="zipCode" placeholder="우편번호" readonly>
+									<input class="form-control form-control-sm mb-1" type="text" id="kbmaZipcode" name="kbmaZipcode" placeholder="우편번호" value="${itemMember.kbmaZipcode}" readonly>
 									<button class="btn btn-outline-secondary btn-sm mb-1" type="button" id="address1"><i class= "fas fa-search"></i></button>
 									<button class="btn btn-outline-secondary btn-sm mb-1" type="button" id="address2"><i class= "fas fa-solid fa-x"></i></button>
 								</div>
-								<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1" name="kbmaAddress1" placeholder="기본주소"> 
-								<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2" name="kbmaAddress2" placeholder="상세주소"> </td>
+								<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1" name="kbmaAddress1" value="${itemMember.kbmaAddress1}" placeholder="기본주소"> 
+								<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2" name="kbmaAddress2" value="${itemMember.kbmaAddress2}" placeholder="상세주소"> </td>
 							</tr>
 						</table>
 					</div>
 					<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-					<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
 					</div>
 				</div>
-				<div style="width: 90%" class="mx-auto  mt-5">	
-				<h5 class="mb-2" style="font-weight: bold;"> 주문상품</h5>
+				<div style="width: 90%;" class="mx-auto mt-5">	
+				<p class="mb-3" style="font-weight: bold; font-size: 23px;"> 주문상품</p>
 					<table class="table mb-4">
 						<tr>
-							<th colspan="2">상품정보</th>
-							<th class="w-25">판매가</th>
-							<th class="w-25">배송/판매자</th>
+							<th style="width: 20%;">상품사진</th>
+							<th style="width: 25%;">상품명</th>
+							<th style="width: 35%;">판매가</th>
+							<th style="width: 20%;">배송/판매자</th>
 						</tr>
 						<tr>
 							<td>
-								<img class="mx-auto "alt="" src="../../../images/xdmin_img/bookEx.jpg" style="width: 100px;  height:140px; float: start">
-								
+							<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
+								<c:if test="${itemUploaded.defaultNy eq 1}">
+									<img class="mx-auto "alt="" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>" style="width: 120px; height:150px; float: start">
+								</c:if>
+							</c:forEach>
 							</td>
-							<td><p class="my-auto">[국내도서] <c:out value="${item.tditTitle}"/></p></td>
-							<td><p class="my-auto"><fmt:formatNumber value="${item.tditPrice}"/>원 | 수량 <%=request.getParameter("result")%>개<br>14,420원<br>[10%↓ + 790P]</p></td>
-							<td><p class="my-auto">교보문고 배송</p></td>
+							<td style="vertical-align: middle;">
+								<c:set var="listCateDepth1" value="${CateServiceImpl.selelctListCachedCate('1')}"/>
+									<c:forEach items="${listCateDepth1}" var="itemCate" varStatus="statusCate">
+										<c:if test="${item.tditItemCate eq itemCate.ifctSeq}"><p>[${itemCate.ifctName}]</p></c:if>
+									</c:forEach>
+								<p style="font-weight: bold;"><c:out value="${item.tditTitle}"/></p>
+							</td>
+							<td style="vertical-align: middle;"><p class="my-auto align-text-center">수량 <%=request.getParameter("result")%>개<br>14,420원<br>[10%↓ + 790P] <fmt:formatNumber value="${item.tditPrice}"/>원 <br></p></td>
+							<td style="vertical-align: middle;"><p class="my-auto">교보문고 배송</p></td>
 						</tr>
 					</table>
 				

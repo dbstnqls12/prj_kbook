@@ -115,9 +115,13 @@ public class BookController {
 		
 		vo.setKbmmSeq((String) httpSession.getAttribute("sessSeq"));
 		System.out.println("vo.getKbmmSeq() : "+vo.getKbmmSeq());
+		System.out.println("vo.getTditSeq() : "+vo.getTditSeq());
 		
 		Book rt = service.selectOne(vo);
 		model.addAttribute("item", rt);
+		
+		List<Book> listUploaded = service.selectListBookUploaded(vo);
+		model.addAttribute("listUploaded", listUploaded);
 		
 		Book rt2 = service.selectOneMember(vo);
 		model.addAttribute("itemMember", rt2);
