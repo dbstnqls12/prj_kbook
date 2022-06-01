@@ -2,11 +2,15 @@ package com.kbook.infra.modules.book;
 
 import java.util.List;
 
+
 import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+
+import com.kbook.infra.modules.member.Member;
+import com.kbook.infra.modules.member.MemberVo;
 
 
 @Repository
@@ -43,5 +47,8 @@ public class BookDao {
 	public int update(Book dto) {return sqlSession.update(namespace +".update", dto);}
 	public int updateKeyword(Book dto) {return sqlSession.update(namespace +".updateKeyword", dto);}
 	public int updateUploaded(Book dto) {return sqlSession.update(namespace +".updateUploaded", dto);}
+
+//	결제정보
+	public Book selectOneMember(BookVo vo) {return sqlSession.selectOne(namespace +".selectOneMember", vo);}
 
 }

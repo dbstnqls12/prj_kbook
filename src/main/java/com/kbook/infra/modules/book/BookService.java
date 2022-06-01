@@ -2,6 +2,9 @@ package com.kbook.infra.modules.book;
 
 import java.util.List;
 
+import com.kbook.infra.modules.member.Member;
+import com.kbook.infra.modules.member.MemberVo;
+
 public interface BookService {
 	
 	public int selectOneCount(BookVo vo) throws Exception;
@@ -23,7 +26,8 @@ public interface BookService {
 	public int insert(Book dto) throws Exception;
 	public int update(Book dto) throws Exception;
 	
-	
+//	결제정보
+	public Book selectOneMember(BookVo vo) throws Exception;
 //	public List<Book> selectListRelatedItem(BookVo vo) throws Exception;
 
 }

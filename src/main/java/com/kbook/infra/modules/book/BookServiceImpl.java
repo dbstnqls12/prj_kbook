@@ -8,6 +8,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.kbook.infra.common.util.UtilDateTime;
 import com.kbook.infra.common.util.UtilUpload;
+import com.kbook.infra.modules.member.Member;
+import com.kbook.infra.modules.member.MemberVo;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -188,6 +190,12 @@ public class BookServiceImpl implements BookService {
 		
 		return 1;
 	}
+
+	@Override
+	public Book selectOneMember(BookVo vo) throws Exception {
+		return dao.selectOneMember(vo);
+	}
+
 
 
 

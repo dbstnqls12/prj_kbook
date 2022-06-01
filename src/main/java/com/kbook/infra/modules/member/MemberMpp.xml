@@ -245,6 +245,7 @@
 			,uuidName
 			,ext
 			,size
+			,path
 			,delNy
 			,pseq
 		) VALUES (
@@ -255,6 +256,7 @@
 			,#{uuidName}
 			,#{ext}
 			,#{size}
+			,#{path}
 			,#{delNy}
 			,#{pseq}
 		)		
@@ -322,17 +324,20 @@
 
 	<select id="selectOneLogin" resultMap="resultMapObj">
 		SELECT
-			kbmmSeq
-			,kbmmId
-			,kbmmName
-			,kbmmPassword
-			,kbmmAdminNy
-			,kbmmGradeCd
-		FROM
-			kbMember
+			a.kbmmSeq
+			,a.kbmmId
+			,a.kbmmName
+			,a.kbmmPassword
+			,a.kbmmAdminNy
+			,a.kbmmGradeCd
+			,b.uuidName
+			,b.path
+		FROM 
+			kbMember a
+		LEFT JOIN kbMemberUploaded b ON b.pseq = a.kbmmSeq 	
 		WHERE 1=1 
-			AND kbmmId = #{kbmmId}	
-			AND kbmmPassword = #{kbmmPassword}	
+			AND a.kbmmId = #{kbmmId}	
+			AND a.kbmmPassword = #{kbmmPassword}	
 	</select>
 	
 	<insert id="insertRest">

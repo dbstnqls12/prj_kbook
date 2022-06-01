@@ -23,6 +23,8 @@ public class MemberVo {
 	
 	private String kbmmGenderCd;
 	
+	private String tditSeq;
+	
 	private String[] checkboxSeqArray;
 	
 //	paging
@@ -306,6 +308,14 @@ public class MemberVo {
 
 	public void setCheckboxSeqArray(String[] checkboxSeqArray) {
 		this.checkboxSeqArray = checkboxSeqArray;
+	}
+
+	public String getTditSeq() {
+		return tditSeq;
+	}
+
+	public void setTditSeq(String tditSeq) {
+		this.tditSeq = tditSeq;
 	}
 
 

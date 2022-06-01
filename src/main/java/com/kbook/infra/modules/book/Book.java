@@ -82,6 +82,20 @@ public class Book {
 	private MultipartFile[] file0;
 	private MultipartFile[] file1;
 	
+	private int result;
+	
+	private String kbmmSeq;
+	private String kbmmName;
+	private String kbmmId;
+	private String kbmpNumberFull;
+	private String kbmeEmailFull;
+	private String kbmaAddress1;
+	private String kbmaAddress2;
+	private String kbmaZipcode;
+	private String kbmaAddress1_abroad;
+	private String kbmaAddress2_abroad;
+	private String kbmaAddress3_abroad;
+	private String kbmaZipcode_abroad;
 	
 	public String getTditSeq() {
 		return tditSeq;
@@ -473,9 +487,84 @@ public class Book {
 	public void setTditSeqArray(Integer[] tditSeqArray) {
 		this.tditSeqArray = tditSeqArray;
 	}
-
-	
-	
+	public int getResult() {
+		return result;
+	}
+	public void setResult(int result) {
+		this.result = result;
+	}
+	public String getKbmmSeq() {
+		return kbmmSeq;
+	}
+	public void setKbmmSeq(String kbmmSeq) {
+		this.kbmmSeq = kbmmSeq;
+	}
+	public String getKbmmName() {
+		return kbmmName;
+	}
+	public void setKbmmName(String kbmmName) {
+		this.kbmmName = kbmmName;
+	}
+	public String getKbmmId() {
+		return kbmmId;
+	}
+	public void setKbmmId(String kbmmId) {
+		this.kbmmId = kbmmId;
+	}
+	public String getKbmpNumberFull() {
+		return kbmpNumberFull;
+	}
+	public void setKbmpNumberFull(String kbmpNumberFull) {
+		this.kbmpNumberFull = kbmpNumberFull;
+	}
+	public String getKbmeEmailFull() {
+		return kbmeEmailFull;
+	}
+	public void setKbmeEmailFull(String kbmeEmailFull) {
+		this.kbmeEmailFull = kbmeEmailFull;
+	}
+	public String getKbmaAddress1() {
+		return kbmaAddress1;
+	}
+	public void setKbmaAddress1(String kbmaAddress1) {
+		this.kbmaAddress1 = kbmaAddress1;
+	}
+	public String getKbmaAddress2() {
+		return kbmaAddress2;
+	}
+	public void setKbmaAddress2(String kbmaAddress2) {
+		this.kbmaAddress2 = kbmaAddress2;
+	}
+	public String getKbmaZipcode() {
+		return kbmaZipcode;
+	}
+	public void setKbmaZipcode(String kbmaZipcode) {
+		this.kbmaZipcode = kbmaZipcode;
+	}
+	public String getKbmaAddress1_abroad() {
+		return kbmaAddress1_abroad;
+	}
+	public void setKbmaAddress1_abroad(String kbmaAddress1_abroad) {
+		this.kbmaAddress1_abroad = kbmaAddress1_abroad;
+	}
+	public String getKbmaAddress2_abroad() {
+		return kbmaAddress2_abroad;
+	}
+	public void setKbmaAddress2_abroad(String kbmaAddress2_abroad) {
+		this.kbmaAddress2_abroad = kbmaAddress2_abroad;
+	}
+	public String getKbmaAddress3_abroad() {
+		return kbmaAddress3_abroad;
+	}
+	public void setKbmaAddress3_abroad(String kbmaAddress3_abroad) {
+		this.kbmaAddress3_abroad = kbmaAddress3_abroad;
+	}
+	public String getKbmaZipcode_abroad() {
+		return kbmaZipcode_abroad;
+	}
+	public void setKbmaZipcode_abroad(String kbmaZipcode_abroad) {
+		this.kbmaZipcode_abroad = kbmaZipcode_abroad;
+	}
 	
 	
 	

@@ -5,7 +5,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+<jsp:useBean id="CateServiceImpl" class="com.kbook.infra.modules.cate.CateServiceImpl"/>
+<jsp:useBean id="AuthorServiceImpl" class="com.kbook.infra.modules.author.AuthorServiceImpl"/>
 <jsp:useBean id="CodeServiceImpl" class="com.kbook.infra.modules.code.CodeServiceImpl"/>
+<jsp:useBean id="PublisherServiceImpl" class="com.kbook.infra.modules.publisher.PublisherServiceImpl"/>
 
 <!doctype html>
 <html lang="ko">
@@ -40,9 +43,23 @@
 				<h5 class="mb-2" style="font-weight: bold;"> 주문자</h5>
 					<table class="table mb-4">
 						<tr>
-							<td>윤수빈</td>
-							<td>010-0000-0000</td>
-							<td>qwe123@naver.com</td>
+							<td><c:out value="${itemMember.kbmmName}"/></td>
+							<td>
+								<c:set var="numberPhone" value="${itemMember.kbmpNumberFull}"/>
+				                	<c:choose>
+				                		<c:when test="${fn:length(numberPhone) eq 10 }">
+											<c:out value="${fn:substring(numberPhone,0,3)}"/>
+											- <c:out value="${fn:substring(numberPhone,3,6)}"/>
+											- <c:out value="${fn:substring(numberPhone,6,10)}"/>
+				                		</c:when>
+				                		<c:otherwise>
+											<c:out value="${fn:substring(numberPhone,0,3)}"/>
+											- <c:out value="${fn:substring(numberPhone,3,7)}"/>
+											- <c:out value="${fn:substring(numberPhone,7,11)}"/>
+				                		</c:otherwise>
+				               		</c:choose>
+							</td>
+							<td><c:out value="${itemMember.kbmeEmailFull}"/></td>
 						</tr>
 					</table>
 				</div>
@@ -64,11 +81,30 @@
 						<table class="table mb-4 mx-auto">
 							<tr>
 								<td class="w-25">이름</td>
-								<td><input type="text" class="form-control form-control-sm" id="name" name="name"></td>
+								<td><input type="text" class="form-control form-control-sm" id="kbmmName" name="kbmmName" value="${itemMember.kbmmName}"></td>
 							</tr>
 							<tr>
+							<c:set var="numberPhone" value="${itemMember.kbmpNumberFull}"/>	
 								<td>휴대폰번호</td>
-								<td><input type="text" class="form-control form-control-sm" id="phone" name="phone"></td>
+								<!-- <td><input type="text" class="form-control form-control-sm" id="phone" name="phone" value=""></td> -->
+			                	<c:choose>
+								<td>
+			                		<c:when test="${fn:length(numberPhone) eq 10 }">
+									<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" value="
+										<c:out value="${fn:substring(numberPhone,0,3)}"/>
+										- <c:out value="${fn:substring(numberPhone,3,6)}"/>
+										- <c:out value="${fn:substring(numberPhone,6,10)}"/>
+									">
+			                		</c:when>
+			                		<c:otherwise>
+			                		<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" value="
+										<c:out value="${fn:substring(numberPhone,0,3)}"/>
+										- <c:out value="${fn:substring(numberPhone,3,7)}"/>
+										- <c:out value="${fn:substring(numberPhone,7,11)}"/>
+			                		</c:otherwise>
+									">
+								</td>
+			               		</c:choose>
 							</tr>
 							<tr>
 								<td>주소</td>
@@ -90,16 +126,17 @@
 				<h5 class="mb-2" style="font-weight: bold;"> 주문상품</h5>
 					<table class="table mb-4">
 						<tr>
-							<th class="w-50">상품정보</th>
+							<th colspan="2">상품정보</th>
 							<th class="w-25">판매가</th>
 							<th class="w-25">배송/판매자</th>
 						</tr>
 						<tr>
 							<td>
 								<img class="mx-auto "alt="" src="../../../images/xdmin_img/bookEx.jpg" style="width: 100px;  height:140px; float: start">
-								[국내도서] 명상살인
+								
 							</td>
-							<td><p class="my-auto">14,420원 | 수량 1개<br>14,420원<br>[10%↓ + 790P]</p></td>
+							<td><p class="my-auto">[국내도서] <c:out value="${item.tditTitle}"/></p></td>
+							<td><p class="my-auto"><fmt:formatNumber value="${item.tditPrice}"/>원 | 수량 <%=request.getParameter("result")%>개<br>14,420원<br>[10%↓ + 790P]</p></td>
 							<td><p class="my-auto">교보문고 배송</p></td>
 						</tr>
 					</table>
@@ -185,17 +222,6 @@
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 
 <script type="text/javascript">
-	 $(document).ready(function(){
-
-			$('#top_menu .sub_1').hide();
-
-			$('.menu_1').mouseover(function(){
-				$('.sub_1').slideDown();
-
-			});
-			$('.menu_1').mouseleave(function(){
-				$('.sub_1').hide();
-			});
 
 
 

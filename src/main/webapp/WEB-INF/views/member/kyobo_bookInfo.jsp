@@ -24,10 +24,32 @@
 <link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css"  rel="stylesheet" >
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
-<link  rel="stylesheet" href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css">
+<link rel="stylesheet" href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css">
 
 <link href="/resources/user/css/bookInfo.css" rel="stylesheet" type="text/css">
 <title>Kyobo_main</title>
+<style type="text/css">
+
+.bi-plus-square,
+.bi-dash-square{
+    font-size: 21px;
+    line-height: 22px;
+    color: black;
+    margin-left: 5px;
+}	
+#btn,
+#btn:hover,
+#btn:active,
+#btn:visited,
+#btn:focus{
+	border: 1px #7B8ED1 solid;
+	background: #7B8ED1;
+	color: white;
+	width: 18%;
+	height: 50px;
+}
+
+</style>
 </head>
 <body>
 			
@@ -42,8 +64,7 @@
 	<div class="row">
 		<!-- 3단길이의 첫번째 열 -->
 		<div class="col-md-3 d-none d-md-block">
-			<div class="px-0 mt-4"><%-- <img src="<c:out value="${item.path}"/><c:out value="${item.uuidName}"/> --%>
-				<!-- <img class="mx-auto "alt="" src="../../../images/xdmin_img/bookEx.jpg" style="width: 250px; height: 330px;"> -->
+			<div class="px-0 mt-4">
 				<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
 					<c:if test="${itemUploaded.defaultNy eq 1}">
 						<img class="mx-auto "alt="" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/> " style="width: 230px; height: 330px;">
@@ -89,8 +110,11 @@
 		</div>
 		<!-- 9단길이의 첫번째 열 -->
 		<div class="col-md-8">
+		<form action="" id="bookInfo" name="bookInfo" method="post">
+		<input type="hidden" id="tditSeq" name="tditSeq" value="<c:out value="${vo.tditSeq}"/>">
+		<%-- <input type="hidden" id="countResult" name="countResult" value="<c:out value="${vo.countResult}"/>"> --%>
 			<div class="px-0 mt-4">
-				<div class="title">
+				<div class="title">	
 					<img class="mx-auto mb-2 d-block d-md-none"alt="" src="../../../images/xdmin_img/bookEx.jpg" style="width: 250px; height: 330px;">
 					<!-- <img class="mx-auto"alt="" src="../../../images/xdmin_img/btn_freedelivery.gif">
 					<img class="mx-auto"alt="" src="../../../images/xdmin_img/btn_2.gif"> -->
@@ -106,7 +130,7 @@
 						<c:forEach items="${listPublisher}" var="itemPublisher" varStatus="statusPublisher">
 							<c:if test="${item.tditPublisherCd eq itemPublisher.ifpcSeq}"><p><c:out value="${itemPublisher.ifpcName}"/> | <c:out value="${item.tditPublishingDate}"></c:out></p></c:if> 
 						</c:forEach>
-					<p><i class="fa-solid fa-clover" style="color: green;"></i> 9.5 (리뷰 62개) 
+					<!-- <p><i class="fa-solid fa-clover" style="color: green;"></i> 9.5 (리뷰 62개)  -->
 					<hr>
 				</div>
 				<div class="price">
@@ -118,7 +142,7 @@
 							[<c:out value="${itemDiscount.ifcdName}"/> <fmt:formatNumber value="${itemDiscount.ifcdReferenceI2*item.tditPrice}"/>원 인하]</p>
 							</c:if>	
 						</c:forEach>
-	 				<p>혜택 : <br>[기본적립] 790원 적립 [5% 적립]<br>[추가적립] 5만원 이상 구매시 2,000원 추가적립 <span class="badge bg-light text-dark">안내</span>
+	 				<p>혜택 : <br>[기본적립]  <fmt:formatNumber value="${item.tditPrice*0.05}"/> 원 적립 [5% 적립]<br>[추가적립] 5만원 이상 구매시 2,000원 추가적립 <span class="badge bg-light text-dark">안내</span>
 							<br>[회원혜택] 회원 등급별 최대 4% 추가적립 <span class="badge bg-light text-dark">안내</span><br>[리뷰혜택] 리뷰 작성시 e교환권 최대 300원 추가적립 <span class="badge bg-light text-dark">안내</span></p>
 					<p>추가혜택 : <span class="badge bg-light text-dark">포인트 안내</span> <span class="badge bg-light text-dark">도서소득공제 안내</span> <span class="badge bg-light text-dark">추가혜택 더보기</span>
 				</div>
@@ -130,27 +154,23 @@
 						<c:otherwise></c:otherwise>
 					</c:choose>
 					<c:set var="ymd" value="<%=new java.util.Date()%>" /> 
-					<p>배송일정 : 현재 내 주소 <span class="badge bg-light text-dark">지역변경</span> 
-								<br><fmt:formatDate value="${ymd}" pattern="MM" />월
+					<p>배송일정 : <fmt:formatDate value="${ymd}" pattern="MM" />월
 								<fmt:formatDate value="${ymd}" pattern="dd" />일 출고예정 <span class="badge bg-light text-dark">배송일정 안내</span> </p>
 					<p>바로드림 : 인터넷으로 주문하고 매장에서 직접 수령 <span class="badge bg-light text-dark">안내</span> <span class="badge bg-light text-dark">바로드림 혜택</span> </p>
 					<p>책 그리고 꽃</p>
 				</div>
 				<hr><!-- <div id="result">0</div> -->
 				
-				<p>주문수량 <input type="text" id="result" name="result" style="width: 50px;" value="1"> <i class="bi bi-plus-square" role="button" onclick='count("plus")'></i> <i class="bi bi-dash-square" role="button" onclick='count("minus")'></i></p>
-				<button type="button" class="btn btn-purchaseNow" onclick="location.href='/member/kyobo_purchase'">바로구매</button>
-				<button type="button" class="btn btn-purchase">바로드림 주문</button>
-				<button type="button" class="btn btn-purchase">선물하기</button>
-				<button type="button" class="btn btn-purchase">보관함 담기</button>
+				<p>주문수량 <input type="text" id="result" name="result" style="width: 50px;" value="1"><i class="bi bi-plus-square" role="button" onclick='count("plus")'></i> <i class="bi bi-dash-square" role="button" onclick='count("minus")'></i></p>
+				<button type="button" id="btn" class="btn" onclick="location.href='javascript:goPurchase(<c:out value="${item.tditSeq}"/>)'">바로구매</button>
+				<button type="button" id="btn" class="btn">바로드림 주문</button>
+				<button type="button" id="btn" class="btn">보관함 담기</button>
 			</div>
+		</form>	
 				<hr>
 				<ul class="nav nav-tabs" id="myTab" role="tablist">
 					<li class="nav-item" role="presentation">
 						<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">상품정보</button>
-					</li>
-					<li class="nav-item" role="presentation">
-						<button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">회원리뷰</button>
 					</li>
 					<li class="nav-item" role="presentation">
 						<button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">교환/반품/품절</button>
@@ -227,65 +247,7 @@
 					</div>
 				</div>
 					 	
-				<!-- 회원리뷰 -->
-				<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-					<div class="mt-5">
-						<p style="font-size: 20px; font-weight: bold;"><i class="fa-solid fa-clover" style="color: green;"></i> 클로버 점수 9.5/10 		</p>
-					</div>
-				<hr>				
-				<div class="reviewTable mt-3">
-					<div class="btn-group" role="group" aria-label="Basic outlined example">
-						<button type="button" class="btn btn-sm">도움순</button>
-						<button type="button" class="btn btn-sm">최신순</button>
-					</div>
-					<div class="table">
-						<table class="table table-bordered mx-auto mb-4">
-						<caption>구매 후 Klover 리뷰 작성 시, 리워드를 제공합니다</caption>
-							<tr>
-								<td style="width: 15%">아이디</td>
-								<td style="width: 50%">내용</td>
-								<td style="width: 15%">점수</td>
-								<td style="width: 60%">시간</td>
-							</tr>
-							<tr>
-								<td>asd123</td>
-								<td>으 재미없어요...</td>
-								<td><i class="fa-solid fa-clover" style="color: green;"></i></td>
-								<td>2022-04-01 12:23:00</td>
-							</tr>
-							<tr>
-								<td>qwe123</td>
-								<td>와 재미있어요...</td>
-								<td>
-									<i class="fa-solid fa-clover" style="color: green;"></i><i class="fa-solid fa-clover" style="color: green;"></i><i class="fa-solid fa-clover" style="color: green;"></i><i class="fa-solid fa-clover" style="color: green;"></i>
-								</td>
-								<td>2022-04-01 12:23:00</td>
-							</tr>
-						
-						</table>
-					</div>
-				<!-- page s -->
-				<nav aria-label="Page navigation">
-					<ul class="pagination justify-content-center">
-						<li class="page-item">
-							<a class="page-link" href="#" aria-label="Previous">
-								<span aria-hidden="true">&laquo;</span>
-							</a>
-						</li>
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#">4</a></li>
-						<li class="page-item"><a class="page-link" href="#">5</a></li>
-						<li class="page-item">
-							<a class="page-link" href="#" aria-label="Next">
-								<span aria-hidden="true">&raquo;</span>
-							</a>
-						</li>
-					</ul>
-				</nav>
-				</div>
-				</div>
+				
 				<!-- 교환/반품/품절안내 -->
 				<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 					<div class="table-responsive mt-4">
@@ -351,42 +313,6 @@
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 
 <script type="text/javascript">
-goMain = function(seq){
-	attr("action","/visitor/kyobo_VbookInfo");
-/* 	$("#formList").submit(); */
-}
-/* function count(type)  {
-	  // 결과를 표시할 element
-	  const resultElement = document.getElementById('result');
-	  
-	  // 현재 화면에 표시된 값
-	  let number = resultElement.innerText;
-	  
-	  // 더하기/빼기
-	  if(type === 'plus') {
-	    number = parseInt(number) + 1;
-	  }else if(type === 'minus')  {
-	    number = parseInt(number) - 1;
-	  }
-	  
-	  // 결과 출력
-	  resultElement.innerText = number;
-	}
- */
-
-/* 	 $(document).ready(function(){
-
-			$('#top_menu .sub_1').hide();
-
-			$('.menu_1').mouseover(function(){
-				$('.sub_1').slideDown();
-
-			});
-			$('.menu_1').mouseleave(function(){
-				$('.sub_1').hide();
-			});
-
- */
 
 function count(type)  {
 
@@ -409,6 +335,13 @@ function count(type)  {
 	}
 	 
 }
+
+goPurchase = function(seq){
+
+	$("#tditSeq").val(seq);
+	$("#bookInfo").attr("action","/member/kyobo_purchase");
+	$("#bookInfo").submit();
+}
  $("#btnLogout").on("click", function(){
 		
 		$.ajax({
@@ -419,7 +352,7 @@ function count(type)  {
 			/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
 			,success: function(response) {
 				if(response.rt == "success") {
-					location.href = "/visitor/kyobo_Vmain";
+					location.href = "/member/login";
 				} else {
 					// by pass
 				}

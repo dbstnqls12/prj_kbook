@@ -32,25 +32,7 @@
 		</choose>
 </sql>
 
-<select id="selectList" resultMap="resultMapObj">
-	SELECT
-		a.tditSeq
-		,a.tditTitle
-		,a.tditPublisherCd
-		,a.tditPublishingDate
-		,a.tditPrice
-		,a.tditDelNy
-		,a.tditItemCate
-		,b.tdatAuthorCd
-	<include refid="selectCommon"/>	
-	limit #{startRnumForMysql}, #{rowNumToShow}	
-</select>
 
-<select id="selectOneCount" resultType="Integer">
-	SELECT
-		count(*)
-	<include refid="selectCommon"/>	
-</select>
 
 <select id="selectListDomesticNew" resultMap="resultMapObj">
 	SELECT
@@ -256,6 +238,31 @@
 		AND tditSeq = #{tditSeq}	
 </select>
 
+
+<!-- 결제정보에 회원정보 가져오기 -->
+<select id="selectOneMember" resultMap="resultMapObj">
+	select
+		a.kbmmSeq
+		,a.kbmmId
+		,a.kbmmName
+		,c.kbmeEmailFull
+		,d.kbmaZipcode
+		,d.kbmaAddress1
+		,d.kbmaAddress2
+		,d.kbmaZipcode_abroad
+		,d.kbmaAddress1_abroad
+		,d.kbmaAddress2_abroad
+		,e.kbmpNumberFull
+	FROM	
+		kbMember a
+		left join kbMemberEmail c on c.kbmmSeq = a.kbmmSeq
+		left join kbMemberAddress d on d.kbmmSeq = a.kbmmSeq
+		left join kbMemberPhone e on e.kbmmSeq = a.kbmmSeq
+	WHERE 1=1
+		AND a.kbmmSeq=#{kbmmSeq}
+		AND e.kbmpDefaultNy = 1
+</select>
+
 <!-- <select id="selectListRelatedItem" resultMap="resultMapObj">
 	SELECT
 		tdriSeq
@@ -270,6 +277,28 @@
 		AND tditSeq = #{tditSeq}
 		AND tdriDelNy = 0	
 </select> -->
+
+<!-- ######################## 관리자 화면 ######################## -->
+
+<select id="selectOneCount" resultType="Integer">
+	SELECT
+		count(*)
+	<include refid="selectCommon"/>	
+</select>
+
+<select id="selectList" resultMap="resultMapObj">
+	SELECT
+		a.tditSeq
+		,a.tditTitle
+		,a.tditPublisherCd
+		,a.tditPublishingDate
+		,a.tditPrice
+		,a.tditDelNy
+		,a.tditItemCate
+		,b.tdatAuthorCd
+	<include refid="selectCommon"/>	
+	limit #{startRnumForMysql}, #{rowNumToShow}	
+</select>
 
 <insert id="insert">
 	INSERT INTO tradItem(	

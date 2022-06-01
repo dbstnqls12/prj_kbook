@@ -73,7 +73,7 @@ public class MemberServiceImpl implements MemberService{
 		dao.insertEmail(dto);
 		dao.insertAddress(dto);
 		
-		UtilMail.sendMail();
+//		UtilMail.sendMail();
 		
 		return 1;
 	}

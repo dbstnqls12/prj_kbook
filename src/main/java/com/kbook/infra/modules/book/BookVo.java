@@ -27,7 +27,11 @@ public class BookVo {
 	
 	private String[] checkboxSeqArray;
 	private String[] tditSeqArray;
+	
+	private int result;
 
+	private String kbmmSeq;
+	
 	//	paging
 	private int thisPage = 1;									// 현재 페이지
 	private int rowNumToShow = 5;								// 화면에 보여줄 데이터 줄 갯수
@@ -336,6 +340,22 @@ public class BookVo {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public int getResult() {
+		return result;
+	}
+
+	public void setResult(int result) {
+		this.result = result;
+	}
+
+	public String getKbmmSeq() {
+		return kbmmSeq;
+	}
+
+	public void setKbmmSeq(String kbmmSeq) {
+		this.kbmmSeq = kbmmSeq;
 	}
 	
 	

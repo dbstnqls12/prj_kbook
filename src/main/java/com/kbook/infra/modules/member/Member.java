@@ -80,6 +80,7 @@ public class Member {
 	private Integer defaultNy;
 	private Integer sort;
 	private String ext;
+	private String path;
 	private long size;
 	private Integer delNy;
 	private String pseq;
@@ -523,6 +524,12 @@ public class Member {
 	}
 	public void setFile1(MultipartFile[] file1) {
 		this.file1 = file1;
+	}
+	public String getPath() {
+		return path;
+	}
+	public void setPath(String path) {
+		this.path = path;
 	}
 	
 	

@@ -1,7 +1,7 @@
 package com.kbook.infra.modules.book;
 
-
 import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.kbook.infra.common.constants.Constants;
 import com.kbook.infra.common.util.UtilUpload;
 import com.kbook.infra.modules.member.Member;
+import com.kbook.infra.modules.member.MemberVo;
 
 import org.springframework.ui.Model;
 
@@ -110,13 +111,22 @@ public class BookController {
 	}
 	
 	@RequestMapping(value = "member/kyobo_purchase")
-	public String kyobo_purchase() throws Exception {
+	public String kyobo_purchase(@ModelAttribute("vo") BookVo vo, MemberVo vo2, Book dto, Model model, HttpSession httpSession) throws Exception {
+		
+		vo.setKbmmSeq((String) httpSession.getAttribute("sessSeq"));
+		System.out.println("vo.getKbmmSeq() : "+vo.getKbmmSeq());
+		
+		Book rt = service.selectOne(vo);
+		model.addAttribute("item", rt);
+		
+		Book rt2 = service.selectOneMember(vo);
+		model.addAttribute("itemMember", rt2);
+		
 		
 		return "member/kyobo_purchase";
-		
 	}
 	
-	//xdmin/book
+//	관리자
 	
 	@RequestMapping(value = "xdmin/book/bookList")
 	public String bookList(@ModelAttribute("vo") BookVo vo, Model model) throws Exception {
