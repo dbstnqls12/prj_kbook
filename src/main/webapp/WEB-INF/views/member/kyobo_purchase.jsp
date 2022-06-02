@@ -23,16 +23,31 @@
 <link  rel="stylesheet" href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css">
 
 <link href="/resources/user/css/bookPurchase.css" rel="stylesheet" type="text/css">
-<title>Kyobo_main</title>
+<link rel="shortcut icon" href="https://ifh.cc/g/74QNWX.png" type="image/x-icon" />
+<title id="ctl00_headerTitle">책이 수북수북</title>
+
 <style type="text/css">
 	#floatMenu {
 		position: absolute;
 		right: 200px;
 		width: 330px;
-		border: 1px solid #c8c8c8; 
+		border: 2px solid #c8c8c8; 
 		border-radius: 15px;
 		padding-top: 10px;
 		padding-bottom: 20px;
+	}
+	#btn-purchase,
+	#btn-purchase:hover,
+	#btn-purchase:active,
+	#btn-purchase:visited,
+	#btn-purchase:focus{
+		border: 1px #7B8ED1 solid;
+		background: #7B8ED1;
+		color: white;
+		width: 75%;
+		height: 50px;
+		text-align: center;
+		
 	}
 </style>
 </head>
@@ -257,7 +272,9 @@
 					<hr style="margin: 5px;">
 					<p>적립예정 포인트 : 790p</p>
 					<p style="font-size: 13px;">쿠폰,통합포인트,교환권 사용시 주문완료 후 적립예정포인트가 변동 될 수 있습니다.</p>
-					<button type="button" class="btn btn-purchaseNow" name="btn-purchase" id="btn-purchase" onclick="location.href='../../user/member/myInfo_main.html'">바로구매</button>
+				<div>	
+					<button type="button" class="btn" name="btn-purchase" id="btn-purchase" onclick="location.href='../../user/member/myInfo_main.html'">바로구매</button>
+				</div>
 			</div>
 		</div>
 	</div>
