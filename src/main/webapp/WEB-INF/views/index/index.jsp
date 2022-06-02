@@ -14,18 +14,10 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<!--     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Surjith S M">
-    <meta name="keywords" content="GGV, 지지브이, 영화관, 극장, 영화, 티켓, 박스오피스, 극장, Movie, Theater, Cinema, Ggv, ggv, 예매, 상영작" />
-    <meta name="description" content="GGV는 선진화된 관람문화와 최고의 서비스로 고객에게 잊을 수 없는 감동을 선사합니다. GGV홈페이지를 통해 영화 예매뿐만 아니라 그 이상의 서비스와 감동을 전달하고, 다양한 즐거움과 특별한 경험을 제공하고자 합니다." />
-    <meta property="og:site_name" content="영화 그 이상의 감동. GGV"/>
-    <meta id="ctl00_og_title" property="og:title" content="영화 그 이상의 감동. GGV"></meta>
-    <meta id="ctl00_og_image" property="og:image" content="https://img.cgv.co.kr/WebApp/images/common/logo_new_kakao_prevw.png"></meta>     -->
-    
+    	
     <!-- Favicons -->
-<!--     <link rel="shortcut icon" href="https://img.cgv.co.kr/theater_img/favicon.ico" type="image/x-icon" /> cj아이콘
-    Page Title
-    <title id="ctl00_headerTitle">영화 그 이상의 감동. GGV</title> -->
+    <link rel="shortcut icon" href="https://ifh.cc/g/74QNWX.png" type="image/x-icon" />
+    <title id="ctl00_headerTitle">책이 수북수북</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/resources/xdmin/assets/css/bootstrap.min.css">
     <!-- Google Fonts -->

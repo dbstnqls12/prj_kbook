@@ -20,9 +20,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 <link  rel="stylesheet" href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css">
 <link href="/resources/user/css/main.css" rel="stylesheet" type="text/css">
-<title>Kyobo_main</title>
- <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
- <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="shortcut icon" href="https://ifh.cc/g/74QNWX.png" type="image/x-icon" />
+<title id="ctl00_headerTitle">책이 수북수북</title>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/member/include/main_header_member.jsp" %><!--  header_member -->

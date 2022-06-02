@@ -27,7 +27,8 @@
 <link rel="stylesheet" href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css">
 
 <link href="/resources/user/css/bookInfo.css" rel="stylesheet" type="text/css">
-<title>Kyobo_main</title>
+<link rel="shortcut icon" href="https://ifh.cc/g/74QNWX.png" type="image/x-icon" />
+<title id="ctl00_headerTitle">책이 수북수북</title>
 <style type="text/css">
 
 .bi-plus-square,
