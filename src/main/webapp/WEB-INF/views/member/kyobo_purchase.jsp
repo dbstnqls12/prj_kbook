@@ -24,6 +24,17 @@
 
 <link href="/resources/user/css/bookPurchase.css" rel="stylesheet" type="text/css">
 <title>Kyobo_main</title>
+<style type="text/css">
+	#floatMenu {
+		position: absolute;
+		right: 200px;
+		width: 330px;
+		border: 1px solid #c8c8c8; 
+		border-radius: 15px;
+		padding-top: 10px;
+		padding-bottom: 20px;
+	}
+</style>
 </head>
 <body>
 			
@@ -36,7 +47,7 @@
 <!-- 본문 s-->
 <div class="container">
 	<div class="row">
-	<div class="col-md-8">
+	<div class="col-md-9">
 		<div class="px-0 mt-4">
 			<h3 style="font-weight: bold; color: darkblue;" class="mb-4">주문/결제</h3>
 				<div style="width: 90%;" class="mx-auto">
@@ -116,14 +127,15 @@
 						<tr>
 							<th style="width: 20%;">상품사진</th>
 							<th style="width: 25%;">상품명</th>
-							<th style="width: 35%;">판매가</th>
-							<th style="width: 20%;">배송/판매자</th>
+							<th style="width: 25%;">판매가</th>
+							<th style="width: 15%;">수량</th>
+							<th style="width: 25%;">배송/판매자</th>
 						</tr>
 						<tr>
 							<td>
 							<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
 								<c:if test="${itemUploaded.defaultNy eq 1}">
-									<img class="mx-auto "alt="" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>" style="width: 120px; height:150px; float: start">
+									<img class="mx-auto "alt="" src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>" style="width: 125px; height:180px; float: start; margin: 6px;">
 								</c:if>
 							</c:forEach>
 							</td>
@@ -134,7 +146,19 @@
 									</c:forEach>
 								<p style="font-weight: bold;"><c:out value="${item.tditTitle}"/></p>
 							</td>
-							<td style="vertical-align: middle;"><p class="my-auto align-text-center">수량 <%=request.getParameter("result")%>개<br>14,420원<br>[10%↓ + 790P] <fmt:formatNumber value="${item.tditPrice}"/>원 <br></p></td>
+							<td style="vertical-align: middle;">
+							<c:set var="listCodeDiscount" value="${CodeServiceImpl.selectListCachedCode('13')}"/>
+								정가 : <fmt:formatNumber value="${item.tditPrice}"/>원<br>
+								<c:forEach items="${listCodeDiscount}" var="itemDiscount" varStatus="statusDiscount">
+									<c:if test="${item.tditDiscountCd eq itemDiscount.ifcdOrder}">
+										<span style="font-weight: bold;">[<c:out value="${itemDiscount.ifcdName}"/> <fmt:formatNumber value="${itemDiscount.ifcdReferenceI2*item.tditPrice}"/>원 인하]</span><br><br>
+										판매가 : <span style="color: #F84450; font-size: 20px; font-weight: bold;"> <fmt:formatNumber value="${item.tditPrice-(itemDiscount.ifcdReferenceI2*item.tditPrice)}"/>원</span>
+									</c:if>	
+								</c:forEach>
+							</td>
+							<td style="vertical-align: middle;">
+								<%=request.getParameter("result")%> 개
+							</td>
 							<td style="vertical-align: middle;"><p class="my-auto">교보문고 배송</p></td>
 						</tr>
 					</table>
@@ -142,7 +166,60 @@
 				</div>
 
 				<div style="width: 90%" class="mx-auto mt-5">	
-				<h5 class="mb-2" style="font-weight: bold;"> 결제정보</h5>
+					<p class="mb-3" style="font-weight: bold; font-size: 23px;"> 할인쿠폰</p>
+					<table class="table mb-4">
+						<tr>
+							<th style="width: 23%;">사용가능 쿠폰</th>
+							<th style="width: 20%;">쿠폰 번호</th>
+							<th style="width: 15%;">쿠폰 금액</th>
+							<th style="width: 25%;">유효기간</th>
+							<th></th>
+						</tr>
+						<tr>
+							<td style="text-align: left;">소비를 부탁해!</td>
+							<td style="text-align: left;">PLEASESOBI</td>
+							<td style="text-align: left;">6,000원</td>
+							<td style="">2022-05-10 ~ 2022-12-31</td>
+							<td style=""><button type="button" id="coupon1" value="6000">사용하기</button></td>
+						</tr>
+						<tr>
+							<td style="text-align: left;">회원가입 기념 할인</td>
+							<td style="text-align: left;">WELCOME5000</td>
+							<td style="text-align: left;">5,000원</td>
+							<td style="">2022-05-12 ~ 2022-12-31</td>
+							<td style=""><button type="button" id="coupon2" value="5000">사용하기</button></td>
+						</tr>
+						<tr>
+							<td style="text-align: left;">리뷰 이벤트 쿠폰</td>
+							<td style="text-align: left;">GOODREVIEW</td>
+							<td style="text-align: left;">2,000원</td>
+							<td style="">2022-05-22 ~ 2022-12-31</td>
+							<td style=""><button type="button" id="coupon3" value="2000">사용하기</button></td>
+						</tr>
+					</table>
+				</div>
+				
+				<div style="width: 90%" class="mx-auto mt-5">	
+					<p class="mb-3" style="font-weight: bold; font-size: 23px;"> 적립</p>
+					<table class="table mb-4">
+						<tr>
+							<th style="width: 25%;">적립 유형</th>
+							<th style="width: 25%;">적립률</th>
+							<th style="width: 25%;">적립 포인트</th>
+							<th style="width: 25%;">적립 날짜</th>
+						</tr>
+						<tr>
+							<td style="text-align: left;">기본적립</td>
+							<td style="text-align: left;">5%</td>
+							<td style="text-align: left;"><fmt:formatNumber value="${item.tditPrice*0.05}"/> P</td>
+							<c:set var="ymd" value="<%=new java.util.Date()%>" /> 
+							<td style=""><fmt:formatDate value="${ymd}" pattern="yyyy-MM-dd" /></td>
+						</tr>
+						<caption style="font-size: 13px;">※ 적립금은 적립 후 1년까지 사용가능 합니다</caption>
+					</table>
+				</div>
+				<div style="width: 90%" class="mx-auto mt-5">	
+				<p class="mb-3" style="font-weight: bold; font-size: 23px;"> 결제방법</p>
 					<table class="table mb-4">
 						<tr>
 							<th class="w-25">할인쿠폰</th>
@@ -158,33 +235,7 @@
 					</table>
 				</div>
 				<div style="width: 90%" class="mx-auto mt-5">	
-				<h5 class="mb-2" style="font-weight: bold;"> 할인/적립</h5>
-					<table class="table table-bordered mb-4">
-					<caption align="bottom"><span class="badge bg-light text-dark">도서소득공제 안내</span></caption>
-						<tr>
-							<td>신용카드</td>
-							<td>해외발급신용카드</td>
-							<td>휴대폰결제</td>
-						</tr>
-						<tr>
-							<td>네이버페니</td>
-							<td>카카오페이</td>
-							<td>페이코</td>
-						</tr>
-						<tr>
-							<td>삼성페이</td>
-							<td>sk페이</td>
-							<td>토스</td>
-						</tr>
-						<tr>
-							<td>chai</td>
-							<td>온라인입금</td>
-							<td>실시간 계좌이체</td>
-						</tr>
-					</table>
-				</div>
-				<div style="width: 90%" class="mx-auto mt-5">	
-				<h6 class="mb-2" style="font-weight: bold;"> 도서 소득공제</h6>	
+				<p class="mb-3" style="font-weight: bold; font-size: 23px;"> 도서 소득공제</p>
 					<ul>
 						<li style="font-size: 13px;">카드결제는 카드 명의자 기준으로, 현금결제는 개인공제용으로 현금영수증 신청한 기준으로 국세청에 자동 반영됩니다.</li>
 						<li style="font-size: 13px;">도서 소득공제 가능 결제수단 : 신용카드(개인카드에 한함), 카카오페이, 네이버페이, 삼성페이, PAYCO, 토스, CHAI, 
@@ -194,17 +245,19 @@
 			</div>
 		</div>
 		<!-- 3단길이의 첫번째 열 -->
-		<div class="col-md-3 d-none d-md-block" id="purchaseInfo">
-			<div class="px-0 mt-4" style="border: 1px solid black; padding-top: 10px; padding-bottom: 20px;">
-				<p style="font-size: 20px; font-weight: bold; ">총 결제 정보</p>
-				<hr style="margin: 5px;">
-				<p style="font-size: 15px;"><br>상품금액   :    14,220원<br>배송비   :    0원<br>선물포장   :    0원<br>할인금액   :    0원</p>
-				<hr style="margin: 5px;">
-				<p style="font-size: 15px;">최종 결제금액 : <span style="font-size: 20px; font-weight: bold; color: red;">14,420원</span></p>
-				<hr style="margin: 5px;">
-				<p>적립예정 포인트 : 790p</p>
-				<p style="font-size: 13px;">쿠폰,통합포인트,교환권 사용시 주문완료 후 적립예정포인트가 변동 될 수 있습니다.</p>
-				<button type="button" class="btn btn-purchaseNow" name="btn-purchase" id="btn-purchase" onclick="location.href='../../user/member/myInfo_main.html'">바로구매</button>
+		<div class="col-md-3 d-none d-md-block" >
+			<div class="px-0 mt-4" id="floatMenu" >
+				<div> 
+					<p style="font-size: 26px; color: darkblue; font-weight: bold; text-align: center; ">총 결제 정보</p>
+				</div>	
+					<hr>
+					<p style="font-size: 15px;"><br>상품금액   :    14,220원<br>배송비   :    0원<br>선물포장   :    0원<br>할인금액   :    0원</p>
+					<hr style="margin: 5px;">
+					<p style="font-size: 15px;">최종 결제금액 : <span style="font-size: 20px; font-weight: bold; color: red;">14,420원</span></p>
+					<hr style="margin: 5px;">
+					<p>적립예정 포인트 : 790p</p>
+					<p style="font-size: 13px;">쿠폰,통합포인트,교환권 사용시 주문완료 후 적립예정포인트가 변동 될 수 있습니다.</p>
+					<button type="button" class="btn btn-purchaseNow" name="btn-purchase" id="btn-purchase" onclick="location.href='../../user/member/myInfo_main.html'">바로구매</button>
 			</div>
 		</div>
 	</div>
@@ -220,7 +273,28 @@
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 
 <script type="text/javascript">
+$(document).ready(function() {
 
+	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
+	var floatPosition = parseInt($("#floatMenu").css('top'));
+	// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+
+	$(window).scroll(function() {
+		// 현재 스크롤 위치를 가져온다.
+		var scrollTop = $(window).scrollTop();
+		var newPosition = scrollTop + floatPosition + "px";
+
+		/* 애니메이션 없이 바로 따라감
+		 $("#floatMenu").css('top', newPosition);
+		 */
+
+		$("#floatMenu").stop().animate({
+			"top" : newPosition
+		}, 500);
+
+	}).scroll();
+
+});
 
 
 </script>
