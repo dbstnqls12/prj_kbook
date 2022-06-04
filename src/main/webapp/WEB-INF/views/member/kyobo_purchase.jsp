@@ -36,6 +36,13 @@
 		padding-top: 10px;
 		padding-bottom: 20px;
 	}
+	.content{
+		margin: 20px;
+		
+	}
+	#pInfo{
+		font-size: 16px;
+	}
 	#btn-purchase,
 	#btn-purchase:hover,
 	#btn-purchase:active,
@@ -172,9 +179,9 @@
 								</c:forEach>
 							</td>
 							<td style="vertical-align: middle;">
-								<%=request.getParameter("result")%> 개
+								 개
 							</td>
-							<td style="vertical-align: middle;"><p class="my-auto">교보문고 배송</p></td>
+							<td style="vertical-align: middle;"><p class="my-auto">수북문고 배송</p></td>
 						</tr>
 					</table>
 				
@@ -261,13 +268,18 @@
 		</div>
 		<!-- 3단길이의 첫번째 열 -->
 		<div class="col-md-3 d-none d-md-block" >
-			<div class="px-0 mt-4" id="floatMenu" >
-				<div> 
+			<div class="px-0 mt-4" id="floatMenu">
+				<div class="header"> 
 					<p style="font-size: 26px; color: darkblue; font-weight: bold; text-align: center; ">총 결제 정보</p>
-				</div>	
+				</div>
+				<hr>
+				<div class="content">	
+					<p id="pInfo">수량 : <%=request.getParameter("result")%> 개</p>
+					<%-- <p id="pInfo">상품금액 : ${item.tditPrice * '<%=request.getParameter("result")%>'} 원</p> --%>
+					<p id="pInfo">배송비   :    0원</p>
+					<p id="pInfo">할인금액   :    0원</p>
+				</div>
 					<hr>
-					<p style="font-size: 15px;"><br>상품금액   :    14,220원<br>배송비   :    0원<br>선물포장   :    0원<br>할인금액   :    0원</p>
-					<hr style="margin: 5px;">
 					<p style="font-size: 15px;">최종 결제금액 : <span style="font-size: 20px; font-weight: bold; color: red;">14,420원</span></p>
 					<hr style="margin: 5px;">
 					<p>적립예정 포인트 : 790p</p>
@@ -290,6 +302,8 @@
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 
 <script type="text/javascript">
+	
+
 $(document).ready(function() {
 
 	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
@@ -312,6 +326,8 @@ $(document).ready(function() {
 	}).scroll();
 
 });
+
+//	String operator = request.getParameter("operator"); //select 태그의 name 값 operator에 저장
 
 
 </script>

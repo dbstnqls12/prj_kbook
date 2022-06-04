@@ -40,7 +40,7 @@
 			<div class="col-lg-2 my-auto d-none d-md-block">	
 		        <div class="dropdown">
 		          <a href="#" class="d-inline link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-		            <span>${sessName} 회원님 
+		            <span>${sessName}${name} 회원님 
 		            <c:forEach items="${CodeGrade}" var="itemGrade" varStatus="statusGrade">
 		           		 <c:if test="${sessGrade eq itemGrade.ifcdOrder }"><u><c:out value="${itemGrade.ifcdName}"/></u></c:if>
 		          	 <%--  <u>${sessGrade}</u> --%>

@@ -23,15 +23,15 @@
 
 <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top">
 	<p class="col-md-5 mb-0 text-muted">
-		<a href="#" class="col-md-4 d-flex mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-			<img src="/resources/xdmin/image/kyobo2_removebg.png"  class="img-fluid" style="width: 100px; height: 40px;">
+		<a href="/member/kyobo_main" class="col-md-4 d-flex mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+			<img src="/resources/xdmin/image/SU-BOOK3.png"  class="img-fluid" style="width: 100px; height: 50px;">
 		</a>
-		<small>㈜ 교보문고   서울시 종로구 종로 1<br>   
-			대표이사 : 안병현<br>
-			사업자등록번호 : 102-81-11670<br>
-			<b>대표전화 : 1544-1900 (발신자 부담전화)</b>   팩스 : 0502-987-5711 (지역번호공통)<br>
+		<small>㈜ 수북문고 서울시 독서구 다독로 123-1 수북빌딩<br>   
+			대표이사 : 윤수빈<br>
+			사업자등록번호 : 101-11-11170<br>
+			<b>대표전화 : 1500-1000 (발신자 부담전화)</b>   팩스 : 0202-111-2211 (지역번호공통)<br>
 			서울특별시 통신판매업신고번호 : 제 653호 ▶사업자정보확인 <br>
-			COPYRIGHT(C) KYOBO BOOK CENTRE ALL RIGHTS RESERVED.
+			COPYRIGHT(C) SU BOOK CENTRE ALL RIGHTS RESERVED.
 			2021 Company, Inc</p></small> 
 
 </footer>

@@ -19,7 +19,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 
-<title>Kyobo_Login</title>
+<link rel="shortcut icon" href="https://ifh.cc/g/74QNWX.png" type="image/x-icon" />
+<title id="ctl00_headerTitle">책이 수북수북</title>
 <style type="text/css">
 	body{
 		background-color: #F6F9F7;
@@ -61,7 +62,7 @@
 	<div class="d-grid gap-2 col-xs-8 mx-auto">
 		<div id="naver_id_login" style="display:none;"></div>
 		<button class="btn btn-naver" type="button" onclick="location.href='${url}'"><img src="/resources/xdmin/image/navericon.png" id="icon"><b> 네이버</b> 로그인</button>
-		<button class="w-100 btn btn-google" type="button" id="GgCustomLogin" onclick="javascript:void(0)">구글 로그인</button>
+		<button class="w-100 btn btn-google" type="button" id="GgCustomLogin" onclick="javascript:void(0)"><img src="/resources/xdmin/image/googleIcon.png" id="icon"><b> 구글</b> 로그인</button>
 		<button class="btn btn-kakao" type="button" onclick="javascript:kakaoLogin()"><img src="/resources/xdmin/image/kakaoicon.png" id="icon"><b> 카카오</b> 로그인</button>
 		<button class="btn btn-facebook" type="button" id="btn-facebook" onclick="fnFbCustomLogin();"><img src="/resources/xdmin/image/fbicon.png" id="icon"><b> 페이스북</b> 로그인</button>
 	</div>
