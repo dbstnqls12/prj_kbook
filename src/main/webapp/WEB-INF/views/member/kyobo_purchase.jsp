@@ -38,10 +38,22 @@
 	}
 	.content{
 		margin: 20px;
-		
+	}
+	.discount
+	,.finalSum
+	,.savingPoint{
+		margin-left: 20px;
 	}
 	#pInfo{
 		font-size: 16px;
+	}
+	#pDis{
+		font-size: 17px;
+		font-weight: bold;
+	}
+	#pFin{
+		font-size: 19px;
+		font-weight: bold;
 	}
 	#btn-purchase,
 	#btn-purchase:hover,
@@ -179,7 +191,7 @@
 								</c:forEach>
 							</td>
 							<td style="vertical-align: middle;">
-								 개
+								<%=request.getParameter("result")%> 개
 							</td>
 							<td style="vertical-align: middle;"><p class="my-auto">수북문고 배송</p></td>
 						</tr>
@@ -275,17 +287,39 @@
 				<hr>
 				<div class="content">	
 					<p id="pInfo">수량 : <%=request.getParameter("result")%> 개</p>
-					<%-- <p id="pInfo">상품금액 : ${item.tditPrice * '<%=request.getParameter("result")%>'} 원</p> --%>
-					<p id="pInfo">배송비   :    0원</p>
-					<p id="pInfo">할인금액   :    0원</p>
+					
+					<%
+						String result = request.getParameter("result");
+						String pricett1 = request.getParameter("totalPrice2"); 
+ 					%>
+					
+					<p id="pInfo">테스트   :    <%=result %>,<%=pricett1 %> 원</p>
+					<p id="pInfo">구매금액   :    0 원</p>
+					<p id="pInfo">배송비   :    0 원</p>
+					<c:forEach items="${listCodeDiscount}" var="itemDiscount" varStatus="statusDiscount">
+						<c:if test="${item.tditDiscountCd eq itemDiscount.ifcdOrder}">
+							<p id="pInfo">결제금액 : <fmt:formatNumber value="${item.tditPrice-(itemDiscount.ifcdReferenceI2*item.tditPrice)}"/> 원</p>
+						</c:if>			
+					</c:forEach>			
 				</div>
-					<hr>
-					<p style="font-size: 15px;">최종 결제금액 : <span style="font-size: 20px; font-weight: bold; color: red;">14,420원</span></p>
-					<hr style="margin: 5px;">
-					<p>적립예정 포인트 : 790p</p>
-					<p style="font-size: 13px;">쿠폰,통합포인트,교환권 사용시 주문완료 후 적립예정포인트가 변동 될 수 있습니다.</p>
+				<hr>
+				<div class="discount">
+					<p id="pDis">할인금액 : <span style="font-size:25px; color: green; "><b id="couponPrice"></b></span> 원</p>
+				</div>	
+				<hr>
+				<div class="finalSum">
+				<c:forEach items="${listCodeDiscount}" var="itemDiscount" varStatus="statusDiscount">
+					<c:if test="${item.tditDiscountCd eq itemDiscount.ifcdOrder}">
+						<p id="pFin">최종 결제금액 : <span style="font-size: 24px; color: red; "><b id="totalPrice2"></b>원</span></p>
+					</c:if>
+				</c:forEach>
+				</div>	
+				<hr>
+				<div class="savingPoint">
+					<p>※ 적립예정 포인트 : 790p</p>
+				</div>
 				<div>	
-					<button type="button" class="btn" name="btn-purchase" id="btn-purchase" onclick="location.href='../../user/member/myInfo_main.html'">바로구매</button>
+					<button type="button" class="btn w-100" name="btn-purchase" id="btn-purchase" onclick="location.href='../../user/member/myInfo_main.html'">바로구매</button>
 				</div>
 			</div>
 		</div>
@@ -302,7 +336,20 @@
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 
 <script type="text/javascript">
+
 	
+<c:forEach items="${listCodeDiscount}" var="itemDiscount" varStatus="statusDiscount">
+	<c:if test="${item.tditDiscountCd eq itemDiscount.ifcdOrder}">
+		var price1 = <c:out value="${item.tditPrice-(itemDiscount.ifcdReferenceI2*item.tditPrice)}"/>;
+	</c:if>
+</c:forEach>
+/* var price2 = <c:out value="${item.tditPrice}"/>; */
+$("#totalPrice2").text(price1.toLocaleString()); 
+$("#couponPrice").text("0");
+/* $("#totalPrice").text(price + ""); */
+ /*$("#totalPrice2").text(price + ",000");
+$("#pay").text("kakao pay");
+$('#hiddenPrice').val(price1); */
 
 $(document).ready(function() {
 
@@ -326,7 +373,33 @@ $(document).ready(function() {
 	}).scroll();
 
 });
-
+$(document).ready(function() {
+	   $("#coupon1").click(function(){
+	      var coupon1Price = $(this).attr('value');   
+	      $("#couponPrice").text((coupon1Price)/1000 + ",000");
+	      $("#totalPrice").text((price1-coupon1Price)/1000 + ",000");
+	      $("#totalPrice2").text((price1-coupon1Price).toLocaleString());
+	      $('#hiddenPrice').val((price1-coupon1Price)/1000 + ",000");
+	      
+	   });
+	   $("#coupon2").click(function(){
+	      var coupon2Price = $(this).attr('value');      
+	      $("#couponPrice").text((coupon2Price)/1000 + ",000");
+	      $("#totalPrice").text((price1-coupon2Price)/1000 + ",000");
+	      $("#totalPrice2").text((price1-coupon2Price).toLocaleString());
+	      $('#hiddenPrice').val((price1-coupon2Price)/1000 + ",000");
+	   });
+	   $("#coupon3").click(function(){
+	      var coupon3Price = $(this).attr('value');      
+	      $("#couponPrice").text((coupon3Price)/1000 + ",000");
+	      $("#totalPrice").text((price1-coupon3Price)/1000 + ",000");
+	      $("#totalPrice2").text((price1-coupon3Price).toLocaleString());
+	      $('#hiddenPrice').val((price1-coupon3Price)/1000 + ",000");
+	   });
+	   
+	   
+	   
+	});
 //	String operator = request.getParameter("operator"); //select 태그의 name 값 operator에 저장
 
 

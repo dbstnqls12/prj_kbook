@@ -1,5 +1,7 @@
 package com.kbook.infra.modules.book;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import java.util.HashMap;
 
 import java.util.List;
@@ -125,7 +127,6 @@ public class BookController {
 		
 		Book rt2 = service.selectOneMember(vo);
 		model.addAttribute("itemMember", rt2);
-		
 		
 		return "member/kyobo_purchase";
 	}
