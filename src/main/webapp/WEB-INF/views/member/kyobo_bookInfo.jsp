@@ -113,7 +113,6 @@
 		<div class="col-md-8">
 		<form action="" id="bookInfo" name="bookInfo" method="post">
 		<input type="hidden" id="tditSeq" name="tditSeq" value="<c:out value="${vo.tditSeq}"/>">
-		<%-- <input type="hidden" id="countResult" name="countResult" value="<c:out value="${vo.countResult}"/>"> --%>
 			<div class="px-0 mt-4">
 				<div class="title">	
 					<img class="mx-auto mb-2 d-block d-md-none"alt="" src="../../../images/xdmin_img/bookEx.jpg" style="width: 250px; height: 330px;">

@@ -287,18 +287,8 @@
 				<hr>
 				<div class="content">	
 					<p id="pInfo">수량 : <%=request.getParameter("result")%> 개</p>
-					<%
-						String result = request.getParameter("result");
-						int countSum = Integer.parseInt(result);
-					%>
-					<p id="pInfo">테스트2   :    ${result}원</p>
-					<p id="pInfo">구매금액   :    0 원</p>
-					<p id="pInfo">배송비   :    0 원</p>
-					<c:forEach items="${listCodeDiscount}" var="itemDiscount" varStatus="statusDiscount">
-						<c:if test="${item.tditDiscountCd eq itemDiscount.ifcdOrder}">
-							<p id="pInfo">결제금액 : <fmt:formatNumber value="${item.tditPrice-(itemDiscount.ifcdReferenceI2*item.tditPrice)}"/> 원</p>
-						</c:if>			
-					</c:forEach>			
+					<p id="pInfo">배송비 : <span id="fee"></span>원</p>
+					<p id="pInfo">상품금액   : <span id="totalPrice"></span>원</p>
 				</div>
 				<hr>
 				<div class="discount">
@@ -335,20 +325,6 @@
 
 <script type="text/javascript">
 
-<c:forEach items="${listCodeDiscount}" var="itemDiscount" varStatus="statusDiscount">
-	<c:if test="${item.tditDiscountCd eq itemDiscount.ifcdOrder}">
-		var price1 = <c:out value="${item.tditPrice-(itemDiscount.ifcdReferenceI2*item.tditPrice)}"/>;
-	</c:if>
-</c:forEach>
-/*   */
-/* var price2 = <c:out value="${item.tditPrice}"/>; */
-$("#totalPrice2").text(price1.toLocaleString()); 
-$("#couponPrice").text("0");
-/* $("#totalPrice").text(price + ""); */
- /*$("#totalPrice2").text(price + ",000");
-$("#pay").text("kakao pay");
-$('#hiddenPrice').val(price1); */
-
 $(document).ready(function() {
 
 	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
@@ -371,27 +347,56 @@ $(document).ready(function() {
 	}).scroll();
 
 });
+
+
+<c:forEach items="${listCodeDiscount}" var="itemDiscount" varStatus="statusDiscount">
+<c:if test="${item.tditDiscountCd eq itemDiscount.ifcdOrder}">
+	var price1 = <c:out value="${item.tditPrice-(itemDiscount.ifcdReferenceI2*item.tditPrice)}"/>;
+</c:if>
+</c:forEach>
+
+var bookCount = ${rtCount};
+var totalPrice = (price1*bookCount);
+
+
+if(totalPrice < 10000){
+	var deliFee = 2500;
+}else if(totalPrice >= 10000){
+	var deliFee = 0;
+}else{
+	/* by pass */
+}
+
+var finalPrice = totalPrice+deliFee;
+
+/* 화면에 보여지는 부분 */
+$("#totalPrice").text(totalPrice.toLocaleString());
+$("#couponPrice").text("0");
+$("#totalPrice2").text(finalPrice.toLocaleString()); 
+$("#fee").text(deliFee.toLocaleString()); 
+
+/* 쿠폰 할인 적용 */
 $(document).ready(function() {
 	   $("#coupon1").click(function(){
 	      var coupon1Price = $(this).attr('value');   
 	      $("#couponPrice").text((coupon1Price)/1000 + ",000");
-	      $("#totalPrice").text((price1-coupon1Price)/1000 + ",000");
-	      $("#totalPrice2").text((price1-coupon1Price).toLocaleString());
+	     /*  $("#totalPrice").text((price1-coupon1Price)/1000 + ",000"); */
+	      $("#totalPrice2").text((finalPrice-coupon1Price).toLocaleString());
 	      $('#hiddenPrice').val((price1-coupon1Price)/1000 + ",000");
 	      
 	   });
 	   $("#coupon2").click(function(){
 	      var coupon2Price = $(this).attr('value');      
 	      $("#couponPrice").text((coupon2Price)/1000 + ",000");
-	      $("#totalPrice").text((price1-coupon2Price)/1000 + ",000");
-	      $("#totalPrice2").text((price1-coupon2Price).toLocaleString());
+	      /* $("#totalPrice").text((price1-coupon2Price)/1000 + ",000"); */
+	      $("#totalPrice2").text((finalPrice-coupon2Price).toLocaleString());
 	      $('#hiddenPrice').val((price1-coupon2Price)/1000 + ",000");
 	   });
 	   $("#coupon3").click(function(){
 	      var coupon3Price = $(this).attr('value');      
 	      $("#couponPrice").text((coupon3Price)/1000 + ",000");
-	      $("#totalPrice").text((price1-coupon3Price)/1000 + ",000");
-	      $("#totalPrice2").text((price1-coupon3Price).toLocaleString());
+	      /* $("#totalPrice").text((price1-coupon3Price)/1000 + ",000"); */
+	      $("#totalPrice2").text((finalPrice-coupon3Price).toLocaleString());
 	      $('#hiddenPrice').val((price1-coupon3Price)/1000 + ",000");
 	   });
 	   

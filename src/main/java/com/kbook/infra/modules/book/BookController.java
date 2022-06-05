@@ -128,6 +128,9 @@ public class BookController {
 		Book rt2 = service.selectOneMember(vo);
 		model.addAttribute("itemMember", rt2);
 		
+		model.addAttribute("rtCount",dto.getResult());
+		System.out.println("dto.getResult() : "+dto.getResult());
+		
 		return "member/kyobo_purchase";
 	}
 	

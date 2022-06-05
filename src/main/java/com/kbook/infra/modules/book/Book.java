@@ -487,12 +487,6 @@ public class Book {
 	public void setTditSeqArray(Integer[] tditSeqArray) {
 		this.tditSeqArray = tditSeqArray;
 	}
-	public int getResult() {
-		return result;
-	}
-	public void setResult(int result) {
-		this.result = result;
-	}
 	public String getKbmmSeq() {
 		return kbmmSeq;
 	}
@@ -565,7 +559,13 @@ public class Book {
 	public void setKbmaZipcode_abroad(String kbmaZipcode_abroad) {
 		this.kbmaZipcode_abroad = kbmaZipcode_abroad;
 	}
-	
+	public int getResult() {
+		return result;
+	}
+	public void setResult(int result) {
+		this.result = result;
+	}
+
 	
 	
 	
