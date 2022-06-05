@@ -1,4 +1,4 @@
-	<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -253,19 +253,33 @@
 					</table>
 				</div>
 				<div style="width: 90%" class="mx-auto mt-5">	
-				<p class="mb-3" style="font-weight: bold; font-size: 23px;"> 결제방법</p>
+				<%-- <c:set var="CodePay" value="${CodeServiceImpl.selectListCachedCode('18')}"/> --%>
+				<p class="mb-3" style="font-weight: bold; font-size: 23px;"> 결제</p>
 					<table class="table mb-4">
-						<tr>
-							<th class="w-25">할인쿠폰</th>
-							<td>사용 가능 쿠폰이 없습니다</td>
-						</tr>
-						<tr>
-							<th>교보문고 기프트카드</th>
-							<td>
-								<input type="button" value="사용">
-								<input type="button" value="구매/교환">
-							</td>
-						</tr>
+					<tr>
+						<th colspan="5">결제 방법</th>
+					<tr>
+						<td>
+						  	<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+							<label class="form-check-label" for="inlineRadio1">신용카드</label>
+						</td>
+						<td>
+						  	<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+							<label class="form-check-label" for="inlineRadio1">계좌이체</label>
+						</td>
+						<td>
+						  	<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+							<label class="form-check-label" for="inlineRadio1">핸드폰결제</label>
+						</td>
+						<td>
+						  	<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+							<label class="form-check-label" for="inlineRadio1">네이버페이</label>
+						</td>
+						<td>
+						  	<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+							<label class="form-check-label" for="inlineRadio1">카카오페이</label>
+						</td>
+					</tr>
 					</table>
 				</div>
 				<div style="width: 90%" class="mx-auto mt-5">	
@@ -350,9 +364,9 @@ $(document).ready(function() {
 
 
 <c:forEach items="${listCodeDiscount}" var="itemDiscount" varStatus="statusDiscount">
-<c:if test="${item.tditDiscountCd eq itemDiscount.ifcdOrder}">
-	var price1 = <c:out value="${item.tditPrice-(itemDiscount.ifcdReferenceI2*item.tditPrice)}"/>;
-</c:if>
+	<c:if test="${item.tditDiscountCd eq itemDiscount.ifcdOrder}">
+		var price1 = <c:out value="${item.tditPrice-(itemDiscount.ifcdReferenceI2*item.tditPrice)}"/>;
+	</c:if>
 </c:forEach>
 
 var bookCount = ${rtCount};
@@ -403,7 +417,6 @@ $(document).ready(function() {
 	   
 	   
 	});
-//	String operator = request.getParameter("operator"); //select 태그의 name 값 operator에 저장
 
 
 </script>
