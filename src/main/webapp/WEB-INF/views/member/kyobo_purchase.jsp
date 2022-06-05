@@ -287,13 +287,11 @@
 				<hr>
 				<div class="content">	
 					<p id="pInfo">수량 : <%=request.getParameter("result")%> 개</p>
-					
 					<%
 						String result = request.getParameter("result");
-						String pricett1 = request.getParameter("totalPrice2"); 
- 					%>
-					
-					<p id="pInfo">테스트   :    <%=result %>,<%=pricett1 %> 원</p>
+						int countSum = Integer.parseInt(result);
+					%>
+					<p id="pInfo">테스트2   :    ${result}원</p>
 					<p id="pInfo">구매금액   :    0 원</p>
 					<p id="pInfo">배송비   :    0 원</p>
 					<c:forEach items="${listCodeDiscount}" var="itemDiscount" varStatus="statusDiscount">
@@ -316,7 +314,7 @@
 				</div>	
 				<hr>
 				<div class="savingPoint">
-					<p>※ 적립예정 포인트 : 790p</p>
+					<p>※ 적립예정 포인트 : <fmt:formatNumber value="${item.tditPrice*0.05}"/> p</p>
 				</div>
 				<div>	
 					<button type="button" class="btn w-100" name="btn-purchase" id="btn-purchase" onclick="location.href='../../user/member/myInfo_main.html'">바로구매</button>
@@ -337,12 +335,12 @@
 
 <script type="text/javascript">
 
-	
 <c:forEach items="${listCodeDiscount}" var="itemDiscount" varStatus="statusDiscount">
 	<c:if test="${item.tditDiscountCd eq itemDiscount.ifcdOrder}">
 		var price1 = <c:out value="${item.tditPrice-(itemDiscount.ifcdReferenceI2*item.tditPrice)}"/>;
 	</c:if>
 </c:forEach>
+/*   */
 /* var price2 = <c:out value="${item.tditPrice}"/>; */
 $("#totalPrice2").text(price1.toLocaleString()); 
 $("#couponPrice").text("0");
