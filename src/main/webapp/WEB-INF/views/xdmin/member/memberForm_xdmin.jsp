@@ -377,6 +377,13 @@ $("#btn-add").on("click", function(){
  	/* kbmmPassword */
  	if(!checkNull($("#kbmmPassword"), $("#kbmmPassword").val(), "비밀번호를 입력하세요.")) return false;
  	if(!checkPassword($("#kbmmPassword"), $("#kbmmPassword").val(), "비밀번호를 형식에 맞게 입력하세요. (영문/숫자/특수문자 조합 8~20자리(대소문자 구분))")) return false;
+ 	
+/*  	if($("#kbmmPassword").val()!=$("#kbmmPasswordchk").val()){
+ 		alert("비밀번호 확인을 다시 입력하세요");
+ 		return false
+ 	}else{
+ 		//by pass
+ 	} */
 
  	/* kbmmDob */
 	if(!checkNull($("#kbmmDob"), $("#kbmmDob").val(), "생년월일을 입력하세요")) return false;

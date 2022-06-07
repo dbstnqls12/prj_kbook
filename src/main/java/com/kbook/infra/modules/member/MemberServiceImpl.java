@@ -123,7 +123,10 @@ public class MemberServiceImpl implements MemberService{
 		return dao.updateRest(dto);
 	}
 
-
+	@Override
+	public List<Member> selectListOracle(MemberVo vo) throws Exception {
+		return dao.selectListOracle(vo);
+	}
 
 
 

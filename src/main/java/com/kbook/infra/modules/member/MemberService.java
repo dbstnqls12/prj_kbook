@@ -20,5 +20,8 @@ public interface MemberService {
 	public int insertRest(Member dto) throws Exception;
 	public int updateRest(Member dto) throws Exception;
 	
+//	oracle
+	public List<Member> selectListOracle(MemberVo vo) throws Exception;
+	
 
 }

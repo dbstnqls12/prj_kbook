@@ -363,6 +363,15 @@
 			AND kbmmSeq=#{kbmmSeq}	
 	</update>
 
+	<select id="selectListOracle" resultMap="resultMapObj">
+		SELECT
+			kbmmSeq
+			,kbmmId
+			,kbmmName
+		FROM
+			kbMember
+	</select>
+
 </mapper>
 
 
