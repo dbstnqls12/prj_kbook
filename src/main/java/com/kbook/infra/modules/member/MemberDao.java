@@ -47,7 +47,6 @@ public class MemberDao {
 	public int insertRest(Member dto) {return sqlSession.insert(namespace +".insertRest", dto);}	
 	public int updateRest(Member dto) {return sqlSession.update(namespace +".updateRest", dto);}
 	
-	
 //	oracle
 	public List<Member> selectListOracle(MemberVo vo){ return sqlSessionOracle.selectList(namespace + ".selectListOracle",vo); }
 	

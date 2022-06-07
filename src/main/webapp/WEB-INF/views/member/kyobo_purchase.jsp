@@ -76,10 +76,14 @@
 <%@ include file="/WEB-INF/views/member/include/main_navbar.jsp" %><!-- navbar -->
 	
 
-
 <!-- 본문 s-->
 <!-- 본문 s-->
 <div class="container">
+<form  action="/member/userEnd" id="bookPurchase" name="bookPurchase" method="post">
+<input type="hidden" id="tditSeq" name="tditSeq" value="<c:out value="${item.tditSeq}"/>">
+<input type="hidden" id="rtCount" name="rtCount">
+<input type="hidden" id="rtFinalPrice" name="rtFinalPrice">
+<input type="hidden" id="rtPoint" name="rtPoint">
 	<div class="row">
 	<div class="col-md-9">
 		<div class="px-0 mt-4">
@@ -318,14 +322,15 @@
 				</div>	
 				<hr>
 				<div class="savingPoint">
-					<p>※ 적립예정 포인트 : <fmt:formatNumber value="${item.tditPrice*0.05}"/> p</p>
+					<p>※ 적립예정 포인트 : <span id="point"></span> p</p>
 				</div>
 				<div>	
-					<button type="button" class="btn w-100" name="btn-purchase" id="btn-purchase" onclick="location.href='../../user/member/myInfo_main.html'">바로구매</button>
+					<button type="submit" class="btn w-100" name="btn-purchase" id="btn-purchase">바로구매</button>
 				</div>
 			</div>
 		</div>
 	</div>
+</form>	
 </div>
 
 
@@ -372,7 +377,6 @@ $(document).ready(function() {
 var bookCount = ${rtCount};
 var totalPrice = (price1*bookCount);
 
-
 if(totalPrice < 10000){
 	var deliFee = 2500;
 }else if(totalPrice >= 10000){
@@ -382,41 +386,45 @@ if(totalPrice < 10000){
 }
 
 var finalPrice = totalPrice+deliFee;
+var finalPoint = (${item.tditPrice}*0.05)*bookCount;
 
 /* 화면에 보여지는 부분 */
 $("#totalPrice").text(totalPrice.toLocaleString());
 $("#couponPrice").text("0");
 $("#totalPrice2").text(finalPrice.toLocaleString()); 
 $("#fee").text(deliFee.toLocaleString()); 
+$("#point").text(finalPoint.toLocaleString()); 
+
 
 /* 쿠폰 할인 적용 */
 $(document).ready(function() {
 	   $("#coupon1").click(function(){
 	      var coupon1Price = $(this).attr('value');   
 	      $("#couponPrice").text((coupon1Price)/1000 + ",000");
-	     /*  $("#totalPrice").text((price1-coupon1Price)/1000 + ",000"); */
 	      $("#totalPrice2").text((finalPrice-coupon1Price).toLocaleString());
-	      $('#hiddenPrice').val((price1-coupon1Price)/1000 + ",000");
+	      $('#rtFinalPrice').val(totalPrice-coupon1Price);
+	      $('#rtCoupon').val(coupon1Price); 
 	      
 	   });
 	   $("#coupon2").click(function(){
 	      var coupon2Price = $(this).attr('value');      
 	      $("#couponPrice").text((coupon2Price)/1000 + ",000");
-	      /* $("#totalPrice").text((price1-coupon2Price)/1000 + ",000"); */
 	      $("#totalPrice2").text((finalPrice-coupon2Price).toLocaleString());
-	      $('#hiddenPrice').val((price1-coupon2Price)/1000 + ",000");
+	      $('#rtFinalPrice').val(totalPrice-coupon2Price);
+	      $('#rtCoupon').val(coupon2Price); 
 	   });
 	   $("#coupon3").click(function(){
 	      var coupon3Price = $(this).attr('value');      
 	      $("#couponPrice").text((coupon3Price)/1000 + ",000");
-	      /* $("#totalPrice").text((price1-coupon3Price)/1000 + ",000"); */
 	      $("#totalPrice2").text((finalPrice-coupon3Price).toLocaleString());
-	      $('#hiddenPrice').val((price1-coupon3Price)/1000 + ",000");
+	      $('#rtFinalPrice').val(totalPrice-coupon3Price); 
+	      $('#rtCoupon').val(coupon3Price); 
 	   });
-	   
-	   
-	   
 	});
+	
+$("#rtCount").val(bookCount);
+$("#rtPoint").val(finalPoint);	  
+$("#rtFinalPrice").val(finalPrice); 
 
 
 </script>

@@ -84,6 +84,14 @@ public class Book {
 	
 	private int result;
 	
+	private String rtCount;
+	private String rtFinalPrice;
+	private String rtCoupon;
+	private Date rtDoP;
+	private String rtPoint;
+	private Date rtDoA;
+	
+	
 	private String kbmmSeq;
 	private String kbmmName;
 	private String kbmmId;
@@ -564,6 +572,42 @@ public class Book {
 	}
 	public void setResult(int result) {
 		this.result = result;
+	}
+	public String getRtCount() {
+		return rtCount;
+	}
+	public void setRtCount(String rtCount) {
+		this.rtCount = rtCount;
+	}
+	public String getRtFinalPrice() {
+		return rtFinalPrice;
+	}
+	public void setRtFinalPrice(String rtFinalPrice) {
+		this.rtFinalPrice = rtFinalPrice;
+	}
+	public Date getRtDoP() {
+		return rtDoP;
+	}
+	public void setRtDoP(Date rtDoP) {
+		this.rtDoP = rtDoP;
+	}
+	public String getRtPoint() {
+		return rtPoint;
+	}
+	public void setRtPoint(String rtPoint) {
+		this.rtPoint = rtPoint;
+	}
+	public Date getRtDoA() {
+		return rtDoA;
+	}
+	public void setRtDoA(Date rtDoA) {
+		this.rtDoA = rtDoA;
+	}
+	public String getRtCoupon() {
+		return rtCoupon;
+	}
+	public void setRtCoupon(String rtCoupon) {
+		this.rtCoupon = rtCoupon;
 	}
 
 	

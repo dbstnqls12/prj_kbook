@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kbook.infra.common.constants.Constants;
+import com.kbook.infra.common.util.UtilDateTime;
 import com.kbook.infra.common.util.UtilUpload;
 import com.kbook.infra.modules.member.Member;
 import com.kbook.infra.modules.member.MemberVo;
@@ -52,46 +53,6 @@ public class BookController {
 		
 		return "member/kyobo_main";
 	}
-
-	@RequestMapping(value = "visitor/kyobo_Vmain")
-	public String kyobo_Vmain(@ModelAttribute("vo") BookVo vo, Model model) throws Exception {
-		
-		List<Book> listDNew = service.selectListDomesticNew(vo);
-		model.addAttribute("listDomesticNew", listDNew);
-		List<Book> listANew = service.selectListAbroadNew(vo);
-		model.addAttribute("listAbroadNew", listANew);
-		List<Book> listENew = service.selectListEbookNew(vo);
-		model.addAttribute("listEbookNew", listENew);
-		
-		List<Book> listBest = service.selectListBest(vo);
-		model.addAttribute("listbookBest", listBest);
-		
-		List<Book> listToday = service.selectListToday(vo);
-		model.addAttribute("listbookToday", listToday);
-		
-		List<Book> listUploaded = service.selectListBookUploaded(vo);
-		model.addAttribute("listUploaded", listUploaded);
-		
-		return "visitor/kyobo_Vmain";
-	}
-	
-	@RequestMapping(value="/visitor/kyobo_VbookInfo")
-	public String kyobo_VbookInfo(@ModelAttribute("vo") BookVo vo, Book dto, Model model) throws Exception {
-		
-		List<Book> listAuthor = service.selectListAuthor(vo);
-		model.addAttribute("listAuthorL", listAuthor);
-
-		List<Book> listKeyword = service.selectListKeyword(vo);
-		model.addAttribute("listKeyword", listKeyword);
-
-		Book rt = service.selectOne(vo);
-		model.addAttribute("item", rt);
-		
-		List<Book> listUploaded = service.selectListBookUploaded(vo);
-		model.addAttribute("listUploaded", listUploaded);
-		
-		return "/visitor/kyobo_VbookInfo";
-	}
 	
 	@RequestMapping(value="/member/kyobo_bookInfo")
 	public String kyobo_bookInfo(@ModelAttribute("vo") BookVo vo, Book dto, Model model) throws Exception {
@@ -113,7 +74,7 @@ public class BookController {
 	}
 	
 	@RequestMapping(value = "member/kyobo_purchase")
-	public String kyobo_purchase(@ModelAttribute("vo") BookVo vo, MemberVo vo2, Book dto, Model model, HttpSession httpSession) throws Exception {
+	public String kyobo_purchase(@ModelAttribute("vo") BookVo vo, Book dto, Model model, HttpSession httpSession) throws Exception {
 		
 		vo.setKbmmSeq((String) httpSession.getAttribute("sessSeq"));
 		System.out.println("vo.getKbmmSeq() : "+vo.getKbmmSeq());
@@ -132,6 +93,23 @@ public class BookController {
 		System.out.println("dto.getResult() : "+dto.getResult());
 		
 		return "member/kyobo_purchase";
+	}
+	
+	@RequestMapping(value = "member/userEnd")
+	public String userEnd(@ModelAttribute("vo") BookVo vo, Book dto, Model model, HttpSession httpSession) throws Exception {
+		
+		List<Book> listUploaded = service.selectListBookUploaded(vo);
+		model.addAttribute("listUploaded", listUploaded);
+		
+		Book rt = service.selectOne(vo);
+		model.addAttribute("item", rt);
+		
+		model.addAttribute("rtCount", dto.getRtCount());
+		model.addAttribute("rtFinalPrice", dto.getRtFinalPrice());
+		model.addAttribute("rtPoint", dto.getRtPoint());
+		model.addAttribute("rtCoupon", dto.getRtCoupon());
+		
+		return "member/userEnd";
 	}
 	
 //	관리자
