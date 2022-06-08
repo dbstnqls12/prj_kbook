@@ -64,7 +64,7 @@
                 <div class="col-md-10">
                     <div class="titile-block title-block_subpage">
                         <h2>portfolio</h2>
-                        <p> <a href="index.html"> 도서구매 페이지</a> / 회원관리 페이지</p>
+                        <p> 도서구매 페이지 / 회원관리 페이지</p>
                     </div>
                 </div>
             </div>
@@ -86,7 +86,7 @@
                             <li>홈 / 도서상세 / 결제 / 결제완료</li>
                         </ul>
                         <div class="pricing-signup">
-                            <a href="/member/kyobo_main" class="btn btn-danger">입장하기</a>
+                            <a href="/member/subookMain" class="btn btn-danger">입장하기</a>
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                         </div>
                         <ul class="pricing-text-block">
                             <li><img src="/resources/xdmin/image/memberListImage.png" width="100%" height="339px"/></li>
-                            <li>회원리스트 / 회원상세 / 회원등록 / 회원수정 / 회원삭제</li>
+                            <li>회원리스트 / 회원상세 / 회원등록 / 회원수정 / 회원삭제<br>도서리스트 / 도서상세 / 도서등록 / 도서수정 / 도서삭제</li>
                         </ul>
                         <div class="pricing-signup">
                             <a href="/xdmin/member/memberList" class="btn btn-danger">입장하기</a>
@@ -138,7 +138,7 @@
 			/* ,data : { "mvmmId" : $("#mvmmId").val(), "mvmmPassword" : $("#mvmmPassword").val()} */
 			,success: function(response) {
 				if(response.rt == "success") {
-					location.href = "/member/login";
+					location.href = "/";
 				} else {
 					// by pass
 				}

@@ -32,7 +32,7 @@ public class BookController {
 	BookServiceImpl service;
 	
 	
-	@RequestMapping(value = "member/kyobo_main")
+	@RequestMapping(value = "member/subookMain")
 	public String kyobo_main(@ModelAttribute("vo") BookVo vo, Model model) throws Exception {
 		
 		List<Book> listDNew = service.selectListDomesticNew(vo);
@@ -51,10 +51,10 @@ public class BookController {
 		List<Book> listUploaded = service.selectListBookUploaded(vo);
 		model.addAttribute("listUploaded", listUploaded);
 		
-		return "member/kyobo_main";
+		return "member/subookMain";
 	}
 	
-	@RequestMapping(value="/member/kyobo_bookInfo")
+	@RequestMapping(value="/member/subookDetail")
 	public String kyobo_bookInfo(@ModelAttribute("vo") BookVo vo, Book dto, Model model) throws Exception {
 		
 		List<Book> listAuthor = service.selectListAuthor(vo);
@@ -70,10 +70,10 @@ public class BookController {
 		model.addAttribute("listUploaded", listUploaded);
 		
 		
-		return "/member/kyobo_bookInfo";
+		return "/member/subookDetail";
 	}
 	
-	@RequestMapping(value = "member/kyobo_purchase")
+	@RequestMapping(value = "member/subookPay")
 	public String kyobo_purchase(@ModelAttribute("vo") BookVo vo, Book dto, Model model, HttpSession httpSession) throws Exception {
 		
 		vo.setKbmmSeq((String) httpSession.getAttribute("sessSeq"));
@@ -92,10 +92,10 @@ public class BookController {
 		model.addAttribute("rtCount",dto.getResult());
 		System.out.println("dto.getResult() : "+dto.getResult());
 		
-		return "member/kyobo_purchase";
+		return "member/subookPay";
 	}
 	
-	@RequestMapping(value = "member/userEnd")
+	@RequestMapping(value = "member/subookEnd")
 	public String userEnd(@ModelAttribute("vo") BookVo vo, Book dto, Model model, HttpSession httpSession) throws Exception {
 		
 		vo.setKbmmSeq((String) httpSession.getAttribute("sessSeq"));
@@ -115,7 +115,7 @@ public class BookController {
 		model.addAttribute("rtCoupon", dto.getRtCoupon());
 		model.addAttribute("rtPayment", dto.getRtPayment());
 		
-		return "member/userEnd";
+		return "member/subookEnd";
 	}
 	
 //	관리자

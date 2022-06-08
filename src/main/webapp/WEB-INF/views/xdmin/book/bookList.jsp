@@ -23,13 +23,16 @@
 <link  rel="stylesheet" href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css">
 
 <link href="/resources/xdmin/css/footers.css" rel="stylesheet" type="text/css">
-<title>Kyobo_bookList</title>
+
+<link rel="shortcut icon" href="https://ifh.cc/g/74QNWX.png" type="image/x-icon" />
+<title id="ctl00_headerTitle">책이 수북수북</title>
+
 </head>
 <body>
 
 <%@ include file="/WEB-INF/views/xdmin/include/xdmin_header.jsp" %><!-- xdmin_header -->
 <%@ include file="/WEB-INF/views/xdmin/include/offcanvas.jsp" %><!-- offcanvas -->
-<%@ include file="/WEB-INF/views/xdmin/include/navbar.jsp" %><!-- navbar -->
+<%@ include file="/WEB-INF/views/xdmin/include/xdmin_navbar.jsp" %><!-- navbar -->
 
 <!-- 본문 s-->
 <div class="container">
@@ -291,7 +294,7 @@
 			,url: "/member/logoutProc"
 			,success: function(response) {
 				if(response.rt == "success") {
-					location.href = "/member/login";
+					location.href = "/";
 				} else {
 					// by pass
 				}

@@ -339,7 +339,7 @@ public class MemberController {
         
         session.setAttribute("sessSeq", 0); //생략 가능
         /* 네이버 로그인 성공 페이지 View 호출 */
-        return "redirect:/member/kyobo_main";
+        return "redirect:/member/subookMain";
     }	//    //네이버 로그인 성공시 callback호출 메소드
 
 //	카카오로그인

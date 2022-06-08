@@ -25,7 +25,7 @@
 <c:set var="CodeGrade" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
 	<div class="row">	
 		<div class="col-6 col-md-2 col-lg-2">
-			<img src="/resources/xdmin/image/SU-BOOK5.png"  class="img-fluid mx-auto" onclick="location.href='kyobo_main'">
+			<img src="/resources/xdmin/image/SU-BOOK5.png"  class="img-fluid mx-auto" onclick="location.href='subookMain'">
 		</div>				
 		<div class="col-6 d-block d-md-none mt-2 text-end">
 			<a class="d-block d-md-none mt-3 ml-1" data-bs-toggle="offcanvas" href="#offcanvasRight" aria-controls="offcanvasRight">

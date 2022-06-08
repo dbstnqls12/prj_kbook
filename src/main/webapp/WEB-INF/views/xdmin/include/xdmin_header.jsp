@@ -24,7 +24,7 @@
 <div class="container"> <!-- d-none d-sm-block : sm사이즈에서는 보이지 않음 d-block d-sm-none : sm에서만 보임 -->
 	<div class="row">	
 		<div class="col-2 float-start">
-			<img src="/resources/xdmin/image/SU-BOOK4.png"  class="img-fluid rounded mx-auto d-block" >
+			<img src="/resources/xdmin/image/SU-BOOK4.png"  class="img-fluid rounded mx-auto d-block" onclick="location.href='/xdmin/member/memberList'">
 		</div>				
 		
 <%-- 			<c:choose>
