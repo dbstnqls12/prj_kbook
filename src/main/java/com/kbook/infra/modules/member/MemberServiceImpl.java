@@ -128,6 +128,16 @@ public class MemberServiceImpl implements MemberService{
 		return dao.selectListOracle(vo);
 	}
 
+	@Override
+	public List<Member> selectListId(MemberVo vo) throws Exception {
+		return dao.selectListId(vo);
+	}
+
+	@Override
+	public List<Member> selectListPassword(MemberVo vo) throws Exception {
+		return dao.selectListPassword(vo);
+	}
+
 
 
 

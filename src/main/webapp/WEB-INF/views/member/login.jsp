@@ -34,7 +34,7 @@
 <!--  -->
 <div class="container my-wrap">
 	<div class="header">
-		<div class="logo mt-5 mb-4"><a href="/visitor/kyobo_Vmain"><img src="/resources/xdmin/image/SU-BOOK5.png" width="250px;" style="margin-left: 50px;"></a></div>
+		<div class="logo mt-5 mb-4"><a href="/"><img src="/resources/xdmin/image/SU-BOOK5.png" width="250px;" style="margin-left: 50px;"></a></div>
 		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item">홈</li>
@@ -54,10 +54,12 @@
 	<div class="d-grid gap-2 col-xs-8 mx-auto">
 		<button class="btn btn-primary" type="button" id="btnLogin" name="">로그인</button>	
 		<button class="btn btn-secondary" type="button">회원가입</button>
+		<button class="btn btn-secondary" type="button" onclick="location.href='/findId'">아이디찾기</button>
 	</div>
 	<hr class="col-xs-8 mx-auto">
 	<div class="col-xs-8 mx-auto text-secondary" id="searchpwd">
-	  <small><a href="/member/findId"> 아이디 </a>/<a href="/member/findPwd"> 비밀번호 찾기 > </a></small>
+	  <small><a href="/findId"> 아이디 </a>/
+	  <a href="/findPwd"> 비밀번호 찾기 > </a></small> 
 	</div>
 	<div class="d-grid gap-2 col-xs-8 mx-auto">
 		<div id="naver_id_login" style="display:none;"></div>
@@ -140,7 +142,7 @@ function onSignIn(googleUser) {
 			,data : {"kbmmName" : profile.getName()}	
 			,success: function(response) {
 				if(response.rt == "success") {
-					location.href = "/member/kyobo_main"; 
+					location.href = "/member/subookMain"; 
 				} else {
 					alert("구글 로그인 실패");
 				}
@@ -164,7 +166,7 @@ function onSignInFailure(t){
 var naver_id_login = new naver_id_login("sp11vVbZCiR4lPwGCFnm", "http://localhost/member/callback"); // client ID, callBack URL
 var state = naver_id_login.getUniqState();
 naver_id_login.setButton("white", 2,40);
-naver_id_login.setDomain("http://localhost/member/kyobo_main");	// service URL
+naver_id_login.setDomain("http://localhost/member/subookMain");	// service URL
 naver_id_login.setState(state);
 naver_id_login.setPopup();
 naver_id_login.init_naver_id_login();
@@ -201,7 +203,7 @@ function fnFbCustomLogin(){
 					,data : {"kbmmName" : r.name}		// 넘겨줄 데이터를 설정
 					,success: function(response) {
 						if(response.item == "success") {
-							location.href = "/member/kyobo_main";
+							location.href = "/member/subookMain";
 						} else {
 							alert("페이스북 로그인 실패");
 						}
@@ -292,16 +294,8 @@ function kakaoLogin() {
 
 </script>
 
-<!-- Optional JavaScript; choose one of the two! -->
 
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"> --></script>
 <script src="/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>  
 
-<!-- Option 2: Separate Popper and Bootstrap JS -->
-<!--
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
--->
 </body>
 </html>

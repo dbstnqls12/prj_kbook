@@ -22,6 +22,11 @@ public class MemberVo {
 	private String listChk;
 	
 	private String kbmmGenderCd;
+	private String kbmmName;
+	private String kbmpNumberFull;
+	private Integer kbmpDefaultNy;
+	private String kbmmId;
+	
 	
 	private String tditSeq;
 	
@@ -316,6 +321,38 @@ public class MemberVo {
 
 	public void setTditSeq(String tditSeq) {
 		this.tditSeq = tditSeq;
+	}
+
+	public String getKbmmName() {
+		return kbmmName;
+	}
+
+	public void setKbmmName(String kbmmName) {
+		this.kbmmName = kbmmName;
+	}
+
+	public Integer getKbmpDefaultNy() {
+		return kbmpDefaultNy;
+	}
+
+	public void setKbmpDefaultNy(Integer kbmpDefaultNy) {
+		this.kbmpDefaultNy = kbmpDefaultNy;
+	}
+
+	public String getKbmmId() {
+		return kbmmId;
+	}
+
+	public void setKbmmId(String kbmmId) {
+		this.kbmmId = kbmmId;
+	}
+
+	public String getKbmpNumberFull() {
+		return kbmpNumberFull;
+	}
+
+	public void setKbmpNumberFull(String kbmpNumberFull) {
+		this.kbmpNumberFull = kbmpNumberFull;
 	}
 
 

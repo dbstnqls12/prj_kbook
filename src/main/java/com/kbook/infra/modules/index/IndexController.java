@@ -22,12 +22,6 @@ import com.kbook.infra.modules.naver.NaverLoginBO;
 @Controller
 public class IndexController {
 
-	@RequestMapping(value = "/")
-	public String main() {
-		
-		return "/member/login";
-	}
-
 	@RequestMapping(value = "index/index")
 	public String index() throws Exception {
 		

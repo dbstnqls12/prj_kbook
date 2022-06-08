@@ -2,12 +2,12 @@ package com.kbook.infra.modules.member;
 
 import java.util.List;
 
-
 import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+
 
 
 @Repository
@@ -34,6 +34,11 @@ public class MemberDao {
 	public int updateAddress(Member dto) {return sqlSession.update(namespace +".updateAddress", dto);}
 	public int updateDelete(MemberVo vo) {return sqlSession.update(namespace +".updateDelete", vo);}
 	public int delete(MemberVo vo) {return sqlSession.delete(namespace +".delete", vo);}
+	
+//	findId/Pwd
+	public List<Member> selectListId(MemberVo vo){ return sqlSession.selectList(namespace + ".selectListId",vo); }
+	public List<Member> selectListPassword(MemberVo vo){ return sqlSession.selectList(namespace + ".selectListPassword",vo); }
+	
 	
 //	kbmmMemberForm
 	public int insert(Member dto) {return sqlSession.insert(namespace +".insert", dto);}
