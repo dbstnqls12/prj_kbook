@@ -90,12 +90,16 @@
 			</thead>
 			<tbody style="font-size: 16px; background-color: #EBF5FF; border: 1px solid #EBF5FF;">
 				<tr>
-					<td colspan="3" style="height: 150px; font-size: 35px; text-align: center; vertical-align: middle;">
+					<th colspan="3" style="height: 150px; font-size: 35px; text-align: center; vertical-align: middle;">
 						구매가 완료 되었습니다.
-					</td>
+					</th>
 				</tr>
 				<tr>
-					<td rowspan="7" width="40%">
+					<td colspan="3" style="height: 80px; font-size: 25px; text-align: center; vertical-align: center; font-weight: bold; color: #5E6B9F;">상품정보</td>
+				</tr>
+				<tr></tr>
+				<tr>
+					<td rowspan="7" width="40%"	>
 						<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
 							<c:if test="${itemUploaded.defaultNy eq 1}">
 								<img src="<c:out value="${itemUploaded.path}"/><c:out value="${itemUploaded.uuidName}"/>" style="height: 250px; margin-left: 150px; "/>
@@ -128,7 +132,11 @@
 				<tr>
 					<td style="text-align: left; padding: 0; vertical-align: middle;">결제방식</td>
 					<td style="text-align: left; padding: 0; vertical-align: middle;">
-						<b>카드결제</b>
+						<c:if test="${rtPayment eq 1}"><b>신용카드</b></c:if>
+						<c:if test="${rtPayment eq 2}"><b>계좌이체</b></c:if>
+						<c:if test="${rtPayment eq 3}"><b>핸드폰결제</b></c:if>
+						<c:if test="${rtPayment eq 4}"><b>네이버페이</b></c:if>
+						<c:if test="${rtPayment eq 5}"><b>카카오페이</b></c:if>
 					</td>
 				</tr>
 				<tr>
@@ -136,8 +144,52 @@
 					<td style="text-align: left; padding: 0; vertical-align: middle;"><b style="color: red;"><fmt:formatNumber value="${rtFinalPrice}"/> 원</b></td>
 				</tr>
 				<tr>
-					<td colspan="3" style="height: 20px;"></td>
+					<th  colspan="3" style="height: 120px; font-size: 25px; text-align: center; vertical-align: middle;font-weight: bold; color: #5E6B9F;">구매자 정보</th>
 				</tr>
+				<tr>
+					<td style="text-align: left; padding: 0; vertical-align: middle; height: 37px;"><span style="margin-left: 240px;">이름</span></td>
+					<td colspan="2" style="text-align: left; padding: 0; vertical-align: middle;"><b style="margin-left: 140px;"><c:out value="${itemMember.kbmmName}"/></b></td>
+				</tr>
+				<tr>
+					<td style="text-align: left; padding: 0; vertical-align: middle; height: 37px;"><span style="margin-left: 240px;">핸드폰번호</span></td>
+					<td colspan="2" style="text-align: left; padding: 0; vertical-align: middle;">
+						<b style="margin-left: 140px;">
+							<c:set var="numberPhone" value="${itemMember.kbmpNumberFull}"/>
+		                	<c:choose>
+		                		<c:when test="${fn:length(numberPhone) eq 10 }">
+									<c:out value="${fn:substring(numberPhone,0,3)}"/>
+									- <c:out value="${fn:substring(numberPhone,3,6)}"/>
+									- <c:out value="${fn:substring(numberPhone,6,10)}"/>
+		                		</c:when>
+		                		<c:otherwise>
+									<c:out value="${fn:substring(numberPhone,0,3)}"/>
+									- <c:out value="${fn:substring(numberPhone,3,7)}"/>
+									- <c:out value="${fn:substring(numberPhone,7,11)}"/>
+		                		</c:otherwise>
+		               		</c:choose>
+		               </b>
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: left; padding: 0; vertical-align: middle; height: 37px;"><span style="margin-left: 240px;">주소</span></td>
+					<td colspan="2" style="text-align: left; padding: 0; vertical-align: middle;">
+						<b style="margin-left: 140px;"><c:out value="${itemMember.kbmaZipcode}"/></b>
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: left; padding: 0; vertical-align: middle; height: 37px;"><span style="margin-left: 140px;"></span></td>
+					<td colspan="2"  style="text-align: left; padding: 0; vertical-align: middle;">
+						<b style="margin-left: 140px;"><c:out value="${itemMember.kbmaAddress1}"/></b>
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: left; padding: 0; vertical-align: middle; height: 37px;"><span style="margin-left: 140px;"></span></td>
+					<td colspan="2" style="text-align: left; padding: 0; vertical-align: middle;">
+						<b style="margin-left: 140px;"><c:out value="${itemMember.kbmaAddress2}"/></b>
+					</td>
+				</tr>
+				<tr style="height: 50px;"><td colspan="3"></td></tr>
+
 				<tr style="background-color: #F9FFFF; text-align: left; vertical-align: center; font-size: 15px; border: 1px solid #F9FFFF;">
 					<td colspan="3" style="border-top: 1px solid #c8c8c8;  padding: 30px; padding-left: 150px; padding-bottom: 20px;">
 						<b>수북을 이용해주셔서 감사합니다.</b></br>
@@ -149,15 +201,16 @@
 						<a href="/member/kyobo_main" style="margin-right: 10px;">
 							<button type="button" class="btn btn-success btn-lg mb-4">홈 화면으로</button>
 						</a>
+							<img src="/resources/xdmin/image/kakaoicon.png" role="button" onclick="shareKakaotalk();" style="margin-bottom: 23px;">
 					</td>
 				</tr>
-				<tr style="background-color: rgb(247,246,239);">
+				<tr style="background-color: #F9FFFF; border: 1px solid #F9FFFF;">
 					<td style="text-align: left; vertical-align: top; padding: 30px; padding-left: 100px; padding-bottom: 0;">
-						<b>예매 유의사항</b>
+						<b>구매 유의사항</b>
 					</td>
-					<td colspan="2" style="text-align: left; padding-bottom: 30px; padding-top: 30px;">
-						영화 상영 스케줄은 영화관 사정에 의해 변경될 수 있습니다.</br>
-						이벤트 예매의 경우 취소 시 상영관으로 문의주시기 바랍니다. (1588-12345)
+					<td colspan="2" style="text-align: left; padding-bottom: 30px; padding-top: 30px; font-size: 16px;">
+						교환/반품/환불의 경우 규정을 확인해주시기 바랍니다.</br>
+						기타 다른 문의 사항이 있을 시 서점으로 문의주시기 바랍니다. (1500-1000)
 					</td>
 				</tr>
 			</tbody>
@@ -168,14 +221,40 @@
 		
 
 <%@ include file="/WEB-INF/views/xdmin/include/footer.jsp" %><!-- footer -->
-
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/resources/common/js/validation.js"></script>
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 
+<script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript">
 
+var book = '<c:out value="${item.tditTitle}"/>';
 
+function shareKakaotalk() {
+    Kakao.init("6ec915718ae8d23e16c65e0f6d22a62e");      // 사용할 앱의 JavaScript 키를 설정
+    Kakao.Link.sendDefault({
+          objectType:"feed"
+        , content : {
+              title: "책 구매가 완료되었습니다!"   // 콘텐츠의 타이틀
+            , description: "구매도서 : "+"\n"+book// 콘텐츠 상세설명
+            , imageUrl: "https://ifh.cc/g/0VkrsM.png"   // 썸네일 이미지
+            , link : {
+                  mobileWebUrl: "http://tp.classing.a9xlab.com"   // 모바일 카카오톡에서 사용하는 웹 링크 URL
+                , webUrl:"http://tp.classing.a9xlab.com" // PC버전 카카오톡에서 사용하는 웹 링크 URL
+            }
+    
+        }
+        , buttons : [
+            {
+                  title:"도서 구매하기"    // 버튼 제목
+                , link : {
+                    mobileWebUrl:"http://tp.classing.a9xlab.com"   // 모바일 카카오톡에서 사용하는 웹 링크 URL
+                  , webUrl:"http://tp.classing.a9xlab.com" // PC버전 카카오톡에서 사용하는 웹 링크 URL
+                }
+            }
+        ]
+    });
+}
 </script>
 
 <!-- Optional JavaScript; choose one of the two! -->

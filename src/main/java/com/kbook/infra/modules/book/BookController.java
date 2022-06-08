@@ -98,16 +98,22 @@ public class BookController {
 	@RequestMapping(value = "member/userEnd")
 	public String userEnd(@ModelAttribute("vo") BookVo vo, Book dto, Model model, HttpSession httpSession) throws Exception {
 		
+		vo.setKbmmSeq((String) httpSession.getAttribute("sessSeq"));
+		
 		List<Book> listUploaded = service.selectListBookUploaded(vo);
 		model.addAttribute("listUploaded", listUploaded);
 		
 		Book rt = service.selectOne(vo);
 		model.addAttribute("item", rt);
 		
+		Book rt2 = service.selectOneMember(vo);
+		model.addAttribute("itemMember", rt2);
+		
 		model.addAttribute("rtCount", dto.getRtCount());
 		model.addAttribute("rtFinalPrice", dto.getRtFinalPrice());
 		model.addAttribute("rtPoint", dto.getRtPoint());
 		model.addAttribute("rtCoupon", dto.getRtCoupon());
+		model.addAttribute("rtPayment", dto.getRtPayment());
 		
 		return "member/userEnd";
 	}

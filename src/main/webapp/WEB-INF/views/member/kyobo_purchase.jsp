@@ -148,8 +148,8 @@
 								<th>주소</th>
 								<td><div class="input-group">
 									<input class="form-control form-control-sm mb-1" type="text" id="kbmaZipcode" name="kbmaZipcode" placeholder="우편번호" value="${itemMember.kbmaZipcode}" readonly>
-									<button class="btn btn-outline-secondary btn-sm mb-1" type="button" id="address1"><i class= "fas fa-search"></i></button>
-									<button class="btn btn-outline-secondary btn-sm mb-1" type="button" id="address2"><i class= "fas fa-solid fa-x"></i></button>
+									<button class="btn btn-outline-secondary btn-sm mb-1" type="button" id="btnAddress"><i class= "fas fa-search"></i></button>
+									<button class="btn btn-outline-secondary btn-sm mb-1" type="button" id="btnClear"><i class= "fas fa-solid fa-x"></i></button>
 								</div>
 								<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1" name="kbmaAddress1" value="${itemMember.kbmaAddress1}" placeholder="기본주소"> 
 								<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2" name="kbmaAddress2" value="${itemMember.kbmaAddress2}" placeholder="상세주소"> </td>
@@ -160,7 +160,7 @@
 					</div>
 				</div>
 				<div style="width: 90%;" class="mx-auto mt-5">	
-				<p class="mb-3" style="font-weight: bold; font-size: 23px;"> 주문상품</p>
+				<p class="mb-4" style="font-weight: bold; font-size: 23px;"> 주문상품</p>
 					<table class="table mb-4">
 						<tr>
 							<th style="width: 20%;">상품사진</th>
@@ -204,7 +204,7 @@
 				</div>
 
 				<div style="width: 90%" class="mx-auto mt-5">	
-					<p class="mb-3" style="font-weight: bold; font-size: 23px;"> 할인쿠폰</p>
+					<p class="mb-4" style="font-weight: bold; font-size: 23px;"> 할인쿠폰</p>
 					<table class="table mb-4">
 						<tr>
 							<th style="width: 23%;">사용가능 쿠폰</th>
@@ -238,7 +238,7 @@
 				</div>
 				
 				<div style="width: 90%" class="mx-auto mt-5">	
-					<p class="mb-3" style="font-weight: bold; font-size: 23px;"> 적립</p>
+					<p class="mb-4" style="font-weight: bold; font-size: 23px;"> 적립</p>
 					<table class="table mb-4">
 						<tr>
 							<th style="width: 25%;">적립 유형</th>
@@ -249,7 +249,7 @@
 						<tr>
 							<td style="text-align: left;">기본적립</td>
 							<td style="text-align: left;">5%</td>
-							<td style="text-align: left;"><fmt:formatNumber value="${item.tditPrice*0.05}"/> P</td>
+							<td style="text-align: left;"><span id="point"></span> P</td>
 							<c:set var="ymd" value="<%=new java.util.Date()%>" /> 
 							<td style=""><fmt:formatDate value="${ymd}" pattern="yyyy-MM-dd" /></td>
 						</tr>
@@ -264,30 +264,30 @@
 						<th colspan="5">결제 방법</th>
 					<tr>
 						<td>
-						  	<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-							<label class="form-check-label" for="inlineRadio1">신용카드</label>
+						  	<input class="form-check-input" type="radio" name="rtPayment" id="rtPayment1" value="1">
+							<label class="form-check-label" for="rtPayment1">신용카드</label>
 						</td>
 						<td>
-						  	<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-							<label class="form-check-label" for="inlineRadio1">계좌이체</label>
+						  	<input class="form-check-input" type="radio" name="rtPayment" id="rtPayment2" value="2">
+							<label class="form-check-label" for="rtPayment2">계좌이체</label>
 						</td>
 						<td>
-						  	<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-							<label class="form-check-label" for="inlineRadio1">핸드폰결제</label>
+						  	<input class="form-check-input" type="radio" name="rtPayment" id="rtPayment3" value="3">
+							<label class="form-check-label" for="rtPayment3">핸드폰결제</label>
 						</td>
 						<td>
-						  	<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-							<label class="form-check-label" for="inlineRadio1">네이버페이</label>
+						  	<input class="form-check-input" type="radio" name="rtPayment" id="rtPayment4" value="4">
+							<label class="form-check-label" for="rtPayment4">네이버페이</label>
 						</td>
 						<td>
-						  	<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-							<label class="form-check-label" for="inlineRadio1">카카오페이</label>
+						  	<input class="form-check-input" type="radio" name="rtPayment" id="rtPayment5" value="5">
+							<label class="form-check-label" for="rtPayment5">카카오페이</label>
 						</td>
 					</tr>
 					</table>
 				</div>
 				<div style="width: 90%" class="mx-auto mt-5">	
-				<p class="mb-3" style="font-weight: bold; font-size: 23px;"> 도서 소득공제</p>
+				<p class="mb-4" style="font-weight: bold; font-size: 23px;"> 도서 소득공제</p>
 					<ul>
 						<li style="font-size: 13px;">카드결제는 카드 명의자 기준으로, 현금결제는 개인공제용으로 현금영수증 신청한 기준으로 국세청에 자동 반영됩니다.</li>
 						<li style="font-size: 13px;">도서 소득공제 가능 결제수단 : 신용카드(개인카드에 한함), 카카오페이, 네이버페이, 삼성페이, PAYCO, 토스, CHAI, 
@@ -322,7 +322,7 @@
 				</div>	
 				<hr>
 				<div class="savingPoint">
-					<p>※ 적립예정 포인트 : <span id="point"></span> p</p>
+					<p>※ 적립예정 포인트 : <span id="point1"></span> p</p>
 				</div>
 				<div>	
 					<button type="submit" class="btn w-100" name="btn-purchase" id="btn-purchase">바로구매</button>
@@ -341,6 +341,8 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/resources/common/js/validation.js"></script>
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6ec915718ae8d23e16c65e0f6d22a62e&libraries=services"></script>
 
 <script type="text/javascript">
 
@@ -366,6 +368,108 @@ $(document).ready(function() {
 	}).scroll();
 
 });
+
+function sample6_execDaumPostcode() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var addr = ''; // 주소 변수
+            var extraAddr = ''; // 참고항목 변수
+
+            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                addr = data.roadAddress;
+            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                addr = data.jibunAddress;
+            }
+
+            // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+            if(data.userSelectedType === 'R'){
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraAddr !== ''){
+                    extraAddr = ' (' + extraAddr + ')';
+                }
+                // 조합된 참고항목을 해당 필드에 넣는다.
+                /* document.getElementById("kbmaAddress2").value = extraAddr; */
+            
+            } else {
+                /* document.getElementById("kbmaAddress2").value = ''; */
+            }
+
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            document.getElementById('kbmaZipcode').value = data.zonecode;
+            document.getElementById("kbmaAddress1").value = addr;
+            // 커서를 상세주소 필드로 이동한다.
+            document.getElementById("kbmaAddress2").focus();
+            
+			/* lat and lng from address s */
+			        	
+	         // 주소-좌표 변환 객체를 생성
+	         var geocoder = new daum.maps.services.Geocoder();
+	
+	         // 주소로 좌표를 검색
+	         geocoder.addressSearch(addr, function(result, status) {
+	          
+	         	// 정상적으로 검색이 완료됐으면,
+	         	if (status == daum.maps.services.Status.OK) {
+	         		
+	         		document.getElementById('kbmaLat').value=result[0].y;
+	         		document.getElementById('kbmaLng').value=result[0].x;
+	         		
+	         /* 						
+	         		var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+	
+	         		y = result[0].x;
+	         		x = result[0].y;
+	
+	         		// 결과값으로 받은 위치를 마커로 표시합니다.
+	         		var marker = new daum.maps.Marker({
+	         			map: map,
+	         			position: coords
+	         		});
+	
+	         		// 인포윈도우로 장소에 대한 설명표시
+	         		var infowindow = new daum.maps.InfoWindow({
+	         			content: '<div style="width:150px;text-align:center;padding:5px 0;">좌표위치</div>'
+	         		});
+	
+	         		infowindow.open(map,marker);
+	
+	         		// 지도 중심을 이동
+	         		map.setCenter(coords);
+	         		
+	         		document.getElementById("ifmaLatArray0").value=x;
+	         		document.getElementById("ifmaLngArray0").value=y;
+	         */						
+	         	}
+	         });
+			/* lat and lng from address e */
+            
+            
+        }
+    }).open();
+}
+$("#btnAddress").on("click",function(){
+	sample6_execDaumPostcode();
+	
+});	
+$("#btnClear").on("click",function(){
+	$("#kbmaZipcode").val("");
+	$("#kbmaAddress1").val("");
+	
+});	
 
 
 <c:forEach items="${listCodeDiscount}" var="itemDiscount" varStatus="statusDiscount">
@@ -394,6 +498,7 @@ $("#couponPrice").text("0");
 $("#totalPrice2").text(finalPrice.toLocaleString()); 
 $("#fee").text(deliFee.toLocaleString()); 
 $("#point").text(finalPoint.toLocaleString()); 
+$("#point1").text(finalPoint.toLocaleString()); 
 
 
 /* 쿠폰 할인 적용 */
@@ -426,6 +531,15 @@ $("#rtCount").val(bookCount);
 $("#rtPoint").val(finalPoint);	  
 $("#rtFinalPrice").val(finalPrice); 
 
+
+
+
+$("#btn-purchase").on("click", function(){
+	if ($("input:radio[name=rtPayment]").is(":checked") == false) {
+		alert("결제 방식을 선택해주세요!");
+		return false;
+	}
+});
 
 </script>
 

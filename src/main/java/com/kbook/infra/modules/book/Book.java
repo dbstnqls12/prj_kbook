@@ -90,6 +90,7 @@ public class Book {
 	private Date rtDoP;
 	private String rtPoint;
 	private Date rtDoA;
+	private String rtPayment;
 	
 	
 	private String kbmmSeq;
@@ -608,6 +609,12 @@ public class Book {
 	}
 	public void setRtCoupon(String rtCoupon) {
 		this.rtCoupon = rtCoupon;
+	}
+	public String getRtPayment() {
+		return rtPayment;
+	}
+	public void setRtPayment(String rtPayment) {
+		this.rtPayment = rtPayment;
 	}
 
 	

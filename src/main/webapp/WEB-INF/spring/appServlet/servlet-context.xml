@@ -39,7 +39,6 @@
 			<mapping path="/**"/>
 			<exclude-mapping path="/resources/**" />
 			<exclude-mapping path="/code/**" />
-			<exclude-mapping path="/xdmin/**" />
 			<exclude-mapping path="/member/login" />
 			<exclude-mapping path="/member/loginProc" />
 			<exclude-mapping path="/index/**" />

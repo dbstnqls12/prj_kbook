@@ -14,7 +14,8 @@
 			left join kbMemberPhone b on b.kbmmSeq = a.kbmmSeq	
 			left join kbMemberEmail c on c.kbmmSeq = a.kbmmSeq
 		WHERE 1=1
-			AND b.kbmpDefaultNy = 1	
+			AND a.kbmmDelNy = 0	
+			AND b.kbmpDefaultNy = 1	 
 			AND c.kbmeDefaultNy = 1
 			<choose>
 				<when test="shKbmmDelNy == 1">AND kbmmDelNy=1</when>
