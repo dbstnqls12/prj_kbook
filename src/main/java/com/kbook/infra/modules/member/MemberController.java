@@ -373,6 +373,21 @@ public class MemberController {
 		return returnMap;	
 	}
 
+//	findId
+	@RequestMapping(value = "/member/findId")
+	public String findId() throws Exception {
+		
+
+		return "/member/findId";
+	}
+
+//	findPwd
+	@RequestMapping(value = "/member/findPwd")
+	public String findPwd() throws Exception {
+		
+		
+		return "/member/findPwd";
+	}
 	
 	
 //	oracle

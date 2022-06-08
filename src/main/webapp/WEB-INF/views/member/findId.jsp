@@ -38,7 +38,7 @@
 		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item">홈</li>
-				<li class="breadcrumb-item active" aria-current="page">로그인</li>
+				<li class="breadcrumb-item active" aria-current="page">아이디 찾기</li>
 			</ol>
 		</nav>
 	</div>
@@ -53,11 +53,11 @@
 	</div>	
 	<div class="d-grid gap-2 col-xs-8 mx-auto">
 		<button class="btn btn-primary" type="button" id="btnLogin" name="">로그인</button>	
-		<button class="btn btn-secondary" type="button">회원가입</button>
+		<button class="btn btn-secondary" type="button" onclick="location.href=''">회원가입</button>
 	</div>
 	<hr class="col-xs-8 mx-auto">
 	<div class="col-xs-8 mx-auto text-secondary" id="searchpwd">
-	  <small><a href="/member/findId"> 아이디 </a>/<a href="/member/findPwd"> 비밀번호 찾기 > </a></small>
+	  <small><a href=""> 아이디/비밀번호 찾기 > </a></small>
 	</div>
 	<div class="d-grid gap-2 col-xs-8 mx-auto">
 		<div id="naver_id_login" style="display:none;"></div>
