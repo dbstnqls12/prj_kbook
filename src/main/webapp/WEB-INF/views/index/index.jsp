@@ -29,7 +29,7 @@
     <!-- Hover Effects -->
     <link href="/resources/xdmin/assets/css/set1.css" rel="stylesheet">
     <!-- Main CSS -->
-    <link rel="stylesheet" href="/resources/xdmin/assets/css/style.css">
+    <link rel="stylesheet" href="/resources/xdmin/assets/css/style4sb.css">
 </head>
 
 <body>
