@@ -54,12 +54,11 @@
 	<div class="d-grid gap-2 col-xs-8 mx-auto">
 		<button class="btn btn-primary" type="button" id="btnLogin" name="">로그인</button>	
 		<button class="btn btn-secondary" type="button">회원가입</button>
-		<button class="btn btn-secondary" type="button" onclick="location.href='/findId'">아이디찾기</button>
 	</div>
 	<hr class="col-xs-8 mx-auto">
 	<div class="col-xs-8 mx-auto text-secondary" id="searchpwd">
-	  <small><a href="/findId"> 아이디 </a>/
-	  <a href="/findPwd"> 비밀번호 찾기 > </a></small> 
+	  <small><a href="/member/findId"> 아이디 </a>/
+	  <a href="/member/findPwd"> 비밀번호 찾기 > </a></small> 
 	</div>
 	<div class="d-grid gap-2 col-xs-8 mx-auto">
 		<div id="naver_id_login" style="display:none;"></div>

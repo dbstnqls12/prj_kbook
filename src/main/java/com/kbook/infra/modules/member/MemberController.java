@@ -375,7 +375,7 @@ public class MemberController {
 	}
 
 //	findId
-	@RequestMapping(value = "/findId")
+	@RequestMapping(value = "/member/findId")
 	public String findId(@ModelAttribute("vo") MemberVo vo, Member dto, Model model) throws Exception {
 		
 		List<Member> list = service.selectListId(vo);
@@ -385,7 +385,7 @@ public class MemberController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "member/getId")
+	@RequestMapping(value = "/member/getId")
 	public Map<String, Object> getId(MemberVo vo, Member dto, HttpSession httpSession, Model model) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
@@ -399,7 +399,7 @@ public class MemberController {
 	}
 	
 //	findPwd
-	@RequestMapping(value = "/findPwd")
+	@RequestMapping(value = "/member/findPwd")
 	public String findPwd(@ModelAttribute("vo") MemberVo vo, Member dto, Model model) throws Exception {
 		
 		List<Member> list = service.selectListPassword(vo);
@@ -409,7 +409,7 @@ public class MemberController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "member/getPassword")
+	@RequestMapping(value = "/member/getPassword")
 	public Map<String, Object> getPassword(MemberVo vo, Member dto, HttpSession httpSession, Model model) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		

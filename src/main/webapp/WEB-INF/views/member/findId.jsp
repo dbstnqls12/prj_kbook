@@ -36,28 +36,29 @@
 	<div class="header">
 		<div class="logo mt-5 mb-4"><a href="/"><img src="/resources/xdmin/image/SU-BOOK5.png" width="250px;" style="margin-left: 50px;"></a></div>
 		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item">홈</li>
-				<li class="breadcrumb-item active" aria-current="page">아이디 찾기</li>
+			<ol class="breadcrumb" style="cursor: pointer;">
+				<li class="breadcrumb-item" onclick="location.href='/'">홈</li>
+				<li class="breadcrumb-item active" aria-current="page" onclick="location.href='/member/findId'">아이디 찾기</li>
 			</ol>
 		</nav>
 	</div>
 	<hr>
     <form action="member/getId" id="findId" name="findId" method="post" class="form-box">
-    <input type="hidden" id="kbmmSeq" name="kbmmSeq" value="<c:out value="${vo.kbmmSeq}"/>">
+    <input type="hidden" id="kbmmDelNy" name="kbmmDelNy" value="0">
+    <input type="hidden" id="kbmpDefaultNy" name="kbmpDefaultNy" value="1">
 		<div class="col-xs-8 mx-auto">
-			<input class="form-control mb-2" type="text" id="kbmmName" name="kbmmName" value="윤수빈" placeholder="이름입력">	
-			<input class="form-control mb-4" type="text" id="kbmpPhoneNumber" name="kbmpPhoneNumber" value="01011223344" placeholder="전화번호 입력 (숫자만 입력)" >
+			<input class="form-control mb-2" type="text" id="kbmmName" name="kbmmName" value="윤수빈" placeholder="이름 입력">		
+			<input class="form-control mb-4" type="text" id="kbmpNumberFull" name="kbmpNumberFull" value="01011223344" placeholder="전화번호 입력 (숫자만 입력)" >
 	
 		</div>	
-		<div class="d-grid gap-2 col-xs-8 mx-auto mt-4 mb-4 ">
+		<div class="d-grid gap-2 col-xs-8 mx-auto mt-4 mb-2">
 			<p class="mb-4" id="showId" style="color: black;"></p>
 		</div>
 		
 		<div class="d-grid gap-2 col-xs-8 mx-auto">
 			<button class="btn btn-primary" type="button" id="btnFindID" name="btnFindID">아이디찾기</button>	
 			<button class="btn btn-secondary" type="button" id="btnFindPwd" name="btnFindPwd" onclick="location.href='findPwd'">비밀번호 찾기</button>
-			<button class="btn btn-success" type="button" onclick="location.href=''">홈으로 돌아가기</button>
+			<button class="btn btn-success" type="button" onclick="location.href='/'">홈으로 돌아가기</button>
 		</div>
 		<hr class="col-xs-8 mx-auto">
 		<div class="col-xs-8 mx-auto text-secondary" id="goBack">
@@ -82,15 +83,15 @@ $("#btnFindID").on("click",function(seq){
 		,type: "post"
 		,url: "/member/getId"
 		,dataType : "JSON"
-		,data : { "kbmmName" : $("#kbmmName").val(), "kbmpNumberFull": $("#kbmpNumberFull").val()}
+		,data : { "kbmmName" : $("#kbmmName").val(), "kbmpNumberFull": $("#kbmpNumberFull").val(), "kbmmDelNy": $("#kbmmDelNy").val(), "kbmpDefaultNy": $("#kbmpDefaultNy").val()}
 		,success: function(data) {
-			alert(data);
-			alert(JSON.stringify(data));  
-/* 			$("#goBack").show(); 
+		/* 	alert(data);
+			alert(JSON.stringify(data));   */
+ 			$("#goBack").show(); 
 			$("#btnFindPwd").show(); 
-			$("#btnFindID").hide();  */
-			alert(JSON.stringify(data['idList'][0]['kbmmId']));
-			alert(JSON.stringify(data['idList'][0]['kbmmName'])); 
+			$("#btnFindID").hide();  
+		/* 	alert(JSON.stringify(data['idList'][0]['kbmmId']));
+			alert(JSON.stringify(data['idList'][0]['kbmmName']));  */
 			
 			var name = data['idList'][0]['kbmmName'];
 			

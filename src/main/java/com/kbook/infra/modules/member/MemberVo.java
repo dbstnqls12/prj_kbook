@@ -25,6 +25,7 @@ public class MemberVo {
 	private String kbmmName;
 	private String kbmpNumberFull;
 	private Integer kbmpDefaultNy;
+	private Integer kbmmDelNy;
 	private String kbmmId;
 	
 	
@@ -353,6 +354,14 @@ public class MemberVo {
 
 	public void setKbmpNumberFull(String kbmpNumberFull) {
 		this.kbmpNumberFull = kbmpNumberFull;
+	}
+
+	public Integer getKbmmDelNy() {
+		return kbmmDelNy;
+	}
+
+	public void setKbmmDelNy(Integer kbmmDelNy) {
+		this.kbmmDelNy = kbmmDelNy;
 	}
 
 

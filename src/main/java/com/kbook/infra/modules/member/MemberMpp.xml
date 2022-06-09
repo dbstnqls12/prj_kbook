@@ -344,11 +344,8 @@
 	<!-- 아이디/비번 찾기 -->
 		<select id="selectListId" resultMap="resultMapObj">
 		select
-			a.kbmmSeq
-			,a.kbmmName
+			a.kbmmName
 			,a.kbmmId
-			,a.kbmmPassword
-			,a.kbmmDelNy
 		FROM	
 			kbMember a
 		LEFT JOIN kbMemberPhone b ON b.kbmmSeq = a.kbmmSeq	
@@ -356,24 +353,21 @@
 			AND a.kbmmName = #{kbmmName}
 			AND b.kbmpNumberFull = #{kbmpNumberFull}
 			AND a.kbmmDelNy = 0
+			AND b.kbmpDefaultNy = 1
 	</select>
 	<select id="selectListPassword" resultMap="resultMapObj">
 		select
-			a.kbmmSeq
-			,a.kbmmName
-			,a.kbmmId
+			a.kbmmName
 			,a.kbmmPassword
-			,b.kbmpNumberFull
-			,a.kbmmDelNy
 		FROM	
 			kbMember a
 		LEFT JOIN kbMemberPhone b ON b.kbmmSeq = a.kbmmSeq	
 		WHERE 1=1
-			AND kbmmName = #{kbmmName}
-			AND kbmpNumberFull = #{kbmpNumberFull}
-			AND kbmmId = #{kbmmId}
-			AND kbmpDefaultNy = 1
-			AND kbmmDelNy = 0
+			AND a.kbmmName = #{kbmmName}
+			AND b.kbmpNumberFull = #{kbmpNumberFull}
+			AND a.kbmmId = #{kbmmId}
+			AND b.kbmpDefaultNy = 1
+			AND a.kbmmDelNy = 0
 	</select>
 	
 	
