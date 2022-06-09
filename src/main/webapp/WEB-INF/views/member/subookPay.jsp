@@ -264,19 +264,19 @@
 						<th colspan="5">결제 방법</th>
 					<tr>
 						<td>
-						  	<input class="form-check-input" type="radio" name="rtPayment" id="rtPayment1" value="1">
+						  	<input class="form-check-input" type="radio" name="rtPayment" id="rtPayment1" value="1" disabled>
 							<label class="form-check-label" for="rtPayment1">신용카드</label>
 						</td>
 						<td>
-						  	<input class="form-check-input" type="radio" name="rtPayment" id="rtPayment2" value="2">
+						  	<input class="form-check-input" type="radio" name="rtPayment" id="rtPayment2" value="2" disabled>
 							<label class="form-check-label" for="rtPayment2">계좌이체</label>
 						</td>
 						<td>
-						  	<input class="form-check-input" type="radio" name="rtPayment" id="rtPayment3" value="3">
+						  	<input class="form-check-input" type="radio" name="rtPayment" id="rtPayment3" value="3" disabled>
 							<label class="form-check-label" for="rtPayment3">핸드폰결제</label>
 						</td>
 						<td>
-						  	<input class="form-check-input" type="radio" name="rtPayment" id="rtPayment4" value="4">
+						  	<input class="form-check-input" type="radio" name="rtPayment" id="rtPayment4" value="4" disabled>
 							<label class="form-check-label" for="rtPayment4">네이버페이</label>
 						</td>
 						<td>
@@ -325,7 +325,8 @@
 					<p>※ 적립예정 포인트 : <span id="point1"></span> p</p>
 				</div>
 				<div>	
-					<button type="submit" class="btn w-100" name="btn-purchase" id="btn-purchase">바로구매</button>
+					<button type="button" class="btn w-100" name="btn-purchase" id="btn-purchase">바로구매</button>
+					<!-- <button type="button" class="btn w-100" name="iamportPayment" id="iamportPayment">카카오구매</button> -->
 				</div>
 			</div>
 		</div>
@@ -343,6 +344,8 @@
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6ec915718ae8d23e16c65e0f6d22a62e&libraries=services"></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 
 <script type="text/javascript">
 
@@ -532,14 +535,62 @@ $("#rtPoint").val(finalPoint);
 $("#rtFinalPrice").val(finalPrice); 
 
 
+<!-- 아임포트 카카오 결제 API -->
 
+$(document).ready(function(){
+	$("#btn-purchase").click(function(){
+		payment();	// 버튼 클릭하면 호출
+	});
+})
 
-$("#btn-purchase").on("click", function(){
+function payment(data){
+	
 	if ($("input:radio[name=rtPayment]").is(":checked") == false) {
 		alert("결제 방식을 선택해주세요!");
 		return false;
 	}
-});
+	
+	var IMP = window.IMP; // 생략가능
+/* 	var payPrice = $("#hiddenPrice").attr('value'); */
+	
+	IMP.init('imp96965516');  // 가맹점 식별코드
+	// IMP.request_pay(param, callback) 결제창 호출
+	IMP.request_pay({
+	    pg : 'kakaopay', //pg사 선택 (kakao, kakaopay 둘다 가능)
+	    pay_method: 'card',
+	    merchant_uid : 'iamport_test_id' + new Date().getTime(), //주문번호
+/* 	    merchant_uid : 'merchant_' + new Date().getTime(), //주문번호 */
+	    name : '1234', // 상품명
+	    amount : '1234', //가격
+/* 	    amount : '<c:out value="${rtPay}"/>', */
+/* 	    amount : amount, */
+	    //customer_uid 파라메터가 있어야 빌링키 발급을 시도함
+	    customer_uid : '<c:out value="${sessName}"/>' + new Date().getTime(),
+	    buyer_email : "test@naver.com",
+	    buyer_name : "<c:out value="${sessName}"/>",
+	    buyer_tel : "010-1234-1234",
+	}, function(rsp) { //callback
+	    if ( rsp.success ) {
+	      console.log('빌링키 발급 성공', rsp)
+	      //빌링키 발급이 완료되었으므로, 서버에 결제 요청
+	      //alert('결제가 완료되었습니다!');
+	    } else {
+	      var msg = '결제에 실패하였습니다.\n';
+	      msg += rsp.error_msg;
+	      alert(msg);
+	      return false;
+	    }
+	
+	    $("#bookPurchase").submit();
+	});    
+}    
+
+/* $("#btn-purchase").on("click", function(){
+	if ($("input:radio[name=rtPayment]").is(":checked") == false) {
+		alert("결제 방식을 선택해주세요!");
+		return false;
+	}
+}); */
 
 $("#btnLogout").on("click", function(){
 	
