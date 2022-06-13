@@ -44,8 +44,8 @@
 	</div>
 	<hr>
 	<div class="col-xs-8 mx-auto">
-		<input class="form-control mb-2" type="text" id="kbmmId" name="kbmmId" placeholder="아이디" value="qwe123">	
-		<input class="form-control mb-4" type="password" id="kbmmPassword" name="kbmmPassword" placeholder="비밀번호" value="1111">
+		<input class="form-control mb-2" type="text" id="kbmmId" name="kbmmId" placeholder="아이디" value="qwe123" onkeyup="enterkey();" >	
+		<input class="form-control mb-4" type="password" id="kbmmPassword" name="kbmmPassword" placeholder="비밀번호" value="1111" onkeyup="enterkey();">
 <!-- 		<div class="form-check col-xs-8 mb-3">
 			<input class="form-check-input" type="checkbox" name="autologin" value="autologin" id="autologin">
 			<span class="form-check-label" id="autologin" >자동 로그인</span>
@@ -53,7 +53,7 @@
 	</div>	
 	<div class="d-grid gap-2 col-xs-8 mx-auto">
 		<button class="btn btn-primary" type="button" id="btnLogin" name="">로그인</button>	
-		<button class="btn btn-secondary" type="button">회원가입</button>
+		<button class="btn btn-secondary" type="button" onclick="location.href='/member/memberForm_user'">회원가입</button>
 	</div>
 	<hr class="col-xs-8 mx-auto">
 	<div class="col-xs-8 mx-auto text-secondary" id="searchpwd">
@@ -62,10 +62,10 @@
 	</div>
 	<div class="d-grid gap-2 col-xs-8 mx-auto">
 		<div id="naver_id_login" style="display:none;"></div>
-		<button class="btn btn-naver" type="button" onclick="location.href='${url}'"><img src="/resources/xdmin/image/navericon.png" id="icon"><b> 네이버</b> 로그인</button>
-		<button class="w-100 btn btn-google" type="button" id="GgCustomLogin" onclick="javascript:void(0)"><img src="/resources/xdmin/image/googleIcon.png" id="icon"><b> 구글</b> 로그인</button>
+		<%-- <button class="btn btn-naver" type="button" onclick="location.href='${url}'"><img src="/resources/xdmin/image/navericon.png" id="icon"><b> 네이버</b> 로그인</button> --%>
+		<!-- <button class="w-100 btn btn-google" type="button" id="GgCustomLogin" onclick="javascript:void(0)"><img src="/resources/xdmin/image/googleIcon.png" id="icon"><b> 구글</b> 로그인</button> -->
 		<button class="btn btn-kakao" type="button" onclick="javascript:kakaoLogin()"><img src="/resources/xdmin/image/kakaoicon.png" id="icon"><b> 카카오</b> 로그인</button>
-		<button class="btn btn-facebook" type="button" id="btn-facebook" onclick="fnFbCustomLogin();"><img src="/resources/xdmin/image/fbicon.png" id="icon"><b> 페이스북</b> 로그인</button>
+		<!-- <button class="btn btn-facebook" type="button" id="btn-facebook" onclick="fnFbCustomLogin();"><img src="/resources/xdmin/image/fbicon.png" id="icon"><b> 페이스북</b> 로그인</button> -->
 	</div>
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -78,28 +78,52 @@
 <script type="text/javascript">
 
 <!--일반 로그인 -->  
+function enterkey() {
+    if (window.event.keyCode == 13) {
+				
+    	$.ajax({
+			async : true
+			,cache : false
+			,type : "post"
+			,url : "/member/loginProc"
+			,data : { "kbmmId" : $("#kbmmId").val(), "kbmmPassword" : $("#kbmmPassword").val()}
+			,success : function(response) {
+				if (response.rt == "success") {
+					location.href = "/index/index";
+				} else {
+					alert("아이디 및 비밀번호를 확인해주세요");
+				}
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				alert("ajaxUpdate " + jqXHR.textStatus + " : "
+						+ jqXHR.errorThrown);
+			}
+		});
+    	
+         
+    	}
+	}
 $("#btnLogin").on("click",function(){
 	 
 	if(!checkNull($("kbmmId"), $.trim($("#kbmmId").val()), "아이디를 입력해 주세요!")) return false;
 	if(!checkNull($("kbmmPassword"), $.trim($("#kbmmPassword").val()), "비밀번호를 입력해 주세요!")) return false;
-	
-	$.ajax({
-		async: true 
-		,cache: false
-		,type: "post"
-		,url: "/member/loginProc"
-		,data : { "kbmmId" : $("#kbmmId").val(), "kbmmPassword" : $("#kbmmPassword").val()}
-		,success: function(response) {
-			if(response.rt == "success") { 
-					location.href = "/index/index";
-			} else {
-				alert("아이디 또는 비밀번호를 확인해주세요!");
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/member/loginProc"
+			,data : { "kbmmId" : $("#kbmmId").val(), "kbmmPassword" : $("#kbmmPassword").val()}
+			,success: function(response) {
+				if(response.rt == "success") { 
+						location.href = "/index/index";
+				} else {
+					alert("아이디 또는 비밀번호를 확인해주세요!");
+				}
+			}			
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 			}
-		}			
-		,error : function(jqXHR, textStatus, errorThrown){
-			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-		}
-	});
+		});
 	
 });  
 
@@ -141,7 +165,7 @@ function onSignIn(googleUser) {
 			,data : {"kbmmName" : profile.getName()}	
 			,success: function(response) {
 				if(response.rt == "success") {
-					location.href = "/member/subookMain"; 
+					location.href = "/index/index"; 
 				} else {
 					alert("구글 로그인 실패");
 				}
@@ -162,10 +186,10 @@ function onSignInFailure(t){
 
 <!-- 네이버로그인 -->
 //네이버
-var naver_id_login = new naver_id_login("sp11vVbZCiR4lPwGCFnm", "http://localhost/member/callback"); // client ID, callBack URL
+var naver_id_login = new naver_id_login("sp11vVbZCiR4lPwGCFnm", "http://13.209.49.6/member/callback"); // client ID, callBack URL
 var state = naver_id_login.getUniqState();
 naver_id_login.setButton("white", 2,40);
-naver_id_login.setDomain("http://localhost/member/subookMain");	// service URL
+naver_id_login.setDomain("http://13.209.49.6/index/index");	// service URL
 naver_id_login.setState(state);
 naver_id_login.setPopup();
 naver_id_login.init_naver_id_login();
@@ -202,7 +226,7 @@ function fnFbCustomLogin(){
 					,data : {"kbmmName" : r.name}		// 넘겨줄 데이터를 설정
 					,success: function(response) {
 						if(response.item == "success") {
-							location.href = "/member/subookMain";
+							location.href = "/index/index";
 						} else {
 							alert("페이스북 로그인 실패");
 						}
@@ -258,7 +282,7 @@ function kakaoLogin() {
            			,data : {"kbmmName" : profile_nickname}
            			,success: function(response) {
            				if(response.item == "success") {
-           					location.href = "/member/kyobo_main";
+           					location.href = "/index/index";
            				} else {
            					alert("카카오 로그인 실패");
            				}

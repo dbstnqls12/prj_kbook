@@ -163,8 +163,8 @@
 				
 				<p>주문수량 <input type="text" id="result" name="result" style="width: 50px;" value="1"><i class="bi bi-plus-square" role="button" onclick='count("plus")'></i> <i class="bi bi-dash-square" role="button" onclick='count("minus")'></i></p>
 				<button type="button" id="btn" class="btn" onclick="location.href='javascript:goPurchase(<c:out value="${item.tditSeq}"/>)'">바로구매</button>
-				<button type="button" id="btn" class="btn">바로드림 주문</button>
-				<button type="button" id="btn" class="btn">보관함 담기</button>
+				<!-- <button type="button" id="btn" class="btn">바로드림 주문</button>
+				<button type="button" id="btn" class="btn">보관함 담기</button> -->
 			</div>
 		</form>	
 				<hr>

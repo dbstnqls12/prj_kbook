@@ -46,6 +46,14 @@
 			<exclude-mapping path="/member/findPwd" />
 			<exclude-mapping path="/member/getPassword" />
 			<exclude-mapping path="/member/loginProc" />
+			<exclude-mapping path="member/loginProc" />
+			<exclude-mapping path="/member/loginProcGoogle" />
+			<exclude-mapping path="/member/callback" />
+			<exclude-mapping path="/member/KakaoLgProc" />
+			<exclude-mapping path="/member/FBLgProc" />
+			<exclude-mapping path="/member/memberForm_user" />
+			<exclude-mapping path="/member/subookMain" />
+			<exclude-mapping path="/member/subookDetail" />
 			<exclude-mapping path="/index/**" />
 			<exclude-mapping path="/rest/**" />
 			<exclude-mapping path="/test/**" />

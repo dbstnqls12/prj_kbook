@@ -417,7 +417,11 @@ public class HomeController {
 //	}
 	
 	
-	
+	@RequestMapping(value = "/test/memberList2")
+	public String memberList2(Model model) throws Exception {
+		
+		return "/test/memberList2";
+	}
 	
 	
 	

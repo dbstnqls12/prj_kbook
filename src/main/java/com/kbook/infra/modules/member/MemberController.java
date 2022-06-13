@@ -152,6 +152,22 @@ public class MemberController {
 
 		return "redirect:/xdmin/member/memberView";
 	}
+	@RequestMapping(value = "/member/member_userInst")
+	public String member_userInst(Member dto, MemberVo vo, Model model, RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.insert(dto);
+		
+		System.out.println("getKbmmSeq() : " + dto.getKbmmSeq());
+		
+//		vo.setKbmmSeq(dto.getKbmmSeq());
+		
+		List<Member> list = service.selectListPhone(vo);
+		model.addAttribute("listPhone", list);
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/member/login";
+	}
 
 	@RequestMapping(value = "/xdmin/member/memberEditForm")
 	public String memberEditForm(@ModelAttribute("vo") MemberVo vo, Member dto, Model model) throws Exception {

@@ -30,7 +30,7 @@
 	#floatMenu {
 		position: absolute;
 		right: 200px;
-		width: 330px;
+		width: 310px;
 		border: 2px solid #c8c8c8; 
 		border-radius: 15px;
 		padding-top: 10px;
@@ -560,15 +560,16 @@ function payment(data){
 	    pay_method: 'card',
 	    merchant_uid : 'iamport_test_id' + new Date().getTime(), //주문번호
 /* 	    merchant_uid : 'merchant_' + new Date().getTime(), //주문번호 */
-	    name : '1234', // 상품명
-	    amount : '1234', //가격
+	    name : '<c:out value="${item.tditTitle}"/>', // 상품명
+	    amount : 'finalPrice-coupon3Price', //가격
 /* 	    amount : '<c:out value="${rtPay}"/>', */
 /* 	    amount : amount, */
 	    //customer_uid 파라메터가 있어야 빌링키 발급을 시도함
 	    customer_uid : '<c:out value="${sessName}"/>' + new Date().getTime(),
 	    buyer_email : "test@naver.com",
-	    buyer_name : "<c:out value="${sessName}"/>",
-	    buyer_tel : "010-1234-1234",
+	    buyer_name : '<c:out value="${sessName}"/>',
+	    buyer_tel : '<c:out value="${itemMember.kbmpNumberFull}"/>', 
+	    /* buyer_tel : "010-1234-1234", */
 	}, function(rsp) { //callback
 	    if ( rsp.success ) {
 	      console.log('빌링키 발급 성공', rsp)

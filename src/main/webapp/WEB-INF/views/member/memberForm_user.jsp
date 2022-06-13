@@ -16,8 +16,8 @@
 <link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css"  rel="stylesheet" >
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
-
-<title>Kyobo_memberForm_1</title>
+<link rel="shortcut icon" href="https://ifh.cc/g/74QNWX.png" type="image/x-icon" />
+<title id="ctl00_headerTitle">책이 수북수북</title>
 <link href="/resources/common/css/user/memberForm.css"  rel="stylesheet" >
 </head>
 <body>
@@ -26,9 +26,10 @@
 <!-- 본문 s -->		
 <hr class="w-100" style="color: #DDDDDD">
 <div class="container my-wrap">
-	<form action="/xdmin/member/memberInst" method="post" id="memberForm" name="memberForm" class="row">
+	<form action="/member/member_userInst" method="post" id="memberForm" name="memberForm" class="row">
 		<input type="hidden" id="kbmmSeq" name="kbmmSeq" value="<c:out value="${vo.kbmmSeq}"/>">
 		<input type="hidden" id="kbmmGradeCd" name="kbmmGradeCd"  value="1">
+		<input type="hidden" id="kbmmDelNy" name="kbmmDelNy"  value="0">
 		<!-- 정보입력 s -->
 			<div class="mt-4 mb-4">
 				<h3 class="text-center">정보입력</h3>
@@ -91,12 +92,6 @@
 				<input type="hidden" id="kbmpNumberFullArray2" name="kbmpNumberFullArray" value="<c:out value="${kbmmNumberFax}"/>" >
 			</div>
 			
-			<div class="col-4 mb-4">
-				<button type="button" class="btn btn-certification p-2" id="btn-certification" name="btn-certification">인증번호 요청</button>
-			</div>
-			<div class="col-8 mb-4">
-				<input type="text" class="form-control" id="certificationNumber" name="certificationNumber" placeholder="인증번호 입력"> 
-			</div>
 			<div class="d-grid gap-2 col-12 mx-auto mt-3">
 				<button class="btn btn-naver" type="button" id="btn_chk1"><strong>동의 및 인증 확인</strong></button>
 			</div>
@@ -333,13 +328,14 @@ $("#btnSubmit").on("click",function(){
  	}
  	
  	
- 	
  	/* kbmeEmailFull */
  	if(!checkNull($("#kbmeEmailFull"), $("#kbmeEmailFull").val(), "이메일을 입력하세요.")) return false;
  	if(!checkEmail($("#kbmeEmailFull"), $("#kbmeEmailFull").val(), "이메일을 형식에 맞게 입력하세요. (@를 포함한 형태)")) return false;
  	
  	alert("회원가입이 완료되었습니다!");
-
+ 	
+	$("#memberForm").attr("action", "/member/member_userInst");
+	$("#memberForm").submit();
 });
 
 $("#btnAddress").on("click",function(){

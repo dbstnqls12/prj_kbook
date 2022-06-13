@@ -26,7 +26,8 @@
 <div class="container my-wrap"><!-- d-none d-sm-block : sm사이즈에서는 보이지 않음 d-block d-sm-none : sm에서만 보임 -->
 	<div class="row mt-5 mb-4 ">
 		<div class="col-7 mt-3 mx-auto"> 
-			<img src="/resources/user/image/kb_logo11-removebg.png" style="width: 210px; height: 60px;" >
+			<!-- <img src="/resources/user/image/kb_logo11-removebg.png" style="width: 210px; height: 60px;" > -->
+			<img src="/resources/xdmin/image/SU-BOOK5.png" width="210px;" onclick="location.href='/'">
 		</div>	
 	</div>
 </div>	

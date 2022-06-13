@@ -53,22 +53,27 @@ public class MemberServiceImpl implements MemberService{
 			dto.setKbmpNumberFull(dto.getKbmpNumberFullArray()[i]);
 			dao.insertPhone(dto);
 		}
-		int j = 0;
-		for(MultipartFile multipartFile : dto.getFile0()) {
-			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-			UtilUpload.upload(multipartFile, pathModule, dto);
-			
-			dto.setTableName("kbMemberUploaded");
-			dto.setType(0);
-			dto.setDefaultNy(0);
-			dto.setSort(j);
-			dto.setDelNy(0);
-			dto.setPseq(dto.getKbmmSeq());
-			
-			dao.insertUploaded(dto);
-			j++;
-			
-		}
+//		int j = 0;
+//		for(MultipartFile multipartFile : dto.getFile0()) {
+//			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+//			UtilUpload.upload(multipartFile, pathModule, dto);
+//			
+//			dto.setTableName("kbMemberUploaded");
+//		    dto.setType(0);
+//		    dto.setDefaultNy(1);
+//		    dto.setSort(0);
+//			dto.setOriginalName("profile2.png");
+//			dto.setUuidName("profile2.png");
+//			dto.setExt("png");
+//			dto.setSize(33177);
+//			dto.setDelNy(0);
+//			dto.setPath("/resources/uploaded/common/");
+//			dto.setPseq(dto.getKbmmSeq());
+//			
+//			dao.insertUploaded(dto);
+//			j++;
+//			
+//		}
 		
 		dao.insertEmail(dto);
 		dao.insertAddress(dto);

@@ -24,6 +24,6 @@
 
 <footer>
 	<p class="text-center" style="font-size: 12px; color: #BCBCBC;">
-	Copyright ⓒ Kyobo Book Center All right reserved.&nbsp; <a href="http://www.kyobobook.co.kr/cscenter/csCenterMain.laf"> 고객센터</a>
+	Copyright ⓒ Su Book Center All right reserved.&nbsp; <a href="http://www.kyobobook.co.kr/cscenter/csCenterMain.laf"> 고객센터</a>
 </footer>
 

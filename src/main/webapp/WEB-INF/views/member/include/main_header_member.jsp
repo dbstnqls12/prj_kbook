@@ -43,7 +43,6 @@
 		            <span>${sessName}${name} 회원님 
 		            <c:forEach items="${CodeGrade}" var="itemGrade" varStatus="statusGrade">
 		           		 <c:if test="${sessGrade eq itemGrade.ifcdOrder }"><u><c:out value="${itemGrade.ifcdName}"/></u></c:if>
-		          	 <%--  <u>${sessGrade}</u> --%>
 		         	</c:forEach>
 		         	</span>
 
@@ -62,7 +61,7 @@
 			<div class="col-lg-2 my-auto d-none d-md-block">
 		        <div class="dropdown">
 		          <span class="badge bg-light text-dark" role="button" onclick="location.href='../member/login'">로그인</span> |
-		          <span class="badge bg-light text-dark" role="button">회원가입</span>
+		          <span class="badge bg-light text-dark" role="button" onclick="location.href='../member/memberForm_user'">회원가입</span>
 		        </div>
 			</div>
 		</c:if>

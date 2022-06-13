@@ -229,6 +229,7 @@
 <script type="text/javascript">
 
 var book = '<c:out value="${item.tditTitle}"/>';
+var cost = '<fmt:formatNumber value="${rtFinalPrice}"/>';
 
 function shareKakaotalk() {
     Kakao.init("6ec915718ae8d23e16c65e0f6d22a62e");      // 사용할 앱의 JavaScript 키를 설정
@@ -236,7 +237,7 @@ function shareKakaotalk() {
           objectType:"feed"
         , content : {
               title: "책 구매가 완료되었습니다!"   // 콘텐츠의 타이틀
-            , description: "구매도서 : "+"\n"+book// 콘텐츠 상세설명
+            , description: "구매도서 : "+book+"\n"+"총 금액 : "+cost// 콘텐츠 상세설명
             , imageUrl: "https://ifh.cc/g/0VkrsM.png"   // 썸네일 이미지
             , link : {
                   mobileWebUrl: "http://13.209.49.6/member/login"   // 모바일 카카오톡에서 사용하는 웹 링크 URL
@@ -246,7 +247,7 @@ function shareKakaotalk() {
         }
         , buttons : [
             {
-                  title:"도서 구매하기"    // 버튼 제목
+                  title:"수북 방문하기"    // 버튼 제목
                 , link : {
                     mobileWebUrl:"http://13.209.49.6/member/login"   // 모바일 카카오톡에서 사용하는 웹 링크 URL
                   , webUrl:"http://13.209.49.6/member/login" // PC버전 카카오톡에서 사용하는 웹 링크 URL
