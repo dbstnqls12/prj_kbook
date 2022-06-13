@@ -30,7 +30,7 @@
 	#floatMenu {
 		position: absolute;
 		right: 200px;
-		width: 310px;
+		width: 290px;
 		border: 2px solid #c8c8c8; 
 		border-radius: 15px;
 		padding-top: 10px;
@@ -506,27 +506,26 @@ $("#point1").text(finalPoint.toLocaleString());
 
 /* 쿠폰 할인 적용 */
 $(document).ready(function() {
-	   $("#coupon1").click(function(){
-	      var coupon1Price = $(this).attr('value');   
-	      $("#couponPrice").text((coupon1Price)/1000 + ",000");
-	      $("#totalPrice2").text((finalPrice-coupon1Price).toLocaleString());
-	      $('#rtFinalPrice').val(totalPrice-coupon1Price);
-	      $('#rtCoupon').val(coupon1Price); 
-	      
-	   });
-	   $("#coupon2").click(function(){
-	      var coupon2Price = $(this).attr('value');      
-	      $("#couponPrice").text((coupon2Price)/1000 + ",000");
-	      $("#totalPrice2").text((finalPrice-coupon2Price).toLocaleString());
-	      $('#rtFinalPrice').val(totalPrice-coupon2Price);
-	      $('#rtCoupon').val(coupon2Price); 
-	   });
+		$("#coupon1").click(function(){
+			var coupon1Price = $(this).attr('value');   
+			$("#couponPrice").text((coupon1Price)/1000 + ",000");
+			$("#totalPrice2").text((finalPrice-coupon1Price).toLocaleString());
+			$('#rtFinalPrice').val(totalPrice-coupon1Price);
+			$('#rtCoupon').val(coupon1Price); 
+		});
+		$("#coupon2").click(function(){
+			var coupon2Price = $(this).attr('value');      
+			$("#couponPrice").text((coupon2Price)/1000 + ",000");
+			$("#totalPrice2").text((finalPrice-coupon2Price).toLocaleString());
+			$('#rtFinalPrice').val(totalPrice-coupon2Price);
+			$('#rtCoupon').val(coupon2Price); 
+		});
 	   $("#coupon3").click(function(){
-	      var coupon3Price = $(this).attr('value');      
-	      $("#couponPrice").text((coupon3Price)/1000 + ",000");
-	      $("#totalPrice2").text((finalPrice-coupon3Price).toLocaleString());
-	      $('#rtFinalPrice').val(totalPrice-coupon3Price); 
-	      $('#rtCoupon').val(coupon3Price); 
+			var coupon3Price = $(this).attr('value');      
+			$("#couponPrice").text((coupon3Price)/1000 + ",000");
+			$("#totalPrice2").text((finalPrice-coupon3Price).toLocaleString());
+			$('#rtFinalPrice').val(totalPrice-coupon3Price); 
+			$('#rtCoupon').val(coupon3Price); 
 	   });
 	});
 	
@@ -551,7 +550,7 @@ function payment(data){
 	}
 	
 	var IMP = window.IMP; // 생략가능
-/* 	var payPrice = $("#hiddenPrice").attr('value'); */
+	var payPrice = $("#rtFinalPrice").attr('value');
 	
 	IMP.init('imp96965516');  // 가맹점 식별코드
 	// IMP.request_pay(param, callback) 결제창 호출
@@ -559,14 +558,11 @@ function payment(data){
 	    pg : 'kakaopay', //pg사 선택 (kakao, kakaopay 둘다 가능)
 	    pay_method: 'card',
 	    merchant_uid : 'iamport_test_id' + new Date().getTime(), //주문번호
-/* 	    merchant_uid : 'merchant_' + new Date().getTime(), //주문번호 */
 	    name : '<c:out value="${item.tditTitle}"/>', // 상품명
-	    amount : 'finalPrice-coupon3Price', //가격
-/* 	    amount : '<c:out value="${rtPay}"/>', */
-/* 	    amount : amount, */
+	    amount : payPrice, //가격
 	    //customer_uid 파라메터가 있어야 빌링키 발급을 시도함
 	    customer_uid : '<c:out value="${sessName}"/>' + new Date().getTime(),
-	    buyer_email : "test@naver.com",
+	    buyer_email : '<c:out value="${itemMember.kbmeEmailFull}"/>',
 	    buyer_name : '<c:out value="${sessName}"/>',
 	    buyer_tel : '<c:out value="${itemMember.kbmpNumberFull}"/>', 
 	    /* buyer_tel : "010-1234-1234", */
