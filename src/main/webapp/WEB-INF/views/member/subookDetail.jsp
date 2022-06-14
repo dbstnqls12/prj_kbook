@@ -130,7 +130,6 @@
 						<c:forEach items="${listPublisher}" var="itemPublisher" varStatus="statusPublisher">
 							<c:if test="${item.tditPublisherCd eq itemPublisher.ifpcSeq}"><p><c:out value="${itemPublisher.ifpcName}"/> | <c:out value="${item.tditPublishingDate}"></c:out></p></c:if> 
 						</c:forEach>
-					<!-- <p><i class="fa-solid fa-clover" style="color: green;"></i> 9.5 (리뷰 62개)  -->
 					<hr>
 				</div>
 				<div class="price">
@@ -138,8 +137,8 @@
 					<c:set var="listCodeDiscount" value="${CodeServiceImpl.selectListCachedCode('13')}"/>
 						<c:forEach items="${listCodeDiscount}" var="itemDiscount" varStatus="statusDiscount">
 							<c:if test="${item.tditDiscountCd eq itemDiscount.ifcdOrder}">
-							<p>판매가 : <span style="color: #F84450; font-size: 23px; font-weight: bold;"> <fmt:formatNumber value="${item.tditPrice-(itemDiscount.ifcdReferenceI2*item.tditPrice)}"/>원</span>
-							[<c:out value="${itemDiscount.ifcdName}"/> <fmt:formatNumber value="${itemDiscount.ifcdReferenceI2*item.tditPrice}"/>원 인하]</p>
+							<c:if test="${item.tditDiscountCd ne 5}"><p>판매가 : <span style="color: #F84450; font-size: 23px; font-weight: bold;"> <fmt:formatNumber value="${item.tditPrice-(itemDiscount.ifcdReferenceI2*item.tditPrice)}"/>원</span>
+							[<c:out value="${itemDiscount.ifcdName}"/> <fmt:formatNumber value="${itemDiscount.ifcdReferenceI2*item.tditPrice}"/>원 인하]</p></c:if>
 							</c:if>	
 						</c:forEach>
 	 				<p>혜택 : <br>[기본적립]  <fmt:formatNumber value="${item.tditPrice*0.05}"/> 원 적립 [5% 적립]<br>[추가적립] 5만원 이상 구매시 2,000원 추가적립 <span class="badge bg-light text-dark">안내</span>

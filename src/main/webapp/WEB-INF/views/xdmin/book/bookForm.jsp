@@ -132,7 +132,7 @@
 				</div>
 				<div class="col-md-6">
 				<c:set var="listCodeDiscount" value="${CodeServiceImpl.selectListCachedCode('13')}"/>
-					<label class="form-label">할인울</label>
+					<label class="form-label">할인율</label>
 					<select class="form-select form-select-sm mb-1" id="tditDiscountCd" name="tditDiscountCd" >
 						<option value="">::할인율::</option>
 							<c:forEach items="${listCodeDiscount}" var="itemDiscount" varStatus="statusDiscount">
@@ -153,18 +153,6 @@
 					<label class="form-label">크기</label>
 					<input type="text" class="form-control form-control-sm" id="tditSize" name="tditSize" value="<c:out value="${item.tditSize}"/>">
 				</div>
-				<div class="col-md-6">
-					<label class="form-label">판매상태</label>
-					<c:set var="listCodeState" value="${CodeServiceImpl.selectListCachedCode('14')}"/>
-					<select class="form-select form-select-sm" id="tditStateCd" name="tditStateCd">
-						<option selected>::판매상태::</option>
-						<c:forEach items="${listCodeState}" var="itemState" varStatus="statusState">
-							<option value="<c:out value="${itemState.ifcdOrder}"/>" <c:if test="${item.tditStateCd eq itemState.ifcdOrder}">selected</c:if> ><c:out value="${itemState.ifcdName}"/></option>	
-						</c:forEach>	
-					</select>
-				</div>	
-				
-				 				
 				<c:forEach items="${listKeyword}" var="itemKeyword" varStatus="statusKeyword">
 					<c:choose>
 						<c:when test="${itemKeyword.tdkwOrder eq 1}"> <c:set var="tdkwKeyWord1" value="${itemKeyword.tdkwKeyword}"/></c:when>
@@ -198,7 +186,16 @@
 						<input type="hidden" id="tdkwOrderArray4" name="tdkwOrderArray" value="5">
 						<input type="text" class="form-control form-control-sm mb-1" id="tdkwKeywordArray0" name="tdkwKeywordArray" value="<c:out value="${tdkwKeyWord5}"/>">
 				</div>
-				
+				<div class="col-md-6">
+					<label class="form-label">판매상태</label>
+					<c:set var="listCodeState" value="${CodeServiceImpl.selectListCachedCode('14')}"/>
+					<select class="form-select form-select-sm" id="tditStateCd" name="tditStateCd">
+						<option selected>::판매상태::</option>
+						<c:forEach items="${listCodeState}" var="itemState" varStatus="statusState">
+							<option value="<c:out value="${itemState.ifcdOrder}"/>" <c:if test="${item.tditStateCd eq itemState.ifcdOrder}">selected</c:if> ><c:out value="${itemState.ifcdName}"/></option>	
+						</c:forEach>	
+					</select>
+				</div>	
 				<div class="col-md-6">
 					<label for="file0" class="form-label input-file-button">책 대표이미지(image)</label>
 					<img style="width: 100px;" id="preview-image0" src="">
@@ -207,7 +204,6 @@
 						<ul id="ulFile0" class="list-group" ></ul>
 					</div>
 				</div>
-				
 				<div class="col-md-6">
 					<label for="file1" class="form-label input-file-button">책 설명(image)</label>
 					<input type="file" class="form-control form-control-sm mb-1" id="file1" name="file1" multiple onChange="upload(1,2);"style="display: none;" >
@@ -215,13 +211,10 @@
 						<ul id="ulFile1" class="list-group" ></ul>
 					</div>
 				</div>
-				
-				
 				<div class="col-md-6">
 					<label class="col-form-label">책소개(text)</label>
 		            <textarea rows="3" cols="80" id="tditBookDesc" name="tditBookDesc"><c:out value="${item.tditBookDesc}" escapeXml="false"/></textarea>
 		        </div>
-				
 				<div class="col-md-6">
 					<label class="form-label">목차</label>
 		            <textarea rows="3" cols="80" id="tditTableOfContents" name="tditTableOfContents"><c:out value="${item.tditTableOfContents}" escapeXml="false"/></textarea>
@@ -233,23 +226,6 @@
 
 				<div class="col-6 d-none d-sm-block"></div>
 
-		 		
-				<div class="col-md-3">
-					<label class="form-label">최종수정자</label>
-					<input type="text" class="form-control form-control-sm" id="inputEditP" placeholder="윤수빈" disabled>
-				</div>
-				<div class="col-md-3">
-					<label class="form-label">최종수정일</label>
-					<input type="text" class="form-control form-control-sm" id="modDateTime" name="modDateTime" value="<c:out value="${item.modDateTime}"/>" disabled>
-				</div>
-				<div class="col-md-3">
-					<label class="form-label">최초등록자</label>
-					<input type="text" class="form-control form-control-sm" id="inputRegP" placeholder="윤수빈" disabled>
-				</div>
-				<div class="col-md-3">
-					<label class="form-label">최초등록일</label>
-					<input type="text" class="form-control form-control-sm" id="regDateTime" name="regDateTime" value="<c:out value="${item.regDateTime}"/>" disabled>
-				</div>
 			</form>
 			<div class="col-mb-3 mt-3">	
 				<div class="float-start"><button type="button" class="btn btn-danger btn-sm float-start"><i class="fas fa-trash"></i></button></div>

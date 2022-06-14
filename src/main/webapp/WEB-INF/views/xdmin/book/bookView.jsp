@@ -161,6 +161,21 @@
 						</c:forEach>	
 					</select>
 				</div>	
+
+				
+				<div class="col-md-6">
+					<label class="col-form-label">책소개(text)</label>
+		            <textarea rows="3" cols="80" id="tditBookDesc" name="tditBookDesc"><c:out value="${item.tditBookDesc}" escapeXml="false"/></textarea>
+		        </div>
+				<div class="col-md-6">
+					<label class="form-label">목차</label>
+		            <textarea rows="3" cols="80" id="tditTableOfContents" name="tditTableOfContents"><c:out value="${item.tditTableOfContents}" escapeXml="false"/></textarea>
+				</div>
+				<div class="col-md-6">
+					<label class="form-label">책속으로(text)</label>
+		            <textarea rows="3" cols="80" id="tditBookDesc2" name="tditBookDesc2"><c:out value="${item.tditBookDesc2}" escapeXml="false"/></textarea>
+				</div>
+				<div class="col-6 d-none d-sm-block"></div>
 				<div class="col-md-6">
 					<label for="file0" class="form-label input-file-button d-block">책 대표이미지(image)</label>
 					<c:forEach items="${listUploaded}" var="itemUploaded" varStatus="statusUploaded">
@@ -183,20 +198,6 @@
 					</c:forEach>
 				</div>
 				
-				<div class="col-md-6">
-					<label class="col-form-label">책소개(text)</label>
-		            <textarea rows="3" cols="80" id="tditBookDesc" name="tditBookDesc"><c:out value="${item.tditBookDesc}" escapeXml="false"/></textarea>
-		        </div>
-				<div class="col-md-6">
-					<label class="form-label">목차</label>
-		            <textarea rows="3" cols="80" id="tditTableOfContents" name="tditTableOfContents"><c:out value="${item.tditTableOfContents}" escapeXml="false"/></textarea>
-				</div>
-				<div class="col-md-6">
-					<label class="form-label">책속으로(text)</label>
-		            <textarea rows="3" cols="80" id="tditBookDesc2" name="tditBookDesc2"><c:out value="${item.tditBookDesc2}" escapeXml="false"/></textarea>
-				</div>
-
-				<div class="col-6 d-none d-sm-block"></div>
 
 				<div class="col-md-3">
 					<label class="form-label">최종수정자</label>
