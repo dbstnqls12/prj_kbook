@@ -170,7 +170,7 @@
 						</c:forEach>	
 					</select>
 				</div>	
-				<div class="col-md-6">
+<!-- 				<div class="col-md-6">
 					<label for="file0" class="form-label input-file-button">책 대표이미지(image)</label>
 					<input type="file" class="form-control form-control-sm mb-1" id="file0" name="file0" multiple onChange="upload(0,2);"style="display: none;" >
 					<div class="addScroll">
@@ -184,7 +184,7 @@
 					<div class="addScroll">
 						<ul id="ulFile1" class="list-group" ></ul>
 					</div>
-				</div>
+				</div> -->
 <%-- 				<div class="col-md-6">
 					<label for="file0" class="form-label input-file-button">책 대표이미지(image)</label>
 					<input type="file" class="form-control form-control-sm mb-1" id="file0" name="file0" multiple onChange="upload(0,2);"style="display: none;" >
@@ -227,22 +227,6 @@
 				<div class="col-6 d-none d-sm-block"></div>
 
 		 		
-				<div class="col-md-3">
-					<label class="form-label">최종수정자</label>
-					<input type="text" class="form-control form-control-sm" id="inputEditP" placeholder="윤수빈" disabled>
-				</div>
-				<div class="col-md-3">
-					<label class="form-label">최종수정일</label>
-					<input type="text" class="form-control form-control-sm" id="modDateTime" name="modDateTime" value="<c:out value="${rt.modDateTime}"/>" disabled>
-				</div>
-				<div class="col-md-3">
-					<label class="form-label">최초등록자</label>
-					<input type="text" class="form-control form-control-sm" id="inputRegP" placeholder="윤수빈" disabled>
-				</div>
-				<div class="col-md-3">
-					<label class="form-label">최초등록일</label>
-					<input type="text" class="form-control form-control-sm" id="regDateTime" name="regDateTime" value="<c:out value="${rt.regDateTime}"/>" disabled>
-				</div>
 			</form>
 			<div class="col-mb-3 mt-3">	
 				<div class="float-start">

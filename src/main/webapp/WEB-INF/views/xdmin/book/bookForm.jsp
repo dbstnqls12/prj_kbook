@@ -110,9 +110,7 @@
 					<select class="form-select form-select-sm" id="tditItemCate2" name="tditItemCate2" >
 						<option value="">::카테고리2::</option>
 							<c:forEach items="${listCateDepth2}" var="item2" varStatus="status2">
-						<%-- 	<c:if test="${item1.ifctSeq eq item2.ifctParents}">  --%>
 								<option value="<c:out value="${item2.ifctSeq}"/>" <c:if test="${item.tditItemCate2 eq item2.ifctSeq && item.tditItemCate eq item2.ifctParents}">selected</c:if> ><c:out value="${item2.ifctName}"/></option>		
-						<%-- 	</c:if> --%>
 							</c:forEach>	
 					</select>
 				</div>
@@ -190,13 +188,13 @@
 					<label class="form-label">판매상태</label>
 					<c:set var="listCodeState" value="${CodeServiceImpl.selectListCachedCode('14')}"/>
 					<select class="form-select form-select-sm" id="tditStateCd" name="tditStateCd">
-						<option selected>::판매상태::</option>
+						<option value="">::판매상태::</option>
 						<c:forEach items="${listCodeState}" var="itemState" varStatus="statusState">
 							<option value="<c:out value="${itemState.ifcdOrder}"/>" <c:if test="${item.tditStateCd eq itemState.ifcdOrder}">selected</c:if> ><c:out value="${itemState.ifcdName}"/></option>	
 						</c:forEach>	
 					</select>
 				</div>	
-				<div class="col-md-6">
+<!-- 				<div class="col-md-6">
 					<label for="file0" class="form-label input-file-button">책 대표이미지(image)</label>
 					<img style="width: 100px;" id="preview-image0" src="">
 					<input type="file" class="form-control form-control-sm mb-1" id="file0" name="file0" multiple onChange="upload(0,2);"style="display: none;" >
@@ -210,7 +208,7 @@
 					<div class="addScroll">
 						<ul id="ulFile1" class="list-group" ></ul>
 					</div>
-				</div>
+				</div> -->
 				<div class="col-md-6">
 					<label class="col-form-label">책소개(text)</label>
 		            <textarea rows="3" cols="80" id="tditBookDesc" name="tditBookDesc"><c:out value="${item.tditBookDesc}" escapeXml="false"/></textarea>
@@ -309,10 +307,10 @@
 	    }
 	}
 	// input file에 change 이벤트 부여 (파일 미리보기)
-	const inputImage = document.getElementById("file0")
+/* 	const inputImage = document.getElementById("file0")
 	inputImage.addEventListener("change", e => {
 	    readImage(e.target)
-	})
+	}) */
 	
 
 
@@ -322,6 +320,21 @@
 	};
 
 	$("#btn-add").on("click", function(){
+		
+		if(!checkNull($("#tditTitle"), $("#tditTitle").val(), "책제목을 입력하세요.")) return false;
+		if(!checkNull($("#tditPublishingDate"), $("#tditPublishingDate").val(), "출판일을 입력하세요.")) return false;
+		if(!checkNull($("#tdatAuthorCdArray0"), $("#tdatAuthorCdArray0").val(), "저자명을 선택하세요.")) return false;
+		if(!checkNull($("#tditItemCate"), $("#tditItemCate").val(), "카테고리1을 선택하세요.")) return false;
+		if(!checkNull($("#tditItemCate2"), $("#tditItemCate2").val(), "카테고리2를 선택하세요.")) return false;
+		if(!checkNull($("#tditPublisherCd"), $("#tditPublisherCd").val(), "출판사를 선택하세요.")) return false;
+		if(!checkNull($("#tditPrice"), $("#tditPrice").val(), "가격을 입력하세요.")) return false;
+		if(!checkNull($("#tditDiscountCd"), $("#tditDiscountCd").val(), "할인율울 선택하세요.")) return false;
+		if(!checkNull($("#tditIsbn"), $("#tditIsbn").val(), "ISBN을 입력하세요.")) return false;
+		if(!checkNull($("#tditPage"), $("#tditPage").val(), "페이지 정보를 입력하세요.")) return false;
+		if(!checkNull($("#tditSize"), $("#tditSize").val(), "사이즈 정보를 입력하세요.")) return false;
+		if(!checkNull($("#tdkwKeywordArray0"), $("#tdkwKeywordArray0").val(), "키워드를 최소 1개 최대 5개까지 입력해주세요.")) return false;
+		if(!checkNull($("#tditStateCd"), $("#tditStateCd").val(), "판매상태를 입력해주세요.")) return false;
+		
 		
 		$("#bookForm").attr("action", "/xdmin/book/bookInst");
 		$("#bookForm").submit();
