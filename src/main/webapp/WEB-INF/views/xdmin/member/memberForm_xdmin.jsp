@@ -47,7 +47,7 @@
 	<div class="row">
 		<div class="mb-3"><h4 style="font-weight: bold;">회원가입</h4></div>
 			<div class="container ">
-			<form action="member/member_userInst" method="post" id="memberForm" name="memberForm" class="row g-3">
+			<form action="/xdmin/member/memberInst" method="post" id="memberForm" name="memberForm" class="row g-3">
 				<input type="hidden" id="thisPage" name="thisPage"  value="<c:out value="${vo.thisPage}"/>">
 				<input type="hidden" id="kbmmSeq" name="kbmmSeq" value="<c:out value="${vo.kbmmSeq}"/>">
 				<input type="hidden" id="shKbmmDelNy" name="shKbmmDelNy" value="<c:out value="${vo.shKbmmDelNy}"/>">
@@ -149,22 +149,22 @@
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaLat" name="kbmaLat" placeholder="kbmaLat"> 
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaLng" name="kbmaLng" placeholder="kbmaLng"> 
 				</div>
-				<div class="col-md-6">
+<!-- 				<div class="col-md-6">
 					<label for="file0" class="form-label input-file-button">이미지 파일</label>
 					<input type="file" class="form-control form-control-sm mb-1" id="file0" name="file0" multiple onChange="upload(0,2);"style="display: none;" >
 					<div class="addScroll">
 						<ul id="ulFile0" class="list-group" ></ul>
 					</div>
-				</div>
+				</div> -->
 				<div class="col-md-6">
 					<label class="form-label">주소 (국외전용)</label>
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaZipcode_abroad" name="kbmaZipcode_abroad" placeholder="우편번호">
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1_abroad" name="kbmaAddress1_abroad" placeholder="기본주소">
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2_abroad" name="kbmaAddress2_abroad" placeholder="상세주소">
 				</div>
-				<div class="col-6 d-none d-sm-block"></div><!-- 줄바꿈 -->
+				<!-- <div class="col-6 d-none d-sm-block"></div> --><!-- 줄바꿈 -->
 				<div class="col-md-6">
-					<label class="col-form-label">교보문고 이용약관<span style="color: red;">(필수)</span></label>
+					<label class="col-form-label">수분문고 이용약관<span style="color: red;">(필수)</span></label>
 					<div class="col-md-6">
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="radio" name="kbmmUseConsentNy_c" id="kbmmUseConsentNy_cy" value="1" >
@@ -391,10 +391,10 @@ $("#btn-add").on("click", function(){
  	if(!checkDob($("#kbmmDob"), $("#kbmmDob").val(), "생년월일을 8자리 숫자로 입력 가능해주세요.")) return false;	
 	
 	/* kbmmGenderCd, kbmpTelecomCd*/
-/* 	if(!checkNull($("#kbmmGenderCd"), $("#kbmmGenderCd").val(), "성별을 선택하세요.")) return false;
-	if(!checkNull($("#kbmpTelecomCd"), $("#kbmpTelecomCd").val(), "통신사를 선택하세요.")) return false;
-	if(!checkNull($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호를 입력하세요.")) return false;
- 	if(!checkOnlyNumber($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호는 숫자만 입력 가능합니다.")) return false; */
+ 	if(!checkNull($("#kbmmGenderCd"), $("#kbmmGenderCd").val(), "성별을 선택하세요.")) return false;
+	if(!checkNull($("#kbmpTelecomCdArray0"), $("#kbmpTelecomCdArray0").val(), "통신사를 선택하세요.")) return false;
+	if(!checkNull($("#kbmpNumberFullArray0"), $("#kbmpNumberFullArray0").val(), "휴대폰번호를 입력하세요.")) return false;
+ 	if(!checkOnlyNumber($("#kbmpNumberFullArray0"), $("#kbmpNumberFullArray0").val(), "휴대폰번호는 숫자만 입력 가능합니다.")) return false; 
  	/* if(!checkNumber($("#kbmpNumberFull"), $("#kbmpNumberFull").val(), "휴대폰번호를 11자리로 입력해주세요.")) return false;	  */
  	
  	/* kbmeEmailFull */
@@ -420,7 +420,7 @@ $("#btn-add").on("click", function(){
 		return false;
 	}
 	
-	$("#memberForm").attr("action", "/member/member_userInst");
+	$("#memberForm").attr("action", "/xdmin/member/memberInst");
 	$("#memberForm").submit();
 
 	
