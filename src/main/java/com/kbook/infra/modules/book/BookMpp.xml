@@ -157,6 +157,7 @@
 	WHERE 1=1 	
 		AND b.tdatDefaultNy = 1		
 		AND c.defaultNy = 1		
+		AND a.tditDelNy = 1		
 	ORDER BY RAND()
 	LIMIT 1
 </select>
@@ -453,6 +454,8 @@
 		AND tdkwOrder = #{tdkwOrder}
 </update>
 
-
+<update id="updateDelete">
+	UPDATE tradItem SET tditDelNy = 1 WHERE 1=1 AND tditSeq=#{tditSeq}
+</update>
 
 </mapper>    

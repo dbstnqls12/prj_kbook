@@ -25,6 +25,7 @@ public interface BookService {
 	
 	public int insert(Book dto) throws Exception;
 	public int update(Book dto) throws Exception;
+	public int updateDelete(BookVo vo) throws Exception;
 	
 //	결제정보
 	public Book selectOneMember(BookVo vo) throws Exception;

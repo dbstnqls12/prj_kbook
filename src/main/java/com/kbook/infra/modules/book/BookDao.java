@@ -47,6 +47,7 @@ public class BookDao {
 	public int update(Book dto) {return sqlSession.update(namespace +".update", dto);}
 	public int updateKeyword(Book dto) {return sqlSession.update(namespace +".updateKeyword", dto);}
 	public int updateUploaded(Book dto) {return sqlSession.update(namespace +".updateUploaded", dto);}
+	public int updateDelete(BookVo vo) {return sqlSession.update(namespace +".updateDelete", vo);}
 
 //	결제정보
 	public Book selectOneMember(BookVo vo) {return sqlSession.selectOne(namespace +".selectOneMember", vo);}

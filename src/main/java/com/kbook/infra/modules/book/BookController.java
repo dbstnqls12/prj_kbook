@@ -232,4 +232,30 @@ public class BookController {
 		
 		return "redirect:/xdmin/book/bookView";
 	}
+	@RequestMapping(value = "xdmin/book/updateDelete")
+	public String updateDelete(BookVo vo, Book dto, Model model, RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.updateDelete(vo);
+
+		vo.setTditSeq(dto.getTditSeq());
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/xdmin/book/bookList";
+		
+	}
+	@RequestMapping(value = "/xdmin/book/updateDeleteMulti")
+	public String updateDeleteMulti(BookVo vo, Book dto, Model model, RedirectAttributes redirectAttributes) throws Exception {
+		
+		  String[] checkboxSeqArray = vo.getCheckboxSeqArray();	
+		  
+		  for(String checkboxSeq : checkboxSeqArray) {
+			  vo.setTditSeq(checkboxSeq);
+			  service.updateDelete(vo); 
+		  }
+		 
+		  vo.setTditSeq(dto.getTditSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/xdmin/book/bookList";
+	}
 }
