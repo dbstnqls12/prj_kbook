@@ -157,7 +157,7 @@
 	WHERE 1=1 	
 		AND b.tdatDefaultNy = 1		
 		AND c.defaultNy = 1		
-		AND a.tditDelNy = 1		
+		AND a.tditDelNy = 0		
 	ORDER BY RAND()
 	LIMIT 1
 </select>
@@ -238,7 +238,6 @@
 	WHERE 1=1
 		AND tditSeq = #{tditSeq}	
 </select>
-
 
 <!-- 결제정보에 회원정보 가져오기 -->
 <select id="selectOneMember" resultMap="resultMapObj">

@@ -57,7 +57,7 @@ public class MemberController {
 
 		if (count != 0) {
 			List<Member> list = service.selectList(vo);
-			model.addAttribute("list", list);
+			model.addAttribute("list", list);	//가져온 정보를 jsp로 던져줘야됨(jsp에서 쓰는 거, 59번에서 불러온 list)
 		} else {
 			// by pass
 		}

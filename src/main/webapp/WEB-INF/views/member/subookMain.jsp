@@ -165,7 +165,6 @@
 					</c:forEach> 
 					<p class="card-text" id="todaySubTitle"><c:out value="${item.tditSubTitle}"/><p>
 					<a href="javascript:goInfo(<c:out value="${item.tditSeq}"/>)" class="btn btn-outline-secondary w-100">바로가기</a>
-<!-- 					<a href=" /visitor/kyobo_VbookInfo" class="btn btn-outline-secondary w-100">바로가기</a> -->
 				</div>
 			</c:forEach>
 				
