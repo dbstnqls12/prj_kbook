@@ -46,6 +46,12 @@
 				<input type="hidden" id="shDateStart" name="shDateStart"  value="<c:out value="${vo.shDateStart}"/>">
 				<input type="hidden" id="shDateEnd" name=shDateEnd  value="<c:out value="${vo.shDateEnd}"/>">
 				<div class="col-md-6 col-12">
+					<label class="form-label">프로필</label>
+					<c:if test="${item.path eq null}"><p style="font-style: italic;">프로필 사진이 없습니다!</p></c:if>
+					<c:if test="${item.path ne null}"><img src="<c:out value="${item.path}"/><c:out value="${item.uuidName}"/>" class="img-thumbnail" style="width: 100px; height: 100px;"></c:if>
+				</div>
+				<div class="col-6 d-none d-sm-block"></div><!-- 줄바꿈 -->
+				<div class="col-md-6 col-12">
 					<label class="form-label">이름</label>
 					<input type="text" class="form-control form-control-sm" id="kbmmName" name="kbmmName" value="<c:out value="${item.kbmmName}"/>">
 				</div>

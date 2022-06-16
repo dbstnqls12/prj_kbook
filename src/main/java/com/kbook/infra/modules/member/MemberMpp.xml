@@ -103,10 +103,13 @@
 			,d.kbmaLat
 			,d.kbmaLng
 			,d.kbmaDefaultNy
+			,e.path
+			,e.uuidName
 		FROM	
 			kbMember a
 			left join kbMemberEmail c on c.kbmmSeq = a.kbmmSeq
 			left join kbMemberAddress d on d.kbmmSeq = a.kbmmSeq
+			left join kbMemberUploaded e on e.pseq= a.kbmmSeq
 		WHERE 1=1
 			AND a.kbmmSeq=#{kbmmSeq}
 			
@@ -314,6 +317,22 @@
 	WHERE 1=1
 		AND kbmmSeq=#{kbmmSeq}
 	</update>	
+
+	<update id="updateUploaded">
+		UPDATE ${tableName} SET
+			type = #{type}
+			,defaultNy = #{defaultNy} 
+			,sort = #{sort}
+			,originalName = #{originalName}
+			,uuidName = #{uuidName}
+			,ext = #{ext}
+			,size = #{size}
+			,path = #{path}
+			,delNy = #{delNy}
+		WHERE 1=1
+			AND pseq = #{pseq}
+			AND type = #{type}
+	</update>
 
 	<update id="updateDelete">
 		UPDATE kbMember SET kbmmDelNy = 1 WHERE 1=1 AND kbmmSeq=#{kbmmSeq}
