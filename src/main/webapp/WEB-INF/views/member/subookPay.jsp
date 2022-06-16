@@ -179,7 +179,7 @@
 							<table class="table mb-4 mx-auto">
 								<tr>
 									<th class="w-25">이름</th>
-									<td><input type="text" class="form-control form-control-sm" id="rtName" name="rtName" ></td>
+									<td><input type="text" class="form-control form-control-sm" id="rtName" name="rtName" value="<c:out value="${sessName}"/>"></td>
 								</tr>
 								<tr>
 									<th>휴대폰번호</th>
