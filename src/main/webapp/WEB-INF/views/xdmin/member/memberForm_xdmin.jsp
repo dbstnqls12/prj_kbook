@@ -153,7 +153,7 @@
 					<label for="file0" class="form-label input-file-button">이미지 파일</label>
 					<input type="file" class="form-control form-control-sm mb-1" id="file0" name="file0" multiple onChange="upload(0,2);"style="display: none;" >
 					<div class="addScroll">
-						<ul id="ulFile0" class="list-group" ></ul>
+						<ul id="ulFile0" class="list-group"></ul>
 					</div>
 				</div>
 				<div class="col-md-6">

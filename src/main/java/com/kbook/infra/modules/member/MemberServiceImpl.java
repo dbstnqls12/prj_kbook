@@ -3,6 +3,7 @@ package com.kbook.infra.modules.member;
 import java.util.List;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -55,7 +56,8 @@ public class MemberServiceImpl implements MemberService{
 		}
 		int j = 0;
 		for(MultipartFile multipartFile : dto.getFile0()) {
-			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+//			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+			String pathModule = "member";
 			UtilUpload.upload(multipartFile, pathModule, dto);
 			
 			dto.setTableName("kbMemberUploaded");
@@ -64,17 +66,6 @@ public class MemberServiceImpl implements MemberService{
 			dto.setSort(j);
 			dto.setDelNy(0);
 			dto.setPseq(dto.getKbmmSeq());
-//			dto.setTableName("kbMemberUploaded");
-//		    dto.setType(0);
-//		    dto.setDefaultNy(1);
-//		    dto.setSort(0);
-//			dto.setOriginalName("profile2.png");
-//			dto.setUuidName("profile2.png");
-//			dto.setExt("png");
-//			dto.setSize(33177);
-//			dto.setDelNy(0);
-//			dto.setPath("/resources/uploaded/common/");
-//			dto.setPseq(dto.getKbmmSeq());
 			
 			dao.insertUploaded(dto);
 			j++;

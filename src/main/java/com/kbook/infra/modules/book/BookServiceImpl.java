@@ -92,39 +92,40 @@ public class BookServiceImpl implements BookService {
 			dao.updateKeyword(dto);
 		}
 		
-//		int j = 0;
-//		for(MultipartFile multipartFile : dto.getFile0()) {
+		int j = 0;
+		for(MultipartFile multipartFile : dto.getFile0()) {
+			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+			UtilUpload.uploadBook(multipartFile, pathModule, dto);
+			
+			dto.setTableName("tradItemUploaded");
+			dto.setType(0);
+			dto.setDefaultNy(1);
+			dto.setSort(j);
+			dto.setDelNy(0);
+			dto.setPseq(dto.getTditSeq());
+			
+			dao.updateUploaded(dto);
+			j++;
+			
+		}
+		
+		j = 0;
+		for(MultipartFile multipartFile : dto.getFile1()) {
 //			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-//			UtilUpload.uploadBook(multipartFile, pathModule, dto);
-//			
-//			dto.setTableName("tradItemUploaded");
-//			dto.setType(0);
-//			dto.setDefaultNy(1);
-//			dto.setSort(j);
-//			dto.setDelNy(0);
-//			dto.setPseq(dto.getTditSeq());
-//			
-//			dao.updateUploaded(dto);
-//			j++;
-//			
-//		}
-//		
-//		j = 0;
-//		for(MultipartFile multipartFile : dto.getFile1()) {
-//			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-//			UtilUpload.uploadBook(multipartFile, pathModule, dto);
-//			
-//			dto.setTableName("tradItemUploaded");
-//			dto.setType(1);
-//			dto.setDefaultNy(0);
-//			dto.setSort(j);
-//			dto.setDelNy(0);
-//			dto.setPseq(dto.getTditSeq());
-//			
-//			dao.updateUploaded(dto);
-//			j++;
-//			
-//		}
+			String pathModule = "book";
+			UtilUpload.uploadBook(multipartFile, pathModule, dto);
+			
+			dto.setTableName("tradItemUploaded");
+			dto.setType(1);
+			dto.setDefaultNy(0);
+			dto.setSort(j);
+			dto.setDelNy(0);
+			dto.setPseq(dto.getTditSeq());
+			
+			dao.updateUploaded(dto);
+			j++;
+			
+		}
 		
 		return 1;
 	}
@@ -153,40 +154,40 @@ public class BookServiceImpl implements BookService {
 
 		
 		
-//		int j = 0;
-//		for(MultipartFile multipartFile : dto.getFile0()) {
-//			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-//			UtilUpload.uploadBook(multipartFile, pathModule, dto);
-//			
-//			dto.setTableName("tradItemUploaded");
-//			dto.setType(0);
-//			dto.setDefaultNy(1);
-//			dto.setSort(j);
-//			dto.setDelNy(0);
-//			dto.setPseq(dto.getTditSeq());
-//			
-//			dao.insertUploaded(dto);
-//			j++;
-//			
-//		}
-//		
-//		j = 0;
-//		for(MultipartFile multipartFile : dto.getFile1()) {
-//			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-//			UtilUpload.uploadBook(multipartFile, pathModule, dto);
-//			
-//			dto.setTableName("tradItemUploaded");
-//			dto.setType(1);
-//			dto.setDefaultNy(0);
-//			dto.setSort(j);
-//			dto.setDelNy(0);
-//			dto.setPseq(dto.getTditSeq());
-//			
-//			dao.insertUploaded(dto);
-//			
-//			j++;
-//			
-//		}
+		int j = 0;
+		for(MultipartFile multipartFile : dto.getFile0()) {
+			String pathModule = "book";
+			UtilUpload.uploadBook(multipartFile, pathModule, dto);
+			
+			dto.setTableName("tradItemUploaded");
+			dto.setType(0);
+			dto.setDefaultNy(1);
+			dto.setSort(j);
+			dto.setDelNy(0);
+			dto.setPseq(dto.getTditSeq());
+			
+			dao.insertUploaded(dto);
+			j++;
+			
+		}
+		
+		j = 0;
+		for(MultipartFile multipartFile : dto.getFile1()) {
+			String pathModule = "book";
+			UtilUpload.uploadBook(multipartFile, pathModule, dto);
+			
+			dto.setTableName("tradItemUploaded");
+			dto.setType(1);
+			dto.setDefaultNy(0);
+			dto.setSort(j);
+			dto.setDelNy(0);
+			dto.setPseq(dto.getTditSeq());
+			
+			dao.insertUploaded(dto);
+			
+			j++;
+			
+		}
 		
 		return 1;
 	}

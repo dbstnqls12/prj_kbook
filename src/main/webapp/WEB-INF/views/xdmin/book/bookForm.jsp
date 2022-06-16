@@ -194,9 +194,8 @@
 						</c:forEach>	
 					</select>
 				</div>	
-<!-- 				<div class="col-md-6">
+				<div class="col-md-6">
 					<label for="file0" class="form-label input-file-button">책 대표이미지(image)</label>
-					<img style="width: 100px;" id="preview-image0" src="">
 					<input type="file" class="form-control form-control-sm mb-1" id="file0" name="file0" multiple onChange="upload(0,2);"style="display: none;" >
 					<div class="addScroll">
 						<ul id="ulFile0" class="list-group" ></ul>
@@ -208,7 +207,7 @@
 					<div class="addScroll">
 						<ul id="ulFile1" class="list-group" ></ul>
 					</div>
-				</div> -->
+				</div>
 				<div class="col-md-6">
 					<label class="col-form-label">책소개(text)</label>
 		            <textarea rows="3" cols="80" id="tditBookDesc" name="tditBookDesc"><c:out value="${item.tditBookDesc}" escapeXml="false"/></textarea>
