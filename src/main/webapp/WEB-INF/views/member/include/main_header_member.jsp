@@ -54,6 +54,9 @@
 		          	<c:if test="${not empty sessSeq}">
 						<span class="badge bg-light text-dark" role="button" id="btnLogout">로그아웃</span>
 					</c:if>
+		          	<c:if test="${sessSeq eq '0'}">
+						<span class="badge bg-warning text-dark"id="kakao">카카오로그인</span>
+					</c:if>
 		        </div>
 			</div>
 		</c:if>

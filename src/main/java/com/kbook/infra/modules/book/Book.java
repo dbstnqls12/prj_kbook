@@ -91,6 +91,11 @@ public class Book {
 	private String rtPoint;
 	private Date rtDoA;
 	private String rtPayment;
+	private String rtAddress1;
+	private String rtAddress2;
+	private String rtZipcode;
+	private String rtName;
+	private String rtNumber;
 	
 	
 	private String kbmmSeq;
@@ -615,6 +620,36 @@ public class Book {
 	}
 	public void setRtPayment(String rtPayment) {
 		this.rtPayment = rtPayment;
+	}
+	public String getRtAddress1() {
+		return rtAddress1;
+	}
+	public void setRtAddress1(String rtAddress1) {
+		this.rtAddress1 = rtAddress1;
+	}
+	public String getRtAddress2() {
+		return rtAddress2;
+	}
+	public void setRtAddress2(String rtAddress2) {
+		this.rtAddress2 = rtAddress2;
+	}
+	public String getRtZipcode() {
+		return rtZipcode;
+	}
+	public void setRtZipcode(String rtZipcode) {
+		this.rtZipcode = rtZipcode;
+	}
+	public String getRtName() {
+		return rtName;
+	}
+	public void setRtName(String rtName) {
+		this.rtName = rtName;
+	}
+	public String getRtNumber() {
+		return rtNumber;
+	}
+	public void setRtNumber(String rtNumber) {
+		this.rtNumber = rtNumber;
 	}
 
 	

@@ -77,7 +77,6 @@
 	
 
 <!-- 본문 s-->
-<!-- 본문 s-->
 <div class="container">
 <form  action="/member/subookEnd" id="bookPurchase" name="bookPurchase" method="post">
 <input type="hidden" id="tditSeq" name="tditSeq" value="<c:out value="${item.tditSeq}"/>">
@@ -88,77 +87,121 @@
 	<div class="col-md-9">
 		<div class="px-0 mt-4">
 			<h3 style="font-weight: bold; color: darkblue;" class="mb-4">주문/결제</h3>
-				<div style="width: 90%;" class="mx-auto">
-				<p class="mb-2" style="font-weight: bold;  font-size: 23px;"> 주문자</p>
-					<table class="table mb-4">
-						<tr>
-							<td><c:out value="${itemMember.kbmmName}"/></td>
-							<td>
-								<c:set var="numberPhone" value="${itemMember.kbmpNumberFull}"/>
-				                	<c:choose>
-				                		<c:when test="${fn:length(numberPhone) eq 10 }">
-											<c:out value="${fn:substring(numberPhone,0,3)}"/>
-											- <c:out value="${fn:substring(numberPhone,3,6)}"/>
-											- <c:out value="${fn:substring(numberPhone,6,10)}"/>
-				                		</c:when>
-				                		<c:otherwise>
-											<c:out value="${fn:substring(numberPhone,0,3)}"/>
-											- <c:out value="${fn:substring(numberPhone,3,7)}"/>
-											- <c:out value="${fn:substring(numberPhone,7,11)}"/>
-				                		</c:otherwise>
-				               		</c:choose>
-							</td>
-							<td><c:out value="${itemMember.kbmeEmailFull}"/></td>
-						</tr>
-					</table>
-				</div>
-				<div style="width: 90%;" class="mx-auto mt-5">
-					<p class="mb-4" style="font-weight: bold;  font-size: 23px;"> 배송정보</p>
-					<ul class="nav nav-tabs" id="myTab" role="tablist">
-						<li class="nav-item" role="presentation">
-							<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">국내배송</button>
-						</li>
-						<li class="nav-item" role="presentation">
-							<button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">해외배송</button>
-						</li>
-					</ul>
-					<div class="tab-content" id="myTabContent">
-					<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-						<table class="table mb-4 mx-auto">
+			<!-- 일반로그인 -->
+				<c:if test="${sessSeq ne '0'}">
+					<div style="width: 90%;" class="mx-auto">
+					<p class="mb-2" style="font-weight: bold;  font-size: 23px;"> 주문자</p>
+						<table class="table mb-4">
 							<tr>
-								<th class="w-25">이름</th>
-								<td><input type="text" class="form-control form-control-sm" id="kbmmName" name="kbmmName" value="${itemMember.kbmmName}"></td>
-							</tr>
-							<tr>
-							<c:set var="numberPhone" value="${itemMember.kbmpNumberFull}"/>	
-								<th>휴대폰번호</th>
-								<!-- <td><input type="text" class="form-control form-control-sm" id="phone" name="phone" value=""></td> -->
+								<td><c:out value="${itemMember.kbmmName}"/></td>
 								<td>
-			                	<c:choose>
-			                		<c:when test="${fn:length(numberPhone) eq 10 }">
-										<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" value="<c:out value="${fn:substring(numberPhone,0,3)}"/> - <c:out value="${fn:substring(numberPhone,3,6)}"/> - <c:out value="${fn:substring(numberPhone,6,10)}"/>">
-			                		</c:when>
-			                		<c:otherwise>
-			                		<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" value="<c:out value="${fn:substring(numberPhone,0,3)}"/> - <c:out value="${fn:substring(numberPhone,3,7)}"/> - <c:out value="${fn:substring(numberPhone,7,11)}"/>">
-			                		</c:otherwise>
-			               		</c:choose>
+									<c:set var="numberPhone" value="${itemMember.kbmpNumberFull}"/>
+					                	<c:choose>
+					                		<c:when test="${fn:length(numberPhone) eq 10 }">
+												<c:out value="${fn:substring(numberPhone,0,3)}"/>
+												- <c:out value="${fn:substring(numberPhone,3,6)}"/>
+												- <c:out value="${fn:substring(numberPhone,6,10)}"/>
+					                		</c:when>
+					                		<c:otherwise>
+												<c:out value="${fn:substring(numberPhone,0,3)}"/>
+												- <c:out value="${fn:substring(numberPhone,3,7)}"/>
+												- <c:out value="${fn:substring(numberPhone,7,11)}"/>
+					                		</c:otherwise>
+					               		</c:choose>
 								</td>
-							</tr>
-							<tr>
-								<th>주소</th>
-								<td><div class="input-group">
-									<input class="form-control form-control-sm mb-1" type="text" id="kbmaZipcode" name="kbmaZipcode" placeholder="우편번호" value="${itemMember.kbmaZipcode}" readonly>
-									<button class="btn btn-outline-secondary btn-sm mb-1" type="button" id="btnAddress"><i class= "fas fa-search"></i></button>
-									<button class="btn btn-outline-secondary btn-sm mb-1" type="button" id="btnClear"><i class= "fas fa-solid fa-x"></i></button>
-								</div>
-								<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1" name="kbmaAddress1" value="${itemMember.kbmaAddress1}" placeholder="기본주소"> 
-								<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2" name="kbmaAddress2" value="${itemMember.kbmaAddress2}" placeholder="상세주소"> </td>
+								<td><c:out value="${itemMember.kbmeEmailFull}"/></td>
 							</tr>
 						</table>
 					</div>
-					<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+					<div style="width: 90%;" class="mx-auto mt-5">
+						<p class="mb-4" style="font-weight: bold;  font-size: 23px;"> 배송정보</p>
+						<ul class="nav nav-tabs" id="myTab" role="tablist">
+							<li class="nav-item" role="presentation">
+								<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">국내배송</button>
+							</li>
+							<li class="nav-item" role="presentation">
+								<button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">해외배송</button>
+							</li>
+						</ul>
+						<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+							<table class="table mb-4 mx-auto">
+								<tr>
+									<th class="w-25">이름</th>
+									<td><input type="text" class="form-control form-control-sm" id="kbmmName" name="kbmmName" value="${itemMember.kbmmName}"></td>
+								</tr>
+								<tr>
+								<c:set var="numberPhone" value="${itemMember.kbmpNumberFull}"/>	
+									<th>휴대폰번호</th>
+									<!-- <td><input type="text" class="form-control form-control-sm" id="phone" name="phone" value=""></td> -->
+									<td>
+				                	<c:choose>
+				                		<c:when test="${fn:length(numberPhone) eq 10 }">
+											<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" value="<c:out value="${fn:substring(numberPhone,0,3)}"/> - <c:out value="${fn:substring(numberPhone,3,6)}"/> - <c:out value="${fn:substring(numberPhone,6,10)}"/>">
+				                		</c:when>
+				                		<c:otherwise>
+				                		<input type="text" class="form-control form-control-sm" id="kbmpNumberFull" name="kbmpNumberFull" value="<c:out value="${fn:substring(numberPhone,0,3)}"/> - <c:out value="${fn:substring(numberPhone,3,7)}"/> - <c:out value="${fn:substring(numberPhone,7,11)}"/>">
+				                		</c:otherwise>
+				               		</c:choose>
+									</td>
+								</tr>
+								<tr>
+									<th>주소</th>
+									<td><div class="input-group">
+										<input class="form-control form-control-sm mb-1" type="text" id="kbmaZipcode" name="kbmaZipcode" placeholder="우편번호" value="${itemMember.kbmaZipcode}" readonly>
+										<button class="btn btn-outline-secondary btn-sm mb-1" type="button" id="btnAddress"><i class= "fas fa-search"></i></button>
+										<button class="btn btn-outline-secondary btn-sm mb-1" type="button" id="btnClear"><i class= "fas fa-solid fa-x"></i></button>
+									</div>
+									<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1" name="kbmaAddress1" value="${itemMember.kbmaAddress1}" placeholder="기본주소"> 
+									<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2" name="kbmaAddress2" value="${itemMember.kbmaAddress2}" placeholder="상세주소"> </td>
+								</tr>
+							</table>
+						</div>
+						<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+						</div>
 					</div>
-				</div>
+				</c:if>
+				
+				<!-- 카카오 로그인일 경우 -->
+				<c:if test="${sessSeq eq '0'}">
+					<div style="width: 90%;" class="mx-auto mt-5">
+						<p class="mb-4" style="font-weight: bold;  font-size: 23px;"> 배송정보</p>
+						<ul class="nav nav-tabs" id="myTab" role="tablist">
+							<li class="nav-item" role="presentation">
+								<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">국내배송</button>
+							</li>
+							<li class="nav-item" role="presentation">
+								<button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">해외배송</button>
+							</li>
+						</ul>
+						<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+							<table class="table mb-4 mx-auto">
+								<tr>
+									<th class="w-25">이름</th>
+									<td><input type="text" class="form-control form-control-sm" id="rtName" name="rtName" ></td>
+								</tr>
+								<tr>
+									<th>휴대폰번호</th>
+									<td><input type="text" class="form-control form-control-sm" id="rtNumber" name="rtNumber"></td>
+								</tr>
+								<tr>
+									<th>주소</th>
+									<td><div class="input-group">
+										<input class="form-control form-control-sm mb-1" type="text" id="kbmaZipcode" name="kbmaZipcode" placeholder="우편번호" readonly>
+										<button class="btn btn-outline-secondary btn-sm mb-1" type="button" id="btnAddress"><i class= "fas fa-search"></i></button>
+										<button class="btn btn-outline-secondary btn-sm mb-1" type="button" id="btnClear"><i class= "fas fa-solid fa-x"></i></button>
+									</div>
+									<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1" name="kbmaAddress1"  placeholder="기본주소"> 
+									<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2" name="kbmaAddress2"  placeholder="상세주소"> </td>
+								</tr>
+							</table>
+						</div>
+						<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+						</div>
+					</div>
+				</c:if>				
+				
 				<div style="width: 90%;" class="mx-auto mt-5">	
 				<p class="mb-4" style="font-weight: bold; font-size: 23px;"> 주문상품</p>
 					<table class="table mb-4">
@@ -475,6 +518,13 @@ $("#btnClear").on("click",function(){
 });	
 
 
+<c:if test="${sessSeq eq '0'}">
+	rtName = document.getElementById("rtName").value;
+	rtNumber = document.getElementById("rtNumber").value;
+
+	$("#rtName").val(rtName);  
+	$("#rtNumber").val(rtNumber);  
+</c:if>
 <c:forEach items="${listCodeDiscount}" var="itemDiscount" varStatus="statusDiscount">
 	<c:if test="${item.tditDiscountCd eq itemDiscount.ifcdOrder}">
 		var price1 = <c:out value="${item.tditPrice-(itemDiscount.ifcdReferenceI2*item.tditPrice)}"/>;
@@ -531,7 +581,7 @@ $(document).ready(function() {
 	
 $("#rtCount").val(bookCount);
 $("#rtPoint").val(finalPoint);	  
-$("#rtFinalPrice").val(finalPrice); 
+$("#rtFinalPrice").val(finalPrice);  
 
 
 <!-- 아임포트 카카오 결제 API -->
@@ -540,7 +590,9 @@ $(document).ready(function(){
 	$("#btn-purchase").click(function(){
 		payment();	// 버튼 클릭하면 호출
 	});
-})
+}) 
+
+var sess = ${sessSeq};
 
 function payment(data){
 	
@@ -548,46 +600,79 @@ function payment(data){
 		alert("결제 방식을 선택해주세요!");
 		return false;
 	}
-	
-	var IMP = window.IMP; // 생략가능
-	var payPrice = $("#rtFinalPrice").attr('value');
-	
-	IMP.init('imp96965516');  // 가맹점 식별코드
-	// IMP.request_pay(param, callback) 결제창 호출
-	IMP.request_pay({
-	    pg : 'kakaopay', //pg사 선택 (kakao, kakaopay 둘다 가능)
-	    pay_method: 'card',
-	    merchant_uid : 'iamport_test_id' + new Date().getTime(), //주문번호
-	    name : '<c:out value="${item.tditTitle}"/>', // 상품명
-	    amount : payPrice, //가격
-	    //customer_uid 파라메터가 있어야 빌링키 발급을 시도함
-	    customer_uid : '<c:out value="${sessName}"/>' + new Date().getTime(),
-	    buyer_email : '<c:out value="${itemMember.kbmeEmailFull}"/>',
-	    buyer_name : '<c:out value="${sessName}"/>',
-	    buyer_tel : '<c:out value="${itemMember.kbmpNumberFull}"/>', 
-	    /* buyer_tel : "010-1234-1234", */
-	}, function(rsp) { //callback
-	    if ( rsp.success ) {
-	      console.log('빌링키 발급 성공', rsp)
-	      //빌링키 발급이 완료되었으므로, 서버에 결제 요청
-	      //alert('결제가 완료되었습니다!');
-	    } else {
-	      var msg = '결제에 실패하였습니다.\n';
-	      msg += rsp.error_msg;
-	      alert(msg);
-	      return false;
-	    }
-	
-	    $("#bookPurchase").submit();
-	});    
-}    
-
-/* $("#btn-purchase").on("click", function(){
+	if(sess==0){
+		var IMP = window.IMP; // 생략가능
+		var payPrice = $("#rtFinalPrice").attr('value');
+		
+		IMP.init('imp96965516');  // 가맹점 식별코드
+		// IMP.request_pay(param, callback) 결제창 호출
+		IMP.request_pay({
+		    pg : 'kakaopay', //pg사 선택 (kakao, kakaopay 둘다 가능)
+		    pay_method: 'card',
+		    merchant_uid : 'iamport_test_id' + new Date().getTime(), //주문번호
+		    name : '<c:out value="${item.tditTitle}"/>', // 상품명
+		    amount : payPrice, //가격
+		    //customer_uid 파라메터가 있어야 빌링키 발급을 시도함
+		    customer_uid : '<c:out value="${rtName}"/>' + new Date().getTime(),
+		    buyer_email : 'binson1123@naver.com',
+		    buyer_name : '<c:out value="${rtName}"/>',
+		    buyer_tel : '<c:out value="${rtNumber}"/>', 
+		}, function(rsp) { //callback
+		    if ( rsp.success ) {
+		      console.log('빌링키 발급 성공', rsp)
+		      //빌링키 발급이 완료되었으므로, 서버에 결제 요청
+		      //alert('결제가 완료되었습니다!');
+		    } else {
+		      var msg = '결제에 실패하였습니다.\n';
+		      msg += rsp.error_msg;
+		      alert(msg);
+		      return false;
+		    }
+		
+		    $("#bookPurchase").submit();
+		});    
+	}else{
+		var IMP = window.IMP; // 생략가능
+		var payPrice = $("#rtFinalPrice").attr('value');
+		
+		IMP.init('imp96965516');  // 가맹점 식별코드
+		// IMP.request_pay(param, callback) 결제창 호출
+		IMP.request_pay({
+		    pg : 'kakaopay', //pg사 선택 (kakao, kakaopay 둘다 가능)
+		    pay_method: 'card',
+		    merchant_uid : 'iamport_test_id' + new Date().getTime(), //주문번호
+		    name : '<c:out value="${item.tditTitle}"/>', // 상품명
+		    amount : payPrice, //가격
+		    //customer_uid 파라메터가 있어야 빌링키 발급을 시도함
+		    customer_uid : '<c:out value="${sessName}"/>' + new Date().getTime(),
+		    buyer_email : '<c:out value="${itemMember.kbmeEmailFull}"/>',
+		    buyer_name : '<c:out value="${sessName}"/>',
+		    buyer_tel : '<c:out value="${itemMember.kbmpNumberFull}"/>', 
+		}, function(rsp) { //callback
+		    if ( rsp.success ) {
+		      console.log('빌링키 발급 성공', rsp)
+		      //빌링키 발급이 완료되었으므로, 서버에 결제 요청
+		      //alert('결제가 완료되었습니다!');
+		    } else {
+		      var msg = '결제에 실패하였습니다.\n';
+		      msg += rsp.error_msg;
+		      alert(msg);
+		      return false;
+		    }
+		
+		    $("#bookPurchase").submit();
+		});  
+	}	
+}     
+/* 
+ $("#btn-purchase").on("click", function(){
 	if ($("input:radio[name=rtPayment]").is(":checked") == false) {
 		alert("결제 방식을 선택해주세요!");
 		return false;
 	}
-}); */
+	
+	$("#bookPurchase").submit();
+});  */
 
 $("#btnLogout").on("click", function(){
 	

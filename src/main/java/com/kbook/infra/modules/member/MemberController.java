@@ -367,8 +367,8 @@ public class MemberController {
 		
 		System.out.println("카카오 "+name);
 		httpSession.setAttribute("sessName", name);
-		httpSession.setAttribute("sessId","카카오 회원입니다");
-		httpSession.setAttribute("sessSeq","카카오 회원입니다");
+		httpSession.setAttribute("sessId","0");
+		httpSession.setAttribute("sessSeq","0");
 		
 		returnMap.put("item", "success");
 		

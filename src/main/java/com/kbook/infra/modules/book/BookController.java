@@ -114,6 +114,13 @@ public class BookController {
 		model.addAttribute("rtPoint", dto.getRtPoint());
 		model.addAttribute("rtCoupon", dto.getRtCoupon());
 		model.addAttribute("rtPayment", dto.getRtPayment());
+		model.addAttribute("rtAddress1", dto.getKbmaAddress1());
+		model.addAttribute("rtAddress2", dto.getKbmaAddress2());
+		model.addAttribute("rtZipcode", dto.getKbmaZipcode());
+		model.addAttribute("rtName", dto.getRtName());
+		model.addAttribute("rtNumber", dto.getRtNumber());
+		
+		System.out.println("(dto.getRtZipcode() :"+dto.getRtZipcode());
 		
 		return "member/subookEnd";
 	}

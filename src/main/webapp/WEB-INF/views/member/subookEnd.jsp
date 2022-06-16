@@ -82,7 +82,7 @@
 <div class="container">
 
 
-<table class="table" style="width: 1000px; margin-left: auto; margin-right: auto; margin-top: 50px;">
+	<table class="table" style="width: 1000px; margin-left: auto; margin-right: auto; margin-top: 50px;">
 			<thead class="table" style=" background-color: #5E6B9F; color: white;">
 				<tr>
 					<th colspan="3" style=" font-size: 20px; width: 980px; text-align: center; vertical-align: center; ">구매 완료</th>
@@ -143,51 +143,106 @@
 					<td style="text-align: left; padding: 0; vertical-align: middle;">결제금액</td>
 					<td style="text-align: left; padding: 0; vertical-align: middle;"><b style="color: red;"><fmt:formatNumber value="${rtFinalPrice}"/> 원</b></td>
 				</tr>
+				<c:if test="${itemMember.kbmmSeq eq '0'}"><%=request.getParameter("rtZipcode") %></c:if>
 				<tr>
 					<th  colspan="3" style="height: 120px; font-size: 25px; text-align: center; vertical-align: middle;font-weight: bold; color: #5E6B9F;">구매자 정보</th>
 				</tr>
-				<tr>
-					<td style="text-align: left; padding: 0; vertical-align: middle; height: 37px;"><span style="margin-left: 240px;">이름</span></td>
-					<td colspan="2" style="text-align: left; padding: 0; vertical-align: middle;"><b style="margin-left: 140px;"><c:out value="${itemMember.kbmmName}"/></b></td>
-				</tr>
-				<tr>
-					<td style="text-align: left; padding: 0; vertical-align: middle; height: 37px;"><span style="margin-left: 240px;">핸드폰번호</span></td>
-					<td colspan="2" style="text-align: left; padding: 0; vertical-align: middle;">
-						<b style="margin-left: 140px;">
-							<c:set var="numberPhone" value="${itemMember.kbmpNumberFull}"/>
-		                	<c:choose>
-		                		<c:when test="${fn:length(numberPhone) eq 10 }">
-									<c:out value="${fn:substring(numberPhone,0,3)}"/>
-									- <c:out value="${fn:substring(numberPhone,3,6)}"/>
-									- <c:out value="${fn:substring(numberPhone,6,10)}"/>
-		                		</c:when>
-		                		<c:otherwise>
-									<c:out value="${fn:substring(numberPhone,0,3)}"/>
-									- <c:out value="${fn:substring(numberPhone,3,7)}"/>
-									- <c:out value="${fn:substring(numberPhone,7,11)}"/>
-		                		</c:otherwise>
-		               		</c:choose>
-		               </b>
-					</td>
-				</tr>
-				<tr>
-					<td style="text-align: left; padding: 0; vertical-align: middle; height: 37px;"><span style="margin-left: 240px;">주소</span></td>
-					<td colspan="2" style="text-align: left; padding: 0; vertical-align: middle;">
-						<b style="margin-left: 140px;"><c:out value="${itemMember.kbmaZipcode}"/></b>
-					</td>
-				</tr>
-				<tr>
-					<td style="text-align: left; padding: 0; vertical-align: middle; height: 37px;"><span style="margin-left: 140px;"></span></td>
-					<td colspan="2"  style="text-align: left; padding: 0; vertical-align: middle;">
-						<b style="margin-left: 140px;"><c:out value="${itemMember.kbmaAddress1}"/></b>
-					</td>
-				</tr>
-				<tr>
-					<td style="text-align: left; padding: 0; vertical-align: middle; height: 37px;"><span style="margin-left: 140px;"></span></td>
-					<td colspan="2" style="text-align: left; padding: 0; vertical-align: middle;">
-						<b style="margin-left: 140px;"><c:out value="${itemMember.kbmaAddress2}"/></b>
-					</td>
-				</tr>
+				<!-- 일반로그인 -->
+				<c:if test="${sessSeq ne '0'}">
+					<tr>
+						<td style="text-align: left; padding: 0; vertical-align: middle; height: 37px;"><span style="margin-left: 240px;">이름</span></td>
+						<td colspan="2" style="text-align: left; padding: 0; vertical-align: middle;"><b style="margin-left: 140px;"><c:out value="${itemMember.kbmmName}"/></b></td>
+					</tr>
+					<tr>
+						<td style="text-align: left; padding: 0; vertical-align: middle; height: 37px;"><span style="margin-left: 240px;">핸드폰번호</span></td>
+						<td colspan="2" style="text-align: left; padding: 0; vertical-align: middle;">
+							<b style="margin-left: 140px;">
+								<c:set var="numberPhone" value="${itemMember.kbmpNumberFull}"/>
+			                	<c:choose>
+			                		<c:when test="${fn:length(numberPhone) eq 10 }">
+										<c:out value="${fn:substring(numberPhone,0,3)}"/>
+										- <c:out value="${fn:substring(numberPhone,3,6)}"/>
+										- <c:out value="${fn:substring(numberPhone,6,10)}"/>
+			                		</c:when>
+			                		<c:otherwise>
+										<c:out value="${fn:substring(numberPhone,0,3)}"/>
+										- <c:out value="${fn:substring(numberPhone,3,7)}"/>
+										- <c:out value="${fn:substring(numberPhone,7,11)}"/>
+			                		</c:otherwise>
+			               		</c:choose>
+			               </b>
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align: left; padding: 0; vertical-align: middle; height: 37px;"><span style="margin-left: 240px;">주소</span></td>
+						<td colspan="2" style="text-align: left; padding: 0; vertical-align: middle;">
+							<b style="margin-left: 140px;"><c:out value="${itemMember.kbmaZipcode}"/></b>
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align: left; padding: 0; vertical-align: middle; height: 37px;"><span style="margin-left: 140px;"></span></td>
+						<td colspan="2"  style="text-align: left; padding: 0; vertical-align: middle;">
+							<b style="margin-left: 140px;"><c:out value="${itemMember.kbmaAddress1}"/></b>
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align: left; padding: 0; vertical-align: middle; height: 37px;"><span style="margin-left: 140px;"></span></td>
+						<td colspan="2" style="text-align: left; padding: 0; vertical-align: middle;">
+							<b style="margin-left: 140px;"><c:out value="${itemMember.kbmaAddress2}"/></b>
+						</td>
+					</tr>
+				</c:if>
+				
+				<!-- 카카로 로그인 -->
+				<c:if test="${sessSeq eq '0'}">
+					<tr>
+						<td style="text-align: left; padding: 0; vertical-align: middle; height: 37px;"><span style="margin-left: 240px;">이름</span></td>
+						<td colspan="2" style="text-align: left; padding: 0; vertical-align: middle;"><b style="margin-left: 140px;"><c:out value="${rtName}"/></b></td>
+					</tr>
+					<tr>
+						<td style="text-align: left; padding: 0; vertical-align: middle; height: 37px;"><span style="margin-left: 240px;">핸드폰번호</span></td>
+						<td colspan="2" style="text-align: left; padding: 0; vertical-align: middle;">
+							<b style="margin-left: 140px;">
+								<c:set var="numberPhone" value="${rtNumber}"/>
+			                	<c:choose>
+			                		<c:when test="${fn:length(numberPhone) eq 10 }">
+										<c:out value="${fn:substring(numberPhone,0,3)}"/>
+										- <c:out value="${fn:substring(numberPhone,3,6)}"/>
+										- <c:out value="${fn:substring(numberPhone,6,10)}"/>
+			                		</c:when>
+			                		<c:otherwise>
+										<c:out value="${fn:substring(numberPhone,0,3)}"/>
+										- <c:out value="${fn:substring(numberPhone,3,7)}"/>
+										- <c:out value="${fn:substring(numberPhone,7,11)}"/>
+			                		</c:otherwise>
+			               		</c:choose>
+			               </b>
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align: left; padding: 0; vertical-align: middle; height: 37px;"><span style="margin-left: 240px;">주소</span></td>
+						<td colspan="2" style="text-align: left; padding: 0; vertical-align: middle;">
+							<b style="margin-left: 140px;"><c:out value="${rtZipcode}"/></b>
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align: left; padding: 0; vertical-align: middle; height: 37px;"><span style="margin-left: 140px;"></span></td>
+						<td colspan="2"  style="text-align: left; padding: 0; vertical-align: middle;">
+							<b style="margin-left: 140px;"><c:out value="${rtAddress1}"/></b>
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align: left; padding: 0; vertical-align: middle; height: 37px;"><span style="margin-left: 140px;"></span></td>
+						<td colspan="2" style="text-align: left; padding: 0; vertical-align: middle;">
+							<b style="margin-left: 140px;"><c:out value="${rtAddress2}"/></b>
+						</td>
+					</tr>
+				</c:if>
+				
+				
+				
+				
+				
 				<tr style="height: 50px;"><td colspan="3"></td></tr>
 
 				<tr style="background-color: #F9FFFF; text-align: left; vertical-align: center; font-size: 15px; border: 1px solid #F9FFFF;">

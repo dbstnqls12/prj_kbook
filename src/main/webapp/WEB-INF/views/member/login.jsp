@@ -68,7 +68,7 @@
 		<!-- <button class="btn btn-facebook" type="button" id="btn-facebook" onclick="fnFbCustomLogin();"><img src="/resources/xdmin/image/fbicon.png" id="icon"><b> 페이스북</b> 로그인</button> -->
 	</div>
 </div>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 <script src="/resources/common/js/validation.js"></script>
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
@@ -78,31 +78,7 @@
 <script type="text/javascript">
 
 <!--일반 로그인 -->  
-function enterkey() {
-    if (window.event.keyCode == 13) {
-				
-    	$.ajax({
-			async : true
-			,cache : false
-			,type : "post"
-			,url : "/member/loginProc"
-			,data : { "kbmmId" : $("#kbmmId").val(), "kbmmPassword" : $("#kbmmPassword").val()}
-			,success : function(response) {
-				if (response.rt == "success") {
-					location.href = "/index/index";
-				} else {
-					alert("아이디 및 비밀번호를 확인해주세요");
-				}
-			},
-			error : function(jqXHR, textStatus, errorThrown) {
-				alert("ajaxUpdate " + jqXHR.textStatus + " : "
-						+ jqXHR.errorThrown);
-			}
-		});
-    	
-         
-    	}
-	}
+
 $("#btnLogin").on("click",function(){
 	 
 	if(!checkNull($("kbmmId"), $.trim($("#kbmmId").val()), "아이디를 입력해 주세요!")) return false;
