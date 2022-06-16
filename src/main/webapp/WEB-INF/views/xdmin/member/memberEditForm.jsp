@@ -23,7 +23,18 @@
 <link href="/resources/xdmin/css/footers.css" rel="stylesheet" type="text/css">
 <link rel="shortcut icon" href="https://ifh.cc/g/74QNWX.png" type="image/x-icon" />
 <title id="ctl00_headerTitle">책이 수북수북</title>
-
+<style type="text/css">
+	.addScroll {
+		overflow: auto;
+		height : 90px;
+		background-color: #F0F8FF;
+	}
+	
+	.input-file-button {
+		padding : auto;
+		cursor : pointer;
+	}
+</style>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/xdmin/include/xdmin_header.jsp" %><!-- xdmin_header -->
@@ -247,7 +258,7 @@
 		            <textarea rows="3" cols="80" id="kbmmDesc" name="kbmmDesc" value="<c:out value="${rt.kbmmDesc}"/>"><c:out value="${rt.kbmmDesc}" escapeXml="false"/></textarea>
 		            </div>
 		        </div>
-		 		<div class="col-6 d-none d-sm-block"></div><!-- 줄바꿈 -->
+		        <div class="col-6 d-none d-sm-block"></div><!-- 줄바꿈 -->
 			</form>
 			<div class="col-mb-3 mt-3">	
 				<div class="float-start">
@@ -271,6 +282,7 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
+
 	goList = function(){
 		$("#memberEditForm").attr("action", "/xdmin/member/memberList");
 		$("#memberEditForm").submit();
@@ -280,6 +292,7 @@
 		$("#memberEditForm").attr("action","/xdmin/member/memberView");
 		$("#memberEditForm").submit();
 	}
+	
 $("#btn-Form").on("click", function(){
 	var answer = confirm("수정하시겠습니까?");
 	

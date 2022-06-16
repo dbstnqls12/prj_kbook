@@ -93,23 +93,6 @@ public class MemberServiceImpl implements MemberService{
 			dto.setKbmpNumberFull(dto.getKbmpNumberFullArray()[i]); 
 			dao.updatePhone(dto);
 		}
-		int j = 0;
-		for(MultipartFile multipartFile : dto.getFile0()) {
-//			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-			String pathModule = "member";
-			UtilUpload.upload(multipartFile, pathModule, dto);
-			
-			dto.setTableName("kbMemberUploaded");
-			dto.setType(0);
-			dto.setDefaultNy(1);
-			dto.setSort(j);
-			dto.setDelNy(0);
-			dto.setPseq(dto.getKbmmSeq());
-			
-			dao.updateUploaded(dto);
-			j++;
-			
-		}
 		dao.updateEmail(dto);
 		dao.updateAddress(dto);
 		
