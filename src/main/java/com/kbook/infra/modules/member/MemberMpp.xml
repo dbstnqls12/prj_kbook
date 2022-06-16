@@ -354,7 +354,7 @@
 			,b.path
 		FROM 
 			kbMember a
-		LEFT JOIN kbMemberUploaded b ON b.pseq = a.kbmmSeq 	
+		LEFT JOIN kbMemberUploaded b ON b.pseq = a.kbmmSeq 	`
 		WHERE 1=1 
 			AND a.kbmmId = #{kbmmId}	
 			AND a.kbmmPassword = #{kbmmPassword}	
