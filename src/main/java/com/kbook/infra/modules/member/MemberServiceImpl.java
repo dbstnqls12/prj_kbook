@@ -53,11 +53,17 @@ public class MemberServiceImpl implements MemberService{
 			dto.setKbmpNumberFull(dto.getKbmpNumberFullArray()[i]);
 			dao.insertPhone(dto);
 		}
-//		int j = 0;
-//		for(MultipartFile multipartFile : dto.getFile0()) {
-//			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-//			UtilUpload.upload(multipartFile, pathModule, dto);
-//			
+		int j = 0;
+		for(MultipartFile multipartFile : dto.getFile0()) {
+			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+			UtilUpload.upload(multipartFile, pathModule, dto);
+			
+			dto.setTableName("kbMemberUploaded");
+			dto.setType(0);
+			dto.setDefaultNy(1);
+			dto.setSort(j);
+			dto.setDelNy(0);
+			dto.setPseq(dto.getKbmmSeq());
 //			dto.setTableName("kbMemberUploaded");
 //		    dto.setType(0);
 //		    dto.setDefaultNy(1);
@@ -69,11 +75,11 @@ public class MemberServiceImpl implements MemberService{
 //			dto.setDelNy(0);
 //			dto.setPath("/resources/uploaded/common/");
 //			dto.setPseq(dto.getKbmmSeq());
-//			
-//			dao.insertUploaded(dto);
-//			j++;
-//			
-//		}
+			
+			dao.insertUploaded(dto);
+			j++;
+			
+		}
 		
 		dao.insertEmail(dto);
 		dao.insertAddress(dto);
