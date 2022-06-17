@@ -34,7 +34,6 @@
 	<div class="row">
 		
 		<!-- 본문 -->
-		<!-- <div class="col-md-10"> -->
 			<!-- 검색 s -->
 			<div class="mb-2"><h4 style="font-weight: bold;">회원관리</h4></div>
 			<form id="formList" name="formList" method="post" action="memberList">
@@ -153,8 +152,8 @@
 					</tr>
 				</table> 
 			</div>
-			
 			<!-- table e -->
+
 			<!-- page s -->
 			<nav aria-label="Page navigation">
 				<ul class="pagination justify-content-center">
