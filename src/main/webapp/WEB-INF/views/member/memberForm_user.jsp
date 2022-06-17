@@ -196,8 +196,8 @@
 			</div>
 			<div class="col-12 mb-4">
 				<label class="form-label"><b>비밀번호</b></label>
-				<input type="password" class="form-control mb-2" id="kbmmPassword" name="kbmmPassword" placeholder="영문/숫자/특수문자 조합 8~20자리(대소문자 포함)"> 
-				<input type="password" class="form-control" id="kbmmPasswordChk" name="kbmmPasswordChk" placeholder="비밀번호 확인"> 
+				<input type="password" class="form-control mb-2 pw" id="kbmmPassword" name="kbmmPassword" placeholder="영문/숫자/특수문자 조합 8~20자리(대소문자 포함)"> 
+				<input type="password" class="form-control pw" id="kbmmPasswordChk" name="kbmmPasswordChk" placeholder="비밀번호 확인"> 
 			</div>
 			<div class="col-12 mb-4">
 				<label class="form-label"><b>이메일</b></label>
@@ -243,6 +243,9 @@
 
 <script type="text/javascript">
 
+
+
+	
 $("#btn_chk1").on("click",function(){
 	
 	/* kbmmName */
@@ -260,10 +263,6 @@ $("#btn_chk1").on("click",function(){
 	if(!checkNull($("#kbmpTelecomCdArray0"), $("#kbmpTelecomCdArray0").val(), "통신사를 선택하세요.")) return false;
 	if(!checkNull($("#kbmpNumberFullArray0"), $("#kbmpNumberFullArray0").val(), "휴대폰번호를 입력하세요.")) return false;
  	if(!checkOnlyNumber($("#kbmpNumberFullArray0"), $("#kbmpNumberFullArray0").val(), "휴대폰번호는 숫자만 입력 가능합니다.")) return false;
-	
- 	/* certificationNumber */
- 	/* if(!checkNull($("#certificationNumber"), $("#certificationNumber").val(), "인증번호를 입력하세요.")) return false; */
-	/* 보낸인증번호와 인증번호 value값이 같다면 return true, 다르다면 return false */
 	
 	$("#divShow1").show();
  	
@@ -317,10 +316,9 @@ $("#btnSubmit").on("click",function(){
  	/* kbmmPassword */
  	if(!checkNull($("#kbmmPassword"), $("#kbmmPassword").val(), "비밀번호를 입력하세요.")) return false;
  	if(!checkPassword($("#kbmmPassword"), $("#kbmmPassword").val(), "비밀번호를 형식에 맞게 입력하세요. (영문/숫자/특수문자 조합 8~20자리(대소문자 구분))")) return false;
-
+ 	
  	/* kbmmPasswordChk */
  	if(!checkNull($("#kbmmPasswordChk"), $("#kbmmPasswordChk").val(), "비밀번호 확인을 입력하세요.")) return false;
- 	
  	if($("#kbmmPassword").val() == $("#kbmmPasswordChk").val()){
  	}else{
  		alert("비밀번호 확인이 틀립니다.");
