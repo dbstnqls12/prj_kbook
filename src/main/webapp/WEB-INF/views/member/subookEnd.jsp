@@ -253,9 +253,7 @@
 				</tr>
 				<tr style="background-color: #F9FFFF; text-align: left; vertical-align: center; font-size: 15px; border: 1px solid #F9FFFF; border-bottom: 1px solid #F9FFFF;">
 					<td colspan="3" style="text-align: center;">
-						<!-- <a href="/member/subookMain" style="margin-right: 10px;"> -->
 							<button type="button" class="btn btn-success btn-lg mb-4" onclick="location.href='/member/subookMain'" style="margin-right: 10px;">홈 화면으로</button>
-						<!-- </a> -->
 							<img src="/resources/xdmin/image/kakaoicon.png" role="button" onclick="shareKakaotalk();" style="margin-bottom: 23px;">
 					</td>
 				</tr>
