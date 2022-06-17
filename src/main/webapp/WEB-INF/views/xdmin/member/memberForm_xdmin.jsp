@@ -66,11 +66,17 @@
 					<label for="inputId" class="form-label">아이디</label>
 					<input type="text" class="form-control form-control-sm" id="kbmmId" name="kbmmId" placeholder="영소문자/숫자 5~20자리"> 
 				</div>
+				<div class="col-6 d-none d-sm-block"></div><!-- 줄바꿈 -->
 				<div class="col-md-6">
 					<label for="inputPwd" class="form-label">비밀번호</label>
-					<input type="password" class="form-control form-control-sm" id="kbmmPassword" name="kbmmPassword" placeholder="영문/숫자/특수문자 조합 8~20자리(대소문자 포함)">
+					<input type="password" class="form-control form-control-sm pw" id="kbmmPassword" name="kbmmPassword" placeholder="영문/숫자/특수문자 조합 8~20자리(대소문자 포함)">
+					<span id="alert-success" style="display: none; color: blue; text-align: left; font-size: 13px;"><i class="fa-solid fa-check"></i> 비밀번호가 일치합니다.</span>
+					<span id="alert-danger" style="display: none; color: red; text-align: left; font-size: 13px;"><i class="fa-solid fa-xmark"></i> 비밀번호가 일치하지 않습니다.</span>	
 				</div>
-
+				<div class="col-md-6">
+					<label for="inputPwdchk" class="form-label">비밀번호 확인</label>
+					<input type="password" class="form-control form-control-sm pw" id="kbmmPasswordchk" name="kbmmPasswordchk" placeholder="비밀번호 재입력">
+				</div>
 				<div class="col-md-6">
 					<label class="form-label">생년월일</label>
 					<input type="text" id="kbmmDob" name="kbmmDob" max="2022-01-08" class="form-control form-control-sm" placeholder="8자리 입력(예.19850101)">
@@ -366,6 +372,24 @@ goList = function(){
 	$("#memberForm").submit();
 };
 
+$('.pw').focusout(function () {
+    var pwd1 = $("#kbmmPassword").val();
+    var pwd2 = $("#kbmmPasswordchk").val();
+
+    if ( pwd1 != '' && pwd2 == '' ) {
+        null;
+    } else if (pwd1 != "" || pwd2 != "") {
+        if (pwd1 == pwd2) {
+            $("#alert-success").css('display', 'inline-block');
+            $("#alert-danger").css('display', 'none');
+        } else {
+            $("#alert-success").css('display', 'none');
+            $("#alert-danger").css('display', 'inline-block');
+        }
+    }
+});
+
+
 $("#btn-add").on("click", function(){
 	/* kbmmName */
 	if(!checkNull($("#kbmmName"), $("#kbmmName").val(), "이름을 입력하세요.")) return false;
@@ -378,14 +402,12 @@ $("#btn-add").on("click", function(){
  	/* kbmmPassword */
  	if(!checkNull($("#kbmmPassword"), $("#kbmmPassword").val(), "비밀번호를 입력하세요.")) return false;
  	if(!checkPassword($("#kbmmPassword"), $("#kbmmPassword").val(), "비밀번호를 형식에 맞게 입력하세요. (영문/숫자/특수문자 조합 8~20자리(대소문자 구분))")) return false;
- 	
-/*  	if($("#kbmmPassword").val()!=$("#kbmmPasswordchk").val()){
+ 	if($("#kbmmPassword").val()!=$("#kbmmPasswordchk").val()){
  		alert("비밀번호 확인을 다시 입력하세요");
  		return false
  	}else{
  		//by pass
- 	} */
-
+ 	}
  	/* kbmmDob */
 	if(!checkNull($("#kbmmDob"), $("#kbmmDob").val(), "생년월일을 입력하세요")) return false;
  	if(!checkDob($("#kbmmDob"), $("#kbmmDob").val(), "생년월일을 8자리 숫자로 입력 가능해주세요.")) return false;	

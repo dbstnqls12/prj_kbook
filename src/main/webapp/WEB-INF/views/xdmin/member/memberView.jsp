@@ -53,35 +53,35 @@
 				<div class="col-6 d-none d-sm-block"></div><!-- 줄바꿈 -->
 				<div class="col-md-6 col-12">
 					<label class="form-label">이름</label>
-					<input type="text" class="form-control form-control-sm" id="kbmmName" name="kbmmName" value="<c:out value="${item.kbmmName}"/>">
+					<input type="text" class="form-control form-control-sm" id="kbmmName" name="kbmmName" value="<c:out value="${item.kbmmName}"/>" readonly>
 				</div>
 				<div class="col-6 d-none d-sm-block"></div><!-- 줄바꿈 -->
 				<div class="col-md-6">
 					<label for="inputId" class="form-label">아이디</label>
-					<input type="text" class="form-control form-control-sm" id="kbmmId" name="kbmmId" value="<c:out value="${item.kbmmId}"/>"> 
+					<input type="text" class="form-control form-control-sm" id="kbmmId" name="kbmmId" value="<c:out value="${item.kbmmId}"/>" readonly> 
 				</div>
 				<div class="col-md-6">
 					<label for="inputPwd" class="form-label">비밀번호</label>
-					<input type="password" class="form-control form-control-sm" id="kbmmPassword" name="kbmmPassword" value="<c:out value="${item.kbmmPassword}"/>">
+					<input type="password" class="form-control form-control-sm" id="kbmmPassword" name="kbmmPassword" value="<c:out value="${item.kbmmPassword}"/>" readonly>
 				</div>
 
 				<div class="col-md-6">
 					<label class="form-label">생년월일</label>
-					<input type="text" id="kbmmDob" name="kbmmDob" max="2022-01-08" class="form-control form-control-sm" value="<c:out value="${item.kbmmDob}"/>">
+					<input type="text" id="kbmmDob" name="kbmmDob" max="2022-01-08" class="form-control form-control-sm" value="<c:out value="${item.kbmmDob}"/>" readonly> 
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">성별</label>
 					<select class="form-select form-select-sm" id="kbmmGenderCd" name="kbmmGenderCd">
 						<option value="">::성별::</option>
 							<c:forEach items="${CodeGender}" var="itemGender" varStatus="statusGender">
-						<option value="<c:out value="${itemGender.ifcdOrder}"/>" <c:if test="${item.kbmmGenderCd eq itemGender.ifcdOrder }">selected</c:if> ><c:out value="${itemGender.ifcdName}"/></option>	
+						<option value="<c:out value="${itemGender.ifcdOrder}"/>" <c:if test="${item.kbmmGenderCd eq itemGender.ifcdOrder }" >selected</c:if> disabled><c:out value="${itemGender.ifcdName}"/></option>	
 							</c:forEach>
 					</select>
 				</div>	
  				
 				<c:forEach items="${listPhone}" var="item" varStatus="statusTelecom">
 					<c:choose>
-						<c:when test="${item.kbmpDeviceCd eq 1}"> <c:set var="kbmmNumberHome" value="${item.kbmpNumberFull }"/></c:when>
+						<c:when test="${item.kbmpDeviceCd eq 1}"> <c:set var="kbmmNumberHome" value="${item.kbmpNumberFull }" /></c:when>
 						<c:when test="${item.kbmpDeviceCd eq 2}">
 							<c:set var="kbmmNumberMobile" value="${item.kbmpNumberFull}"/>
 							<c:set var="kbmmNumberTelecom" value="${item.kbmpTelecomCd}"/>
@@ -98,38 +98,38 @@
 						<select class="form-select form-select-sm mb-1" id="kbmpTelecomCdArray0" name="kbmpTelecomCdArray">
 						<option selected>::통신사::</option>
 							<c:forEach items="${CodeTelecom}" var="itemTelecom" varStatus="statusTelecom">
-								<option value="<c:out value="${itemTelecom.ifcdOrder}"/>" <c:if test="${kbmmNumberTelecom eq itemTelecom.ifcdOrder }">selected</c:if> ><c:out value="${itemTelecom.ifcdName}"/></option>	
+								<option value="<c:out value="${itemTelecom.ifcdOrder}"/>" <c:if test="${kbmmNumberTelecom eq itemTelecom.ifcdOrder }">selected</c:if> disabled><c:out value="${itemTelecom.ifcdName}"/></option>	
 							</c:forEach>	
 						</select>
-					<input type="text" class="form-control form-control-sm" id="kbmpNumberFullArray0" name="kbmpNumberFullArray"  value="<c:out value="${kbmmNumberMobile}"/>"  placeholder="숫자만 입력(예.01012341231)">
+					<input type="text" class="form-control form-control-sm" id="kbmpNumberFullArray0" name="kbmpNumberFullArray"  value="<c:out value="${kbmmNumberMobile}"/>"  placeholder="숫자만 입력(예.01012341231)" readonly>
 				</div>	
  				<div class="col-md-6">
 					<label class="form-label">전화번호(선택)</label>
 					<input type="hidden" id="kbmpDefaultNyArray1" name="kbmpDefaultNyArray" value="0">
 					<input type="hidden" id="kbmpDeviceCdArray1" name="kbmpDeviceCdArray" value="1">
 					<input type="hidden" id="kbmpTelecomCdArray1" name="kbmpTelecomCdArray" value="">
-					<input type="text" class="form-control form-control-sm" id="kbmpNumberFullArray1" name="kbmpNumberFullArray" value="<c:out value="${kbmmNumberHome}"/>" >
+					<input type="text" class="form-control form-control-sm" id="kbmpNumberFullArray1" name="kbmpNumberFullArray" value="<c:out value="${kbmmNumberHome}"/>" readonly>
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">팩스번호</label>
 					<input type="hidden" id="kbmpDefaultNyArray2" name="kbmpDefaultNyArray" value="0">
 					<input type="hidden" id="kbmpDeviceCdArray2" name="kbmpDeviceCdArray" value="3">
 					<input type="hidden" id="kbmpTelecomCdArray2" name="kbmpTelecomCdArray" value="">
-					<input type="text" class="form-control form-control-sm" id="kbmpNumberFullArray2" name="kbmpNumberFullArray" value="<c:out value="${kbmmNumberFax}"/>"  >
+					<input type="text" class="form-control form-control-sm" id="kbmpNumberFullArray2" name="kbmpNumberFullArray" value="<c:out value="${kbmmNumberFax}"/>"  readonly>
 				</div> 
 
 					
 
 				<div class="col-md-6">
 					<label class="col-form-label pt-0">이메일</label>
-					<input type="text" class="form-control form-control-sm" id="kbmeEmailFull" name="kbmeEmailFull" value="<c:out value="${item.kbmeEmailFull}"/>">
+					<input type="text" class="form-control form-control-sm" id="kbmeEmailFull" name="kbmeEmailFull" value="<c:out value="${item.kbmeEmailFull}"/>" readonly>
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">국적</label>
 					<select class="form-select form-select-sm" id="kbmmKoreanNy" name="kbmmKoreanNy" >
 						<option selected>::국적::</option>
 							<c:forEach items="${CodeKorean}" var="itemKorean" varStatus="statusKorean">
-						<option value="<c:out value="${itemKorean.ifcdOrder}"/>" <c:if test="${item.kbmmKoreanNy eq itemKorean.ifcdOrder }">selected</c:if> ><c:out value="${itemKorean.ifcdName}"/></option>	
+						<option value="<c:out value="${itemKorean.ifcdOrder}"/>" <c:if test="${item.kbmmKoreanNy eq itemKorean.ifcdOrder }">selected</c:if> disabled><c:out value="${itemKorean.ifcdName}"/></option>	
 							</c:forEach>	
 					</select>
 				</div>
@@ -138,21 +138,21 @@
 					<select class="form-select form-select-sm mb-1" id="kbmmGradeCd" name="kbmmGradeCd">
 						<option selected>::회원등급::</option>
 							<c:forEach items="${CodeGrade}" var="itemGrade" varStatus="statusGrade">
-						<option value="<c:out value="${itemGrade.ifcdOrder}"/>" <c:if test="${item.kbmmGradeCd eq itemGrade.ifcdOrder }">selected</c:if> ><c:out value="${itemGrade.ifcdName}"/></option>	
+						<option value="<c:out value="${itemGrade.ifcdOrder}"/>" <c:if test="${item.kbmmGradeCd eq itemGrade.ifcdOrder }">selected</c:if> disabled><c:out value="${itemGrade.ifcdName}"/></option>	
 							</c:forEach>
 					</select>
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">주소 (한국전용)</label>
-					<input type="text" class="form-control form-control-sm mb-1" id="kbmaZipcode" name="kbmaZipcode" placeholder="<c:out value="${item.kbmaZipcode}"/>">
-					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1" name="kbmaAddress1" placeholder="<c:out value="${item.kbmaAddress1}"/>">
-					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2" name="kbmaAddress2" placeholder="<c:out value="${item.kbmaAddress2}"/>">
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaZipcode" name="kbmaZipcode" placeholder="<c:out value="${item.kbmaZipcode}"/>" readonly>
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1" name="kbmaAddress1" placeholder="<c:out value="${item.kbmaAddress1}"/>" readonly>
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2" name="kbmaAddress2" placeholder="<c:out value="${item.kbmaAddress2}"/>" readonly>
 				</div>
 				<div class="col-md-6">
 					<label class="form-label">주소 (국외전용)</label>
-					<input type="text" class="form-control form-control-sm mb-1" id="kbmaZipcode_abroad" name="kbmaZipcode_abroad" placeholder="<c:out value="${item.kbmaZipcode_abroad}"/>">
-					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1_abroad" name="kbmaAddress1_abroad" placeholder="<c:out value="${item.kbmaAddress1_abroad}"/>">
-					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2_abroad" name="kbmaAddress2_abroad" placeholder="<c:out value="${item.kbmaAddress2_abroad}"/>">
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaZipcode_abroad" name="kbmaZipcode_abroad" placeholder="<c:out value="${item.kbmaZipcode_abroad}"/>" readonly>
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1_abroad" name="kbmaAddress1_abroad" placeholder="<c:out value="${item.kbmaAddress1_abroad}"/>" readonly>
+					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2_abroad" name="kbmaAddress2_abroad" placeholder="<c:out value="${item.kbmaAddress2_abroad}"/>" readonly>
 				</div>
 				<div class="col-md-6">
 					<label class="col-form-label">개인정보 수집 및 이용안내(선택)</label>
@@ -236,7 +236,7 @@
 							<label class="form-check-label" for="mobileMarketingConsentY">동의</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="kbmmSmsConsentNy" id="mobileMarketingConsentN" value="0" <c:if test="${item.kbmmSmsConsentNy eq 0 || item.kbmmSmsConsentNy eq null}">checked</c:if>>
+							<input class="form-check-input" type="radio" name="kbmmSmsConsentNy" id="mobileMarketingConsentN" value="0"  <c:if test="${item.kbmmSmsConsentNy eq 0 || item.kbmmSmsConsentNy eq null}">checked</c:if>>
 							<label class="form-check-label" for="mobileMarketingConsentN">비동의</label>
 						</div>
 		 			</div>
@@ -245,7 +245,7 @@
 		            <label class="col-form-label">설명</label>
 		            <div class="col-md-6">
 		            <%-- <p>${fn:replace(item.ifmmDesc, br, '<br/>')}</p> --%>
-		            <textarea rows="3" cols="80" id="kbmmDesc" name="kbmmDesc"><c:out value="${item.kbmmDesc}" escapeXml="false"/></textarea>
+		            <textarea rows="3" cols="80" id="kbmmDesc" name="kbmmDesc" disabled><c:out value="${item.kbmmDesc}" escapeXml="false"/></textarea>
 		            </div>
 		        </div>
 		 		<div class="col-6 d-none d-sm-block"></div><!-- 줄바꿈 -->
