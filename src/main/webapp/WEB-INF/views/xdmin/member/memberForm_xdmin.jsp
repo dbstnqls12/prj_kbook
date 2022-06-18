@@ -134,6 +134,13 @@
 					<input type="text" class="form-control form-control-sm" id="kbmeEmailFull" name="kbmeEmailFull" placeholder="이메일주소 입력">
 				</div>
 				<div class="col-md-6">
+					<label for="file0" class="form-label input-file-button">이미지 파일</label>
+					<input type="file" class="form-control form-control-sm mb-1" id="file0" name="file0" multiple onChange="upload(0,2);"style="display: none;" >
+					<div class="addScroll">
+						<ul id="ulFile0" class="list-group"></ul>
+					</div>
+				</div>
+				<div class="col-md-6">
 					<label class="form-label">국적</label>
 					<select class="form-select form-select-sm" id="kbmmKoreanNy" name="kbmmKoreanNy" >
 						<option selected>::국적::</option>
@@ -142,7 +149,6 @@
 							</c:forEach>	
 					</select>
 				</div>
-				<div class="col-6 d-none d-sm-block"></div><!-- 줄바꿈 -->
 				<div class="col-md-6">
 					<label class="form-label">주소 (한국전용)</label>
 					<div class="input-group">
@@ -156,19 +162,13 @@
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaLng" name="kbmaLng" placeholder="kbmaLng"> 
 				</div>
 				<div class="col-md-6">
-					<label for="file0" class="form-label input-file-button">이미지 파일</label>
-					<input type="file" class="form-control form-control-sm mb-1" id="file0" name="file0" multiple onChange="upload(0,2);"style="display: none;" >
-					<div class="addScroll">
-						<ul id="ulFile0" class="list-group"></ul>
-					</div>
-				</div>
-				<div class="col-md-6">
 					<label class="form-label">주소 (국외전용)</label>
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaZipcode_abroad" name="kbmaZipcode_abroad" placeholder="우편번호">
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1_abroad" name="kbmaAddress1_abroad" placeholder="기본주소">
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2_abroad" name="kbmaAddress2_abroad" placeholder="상세주소">
 				</div>
-				<!-- <div class="col-6 d-none d-sm-block"></div> --><!-- 줄바꿈 -->
+
+				<div class="col-6 d-none d-sm-block"></div> 
 				<div class="col-md-6">
 					<label class="col-form-label">수분문고 이용약관<span style="color: red;">(필수)</span></label>
 					<div class="col-md-6">

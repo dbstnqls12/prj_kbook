@@ -26,8 +26,7 @@
 <!-- 본문 s -->		
 <hr class="w-100" style="color: #DDDDDD">
 <div class="container my-wrap">
-	<form action="/member/member_userInst" method="post" id="memberForm" name="memberForm" class="row">
-		<input type="hidden" id="kbmmSeq" name="kbmmSeq" value="<c:out value="${vo.kbmmSeq}"/>">
+	<form action="/member/member_userInst" method="post" id="memberForm" name="memberForm" class="row" enctype="multipart/form-data">
 		<input type="hidden" id="kbmmGradeCd" name="kbmmGradeCd"  value="1">
 		<input type="hidden" id="kbmmDelNy" name="kbmmDelNy"  value="0">
 		<!-- 정보입력 s -->
@@ -91,15 +90,16 @@
 				<input type="hidden" id="kbmpTelecomCdArray2" name="kbmpTelecomCdArray" value="">
 				<input type="hidden" id="kbmpNumberFullArray2" name="kbmpNumberFullArray" value="<c:out value="${kbmmNumberFax}"/>" >
 			</div>
+			<div class="col-12 mb-4">
+				<label class="form-label"><b>프로필 사진</b></label>
+				<div class="input-group">
+					<input type="file" class="form-control mb-2" id="file0" name="file0">
+				</div>
+			</div> 
 			
-			<div class="d-grid gap-2 col-12 mx-auto mt-3">
-				<button class="btn btn-naver" type="button" id="btn_chk1"><strong>동의 및 인증 확인</strong></button>
-			</div>
 		<!-- 정보입력 e -->
-		
 		<!-- 약관동의 s -->	
-		<div id="divShow1">		
-			<div class="mt-4 mb-4">
+			<div class="mt-5 mb-4">
 				<h3 class="text-center">약관동의</h3>
 			</div>
 			<div class="form-check mb-3">
@@ -174,19 +174,10 @@
 					<label class="form-check-label">탈퇴시까지</label>
 				</div>
 	 		</div>
-			<div class="mb-3">
-				<label>개인정보 위탁안내(고지)</label>
-				<i class="fa-solid fa-angle-right float-end pt-1" style="color: gray;"></i>
-			</div>	
 	 		<hr class="w-100" style="color: #A2969C">	
-	 		<div class="d-grid gap-2 col-xs-8 mx-auto">
-				<button class="btn btn-naver" type="button" id="btn_chk2" name="btn_chk2">동의하기</button>
-			</div>
-		</div>
  		<!-- 약관동의 e -->
  		
  		<!-- 정보입력 s -->
- 		<div id="divShow2">
 			<div class="mt-4 mb-4">
 				<h3 class="text-center">정보입력</h3>
 			</div>
@@ -225,13 +216,12 @@
 				<input type="text" class="form-control mb-1" id="kbmaAddress1" name="kbmaAddress1" placeholder="기본주소"> 
 				<input type="text" class="form-control mb-1" id="kbmaAddress2" name="kbmaAddress2" placeholder="상세주소"> 
 			</div>
+		</form>	
 			<div class="d-grid gap-2 col-xs-8 mx-auto">
-				<button class="btn btn-naver" type="submit" id="btnSubmit" name="btnSubmit">가입완료</button>
+				<button type="submit" class="btn btn-naver" id="btnSubmit" name="btnSubmit">가입완료</button>
 			</div>
-		</div>
+	</div>
 		<!-- 정보입력 e-->
-	</form>	
-</div>	
 	
 		
 		
@@ -244,16 +234,13 @@
 <script type="text/javascript">
 
 
-
-	
-$("#btn_chk1").on("click",function(){
-	
+$("#btnSubmit").on("click",function(){
 	/* kbmmName */
 	if(!checkNull($("#kbmmName"), $("#kbmmName").val(), "이름을 입력하세요.")) return false;
-		
+	   
 	/* kbmmDob */
 	if(!checkNull($("#kbmmDob"), $("#kbmmDob").val(), "생년월일을 입력하세요")) return false;
- 	if(!checkDob($("#kbmmDob"), $("#kbmmDob").val(), "생년월일을 8자리 숫자로 입력 가능해주세요.")) return false;	
+	 if(!checkDob($("#kbmmDob"), $("#kbmmDob").val(), "생년월일을 8자리 숫자로 입력 가능해주세요.")) return false;   
 	
 	/* kbmmGenderCd, kbmpTelecomCd*/
 	if(!checkNull($("#kbmmGenderCd"), $("#kbmmGenderCd").val(), "성별을 선택하세요.")) return false;
@@ -262,78 +249,54 @@ $("#btn_chk1").on("click",function(){
 	/* "kbmpNumberFull" */
 	if(!checkNull($("#kbmpTelecomCdArray0"), $("#kbmpTelecomCdArray0").val(), "통신사를 선택하세요.")) return false;
 	if(!checkNull($("#kbmpNumberFullArray0"), $("#kbmpNumberFullArray0").val(), "휴대폰번호를 입력하세요.")) return false;
- 	if(!checkOnlyNumber($("#kbmpNumberFullArray0"), $("#kbmpNumberFullArray0").val(), "휴대폰번호는 숫자만 입력 가능합니다.")) return false;
+	 if(!checkOnlyNumber($("#kbmpNumberFullArray0"), $("#kbmpNumberFullArray0").val(), "휴대폰번호는 숫자만 입력 가능합니다.")) return false;
 	
-	$("#divShow1").show();
- 	
+	if ($("input:checkbox[name=kbmmUseConsentNy_c]").is(":checked") == false) {
+	   alert("필수항목은 반드시 동의하세요. (교보문고 이용약관)");
+	   return false;
+	} 
+	 
+	if ($("input:checkbox[name=kbmmPersonalinfoConsentNy_c]").is(":checked") == false) {
+	   alert("필수항목은 반드시 동의하세요. (개인정보 수집 및 이용안내)");
+	   return false;
+	}
+	
+	if ($("input:radio[name=kbmmSavedCd]").is(":checked") == false) {
+	   alert("개인정보 유효기간을 선택하세요.");
+	   return false;
+	}
+	
+	/* kbmmId */
+	 if(!checkNull($("#kbmmId"), $("#kbmmId").val(), "아이디를 입력하세요.")) return false;
+	 if(!checkId($("#kbmmId"), $("#kbmmId").val(), "아이디를 형식에 맞게 입력하세요. (영문/숫자/특수문자 조합 8~15자리(대소문자 구분))")) return false;
+	
+	 /* kbmmPassword */
+	 if(!checkNull($("#kbmmPassword"), $("#kbmmPassword").val(), "비밀번호를 입력하세요.")) return false;
+	 if(!checkPassword($("#kbmmPassword"), $("#kbmmPassword").val(), "비밀번호를 형식에 맞게 입력하세요. (영문/숫자/특수문자 조합 8~20자리(대소문자 구분))")) return false;
+	 
+	 /* kbmmPasswordChk */
+	 if(!checkNull($("#kbmmPasswordChk"), $("#kbmmPasswordChk").val(), "비밀번호 확인을 입력하세요.")) return false;
+	 if($("#kbmmPassword").val() == $("#kbmmPasswordChk").val()){
+	 }else{
+	    alert("비밀번호 확인이 틀립니다.");
+	    return false;
+	 }
+	 
+	 /* kbmeEmailFull */
+	 if(!checkNull($("#kbmeEmailFull"), $("#kbmeEmailFull").val(), "이메일을 입력하세요.")) return false;
+	 if(!checkEmail($("#kbmeEmailFull"), $("#kbmeEmailFull").val(), "이메일을 형식에 맞게 입력하세요. (@를 포함한 형태)")) return false;
+	
+	 alert("회원가입이 완료되었습니다.");
+	 
+	$("#memberForm").attr("action", "/member/member_userInst");
+	$("#memberForm").submit();  
+
 });
 
-$("#btn-certification").on("click",function(){
-	
-	/* "kbmpNumberFull" */
-	if(!checkNull($("#kbmpTelecomCdArray0"), $("#kbmpTelecomCdArray0").val(), "통신사를 선택하세요.")) return false;
-	if(!checkNull($("#kbmpNumberFullArray0"), $("#kbmpNumberFullArray0").val(), "휴대폰번호를 입력하세요.")) return false;
- 	if(!checkOnlyNumber($("#kbmpNumberFullArray0"), $("#kbmpNumberFullArray0").val(), "휴대폰번호는 숫자만 입력 가능합니다.")) return false;
-
- 	
-});
-	
-/* consentAll */
 $('#consentAll').click(function(){
 	var checked = $('#consentAll').is(':checked');
 	if(checked)
 		$('input:checkbox').prop('checked',true);
-});
-	
-$("#btn_chk2").on("click",function(){
-	
-	if ($("input:checkbox[name=kbmmUseConsentNy_c]").is(":checked") == false) {
-		alert("필수항목은 반드시 동의하세요. (교보문고 이용약관)");
-		return false;
-	} 
-	 
-	if ($("input:checkbox[name=kbmmPersonalinfoConsentNy_c]").is(":checked") == false) {
-		alert("필수항목은 반드시 동의하세요. (개인정보 수집 및 이용안내)");
-		return false;
-	}
-	
-	if ($("input:radio[name=kbmmSavedCd]").is(":checked") == false) {
-		alert("개인정보 유효기간을 선택하세요.");
-		return false;
-	}
-	
-	
-	$("#divShow2").show();
-
-});
-
-$("#btnSubmit").on("click",function(){
- 	
-	/* kbmmId */
- 	if(!checkNull($("#kbmmId"), $("#kbmmId").val(), "아이디를 입력하세요.")) return false;
- 	if(!checkId($("#kbmmId"), $("#kbmmId").val(), "아이디를 형식에 맞게 입력하세요. (영문/숫자/특수문자 조합 8~15자리(대소문자 구분))")) return false;
-	
- 	/* kbmmPassword */
- 	if(!checkNull($("#kbmmPassword"), $("#kbmmPassword").val(), "비밀번호를 입력하세요.")) return false;
- 	if(!checkPassword($("#kbmmPassword"), $("#kbmmPassword").val(), "비밀번호를 형식에 맞게 입력하세요. (영문/숫자/특수문자 조합 8~20자리(대소문자 구분))")) return false;
- 	
- 	/* kbmmPasswordChk */
- 	if(!checkNull($("#kbmmPasswordChk"), $("#kbmmPasswordChk").val(), "비밀번호 확인을 입력하세요.")) return false;
- 	if($("#kbmmPassword").val() == $("#kbmmPasswordChk").val()){
- 	}else{
- 		alert("비밀번호 확인이 틀립니다.");
- 		return false;
- 	}
- 	
- 	
- 	/* kbmeEmailFull */
- 	if(!checkNull($("#kbmeEmailFull"), $("#kbmeEmailFull").val(), "이메일을 입력하세요.")) return false;
- 	if(!checkEmail($("#kbmeEmailFull"), $("#kbmeEmailFull").val(), "이메일을 형식에 맞게 입력하세요. (@를 포함한 형태)")) return false;
- 	
- 	alert("회원가입이 완료되었습니다!");
- 	
-	$("#memberForm").attr("action", "/member/member_userInst");
-	$("#memberForm").submit();
 });
 
 $("#btnAddress").on("click",function(){
@@ -392,6 +355,9 @@ function sample6_execDaumPostcode() {
         }
     }).open();
 }
+	
+
+	
 
 </script>
 <!-- Optional JavaScript; choose one of the two! -->

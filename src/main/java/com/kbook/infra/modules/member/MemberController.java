@@ -67,19 +67,7 @@ public class MemberController {
 
 	@RequestMapping(value = "/xdmin/member/memberView")
 	public String memberView(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
-
 		
-		System.out.println("############################");
-		System.out.println("vo.getShOption() : " + vo.getShOption());
-		System.out.println("vo.getShKbmmDelNy() : " + vo.getShKbmmDelNy());
-		System.out.println("vo.getShValue() : " + vo.getShValue());
-		System.out.println("vo.getThisPage() : " + vo.getThisPage());
-		System.out.println("vo.getkbmmSeq() : " + vo.getKbmmSeq());
-		System.out.println("vo.getShStartDate() : " + vo.getShDateStart());
-		System.out.println("vo.getShEndDate() : " + vo.getShDateEnd());
-		System.out.println("vo.getShDate() : " + vo.getShOptionDate());
-		System.out.println("############################");
-
 		Member rt = service.selectOne(vo);
 		model.addAttribute("item", rt);
 
@@ -114,16 +102,6 @@ public class MemberController {
 	@RequestMapping(value = "/xdmin/member/memberForm_xdmin")
 	public String memberForm_xdmin(@ModelAttribute("vo") MemberVo vo, Member dto, Model model) throws Exception {
 
-		System.out.println("############################");
-		System.out.println("vo.getShOption() : " + vo.getShOption());
-		System.out.println("vo.getShKbmmDelNy() : " + vo.getShKbmmDelNy());
-		System.out.println("vo.getShValue() : " + vo.getShValue());
-		System.out.println("vo.getThisPage() : " + vo.getThisPage());
-		System.out.println("vo.getShStartDate() : " + vo.getShDateStart());
-		System.out.println("vo.getShEndDate() : " + vo.getShDateEnd());
-		System.out.println("vo.getShDate() : " + vo.getShOptionDate());
-		System.out.println("############################");
-		
 		List<Member> list = service.selectListPhone(vo);
 		model.addAttribute("listPhone", list);
 
@@ -158,31 +136,17 @@ public class MemberController {
 		service.insert(dto);
 		
 		System.out.println("getKbmmSeq() : " + dto.getKbmmSeq());
-		
-//		vo.setKbmmSeq(dto.getKbmmSeq());
+		System.out.println("왜안됄?");
 		
 		List<Member> list = service.selectListPhone(vo);
 		model.addAttribute("listPhone", list);
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
-		
 		return "redirect:/member/login";
 	}
 
 	@RequestMapping(value = "/xdmin/member/memberEditForm")
 	public String memberEditForm(@ModelAttribute("vo") MemberVo vo, Member dto, Model model) throws Exception {
-
-		System.out.println("dto.getKbmpNumberFullArray(): "+dto.getKbmpNumberFullArray().length);
-		
-		System.out.println("############################");
-		System.out.println("vo.getShOption() : " + vo.getShOption());
-		System.out.println("vo.getShKbmmDelNy() : " + vo.getShKbmmDelNy());
-		System.out.println("vo.getShValue() : " + vo.getShValue());
-		System.out.println("vo.getThisPage() : " + vo.getThisPage());
-		System.out.println("vo.getShStartDate() : " + vo.getShDateStart());
-		System.out.println("vo.getShEndDate() : " + vo.getShDateEnd());
-		System.out.println("vo.getShDate() : " + vo.getShOptionDate());
-		System.out.println("############################");
 
 		List<Member> list = service.selectListPhone(vo);
 		model.addAttribute("listPhone", list);
