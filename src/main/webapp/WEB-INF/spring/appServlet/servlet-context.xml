@@ -41,6 +41,7 @@
 			<exclude-mapping path="/resources/**" />
 			<exclude-mapping path="/code/**" />
 			<exclude-mapping path="/member/login" />
+			<exclude-mapping path="/member/member_userInst" />
 			<exclude-mapping path="/member/findId" />
 			<exclude-mapping path="/member/getId" />
 			<exclude-mapping path="/member/findPwd" />
