@@ -184,37 +184,6 @@
 $("#ebookNew").hide();
 $("#abroadNew").hide();
 	
-/* var tditSeqArray = []; */
-/* $(document).ready(function (){
-	
-	$.ajax({
-		url : "kyobo_Vmain",
-		type : "post",
-		success : function(data){
-		//	alert('success');
-		//	alert(data); // json이 아니다
-			
-			let json = JSON.parse(data); // String -> json
-		//	alert(json); 
-		
-		// 데이터 가져오기	
-			$("#name").text(json.name);
-			$("#age").html(json.age);
-			$("#birth").val(json.birth);
-		},
-		error : function() {
-			alert('error');
-		}
-	});
-}); */
-
-/* function randomBook(tditSeqArray){
-	
-	int a = tditSeqArray[Math.floor(Math.random() * tditSeqArray.length)];
-	return a;
-}
-console.log(document.write( '<p>' + a + '</p>' ));
- */
 goInfo = function(seq){
 	$("#tditSeq").val(seq);
 	$("#bookMain").attr("action","/member/subookDetail");

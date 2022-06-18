@@ -28,104 +28,94 @@
 			<div class="px-0 mt-2">
 				<ul class="list-unstyled ps-0">
 					<li class="mb-1">
-						<button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">국내도서</button>
-						<div class="collapse" id="home-collapse">
-							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-								<li><a href="#" class="rounded">Overview</a></li>
-								<li><a href="#" class="rounded">Updates</a></li>
-								<li><a href="#" class="rounded">Reports</a></li>
+						<button class="btn align-items-center rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false">국내도서</button>
+						<div class="collapse" id="collapse1">
+							<ul class="list-unstyled fw-normal pb-1 small">
+								<li>
+								<c:forEach items="${listCateDepth2}" var="item2" varStatus="status2">
+										<c:if test="${item2.ifctParents eq 2}">
+											<li><a class="dropdown-item"><c:out value="${item2.ifctName}" /></a></li>
+										</c:if>
+								</c:forEach>	
+								</li>
 							</ul>
 						</div>
 					</li>
 					<li class="mb-1">
-						<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">외국도서</button>
-						<div class="collapse" id="dashboard-collapse">
+						<button class="btn btn-toggle align-items-center rounded collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false">외국도서</button>
+						<div class="collapse" id="collapse2">
 							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-								<li><a href="#" class="rounded">Overview</a></li>
-								<li><a href="#" class="rounded">Weekly</a></li>
-								<li><a href="#" class="rounded">Monthly</a></li>
-								<li><a href="#" class="rounded">Annually</a></li>
+								<li>
+								<c:forEach items="${listCateDepth2}" var="item2" varStatus="status2">
+										<c:if test="${item2.ifctParents eq 3}">
+											<li><a class="dropdown-item"><c:out value="${item2.ifctName}" /></a></li>
+										</c:if>
+								</c:forEach>	
+								</li>
 							</ul>
 						</div>
 					</li>
 					<li class="mb-1">
-						<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">ebook</button>
-						<div class="collapse" id="orders-collapse">
+						<button class="btn btn-toggle align-items-center rounded collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false">ebook</button>
+						<div class="collapse" id="collapse3">
 							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-								<li><a href="#" class="rounded">New</a></li>
-								<li><a href="#" class="rounded">Processed</a></li>
-								<li><a href="#" class="rounded">Shipped</a></li>
-								<li><a href="#" class="rounded">Returned</a></li>
+								<li>
+								<c:forEach items="${listCateDepth2}" var="item2" varStatus="status2">
+										<c:if test="${item2.ifctParents eq 4}">
+											<li><a class="dropdown-item"><c:out value="${item2.ifctName}" /></a></li>
+										</c:if>
+								</c:forEach>	
+								</li>
 							</ul>
 						</div>
 					</li>
 					<li class="mb-1">
-						<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">장르/코믹스</button>
-						<div class="collapse" id="orders-collapse">
+						<button class="btn btn-toggle align-items-center rounded collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false">장르/코믹스</button>
+					</li>
+					<li class="mb-1">
+						<button class="btn btn-toggle align-items-center rounded collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false">기프트</button>
+						<div class="collapse" id="collapse6">
 							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-								<li><a href="#" class="rounded">New</a></li>
-								<li><a href="#" class="rounded">Processed</a></li>
-								<li><a href="#" class="rounded">Shipped</a></li>
-								<li><a href="#" class="rounded">Returned</a></li>
+								<li>
+								<c:forEach items="${listCateDepth2}" var="item2" varStatus="status2">
+										<c:if test="${item2.ifctParents eq 7}">
+											<li><a class="dropdown-item"><c:out value="${item2.ifctName}" /></a></li>
+										</c:if>
+								</c:forEach>	
+								</li>
 							</ul>
 						</div>
 					</li>
 					<li class="mb-1">
-						<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">sam</button>
-						<div class="collapse" id="orders-collapse">
+						<button class="btn btn-toggle align-items-center rounded collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false">음반/DVD</button>
+						<div class="collapse" id="collapse7">
 							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-								<li><a href="#" class="rounded">New</a></li>
-								<li><a href="#" class="rounded">Processed</a></li>
-								<li><a href="#" class="rounded">Shipped</a></li>
-								<li><a href="#" class="rounded">Returned</a></li>
-							</ul>
-						</div>
-					</li>
-					<li class="mb-1">
-						<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">기프트</button>
-						<div class="collapse" id="orders-collapse">
-							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-								<li><a href="#" class="rounded">New</a></li>
-								<li><a href="#" class="rounded">Processed</a></li>
-								<li><a href="#" class="rounded">Shipped</a></li>
-								<li><a href="#" class="rounded">Returned</a></li>
-							</ul>
-						</div>
-					</li>
-					<li class="mb-1">
-						<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">음반/DVD</button>
-						<div class="collapse" id="orders-collapse">
-							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-								<li><a href="#" class="rounded">New</a></li>
-								<li><a href="#" class="rounded">Processed</a></li>
-								<li><a href="#" class="rounded">Shipped</a></li>
-								<li><a href="#" class="rounded">Returned</a></li>
-							</ul>
-						</div>
-					</li>
-					<li class="mb-1">
-						<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">중고장터</button>
-						<div class="collapse" id="orders-collapse">
-							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-								<li><a href="#" class="rounded">New</a></li>
-								<li><a href="#" class="rounded">Processed</a></li>
-								<li><a href="#" class="rounded">Shipped</a></li>
-								<li><a href="#" class="rounded">Returned</a></li>
+								<li>
+								<c:forEach items="${listCateDepth2}" var="item2" varStatus="status2">
+										<c:if test="${item2.ifctParents eq 5}">
+											<li><a class="dropdown-item"><c:out value="${item2.ifctName}" /></a></li>
+										</c:if>
+								</c:forEach>	
+								</li>
 							</ul>
 						</div>
 					</li>
 					<li class="border-top my-3"></li>
 					<li class="mb-1">
-					<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">ONLY 교보문고</button>
-						<div class="collapse" id="account-collapse">
+						<button class="btn btn-toggle align-items-center rounded collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false">중고장터</button>
+						<div class="collapse" id="#collapse8">
 							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-								<li><a href="#" class="rounded">New...</a></li>
-								<li><a href="#" class="rounded">Profile</a></li>
-								<li><a href="#" class="rounded">Settings</a></li>
-								<li><a href="#" class="rounded">Sign out</a></li>
+								<li>
+								<c:forEach items="${listCateDepth2}" var="item2" varStatus="status2">
+										<c:if test="${item2.ifctParents eq 8}">
+											<li><a class="dropdown-item"><c:out value="${item2.ifctName}" /></a></li>
+										</c:if>
+								</c:forEach>	
+								</li>
 							</ul>
 						</div>
 					</li>
+					
 				</ul>
 			</div>
 		</div>

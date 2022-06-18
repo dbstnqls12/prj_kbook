@@ -94,7 +94,7 @@
 						<h5><span class="badge rounded-pill bg-light text-dark"><c:out value="${itemKeyword.tdkwKeyword}"/></span></h5>			
 					</c:forEach>
 				</div>
-				<div class="relatedItem">
+<%-- 				<div class="relatedItem">
 					<p style="font-size: 20px; font-weight: bold; ">이 책의 다른 상품정보</p>
 					<c:set var="listCodeRelatedItem" value="${CodeServiceImpl.selectListCachedCode('17')}"/>
 						<c:forEach items="${listRelatedItem}" var="itemRelatedItem" varStatus="statusRelatedItem">
@@ -105,7 +105,7 @@
 								</p></c:if>
 							</c:forEach>
 						</c:forEach>
-				</div>
+				</div> --%>
 
 			</div>
 		</div>
@@ -255,8 +255,8 @@
 						<caption>※ 상품 설명에 반품/교환 관련한 안내가 있는 경우 그 내용을 우선으로 합니다. (업체 사정에 따라 달라질 수 있습니다.)</caption>
 							<tr>	
 								<th class="table-active" width="15%">반품/교환방법</th>
-								<td><small>마이룸 > 주문관리 > 주문/배송내역 > 주문조회 > 반품/교환신청 , [1:1상담>반품/교환/환불] 또는 고객센터 (1544-1900)
-									<br>※ 오픈마켓, 해외배송주문, 기프트 주문시 [1:1상담>반품/교환/환불] 또는 고객센터 (1544-1900)</small>
+								<td><small>마이룸 > 주문관리 > 주문/배송내역 > 주문조회 > 반품/교환신청 , [1:1상담>반품/교환/환불] 또는 고객센터 (1500-0000)
+									<br>※ 오픈마켓, 해외배송주문, 기프트 주문시 [1:1상담>반품/교환/환불] 또는 고객센터 (1500-0000)</small>
 								</td>
 							</tr>
 							<tr>	

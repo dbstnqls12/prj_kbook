@@ -29,18 +29,18 @@
 		<div class="dropdown">
 			<a class="navbar-brand navbar-toggle d-none d-sm-block" type="button" data-bs-toggle="dropdown" id="menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></a>
 				<ul class="list-unstyled ps-0 dropdown-menu" id="subMenu1">
-<%-- 				<c:forEach items="${listCateDepth1}" var="item1" varStatus="status1">
+				<c:forEach items="${listCateDepth1}" var="item1" varStatus="status1">
 					<li class="mb-1">
 						<button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false"><c:out value="${item1.ifctName }"/></button>
 						 <ul class="subMenu">
 						 <c:forEach items="${listCateDepth2}" var="item2" varStatus="status2">
 								<c:if test="${item1.ifctSeq eq item2.ifctParents}">
-									<li><a class="dropdown-item" href="#"><c:out value="${item2.ifctName}" /></a></li>
+									<li><a class="dropdown-item"><c:out value="${item2.ifctName}" /></a></li>
 								</c:if>
 						</c:forEach>		
 			          </ul>
 					</li>
-				</c:forEach>	 --%>
+				</c:forEach>
 				</ul>
 		</div> 
 		
@@ -48,11 +48,11 @@
 			<ul class="navbar-nav me-auto mb-2 mb-md-0" id="menu1">
 				<c:forEach items="${listCateDepth1}" var="item1" varStatus="status1">
 					<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><c:out value="${item1.ifctName }"/></a>
+					<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><c:out value="${item1.ifctName }"/></a>
 						<ul class="dropdown-menu" id="menu2">
 							<c:forEach items="${listCateDepth2}" var="item2" varStatus="status2">
 								<c:if test="${item1.ifctSeq eq item2.ifctParents}">
-									<li><a class="dropdown-item" href="#"><c:out value="${item2.ifctName}" /></a></li>
+									<li><a class="dropdown-item"><c:out value="${item2.ifctName}" /></a></li>
 								</c:if>
 							</c:forEach> 
 						</ul>

@@ -33,13 +33,11 @@
 			</a>
 		</div>		
 		<form class="d-flex col-lg-5 mx-auto"  style="height: 40px; margin-top: 30px;">
-			<input class="form-control form-control-sm rounded-pill" type="search" placeholder="Search" aria-label="Search">
-			<button class="btn rounded-pill" type="button" onclick=""><i class="fa-solid fa-magnifying-glass"></i></button>
 		</form>
 		<c:if test="${sessSeq ne null}">
 			<div class="col-lg-2 my-auto d-none d-md-block">	
 		        <div class="dropdown">
-		          <a href="#" class="d-inline link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+		          <a href="#" class="d-inline link-dark text-decoration-none">
 		            <span>${sessName}${name} 회원님 
 		            <c:forEach items="${CodeGrade}" var="itemGrade" varStatus="statusGrade">
 		           		 <c:if test="${sessGrade eq itemGrade.ifcdOrder }"><u><c:out value="${itemGrade.ifcdName}"/></u></c:if>
@@ -47,10 +45,6 @@
 		         	</span>
 
 		          </a>
-		          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-		            <li><a class="dropdown-item" href="../user/member/myInfo_main.html">내 정보</a></li>
-		            <li><a class="dropdown-item" href="../user/member/myInfo_coupon.html">쿠폰함</a></li>
-		          </ul>
 		          	<c:if test="${not empty sessSeq}">
 						<span class="badge bg-light text-dark" role="button" id="btnLogout">로그아웃</span>
 					</c:if>

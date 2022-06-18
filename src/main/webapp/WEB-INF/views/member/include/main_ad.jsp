@@ -21,7 +21,6 @@
 </head>
 <body>
 <div class="col">
-<a data-ga-action="메인배너" data-ga-label="요즘 이 책_큐피드곰" href="http://digital.kyobobook.co.kr/digital/eventTemplet/eventTempletMain.ink?tmplSeq=5074&amp;orderClick=45a">
 <!-- <img src="http://image.kyobobook.co.kr/ink/images/prom/2022/banner/220526/bnV_we02.jpg" alt="전kefs"></a>
 <img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2022/05/27/61856/kyobo_new.jpg"> -->
 	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -34,30 +33,19 @@
 		<div class="carousel-inner">
 			<div class="carousel-item active">
 				<!-- <img src="/resources/user/image/book/ad2.jpg" class="d-block w-100" alt="..."> -->
-<!-- 				<a href="http://digital.kyobobook.co.kr/digital/eventTemplet/eventTempletMain.ink?tmplSeq=95715&amp;orderClick=42g">
-					<img src="http://image.kyobobook.co.kr/ink/images/prom/2022/banner/220524/bnJ_w01_c2e09b.jpg" class="d-block w-100" alt="[이북]행성 출간">
-				</a> -->
-				<a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&amp;ejkGb=KOR&amp;barcode=9791191496208&amp;orderClick=43c">
-					<img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2022/05/27/70329/NEW.jpg" class="d-block w-100" alt="설민석의 한국사 대모험 21">
-				</a>
+				<img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2022/05/27/70329/NEW.jpg" class="d-block w-100" alt="설민석의 한국사 대모험 21">
 			</div>
 			<div class="carousel-item">
 				<!-- <img src="/resources/user/image/book/ad3.jpg" class="d-block w-100" alt="..."> -->
-				<a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&amp;ejkGb=KOR&amp;barcode=9791130690421&amp;orderClick=43a">
-					<img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2022/05/27/51660/e05306.jpg" class="d-block w-100" alt="나는 까칠하게 살기로 했다">
-				</a>
+				<img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2022/05/27/51660/e05306.jpg" class="d-block w-100" alt="나는 까칠하게 살기로 했다">
 			</div>
 			<div class="carousel-item">
 				<!-- <img src="/resources/user/image/book/ad4.jpg" class="d-block w-100" alt="..."> -->
-				<a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&amp;ejkGb=KOR&amp;barcode=9791168340275&amp;orderClick=43b">
-					<img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2022/05/26/61174/kyobo_newbook.jpg" class="d-block w-100" alt="샤일록의 아이들">
-				</a>
+				<img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2022/05/26/61174/kyobo_newbook.jpg" class="d-block w-100" alt="샤일록의 아이들">
 			</div>
 			<div class="carousel-item">
 				<!-- <img src="/resources/user/image/book/ad4.jpg" class="d-block w-100" alt="..."> -->
-				<a  href="http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&amp;ejkGb=KOR&amp;barcode=9791191360417&amp;orderClick=43d">
-					<img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2022/05/27/61856/kyobo_new.jpg" class="d-block w-100"  alt="세븐">
-				</a>
+				<img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2022/05/27/61856/kyobo_new.jpg" class="d-block w-100"  alt="세븐">
 			</div>
 		</div>
 		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
