@@ -167,8 +167,6 @@
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress1_abroad" name="kbmaAddress1_abroad" placeholder="기본주소">
 					<input type="text" class="form-control form-control-sm mb-1" id="kbmaAddress2_abroad" name="kbmaAddress2_abroad" placeholder="상세주소">
 				</div>
-
-				<div class="col-6 d-none d-sm-block"></div> 
 				<div class="col-md-6">
 					<label class="col-form-label">수분문고 이용약관<span style="color: red;">(필수)</span></label>
 					<div class="col-md-6">
@@ -294,7 +292,7 @@
 	</form>	 		
 
 			<div class="col-mb-3 mt-3">	
-				<div class="float-start"><button type="button" class="btn btn-danger btn-sm float-start"><i class="fas fa-trash"></i></button></div>
+				<!-- <div class="float-start"><button type="button" class="btn btn-danger btn-sm float-start"><i class="fas fa-trash"></i></button></div> -->
 				<div class="float-end">
 				<button type="button" class="btn btn-secondary btn-sm" id="btn-list" name="btn-list" onclick="javascript:goList();"><i class="fa-solid fa-list"></i></button>
 				<button type="submit" class="btn btn-primary btn-sm" id="btn-add" name="btn-add" ><i class="fas fa-plus"></i></button>
