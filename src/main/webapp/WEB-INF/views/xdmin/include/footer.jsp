@@ -23,7 +23,7 @@
 
 <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top">
 	<p class="col-md-5 mb-0 text-muted">
-		<a href="/member/kyobo_main" class="col-md-4 d-flex mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+		<a href="/member/subookMain" class="col-md-4 d-flex mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
 			<img src="/resources/xdmin/image/SU-BOOK3.png"  class="img-fluid" style="width: 100px; height: 50px;">
 		</a>
 		<small>㈜ 수북문고 서울시 독서구 다독로 123-1 수북빌딩<br>   
