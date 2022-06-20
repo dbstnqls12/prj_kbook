@@ -46,7 +46,7 @@
 				<select class="form-select" id="kbmmGenderCd" name="kbmmGenderCd">
 					<option selected value="">성별</option>
 						<c:forEach items="${CodeGender}" var="itemGender" varStatus="statusGender">
-					<option value="<c:out value="${itemGender.ifcdSeq}"/>"><c:out value="${itemGender.ifcdName}"/></option>	
+					<option value="<c:out value="${itemGender.ifcdOrder}"/>"><c:out value="${itemGender.ifcdName}"/></option>	
 						</c:forEach>
 				</select>
 			</div>
