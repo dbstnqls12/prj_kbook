@@ -219,6 +219,11 @@
 <script src="/resources/common/js/validation.js"></script>
 <script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 <script type="text/javascript">
+	$("#btnExcel").click(function() {
+		form.attr("action", "/member/excelDownload").submit();
+	});
+		
+	
 	$("#btnSubmit").on("click",function(){
 		/*		
 		if(!checkNull($("#shKbmmDelNy"), $("#shKbmmDelNy").val(), "삭제여부를 선택해주세요!")) return false;
