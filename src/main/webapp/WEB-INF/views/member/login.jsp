@@ -53,7 +53,7 @@
 	</div>	
 	<div class="d-grid gap-2 col-xs-8 mx-auto">
 		<button class="btn btn-primary" type="button" id="btnLogin" name="">로그인</button>	
-		<button class="btn btn-secondary" type="button" onclick="location.href='/member/memberForm_user'">회원가입</button>
+		<!-- <button class="btn btn-secondary" type="button" onclick="location.href='/member/memberForm_user'">회원가입</button> -->
 	</div>
 	<hr class="col-xs-8 mx-auto">
 	<div class="col-xs-8 mx-auto text-secondary" id="searchpwd">
